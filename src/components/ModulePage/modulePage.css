@@ -1,0 +1,53 @@
+.guest-container {
+  margin: auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.site-introduction{
+  text-align: left;
+}
+
+.gp-container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center
+}
+
+.heroImage {
+  width: 200px;
+  margin:20px;
+  height:200px;
+}
+
+.landingPageBoxes {
+  width: 250px;
+  margin:25px;
+  text-align:center;
+  transition: 0.15s;
+  background-color: #2B2B2B;
+  color: #ECF5E6;
+
+  -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.landingPageBoxes p {
+  text-align: left;
+  color: #efefef;
+}
+
+.landingPageBoxes:hover {
+  transition: 0.15s;
+  transform: scale(1.01);
+  cursor: pointer;
+  -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+     -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+          box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+}
+
+.landingPageBoxes p {
+  padding: 0 10px;
+}

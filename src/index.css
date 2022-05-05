@@ -31,7 +31,7 @@ img {
 }
 
 .main-content {
-  padding: 3em 4%;
+  padding: 1em 4%;
   flex-grow: 1;
 }
 
@@ -57,7 +57,5 @@ i {
 /* media queries */
 @media (min-width: 36em) {
 
-  .main-content {
-    padding: 6em 6%;
-  }
+ 
 }

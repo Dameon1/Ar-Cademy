@@ -5,10 +5,11 @@ import { Creators, Modules } from "../../Creators";
 export function LandingPage () {
     const creators = Object.keys(Creators);
     const modules = Object.keys(Modules);
+    
     const paths = modules.map((module, index) => {
       return (
         <li  key={index}  className="landingPageBoxes"
-             onClick={() => (window.location.href = `/module/${Creators[creators[index]].id}`)}>
+             onClick={() => (window.location.href = `/modules/${modules[index]}`)}>
           <h2 className="moduleHeaders">{modules[index]}</h2>
           <img src={ Creators[creators[index]].videoImage}  className="heroImage"
             alt={`Follow of ${Creators[creators[index]].title}`}/>

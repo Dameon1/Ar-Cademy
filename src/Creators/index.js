@@ -1,5 +1,5 @@
 export const Creators = {
-    'Musicicians': {
+    'Journey': {
         description: 'This is a sample Music creator',
         creatorName: 'Journey',
         editors: {
@@ -11,7 +11,7 @@ export const Creators = {
         },
         video: "https://www.youtube.com/watch?v=1k8craCGpgs?autoplay=1",
         videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        videoTitle: "Journey",
+        videoTitle: "Dont stop Believin",
         videoHeading: "Journey - Dont stop Believin",
         userId: [],
         id: 1,
@@ -21,7 +21,7 @@ export const Creators = {
         website: "https://twitter.com/JourneyOfficial",
 
     },
-    'koii': {
+    'Koii': {
         creatorName: 'Eric_3.0',
         description: 'This is a sample description',
 
@@ -43,7 +43,7 @@ export const Creators = {
         author: "Koii-X",
         website: "https://docs.koii.network/build-dapps-with-koii/template-library/deploy",
     },
-    'spheron': {
+    'Spheron': {
         creatorName: 'Speron',
         description: 'This is a sample description',
         id: 3,
@@ -55,6 +55,8 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         video: "https://www.youtube.com/watch?v=Ynfwggyl5rY",
+        videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
+
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
         userId: [],
@@ -63,7 +65,7 @@ export const Creators = {
         author: "Shperon",
         website: "https://spheron.network/",
     },
-    'saeta': {
+    'Saeta': {
         creatorName: 'Saeta',
         description: 'This is a sample description',
         id: 4,
@@ -75,6 +77,7 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         video: "https://www.youtube.com/watch?v=y_wZE2G3Ygo&t=4s",
+        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Deploying a Next.js App with ARKB",
         notes: "",
         userId: [],
@@ -83,8 +86,8 @@ export const Creators = {
         author: "@saetaeth",
         website: "https://github.com/saeta-eth/arweave-nextjs-example",
     },
-    'ArFS': {
-        creatorName: 'Lars',
+    'Ardrive': {
+        creatorName: 'MC Lars',
         description: 'This is a sample description',
         id: 5,
         editors: {
@@ -95,6 +98,7 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         video: "https://www.youtube.com/watch?v=vFyTXUXUe44&t=56s",
+        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Learning to use GraphQL with Arweave and Graph Protocol",
         notes: "",
         userId: [],
@@ -103,7 +107,7 @@ export const Creators = {
         author: "Ardrive",
         website: "https://ardrive.io/",
     },
-    'nader': {
+    'Nader': {
         creatorName: 'Nader',
         description: 'This is a sample description',
         id: 6,
@@ -115,6 +119,7 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         video: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
+        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Full stack web3 tutorial",
         notes: "",
         userId: [],
@@ -123,7 +128,7 @@ export const Creators = {
         author: "Edge and Node",
         website: "https://edgeandnode.com/",
     },
-    'arweave': {
+    'Arweave': {
         creatorName: 'Arweave',
         description: 'This is a sample description',
         id: 7,
@@ -136,6 +141,7 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         video: "https://arweave.net/9eWS7cfKeNAqPRTrSvMNR-4ub7JEwyOiI4IDXXkUMso",
+        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Introduction to Arweave",
         notes: "",
         userId: [],
@@ -157,6 +163,7 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         video: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
+        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Arweave Build Program",
         notes: "",
         userId: [],
@@ -168,28 +175,91 @@ export const Creators = {
 }
 export const Modules = {
     'Music': {
-        creators: 'Musicicians',
+        something: 'Music',
+        img: "",
+        topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        videos: '',
+        videosHeading: '',
+        notes: '',
+        userId: [],
+        creatorLink: '',
+        username: '',
+        creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 1,
     },
     'Deployment': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 2,
     },
     'Build': {
         creators: ['Koii', 'Arweave', 'Ardrive',],
+        description: 'This is a sample description',
+        id: 3,
     },
     'Storage': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 4,
     },
     'APIs': {
-        creators: 'Koii',
+        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 5,
     },
     'ArFS': {
-        creators: 'ardrive',
+        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 6,
     },
     'Community Tokens': {
-        creators: 'Koii',
-        
+        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 7,
     },
     'Identity': {
-        creators: 'Koii',
+        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        description: 'This is a sample description',
+        id: 8,
     },
+}
+
+//topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+export const Topics = {
+    'Music': {
+        "Journey": {
+            img:  Creators['Journey'].videoImage ,
+            title: Creators['Journey'].videoTitle,
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        },
+        "Koii": {
+            img: Creators['Koii'].videoImage,
+            title: 'Music',
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        },
+        "Spheron": {
+            img: Creators['Spheron'].videoImage,
+            title: 'Music',
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        },
+        "Ardrive": {
+            img: Creators['Ardrive'].videoImage,
+            title: 'Music',
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        }
+
+    }
 }
