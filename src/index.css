@@ -1,13 +1,63 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  font-size: 1em;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #4D4D4D;
+  color: #ECF5E6;
+} 
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+.main-content {
+  padding: 3em 4%;
+  flex-grow: 1;
+}
+
+/* Font/Color Scheme */
+i {
+  color: #181716; /* bgc black */
+  color: #292C2D; /* bgc darkgray */
+  color: #fdfdfd; /* header color */
+  color: #5eabc5; /* header bgc || highlight */
+  color: #462749; /* header btn bgc */
+  color: #bdbcbb; /* body color */
+  color: #64615e; /* body accent color */
+  color: #5d686c; /* body alt accent color || link color */
+  color: #485053; /* btn bgc */
+  color: #495355; /* btn bgc hover */
+
+  color: #623CEA;
+  color: #FF9505;
+  color: #F0E100;
+  color: #5CF64A;
+}
+
+/* media queries */
+@media (min-width: 36em) {
+
+  .main-content {
+    padding: 6em 6%;
+  }
 }

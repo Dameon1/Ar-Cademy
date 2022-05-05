@@ -1,0 +1,126 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.main-header {
+  font-size: 1.4rem;
+  background-color: #2B2B2B;
+  max-width: 100%;
+  padding: 1em 4%;
+}
+
+.main-header a {
+  text-decoration: none;
+}
+
+.site-logo-container {
+  margin: auto;
+  max-width: 250px;
+}
+
+.site-logo {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family: 'Ubuntu', cursive;
+  margin: 0 auto;
+  text-align: center;
+  color: #da81c8;
+  transition: ease 0.2s;
+}
+
+.site-logo:hover {
+  transition: ease 0.2s;
+  text-shadow: 0 1px 0 #da81c8,
+               0 2px 0 #da81c8,
+               0 3px 0 #ECF5E6,
+               0 4px 0 #ECF5E6,
+               0 6px 1px rgba(255, 255, 255,.1),
+               0 0 5px rgba(255, 255, 255,.1),
+               0 1px 3px rgba(255, 255, 255,.3),
+               0 3px 5px rgba(255, 255, 255,.2),
+               0 5px 10px rgba(255, 255, 255,.25),
+               0 10px 10px rgba(255, 255, 255,.2),
+               0 20px 20px rgba(255, 255, 255,.15);
+}
+
+.form-redirect-container {
+  position: absolute;
+  padding: 5px;
+  top: 10px;
+  right: 10px;
+  display:flex;
+}
+
+.form-redirect-container a {
+  width: 100px;
+  text-align: center;
+}
+
+.form-redirect-link {
+  border: 2px solid #2B2B2B;
+  font-size: 0.75em;
+  padding: 0.3em;
+  background-color: #da81c8;
+  -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+     -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+          box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-redirect-link:hover,
+.form-redirect-link:focus {
+  transition: 0.15s;
+  transform: scale(1.02);
+  cursor: pointer;
+  border: 2px solid #da81c8;
+  color: #da81c8;
+  background-color: #2b2b2b;
+  -webkit-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+     -moz-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+          box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+}
+.site-nav {
+  position: absolute;
+  padding: 5px;
+  top: 10px;
+  left: 10px;
+  display:flex;
+}
+
+.site-nav ul {
+  display: flex;
+}
+
+.site-nav li {
+  margin: 0 1em;
+  list-style: none;
+  font-size: 0.8em;
+  font-family: 'Ubuntu', cursive;
+  color: #ECF5E6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: ease 0.2s;
+}
+
+.site-nav a {
+  color: #da81c8;
+}
+
+.nav-link {
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #da81c8;
+}
+
+.site-logo-wrapper {
+  display: flex;
+}
