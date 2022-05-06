@@ -174,6 +174,7 @@ export const Creators = {
     }
 }
 export const Modules = {
+  
     'Music': {
         something: 'Music',
         img: "",
@@ -181,6 +182,8 @@ export const Modules = {
         videos: '',
         videosHeading: '',
         notes: '',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
         userId: [],
         creatorLink: '',
         username: '',
@@ -192,36 +195,50 @@ export const Modules = {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
         id: 2,
+        moduleImage:"https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
     'Build': {
         creators: ['Koii', 'Arweave', 'Ardrive',],
         description: 'This is a sample description',
         id: 3,
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
     'Storage': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
         id: 4,
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
     'APIs': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
         id: 5,
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
     'ArFS': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
         id: 6,
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
     'Community Tokens': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
         id: 7,
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
     'Identity': {
         creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
         id: 8,
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        title: '',
     },
 }
 

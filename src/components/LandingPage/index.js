@@ -9,11 +9,11 @@ export function LandingPage () {
     const paths = modules.map((module, index) => {
       return (
         <li  key={index}  className="landingPageBoxes"
-             onClick={() => (window.location.href = `/modules/${modules[index]}`)}>
+             onClick={() => (window.location.href = `/modules/${module}`)}>
           <h2 className="moduleHeaders">{modules[index]}</h2>
-          <img src={ Creators[creators[index]].videoImage}  className="heroImage"
-            alt={`Follow of ${Creators[creators[index]].title}`}/>
-          <p className="sample-path-description">{Creators[creators[index]].description}</p>
+          <img src={ Modules[module].moduleImage}  className="heroImage"
+            alt={`Follow of ${Modules[module].title}`}/>
+          <p className="sample-path-description">{Modules[module].description}</p>
         </li>
       );
     });

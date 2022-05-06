@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/modules/:id" element={<ModulePage />} />
         {/* <Route path="/account" component={Account} />
           <Route exact path="/auth" component={AuthPage} /> */}
-        {/* <Route exact path="/dashboard/classroom/:id/:videoIndex" component={Classroom}  /> */}
+        <Route exact path="/modules:id/:videoIndex" component={Classroom}  />
       </Routes>
      </main>
      </div>

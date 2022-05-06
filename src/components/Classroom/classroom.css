@@ -1,0 +1,68 @@
+.main-content {
+  padding: 0;
+}
+
+.classroom-section {
+  display: flex;
+  margin: -5em -3em;
+}
+
+.video-player-container {
+  color: #ECF5E6;
+  font-size: 1.1rem;
+}
+
+.video-player {
+  width: 100%;
+}
+
+.video-header {
+  background-color: #2B2B2B;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.video-title {
+  letter-spacing: 1px;
+}
+
+.video-player-container h2 {
+  font-family: 'Ubuntu', cursive;
+}
+
+.video-recap {
+  color: #ECF5E6;
+}
+
+.video-header,
+.video-footer {
+  padding: 1.5em;
+}
+
+.video-footer {
+  margin-top: -8px;
+  background-color: #2B2B2B;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* media queries */
+@media (min-width: 36em) {}
+
+@media (min-width: 599px) and (max-width: 800px) {
+  .classroom-section {
+    margin: -4em -2px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 599px) {
+  .classroom-section {
+    margin: -4em -2px;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 576px) {
+  .classroom-section {
+    margin: -2px;
+  }
+}
