@@ -1,9 +1,9 @@
 
-import './App.css';
+import { Routes, Route } from "react-router-dom";
 import { MainHeader } from '../components/MainHeader';
 import { LandingPage } from '../components/LandingPage';
 import  ModulePage  from '../components/ModulePage';
-import { Routes, Route } from "react-router-dom";
+import './App.css';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/modules/:id" element={<ModulePage />} />
         {/* <Route path="/account" component={Account} />
           <Route exact path="/auth" component={AuthPage} /> */}
-        <Route exact path="/modules:id/:videoIndex" component={Classroom}  />
+        {/* <Route exact path="/modules:id/:videoIndex" component={<Classroom />}  /> */}
       </Routes>
      </main>
      </div>

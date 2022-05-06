@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Editor from "../Editor/Editor";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import { Creators } from '../../creators'
+import { Creators } from '../../creators';
+
+
 export default function Classroom(props) {
 
   const [isLoading, setIsLoading] = useState(true);
