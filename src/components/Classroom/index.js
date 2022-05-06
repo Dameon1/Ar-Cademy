@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Editor from "../Editor/Editor";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import { Creators } from '../../creators';
+import { Creators } from '../../Creators';
 
 
 export default function Classroom(props) {

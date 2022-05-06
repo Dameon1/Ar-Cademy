@@ -1,0 +1,101 @@
+.classroom-section ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.video-player-container {
+  color: #fdfdfd;
+  font-size: 1.1rem;
+}
+
+.video-player {
+  width: 100%;
+}
+
+.video-header {
+  background-color: #181716;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.video-title {
+  letter-spacing: 1px;
+}
+
+.video-player-container h2 {
+  font-family: 'Ubuntu', cursive;
+}
+
+.video-recap {
+  color: #bdbcbb;
+}
+
+.video-header,
+.video-footer {
+  padding: 1.5em;
+}
+
+.video-footer {
+  margin-top: -8px;
+  background-color: #292C2D;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.video-creator-link {
+  text-decoration: none;
+  color: #125872;
+
+  position: relative;
+  font-weight: 600;
+}
+
+@media (min-width: 800px) {
+  .video-creator-link {
+    text-decoration: none;
+    color: #D2F593;
+  
+    position: relative;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+  
+  .video-creator-link:before,
+  .video-creator-link:after {
+    content: '';
+    background: #D2F593;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+  
+  .video-creator-link:before {
+    top: 0;
+    left: 0;
+  }
+  
+  .video-creator-link:after {
+    top: 100%;
+    right: 0;
+  }
+  .video-creator-link:hover,
+  .video-creator-link:focus {
+    color: #81B84A;
+  }
+  
+  
+  .video-creator-link:hover:before,
+  .video-creator-link:hover:after,
+  .video-creator-link:focus:before,
+  .video-creator-link:focus:after {
+    width: 100%;
+  }
+}

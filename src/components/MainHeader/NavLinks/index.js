@@ -12,7 +12,7 @@ export function NavLinks () {
       <li>
         <span> | </span>
       </li>
-      <li onClick={() => (window.location.href = `/account`)}>
+      <li onClick={() => (window.location.href = `/Ar-Cademy/account`)}>
         <div className="nav-link" to="/dashboard">
           Account
         </div>

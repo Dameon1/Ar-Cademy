@@ -13,7 +13,7 @@ function ModulePage() {
       let videos = topics.map((topic, index) => {
       let topicObject = Topics[module][topic];  
         return (
-          <li key={index} className="landingPageBoxes" onClick={() => (window.location.href = `/modules/${module}/${topic}`)}>
+          <li key={index} className="landingPageBoxes" onClick={() => (window.location.href = `/Ar-Cademy/modules/${module}/${topic}`)}>
               {index}
             <div className="">
               <img
@@ -29,7 +29,7 @@ function ModulePage() {
               <button
                 className="go-btn"
                 onClick={() => {console.log("clicked")}}
-                to={`/dashboard/classroom/${topicObject.id}/${index}`}
+                to={`/Ar-Cademy/dashboard/classroom/${topicObject.id}/${index}`}
               >
                 Go &gt;
               </button>
