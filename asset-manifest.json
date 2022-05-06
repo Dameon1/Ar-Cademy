@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Ar-Cademy/static/css/main.b52f2cd1.css",
-    "main.js": "/Ar-Cademy/static/js/main.bafffad0.js",
-    "static/js/787.6038274c.chunk.js": "/Ar-Cademy/static/js/787.6038274c.chunk.js",
-    "index.html": "/Ar-Cademy/index.html",
-    "main.b52f2cd1.css.map": "/Ar-Cademy/static/css/main.b52f2cd1.css.map",
-    "main.bafffad0.js.map": "/Ar-Cademy/static/js/main.bafffad0.js.map",
-    "787.6038274c.chunk.js.map": "/Ar-Cademy/static/js/787.6038274c.chunk.js.map"
+    "main.css": "./static/css/main.b52f2cd1.css",
+    "main.js": "./static/js/main.348ddb4d.js",
+    "static/js/787.6038274c.chunk.js": "./static/js/787.6038274c.chunk.js",
+    "index.html": "./index.html",
+    "main.b52f2cd1.css.map": "./static/css/main.b52f2cd1.css.map",
+    "main.348ddb4d.js.map": "./static/js/main.348ddb4d.js.map",
+    "787.6038274c.chunk.js.map": "./static/js/787.6038274c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b52f2cd1.css",
-    "static/js/main.bafffad0.js"
+    "static/js/main.348ddb4d.js"
   ]
 }
