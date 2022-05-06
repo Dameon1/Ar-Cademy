@@ -4,7 +4,7 @@ export function NavLinks () {
   return (
     <nav className="site-nav">
     <ul>
-      <li onClick={() => (window.location.href = `/`)}>
+      <li onClick={() => (window.location.href = `/Ar-Cademy`)}>
         <div className="nav-link" to="/dashboard/explore">
           Home
         </div>

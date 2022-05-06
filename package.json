@@ -1,6 +1,6 @@
 {
-  "homepage": "https://dameon1.github.io/",
-  "name": "Ar-Cademy",
+  "homepage": "./",
+  "name": "ar-cademy",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

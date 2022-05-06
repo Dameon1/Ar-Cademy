@@ -12,7 +12,7 @@ function App() {
       <main className="main-content">
      
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/Ar-Cademy" element={<LandingPage />} />
         <Route exact path="/modules/:id" element={<ModulePage />} />
         {/* <Route path="/account" component={Account} />
           <Route exact path="/auth" component={AuthPage} /> */}
