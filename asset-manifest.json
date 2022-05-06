@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Ar-Cademy/static/css/main.b52f2cd1.css",
-    "main.js": "/Ar-Cademy/static/js/main.b86c32d7.js",
-    "static/js/787.0c3f432a.chunk.js": "/Ar-Cademy/static/js/787.0c3f432a.chunk.js",
-    "index.html": "/Ar-Cademy/index.html",
-    "main.b52f2cd1.css.map": "/Ar-Cademy/static/css/main.b52f2cd1.css.map",
-    "main.b86c32d7.js.map": "/Ar-Cademy/static/js/main.b86c32d7.js.map",
-    "787.0c3f432a.chunk.js.map": "/Ar-Cademy/static/js/787.0c3f432a.chunk.js.map"
+    "main.css": "/static/css/main.b52f2cd1.css",
+    "main.js": "/static/js/main.f8a1a293.js",
+    "static/js/787.e335aacb.chunk.js": "/static/js/787.e335aacb.chunk.js",
+    "index.html": "/index.html",
+    "main.b52f2cd1.css.map": "/static/css/main.b52f2cd1.css.map",
+    "main.f8a1a293.js.map": "/static/js/main.f8a1a293.js.map",
+    "787.e335aacb.chunk.js.map": "/static/js/787.e335aacb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b52f2cd1.css",
-    "static/js/main.b86c32d7.js"
+    "static/js/main.f8a1a293.js"
   ]
 }
