@@ -11,7 +11,7 @@ export function MainHeader() {
         <div className="form-redirect-container">
           <button
             className="form-redirect-link"
-            onClick={() => (window.location.href = `/identity`)}
+            onClick={() => (window.location.href = `/Ar-Cademy/identity`)}
           >
             {"Identity"}
           </button>
