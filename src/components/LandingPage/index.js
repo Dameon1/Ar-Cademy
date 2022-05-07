@@ -1,6 +1,7 @@
 import React from "react";
-import "./landingPage.css";
+import { Link } from "react-router-dom";
 import {  Modules } from "../../Creators";
+import "./landingPage.css";
 
 export function LandingPage () {
     //const creators = Object.keys(Creators);
@@ -8,13 +9,14 @@ export function LandingPage () {
     console.log(modules, "modules");
     const moduleCards = modules.map((module, index) => {
       return (
-        <li  key={index}  className="landingPageBoxes"
-             onClick={() => (window.location.href = `/Ar-Cademy/modules/${module}`)}>
+        <Link key={index} to={`/modules/${module}`}>
+        <li className="landingPageBoxes">
           <h2 className="moduleHeaders">{modules[index]}</h2>
           <img src={ Modules[module].moduleImage}  className="heroImage"
             alt={`Follow of ${Modules[module].title}`}/>
           <p className="sample-path-description">{Modules[module].description}</p>
         </li>
+        </Link>
       );
     });
     return (

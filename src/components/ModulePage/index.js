@@ -1,5 +1,6 @@
 import React from "react";
 import { Topics } from "../../Creators";
+import { Link } from "react-router-dom";
 import "./modulePage.css";
 
 function ModulePage() {
@@ -13,19 +14,21 @@ function ModulePage() {
       let videos = topics.map((topic, index) => {
       let topicObject = Topics[module][topic];  
         return (
-          <li key={index} className="landingPageBoxes" onClick={() => (window.location.href = `/Ar-Cademy/modules/${module}/${topic}`)}>
-              {index}
-            <div className="">
-              <img
-                src={topicObject.img}
-                alt="Path Thumbnail"
-              />
-            </div>
-            <div>
-              <h2 className=''>{topicObject.title}</h2>
-              {/* <p>{topicObject.description}</p> */}
-            </div>
-          </li>
+          <Link to={`/modules/${module}/${topic}`} key={index}>
+            {index}
+            <li  className="landingPageBoxes">
+              <div className="">
+                <img
+                  src={topicObject.img}
+                  alt="Path Thumbnail"
+                />
+              </div>
+              <div>
+                <h2 className=''>{topicObject.title}</h2>
+                {/* <p>{topicObject.description}</p> */}
+              </div>
+            </li>
+          </Link>
         );
       });
 
