@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Ar-cademy/static/css/main.ee3a3e47.css",
-    "main.js": "/Ar-cademy/static/js/main.6df59187.js",
-    "static/js/787.199a26eb.chunk.js": "/Ar-cademy/static/js/787.199a26eb.chunk.js",
-    "index.html": "/Ar-cademy/index.html",
-    "main.ee3a3e47.css.map": "/Ar-cademy/static/css/main.ee3a3e47.css.map",
-    "main.6df59187.js.map": "/Ar-cademy/static/js/main.6df59187.js.map",
-    "787.199a26eb.chunk.js.map": "/Ar-cademy/static/js/787.199a26eb.chunk.js.map"
+    "main.css": "./static/css/main.ee3a3e47.css",
+    "main.js": "./static/js/main.02bd2db5.js",
+    "static/js/787.199a26eb.chunk.js": "./static/js/787.199a26eb.chunk.js",
+    "index.html": "./index.html",
+    "main.ee3a3e47.css.map": "./static/css/main.ee3a3e47.css.map",
+    "main.02bd2db5.js.map": "./static/js/main.02bd2db5.js.map",
+    "787.199a26eb.chunk.js.map": "./static/js/787.199a26eb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ee3a3e47.css",
-    "static/js/main.6df59187.js"
+    "static/js/main.02bd2db5.js"
   ]
 }
