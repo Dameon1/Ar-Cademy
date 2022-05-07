@@ -1,21 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function NavLinks () {
   return (
     <nav className="site-nav">
     <ul>
-      <li onClick={() => (window.location.href = `/Ar-Cademy`)}>
-        <div className="nav-link" to="/Ar-Cademy/dashboard/explore">
+      <li>
+        <Link className="nav-link" to="/Ar-Cademy">
           Home
-        </div>
+        </Link>
       </li>
       <li>
         <span> | </span>
       </li>
-      <li onClick={() => (window.location.href = `/Ar-Cademy/dashboard`)}>
-        <div className="nav-link" to="/Ar-Cademy/dashboard">
+      <li>
+        <Link className="nav-link" to="/Ar-Cademy/dashboard">
           Dashboard
-        </div>
+        </Link>
       </li>
     </ul>
   </nav>
