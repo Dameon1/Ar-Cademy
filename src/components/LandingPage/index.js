@@ -9,7 +9,7 @@ export function LandingPage () {
     const moduleCards = modules.map((module, index) => {
       return (
         <li  key={index}  className="landingPageBoxes"
-             onClick={() => (window.location.href = `/modules/${module}`)}>
+             onClick={() => (window.location.href = `/Ar-Cademy/modules/${module}`)}>
           <h2 className="moduleHeaders">{modules[index]}</h2>
           <img src={ Modules[module].moduleImage}  className="heroImage"
             alt={`Follow of ${Modules[module].title}`}/>
