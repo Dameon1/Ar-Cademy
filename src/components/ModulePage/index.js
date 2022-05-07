@@ -1,5 +1,5 @@
 import React from "react";
-import { Modules, Creators, Topics } from "../../Creators";
+import { Topics } from "../../Creators";
 import "./modulePage.css";
 
 function ModulePage() {
@@ -13,7 +13,7 @@ function ModulePage() {
       let videos = topics.map((topic, index) => {
       let topicObject = Topics[module][topic];  
         return (
-          <li key={index} className="landingPageBoxes" onClick={() => (window.location.href = `/Ar-Cademy/modules/${module}/${topic}`)}>
+          <li key={index} className="landingPageBoxes" onClick={() => (window.location.href = `/modules/${module}/${topic}`)}>
               {index}
             <div className="">
               <img
@@ -23,16 +23,7 @@ function ModulePage() {
             </div>
             <div>
               <h2 className=''>{topicObject.title}</h2>
-              <p>{topicObject.description}</p>
-            </div>
-            <div className="go-btn-container">
-              <button
-                className="go-btn"
-                onClick={() => {console.log("clicked")}}
-                to={`/Ar-Cademy/dashboard/classroom/${topicObject.id}/${index}`}
-              >
-                Go &gt;
-              </button>
+              {/* <p>{topicObject.description}</p> */}
             </div>
           </li>
         );

@@ -1,15 +1,15 @@
 import React from "react";
 import "./landingPage.css";
-import { Creators, Modules } from "../../Creators";
+import {  Modules } from "../../Creators";
 
 export function LandingPage () {
-    const creators = Object.keys(Creators);
+    //const creators = Object.keys(Creators);
     const modules = Object.keys(Modules);
-    
-    const paths = modules.map((module, index) => {
+    console.log(modules, "modules");
+    const moduleCards = modules.map((module, index) => {
       return (
         <li  key={index}  className="landingPageBoxes"
-             onClick={() => (window.location.href = `/Ar-Cademy/modules/${module}`)}>
+             onClick={() => (window.location.href = `/modules/${module}`)}>
           <h2 className="moduleHeaders">{modules[index]}</h2>
           <img src={ Modules[module].moduleImage}  className="heroImage"
             alt={`Follow of ${Modules[module].title}`}/>
@@ -30,7 +30,7 @@ export function LandingPage () {
             follow along with the developer inspired instructional videos.
           </p>
         </div>
-        <ul className="gp-container">{paths}</ul>
+        <ul className="gp-container">{moduleCards}</ul>
       </div>
     );
 }

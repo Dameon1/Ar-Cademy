@@ -1,0 +1,42 @@
+let schema ={
+Modules : {
+    Title,
+    description,
+    moduleImage,
+    link,
+    topicsTitle,
+},
+Topics: {
+    Title,
+    description,
+    topicImage,
+    link,
+    videos: [VideoID, VideoID, VideoID],
+},
+Videos: {
+    id,
+    Title,
+    description,
+    videoImage,
+    Publisher:{PublisherID},
+    author:{AuthorID},
+},
+Publisher: {
+    id,
+    name,
+    website,
+    description,
+    image,
+    link,
+    Videos: [VideoID, VideoID, VideoID],
+},
+Author: {
+    id,
+    name,
+    website,
+    description,
+    image,
+    link,
+    Videos: [VideoID, VideoID, VideoID],
+},
+}

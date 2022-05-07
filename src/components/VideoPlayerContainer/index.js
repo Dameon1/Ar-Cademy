@@ -1,24 +1,33 @@
-import React from "react";
-import ReactPlayer from 'react-player'
+import React, { useState, useEffect } from "react";
 import { Creators } from '../../Creators'
+import { Videos } from '../../Videos';
+import VideoPlayer from "../VideoPlayer";
+import './videoPlayerContainer.css';
 
-export default class VideoPlayer extends React.Component {
+export function VideoPlayerContainer (props){
+  let topic = new URL(window.location.href).pathname.split('/').at(-1);
+  let creator = Creators[topic];
 
-  render() {
 
-    let creator = Creators[this.props.dev];
-    console.log(creator)
-    if (!this.props.loading) {
+  console.log(creator, "creator");
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      setIsLoading(false)
+    }, [])
+
+    console.log(topic, 'topic');
+    let src = Creators[topic].videoSrc;
+    console.log(src, '-------------------src');
+    
+    if (!isLoading) {
       return (
         <div className="video-player-container">
           <header className="video-header">
             <h2 className="video-title">{creator.videoHeading}</h2>
           </header>
           <div className="video-player">
-            <ReactPlayer
-              controls={true}
-              width="100%"
-              url={this.props.src} />
+            <VideoPlayer src={src}/>
           </div>
 
           <footer className="video-footer">
@@ -31,7 +40,8 @@ export default class VideoPlayer extends React.Component {
                 target="_blank"
                 rel="noreferrer"
               >
-                {creator.username} </a>
+                {creator.description}
+                 </a>
             </p>
           </footer>
         </div>
@@ -39,5 +49,5 @@ export default class VideoPlayer extends React.Component {
     }
     return null;
   }
-}
+  export default VideoPlayerContainer;
 

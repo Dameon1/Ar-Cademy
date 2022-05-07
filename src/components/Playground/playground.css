@@ -2,9 +2,8 @@
   padding: 0;
 }
 
-.classroom-section {
+.playground-section {
   display: flex;
-  margin: -5em -3em;
 }
 
 .video-player-container {

@@ -9,7 +9,7 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://www.youtube.com/watch?v=1k8craCGpgs?autoplay=1",
+        videoSrc: "1k8craCGpgs",
         videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
         videoTitle: "Dont stop Believin",
         videoHeading: "Journey - Dont stop Believin",
@@ -24,7 +24,6 @@ export const Creators = {
     'Koii': {
         creatorName: 'Eric_3.0',
         description: 'This is a sample description',
-
         editors: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
@@ -32,8 +31,9 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://www.youtube.com/watch?v=PBJDM_ZY2WI",
+        videoSrc: "PBJDM_ZY2WI",
         videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
+        videoTitle: "Koii Fundraiser",
         id: 2,
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
@@ -54,9 +54,9 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://www.youtube.com/watch?v=Ynfwggyl5rY",
+        videoSrc: "Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
-
+        videoTitle: "Spheron",
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
         userId: [],
@@ -76,9 +76,10 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://www.youtube.com/watch?v=y_wZE2G3Ygo&t=4s",
+        videoSrc: "y_wZE2G3Ygo&t=4s",
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Deploying a Next.js App with ARKB",
+        videoTitle: "Saeta",
         notes: "",
         userId: [],
         creatorLink: "https://twitter.com/saetaeth",
@@ -97,9 +98,10 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://www.youtube.com/watch?v=vFyTXUXUe44&t=56s",
+        videoSrc: "vFyTXUXUe44",
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Learning to use GraphQL with Arweave and Graph Protocol",
+        videoTitle: "Ardrive",
         notes: "",
         userId: [],
         creatorLink: "https://twitter.com/mclars",
@@ -118,7 +120,7 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
+        videoSrc: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Full stack web3 tutorial",
         notes: "",
@@ -140,7 +142,7 @@ export const Creators = {
             koiiRepl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://arweave.net/9eWS7cfKeNAqPRTrSvMNR-4ub7JEwyOiI4IDXXkUMso",
+        videoSrc: "https://arweave.net/9eWS7cfKeNAqPRTrSvMNR-4ub7JEwyOiI4IDXXkUMso",
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Introduction to Arweave",
         notes: "",
@@ -162,7 +164,7 @@ export const Creators = {
             koiiRepl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             graphql: "https://arweave.net/graphql"
         },
-        video: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
+        videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Arweave Build Program",
         notes: "",
@@ -255,7 +257,7 @@ export const Topics = {
         },
         "Koii": {
             img: Creators['Koii'].videoImage,
-            title: 'Music',
+            title: Creators['Koii'].videoTitle,
             id: "1234",
             //Video by ID TODO
             videos: ["abc", "def", "ghi"],
@@ -263,7 +265,7 @@ export const Topics = {
         },
         "Spheron": {
             img: Creators['Spheron'].videoImage,
-            title: 'Music',
+            title: Creators['Spheron'].videoTitle,
             id: "1234",
             //Video by ID TODO
             videos: ["abc", "def", "ghi"],
@@ -271,7 +273,34 @@ export const Topics = {
         },
         "Ardrive": {
             img: Creators['Ardrive'].videoImage,
-            title: 'Music',
+            title: Creators['Ardrive'].videoTitle,
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        }
+
+    },
+    'Deployment': {
+        "Koii": {
+            img: Creators['Koii'].videoImage,
+            title: Creators['Koii'].videoTitle,
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        },
+        "Spheron": {
+            img: Creators['Spheron'].videoImage,
+            title: Creators['Spheron'].videoTitle,
+            id: "1234",
+            //Video by ID TODO
+            videos: ["abc", "def", "ghi"],
+            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        },
+        "Ardrive": {
+            img: Creators['Ardrive'].videoImage,
+            title: Creators['Ardrive'].videoTitle,
             id: "1234",
             //Video by ID TODO
             videos: ["abc", "def", "ghi"],
@@ -279,4 +308,5 @@ export const Topics = {
         }
 
     }
+
 }
