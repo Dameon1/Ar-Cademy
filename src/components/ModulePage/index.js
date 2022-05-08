@@ -6,31 +6,28 @@ import "./modulePage.css";
 function ModulePage() {
     
     let module = new URL(window.location.href).pathname.split('/').at(-1);
-    //const creators = Object.keys(Creators);
-    // const modules = Object.keys(Topics[module]);
     const topics = Object.keys(Topics[module]);
-    console.log(topics, "topics");
    
-      let videos = topics.map((topic, index) => {
-      let topicObject = Topics[module][topic];  
+    let topicCards = topics.map((topic, index) => {
+      let videoObject = Topics[module][topic];
         return (
-          <Link to={`/modules/${module}/${topic}`} key={index}>
-            {index}
-            <li  className="landingPageBoxes">
+          <Link to={`/modules/${module}/${videoObject.videoID}`} key={videoObject.videoID} >
+            <li className="landingPageBoxes" >
+              {index}
               <div className="">
                 <img
-                  src={topicObject.img}
+                  src={videoObject.img}
                   alt="Path Thumbnail"
                 />
               </div>
               <div>
-                <h2 className=''>{topicObject.title}</h2>
-                {/* <p>{topicObject.description}</p> */}
+                <h2 className=''>{videoObject.title}</h2>
+                <p>{videoObject.description}</p>
               </div>
             </li>
           </Link>
-        );
-      });
+      );
+    });
 
       return (
         <div className="">
@@ -41,13 +38,10 @@ function ModulePage() {
             <p>
                 {module.description}
             </p>
-            <div className="progress-btn-container">
-             
-            </div>
           </section>
           <section className="">
-            <ul className="gp-container">
-                {videos}
+            <ul className="topicCard-container">
+                {topicCards}
             </ul>
           </section>
         </div>

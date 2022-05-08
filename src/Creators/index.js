@@ -1,5 +1,5 @@
 export const Creators = {
-    'Journey': {
+    '1': {
         description: 'This is a sample Music creator',
         creatorName: 'Journey',
         editors: {
@@ -13,15 +13,15 @@ export const Creators = {
         videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
         videoTitle: "Dont stop Believin",
         videoHeading: "Journey - Dont stop Believin",
-        userId: [],
-        id: 1,
-        creatorLink: "https://twitter.com/JourneyOfficial",
+        userId: '1',
+        createdVideosByID: ['VideoID'],
+        authorLink: "https://twitter.com/JourneyOfficial",
         username: "@JourneyOfficial",
         author: "Journey",
         website: "https://twitter.com/JourneyOfficial",
 
     },
-    'Koii': {
+    '2': {
         creatorName: 'Eric_3.0',
         description: 'This is a sample description',
         editors: {
@@ -37,14 +37,14 @@ export const Creators = {
         id: 2,
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/KoiiEric",
+        userId: "2",
+        authorLink: "https://twitter.com/KoiiEric",
         username: "@KoiiEric",
         author: "Koii-X",
         website: "https://docs.koii.network/build-dapps-with-koii/template-library/deploy",
     },
-    'Spheron': {
-        creatorName: 'Speron',
+    '3': {
+        creatorName: 'Spheron',
         description: 'This is a sample description',
         id: 3,
         editors: {
@@ -59,13 +59,13 @@ export const Creators = {
         videoTitle: "Spheron",
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/prashant_xyz",
+        userId: "3",
+        authorLink: "https://twitter.com/prashant_xyz",
         username: "@prashant_xyz",
         author: "Shperon",
         website: "https://spheron.network/",
     },
-    'Saeta': {
+    '4': {
         creatorName: 'Saeta',
         description: 'This is a sample description',
         id: 4,
@@ -81,13 +81,13 @@ export const Creators = {
         videoHeading: "Deploying a Next.js App with ARKB",
         videoTitle: "Saeta",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/saetaeth",
+        userId: "4",
+        authorLink: "https://twitter.com/saetaeth",
         username: "@saetaeth",
         author: "@saetaeth",
         website: "https://github.com/saeta-eth/arweave-nextjs-example",
     },
-    'Ardrive': {
+    '5': {
         creatorName: 'MC Lars',
         description: 'This is a sample description',
         id: 5,
@@ -103,13 +103,13 @@ export const Creators = {
         videoHeading: "Learning to use GraphQL with Arweave and Graph Protocol",
         videoTitle: "Ardrive",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/mclars",
+        userId:"5",
+        authorLink: "https://twitter.com/mclars",
         username: "@mclars",
         author: "Ardrive",
         website: "https://ardrive.io/",
     },
-    'Nader': {
+    '6': {
         creatorName: 'Nader',
         description: 'This is a sample description',
         id: 6,
@@ -124,13 +124,13 @@ export const Creators = {
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Full stack web3 tutorial",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/dabit3",
+        userId:"6",
+        authorLink: "https://twitter.com/dabit3",
         username: "@dabit3",
         author: "Edge and Node",
         website: "https://edgeandnode.com/",
     },
-    'Arweave': {
+    '7': {
         creatorName: 'Arweave',
         description: 'This is a sample description',
         id: 7,
@@ -146,13 +146,13 @@ export const Creators = {
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Introduction to Arweave",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/onlyarweave",
+        userId: "7",
+        authorLink: "https://twitter.com/onlyarweave",
         username: "@onlyarweave",
         author: "Arweave.org",
         website: "https://www.arweave.org/",
     },
-    'sam': {
+    '8': {
         creatorName: 'Sam Williams',
         description: 'This is a sample description',
         id: 8,
@@ -168,145 +168,105 @@ export const Creators = {
         videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
         videoHeading: "Arweave Build Program",
         notes: "",
-        userId: [],
-        creatorLink: "https://twitter.com/samecwilliams",
+        userId: "8",
+        authorLink: "https://twitter.com/samecwilliams",
         username: "@samecwilliams",
         author: "Sam Williams",
         website: "https://arwiki.wiki/#/en/creating-a-dapp",
     }
 }
 export const Modules = {
-  
     'Music': {
-        something: 'Music',
-        img: "",
-        topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        videos: '',
-        videosHeading: '',
-        notes: '',
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
-        userId: [],
-        creatorLink: '',
-        username: '',
-        creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        description: 'This is a sample description',
-        id: 1,
+        description: 'Sample Music Videos',
     },
     'Deployment': {
-        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        description: 'This is a sample description',
-        id: 2,
         moduleImage:"https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
+        description: 'This is a sample description',
     },
     'Build': {
-        creators: ['Koii', 'Arweave', 'Ardrive',],
         description: 'This is a sample description',
-        id: 3,
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
     },
     'Storage': {
-        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
-        id: 4,
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
     },
     'APIs': {
-        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
-        id: 5,
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
     },
     'ArFS': {
-        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
-        id: 6,
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
     },
     'Community Tokens': {
-        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
-        id: 7,
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
     },
     'Identity': {
-        creators: ['Koii', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
         description: 'This is a sample description',
-        id: 8,
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        title: '',
     },
 }
 
 //topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
 export const Topics = {
     'Music': {
-        "Journey": {
-            img:  Creators['Journey'].videoImage ,
-            title: Creators['Journey'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+        "Rock": {
+            title: "Dont stop Believin",
+            description: 'This is a sample Music creator',
+            img:  "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg" ,
+            videoID: "1",
+            creator: 'Journey',
         },
         "Koii": {
-            img: Creators['Koii'].videoImage,
-            title: Creators['Koii'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+            "videosByID" : ["1","2","3","4"],
+            img: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
+            title: "Deploying a prebuilt React App with Koii",
+            description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
+            videoID: "2",
+            creators: 'Eric_3.0',
         },
         "Spheron": {
-            img: Creators['Spheron'].videoImage,
-            title: Creators['Spheron'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+            "videosByID" : ["1","2","3","4"],
+            img: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
+            title: "Hosting Made Easy",
+            description: "Deploy your application to the permaweb with Spheron.",
+            videoID: "3",
+            creators: "Spheron",
         },
         "Ardrive": {
-            img: Creators['Ardrive'].videoImage,
-            title: Creators['Ardrive'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+            img: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
+            title: "Arweave and Filecoin",
+            description: "Ardrive is a decentralized storage solution for Arweave. It allows you to store data on Arweave and access it from anywhere.",
+            videoID: "4",
+            creators: "Ardrive",
         }
-
     },
     'Deployment': {
         "Koii": {
-            img: Creators['Koii'].videoImage,
-            title: Creators['Koii'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+            "videosByID" : ["1","2","3","4"],
+            img: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
+            title: "Deploying a prebuilt React App with Koii",
+            description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
+            videoID: "2",
+            creators: 'Eric_3.0',
         },
         "Spheron": {
-            img: Creators['Spheron'].videoImage,
-            title: Creators['Spheron'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+            "videosByID" : ["1","2","3","4"],
+            img: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
+            title: "Hosting Made Easy",
+            description: "Deploy your application to the permaweb with Spheron.",
+            videoID: "3",
+            creators: "Spheron",
         },
         "Ardrive": {
-            img: Creators['Ardrive'].videoImage,
-            title: Creators['Ardrive'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+            img: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
+            title: "Arweave and Filecoin",
+            description: "Ardrive is a decentralized storage solution for Arweave. It allows you to store data on Arweave and access it from anywhere.",
+            videoID: "4",
+            creators: "Ardrive",
         }
-
     }
-
 }

@@ -8,7 +8,7 @@
   text-align: left;
 }
 
-.gp-container {
+.topicCard-container {
   list-style: none;
   display: flex;
   flex-wrap: wrap;

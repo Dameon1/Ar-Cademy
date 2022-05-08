@@ -1,16 +1,12 @@
 let schema ={
 Modules : {
-    Title,
+    title,
     description,
     moduleImage,
-    link,
-    topicsTitle,
 },
 Topics: {
-    Title,
-    description,
-    topicImage,
-    link,
+ 
+    //TODO: get the link to the videoID
     videos: [VideoID, VideoID, VideoID],
 },
 Videos: {
@@ -18,25 +14,30 @@ Videos: {
     Title,
     description,
     videoImage,
-    Publisher:{PublisherID},
     author:{AuthorID},
 },
-Publisher: {
-    id,
-    name,
-    website,
-    description,
-    image,
-    link,
-    Videos: [VideoID, VideoID, VideoID],
-},
+
 Author: {
     id,
-    name,
     website,
     description,
     image,
-    link,
+    linkDID,
     Videos: [VideoID, VideoID, VideoID],
 },
+}
+
+// Atomic NFTs thru KOII and add PORT support for verifying views
+const createdVideos = {
+    //CREATE VIDEO UPLOAD FOR RETRIEVAL
+    title,
+    img,
+    description,
+    //creator by ID
+    creator,
+    creatorID,
+    //video by ID
+    video,
+    videoID,
+    notes
 }

@@ -9,13 +9,13 @@ export function LandingPage () {
     console.log(modules, "modules");
     const moduleCards = modules.map((module, index) => {
       return (
-        <Link key={index} to={`/modules/${module}`}>
-        <li className="landingPageBoxes">
-          <h2 className="moduleHeaders">{modules[index]}</h2>
-          <img src={ Modules[module].moduleImage}  className="heroImage"
-            alt={`Follow of ${Modules[module].title}`}/>
-          <p className="sample-path-description">{Modules[module].description}</p>
-        </li>
+        <Link to={`/modules/${module}`} key={index} className="landingPageBoxes" >
+          <li >
+            <h2 className="moduleHeaders">{modules[index]}</h2>
+            <img src={ Modules[module].moduleImage} className="heroImage"
+              alt={`Follow of ${Modules[module].title}`}/>
+            <p className="sample-path-description">{Modules[module].description}</p>
+          </li>
         </Link>
       );
     });
@@ -24,12 +24,14 @@ export function LandingPage () {
         <div className="guest-container">
           <h2>Welcome to Ar-cademy</h2>
           <p className="site-introduction">
-            Arcademy is a one stop shop for the Arweave developer. It has
-            instructional videos along with an essential IDE to code along with
-            on the same screen. Pick through an assortment of
-            protocols and capabilities to learn the latest 'Weave' in the
-            Permaweb industry. Sample code is provided with each video to be able to
-            follow along with the developer inspired instructional videos.
+            Arcademy is community-driven and developed learning platform, for the Arweave ecosystem. 
+            Offering a variety of modules, you can learn to code, design, and build with the Arweave blockchain.
+            Upload your own instructional videos and make the community leader board or learn a new skill with our community 
+            and show Proof of Knowledge (PoK) to the world.
+          </p>
+          <p>
+            Instructional videos are currently curated and comes with a sandbox to get a more intuitive feel of the content
+            and to practice with your own code. Inspired by the lack of community-driven learning, Arcademy is a community-driven .
           </p>
         </div>
         <ul className="gp-container">{moduleCards}</ul>
