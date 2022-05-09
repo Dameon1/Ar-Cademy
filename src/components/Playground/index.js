@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sandbox from "../Sandbox";
 import VideoPlayerContainer from "../VideoPlayerContainer";
-import { Creators } from '../../Creators';
 import { Videos } from '../../Videos';
 import "./playground.css";
 

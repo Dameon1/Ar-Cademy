@@ -1,7 +1,8 @@
-
 import { Routes, Route } from "react-router-dom";
 import { MainHeader } from '../components/MainHeader';
 import { LandingPage } from '../components/LandingPage';
+import { Dashboard } from '../components/Dashboard';
+import { Identity } from '../components/Identity';
 import  ModulePage  from '../components/ModulePage';
 import  Playground  from '../components/Playground';
 import './App.css';
@@ -16,6 +17,8 @@ function App() {
      
       <Routes>
         <Route exact path="/Ar-Cademy" element={<LandingPage />} />
+        <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard />} />
+        <Route exact path="/Ar-Cademy/identity" element={<Identity />} />
         <Route exact path="/Ar-Cademy/modules/:id" element={<ModulePage />} />
         {/* <Route path="/account" component={Account} /> */}
         {/* <Route exact path="/auth" component={AuthPage} /> */}

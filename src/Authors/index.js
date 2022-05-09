@@ -1,7 +1,6 @@
-export const Creators = {
+export const Authors = {
     '1': {
-        description: 'This is a sample Music creator',
-        creatorName: 'Journey',
+        authorName: "1",
         editors: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -9,21 +8,15 @@ export const Creators = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-        videoSrc: "1k8craCGpgs",
-        videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        videoTitle: "Dont stop Believin",
-        videoHeading: "Journey - Dont stop Believin",
-        userId: '1',
+        uid: '1',
         createdVideosByID: ['VideoID'],
-        authorLink: "https://twitter.com/JourneyOfficial",
-        username: "@JourneyOfficial",
-        author: "Journey",
-        website: "https://twitter.com/JourneyOfficial",
+        authorLink: "https://twitter.com/1UniverseMusic",
+        username: "@1UniverseMusic",
+        authorWebsite: "https://1universe.fm/",
 
     },
     '2': {
         creatorName: 'Eric_3.0',
-        description: 'This is a sample description',
         editors: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
@@ -46,7 +39,6 @@ export const Creators = {
     },
     '3': {
         creatorName: 'Spheron',
-        description: 'This is a sample description',
         id: 3,
         editors: {
             preferred: "graphql",
@@ -69,7 +61,6 @@ export const Creators = {
     },
     '4': {
         creatorName: 'MC Lars',
-        description: 'This is a sample description',
         id: 4,
         editors: {
             preferred: "repl",
@@ -92,7 +83,6 @@ export const Creators = {
     },
     '5': {
         creatorName: 'Saeta',
-        description: 'This is a sample description',
         id: 5,
         editors: {
             preferred: "repl",
@@ -114,7 +104,6 @@ export const Creators = {
     },
     '6': {
         creatorName: 'Nader',
-        description: 'This is a sample description',
         id: 6,
         editors: {
             preferred: "arcodeArweave",
@@ -135,7 +124,6 @@ export const Creators = {
     },
     '7': {
         creatorName: 'Arweave',
-        description: 'This is a sample description',
         id: 7,
         editors: {
             preferred: "graphql",
@@ -157,7 +145,6 @@ export const Creators = {
     },
     '8': {
         creatorName: 'Sam Williams',
-        description: 'This is a sample description',
         id: 8,
         editors: {
             preferred: "arcode",
@@ -214,35 +201,3 @@ export const Modules = {
     },
 }
 
-//topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-export const Topics = {
-    'Music': {
-        videosById: ["1","2","3","4"],
-    },
-    'Deployment': {
-        "videosById" : ["5","2","6","4"],
-        "Koii": {
-            
-            img: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
-            title: "Deploying a prebuilt React App with Koii",
-            description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
-            videoID: "2",
-            creators: 'Koii',
-        },
-        "Spheron": {
-            "videosByID" : ["1","2","3","4"],
-            img: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
-            title: "Hosting Made Easy",
-            description: "Deploy your application to the permaweb with Spheron.",
-            videoID: "3",
-            creators: "Spheron",
-        },
-        "Ardrive": {
-            img: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
-            title: "Arweave stores NFT data",
-            description: "Ardrive is a decentralized storage solution for Arweave. It allows you to store data on Arweave and access it from anywhere.",
-            videoID: "4",
-            creators: "Ardrive",
-        }
-    }
-}

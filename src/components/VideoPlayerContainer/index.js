@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Creators } from '../../Creators'
+import { Authors } from '../../Authors'
 import { Videos } from '../../Videos';
 import VideoPlayer from "../VideoPlayer";
 import './videoPlayerContainer.css';
@@ -7,9 +7,8 @@ export function VideoPlayerContainer (props){
  
   let videoID = new URL(window.location.href).pathname.split('/').at(-1);
   let video = Videos[videoID];
-  console.log(video, "video");
-  let author = Creators[video.authorID];
-console.log(author, "author---------------------------------");
+  let author = Authors[video.authorID];
+  console.log(video)
   const [isLoading, setIsLoading] = useState(true);
   
     useEffect(() => {
@@ -29,9 +28,10 @@ console.log(author, "author---------------------------------");
           </div>
 
           <footer className="video-footer">
-            <h2>To learn more about {author.author}</h2>
+            <h2>To learn more about {video.author}</h2>
             <p> Visit their website: 
-              <a href={author.website} target="_blank"
+              <a href={author.authorWebsite} target="_blank"
+              
                 rel="noreferrer">
                   {author.website}
               </a>

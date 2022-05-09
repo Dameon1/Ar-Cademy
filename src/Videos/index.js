@@ -1,16 +1,16 @@
 export const Videos = {
     "1":{
         uid: "1",
-        videoSrc: "https://arweave.net/frwfovJ3x0F3GkyB264EwKZHvMgukQX9iOhjf3ctBjQ",
-        videoImage: "https://arweave.net/frwfovJ3x0F3GkyB264EwKZHvMgukQX9iOhjf3ctBjQ",
-        videoTitle: "uptome (Clear eyes x Róisin Marie)",
-        author: "Clear eyes",
+        videoSrc: "https://us.glassapi.xyz/1647535901.bL2OWhS7ErNoBj8dUxq7T2lU3CiGWJfljQBPik7-ZJg.c9fc2423-2a68-4830-8f43-864b5a5008d4_uploaded_video_1_1_audio.mp4",
+        videoImage: "https://arweave.net/3mevYgrmg-zja8aO9D8BVEebYu6ELAXLkUnvCDh8GOg",
+        videoTitle: "Shine Your Light",
+        author: "1",
         authorWebsite: "https://dreamingofflying.xyz/",
-        description: "Clear eyes and Róisin Marie become one with tree branches and sky in this music video animated by Anna Chandler.",
+        description: "Our artist name is 1 because we are all 1.",
         // Video and by ID TODO
         authorID: "1",
         sandboxLinks: {
-            preferred: "repl",
+            preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",

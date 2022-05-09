@@ -1,7 +1,7 @@
 export const Modules = {
     'Music': {
         moduleImage: "https://i.pinimg.com/736x/37/d3/e6/37d3e64cdee3e56cdd8fa1bd04b909d9.jpg",
-        description: 'Sample Music Videos',
+        description: 'Sample Music Videos Stored on Arweave',
     },
     'Deployment': {
         moduleImage:"https://images-na.ssl-images-amazon.com/images/I/415x3oFUotL.jpg",

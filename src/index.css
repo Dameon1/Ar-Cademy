@@ -34,6 +34,11 @@ img {
   padding: 1em 4%;
   flex-grow: 1;
 }
+.text-container {
+  margin: auto;
+  max-width: 800px;
+  text-align: center;
+}
 
 /* Font/Color Scheme */
 i {

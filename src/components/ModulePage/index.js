@@ -12,11 +12,11 @@ function ModulePage() {
    
     let topicCards = videoIds.map((videoId, index) => {
       let videoObject = Videos[videoId];
-      console.log(videoObject.videoImage, "videoObject.videoId");
+      console.log(videoObject, "videoObject.videoId");
         return (
             <li key={videoObject.videoId} className="landingPageBoxes"  >
               <Link  to={`/Ar-Cademy/modules/${module}/${videoId}`} >
-                {index}
+                {videoObject.videoTitle}
                 <div className="">
                   <img
                     src={videoObject.videoImage}

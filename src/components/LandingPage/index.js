@@ -21,7 +21,7 @@ export function LandingPage () {
     });
     return (
       <div className="home">
-        <div className="guest-container">
+        <div className="text-container">
           <h2>Welcome to Ar-cademy</h2>
           <p className="site-introduction">
             Arcademy is community-driven and developed learning platform, for the Arweave ecosystem. 
