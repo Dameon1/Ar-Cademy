@@ -168,7 +168,7 @@ export const Creators = {
             graphql: "https://arweave.net/graphql"
         },
         videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
-        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/2TJLYdc-Sq4/maxresdefault.jpg",
         videoHeading: "Arweave Build Program",
         notes: "",
         userId: "8",
@@ -178,5 +178,71 @@ export const Creators = {
         website: "https://arwiki.wiki/#/en/creating-a-dapp",
     }
 }
+// Modules [ Music, Deployment, Build, Storage, API's, ArFS, Community Tokens, Identity]
+export const Modules = {
+    'Music': {
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        description: 'Sample Music Videos',
+    },
+    'Deployment': {
+        moduleImage:"https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        description: 'This is a sample description',
+    },
+    'Build': {
+        description: 'This is a sample description',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+    },
+    'Storage': {
+        description: 'This is a sample description',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+    },
+    'APIs': {
+        description: 'This is a sample description',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+    },
+    'ArFS': {
+        description: 'This is a sample description',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+    },
+    'Community Tokens': {
+        description: 'This is a sample description',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+    },
+    'Identity': {
+        description: 'This is a sample description',
+        moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+    },
+}
 
-
+//topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+export const Topics = {
+    'Music': {
+        videosById: ["1","2","3","4"],
+    },
+    'Deployment': {
+        "videosById" : ["5","2","6","4"],
+        "Koii": {
+            
+            img: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
+            title: "Deploying a prebuilt React App with Koii",
+            description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
+            videoID: "2",
+            creators: 'Koii',
+        },
+        "Spheron": {
+            "videosByID" : ["1","2","3","4"],
+            img: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
+            title: "Hosting Made Easy",
+            description: "Deploy your application to the permaweb with Spheron.",
+            videoID: "3",
+            creators: "Spheron",
+        },
+        "Ardrive": {
+            img: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
+            title: "Arweave stores NFT data",
+            description: "Ardrive is a decentralized storage solution for Arweave. It allows you to store data on Arweave and access it from anywhere.",
+            videoID: "4",
+            creators: "Ardrive",
+        }
+    }
+}

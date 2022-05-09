@@ -4,7 +4,7 @@ export const Modules = {
         description: 'Sample Music Videos',
     },
     'Deployment': {
-        moduleImage:"https://st3.depositphotos.com/6672868/13636/v/450/depositphotos_136365894-stock-illustration-rocket-simple-icon.jpg",
+        moduleImage:"https://images-na.ssl-images-amazon.com/images/I/415x3oFUotL.jpg",
         description: 'This is a sample description',
     },
     'Build': {

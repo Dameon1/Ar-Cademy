@@ -20,28 +20,23 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.guest-container {
-  margin: auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-.site-introduction{
-  text-align: left;
-}
-
-.gp-container {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center
-}
-
 .heroImage {
   width: 200px;
   margin:20px;
   height:200px;
 }
+.site-introduction{
+  text-align: justify;
+}
+
+.moduleCards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-decoration: none;
+}
+
 
 
 .landingPageBoxes p {

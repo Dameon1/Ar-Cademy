@@ -1,11 +1,12 @@
 export const Videos = {
     "1":{
-        videoSrc: "1k8craCGpgs",
-        videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
+        uid: "1",
+        videoSrc: "https://arweave.net/frwfovJ3x0F3GkyB264EwKZHvMgukQX9iOhjf3ctBjQ",
+        videoImage: "https://arweave.net/frwfovJ3x0F3GkyB264EwKZHvMgukQX9iOhjf3ctBjQ",
         videoTitle: "Dont stop Believin",
         author: "Journey",
         authorWebsite: "https://journeymusic.com/",
-        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer, bassist and backing vocalist and rhythm guitarist.",
+        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer, bassist and backing vocalist and rhythm guitarist",
         // Video and by ID TODO
         authorID: "1",
         sandboxLinks: {
@@ -17,13 +18,13 @@ export const Videos = {
         },
     },
     "2":{
+        uid: "2",
         videoSrc: "PBJDM_ZY2WI",
         videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
         videoTitle: "Deploying a prebuilt React App with Koii",
         author: "Koii",
         authorWebsite: "https://koii.network/",
         description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
-        id: "2",
         // Video and by ID TODO
         authorID: "2",
         sandboxLinks: {
@@ -35,14 +36,13 @@ export const Videos = {
         },
     },
     "3": {
+        uid: "3",
         videoSrc: "Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
         author: "Spheron",
         videoTitle: "Deploying a React App with Koii, Arweave on Spheron",
         authorWebsite: ['AuthorID.website'],
         description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
-        id: "3",
-    // Video and by ID TODO
         authorID: "3",
         sandboxLinks: {
             preferred: "repl",
@@ -53,6 +53,7 @@ export const Videos = {
         },
     },
     "4":{
+        uid: "4",
         videoSrc: "UG5Ns9rNXG4",
         videoImage: "https://img.youtube.com/vi/UG5Ns9rNXG4/maxresdefault.jpg",
         videoTitle: "Ardrive NFT tracker",
@@ -71,13 +72,13 @@ export const Videos = {
         
     },
     "5":{
+        uid: "5",
         videoSrc: "1k8craCGpgs",
         videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
         videoTitle: "Dont stop Believin",
         author: "Journey",
         authorWebsite: "https://journeymusic.com/",
         description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces. They are currently working on a new project called Saeta.io, a web application that allows users to create and share their own customisable websites.",
-        id: "5",
         // Video and by ID TODO
         authorID: "5",
         sandboxLinks: {
@@ -89,6 +90,7 @@ export const Videos = {
         },
     },
     "6":{
+        uid: "6",
         videoSrc: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
         videoImage: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
         videoTitle: "Deploying a prebuilt React App with Koii",
@@ -107,6 +109,7 @@ export const Videos = {
         },
     },
     "7": {
+        uid: "7",
         videoSrc: "Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
         author: "Spheron",
@@ -124,16 +127,13 @@ export const Videos = {
             graphql: "https://arweave.net/graphql"
         },
     },
-    "8":{
-        videoSrc: "1k8craCGpgs",
-        videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        videoTitle: "Dont stop Believin",
-        author: "Journey",
-        authorWebsite: "https://journeymusic.com/",
-        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer Chris Martin, bassist and backing vocalist and rhythm guitarist and backing vocalist Paul Clapton, and drummer and backing vocalist and rhythm guitarist and backing vocalist Mark Knopfler. The band has headlined the UK's Top 20 Singles Chart, and has headlined the UK's Top 20 Rock Albums Chart, and has headlined the UK's Top 20 Rock Albums Chart.",
+    "8": {
+        author: "Sam Williams",
+        authorWebsite: "https://arweave.org",
+        description: "Sam Williams shows how easy it is to build on Arweave and gives a brief introduction to the build project, SmartWeave contracts, TestWeave, and more! ",
         id: "1",
         // Video and by ID TODO
-        authorID: "4",
+        authorID: "8",
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -141,6 +141,9 @@ export const Videos = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
+        videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
+        videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
+        videoHeading: "Arweave Build Program",
         
     }
 }

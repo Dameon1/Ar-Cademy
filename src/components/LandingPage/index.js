@@ -27,14 +27,14 @@ export function LandingPage () {
             Arcademy is community-driven and developed learning platform, for the Arweave ecosystem. 
             Offering a variety of modules, you can learn to code, design, and build with the Arweave blockchain.
             Upload your own instructional videos and make the community leader board or learn a new skill with our community 
-            and show Proof of Knowledge (PoK) to the world.
+            of developers and creators to show Proof of Knowledge (PoK) to the world.
           </p>
-          <p>
+          <p className="site-introduction">
             Instructional videos are currently curated and comes with a sandbox to get a more intuitive feel of the content
-            and to practice with your own code. Inspired by the lack of community-driven learning, Arcademy is a community-driven .
+            and to practice with your own code.
           </p>
         </div>
-        <ul className="gp-container">{moduleCards}</ul>
+        <ul className="moduleCards">{moduleCards}</ul>
       </div>
     );
 }

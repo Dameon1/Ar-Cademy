@@ -4,10 +4,6 @@
   text-align: center;
 }
 
-.site-introduction{
-  text-align: left;
-}
-
 .topicCard-container {
   list-style: none;
   display: flex;
@@ -35,7 +31,7 @@
 }
 
 .landingPageBoxes p {
-  text-align: left;
+  text-align: justify;
   color: #efefef;
 }
 
