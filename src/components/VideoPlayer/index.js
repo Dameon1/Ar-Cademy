@@ -20,7 +20,6 @@ export function VideoPlayer (props){
       source = sources
     }
 
-    //let source = "https://www.youtube.com/watch?v=1k8craCGpgs";
     
     let videoSrc = {
       type: "video",

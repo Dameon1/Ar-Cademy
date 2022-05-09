@@ -9,7 +9,7 @@ export function LandingPage () {
     console.log(modules, "modules");
     const moduleCards = modules.map((module, index) => {
       return (
-        <Link to={`/modules/${module}`} key={index} className="landingPageBoxes" >
+        <Link to={`/Ar-Cademy/modules/${module}`} key={index} className="landingPageBoxes" >
           <li >
             <h2 className="moduleHeaders">{modules[index]}</h2>
             <img src={ Modules[module].moduleImage} className="heroImage"

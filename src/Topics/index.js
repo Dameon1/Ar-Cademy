@@ -1,37 +1,35 @@
-//topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
+// Modules [ Music, Deployment, Build, Storage, API's, ArFS, Community Tokens, Identity]
 export const Topics = {
     'Music': {
-        "Journey": {
-            img:  Creators['Journey'].videoImage ,
-            title: Creators['Journey'].videoTitle,
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        },
-        "Koii": {
-            img: Creators['Koii'].videoImage,
-            title: 'Music',
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        },
-        "Spheron": {
-            img: Creators['Spheron'].videoImage,
-            title: 'Music',
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        },
-        "Ardrive": {
-            img: Creators['Ardrive'].videoImage,
-            title: 'Music',
-            id: "1234",
-            //Video by ID TODO
-            videos: ["abc", "def", "ghi"],
-            creators: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-        }
-    }
+        topics:[],
+        videosById: ["1","2","3","4"],
+    },
+    'Deployment': {
+        topics:[],
+        videosById: ["2","3","4"],
+    },
+    'Build': {
+        topics:[],
+        videosById: ["5","2","7","4"],
+    },
+    'Storage': {
+        topics:[],
+        videosById: ["8","2","3","4"],
+    },
+    "APIs": {
+        topics:[],
+        videosById: ["4","2","3","1"],
+    },
+    'CommunityTokens': {
+        topics:[],
+        videosById: ["2","2","3","4"],
+    },
+    'Identity': {
+        topics:[],
+        videosById: ["2","2","3","4"],
+    },
+    'ArFS': {
+        topics:[],
+        videosById: ["1","2","3","4"],
+    }   
 }

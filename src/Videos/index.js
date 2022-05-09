@@ -5,8 +5,7 @@ export const Videos = {
         videoTitle: "Dont stop Believin",
         author: "Journey",
         authorWebsite: "https://journeymusic.com/",
-        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer Chris Martin, bassist and backing vocalist and rhythm guitarist and backing vocalist Paul Clapton, and drummer and backing vocalist and rhythm guitarist and backing vocalist Mark Knopfler. The band has headlined the UK's Top 20 Singles Chart, and has headlined the UK's Top 20 Rock Albums Chart, and has headlined the UK's Top 20 Rock Albums Chart.",
-        id: "1",
+        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer, bassist and backing vocalist and rhythm guitarist.",
         // Video and by ID TODO
         authorID: "1",
         sandboxLinks: {
@@ -54,18 +53,17 @@ export const Videos = {
         },
     },
     "4":{
-        videoSrc: "1k8craCGpgs",
-        videoImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
-        videoTitle: "Dont stop Believin",
-        author: "Journey",
-        authorWebsite: "https://journeymusic.com/",
-        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer Chris Martin, bassist and backing vocalist and rhythm guitarist and backing vocalist Paul Clapton, and drummer and backing vocalist and rhythm guitarist and backing vocalist Mark Knopfler. The band has headlined the UK's Top 20 Singles Chart, and has headlined the UK's Top 20 Rock Albums Chart, and has headlined the UK's Top 20 Rock Albums Chart.",
-        id: "1",
+        videoSrc: "UG5Ns9rNXG4",
+        videoImage: "https://img.youtube.com/vi/UG5Ns9rNXG4/maxresdefault.jpg",
+        videoTitle: "Ardrive NFT tracker",
+        author: "Ardrive",
+        authorWebsite: "https://ardrive.io/",
+        description: "ArDrive offers never-ending storage of your most valuable files.",
         // Video and by ID TODO
         authorID: "4",
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
@@ -78,10 +76,10 @@ export const Videos = {
         videoTitle: "Dont stop Believin",
         author: "Journey",
         authorWebsite: "https://journeymusic.com/",
-        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer Chris Martin, bassist and backing vocalist and rhythm guitarist and backing vocalist Paul Clapton, and drummer and backing vocalist and rhythm guitarist and backing vocalist Mark Knopfler. The band has headlined the UK's Top 20 Singles Chart, and has headlined the UK's Top 20 Rock Albums Chart, and has headlined the UK's Top 20 Rock Albums Chart.",
-        id: "1",
+        description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces. They are currently working on a new project called Saeta.io, a web application that allows users to create and share their own customisable websites.",
+        id: "5",
         // Video and by ID TODO
-        authorID: "1",
+        authorID: "5",
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -91,8 +89,8 @@ export const Videos = {
         },
     },
     "6":{
-        videoSrc: "PBJDM_ZY2WI",
-        videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
+        videoSrc: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
+        videoImage: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
         videoTitle: "Deploying a prebuilt React App with Koii",
         author: "Koii",
         authorWebsite: "https://koii.network/",

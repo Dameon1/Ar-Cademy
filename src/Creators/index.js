@@ -35,6 +35,7 @@ export const Creators = {
         videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
         videoTitle: "Koii Fundraiser",
         id: 2,
+        createdVideosByID: ['VideoID'],
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
         userId: "2",
@@ -60,15 +61,39 @@ export const Creators = {
         videoHeading: "Deploying a React App with Koii, Arweave and Spheron",
         notes: "",
         userId: "3",
+        createdVideosByID: ['VideoID'],
         authorLink: "https://twitter.com/prashant_xyz",
         username: "@prashant_xyz",
         author: "Shperon",
         website: "https://spheron.network/",
     },
     '4': {
-        creatorName: 'Saeta',
+        creatorName: 'MC Lars',
         description: 'This is a sample description',
         id: 4,
+        editors: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+        videoSrc: "y_wZE2G3Ygo",
+        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
+        videoHeading: "Learning to use GraphQL with Arweave and Graph Protocol",
+        videoTitle: "Ardrive",
+        notes: "",
+        userId:"4",
+        createdVideosByID: ['VideoID'],
+        authorLink: "https://ardrive.io/",
+        username: "@ardriveapp",
+        author: "Ardrive",
+        website: "https://ardrive.io/",
+    },
+    '5': {
+        creatorName: 'Saeta',
+        description: 'This is a sample description',
+        id: 5,
         editors: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
@@ -81,33 +106,11 @@ export const Creators = {
         videoHeading: "Deploying a Next.js App with ARKB",
         videoTitle: "Saeta",
         notes: "",
-        userId: "4",
+        userId: "5",
         authorLink: "https://twitter.com/saetaeth",
         username: "@saetaeth",
         author: "@saetaeth",
         website: "https://github.com/saeta-eth/arweave-nextjs-example",
-    },
-    '5': {
-        creatorName: 'MC Lars',
-        description: 'This is a sample description',
-        id: 5,
-        editors: {
-            preferred: "repl",
-            repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
-        },
-        videoSrc: "vFyTXUXUe44",
-        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
-        videoHeading: "Learning to use GraphQL with Arweave and Graph Protocol",
-        videoTitle: "Ardrive",
-        notes: "",
-        userId:"5",
-        authorLink: "https://twitter.com/mclars",
-        username: "@mclars",
-        author: "Ardrive",
-        website: "https://ardrive.io/",
     },
     '6': {
         creatorName: 'Nader',
@@ -175,6 +178,7 @@ export const Creators = {
         website: "https://arwiki.wiki/#/en/creating-a-dapp",
     }
 }
+// Modules [ Music, Deployment, Build, Storage, API's, ArFS, Community Tokens, Identity]
 export const Modules = {
     'Music': {
         moduleImage: "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg",
@@ -210,63 +214,3 @@ export const Modules = {
     },
 }
 
-//topics: ['Musicians', 'spheron', 'Arweave', 'Ardrive', 'ArFS', 'nader', 'arweave', 'sam'],
-export const Topics = {
-    'Music': {
-        "Rock": {
-            title: "Dont stop Believin",
-            description: 'This is a sample Music creator',
-            img:  "https://img.youtube.com/vi/1k8craCGpgs/maxresdefault.jpg" ,
-            videoID: "1",
-            creator: 'Journey',
-        },
-        "Koii": {
-            "videosByID" : ["1","2","3","4"],
-            img: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
-            title: "Deploying a prebuilt React App with Koii",
-            description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
-            videoID: "2",
-            creators: 'Eric_3.0',
-        },
-        "Spheron": {
-            "videosByID" : ["1","2","3","4"],
-            img: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
-            title: "Hosting Made Easy",
-            description: "Deploy your application to the permaweb with Spheron.",
-            videoID: "3",
-            creators: "Spheron",
-        },
-        "Ardrive": {
-            img: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
-            title: "Arweave and Filecoin",
-            description: "Ardrive is a decentralized storage solution for Arweave. It allows you to store data on Arweave and access it from anywhere.",
-            videoID: "4",
-            creators: "Ardrive",
-        }
-    },
-    'Deployment': {
-        "Koii": {
-            "videosByID" : ["1","2","3","4"],
-            img: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
-            title: "Deploying a prebuilt React App with Koii",
-            description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
-            videoID: "2",
-            creators: 'Eric_3.0',
-        },
-        "Spheron": {
-            "videosByID" : ["1","2","3","4"],
-            img: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
-            title: "Hosting Made Easy",
-            description: "Deploy your application to the permaweb with Spheron.",
-            videoID: "3",
-            creators: "Spheron",
-        },
-        "Ardrive": {
-            img: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
-            title: "Arweave and Filecoin",
-            description: "Ardrive is a decentralized storage solution for Arweave. It allows you to store data on Arweave and access it from anywhere.",
-            videoID: "4",
-            creators: "Ardrive",
-        }
-    }
-}

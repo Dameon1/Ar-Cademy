@@ -9,8 +9,10 @@ export default function Playground() {
 
   //TODO get Video information from Arweave
 
-  let videoID = new URL(window.location.href).pathname.split('/').at(-1);
-  let sandboxSrc = Videos[videoID].sandboxLinks[Videos[videoID].sandboxLinks.preferred]
+  let videoId = new URL(window.location.href).pathname.split('/').at(-1);
+
+  let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
+
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(false)

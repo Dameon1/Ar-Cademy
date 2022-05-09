@@ -15,11 +15,11 @@ function App() {
       <main className="main-content">
      
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="/modules/:id" element={<ModulePage />} />
+        <Route exact path="/Ar-Cademy" element={<LandingPage />} />
+        <Route exact path="/Ar-Cademy/modules/:id" element={<ModulePage />} />
         {/* <Route path="/account" component={Account} /> */}
         {/* <Route exact path="/auth" component={AuthPage} /> */}
-        <Route exact path="/modules/:topic/:videoIndex" element={<Playground />}  />
+        <Route exact path="/Ar-Cademy/modules/:topic/:videoIndex" element={<Playground />}  />
       </Routes>
       
      </main>

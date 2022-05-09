@@ -6,7 +6,7 @@ export function NavLinks () {
     <nav className="site-nav">
     <ul>
       <li>
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/Ar-Cademy">
           Home
         </Link>
       </li>
@@ -14,7 +14,7 @@ export function NavLinks () {
         <span> | </span>
       </li>
       <li>
-        <Link className="nav-link" to="/dashboard">
+        <Link className="nav-link" to="/Ar-Cademy/dashboard">
           Dashboard
         </Link>
       </li>

@@ -1,31 +1,34 @@
 import React from "react";
-import { Topics } from "../../Creators";
+import { Topics } from "../../Topics";
+import { Videos } from "../../Videos";
 import { Link } from "react-router-dom";
 import "./modulePage.css";
 
 function ModulePage() {
     
     let module = new URL(window.location.href).pathname.split('/').at(-1);
-    const topics = Object.keys(Topics[module]);
+    const videoIds = Topics[module].videosById;
+    console.log(videoIds, "videoIds");
    
-    let topicCards = topics.map((topic, index) => {
-      let videoObject = Topics[module][topic];
+    let topicCards = videoIds.map((videoId, index) => {
+      let videoObject = Videos[videoId];
+      console.log(videoObject.videoImage, "videoObject.videoId");
         return (
-          <Link to={`/modules/${module}/${videoObject.videoID}`} key={videoObject.videoID} >
-            <li className="landingPageBoxes" >
-              {index}
-              <div className="">
-                <img
-                  src={videoObject.img}
-                  alt="Path Thumbnail"
-                />
-              </div>
-              <div>
-                <h2 className=''>{videoObject.title}</h2>
-                <p>{videoObject.description}</p>
-              </div>
+            <li key={videoObject.videoId} className="landingPageBoxes"  >
+              <Link  to={`/Ar-Cademy/modules/${module}/${videoId}`} >
+                {index}
+                <div className="">
+                  <img
+                    src={videoObject.videoImage}
+                    alt="Path Thumbnail"
+                  />
+                </div>
+                <div>
+                  <h2 className=''>{videoObject.title}</h2>
+                  <p>{videoObject.description}</p>
+                </div>
+              </Link>
             </li>
-          </Link>
       );
     });
 

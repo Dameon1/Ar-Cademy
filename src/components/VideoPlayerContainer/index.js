@@ -3,7 +3,6 @@ import { Creators } from '../../Creators'
 import { Videos } from '../../Videos';
 import VideoPlayer from "../VideoPlayer";
 import './videoPlayerContainer.css';
-import { Link } from "react-router-dom";
 export function VideoPlayerContainer (props){
  
   let videoID = new URL(window.location.href).pathname.split('/').at(-1);
@@ -18,7 +17,6 @@ console.log(author, "author---------------------------------");
     }, [])
 
     let src = video.videoSrc;
-    console.log(src, '-------------------src');
     
     if (!isLoading) {
       return (
@@ -32,16 +30,20 @@ console.log(author, "author---------------------------------");
 
           <footer className="video-footer">
             <h2>To learn more about {author.author}</h2>
-            <p> Visit their website: <Link to={author.website}>{author.website}</Link></p>
+            <p> Visit their website: 
+              <a href={author.website} target="_blank"
+                rel="noreferrer">
+                  {author.website}
+              </a>
+            </p>
             <p>Video Creator :
-              <Link
+              <a href={author.authorLink}
                 className="video-creator-link"
-                to={author.authorLink}
                 target="_blank"
                 rel="noreferrer"
               >
                 {video.description}
-              </Link>
+              </a>
             </p>
           </footer>
         </div>

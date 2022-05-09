@@ -5,16 +5,29 @@ Modules : {
     moduleImage,
 },
 Topics: {
- 
-    //TODO: get the link to the videoID
+    title,
+    description,
+    img ,
+    videoID,
+    creator ,
     videos: [VideoID, VideoID, VideoID],
 },
 Videos: {
-    id,
-    Title,
-    description,
-    videoImage,
-    author:{AuthorID},
+        videoSrc,
+        videoImage,
+        videoTitle,
+        author,
+        authorWebsite,
+        description,
+        id,
+        authorID,
+        sandboxLinks: {
+            preferred,
+            repl,
+            arcodeArweave,
+            arcode,
+            graphql,
+        }
 },
 
 Author: {
