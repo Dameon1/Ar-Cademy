@@ -9,8 +9,8 @@ export function LandingPage () {
     console.log(modules, "modules");
     const moduleCards = modules.map((module, index) => {
       return (
-        <Link to={`/Ar-Cademy/modules/${module}`} key={index} className="landingPageBoxes" >
-          <li >
+        <Link to={`/Ar-Cademy/modules/${module}`} key={index} className="PageBoxes" >
+          <li>
             <h2 className="moduleHeaders">{modules[index]}</h2>
             <img src={ Modules[module].moduleImage} className="heroImage"
               alt={`Follow of ${Modules[module].title}`}/>
@@ -20,7 +20,7 @@ export function LandingPage () {
       );
     });
     return (
-      <div className="home">
+      <div className="">
         <div className="text-container">
           <h2>Welcome to Ar-cademy</h2>
           <p className="site-introduction">
@@ -34,7 +34,9 @@ export function LandingPage () {
             and to practice with your own code.
           </p>
         </div>
-        <ul className="moduleCards">{moduleCards}</ul>
+        <ul className="moduleCards">
+          {moduleCards}
+        </ul>
       </div>
     );
 }

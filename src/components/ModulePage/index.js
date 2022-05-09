@@ -14,9 +14,9 @@ function ModulePage() {
       let videoObject = Videos[videoId];
       console.log(videoObject, "videoObject.videoId");
         return (
-            <li key={videoObject.videoId} className="landingPageBoxes"  >
-              <Link  to={`/Ar-Cademy/modules/${module}/${videoId}`} >
-                {videoObject.videoTitle}
+          <Link key={videoObject.videoId} to={`/Ar-Cademy/modules/${module}/${videoId}`} className="PageBoxes">
+                <li key={videoObject.videoId}   >
+                <h2 className="">{videoObject.videoTitle}</h2>
                 <div className="">
                   <img
                     src={videoObject.videoImage}
@@ -24,11 +24,11 @@ function ModulePage() {
                   />
                 </div>
                 <div>
-                  <h2 className=''>{videoObject.title}</h2>
+                  <h2 className='moduleHeaders'>{videoObject.title}</h2>
                   <p>{videoObject.description}</p>
                 </div>
-              </Link>
             </li>
+              </Link>
       );
     });
 
@@ -43,7 +43,7 @@ function ModulePage() {
             </p>
           </section>
           <section className="">
-            <ul className="topicCard-container">
+            <ul className="moduleCards">
                 {topicCards}
             </ul>
           </section>
