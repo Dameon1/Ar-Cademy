@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLinks } from "./NavLinks";
 import "./MainHeader.css";
-
+import { Link } from "react-router-dom";
 
 export function MainHeader() {
   return (
@@ -9,12 +9,13 @@ export function MainHeader() {
         <NavLinks />
         <h1 className="site-logo">Arcademy</h1>
         <div className="form-redirect-container">
-          <button
-            className="form-redirect-link"
-            onClick={() => (window.location.href = `/Ar-Cademy/identity`)}
-          >
-            {"Identity"}
-          </button>
+          <Link to="/Ar-Cademy/identity">
+            <button
+              className="form-redirect-link"
+            >
+              {"Identity"}
+            </button>
+          </Link>
         </div>
       </header>
     );
