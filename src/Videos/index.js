@@ -3,10 +3,10 @@ export const Videos = {
         uid: "1",
         videoSrc: "https://arweave.net/frwfovJ3x0F3GkyB264EwKZHvMgukQX9iOhjf3ctBjQ",
         videoImage: "https://arweave.net/frwfovJ3x0F3GkyB264EwKZHvMgukQX9iOhjf3ctBjQ",
-        videoTitle: "Dont stop Believin",
-        author: "Journey",
-        authorWebsite: "https://journeymusic.com/",
-        description: "Journey is a British rock band formed in London in 1986. The band consists of guitarist and lead singer, bassist and backing vocalist and rhythm guitarist",
+        videoTitle: "uptome (Clear eyes x Róisin Marie)",
+        author: "Clear eyes",
+        authorWebsite: "https://dreamingofflying.xyz/",
+        description: "Clear eyes and Róisin Marie become one with tree branches and sky in this music video animated by Anna Chandler.",
         // Video and by ID TODO
         authorID: "1",
         sandboxLinks: {
