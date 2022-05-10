@@ -8,7 +8,7 @@ export function VideoPlayerContainer (props){
   let videoID = new URL(window.location.href).pathname.split('/').at(-1);
   let video = Videos[videoID];
   let author = Authors[video.authorID];
-  console.log(video)
+  console.log(author, "author.authorWebsite");
   const [isLoading, setIsLoading] = useState(true);
   
     useEffect(() => {
@@ -28,12 +28,11 @@ export function VideoPlayerContainer (props){
           </div>
 
           <footer className="video-footer">
-            <h2>To learn more about {video.author}</h2>
-            <p> Visit their website: 
+            <h2>To learn more about {author.author}</h2>
+            <p className="videoLink"> Visit their page   
               <a href={author.authorWebsite} target="_blank"
-              
-                rel="noreferrer">
-                  {author.website}
+                rel="noreferrer" className='video-creator-link'>
+                   HERE 
               </a>
             </p>
             <p>Video Creator :
