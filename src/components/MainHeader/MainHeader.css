@@ -124,3 +124,8 @@ ul {
 .site-logo-wrapper {
   display: flex;
 }
+@media (max-width: 680px) {
+   .form-redirect-link {
+    display: none;
+  }
+}

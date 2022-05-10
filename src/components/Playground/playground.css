@@ -9,7 +9,7 @@
 .video-player-container {
   color: #ECF5E6;
   font-size: 1.1rem;
-  max-width: 45%
+  max-width: 55%
 }
 
 .video-player {
@@ -49,10 +49,11 @@
 /* media queries */
 @media (min-width: 36em) {}
 
-@media (min-width: 599px) and (max-width: 800px) {
+@media (min-width: 1px) and (max-width: 800px) {
   .classroom-section {
     margin: -4em -2px;
   }
+ 
 }
 
 @media (min-width: 576px) and (max-width: 599px) {
@@ -65,4 +66,15 @@
   .classroom-section {
     margin: -2px;
   }
+  
+
+}
+
+@media (max-width: 680px) {
+  .form-redirect-link {
+   display: hidden;
+ }
+ .video-player-container {
+  max-width: 100%;
+}
 }

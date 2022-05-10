@@ -73,7 +73,7 @@ export const Videos = {
         description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces.",
         authorID: "5",
         sandboxLinks: {
-            preferred: "repl",
+            preferred: "arcodeArweave",
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -88,7 +88,7 @@ export const Videos = {
         description: "In this in depth tutorial you'll learn the tools, protocols, and frameworks for building full stack web3 apps, and most importantly - how to put everything together to lay the groundwork for building out any of your own ideas in the future.",
         authorID: "6",
         sandboxLinks: {
-            preferred: "arcodeArweave",
+            preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",

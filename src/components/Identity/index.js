@@ -9,7 +9,7 @@ export function Identity (props){
           comfortable with. Some of these are security risks to personal safety, privacy, and trust.
         </p>
         <p className="site-introduction">
-          More to come on the Identity connecting solutions by Decentraland, VertoId, and others soon.
+          More to come on the Identity connecting solutions by ArVerify, Decentraland, Verto.Id, and others soon.
         </p>
       </div>
     )
