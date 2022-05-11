@@ -31,10 +31,10 @@ ul {
   text-align: center;
   color: #da81c8;
   transition: ease 0.2s;
-  width: auto;
   padding: 20px;
   display: inline-flex;
 }
+
 
 .site-logo:hover {
   transition: ease 0.2s;

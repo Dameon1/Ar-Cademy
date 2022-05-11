@@ -6,7 +6,7 @@ import { SmartWeaveNodeFactory } from "redstone-smartweave";
  * It uses memCached client as a base and overwrite StateEvaluator
  */
 async function debuggingClientExample() {
-  const arweave = Arweave.init({
+  const arweave = await Arweave.init({
     host: "arweave.net",
     port: 443,
     protocol: "https",
