@@ -4,9 +4,7 @@ import {  Modules } from "../../Modules";
 import "./landingPage.css";
 
 export function LandingPage () {
-    //const creators = Object.keys(Creators);
     const modules = Object.keys(Modules);
-    console.log(modules, "modules");
     const moduleCards = modules.map((module, index) => {
       return (
         <Link to={`/Ar-Cademy/modules/${module}`} key={index} className="PageBoxes" >

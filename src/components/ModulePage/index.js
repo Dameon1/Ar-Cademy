@@ -8,14 +8,12 @@ function ModulePage() {
     
     let module = new URL(window.location.href).pathname.split('/').at(-1);
     const videoIds = Topics[module].videosById;
-    console.log(videoIds, "videoIds");
    
     let topicCards = videoIds.map((videoId, index) => {
       let videoObject = Videos[videoId];
-      console.log(videoObject, "videoObject.videoId");
         return (
           <Link key={videoObject.videoId} to={`/Ar-Cademy/modules/${module}/${videoId}`} className="PageBoxes">
-                <li key={videoObject.videoId}   >
+                <li >
                 <h2 className="">{videoObject.videoTitle}</h2>
                 <div className="">
                   <img
@@ -28,7 +26,7 @@ function ModulePage() {
                   <p>{videoObject.description}</p>
                 </div>
             </li>
-              </Link>
+          </Link>
       );
     });
 
@@ -49,9 +47,6 @@ function ModulePage() {
           </section>
         </div>
       );
-      //return null;
     }
   
-
   export default ModulePage;
-

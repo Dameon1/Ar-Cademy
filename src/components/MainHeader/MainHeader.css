@@ -12,7 +12,6 @@ ul {
   font-size: 1.4rem;
   background-color: #2B2B2B;
   max-width: 100%;
-  padding: 1em 4%;
 }
 
 .main-header a {
@@ -32,6 +31,9 @@ ul {
   text-align: center;
   color: #da81c8;
   transition: ease 0.2s;
+  width: auto;
+  padding: 20px;
+  display: inline-flex;
 }
 
 .site-logo:hover {

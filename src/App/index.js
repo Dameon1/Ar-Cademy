@@ -7,6 +7,9 @@ import  ModulePage  from '../components/ModulePage';
 import  Playground  from '../components/Playground';
 import './App.css';
 
+
+import ArweaveProvider from "../api/Arweave";
+
 function App() {
   let module = new URL(window.location.href).pathname.split('/');
   console.log(module, "module");
@@ -14,6 +17,7 @@ function App() {
     <div className="App">
       <MainHeader />
       <main className="main-content">
+        <ArweaveProvider/>
      
       <Routes>
         <Route exact path="/Ar-Cademy" element={<LandingPage />} />

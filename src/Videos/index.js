@@ -11,7 +11,8 @@ export const Videos = {
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
     },
     "2":{
@@ -27,7 +28,8 @@ export const Videos = {
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
     },
     "3": {
@@ -36,14 +38,15 @@ export const Videos = {
         videoSrc: "Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
         videoTitle: "Deploy on Spheron",
-        description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
+        description: "Sphseron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
         authorID: "3",
         sandboxLinks: {
             preferred: "arcode",
             repl: "https://replit.com/@Dameon1/nextExample",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
     },
     "4":{
@@ -60,15 +63,16 @@ export const Videos = {
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
         
     },
     "5":{
         author: "Saeta",
         uid: "5",
-        videoSrc: "y_wZE2G3Ygo&t=4s",
-        videoImage: "https://img.youtube.com/vi/y_wZE2G3Ygo/maxresdefault.jpg",
+        videoSrc: "fNjUV7mHFqw",
+        videoImage: "https://img.youtube.com/vi/fNjUV7mHFqw/maxresdefault.jpg",
         videoTitle: "Next.js with ARKB",
         description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces.",
         authorID: "5",
@@ -77,7 +81,8 @@ export const Videos = {
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
     },
     "6":{
@@ -92,23 +97,24 @@ export const Videos = {
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
     },
     "7": {
         uid: "7",
         videoSrc: "https://arweave.net/9eWS7cfKeNAqPRTrSvMNR-4ub7JEwyOiI4IDXXkUMso",
         videoImage: "https://uploads-ssl.webflow.com/625de12f70312b8d7d1aa91b/6269d28cd3e415a0d1544b18_Arweave_Onboarder_Permaweb.gif",
-        author: "Arweave",
         videoTitle: "Intro to Arweave",
-        description: "Arweave org explaing an introduction to to data and scalable api's.",
+        description: "Arweave org explaining an introduction to to data and scalable api's.",
         authorID: "7",
         sandboxLinks: {
             preferred: "arcode",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://arweave.net/graphql",
+            tags: ["!Topics"]
         },
     },
     "8": {
@@ -128,5 +134,25 @@ export const Videos = {
         videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
         videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
         videoHeading: "Arweave Build Program",
+        tags: ["!Topics"]
+    },
+    "9": {
+        authorWebsite: "https://arweave.org",
+        description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
+        uid: "9",
+        // Video and by ID TODO
+        authorID: "6",
+        videoTitle: "Bundlr, and Next.js",
+        sandboxLinks: {
+            preferred: "arcode",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+        videoSrc: "aUU-eHCB6j8",
+        videoImage: "https://img.youtube.com/vi/aUU-eHCB6j8/maxresdefault.jpg",
+        videoHeading: "(Full Stack Guide)",
+        tags: ["!Topics"]
     }
 }
