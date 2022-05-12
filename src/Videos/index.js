@@ -38,7 +38,7 @@ export const Videos = {
         videoSrc: "Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
         videoTitle: "Deploy on Spheron",
-        description: "Sphseron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
+        description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
         authorID: "3",
         sandboxLinks: {
             preferred: "arcode",
@@ -71,13 +71,13 @@ export const Videos = {
     "5": {
         author: "Saeta",
         uid: "5",
-        videoSrc: "fNjUV7mHFqw",
-        videoImage: "https://img.youtube.com/vi/fNjUV7mHFqw/maxresdefault.jpg",
+        videoSrc: "GKrGFiaE2Oc",
+        videoImage: "https://img.youtube.com/vi/GKrGFiaE2Oc/maxresdefault.jpg",
         videoTitle: "Next.js with ARKB",
         description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces.",
         authorID: "5",
         sandboxLinks: {
-            preferred: "arcodeArweave",
+            preferred: "repl",
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -121,7 +121,7 @@ export const Videos = {
         uid: "8",
         videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
         videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
-        videoTitle: "Arweave Build Program",
+        videoTitle: "Arweave Build",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
         authorID: "8",
         tags: ["!Topics"],
@@ -137,12 +137,12 @@ export const Videos = {
         uid: "9",
         videoSrc: "aUU-eHCB6j8",
         videoImage: "https://img.youtube.com/vi/aUU-eHCB6j8/maxresdefault.jpg",
-        videoTitle: "Bundlr, and Next.js",
-        description: "Redstone descibes how to migrate and use their new SDK for contracts on Arweave.",
+        videoTitle: "Bundlr and Next.js",
+        description: "By the end of this video you should have a good understanding of how to build full stack applications with Bundlr and Arweave.",
         authorID: "6",
         tags: ["!Topics"],
         sandboxLinks: {
-            preferred: "arcode",
+            preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -164,5 +164,21 @@ export const Videos = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-    }
+    },
+    "11": {
+        uid: "11",
+        videoSrc: "fNjUV7mHFqw",
+        videoImage: "https://img.youtube.com/vi/fNjUV7mHFqw/maxresdefault.jpg",
+        videoTitle: "Smartweave",
+        description: "Redstone describes how to migrate and use their new SDK for contracts on Arweave.",
+        authorID: "9",
+        tags: ["!Topics"],
+        sandboxLinks: {
+            preferred: "arcodeArweave",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
 }

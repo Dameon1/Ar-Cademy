@@ -62,5 +62,13 @@ export const Authors = {
         createdVideosByID: ['VideoID'],
         uid: 8,
         username: "@samecwilliams",
+    },
+    '9': {
+        author: 'Redstone',
+        authorLink: "https://twitter.com/redstone_defi",
+        authorWebsite: "https://redstone.finance/",
+        createdVideosByID: ['VideoID'],
+        uid: 9,
+        username: "@redstone_defi",
     }
 }

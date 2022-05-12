@@ -12,12 +12,15 @@ import './App.css';
 
 function App() {
   let module = new URL(window.location.href).pathname.split('/');
+  let url = module[1];
+  let string = `/${url}`;
   console.log(module, "module");
   return (
     <div className="App">
       <MainHeader />
       <main className="main-content">
         <Routes>
+          <Route exact path={string} element={<LandingPage />} />
           <Route exact path="/Ar-Cademy" element={<LandingPage />} />
           <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard />} />
           <Route exact path="/Ar-Cademy/identity" element={<Identity />} />

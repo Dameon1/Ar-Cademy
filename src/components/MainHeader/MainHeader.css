@@ -143,7 +143,14 @@ ul {
 }
 
 @media (max-width: 680px) {
+
   .form-redirect-link {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-nav {
     display: none;
   }
 }

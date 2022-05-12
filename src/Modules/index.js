@@ -1,6 +1,6 @@
 export const Modules = {
-    'Music': {
-        description: 'Sample Music Videos Stored on Arweave',
+    'All': {
+        description: 'Collection of videos on all topics',
         moduleImage: "https://i.pinimg.com/736x/37/d3/e6/37d3e64cdee3e56cdd8fa1bd04b909d9.jpg",
     },
     'Deployment': {
