@@ -1,7 +1,11 @@
 import Arweave from "arweave";
 import { SmartWeaveNodeFactory } from "redstone-smartweave";
 
-async function debuggingClientExample() {
+/**
+ * This example shows the process of creating a debugging SmartWeave client.
+ * It uses memCached client as a base and overwrite StateEvaluator
+ */
+export async function contractData() {
   const arweave = await Arweave.init({
     host: "arweave.net",
     port: 443,
@@ -13,6 +17,10 @@ async function debuggingClientExample() {
   const providersRegistryContractTxId =
     "urbw9dve61V1h-hRf_nEHJBVLa3Vv8J08vhY2GnvLlY";
 
+//   const newSource = `function handle(state, action) {
+//    console.log("\\n ===== Hello World from the new source:", SmartWeave.transaction.id);
+//    return {state}
+//   }`;
   const smartweave = SmartWeaveNodeFactory.memCachedBased(arweave).build();
 
   // 'connecting' to a given contract, using its txId
@@ -23,23 +31,11 @@ async function debuggingClientExample() {
   console.log("Result", {
     state,
     validity,
-  },
-  
-  );
+  }
+  )
   return { state, validity };
 }
 
-debuggingClientExample().catch((e) => {
+contractData().catch((e) => {
   console.error(e);
 });
-
-
-export function ArweaveProvider () {
-    //const creators = Object.keys(Creators);
-  
-    return (
-      <button onClick={() => console.log(debuggingClientExample())}>Something</button>
-    );
-}
-
-export default ArweaveProvider;

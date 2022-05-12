@@ -4,51 +4,52 @@ import { Videos } from '../../Videos';
 import VideoPlayer from "../VideoPlayer";
 import './videoPlayerContainer.css';
 
-export function VideoPlayerContainer (props){
- 
-let videoID = new URL(window.location.href).pathname.split('/').at(-1);
-let video = Videos[videoID];
-let author = Authors[video.authorID];
-const [isLoading, setIsLoading] = useState(true);
-  
-    useEffect(() => {
-      setIsLoading(false)
-    }, [])
+export function VideoPlayerContainer() {
 
-    let src = video.videoSrc;
-    
-    if (!isLoading) {
-      return (
-        <div className="video-player-container">
-          <header className="video-header">
-            <h2 className="video-title">{video.videoTitle}</h2>
-          </header>
-          <div className="video-player">
-            <VideoPlayer src={src}/>
-          </div>
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(false)
+  }, []);
 
-          <footer className="video-footer">
-            <h2>To learn more about {author.author}</h2>
-            <p className="videoLink"> Visit their page   
-              <a href={author.authorWebsite} target="_blank"
-                rel="noreferrer" className='video-creator-link'>
-                   HERE 
-              </a>
-            </p>
-            <p>Video Creator :
-              <a href={author.authorLink}
-                className="video-creator-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {video.description}
-              </a>
-            </p>
-          </footer>
+  let videoID = new URL(window.location.href).pathname.split('/').at(-1);
+  let video = Videos[videoID];
+  let author = Authors[video.authorID];
+  let src = video.videoSrc;
+
+  if (!isLoading) {
+    return (
+      <div className="video-player-container">
+        <header className="video-header">
+          <h2 className="video-title">{video.videoTitle}</h2>
+        </header>
+
+        <div className="video-player">
+          <VideoPlayer src={src} />
         </div>
-      );
-    }
-    return null;
+
+        <footer className="video-footer">
+          <h2>To learn more about {author.author}</h2>
+
+
+          <a href={author.authorLink} target="_blank"
+            rel="noreferrer" >
+            <p className='video-creator-link'>{author.username}</p>
+          </a>
+
+          <p>About Creator :</p>
+          <a href={author.authorWebsite}
+            className="video-creator-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p>{video.description}</p>
+          </a>
+        </footer>
+
+      </div>
+    );
   }
-  export default VideoPlayerContainer;
+  return null;
+}
+export default VideoPlayerContainer;
 

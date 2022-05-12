@@ -1,5 +1,5 @@
 export const Videos = {
-    "1":{
+    "1": {
         uid: "1",
         videoSrc: "https://us.glassapi.xyz/1647535901.bL2OWhS7ErNoBj8dUxq7T2lU3CiGWJfljQBPik7-ZJg.c9fc2423-2a68-4830-8f43-864b5a5008d4_uploaded_video_1_1_audio.mp4",
         videoImage: "https://arweave.net/3mevYgrmg-zja8aO9D8BVEebYu6ELAXLkUnvCDh8GOg",
@@ -15,7 +15,7 @@ export const Videos = {
             tags: ["!Topics"]
         },
     },
-    "2":{
+    "2": {
         author: "Koii",
         uid: "2",
         videoSrc: "PBJDM_ZY2WI",
@@ -49,7 +49,7 @@ export const Videos = {
             tags: ["!Topics"]
         },
     },
-    "4":{
+    "4": {
         author: "Ardrive",
         uid: "4",
         videoSrc: "UG5Ns9rNXG4",
@@ -66,9 +66,9 @@ export const Videos = {
             graphql: "https://arweave.net/graphql",
             tags: ["!Topics"]
         },
-        
+
     },
-    "5":{
+    "5": {
         author: "Saeta",
         uid: "5",
         videoSrc: "fNjUV7mHFqw",
@@ -85,7 +85,7 @@ export const Videos = {
             tags: ["!Topics"]
         },
     },
-    "6":{
+    "6": {
         uid: "6",
         videoSrc: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
         videoImage: "https://arweave.net/gReg_OaW_Egrr7vLnWsSSPNt4dt69LGTfEwXPhYQPt8",
@@ -108,41 +108,23 @@ export const Videos = {
         videoTitle: "Intro to Arweave",
         description: "Arweave org explaining an introduction to to data and scalable api's.",
         authorID: "7",
+        tags: ["!Topics"],
         sandboxLinks: {
-            preferred: "arcode",
+            preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
         },
     },
     "8": {
-        authorWebsite: "https://arweave.org",
-        description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
         uid: "8",
-        // Video and by ID TODO
-        authorID: "8",
-        videoTitle: "Arweave.Build",
-        sandboxLinks: {
-            preferred: "arcode",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
-        },
         videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
         videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
-        videoHeading: "Arweave Build Program",
-        tags: ["!Topics"]
-    },
-    "9": {
-        authorWebsite: "https://arweave.org",
+        videoTitle: "Arweave Build Program",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
-        uid: "9",
-        // Video and by ID TODO
-        authorID: "6",
-        videoTitle: "Bundlr, and Next.js",
+        authorID: "8",
+        tags: ["!Topics"],
         sandboxLinks: {
             preferred: "arcode",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -150,9 +132,37 @@ export const Videos = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
+    },
+    "9": {
+        uid: "9",
         videoSrc: "aUU-eHCB6j8",
         videoImage: "https://img.youtube.com/vi/aUU-eHCB6j8/maxresdefault.jpg",
-        videoHeading: "(Full Stack Guide)",
-        tags: ["!Topics"]
+        videoTitle: "Bundlr, and Next.js",
+        description: "Redstone descibes how to migrate and use their new SDK for contracts on Arweave.",
+        authorID: "6",
+        tags: ["!Topics"],
+        sandboxLinks: {
+            preferred: "arcode",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "10": {
+        uid: "10",
+        videoSrc: "eZl_Mtyy-MU",
+        videoImage: "https://img.youtube.com/vi/eZl_Mtyy-MU/maxresdefault.jpg",
+        videoTitle: "What are ArFS",
+        description: "MC Lars explains how encryption works leveraging the power of Arweave.",
+        authorID: "4",
+        tags: ["!Topics"],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
     }
 }

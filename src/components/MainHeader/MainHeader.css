@@ -39,16 +39,16 @@ ul {
 .site-logo:hover {
   transition: ease 0.2s;
   text-shadow: 0 1px 0 #da81c8,
-               0 2px 0 #da81c8,
-               0 3px 0 #ECF5E6,
-               0 4px 0 #ECF5E6,
-               0 6px 1px rgba(255, 255, 255,.1),
-               0 0 5px rgba(255, 255, 255,.1),
-               0 1px 3px rgba(255, 255, 255,.3),
-               0 3px 5px rgba(255, 255, 255,.2),
-               0 5px 10px rgba(255, 255, 255,.25),
-               0 10px 10px rgba(255, 255, 255,.2),
-               0 20px 20px rgba(255, 255, 255,.15);
+    0 2px 0 #da81c8,
+    0 3px 0 #ECF5E6,
+    0 4px 0 #ECF5E6,
+    0 6px 1px rgba(255, 255, 255, .1),
+    0 0 5px rgba(255, 255, 255, .1),
+    0 1px 3px rgba(255, 255, 255, .3),
+    0 3px 5px rgba(255, 255, 255, .2),
+    0 5px 10px rgba(255, 255, 255, .25),
+    0 10px 10px rgba(255, 255, 255, .2),
+    0 20px 20px rgba(255, 255, 255, .15);
 }
 
 .form-redirect-container {
@@ -56,7 +56,7 @@ ul {
   padding: 5px;
   top: 10px;
   right: 10px;
-  display:flex;
+  display: flex;
 }
 
 .form-redirect-container a {
@@ -70,8 +70,8 @@ ul {
   padding: 0.3em;
   background-color: #da81c8;
   -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
-     -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
-          box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   transition: all 0.2s ease-in-out;
 }
@@ -85,15 +85,16 @@ ul {
   color: #da81c8;
   background-color: #2b2b2b;
   -webkit-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
-     -moz-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
-          box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
 }
+
 .site-nav {
   position: absolute;
   padding: 5px;
   top: 10px;
   left: 10px;
-  display:flex;
+  display: flex;
 }
 
 .site-nav ul {
@@ -103,7 +104,7 @@ ul {
 .site-nav li {
   margin: 0 1em;
   list-style: none;
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-family: 'Ubuntu', cursive;
   color: #ECF5E6;
   text-transform: uppercase;
@@ -123,11 +124,26 @@ ul {
   color: #da81c8;
 }
 
+.back {
+  position: absolute;
+  padding: 5px;
+  left: 10px;
+  display: flex;
+}
+
+.forward {
+  position: absolute;
+  padding: 5px;
+  right: 10px;
+  display: flex;
+}
+
 .site-logo-wrapper {
   display: flex;
 }
+
 @media (max-width: 680px) {
-   .form-redirect-link {
+  .form-redirect-link {
     display: none;
   }
 }

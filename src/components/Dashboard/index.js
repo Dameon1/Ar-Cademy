@@ -1,8 +1,10 @@
+import React from "react";
 
-export function Dashboard (props){
+export function Dashboard() {
     return (
-        <p>TODO Dashboard</p>
-    )
-  }
-
-  export default Dashboard;
+        <div className="dashboard">
+            <p>ToDo</p>
+        </div>
+    );
+}
+export default Dashboard;

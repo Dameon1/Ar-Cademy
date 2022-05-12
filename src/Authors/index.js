@@ -1,6 +1,5 @@
 export const Authors = {
     '1': {
-        author: "1",
         authorLink: "https://twitter.com/1UniverseMusic",
         authorName: "1",
         authorWebsite: "https://1universe.fm/",
@@ -14,7 +13,7 @@ export const Authors = {
         authorWebsite: "https://docs.koii.network/build-dapps-with-koii/template-library/deploy",
         createdVideosByID: ['VideoID'],
         uid: 2,
-        username: "@KoiiEric",
+        username: "@KoiiNetwork",
     },
     '3': {
         authorLink: "https://twitter.com/spheronHQ",

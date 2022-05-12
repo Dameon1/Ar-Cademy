@@ -1,0 +1,85 @@
+.main-footer {
+  font-size: 0.875rem;
+  background-color: #2B2B2B;
+  text-align: center;
+  height: 100px;
+}
+
+.main-footer p {
+  margin: 0;
+}
+
+.site-creator-link {
+  text-decoration: none;
+  color: rgb(211, 206, 211);
+  position: relative;
+  font-weight: 600;
+}
+
+/* media queries */
+@media (min-width: 36em) {
+  .main-footer {
+    font-size: 0.925rem;
+    padding: 1.2em 6%;
+  }
+}
+
+@media (min-width: 800px) {
+  .site-creator-link {
+    text-decoration: none;
+    color: #da81c8;
+    position: relative;
+    padding: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+
+  .site-creator-link:before,
+  .site-creator-link:after {
+    content: '';
+    background: #da81c8;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+
+  .site-creator-link:before {
+    top: 0;
+    left: 0;
+  }
+
+  .site-creator-link:after {
+    top: 100%;
+    right: 0;
+  }
+
+  .site-creator-link:hover,
+  .site-creator-link:focus {
+    color: rgb(211, 206, 211);
+  }
+
+
+  .site-creator-link:hover:before,
+  .site-creator-link:hover:after,
+  .site-creator-link:focus:before,
+  .site-creator-link:focus:after {
+    width: 100%;
+  }
+}
+
+.permaSeal {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0.5em;
+}

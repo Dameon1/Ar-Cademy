@@ -16,8 +16,6 @@
 
 .video-header {
   background-color: #181716;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 .video-title {
@@ -38,16 +36,12 @@
 }
 
 .video-footer {
-  margin-top: -8px;
   background-color: #292C2D;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+
 }
 
 .video-creator-link {
   text-decoration: none;
-  color: #125872;
-
   position: relative;
   font-weight: 600;
 }
@@ -61,30 +55,31 @@
   height: 2px;
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
-    transition: all .2s linear;
-  }
-  
-  .video-creator-link:before {
-    top: 0;
-    left: 0;
-  }
-  
-  .video-creator-link:after {
-    top: 100%;
-    right: 0;
-  }
-  .video-creator-link:hover,
-  .video-creator-link:focus {
-    color: #da81c8;
-  }
-  
-  
-  .video-creator-link:hover:before,
-  .video-creator-link:hover:after,
-  .video-creator-link:focus:before,
-  .video-creator-link:focus:after {
-    width: 100%;
-  }
+  transition: all .2s linear;
+}
+
+.video-creator-link:before {
+  top: 0;
+  left: 0;
+}
+
+.video-creator-link:after {
+  top: 100%;
+  right: 0;
+}
+
+.video-creator-link:hover,
+.video-creator-link:focus {
+  color: #da81c8;
+}
+
+
+.video-creator-link:hover:before,
+.video-creator-link:hover:after,
+.video-creator-link:focus:before,
+.video-creator-link:focus:after {
+  width: 100%;
+}
 
 
 @media (min-width: 800px) {
@@ -100,6 +95,7 @@
     transition: all .2s linear;
   }
 }
+
 @media (max-width: 680px) {
   .video-creator-link {
     text-decoration: none;
@@ -113,4 +109,3 @@
     transition: all .2s linear;
   }
 }
-

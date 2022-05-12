@@ -16,12 +16,6 @@
   width: 100%;
 }
 
-.video-header {
-  background-color: #2B2B2B;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
 .video-title {
   letter-spacing: 1px;
 }
@@ -39,12 +33,6 @@
   padding: 1.5em;
 }
 
-.video-footer {
-  margin-top: -8px;
-  background-color: #2B2B2B;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
 
 /* media queries */
 @media (min-width: 36em) {}
@@ -53,7 +41,7 @@
   .classroom-section {
     margin: -4em -2px;
   }
- 
+
 }
 
 @media (min-width: 576px) and (max-width: 599px) {
@@ -66,15 +54,14 @@
   .classroom-section {
     margin: -2px;
   }
-  
-
 }
 
 @media (max-width: 680px) {
   .form-redirect-link {
-   display: hidden;
- }
- .video-player-container {
-  max-width: 100%;
-}
+    display: hidden;
+  }
+
+  .video-player-container {
+    max-width: 100%;
+  }
 }

@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after {
@@ -18,7 +17,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-color: #4D4D4D;
   color: #ECF5E6;
-} 
+  margin: 0px;
+}
 
 .app {
   display: flex;
@@ -34,6 +34,7 @@ img {
   padding: 1em 4%;
   flex-grow: 1;
 }
+
 .text-container {
   margin: auto;
   max-width: 800px;
@@ -42,21 +43,29 @@ img {
 
 /* Font/Color Scheme */
 i {
-  color: #181716; /* bgc black */
-  color: #292C2D; /* bgc darkgray */
-  color: #fdfdfd; /* header color */
-  color: #5eabc5; /* header bgc || highlight */
-  color: #462749; /* header btn bgc */
-  color: #bdbcbb; /* body color */
-  color: #64615e; /* body accent color */
-  color: #5d686c; /* body alt accent color || link color */
-  color: #485053; /* btn bgc */
-  color: #495355; /* btn bgc hover */
+  color: #181716;
+  /* bgc black */
+  color: #292C2D;
+  /* bgc darkgray */
+  color: #fdfdfd;
+  /* header color */
+  color: #5eabc5;
+  /* header bgc || highlight */
+  color: #462749;
+  /* header btn bgc */
+  color: #bdbcbb;
+  /* body color */
+  color: #64615e;
+  /* body accent color */
+  color: #5d686c;
+  /* body alt accent color || link color */
+  color: #485053;
+  /* btn bgc */
+  color: #495355;
+  /* btn bgc hover */
 
   color: #623CEA;
   color: #FF9505;
   color: #F0E100;
   color: #5CF64A;
 }
-
-
