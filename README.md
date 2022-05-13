@@ -32,9 +32,9 @@
   *HAPPY CODING
 
 ## Cost to deploy this app with ARKb
-  - Total size: 2.09 MB
-  - Fees: 0.000895058603 + 0.000089505860 (10% arkb fee )
-  - Total fee: 0.000984564463 ARKb
+  - Total size: 1.62 MB
+  - Fees: 0.000775574869 + 0.000077557486 (10% arkb fee )
+  - Total fee: 0.000853132355 AR
 
 ## Authors
 

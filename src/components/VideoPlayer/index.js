@@ -1,21 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Plyr from "plyr-react";
 import "plyr-react/dist/plyr.css";
 
 //   Takes in string of video url and returns a plyr object
 export function VideoPlayer(props) {
-  const [isLoading, setIsLoading] = useState(props.isLoading);
   const ref = useRef()
-
-  useEffect(() => {
-    setIsLoading(false)
-  }, [])
 
   let videoSrc = {
     type: "video",
     sources: [{ src: props.contentObject.src, }]
   };
-
   let videoSrcYT = {
     type: "video",
     sources: [{ src: props.contentObject.src, provider: "youtube" }]
@@ -25,10 +19,10 @@ export function VideoPlayer(props) {
     videoSrc = videoSrcYT
   };
 
-  if (!isLoading) {
+  if (!props.isLoading) {
     return (
       <div >
-        <Plyr ref={ref} source={videoSrc} />
+        <Plyr ref={ref} source={videoSrc || ""} />
       </div>
     );
   }

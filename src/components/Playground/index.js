@@ -14,10 +14,6 @@ export default function Playground(props) {
 
   let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [])
-
 
   return (
     <section>

@@ -15,12 +15,7 @@ import './App.css';
 //import ArweaveProvider from "../api/Arweave";
 
 function App() {
-  //const [contentInfos, setcontentInfos] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    setIsLoading(false)
-  }, [])
 
   let module = new URL(window.location.href).pathname.split('/');
   let url = module[1];
@@ -41,7 +36,7 @@ function App() {
           {/* <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard />} /> */}
           <Route exact path="/Ar-Cademy/identity" element={<Identity />} />
           <Route exact path="/Ar-Cademy/modules/:id" element={<ModulePage />} />
-          <Route exact path="/Ar-Cademy/modules/:topic/:videoIndex" element={<Playground isLoading />} />
+          <Route exact path="/Ar-Cademy/modules/:topic/:videoIndex" element={<Playground isLoading={isLoading} />} />
         </Routes>
       </main>
       <Footer />

@@ -6,10 +6,8 @@ import VideoPlayer from "../VideoPlayer";
 import './videoPlayerContainer.css';
 
 export function VideoPlayerContainer() {
-
   const [isLoading, setIsLoading] = useState(true);
   const [contentObject, setContentObject] = useState([]);
-
 
   async function getContentInfo() {
     let videoId = new URL(window.location.href).pathname.split('/').at(-1);
@@ -24,7 +22,6 @@ export function VideoPlayerContainer() {
     return contentObject;
   }
 
-
   useEffect(() => {
     setIsLoading(true)
     getContentInfo().then(content => {
@@ -32,9 +29,6 @@ export function VideoPlayerContainer() {
       setIsLoading(false);
     });
   }, []);
-
-
-
 
   if (!isLoading) {
     return (
@@ -44,7 +38,7 @@ export function VideoPlayerContainer() {
         </header>
 
         <div className="video-player">
-          <VideoPlayer contentObject={contentObject} />
+          <VideoPlayer contentObject={contentObject} isLoading={isLoading} />
 
         </div>
 
@@ -69,7 +63,6 @@ export function VideoPlayerContainer() {
 
       </div>)
   }
-
 }
 
 export default VideoPlayerContainer;
