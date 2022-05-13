@@ -3,10 +3,8 @@ import Sandbox from "../Sandbox";
 import VideoPlayerContainer from "../VideoPlayerContainer";
 import { Videos } from '../../Videos';
 import ProgressSpinner from "../ProgressSpinner";
-//import "./playground.css";
 
 export default function Playground(props) {
-  const [isLoading, setIsLoading] = useState(props.isLoading);
 
   //TODO get Video information from Arweave
 
@@ -14,11 +12,11 @@ export default function Playground(props) {
 
   let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
 
-
   return (
     <section>
       <div className="playground-section">
-        {isLoading && <ProgressSpinner />}
+        {props.isLoading && <ProgressSpinner />}
+        <ProgressSpinner />
         <VideoPlayerContainer />
         <Sandbox title="replit" sandboxContent={sandboxSrc} />
       </div>
@@ -26,4 +24,3 @@ export default function Playground(props) {
   );
 
 }
-
