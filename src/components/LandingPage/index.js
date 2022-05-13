@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Modules } from "../../Modules";
-import "./landingPage.css";
+//import "./landingPage.css";
 
 export function LandingPage() {
   const modules = Object.keys(Modules);
+
   const moduleCards = modules.map((module, index) => {
     return (
-      <Link to={`/Ar-Cademy/modules/${module}`} key={index} className="PageBoxes" >
+      <Link to={`/Ar-Cademy/modules/${module}`} key={index} className="pageBoxes" >
         <li>
           <h2 className="moduleHeaders">{modules[index]}</h2>
           <img src={Modules[module].moduleImage} className="heroImage"
@@ -17,6 +18,7 @@ export function LandingPage() {
       </Link>
     );
   });
+
   return (
     <div className="">
       <div className="text-container">

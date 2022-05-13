@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sandbox from "../Sandbox";
 import VideoPlayerContainer from "../VideoPlayerContainer";
 import { Videos } from '../../Videos';
-import "./playground.css";
+//import "./playground.css";
 
 export default function Playground() {
 
@@ -20,10 +20,10 @@ export default function Playground() {
   if (!isLoading) {
     return (
       <section>
-        <div  className="playground-section">
+        <div className="playground-section">
           <VideoPlayerContainer />
           <Sandbox title="replit" sandboxContent={sandboxSrc} />
-        </div>  
+        </div>
       </section>
     );
   }

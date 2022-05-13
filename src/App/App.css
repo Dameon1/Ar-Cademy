@@ -1,19 +1,13 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
+.app-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.app-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,4 +16,377 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.pageBoxes {
+  width: 250px;
+  margin: 25px;
+  text-align: center;
+  text-decoration: auto;
+  transition: 0.15s;
+  background-color: #2B2B2B;
+  color: #ECF5E6;
+
+  -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.site-introduction {
+  text-align: justify;
+}
+
+.pageBoxes p {
+  color: #efefef;
+}
+
+.pageBoxes:hover {
+  transition: 0.15s;
+  transform: scale(1.01);
+  cursor: pointer;
+  -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+}
+
+.pageBoxes p {
+  padding: 0 10px;
+}
+
+.moduleCards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: justify;
+  text-decoration: none;
+}
+
+.moduleHeaders {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.heroImage {
+  width: 200px;
+  margin: 20px;
+  height: 200px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.main-header {
+  font-size: 1.4rem;
+  background-color: #2B2B2B;
+  max-width: 100%;
+}
+
+.main-header a {
+  text-decoration: none;
+}
+
+.site-logo-container {
+  margin: auto;
+  max-width: 250px;
+}
+
+.site-logo {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family: 'Ubuntu', cursive;
+  margin: 0 auto;
+  text-align: center;
+  color: #da81c8;
+  transition: ease 0.2s;
+  padding: 20px;
+  display: inline-flex;
+}
+
+
+.site-logo:hover {
+  transition: ease 0.2s;
+  text-shadow: 0 1px 0 #da81c8,
+    0 2px 0 #da81c8,
+    0 3px 0 #ECF5E6,
+    0 4px 0 #ECF5E6,
+    0 6px 1px rgba(255, 255, 255, .1),
+    0 0 5px rgba(255, 255, 255, .1),
+    0 1px 3px rgba(255, 255, 255, .3),
+    0 3px 5px rgba(255, 255, 255, .2),
+    0 5px 10px rgba(255, 255, 255, .25),
+    0 10px 10px rgba(255, 255, 255, .2),
+    0 20px 20px rgba(255, 255, 255, .15);
+}
+
+.form-redirect-container {
+  position: absolute;
+  padding: 5px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+}
+
+.form-redirect-container a {
+  width: 100px;
+  text-align: center;
+}
+
+.form-redirect-link {
+  border: 2px solid #2B2B2B;
+  font-size: 0.75em;
+  padding: 0.3em;
+  background-color: #da81c8;
+  -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-redirect-link:hover,
+.form-redirect-link:focus {
+  transition: 0.15s;
+  transform: scale(1.02);
+  cursor: pointer;
+  border: 2px solid #da81c8;
+  color: #da81c8;
+  background-color: #2b2b2b;
+  -webkit-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+}
+
+.site-nav {
+  position: absolute;
+  padding: 5px;
+  top: 10px;
+  left: 10px;
+  display: flex;
+}
+
+.site-nav ul {
+  display: flex;
+}
+
+.site-nav li {
+  margin: 0 1em;
+  list-style: none;
+  font-size: 0.7em;
+  font-family: 'Ubuntu', cursive;
+  color: #ECF5E6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: ease 0.2s;
+}
+
+.site-nav a {
+  color: #f9f6f8;
+}
+
+.nav-link {
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #da81c8;
+}
+
+.back {
+  position: absolute;
+  padding: 5px;
+  left: 10px;
+  display: flex;
+}
+
+.forward {
+  position: absolute;
+  padding: 5px;
+  right: 10px;
+  display: flex;
+}
+
+.site-logo-wrapper {
+  display: flex;
+}
+
+.main-content {
+  padding: 0;
+}
+
+.playground-section {
+  display: flex;
+}
+
+.video-player-container {
+  color: #fdfdfd;
+  font-size: 1.1rem;
+  min-width: 55%;
+}
+
+.video-player {
+  width: 100%;
+}
+
+.video-header {
+  background-color: #181716;
+}
+
+.video-title {
+  letter-spacing: 1px;
+  font-family: 'Ubuntu', cursive;
+}
+
+
+.video-recap {
+  color: #bdbcbb;
+}
+
+.video-header,
+.video-footer {
+  padding: 1.5em;
+}
+
+.video-footer {
+  background-color: #292C2D;
+}
+
+.video-creator-link {
+  text-decoration: none;
+  position: relative;
+  font-weight: 600;
+}
+
+.video-creator-link:before,
+.video-creator-link:after {
+  content: '';
+  background: #da81c8;
+  position: absolute;
+  width: 0;
+  height: 2px;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.video-creator-link:before {
+  top: 0;
+  left: 0;
+}
+
+.video-creator-link:after {
+  top: 100%;
+  right: 0;
+}
+
+.video-creator-link:hover,
+.video-creator-link:focus {
+  color: #da81c8;
+}
+
+
+.video-creator-link:hover:before,
+.video-creator-link:hover:after,
+.video-creator-link:focus:before,
+.video-creator-link:focus:after {
+  width: 100%;
+}
+
+.video-player-container {
+  color: #ECF5E6;
+  font-size: 1.1rem;
+  max-width: 55%
+}
+
+.video-player {
+  width: 100%;
+}
+
+.video-title {
+  letter-spacing: 1px;
+}
+
+.video-player-container h2 {
+  font-family: 'Ubuntu', cursive;
+}
+
+.video-recap {
+  color: #ECF5E6;
+}
+
+.video-header,
+.video-footer {
+  padding: 1.5em;
+}
+
+.sandbox {
+  width: 50%;
+  -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* media queries */
+@media (min-width: 36em) {}
+
+@media (min-width: 1px) and (max-width: 680px) {
+  .sandbox {
+    display: none;
+  }
+}
+
+
+
+@media (max-width: 680px) {
+  .form-redirect-link {
+    display: hidden;
+  }
+
+  .video-player-container {
+    max-width: 100%;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media (max-width: 680px) {
+
+  .form-redirect-link {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-nav {
+    display: none;
+  }
 }
