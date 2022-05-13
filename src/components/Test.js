@@ -1,8 +1,8 @@
 import React from 'react';
-import { buildQuery, arweave, createPostInfo, delayResults, getPostInfos } from './../lib/api.js';
+//import { buildQuery, arweave, createPostInfo, delayResults, getPostInfos } from './../lib/api.js';
 import ProgressSpinner from '../components/ProgressSpinner';
 
-
+import { getPostInfos } from '../lib/api.js';
 
 export const Test = () => {
   const [postInfos, setPostInfos] = React.useState([]);
@@ -41,7 +41,6 @@ const Posts = (props) => {
   const [postMessage, setPostMessage] =
     React.useState('s'.repeat(Math.max([props.length].length - 75, 0)));
   const [statusMessage, setStatusMessage] = React.useState("");
-
 
   React.useEffect(() => {
     let newPostMessage = "";

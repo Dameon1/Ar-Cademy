@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Modules } from "../../Modules";
-//import "./landingPage.css";
 
 export function LandingPage() {
+
   const modules = Object.keys(Modules);
 
   const moduleCards = modules.map((module, index) => {
@@ -18,6 +18,8 @@ export function LandingPage() {
       </Link>
     );
   });
+
+  console.log("Hello from LandingPage");
 
   return (
     <div className="">

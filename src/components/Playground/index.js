@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Sandbox from "../Sandbox";
 import VideoPlayerContainer from "../VideoPlayerContainer";
 import { Videos } from '../../Videos';
+import ProgressSpinner from "../ProgressSpinner";
 //import "./playground.css";
 
-export default function Playground() {
+export default function Playground(props) {
+  const [isLoading, setIsLoading] = useState(props.isLoading);
 
   //TODO get Video information from Arweave
 
@@ -12,21 +14,20 @@ export default function Playground() {
 
   let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
 
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    setIsLoading(false)
+    setIsLoading(false);
   }, [])
 
-  if (!isLoading) {
-    return (
-      <section>
-        <div className="playground-section">
-          <VideoPlayerContainer />
-          <Sandbox title="replit" sandboxContent={sandboxSrc} />
-        </div>
-      </section>
-    );
-  }
-  return null;
+
+  return (
+    <section>
+      <div className="playground-section">
+        {isLoading && <ProgressSpinner />}
+        <VideoPlayerContainer />
+        <Sandbox title="replit" sandboxContent={sandboxSrc} />
+      </div>
+    </section>
+  );
+
 }
 

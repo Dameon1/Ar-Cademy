@@ -18,6 +18,15 @@
   color: white;
 }
 
+.moduleCards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: justify;
+  text-decoration: none;
+}
+
 .pageBoxes {
   width: 250px;
   margin: 25px;
@@ -53,14 +62,7 @@
   padding: 0 10px;
 }
 
-.moduleCards {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: justify;
-  text-decoration: none;
-}
+
 
 .moduleHeaders {
   display: block;
@@ -250,7 +252,6 @@ ul {
   font-family: 'Ubuntu', cursive;
 }
 
-
 .video-recap {
   color: #bdbcbb;
 }
@@ -297,7 +298,6 @@ ul {
   color: #da81c8;
 }
 
-
 .video-creator-link:hover:before,
 .video-creator-link:hover:after,
 .video-creator-link:focus:before,
@@ -339,16 +339,6 @@ ul {
   box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
 }
 
-
-
-
-
-
-
-
-
-
-
 /* media queries */
 @media (min-width: 36em) {}
 
@@ -357,8 +347,6 @@ ul {
     display: none;
   }
 }
-
-
 
 @media (max-width: 680px) {
   .form-redirect-link {
@@ -369,8 +357,6 @@ ul {
     max-width: 100%;
   }
 }
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

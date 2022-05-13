@@ -1,4 +1,3 @@
-import './spinner.css'
 
 export const ProgressSpinner = () => {
 	return (

@@ -6,7 +6,7 @@
 
 ## Where to find
 
-  This version is perma-stored  [here](https://wqf6dwkfi6nxo3mge6hloec7mjpeygvjgubejkgyejaexsvibe.arweave.net/DV5q6khVE5jVJlp2pt3QmfCkXBOL4o3TBaVBDlX6ClY/) for the live site.  
+  This version is perma-stored  [here](https://arweave.net/wuwzaN0iHCeNbp-JVgO2XYix7kuFj7JlC74grt6NOHE) for the live site.  
 
 ## Instructions
 
