@@ -1,7 +1,7 @@
 {
   "homepage": "https://www.dameonmendoza.com/Ar-Cademy/",
   "name": "ar-cademy",
-  "version": "0.1.0",
+  "version": "0.1.01",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

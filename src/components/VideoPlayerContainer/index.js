@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Authors } from '../../Authors'
 import { Videos } from '../../Videos';
-import ProgressSpinner from "../ProgressSpinner";
 import VideoPlayer from "../VideoPlayer";
 import './videoPlayerContainer.css';
 
@@ -34,7 +33,7 @@ export function VideoPlayerContainer() {
     return (
       <div className="video-player-container">
         <header className="video-header">
-          <h2 className="video-title">{contentObject.videoObject.videoTitle}</h2>
+          <p className="video-title">{contentObject.videoObject.videoTitle}</p>
         </header>
 
         <div className="video-player">

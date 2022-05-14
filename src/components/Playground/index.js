@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sandbox from "../Sandbox";
 import VideoPlayerContainer from "../VideoPlayerContainer";
 import { Videos } from '../../Videos';
-import ProgressSpinner from "../ProgressSpinner";
+//import ProgressSpinner from "../ProgressSpinner";
 
 export default function Playground(props) {
 
@@ -12,13 +12,16 @@ export default function Playground(props) {
 
   let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
 
+  let links = Videos[videoId].sandboxLinks;
+
   return (
     <section>
       <div className="playground-section">
-        {props.isLoading && <ProgressSpinner />}
-        <ProgressSpinner />
         <VideoPlayerContainer />
-        <Sandbox title="replit" sandboxContent={sandboxSrc} />
+        {/* <ProgressSpinner /> */}
+
+        {props.isLoading && <Sandbox title="replit" sandboxContent={sandboxSrc} sandboxLinks={links} />}
+
       </div>
     </section>
   );
