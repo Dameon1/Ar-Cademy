@@ -19,7 +19,7 @@ export function LandingPage() {
     );
   });
 
-  console.log("Hello from LandingPage");
+  console.log("Welcome to the Permaweb!", "This site is perma-stored on Arweave and this uri is the permanent link to it.");
 
   return (
     <div className="">
@@ -27,7 +27,7 @@ export function LandingPage() {
         <h2>Welcome to Ar-cademy</h2>
         <p className="site-introduction">
           Arcademy is community-driven and developed learning platform, for the Arweave ecosystem.
-          Offering a variety of modules, you can learn to code, design, and build with the Arweave blockchain.
+          Maintaining a variety of modules, you can learn to code, design, and build with the Arweave blockchain.
           Upload your own instructional videos and make the community leader board or learn a new skill with our community
           of developers and creators to show Proof of Knowledge (PoK) to the world.
         </p>

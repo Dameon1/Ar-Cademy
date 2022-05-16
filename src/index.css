@@ -5,7 +5,7 @@
 }
 
 :root {
-  font-size: 1em;
+  font-size: .75em;
 }
 
 html {
@@ -37,8 +37,10 @@ img {
 
 .text-container {
   margin: auto;
-  max-width: 800px;
+  max-width: 680px;
   text-align: center;
+  letter-spacing: .05rem;
+  font-size: 1.2rem;
 }
 
 /* Font/Color Scheme */
@@ -63,9 +65,12 @@ i {
   /* btn bgc */
   color: #495355;
   /* btn bgc hover */
-
+  color: #da81c8;
   color: #623CEA;
   color: #FF9505;
   color: #F0E100;
   color: #5CF64A;
+  color: #ff266a;
+  color: #c926ff;
+  color: #3d04cd
 }

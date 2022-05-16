@@ -12,21 +12,25 @@ import Footer from '../components/Footer';
 import { ProgressSpinner } from '../components/ProgressSpinner';
 import './App.css';
 
+
+// Identity Passport
+import GetArweaveWebWallet from '../api/arweaveApp';
 //import ArweaveProvider from "../api/Arweave";
+
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
+  const [isArweaveWalletConnected, setIsArweaveWalletConnected] = React.useState(false);
+  const [currentPassportAddress, setCurrentPassportAddress] = React.useState('');
 
   let module = new URL(window.location.href).pathname.split('/');
   let url = module[1];
   let string = `/${url}`;
 
-  console.log(module, "module", string, "string");
-
   return (
+
     <div className="app">
-      <MainHeader />
-      {isLoading && <ProgressSpinner />}
+      <MainHeader currentPassportAddress={currentPassportAddress} />
       <main className="main-content">
         <Routes>
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}

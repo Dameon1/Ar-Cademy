@@ -2,21 +2,6 @@
   text-align: center;
 }
 
-.app-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.app-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .moduleCards {
   list-style: none;
@@ -25,10 +10,11 @@
   justify-content: center;
   text-align: justify;
   text-decoration: none;
+
 }
 
 .pageBoxes {
-  width: 250px;
+  width: 185px;
   margin: 25px;
   text-align: center;
   text-decoration: auto;
@@ -62,8 +48,6 @@
   padding: 0 10px;
 }
 
-
-
 .moduleHeaders {
   display: block;
   font-size: 1.5em;
@@ -76,9 +60,9 @@
 }
 
 .heroImage {
-  width: 200px;
-  margin: 20px;
-  height: 200px;
+  width: 150px;
+  margin: 15px;
+  height: 150px;
 }
 
 ul {
@@ -107,14 +91,14 @@ ul {
 }
 
 .site-logo {
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   font-family: 'Ubuntu', cursive;
   margin: 0 auto;
   text-align: center;
   color: #da81c8;
   transition: ease 0.2s;
-  padding: 20px;
+  padding: 16px;
   display: inline-flex;
 }
 
@@ -136,7 +120,6 @@ ul {
 
 .form-redirect-container {
   position: absolute;
-  padding: 5px;
   top: 10px;
   right: 10px;
   display: flex;
@@ -148,6 +131,7 @@ ul {
 }
 
 .form-redirect-link {
+  color: black;
   border: 2px solid #2B2B2B;
   font-size: 0.75em;
   padding: 0.3em;
@@ -340,7 +324,7 @@ ul {
 }
 
 .sandboxHeader {
-  margin: 7px 0px;
+  margin: 0px 7px 10px;
 }
 
 /* media queries */
