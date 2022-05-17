@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import { MainHeader } from '../components/MainHeader';
 import { LandingPage } from '../components/LandingPage';
-//import { Dashboard } from '../components/Dashboard';
+import { Dashboard } from '../components/Dashboard';
 import { Identity } from '../components/Identity';
 import ModulePage from '../components/ModulePage';
 import Playground from '../components/Playground';
@@ -37,7 +37,7 @@ function App() {
 
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path="/Ar-Cademy" element={<LandingPage />} />
-          {/* <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard />} /> */}
+          <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard />} />
           <Route exact path="/Ar-Cademy/identity" element={<Identity />} />
           <Route exact path="/Ar-Cademy/modules/:id" element={<ModulePage />} />
           <Route exact path="/Ar-Cademy/modules/:topic/:videoIndex" element={<Playground isLoading={isLoading} />} />
