@@ -1,35 +1,37 @@
 .dashboard {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
   text-align: justify;
   text-decoration: none;
 }
 
-.passport {
-  width: 420px;
+.passportContainer {
   min-width: 350px;
-  height: 200px;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
+  text-align: justify;
+  text-decoration: none;
   border: 2px solid black;
-  margin: 0px;
+  margin: 10px;
   border-radius: 10px;
+  height: 240px;
 
   -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
 }
 
-.passport:hover {
+.passport {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* .passportContainer:hover {
   transition: 0.15s;
   transform: scale(1.01);
-  cursor: pointer;
   -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
   box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
-}
+} */
 
 .passportTextUl {
   color: #efefef;
@@ -48,17 +50,63 @@
   padding: 5px;
 }
 
-.contentHolder {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
 .passportImage {
   width: 200px;
   height: 140px;
   border-radius: 10px 25px 25px 0;
   border: 2px solid black;
   margin: -2px;
+}
+
+.contentScrollContainer {
+  align-content: start;
+  display: grid;
+}
+
+.hs {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: minmax(150px, 1fr);
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+}
+
+.hs>li:last-child {
+  margin-right: 20px;
+}
+
+.hs::-webkit-scrollbar {
+  display: none;
+}
+
+.smallContentBox {
+  --card-container-border-radius: clamp(4px, (var(--column-width, 0px) - 32px) * 0.025, 8px);
+  -webkit-box-flex: 1;
+  background: #181818;
+  border-radius: calc(var(--card-container-border-radius) + 2px);
+  -ms-flex: 1;
+  flex: 1;
+  isolation: isolate;
+  padding: 16px;
+  position: relative;
+  transition: background-color .3s ease;
+  width: 100%;
+  -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.smallContentBox:hover {
+  transition: 0.15s;
+  transform: scale(1.01);
+  background-color: #181818;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
+}
+
+.smallContentImg {
+  width: 150px
 }
