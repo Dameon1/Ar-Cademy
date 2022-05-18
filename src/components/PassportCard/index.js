@@ -9,23 +9,41 @@ async function getArVerificationStatus(addr) {
 }
 
 function getANS(addr) {
-  const searchedEmployee = ans.find((holder) => holder.address === addr);
-  return searchedEmployee.username;
+  const ansHandle = ans.find((holder) => holder.address === addr);
+  if (ansHandle) {
+    return ansHandle.username;
+  }
 }
 
 export function PassportCard() {
   const [arVerifyScore, setArVerifyScore] = React.useState(0);
   const [ansName, setAnsName] = React.useState("");
+  const [currentAddr, setCurrentAddr] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
+
   let heroImage = 'https://avatars.githubusercontent.com/u/69483974?s=200&v=4'
-  let addr = window.arweaveWallet.getActiveAddress();
 
+  React.useEffect(() => {
+    if (currentAddr !== "") {
+      setIsLoading(true);
+      getArVerificationStatus(currentAddr).then((score) => {
+        setArVerifyScore(score);
+        setIsLoading(false);
+      });
+      getANS(currentAddr).then((name) => {
+        setAnsName(name);
+      });
+    }
+  }, [currentAddr]);
 
-  let ans = getANS(addr)
-  let arVerify = getArVerificationStatus(addr).then(data => {
-    setArVerifyScore(data)
-  });
-  console.log(arVerify, "arVerify================");
+  //console.log(addr);
+  // if (addr) {
+  //   setAnsName(getANS(addr));
+  // }
+  // let arVerify = getArVerificationStatus(addr).then(data => {
+  //   setArVerifyScore(data)
+  // })
+
   return (
     <div className="passportContainer">
       <div className="passport">
@@ -33,9 +51,9 @@ export function PassportCard() {
         <div className="passportCard-text">
           <ul className="passportTextUl">
             <li className='passportText'>Current Addr</li>
-            <li className='passportInfo'>{addr}</li>
-            <li className='passportText'>ANS ID</li>
-            <li className='passportInfo'>{ans}</li>
+            <li className='passportInfo'>{currentAddr}</li>
+            <li className='passportText'>Current Ans</li>
+            <li className='passportInfo'>{ansName}</li>
             <li className='passportText'>ArVerify score</li>
             <li className='passportInfo'>{arVerifyScore}</li>
             <li className='passportText'>Passport score</li>
