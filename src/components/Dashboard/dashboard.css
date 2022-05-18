@@ -45,7 +45,7 @@
 .passportInfo {
   padding: 5px;
   text-align: right;
-  font: 1vw sans-serif;
+  font: 1.4vw sans-serif;
 }
 
 .passportInfo {
@@ -114,4 +114,12 @@
 
 .smallContentImg {
   width: 150px
+}
+
+@media (max-width: 680px) {
+
+  .passportText,
+  .passportInfo {
+    font-size: 1.6vw;
+  }
 }

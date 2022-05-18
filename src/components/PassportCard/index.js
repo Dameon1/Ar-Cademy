@@ -15,6 +15,8 @@ function getANS(addr) {
 
 export function PassportCard() {
   const [arVerifyScore, setArVerifyScore] = React.useState(0);
+  const [ansName, setAnsName] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(true);
   let heroImage = 'https://avatars.githubusercontent.com/u/69483974?s=200&v=4'
   let addr = window.arweaveWallet.getActiveAddress();
 
