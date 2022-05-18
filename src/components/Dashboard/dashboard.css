@@ -41,9 +41,15 @@
   margin: 0px;
 }
 
-.passportText {
+.passportText,
+.passportInfo {
   padding: 5px;
   text-align: right;
+  font: 1vw sans-serif;
+}
+
+.passportInfo {
+  color: black;
 }
 
 .pText {
@@ -51,7 +57,7 @@
 }
 
 .passportImage {
-  width: 200px;
+  width: 175px;
   height: 140px;
   border-radius: 10px 25px 25px 0;
   border: 2px solid black;
@@ -83,14 +89,13 @@
 .smallContentBox {
   --card-container-border-radius: clamp(4px, (var(--column-width, 0px) - 32px) * 0.025, 8px);
   -webkit-box-flex: 1;
-  background: #181818;
+  background: #343739;
   border-radius: calc(var(--card-container-border-radius) + 2px);
   -ms-flex: 1;
   flex: 1;
   isolation: isolate;
   padding: 16px;
   position: relative;
-  transition: background-color .3s ease;
   width: 100%;
   -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
@@ -98,13 +103,13 @@
 }
 
 .smallContentBox:hover {
-  transition: 0.15s;
+  transition: background-color .3s ease;
   transform: scale(1.01);
-  background-color: #181818;
+  background-color: #000000;
   cursor: pointer;
+  box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
   -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
-  box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
 }
 
 .smallContentImg {

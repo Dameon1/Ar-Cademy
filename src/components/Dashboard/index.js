@@ -16,10 +16,34 @@ function Card() {
 }
 
 
-function ContentCards() {
+function ContentVideoCards() {
     return (
         <div className="contentScrollContainer">
-            <h1>dynamic and static content by author</h1>
+            <h1>Videos:</h1>
+            <div className="hs">
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </div>
+        </div >
+    )
+}
+
+function ContentSandboxCards() {
+    return (
+        <div className="contentScrollContainer">
+            <h1>Sandbox Content</h1>
             <div className="hs">
                 <Card />
                 <Card />
@@ -45,8 +69,8 @@ export function Dashboard() {
     return (
         <div className="dashboard">
             <PassportCard />
-            <ContentCards />
-            <ContentCards />
+            <ContentVideoCards />
+            <ContentSandboxCards />
         </div>
     );
 }
