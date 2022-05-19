@@ -27,18 +27,21 @@ function App() {
   let url = module[1];
   let string = `/${url}`;
 
+  function changeState(data) {
+    setIsLoading(true);
+    setIsArweaveWalletConnected(true);
+    setCurrentPassportAddress(data);
+  }
   return (
-
     <div className="app">
-      <MainHeader currentPassportAddress={currentPassportAddress} />
+      <MainHeader currentPassportAddress={setCurrentPassportAddress} />
       <main className="main-content">
         <Routes>
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
-
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path="/Ar-Cademy" element={<LandingPage />} />
-          <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard />} />
-          <Route exact path="/Ar-Cademy/identity" element={<Identity />} />
+          <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard isArweaveWalletConnected={isArweaveWalletConnected} />} />
+          <Route exact path="/Ar-Cademy/identity" element={<Identity isArweaveWalletConnected={isArweaveWalletConnected} changeState={changeState} />} />
           <Route exact path="/Ar-Cademy/modules/:id" element={<ModulePage />} />
           <Route exact path="/Ar-Cademy/modules/:topic/:videoIndex" element={<Playground isLoading={isLoading} />} />
         </Routes>

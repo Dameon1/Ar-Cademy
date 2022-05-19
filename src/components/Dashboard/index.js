@@ -64,11 +64,11 @@ function ContentSandboxCards() {
     )
 }
 
-export function Dashboard() {
-    let heroImage = 'https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg'
+export function Dashboard(props) {
+
     return (
         <div className="dashboard">
-            <PassportCard />
+            <PassportCard isArweaveWalletConnected={props.isArweaveWalletConnected} />
             <ContentVideoCards />
             <ContentSandboxCards />
         </div>

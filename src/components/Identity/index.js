@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import { ArweaveWebWallet } from 'arweave-wallet-connector'
 
-async function connect() {
+async function connect(changeState) {
   const wallet = new ArweaveWebWallet({
     // optionally provide information about your app that will be displayed in the wallet provider interface
     name: 'Arcademy',
@@ -11,9 +10,11 @@ async function connect() {
   })
   wallet.setUrl('arweave.app')
   await wallet.connect()
+  changeState(window.arweaveWallet.getActiveAddress());
 }
-export function Identity() {
 
+export function Identity(props) {
+  const { changeState, isArweaveWalletConnected } = props;
   return (
     <>
       <div className="text-container">
@@ -28,7 +29,7 @@ export function Identity() {
           passport we are using arweave.app
         </p>
       </div>
-      <button className="form-redirect-link" onClick={() => connect()}>Connect</button>
+      {!isArweaveWalletConnected && <button className="form-redirect-link" onClick={() => connect(changeState)}>Connect</button>}
       {/* <IdentityButton /> */}
     </>
   )
