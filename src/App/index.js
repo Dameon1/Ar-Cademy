@@ -7,14 +7,15 @@ import { Identity } from '../components/Identity';
 import ModulePage from '../components/ModulePage';
 import Playground from '../components/Playground';
 import Footer from '../components/Footer';
-// import Test from '../components/Test';
+import Test from '../components/Test';
+import main from "../api/Bundlr";
 // import { buildQuery, arweave, createPostInfo, delayResults } from './../lib/api.js';
-import { ProgressSpinner } from '../components/ProgressSpinner';
+//import { ProgressSpinner } from '../components/ProgressSpinner';
 import './App.css';
 
 
 // Identity Passport
-import GetArweaveWebWallet from '../api/arweaveApp';
+//import GetArweaveWebWallet from '../api/arweaveApp';
 //import ArweaveProvider from "../api/Arweave";
 
 
@@ -22,6 +23,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [isArweaveWalletConnected, setIsArweaveWalletConnected] = React.useState(false);
   const [currentPassportAddress, setCurrentPassportAddress] = React.useState('');
+  console.log(currentPassportAddress, "currentPassportAddress")
 
   let module = new URL(window.location.href).pathname.split('/');
   let url = module[1];
@@ -37,7 +39,7 @@ function App() {
       <MainHeader currentPassportAddress={setCurrentPassportAddress} />
       <main className="main-content">
         <Routes>
-          {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
+          <Route exact path="/Ar-Cademy/test" element={<Test />} />
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path="/Ar-Cademy" element={<LandingPage />} />
           <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard isArweaveWalletConnected={isArweaveWalletConnected} />} />

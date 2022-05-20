@@ -1,7 +1,7 @@
 import Arweave from "arweave";
 import { SmartWeaveNodeFactory } from "redstone-smartweave";
 
-async function ArweaveProvider() {
+async function SmartweaveProvider() {
   const arweave = await Arweave.init({
     host: "arweave.net",
     port: 443,
@@ -29,7 +29,7 @@ async function ArweaveProvider() {
   return { state, validity };
 }
 
-debuggingClientExample().catch((e) => {
+SmartweaveProvider().catch((e) => {
   console.error(e);
 });
 

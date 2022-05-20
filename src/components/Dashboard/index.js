@@ -15,17 +15,11 @@ function Card() {
     )
 }
 
-
 function ContentVideoCards() {
     return (
         <div className="contentScrollContainer">
             <h1>Videos:</h1>
             <div className="hs">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
                 <Card />
                 <Card />
                 <Card />
@@ -55,10 +49,6 @@ function ContentSandboxCards() {
                 <Card />
                 <Card />
                 <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
             </div>
         </div >
     )
@@ -70,6 +60,7 @@ export function Dashboard(props) {
         <div className="dashboard">
             <PassportCard isArweaveWalletConnected={props.isArweaveWalletConnected} />
             <ContentVideoCards />
+            <ContentSandboxCards />
             <ContentSandboxCards />
         </div>
     );

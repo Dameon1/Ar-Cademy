@@ -1,19 +1,19 @@
-let schema ={
-Modules : {
-    title,
-    description,
-    moduleImage,
-},
-Topics: {
-    title,
-    description,
-    img ,
-    videoID,
-    creator ,
-    videos: [VideoID, VideoID, VideoID],
-},
-Videos: {
-        videoSrc,
+let schema = {
+    Modules: {
+        title,
+        description,
+        moduleImage,
+    },
+    Topics: {
+        title,
+        description,
+        img,
+        videoID,
+        creator,
+        videos: [VideoID, VideoID, VideoID],
+    },
+    Videos: {
+        videoSrc: [txID],
         videoImage,
         videoTitle,
         author,
@@ -28,16 +28,16 @@ Videos: {
             arcode,
             graphql,
         }
-},
+    },
 
-Author: {
-    id,
-    website,
-    description,
-    image,
-    linkDID,
-    Videos: [VideoID, VideoID, VideoID],
-},
+    Author: {
+        id,
+        website,
+        description,
+        image,
+        linkDID,
+        Videos: [VideoID, VideoID, VideoID],
+    },
 }
 
 // Atomic NFTs thru KOII and add PORT support for verifying views

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { getVerification } from "arverify";
 import { ans } from "../../api/ANS/ans.js";
 
-
 async function getArVerificationStatus(addr) {
   const verification = await getVerification(addr);
   console.log(verification, "verification");
@@ -23,33 +22,28 @@ export function PassportCard(props) {
   const [isLoading, setIsLoading] = React.useState();
 
   let heroImage = 'https://avatars.githubusercontent.com/u/69483974?s=200&v=4'
-  let isConnected = props.isArweaveWalletConnected;
 
-  // useEffect(async () => {
-  //   if (isConnected) {
-  //     let address = window.arweaveWallet.getActiveAddress();
-  //     let arVerifyReturnedScore = await getArVerificationStatus(address);
-  //     setArVerifyScore(42);
-  //   }
-  // }, [isConnected]);
   useEffect(() => {
+    setIsLoading(true);
     async function fetchData() {
-      // You can await here
-      let address = window.arweaveWallet.getActiveAddress();
-      let arVerifyReturnedScore = await getArVerificationStatus(address);
-      setArVerifyScore(arVerifyReturnedScore);
-      setCurrentAddr(window.arweaveWallet.getActiveAddress)
-      setAnsName(getANS(address))
+      if (props.isArweaveWalletConnected) {
+        let address = window.arweaveWallet.getActiveAddress();
+        let arVerifyReturnedScore = await getArVerificationStatus(address);
+        setArVerifyScore(arVerifyReturnedScore);
+        setCurrentAddr(window.arweaveWallet.getActiveAddress())
+        setAnsName(getANS(address))
+      }
     }
     fetchData();
-  }, []);
+    setIsLoading(false);
+  }, [props.isArweaveWalletConnected]);
 
   console.log(currentAddr, ansName, arVerifyScore)
   return (
     <div className="passportContainer">
-      {!isLoading && <div className="passport">
+      <div className="passport">
         <img className="passportImage" src={heroImage} alt="heroImage" />
-        <div className="passportCard-text">
+        {props.isArweaveWalletConnected && <div className="passportCard-text">
           <ul className="passportTextUl">
             <li className='passportText'>Current Addr</li>
             <li className='passportInfo'>{currentAddr}</li>
@@ -60,8 +54,8 @@ export function PassportCard(props) {
             <li className='passportText'>Arweave Passport score</li>
             <li className='passportInfo'>{"score"}</li>
           </ul>
-        </div>
-      </div>}
+        </div>}
+      </div>
     </div>
   );
 }
