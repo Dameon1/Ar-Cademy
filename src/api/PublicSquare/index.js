@@ -11,8 +11,8 @@ const arweave = Arweave.init({
 async function post(msg) {
   let tx = await arweave.createTransaction({ data: msg }, wallet)
 
-  tx.addTag('App-Name', 'PublicSquare')
-  tx.addTag('Content-Type', 'text/plain')
+  tx.addTag('App-Name', 'Arcademy')
+  tx.addTag('Content-Type', 'video/mp4')
   tx.addTag('Version', '1')
   tx.addTag('Type', 'post')
 

@@ -1,7 +1,7 @@
 import React from 'react';
 //import { buildQuery, arweave, createPostInfo, delayResults, getPostInfos } from './../lib/api.js';
 import ProgressSpinner from '../components/ProgressSpinner';
-
+import main from "../api/Bundlr"
 import { getPostInfos } from '../lib/api.js';
 
 export const Test = () => {
@@ -19,6 +19,7 @@ export const Test = () => {
   return (
     <div>
       <h1>Test</h1>
+      <button onClick={() => main()}>MAIN</button>
       <Child isSearching={isSearching}
         postInfos={postInfos} />
     </div>

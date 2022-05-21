@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ArConnect from '../../api/ArConnect';
 import { ArweaveWebWallet } from 'arweave-wallet-connector'
 
 async function connect(changeState) {
@@ -29,7 +29,8 @@ export function Identity(props) {
           passport we are using arweave.app
         </p>
       </div>
-      {!isArweaveWalletConnected && <button className="form-redirect-link" onClick={() => connect(changeState)}>Connect</button>}
+
+      {!isArweaveWalletConnected && <ArConnect /> && <button className="form-redirect-link" onClick={() => connect(changeState)}>Connect</button>}
       {/* <IdentityButton /> */}
     </>
   )
