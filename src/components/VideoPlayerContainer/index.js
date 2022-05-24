@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { Authors } from '../../Authors'
 import { Videos } from '../../Videos';
 import VideoPlayer from "../VideoPlayer";
@@ -23,12 +25,14 @@ export function VideoPlayerContainer() {
 
   useEffect(() => {
     setIsLoading(true)
-    getContentInfo().then(content => {
-      setContentObject(content);
-      setIsLoading(false);
-    });
-  }, []);
-
+    async function fetchData() {
+      const response = await getContentInfo().then(content => {
+        setContentObject(content);
+      });
+    }
+    fetchData();
+    setIsLoading(false);
+  }, [])
   if (!isLoading) {
     return (
       <div className="video-player-container">
@@ -37,12 +41,12 @@ export function VideoPlayerContainer() {
         </header>
 
         <div className="video-player">
-          <VideoPlayer contentObject={contentObject} isLoading={isLoading} />
-
+          <VideoPlayer contentObject={contentObject} />
         </div>
 
         <footer className="video-footer">
-          <h2>To learn more about {contentObject.authorObject.authorName}</h2>
+          <h2>To learn more about this video, visit the author's profile:
+            <Link to={`/Ar-Cademy/profile/${contentObject.authorObject.uid}`}>Here</Link></h2>
 
 
           <a href={contentObject.authorObject.authorLink} target="_blank"

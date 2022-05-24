@@ -18,10 +18,7 @@ export default function Playground(props) {
     <section>
       <div className="playground-section">
         <VideoPlayerContainer />
-        {/* <ProgressSpinner /> */}
-
-        {props.isLoading && <Sandbox title="replit" sandboxContent={sandboxSrc} sandboxLinks={links} />}
-
+        <Sandbox title="replit" sandboxContent={sandboxSrc} sandboxLinks={links} />
       </div>
     </section>
   );

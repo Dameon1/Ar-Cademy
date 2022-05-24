@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import { Topics } from "../../Topics";
 import { Videos } from "../../Videos";
 import { Link } from "react-router-dom";
-
+import { MainContext } from "../../context";
 function ModulePage() {
+  const { isLoading } = useContext(MainContext)
 
   let module = new URL(window.location.href).pathname.split('/').at(-1);
+
   const videoIds = Topics[module].videosById;
 
   let topicCards = videoIds.map((videoId, index) => {
     let videoObject = Videos[videoId];
     return (
-      <Link key={videoObject.videoId} to={`/Ar-Cademy/modules/${module}/${videoId}`} className="pageBoxes">
+      <Link key={videoObject.videoId || index} to={`/Ar-Cademy/modules/${module}/${videoId}`} className="pageBoxes">
         <li>
           <h2 className="">{videoObject.videoTitle}</h2>
           <div className="">

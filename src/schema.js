@@ -21,6 +21,7 @@ let schema = {
         description,
         id,
         authorID,
+        contentLinks: [contentByID],
         sandboxLinks: {
             preferred,
             repl,

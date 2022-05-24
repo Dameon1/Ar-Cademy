@@ -21,7 +21,7 @@ export function PassportCard(props) {
   const [currentAddr, setCurrentAddr] = React.useState("");
   const [isLoading, setIsLoading] = React.useState();
 
-  let heroImage = 'https://avatars.githubusercontent.com/u/69483974?s=200&v=4'
+  let heroImage = props.authorObject.avatar
 
   useEffect(() => {
     setIsLoading(true);

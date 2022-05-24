@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 //import { buildQuery, arweave, createPostInfo, delayResults, getPostInfos } from './../lib/api.js';
 import ProgressSpinner from '../components/ProgressSpinner';
 import main from "../api/Bundlr"
 import { getPostInfos } from '../lib/api.js';
-
+import MainContext from '../context'
 export const Test = () => {
   const [postInfos, setPostInfos] = React.useState([]);
   const [isSearching, setIsSearching] = React.useState(false);
+  const { isLoading, isArweaveWalletConnected, currentPassportAddress, changeState } = useContext(MainContext)
+  console.log(isLoading)
 
   React.useEffect(() => {
     setIsSearching(true)
