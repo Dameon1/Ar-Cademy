@@ -223,7 +223,7 @@ export const Videos = {
          tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
          sandboxLinks: {
              preferred: "repl",
-             repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
              arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
              arcode: "https://arcode.studio/#/",
              graphql: "https://arweave.net/graphql"
@@ -239,7 +239,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
@@ -255,7 +255,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
@@ -271,7 +271,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
@@ -287,7 +287,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
@@ -303,7 +303,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
@@ -319,7 +319,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
