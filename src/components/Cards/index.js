@@ -1,5 +1,5 @@
 import React from "react";
-import PassportCard from "../PassportCard";
+//import PassportCard from "../PassportCard";
 
 export function Card(props) {
   let content = props.content;

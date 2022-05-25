@@ -1,29 +1,21 @@
-import React from "react";
-import Plyr from "plyr-react";
-import "plyr-react/dist/plyr.css";
+import React from 'react';
+import ReactPlayer from 'react-player'
 
-//   Takes in string of video url and returns a plyr object
-export function VideoPlayer(props) {
 
-  let videoSrc = {
-    type: "video",
-    sources: [{ src: props.contentObject.src, }]
-  };
-  let videoSrcYT = {
-    type: "video",
-    sources: [{ src: props.contentObject.src, provider: "youtube" }]
-  };
-  if (props.contentObject.src.length < 15) {
-    videoSrc = videoSrcYT
-  };
+export const VideoPlayer = (props) => {
+  const { src } = props;
 
   return (
-    <div >
-      <Plyr
-        type="video"
-        source={videoSrc} />
+    <div className="video-player">
+      <ReactPlayer
+        className='react-player'
+        controls={true}
+        width='100%'
+        height='100%'
+        url={src}
+      />
     </div>
   );
 }
-export default VideoPlayer;
 
+export default VideoPlayer;

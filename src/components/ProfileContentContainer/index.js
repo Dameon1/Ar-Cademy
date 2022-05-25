@@ -1,5 +1,5 @@
 import React from "react";
-import PassportCard from "../PassportCard";
+//import PassportCard from "../PassportCard";
 import Card from "../Cards";
 
 export function ProfileContentContainer(props) {

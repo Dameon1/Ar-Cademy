@@ -38,7 +38,7 @@ export function PassportCard(props) {
     setIsLoading(false);
   }, [props.isArweaveWalletConnected]);
 
-  console.log(currentAddr, ansName, arVerifyScore)
+  console.log(currentAddr, ansName, arVerifyScore, isLoading)
   return (
     <div className="passportContainer">
       <div className="passport">

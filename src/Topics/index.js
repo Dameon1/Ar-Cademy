@@ -2,7 +2,7 @@
 export const Topics = {
     'All': {
         topics: [],
-        videosById: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+        videosById: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
     },
     'Deployment': {
         topics: [],
@@ -14,7 +14,7 @@ export const Topics = {
     },
     'Storage': {
         topics: [],
-        videosById: ["4", "9", "3"],
+        videosById: ["12", "4", "9", "3", "13"],
     },
     "APIs": {
         topics: [],

@@ -5,9 +5,7 @@
   height: 100px;
 }
 
-.main-footer p {
-  margin: 0;
-}
+.main-footer p {}
 
 .site-creator-link {
   text-decoration: none;

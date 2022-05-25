@@ -1,7 +1,7 @@
 import React from 'react';
 import { Authors } from '../../Authors';
 import { Videos } from '../../Videos';
-import Card from '../Cards';
+//import Card from '../Cards';
 import PassportCard from '../PassportCard';
 //import ContentVideoCards from '../ContentVideoCards';
 //import ContentSandboxCards from '../ContentSandboxCards';
@@ -18,7 +18,7 @@ export default function Profile() {
   let videoObjects = videoIds.map(videoId => Videos[videoId]);
 
   //temporary
-  let contentIds = authorObject.createdContentByID;
+  //let contentIds = authorObject.createdContentByID;
 
   //console.log(authorObject, videoIds);
   // let videoTitles = videoObjects.map(videoObject => videoObject.videoTitle);

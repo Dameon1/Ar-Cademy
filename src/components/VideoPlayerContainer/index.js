@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { Authors } from '../../Authors'
 import { Videos } from '../../Videos';
+
 import VideoPlayer from "../VideoPlayer";
 import './videoPlayerContainer.css';
 
 export function VideoPlayerContainer() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [contentObject, setContentObject] = useState([]);
+  const [contentObject, setContentObject] = useState(null);
 
-  async function getContentInfo() {
+
+  function getContentInfo() {
     let videoId = new URL(window.location.href).pathname.split('/').at(-1);
     let videoObject = Videos[videoId];
     let authorObject = Authors[videoObject.authorID];
@@ -24,31 +24,24 @@ export function VideoPlayerContainer() {
   }
 
   useEffect(() => {
-    setIsLoading(true)
-    async function fetchData() {
-      const response = await getContentInfo().then(content => {
-        setContentObject(content);
-      });
-    }
-    fetchData();
-    setIsLoading(false);
+    const response = getContentInfo()
+    setContentObject(response);
   }, [])
-  if (!isLoading) {
+
+  if (contentObject) {
     return (
       <div className="video-player-container">
         <header className="video-header">
           <p className="video-title">{contentObject.videoObject.videoTitle}</p>
         </header>
 
-        <div className="video-player">
-          <VideoPlayer contentObject={contentObject} />
-        </div>
+
+        <VideoPlayer src={contentObject.src} />
 
         <footer className="video-footer">
           <h2>To learn more about this video, visit the author's profile:
-            <Link to={`/Ar-Cademy/profile/${contentObject.authorObject.uid}`}>Here</Link></h2>
-
-
+            <Link to={`/Ar-Cademy/profile/${contentObject.authorObject.uid}`} className="video-creator-link">Here</Link>
+          </h2>
           <a href={contentObject.authorObject.authorLink} target="_blank"
             rel="noreferrer" >
             <p className='video-creator-link'>{contentObject.authorObject.username}</p>
@@ -64,7 +57,7 @@ export function VideoPlayerContainer() {
           </a>
         </footer>
 
-      </div>)
+      </div >)
   }
 }
 

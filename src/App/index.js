@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import { MainHeader } from '../components/MainHeader';
 import { LandingPage } from '../components/LandingPage';
@@ -7,7 +7,7 @@ import { Identity } from '../components/Identity';
 import ModulePage from '../components/ModulePage';
 import Playground from '../components/Playground';
 import Footer from '../components/Footer';
-import Test from '../components/Test';
+//import Test from '../components/Test';
 import Profile from '../components/Profile';
 import { MainContext } from '../context';
 //import main from "../api/Bundlr";
@@ -41,7 +41,7 @@ function App() {
         {isLoading && <ProgressSpinner />}
         <main className="main-content">
           <Routes>
-            <Route exact path="/Ar-Cademy/test" element={<Test />} />
+            {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
             <Route exact path={string} element={<LandingPage />} />
             <Route exact path="/Ar-Cademy" element={<LandingPage />} />
             <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard isArweaveWalletConnected={isArweaveWalletConnected} />} />

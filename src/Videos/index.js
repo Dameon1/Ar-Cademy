@@ -18,7 +18,7 @@ export const Videos = {
     "2": {
         author: "Koii",
         uid: "2",
-        videoSrc: "PBJDM_ZY2WI",
+        videoSrc: "https://www.youtube.com/watch?v=PBJDM_ZY2WI",
         videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
         videoTitle: "React App with Koii",
         description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
@@ -35,7 +35,7 @@ export const Videos = {
     "3": {
         author: "Spheron",
         uid: "3",
-        videoSrc: "Ynfwggyl5rY",
+        videoSrc: "https://www.youtube.com/watch?v=Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
         videoTitle: "Deploy on Spheron",
         description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
@@ -52,7 +52,7 @@ export const Videos = {
     "4": {
         author: "Ardrive",
         uid: "4",
-        videoSrc: "UG5Ns9rNXG4",
+        videoSrc: "https://www.youtube.com/watch?v=UG5Ns9rNXG4",
         videoImage: "https://img.youtube.com/vi/UG5Ns9rNXG4/maxresdefault.jpg",
         videoTitle: "Ardrive NFT tracker",
         authorWebsite: "https://ardrive.io/",
@@ -71,7 +71,7 @@ export const Videos = {
     "5": {
         author: "Saeta",
         uid: "5",
-        videoSrc: "GKrGFiaE2Oc",
+        videoSrc: "https://www.youtube.com/watch?v=GKrGFiaE2Oc",
         videoImage: "https://img.youtube.com/vi/GKrGFiaE2Oc/maxresdefault.jpg",
         videoTitle: "Next.js with ARKB",
         description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces.",
@@ -135,7 +135,7 @@ export const Videos = {
     },
     "9": {
         uid: "9",
-        videoSrc: "aUU-eHCB6j8",
+        videoSrc: "https://www.youtube.com/watch?v=aUU-eHCB6j8",
         videoImage: "https://img.youtube.com/vi/aUU-eHCB6j8/maxresdefault.jpg",
         videoTitle: "Bundlr and Next.js",
         description: "By the end of this video you should have a good understanding of how to build full stack applications with Bundlr and Arweave.",
@@ -151,7 +151,7 @@ export const Videos = {
     },
     "10": {
         uid: "10",
-        videoSrc: "eZl_Mtyy-MU",
+        videoSrc: "https://www.youtube.com/watch?v=eZl_Mtyy-MU",
         videoImage: "https://img.youtube.com/vi/eZl_Mtyy-MU/maxresdefault.jpg",
         videoTitle: "What are ArFS",
         description: "MC Lars explains how encryption works leveraging the power of Arweave.",
@@ -167,7 +167,7 @@ export const Videos = {
     },
     "11": {
         uid: "11",
-        videoSrc: "fNjUV7mHFqw",
+        videoSrc: "https://www.youtube.com/watch?v=fNjUV7mHFqw",
         videoImage: "https://img.youtube.com/vi/fNjUV7mHFqw/maxresdefault.jpg",
         videoTitle: "Smartweave",
         description: "Redstone describes how to migrate and use their new SDK for contracts on Arweave.",
@@ -181,4 +181,168 @@ export const Videos = {
             graphql: "https://arweave.net/graphql"
         },
     },
+    "12": {
+        uid: "12",
+        videoSrc: "https://www.youtube.com/watch?v=r0p40pcLEE0&t=316s",
+        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
+        videoTitle: "Setting Up KwilDB",
+        description: "Learn how to set up your KwilDB from scratch!Head to db.kwil.com to get started!",
+        authorID: "10",
+        tags: ["!Topics"],
+        sandboxLinks: {
+            preferred: "arcodeArweave",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "13": {
+        uid: "13",
+        videoSrc: "https://www.youtube.com/watch?v=R_FaSS51iq8",
+        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
+        videoTitle: "KwilDB Social Graph",
+        description: "Learn how to use KwilDB to make a simple social graph, which tracks relationships between MetaMask wallets",
+        authorID: "10",
+        tags: ["!Topics"],
+        sandboxLinks: {
+            preferred: "arcodeArweave",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+     "14": {
+        uid: "14",
+         videoSrc:"https://www.youtube.com/watch?v=a-L2XxHELXg",
+         videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+         videoTitle: "NEAR + Arweave  1",
+        description:"This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11", 
+         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+         sandboxLinks: {
+             preferred: "repl",
+             repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+             arcode: "https://arcode.studio/#/",
+             graphql: "https://arweave.net/graphql"
+         },
+    },
+    "15": {
+        uid: "15",
+        videoSrc: "https://www.youtube.com/watch?v=2A__hYEhm7U",
+        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoTitle: "NEAR + Arweave  2",
+        description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11",
+        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "16": {
+        uid: "16",
+        videoSrc: "https://www.youtube.com/watch?v=0nJAiiu7p_s",
+        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoTitle: "NEAR + Arweave  3",
+        description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11",
+        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "17": {
+        uid: "17",
+        videoSrc: "https://www.youtube.com/watch?v=_budvIB1tGs",
+        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoTitle: "NEAR + Arweave  4",
+        description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11",
+        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "18": {
+        uid: "18",
+        videoSrc: "https://www.youtube.com/watch?v=Io1RhzcfXR0",
+        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoTitle: "NEAR + Arweave  5",
+        description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11",
+        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "19": {
+        uid: "19",
+        videoSrc: "https://www.youtube.com/watch?v=xLymcg8maZE",
+        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoTitle: "NEAR + Arweave  6",
+        description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11",
+        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+    "20": {
+        uid: "20",
+        videoSrc: "https://www.youtube.com/watch?v=ywziPVC0C2A",
+        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoTitle: "NEAR + Arweave 7",
+        description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
+        authorID: "11",
+        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample#index.html",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
 }
+
+
+
+
+    // "id": {
+    //     uid: 
+    //     videoSrc:
+    //     videoImage: 
+    //     videoTitle: 
+    //     description:
+    //     authorID: "10", 
+    //     tags: []
+    //     sandboxLinks: {
+    //         preferred:
+    //         repl: 
+    //         arcodeArweave: 
+    //         arcode:
+    //         graphql:
+    //     },
+    // }

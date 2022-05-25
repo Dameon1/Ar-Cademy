@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Topics } from "../../Topics";
 import { Videos } from "../../Videos";
 import { Link } from "react-router-dom";
-import { MainContext } from "../../context";
+//import { MainContext } from "../../context";
 function ModulePage() {
-  const { isLoading } = useContext(MainContext)
 
   let module = new URL(window.location.href).pathname.split('/').at(-1);
 

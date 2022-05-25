@@ -6,7 +6,6 @@ export default function Sandbox(props) {
   const [isLoading, setIsLoading] = useState(false)
   const [sandboxContent, setSandboxContent] = useState(props.sandboxContent);
   const sandboxTypes = ["repl", "arcode", "graphql", "arcodeArweave"];
-  console.log(props.sandboxLinks, "sandboxLinks")
   useEffect(() => {
     setIsLoading(true)
   }, [])
