@@ -103,7 +103,7 @@ export const Videos = {
     },
     "7": {
         uid: "7",
-        videoSrc: "https://arweave.net/9eWS7cfKeNAqPRTrSvMNR-4ub7JEwyOiI4IDXXkUMso",
+        videoSrc: "https://coldcdn.com/api/cdn/rvk7pw",
         videoImage: "https://uploads-ssl.webflow.com/625de12f70312b8d7d1aa91b/6269d28cd3e415a0d1544b18_Arweave_Onboarder_Permaweb.gif",
         videoTitle: "Intro to Arweave",
         description: "Arweave org explaining an introduction to to data and scalable api's.",
@@ -119,7 +119,7 @@ export const Videos = {
     },
     "8": {
         uid: "8",
-        videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
+        videoSrc: "https://coldcdn.com/api/cdn/7fx36k",
         videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
         videoTitle: "Arweave Build",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
@@ -325,6 +325,40 @@ export const Videos = {
             graphql: "https://arweave.net/graphql"
         },
     },
+     "21": {
+        uid: "21",
+        videoSrc:"https://coldcdn.com/api/cdn/wr1cs5/video/AcceleratedByUsingMesonNetwork.mp4",
+        videoImage: "https://assets.meson.network:10443/static/img/Accelerated_by_Using_Meson_Network_3.jpg",
+        videoTitle: "Meson Network Accelerated",
+        description:"Sample video from the Accelerated by Using Meson Network series",
+        authorID: "12", 
+        tags: ["CDN", "Meson", "Network", "Accelerated", "Intro"],
+        sandboxLinks: {
+            preferred: "self",
+            self: "https://meson.network/",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+     "22": {
+        uid: "22",
+        videoSrc: "https://www.youtube.com/watch?v=KBP1J3hStDw",
+        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
+        videoTitle: "Manifest Demo with ArDrive",
+        description: "How to use manifests with: (1) ArDrive web (2) the CLI (3) and ArDrive core",
+        authorID: "4", 
+        tags: ["ArDrive", "Manifest", "Intro"],
+        sandboxLinks: {
+            preferred: "self",
+            self: "https://meson.network/",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    }
 }
 
 

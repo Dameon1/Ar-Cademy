@@ -33,7 +33,7 @@ export const Authors = {
         author: "Ardrive",
         authorLink: "https://twitter.com/ardriveapp",
         authorWebsite: "https://ardrive.io/",
-        createdVideosByID: ['4', "10"],
+        createdVideosByID: ['4', "10", "22"],
         createdContentByID: ['ContentID'],
         uid: 4,
         username: "@ardriveapp",
@@ -111,6 +111,16 @@ export const Authors = {
         username: "@twilson63",
         avatar: "https://pbs.twimg.com/profile_images/1293584015992279040/gc6Cnrn1_400x400.jpg"
     },
+    '12': {
+        author: "Meson",
+        authorLink: "https://twitter.com/NetworkMeson",
+        authorWebsite: "https://meson.network/",
+        createdVideosByID: ["21"],
+        createdContentByID: ["ContentID"],
+        uid: "12",
+        username: "@NetworkMeson",
+        avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_400x400.jpg"
+    }
 }
 
 // 'id': {
