@@ -345,7 +345,7 @@ export const Videos = {
      "22": {
         uid: "22",
         videoSrc: "https://www.youtube.com/watch?v=KBP1J3hStDw",
-        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
+         videoImage: "https://img.youtube.com/vi/KBP1J3hStDw/maxresdefault.jpg",
         videoTitle: "Manifest Demo with ArDrive",
         description: "How to use manifests with: (1) ArDrive web (2) the CLI (3) and ArDrive core",
         authorID: "4", 
