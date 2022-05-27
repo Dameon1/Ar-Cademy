@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Ar-Cademy/static/css/main.5e156f9b.chunk.css",
-    "main.js": "/Ar-Cademy/static/js/main.fce0b185.chunk.js",
-    "main.js.map": "/Ar-Cademy/static/js/main.fce0b185.chunk.js.map",
+    "main.js": "/Ar-Cademy/static/js/main.b7ef93b6.chunk.js",
+    "main.js.map": "/Ar-Cademy/static/js/main.b7ef93b6.chunk.js.map",
     "runtime-main.js": "/Ar-Cademy/static/js/runtime-main.43cda789.js",
     "runtime-main.js.map": "/Ar-Cademy/static/js/runtime-main.43cda789.js.map",
     "static/js/2.eedd7be6.chunk.js": "/Ar-Cademy/static/js/2.eedd7be6.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.43cda789.js",
     "static/js/2.eedd7be6.chunk.js",
     "static/css/main.5e156f9b.chunk.css",
-    "static/js/main.fce0b185.chunk.js"
+    "static/js/main.b7ef93b6.chunk.js"
   ]
 }
