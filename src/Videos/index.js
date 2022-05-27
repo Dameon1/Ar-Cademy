@@ -5,6 +5,7 @@ export const Videos = {
         videoImage: "https://arweave.net/3mevYgrmg-zja8aO9D8BVEebYu6ELAXLkUnvCDh8GOg",
         videoTitle: "Shine Your Light",
         description: "Our artist name is 1 because we are all 1.",
+        tags: ["Music"],
         authorID: "1",
         sandboxLinks: {
             preferred: "graphql",
@@ -12,7 +13,6 @@ export const Videos = {
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
         },
     },
     "2": {
@@ -23,13 +23,14 @@ export const Videos = {
         videoTitle: "React App with Koii",
         description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
         authorID: "2",
+        tags: ["Deployment", "React", "Arweave", "Build"],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
+            
         },
     },
     "3": {
@@ -40,13 +41,13 @@ export const Videos = {
         videoTitle: "Deploy on Spheron",
         description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
         authorID: "3",
+        tags: ["Deployment"],
         sandboxLinks: {
             preferred: "arcode",
             repl: "https://replit.com/@Dameon1/nextExample",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
         },
     },
     "4": {
@@ -58,13 +59,14 @@ export const Videos = {
         authorWebsite: "https://ardrive.io/",
         description: "ArDrive offers never-ending storage of your most valuable files.",
         authorID: "4",
+        tags: ["Information"],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
+            
         },
 
     },
@@ -76,13 +78,13 @@ export const Videos = {
         videoTitle: "Next.js with ARKB",
         description: "Saeta is a developing company based in the UK. They are a team of developers and designers who are passionate about creating beautiful and intuitive user interfaces.",
         authorID: "5",
+        tags: ["Deployment"],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
         },
     },
     "6": {
@@ -92,13 +94,14 @@ export const Videos = {
         videoTitle: "Full Stack Web3",
         description: "In this in depth tutorial you'll learn the tools, protocols, and frameworks for building full stack web3 apps, and most importantly - how to put everything together to lay the groundwork for building out any of your own ideas in the future.",
         authorID: "6",
+        tags: ["Build", "Deployment", "ArweaveNative"],
         sandboxLinks: {
             preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
-            tags: ["!Topics"]
+            
         },
     },
     "7": {
@@ -106,9 +109,9 @@ export const Videos = {
         videoSrc: "https://coldcdn.com/api/cdn/rvk7pw",
         videoImage: "https://uploads-ssl.webflow.com/625de12f70312b8d7d1aa91b/6269d28cd3e415a0d1544b18_Arweave_Onboarder_Permaweb.gif",
         videoTitle: "Intro to Arweave",
-        description: "Arweave org explaining an introduction to to data and scalable api's.",
+        description: "Arweave org explaining an introduction to data as scalable api's.",
         authorID: "7",
-        tags: ["!Topics"],
+        tags: ["Intro"],
         sandboxLinks: {
             preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -124,7 +127,7 @@ export const Videos = {
         videoTitle: "Arweave Build",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
         authorID: "8",
-        tags: ["!Topics"],
+        tags: ["Build"],
         sandboxLinks: {
             preferred: "arcode",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -140,7 +143,7 @@ export const Videos = {
         videoTitle: "Bundlr and Next.js",
         description: "By the end of this video you should have a good understanding of how to build full stack applications with Bundlr and Arweave.",
         authorID: "6",
-        tags: ["!Topics"],
+        tags: ["Build", "Deployment"],
         sandboxLinks: {
             preferred: "graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -156,7 +159,7 @@ export const Videos = {
         videoTitle: "What are ArFS",
         description: "MC Lars explains how encryption works leveraging the power of Arweave.",
         authorID: "4",
-        tags: ["!Topics"],
+        tags: ["ArFS"],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
@@ -172,7 +175,7 @@ export const Videos = {
         videoTitle: "Smartweave",
         description: "Redstone describes how to migrate and use their new SDK for contracts on Arweave.",
         authorID: "9",
-        tags: ["!Topics"],
+        tags: ["Contracts"],
         sandboxLinks: {
             preferred: "arcodeArweave",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -188,7 +191,7 @@ export const Videos = {
         videoTitle: "Setting Up KwilDB",
         description: "Learn how to set up your KwilDB from scratch!Head to db.kwil.com to get started!",
         authorID: "10",
-        tags: ["!Topics"],
+        tags: ["Storage", "Intro"],
         sandboxLinks: {
             preferred: "arcodeArweave",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -204,7 +207,7 @@ export const Videos = {
         videoTitle: "KwilDB Social Graph",
         description: "Learn how to use KwilDB to make a simple social graph, which tracks relationships between MetaMask wallets",
         authorID: "10",
-        tags: ["!Topics"],
+        tags: ["Build", "Storage"],
         sandboxLinks: {
             preferred: "arcodeArweave",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
@@ -220,7 +223,7 @@ export const Videos = {
          videoTitle: "NEAR + Arweave  1",
         description:"This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11", 
-         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+         tags: ["Near", "Arweave", "React", "Build", "Intro",],
          sandboxLinks: {
              preferred: "repl",
              repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -236,7 +239,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  2",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
-        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -252,7 +255,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  3",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
-        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -268,7 +271,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  4",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
-        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -300,7 +303,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  6",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
-        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -316,7 +319,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave 7",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
-        tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
+        tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -349,7 +352,24 @@ export const Videos = {
         videoTitle: "Manifest Demo with ArDrive",
         description: "How to use manifests with: (1) ArDrive web (2) the CLI (3) and ArDrive core",
         authorID: "4", 
-        tags: ["ArDrive", "Manifest", "Intro"],
+        tags: ["ArDrive", "Manifest", "Intro", "Build"],
+        sandboxLinks: {
+            preferred: "self",
+            self: "https://meson.network/",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
+     "23": {
+        uid: "23",
+        videoSrc: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
+         videoImage: "https://th.bing.com/th?id=OVF.P1G5oycUFgkBKTCSnAbPGg&w=257&h=144&c=7&rs=1&qlt=90&o=5&dpr=1.38&pid=2.1",
+        videoTitle: "ETHShanghai- Arweave",
+        description: "DMac explains how to use Arweave to build a decentralized app with ETHShanghai",
+        authorID: "10", 
+        tags: ["Transfers", "Arweave", "Intro", "Build"],
         sandboxLinks: {
             preferred: "self",
             self: "https://meson.network/",

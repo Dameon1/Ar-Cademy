@@ -120,7 +120,17 @@ export const Authors = {
         uid: "12",
         username: "@NetworkMeson",
         avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_400x400.jpg"
-    }
+    },
+    '13': {
+        author: "Dmac",
+        authorLink: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
+        authorWebsite: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
+        createdVideosByID: ["23"],
+        createdContentByID: ["ContentID"],
+        uid: "13",
+        username: "@dmac_",
+        avatar: "https://pbs.twimg.com/profile_images/1289724984/dmac_logo_400x400.png"
+    },
 }
 
 // 'id': {

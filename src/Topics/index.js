@@ -2,7 +2,7 @@
 export const Topics = {
     'All': {
         topics: [],
-        videosById: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"],
+        videosById: ["1", "11", "23", "13", "14", "21", "22", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     },
     'Deployment': {
         topics: [],
@@ -10,7 +10,7 @@ export const Topics = {
     },
     'Build': {
         topics: [],
-        videosById: ["8", "6", "9"],
+        videosById: ["8", "6", "9", "2", "13", "14", "22"],
     },
     'Storage': {
         topics: [],
@@ -18,7 +18,7 @@ export const Topics = {
     },
     "APIs": {
         topics: [],
-        videosById: ["5", "2", "3", "6"],
+        videosById: ["11", "5", "2", "3", "6"],
     },
     'Community_Tokens': {
         topics: [],
@@ -30,6 +30,6 @@ export const Topics = {
     },
     'ArFS': {
         topics: [],
-        videosById: ["10"],
+        videosById: ["10", "22"],
     }
 }
