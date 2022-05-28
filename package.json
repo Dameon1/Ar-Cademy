@@ -9,6 +9,7 @@
     "arkb": "^1.1.55",
     "arverify": "^0.0.11",
     "arweave": "^1.10.23",
+    "arweave-account": "^1.2.5",
     "arweave-wallet-connector": "^0.0.29",
     "fs": "^0.0.1-security",
     "react": "^18.1.0",
