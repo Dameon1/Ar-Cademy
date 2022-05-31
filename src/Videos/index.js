@@ -219,7 +219,7 @@ export const Videos = {
      "14": {
         uid: "14",
          videoSrc:"https://www.youtube.com/watch?v=a-L2XxHELXg",
-         videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+         videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
          videoTitle: "NEAR + Arweave  1",
         description:"This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11", 
@@ -235,7 +235,7 @@ export const Videos = {
     "15": {
         uid: "15",
         videoSrc: "https://www.youtube.com/watch?v=2A__hYEhm7U",
-        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  2",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -251,7 +251,7 @@ export const Videos = {
     "16": {
         uid: "16",
         videoSrc: "https://www.youtube.com/watch?v=0nJAiiu7p_s",
-        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  3",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -267,7 +267,7 @@ export const Videos = {
     "17": {
         uid: "17",
         videoSrc: "https://www.youtube.com/watch?v=_budvIB1tGs",
-        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  4",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -283,7 +283,7 @@ export const Videos = {
     "18": {
         uid: "18",
         videoSrc: "https://www.youtube.com/watch?v=Io1RhzcfXR0",
-        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  5",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -299,7 +299,7 @@ export const Videos = {
     "19": {
         uid: "19",
         videoSrc: "https://www.youtube.com/watch?v=xLymcg8maZE",
-        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  6",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -315,7 +315,7 @@ export const Videos = {
     "20": {
         uid: "20",
         videoSrc: "https://www.youtube.com/watch?v=ywziPVC0C2A",
-        videoImage: "https://i.ytimg.com/vi/a-L2XxHELXg/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLDhwmfSuhh-SJQUHpsFkh62qMclPw",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave 7",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -377,7 +377,24 @@ export const Videos = {
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
-    }
+    },
+    "24": {
+        uid: "24",
+        videoSrc: "https://www.youtube.com/watch?v=ZduvXKxSgkQ",
+        videoImage: "https://i3.ytimg.com/vi/ZduvXKxSgkQ/mqdefault.jpg",
+        videoTitle: "Deploying to the Permaweb - with Bundlr",
+        description: "The permaweb is a cloud platform designed to publish and serve web artifacts from a decentralized permanent storage network. Along with a permanotes side",
+        authorID: "11",
+        tags: ["Bundlr", "Arkb", "Deno", "Deployment", "Intro"],
+        sandboxLinks: {
+            preferred: "self",
+            self: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
+            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://arweave.net/graphql"
+        },
+    },
 }
 
 
