@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/Ar-Cademy/static/css/main.bc58124d.css",
-    "main.js": "/Ar-Cademy/static/js/main.a712bb59.js",
-    "static/js/27.592fb8c9.chunk.js": "/Ar-Cademy/static/js/27.592fb8c9.chunk.js",
+    "main.css": "/Ar-Cademy/static/css/main.54182dda.css",
+    "main.js": "/Ar-Cademy/static/js/main.54b8767b.js",
+    "static/js/787.6038274c.chunk.js": "/Ar-Cademy/static/js/787.6038274c.chunk.js",
     "static/media/clarity.cjs": "/Ar-Cademy/static/media/clarity.631cd90af6805759746e.cjs",
-    "index.html": "/Ar-Cademy/index.html"
+    "index.html": "/Ar-Cademy/index.html",
+    "main.54182dda.css.map": "/Ar-Cademy/static/css/main.54182dda.css.map",
+    "main.54b8767b.js.map": "/Ar-Cademy/static/js/main.54b8767b.js.map",
+    "787.6038274c.chunk.js.map": "/Ar-Cademy/static/js/787.6038274c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc58124d.css",
-    "static/js/main.a712bb59.js"
+    "static/css/main.54182dda.css",
+    "static/js/main.54b8767b.js"
   ]
 }
