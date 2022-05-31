@@ -1,11 +1,16 @@
 import React from "react";
 //import PassportCard from "../PassportCard";
 import Card from "../Cards";
+import { Link } from "react-router-dom";
 
 export function ProfileContentContainer(props) {
   let content = props.contentObjects;
+  console.log(content);
   let cards = content.map(content => {
-    return <Card key={content.uid} content={content} />
+    return (
+      <Link key={content.uid} to={`/playground/${content.uid}`} className="pageBoxes">
+        <Card content={content} />
+      </Link>)
   })
   return (
     <div className="contentScrollContainer">

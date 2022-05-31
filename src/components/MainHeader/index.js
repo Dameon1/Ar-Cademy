@@ -9,7 +9,7 @@ export function MainHeader() {
       <NavLinks />
       <h1 className="site-logo">Arcademy</h1>
       <div className="form-redirect-container">
-        <Link to="/Ar-Cademy/identity" className="form-redirect-link">
+        <Link to="/identity" className="form-redirect-link">
           {"Identity"}
         </Link>
       </div>

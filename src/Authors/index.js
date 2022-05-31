@@ -129,7 +129,7 @@ export const Authors = {
         createdContentByID: ["ContentID"],
         uid: "13",
         username: "@dmac_",
-        avatar: "https://pbs.twimg.com/profile_images/1289724984/dmac_logo_400x400.png"
+        avatar: "https://uploads-ssl.webflow.com/625de12f70312bc43c1aa952/6262fa88d9bc44f70e62426f_DMac%20MyMail%20Arweave.png"
     },
 }
 

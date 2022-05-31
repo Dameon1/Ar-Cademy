@@ -42,13 +42,13 @@ function App() {
         <main className="main-content">
           <Routes>
             {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
-            <Route exact path={string} element={<LandingPage />} />
-            <Route exact path="/Ar-Cademy" element={<LandingPage />} />
-            <Route exact path="/Ar-Cademy/dashboard" element={<Dashboard isArweaveWalletConnected={isArweaveWalletConnected} />} />
-            <Route exact path="/Ar-Cademy/profile/:id" element={<Profile isArweaveWalletConnected={isArweaveWalletConnected} />} />
-            <Route exact path="/Ar-Cademy/identity" element={<Identity isArweaveWalletConnected={isArweaveWalletConnected} changeState={changeState} />} />
-            <Route exact path="/Ar-Cademy/modules/:id" element={<ModulePage />} />
-            <Route exact path="/Ar-Cademy/modules/:topic/:videoIndex" element={<Playground isLoading={isLoading} />} />
+            {/* <Route exact path={string} element={<LandingPage />} /> */}
+            <Route exact path="/" element={<LandingPage />} />
+            <Route exact path="/dashboard" element={<Dashboard isArweaveWalletConnected={isArweaveWalletConnected} />} />
+            <Route exact path="/profile/:id" element={<Profile isArweaveWalletConnected={isArweaveWalletConnected} />} />
+            <Route exact path="/identity" element={<Identity isArweaveWalletConnected={isArweaveWalletConnected} changeState={changeState} />} />
+            <Route exact path="/modules/:id" element={<ModulePage />} />
+            <Route exact path="/playground/:videoIndex" element={<Playground isLoading={isLoading} />} />
           </Routes>
         </main>
         <Footer />

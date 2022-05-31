@@ -40,7 +40,7 @@ export function VideoPlayerContainer() {
 
         <footer className="video-footer">
           <h2>To learn more about this video, visit the author's profile:
-            <Link to={`/Ar-Cademy/profile/${contentObject.authorObject.uid}`} className="video-creator-link">Here</Link>
+            <Link to={`/profile/${contentObject.authorObject.uid}`} className="video-creator-link">Here</Link>
           </h2>
           <a href={contentObject.authorObject.authorLink} target="_blank"
             rel="noreferrer" >

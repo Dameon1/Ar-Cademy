@@ -13,7 +13,7 @@ function ModulePage() {
   let topicCards = videoIds.map((videoId, index) => {
     let videoObject = Videos[videoId];
     return (
-      <Link key={videoObject.videoId || index} to={`/Ar-Cademy/modules/${module}/${videoId}`} className="pageBoxes">
+      <Link key={videoObject.videoId || index} to={`/playground/${videoId}`} className="pageBoxes">
         <li>
           <h2 className="">{videoObject.videoTitle}</h2>
           <div className="">
