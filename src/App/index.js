@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import { MainHeader } from '../components/MainHeader';
 import { LandingPage } from '../components/LandingPage';
@@ -15,6 +15,11 @@ import { MainContext } from '../context';
 import { ProgressSpinner } from '../components/ProgressSpinner';
 import './App.css';
 
+import { ThemeProvider } from 'styled-components';
+import { light, dark } from '../utils/colors';
+import { GlobalStyles } from '../static/styles/global';
+import Body from '../components/Body';
+import { a11yDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // Identity Passport
 //import GetArweaveWebWallet from '../api/arweaveApp';
@@ -22,6 +27,15 @@ import './App.css';
 
 
 function App() {
+
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const [theme, updateTheme] = useState(mq.matches);
+  const setTheme = (t) => {
+    updateTheme(t);
+  }
+
+
+
   const [isLoading, setIsLoading] = React.useState(true);
   const [isArweaveWalletConnected, setIsArweaveWalletConnected] = React.useState(false);
   const [currentPassportAddress, setCurrentPassportAddress] = React.useState('');
@@ -35,24 +49,11 @@ function App() {
     setCurrentPassportAddress(data);
   }
   return (
-    <MainContext.Provider value={{ isLoading, isArweaveWalletConnected, currentPassportAddress, changeState }}>
-      <div className="app">
-        <MainHeader currentPassportAddress={setCurrentPassportAddress} />
-        {isLoading && <ProgressSpinner />}
-        <main className="main-content">
-          <Routes>
-            {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
-            {/* <Route exact path={string} element={<LandingPage />} /> */}
-            <Route exact path="/" element={<LandingPage />} />
-            <Route exact path="/dashboard" element={<Dashboard isArweaveWalletConnected={isArweaveWalletConnected} />} />
-            <Route exact path="/profile/:id" element={<Profile isArweaveWalletConnected={isArweaveWalletConnected} />} />
-            <Route exact path="/identity" element={<Identity isArweaveWalletConnected={isArweaveWalletConnected} changeState={changeState} />} />
-            <Route exact path="/modules/:id" element={<ModulePage />} />
-            <Route exact path="/playground/:videoIndex" element={<Playground isLoading={isLoading} />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+    <MainContext.Provider value={{ isLoading, isArweaveWalletConnected, currentPassportAddress, changeState, theme, setTheme }}>
+      <ThemeProvider theme={theme ? dark : light} >
+        <GlobalStyles />
+        <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
+      </ThemeProvider>
     </MainContext.Provider>
   );
 }
