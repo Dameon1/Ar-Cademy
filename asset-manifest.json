@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Ar-Cademy/static/css/main.e638a9df.css",
-    "main.js": "/Ar-Cademy/static/js/main.0d52c83e.js",
+    "main.css": "/Ar-Cademy/static/css/main.9c8d43ed.css",
+    "main.js": "/Ar-Cademy/static/js/main.0e1d8863.js",
     "static/js/787.6038274c.chunk.js": "/Ar-Cademy/static/js/787.6038274c.chunk.js",
     "static/media/clarity.cjs": "/Ar-Cademy/static/media/clarity.631cd90af6805759746e.cjs",
     "index.html": "/Ar-Cademy/index.html",
-    "main.e638a9df.css.map": "/Ar-Cademy/static/css/main.e638a9df.css.map",
-    "main.0d52c83e.js.map": "/Ar-Cademy/static/js/main.0d52c83e.js.map",
+    "main.9c8d43ed.css.map": "/Ar-Cademy/static/css/main.9c8d43ed.css.map",
+    "main.0e1d8863.js.map": "/Ar-Cademy/static/js/main.0e1d8863.js.map",
     "787.6038274c.chunk.js.map": "/Ar-Cademy/static/js/787.6038274c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e638a9df.css",
-    "static/js/main.0d52c83e.js"
+    "static/css/main.9c8d43ed.css",
+    "static/js/main.0e1d8863.js"
   ]
 }
