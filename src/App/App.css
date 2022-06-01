@@ -170,6 +170,7 @@ ul {
 .form-redirect-container a {
   width: 100px;
   text-align: center;
+  margin: 0px 10px;
 }
 
 .form-redirect-link {

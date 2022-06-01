@@ -10,4 +10,4 @@ const icons = {
 
 const protocolName = "Account-0.2"
 
-export {icons, protocolName}
+export { icons, protocolName }

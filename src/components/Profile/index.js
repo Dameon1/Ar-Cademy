@@ -6,7 +6,7 @@ import PassportCard from '../PassportCard';
 //import ContentVideoCards from '../ContentVideoCards';
 //import ContentSandboxCards from '../ContentSandboxCards';
 import ProfileContentContainer from '../ProfileContentContainer';
-
+import './profile.css'
 // grab profile ID from URL
 // grab user from contract? or tags? complete video? <- title, descript, sandbox attachment
 // grab user from Authors, get Videos from author, (get Tags from author?)

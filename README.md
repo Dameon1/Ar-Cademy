@@ -6,7 +6,9 @@
 
 ## Where to find
 
-  This version is perma-stored  [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) for the live site.  
+  This version is perma-stored  [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) for the live site.
+  # V2
+  - [here](https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I)  
 
 ## Instructions
 
@@ -35,6 +37,10 @@
   - Total size: 1.62 MB
   - Fees: 0.000775574869 + 0.000077557486 (10% arkb fee )
   - Total fee: 0.000853132355 AR
+  # V2
+  - Total size: 718.44 kB
+  - Fees: 0.001098812034 + 0.000109881203 (10% arkb fee )
+  - Total fee: 0.001208693237
 
 ## Authors
 

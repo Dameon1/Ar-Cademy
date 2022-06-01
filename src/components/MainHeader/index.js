@@ -10,7 +10,7 @@ export function MainHeader() {
       <NavLinks />
       <h1 className="site-logo">Arcademy</h1>
       <div className="form-redirect-container">
-        <Link to="/identity" className="form-redirect-link">
+        <Link to="/identity" className="form-redirect-link identityLink">
           {"Identity"}
         </Link>
         <ThemeSwitch />

@@ -1,21 +1,19 @@
-import React from 'react';
+//import { ArweaveWebWallet } from 'arweave-wallet-connector'
 //import ArConnect from '../../api/ArConnect';
-import { ArweaveWebWallet } from 'arweave-wallet-connector'
-import ArweaveAccount from '../../api/ArweaveAccount';
-//import Login from "../Login"
-async function connect(changeState) {
-  const wallet = new ArweaveWebWallet({
-    // optionally provide information about your app that will be displayed in the wallet provider interface
-    name: 'Arcademy',
-    logo: '../../light.png'
-  })
-  wallet.setUrl('arweave.app')
-  await wallet.connect()
-  changeState(window.arweaveWallet.getActiveAddress());
-}
+//import ArweaveAccount from '../../api/ArweaveAccount';
+import Login from "../Login"
+// async function connect(changeState) {
+//   const wallet = new ArweaveWebWallet({
+//     // optionally provide information about your app that will be displayed in the wallet provider interface
+//     name: 'Arcademy',
+//     logo: '../../light.png'
+//   })
+//   wallet.setUrl('arweave.app')
+//   await wallet.connect()
+//   changeState(window.arweaveWallet.getActiveAddress());
+// }
 
-export function Identity(props) {
-  const { changeState, isArweaveWalletConnected } = props;
+export function Identity() {
   return (
     <>
       <div className="text-container">
@@ -30,9 +28,7 @@ export function Identity(props) {
           passport we are using arweave.app
         </p>
       </div>
-
-      {/* <Login /> */}
-      {/* <IdentityButton /> */}
+      <Login />
     </>
   )
 }
