@@ -9,8 +9,51 @@
   justify-content: center;
   text-align: justify;
   text-decoration: none;
-
 }
+
+.connection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .wallet {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.wallet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  border-radius: 15px;
+  font-size: x-large;
+  flex: 1;
+  margin: 10px;
+}
+
+.wallet:hover {
+  cursor: pointer;
+}
+
+.wallet img {
+  width: 100px;
+  height: 100px;
+}
+
+.wallet h4 {
+  margin: 0;
+  font-size: large;
+  margin-top: 10px;
+}
+
 
 .pageBoxes {
   width: 185px;
