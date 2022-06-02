@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/Ar-Cademy/static/css/main.fff5f958.css",
-    "main.js": "/Ar-Cademy/static/js/main.060481dc.js",
+    "main.js": "/Ar-Cademy/static/js/main.aed23071.js",
     "static/media/clarity.cjs": "/Ar-Cademy/static/media/clarity.631cd90af6805759746e.cjs",
     "index.html": "/Ar-Cademy/index.html"
   },
   "entrypoints": [
     "static/css/main.fff5f958.css",
-    "static/js/main.060481dc.js"
+    "static/js/main.aed23071.js"
   ]
 }
