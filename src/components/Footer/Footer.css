@@ -5,7 +5,9 @@
   height: 100px;
 }
 
-.main-footer p {}
+.main-footer p {
+  color: white
+}
 
 .site-creator-link {
   text-decoration: none;

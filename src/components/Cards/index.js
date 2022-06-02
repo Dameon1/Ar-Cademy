@@ -1,3 +1,4 @@
+import React from 'react';
 
 export function Card(props) {
   let content = props.content;

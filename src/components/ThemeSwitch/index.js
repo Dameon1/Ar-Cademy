@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { BiMoon, BiSun } from 'react-icons/bi';
 import MainContext from '../../context';
 
+
 function ThemeSwitch() {
   const { theme, setTheme } = useContext(MainContext);
 
