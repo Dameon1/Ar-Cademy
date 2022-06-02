@@ -52,8 +52,8 @@ export function Login() {
     //     </Grid.Container>
 
     : addr && walletName
-      ? //<UserProfile addr={addr} walletName={walletName} disconnectWallet={disconnectWallet} />
-      <p>CONNECTED</p>
+      ? <UserProfile addr={addr} walletName={walletName} disconnectWallet={disconnectWallet} />
+
       : <div className="connection">
         <div className="wallet" onClick={async () => {
           setIsLoading(true);
