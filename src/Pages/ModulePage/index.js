@@ -1,9 +1,6 @@
-import React from "react";
-
 import { Topics } from "../../Topics";
 import { Videos } from "../../Videos";
 import { Link } from "react-router-dom";
-//import { MainContext } from "../../context";
 function ModulePage() {
 
   let module = new URL(window.location.href).pathname.split('/').at(-1);

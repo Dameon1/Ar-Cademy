@@ -18,16 +18,16 @@ function App() {
   }
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isArweaveWalletConnected, setIsArweaveWalletConnected] = useState(false);
-  const [currentPassportAddress, setCurrentPassportAddress] = useState('');
+  // const [isArweaveWalletConnected, setIsArweaveWalletConnected] = useState(false);
+  // const [currentPassportAddress, setCurrentPassportAddress] = useState('');
 
   function changeState(data) {
     setIsLoading(true);
-    setIsArweaveWalletConnected(true);
-    setCurrentPassportAddress(data);
+    // setIsArweaveWalletConnected(true);
+    // setCurrentPassportAddress(data);
   }
   return (
-    <MainContext.Provider value={{ isLoading, isArweaveWalletConnected, currentPassportAddress, changeState, theme, setTheme }}>
+    <MainContext.Provider value={{ isLoading, setIsLoading, changeState, theme, setTheme }}>
       <ThemeProvider theme={theme ? dark : light} >
         <GlobalStyles />
         <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
