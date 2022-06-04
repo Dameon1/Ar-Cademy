@@ -18,8 +18,6 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "ardb": "^1.1.10",
-    "arverify": "^0.0.11",
-    "arweave": "^1.11.4",
     "arweave-account": "^1.2.5",
     "arweave-js": "^1.0.0",
     "arweave-wallet-connector": "^0.0.25",
@@ -61,9 +59,11 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
     ],
     "development": [
       "last 1 chrome version",
@@ -75,7 +75,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/styled-components": "^5.1.23",
     "arconnect": "^0.2.9",
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^4.0.0",
     "react-app-rewired": "^2.2.1"
   }
 }
