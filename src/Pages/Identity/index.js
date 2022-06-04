@@ -1,6 +1,6 @@
 //import { ArweaveWebWallet } from 'arweave-wallet-connector'
 //import ArConnect from '../../api/ArConnect';
-//import Login from '../../components/Login/Login';
+import Login from '../../components/Login/Login';
 //import ArweaveAccount from '../../api/ArweaveAccount';
 // async function connect(changeState) {
 //   const wallet = new ArweaveWebWallet({
@@ -28,7 +28,7 @@ export function Identity() {
           passport we are using arweave.app
         </p>
       </div>
-      {/* <Login /> */}
+      <Login />
     </>
   )
 }
