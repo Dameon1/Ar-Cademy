@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
+import { T_addr, T_profile } from '../../utils/types';
 import { Modal, Text, Input, /*Row, Checkbox,*/ Button, Textarea, Loading, Grid, Spacer } from '@nextui-org/react';
 import { FaDiscord, FaTwitter, FaInstagram, FaFacebook, FaGithub } from 'react-icons/fa';
 import { AMW } from '../../utils/api';
 import { protocolName } from '../../static';
+import { AvatarS } from '../../static/styles/Profile';
 import { BiUserCircle } from 'react-icons/bi';
 
-function EditProfileModal({ addr, profile, isOpen, hasClosed }) {
-
-  const [profileData, setProfileData] = useState({
+function EditProfileModale({ addr, profile, isOpen, hasClosed }: { addr: T_addr, profile: T_profile | undefined, isOpen: boolean, hasClosed: () => void }) {
+  const [profileData, setProfileData] = useState<T_profile>({
     addr: "",
     links: {},
   });
   const [handleError, setHandleError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [picture, setPicture] = useState(null);
+
+  const [picture, setPicture] = useState<{ blobUrl: string, type: string } | null>(null);
   const [pictureIsLoading, setPictureIsLoading] = useState(false);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ function EditProfileModal({ addr, profile, isOpen, hasClosed }) {
     }
   }
 
-  const handleChangePicture = (e) => {
+  const handleChangePicture = (e: React.FormEvent<HTMLInputElement>) => {
     console.log("handleChangePicture");
     const files = e.currentTarget.files;
     if (files && files.length > 0) {
@@ -101,7 +103,7 @@ function EditProfileModal({ addr, profile, isOpen, hasClosed }) {
               onChange={handleChangePicture}
               aria-label="avatar file"
             />
-            {/* {
+            {
               picture ? <>
                 <AvatarS src={picture.blobUrl} sx={{ width: 200, height: 200 }} />
                 <Button auto
@@ -117,7 +119,7 @@ function EditProfileModal({ addr, profile, isOpen, hasClosed }) {
                 : profileData.avatar
                   ? <AvatarS src={`https://arweave.net/${profileData.avatar}`} sx={{ width: 200, height: 200 }} />
                   : <AvatarS sx={{ width: 200, height: 200, fontSize: 'xx-large', fontFamily: 'monospace' }}>#{addr.slice(0, 3)}{addr.slice(-3)}</AvatarS>
-            } */}
+            }
           </label>
         </Grid.Container>
         <Input
@@ -245,4 +247,4 @@ function EditProfileModal({ addr, profile, isOpen, hasClosed }) {
   </>);
 }
 
-export default EditProfileModal;
+export default EditProfileModale;

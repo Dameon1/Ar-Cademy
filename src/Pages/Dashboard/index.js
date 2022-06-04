@@ -1,7 +1,7 @@
 import React from "react";
 import './dashboard.css';
-import PassportCard from "../PassportCard";
-import Card from "../Cards";
+import PassportCard from "../../components/PassportCard";
+import Card from "../../components/Cards";
 
 function ContentVideoCards() {
     return (

@@ -2,10 +2,10 @@ import React from 'react';
 import { Authors } from '../../Authors';
 import { Videos } from '../../Videos';
 //import Card from '../Cards';
-import PassportCard from '../PassportCard';
+//import PassportCard from '../../components/PassportCard';
 //import ContentVideoCards from '../ContentVideoCards';
 //import ContentSandboxCards from '../ContentSandboxCards';
-import ProfileContentContainer from '../ProfileContentContainer';
+import ProfileContentContainer from '../../components/ProfileContentContainer';
 import './profile.css'
 // grab profile ID from URL
 // grab user from contract? or tags? complete video? <- title, descript, sandbox attachment
@@ -33,7 +33,7 @@ export default function Profile() {
       }
 
       <h1>Profile</h1>
-      <PassportCard authorObject={authorObject} />
+      {/* <PassportCard authorObject={authorObject} /> */}
       <ProfileContentContainer contentObjects={videoObjects} contentType={"Videos"} />
       {/* <ProfileContentContainer sandbox="sandbox" /> */}
       {/* <Passport />

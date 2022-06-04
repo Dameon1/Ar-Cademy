@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Body from '../components/Body';
+import { useState } from 'react';
+import Body from '../Pages/Body';
 import './App.css';
 
 import { MainContext } from '../context';
@@ -8,7 +8,6 @@ import { light, dark } from '../utils/colors.ts';
 import { GlobalStyles } from '../static/styles/global';
 import { a11yDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-//import { ProgressSpinner } from '../components/ProgressSpinner';
 
 function App() {
 

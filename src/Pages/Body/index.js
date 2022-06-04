@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
-import { MainHeader } from '../MainHeader';
+import { MainHeader } from '../../components/MainHeader';
 import { LandingPage } from '../LandingPage';
 import { Identity } from '../Identity';
 import ModulePage from '../ModulePage';
 import Playground from '../Playground';
-import Footer from '../Footer';
+import Footer from '../../components/Footer';
 import Profile from '../Profile';
 
 function Body({ syntaxTheme }) {

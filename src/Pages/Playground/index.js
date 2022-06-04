@@ -1,6 +1,6 @@
 import React from "react";
-import Sandbox from "../Sandbox";
-import VideoPlayerContainer from "../VideoPlayerContainer";
+import Sandbox from "../../components/Sandbox";
+import VideoPlayerContainer from "../../components/VideoPlayerContainer";
 import { Videos } from '../../Videos';
 
 export default function Playground() {
