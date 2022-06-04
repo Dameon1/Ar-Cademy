@@ -59,6 +59,7 @@ export function VideoPlayerContainer() {
 
       </div >)
   }
+  return null
 }
 
 export default VideoPlayerContainer;

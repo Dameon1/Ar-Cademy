@@ -131,6 +131,16 @@ export const Authors = {
         username: "@dmac_",
         avatar: "https://uploads-ssl.webflow.com/625de12f70312bc43c1aa952/6262fa88d9bc44f70e62426f_DMac%20MyMail%20Arweave.png"
     },
+    '14': {
+        author: "Xendarboh Elfaerian",
+        authorLink: "https://twitter.com/xendarboh",
+        authorWebsite: "https://www.youtube.com/user/xendarboh",
+        createdVideosByID: ["25"],
+        createdContentByID: ["ContentID"],
+        uid: "14",
+        username: "@xendarboh",
+        avatar: "https://pbs.twimg.com/profile_images/3422271797/caf9c1d59faf35ea559117e521a3b131_400x400.png"
+    },
 }
 
 // 'id': {

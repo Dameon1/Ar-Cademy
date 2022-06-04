@@ -9,7 +9,7 @@ export const Videos = {
         authorID: "1",
         sandboxLinks: {
             preferred: "graphql",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
@@ -393,6 +393,22 @@ export const Videos = {
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
+        },
+    },
+    "25": {
+        uid: "25",
+        videoSrc: "https://www.youtube.com/watch?v=Oeaq1yXiYxs",
+        videoImage: "https://i3.ytimg.com/vi/Oeaq1yXiYxs/mqdefault.jpg",
+        videoTitle: "Kwil walk-through",
+        description: "SQL setup and transfer demo",
+        authorID: "14",
+        tags: ["Kwil", "DB", "Setup", "Intro"],
+        sandboxLinks: {
+            preferred: "repl",
+            repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcode: "https://arcode.studio/#/",
+            graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
         },
     },
 }
