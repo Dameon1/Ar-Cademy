@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export function ProfileContentContainer(props) {
   let content = props.contentObjects;
-  console.log(content);
   let cards = content.map(content => {
     return (
       <Link key={content.uid} to={`/playground/${content.uid}`} className="pageBoxes">

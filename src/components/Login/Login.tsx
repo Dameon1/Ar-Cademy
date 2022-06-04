@@ -1,18 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import useArConnect from 'use-arconnect';
 import { icons } from '../../static';
 import UserProfile from '../UserProfile/UserProfile';
-import { T_walletName } from '../../utils/types';
 import { Grid, Loading } from '@nextui-org/react';
-import ctx from '../../utils/ctx';
 import { AMW } from '../../utils/api';
+import MainContext from '../../context';
 
 function Login({ onClick }: { onClick?: () => void }) {
-  const { theme } = useContext(ctx);
+  const { isLoading,
+    setIsLoading,
+    theme,
+    addr,
+    walletName,
+    setWalletName,
+    setaddr } = useContext(MainContext);
   const arConnect = useArConnect();
-  const [addr, setaddr] = useState<string | null>(null);
-  const [walletName, setWalletName] = useState<T_walletName>();
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!arConnect) return;

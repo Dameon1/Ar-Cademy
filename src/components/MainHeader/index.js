@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLinks } from "../NavLinks";
 import { Link } from "react-router-dom";
 import ThemeSwitch from "../ThemeSwitch";

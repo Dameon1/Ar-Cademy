@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState, useContext } from "react";
+import MainContext from '../../context';
 import './sanbox.css';
 
 export default function Sandbox(props) {
-  const [isLoading, setIsLoading] = useState(false)
+  const { isLoading, setIsLoading } = useContext(MainContext);
   const [sandboxContent, setSandboxContent] = useState(props.sandboxContent);
   const sandboxTypes = ["repl", "arcode", "graphql", "arcodeArweave"];
   useEffect(() => {
-    setIsLoading(true)
-  }, [])
+    setIsLoading(false)
+  }, [setIsLoading])
 
   function setFilter(newContent) {
     if (sandboxContent !== newContent) {

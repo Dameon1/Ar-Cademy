@@ -4,10 +4,10 @@ import './App.css';
 
 import { MainContext } from '../context';
 import { ThemeProvider } from 'styled-components';
-import { light, dark } from '../utils/colors.ts';
+import { light, dark } from '../utils/colors';
 import { GlobalStyles } from '../static/styles/global';
 import { a11yDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
+import { T_walletName } from '../utils/types';
 
 function App() {
 
@@ -16,10 +16,10 @@ function App() {
   const setTheme = (t) => {
     updateTheme(t);
   }
+  const [addr, setaddr] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [walletName, setWalletName] = useState<T_walletName>();
 
-  const [isLoading, setIsLoading] = useState(true);
-  // const [isArweaveWalletConnected, setIsArweaveWalletConnected] = useState(false);
-  // const [currentPassportAddress, setCurrentPassportAddress] = useState('');
 
   function changeState(data) {
     setIsLoading(true);
@@ -27,7 +27,17 @@ function App() {
     // setCurrentPassportAddress(data);
   }
   return (
-    <MainContext.Provider value={{ isLoading, setIsLoading, changeState, theme, setTheme }}>
+    <MainContext.Provider value={{
+      isLoading,
+      setIsLoading,
+      changeState,
+      theme,
+      setTheme,
+      addr,
+      setaddr,
+      walletName,
+      setWalletName
+    }}>
       <ThemeProvider theme={theme ? dark : light} >
         <GlobalStyles />
         <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
