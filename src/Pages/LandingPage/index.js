@@ -21,7 +21,7 @@ export function LandingPage() {
   console.log("Welcome to the Permaweb!", "This site is perma-stored on Arweave and https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I is the permanent link to it.");
 
   return (
-    <div className="">
+    <>
       <div className="text-container">
         <h2>Welcome to Ar-cademy</h2>
         <p className="site-introduction">
@@ -35,9 +35,11 @@ export function LandingPage() {
           and to practice with your own code.
         </p>
       </div>
-      <ul className="moduleCards">
-        {moduleCards}
-      </ul>
-    </div>
+      <div>
+        <ul className="moduleCards">
+          {moduleCards}
+        </ul>
+      </div>
+    </>
   );
 }

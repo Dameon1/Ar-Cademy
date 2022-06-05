@@ -75,6 +75,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/styled-components": "^5.1.23",
     "arconnect": "^0.2.9",
+    "arkb": "^1.1.57",
     "gh-pages": "^4.0.0",
     "react-app-rewired": "^2.2.1"
   }

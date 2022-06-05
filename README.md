@@ -8,7 +8,10 @@
 
   This version is perma-stored  [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) for the live site.
   # V2
-  - [here](https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I)  
+  - [here](https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I) 
+
+  # V3
+  - [here](https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0)  
 
 ## Instructions
 
@@ -41,6 +44,18 @@
   - Total size: 718.44 kB
   - Fees: 0.001098812034 + 0.000109881203 (10% arkb fee )
   - Total fee: 0.001208693237
+  # V3
+  - Total size: Total size: 2.34 MB
+  - Fees: 0.001463495616 + 0.000146349561 (10% arkb fee )
+  - Total fee: 0.001609845177
+
+## Sidenote
+    - 3 things were changed for Arweave deployment.
+      - "Homepage" was changed to '.'.
+      - Router entry point was changed to `<Router basename="/">`.
+      - <Route exact path={string} element={<LandingPage />} /> , where {string} is a refercence to the URL post arweave deployment.
+
+    
 
 ## Authors
 

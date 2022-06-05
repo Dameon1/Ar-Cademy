@@ -15,8 +15,6 @@ html {
 body {
   line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
-  background-color: #4D4D4D;
-  color: #ECF5E6;
   margin: 0px;
 }
 
@@ -51,7 +49,7 @@ i {
   /* bgc darkgray */
   color: #fdfdfd;
   /* header color #717C86 */
-  color: #5eabc5;
+  color: #717C86;
   /* header bgc || highlight */
   color: #462749;
   /* header btn bgc */
