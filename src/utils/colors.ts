@@ -32,4 +32,4 @@ const dark = {
   text: '#FFFFFF'
 }
 
-export {light, dark};
+export { light, dark };

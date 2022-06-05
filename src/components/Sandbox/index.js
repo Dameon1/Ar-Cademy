@@ -36,7 +36,7 @@ export default function Sandbox(props) {
         <p className="sandboxHeader" >Filter by IDE</p>
         <div>
           <div className="filtersListStyle">
-            {isLoading && <SandboxButtons />}
+            {!isLoading && <SandboxButtons />}
             {/* sandboxTypes.map((type, i) => (
              <button key={i} className="sandboxButton" layout='fill' onClick={() => setFilter(type)}>{type}</button> */}
           </div>

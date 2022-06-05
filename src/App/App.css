@@ -56,12 +56,13 @@
 
 
 .pageBoxes {
+
   width: 185px;
   margin: 25px;
   text-align: center;
   text-decoration: auto;
   transition: 0.15s;
-  background-color: #2B2B2B;
+  background-color: #717C86;
   color: #ECF5E6;
 
   -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
@@ -119,7 +120,7 @@ ul {
 
 .main-header {
   font-size: 1.4rem;
-  background-color: #2B2B2B;
+  background-color: #717C86;
   max-width: 100%;
 }
 
@@ -297,8 +298,14 @@ ul {
 
 .video-creator-link {
   text-decoration: none;
+  color: #da81c8;
   position: relative;
   font-weight: 600;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
 }
 
 .video-creator-link:before,
@@ -370,7 +377,6 @@ ul {
 }
 
 /* media queries */
-@media (min-width: 36em) {}
 
 @media (min-width: 1px) and (max-width: 680px) {
   .sandbox {
@@ -395,7 +401,6 @@ ul {
 }
 
 @media (max-width: 680px) {
-
   .form-redirect-link {
     display: none;
   }

@@ -1,4 +1,3 @@
-import React from "react";
 import Sandbox from "../../components/Sandbox";
 import VideoPlayerContainer from "../../components/VideoPlayerContainer";
 import { Videos } from '../../Videos';

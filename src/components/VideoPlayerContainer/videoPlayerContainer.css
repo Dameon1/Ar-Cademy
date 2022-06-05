@@ -9,32 +9,3 @@
   top: 0;
   left: 0;
 }
-
-
-@media (min-width: 800px) {
-  .video-creator-link {
-    text-decoration: none;
-    color: #da81c8;
-    position: relative;
-    font-weight: 600;
-    display: inline-block;
-    text-decoration: none;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    transition: all .2s linear;
-  }
-}
-
-@media (max-width: 680px) {
-  .video-creator-link {
-    text-decoration: none;
-    color: #da81c8;
-    position: relative;
-    font-weight: 600;
-    display: inline-block;
-    text-decoration: none;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    transition: all .2s linear;
-  }
-}
