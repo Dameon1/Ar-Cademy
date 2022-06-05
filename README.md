@@ -6,11 +6,11 @@
 
 ## Where to find
 
-  This version is perma-stored  [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) for the live site.
-  # V2
+  This version is perma-stored, and you can find V1 [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) 
+  ## V2
   - [here](https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I) 
 
-  # V3
+  ## V3
   - [here](https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0)  
 
 ## Instructions
