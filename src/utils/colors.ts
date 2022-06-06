@@ -22,14 +22,14 @@ const common = {
 
 const light = {
   ...common,
-  bodyBackground: '#ffffff',
+  bodyBackground: '#f7f7f7',
   text: '#18152E'
 };
 
 const dark = {
   ...common,
   bodyBackground: '#000000',
-  text: '#FFFFFF'
+  text: '#f7f7f7'
 }
 
 export { light, dark };

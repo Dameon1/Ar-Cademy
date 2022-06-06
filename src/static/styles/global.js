@@ -39,8 +39,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .wallet {
-    border: 1px solid ${({ theme }) => !theme.text};
-    background-color: ${({ theme }) => !theme.bodyBackground};
+    border: 1px solid ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.bodyBackground};
   }
   .wallet:hover {
     border: 1px solid ${({ theme }) => theme.userAction};

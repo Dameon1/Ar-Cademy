@@ -11,7 +11,7 @@ import { T_walletName } from '../utils/types';
 
 function App() {
 
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const mq = window.matchMedia('(prefers-color-scheme: light)');
   const [theme, updateTheme] = useState(mq.matches);
   const setTheme = (t) => {
     updateTheme(t);

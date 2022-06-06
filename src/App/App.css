@@ -51,6 +51,7 @@
 .pageBoxes {
   width: 185px;
   margin: 25px;
+  border-radius: 9px;
   text-align: center;
   text-decoration: auto;
   transition: 0.15s;

@@ -1,8 +1,8 @@
 // Modules [ Music, Deployment, Build, Storage, API's, ArFS, Community Tokens, Identity]
 export const Topics = {
     'All': {
-        topics: [],
-        videosById: ["1", "25", "11", "23", "13", "14", "21", "22", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        topics: ['!Tags'],
+        videosById: ["1", "25", "11", "23", "13", "14", "21", "22", "2", "3", "4", "6", "7", "8", "9", "10"],
     },
     'Deployment': {
         topics: [],
@@ -18,7 +18,7 @@ export const Topics = {
     },
     "APIs": {
         topics: [],
-        videosById: ["11", "5", "2", "3", "6"],
+        videosById: ["11", "2", "3", "6"],
     },
     'Community_Tokens': {
         topics: [],
