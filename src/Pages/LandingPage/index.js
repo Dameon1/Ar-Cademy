@@ -18,7 +18,7 @@ export function LandingPage() {
     );
   });
 
-  console.log("Welcome to the Permaweb!", "This site is perma-stored on Arweave and https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I is the permanent link to it.");
+  console.log("Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0.");
 
   return (
     <>
@@ -43,3 +43,5 @@ export function LandingPage() {
     </>
   );
 }
+
+export default LandingPage;

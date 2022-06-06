@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AiOutlinePoweroff } from 'react-icons/ai';
+import { AiOutlinePoweroff, AiOutlineUpload } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { FaTwitter, FaInstagram, FaFacebook, FaGithub, FaDiscord } from 'react-icons/fa';
 import { Button, Grid, Loading, Text, Spacer } from '@nextui-org/react';
@@ -116,6 +116,10 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
                 </DetailsS>
               </VertoIDinfo>
             </BoxVertoID>
+            <Grid.Container gap={3} justify="space-between" alignItems='center'>
+
+              <Button auto onClick={() => console.log("upload file")} iconRight={<AiOutlineUpload size={18} />} color="success">Create</Button>
+            </Grid.Container>
           </> : <>
             <div style={{
               fontSize: 'xx-large',

@@ -1,7 +1,11 @@
 import { Topics } from "../../Topics";
 import { Videos } from "../../Videos";
 import { Link } from "react-router-dom";
+import { urlObject } from "src/lib/api";
+
 function ModulePage() {
+  let getUrl = urlObject();
+  console.log(getUrl)
 
   let module = new URL(window.location.href).pathname.split('/').at(-1);
 

@@ -1,14 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import { MainHeader } from '../../components/MainHeader';
-import { LandingPage } from '../LandingPage';
-import { Identity } from '../Identity';
+import MainHeader from '../../components/MainHeader';
+import Dashboard from '../Dashboard';
+import LandingPage from '../LandingPage';
+import Identity from '../Identity';
 import ModulePage from '../ModulePage';
 import Playground from '../Playground';
 import Footer from '../../components/Footer';
 import Profile from '../Profile';
+import { urlObject } from "src/lib/api";
 
 function Body({ syntaxTheme }) {
-
+  let getUrl = urlObject();
+  console.log(getUrl)
   let module = new URL(window.location.href).pathname.split('/');
   let url = module[1];
   let string = `/${url}`;
@@ -20,6 +23,7 @@ function Body({ syntaxTheme }) {
       <main className="main-content">
         <Routes>
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
+          <Route path="/Ar-Cademy/dashboard" element={<Dashboard />} />
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/profile/:id" element={<Profile />} />

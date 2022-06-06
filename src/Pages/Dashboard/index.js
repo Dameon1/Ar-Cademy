@@ -1,41 +1,42 @@
-import React from "react";
+import { useContext } from "react";
 import './dashboard.css';
-import PassportCard from "../../components/PassportCard";
-import Card from "../../components/Cards";
+import { AMW } from '../../utils/api';
+//import Card from "../../components/Cards";
+import MainContext from '../../context';
+import Login from "src/components/Login/Login";
 
-function ContentVideoCards() {
-  return (
-    <div className="contentScrollContainer">
-      <h1>Videos:</h1>
-      <div className="hs">
-        <Card />
-        <Card />
-        <Card />
-      </div>
-    </div >
-  )
-}
+// function ContentVideoCards() {
+//   return (
+//     <div className="contentScrollContainer">
+//       <h1>Videos:</h1>
+//       <div className="hs">
+//         <Card />
+//         <Card />
+//         <Card />
+//       </div>
+//     </div >
+//   )
+// }
 
-function ContentSandboxCards() {
-  return (
-    <div className="contentScrollContainer">
-      <h1>Sandbox Content</h1>
-      <div className="hs">
-        <Card />
+// function ContentSandboxCards() {
+//   return (
+//     <div className="contentScrollContainer">
+//       <h1>Sandbox Content</h1>
+//       <div className="hs">
+//         <Card />
+//       </div>
+//     </div >
+//   )
+// }
 
-      </div>
-    </div >
-  )
-}
-
-export function Dashboard(props) {
-
+export function Dashboard() {
   return (
     <div className="dashboard">
-      <PassportCard isArweaveWalletConnected={props.isArweaveWalletConnected} />
+      <Login />
+      {/* <PassportCard isArweaveWalletConnected={props.isArweaveWalletConnected} />
       <ContentVideoCards />
       <ContentSandboxCards />
-      <ContentSandboxCards />
+      <ContentSandboxCards /> */}
     </div>
   );
 }

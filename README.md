@@ -53,7 +53,7 @@
     - 3 things were changed for Arweave deployment.
       - "Homepage" was changed to '.'.
       - Router entry point was changed to `<Router basename="/">`.
-      - <Route exact path={string} element={<LandingPage />} /> , where {string} is a refercence to the URL post arweave deployment.
+      - <Route exact path={string} element={<LandingPage />} /> , where {string} is a reference to the URL post arweave deployment.
 
     
 
