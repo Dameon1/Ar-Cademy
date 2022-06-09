@@ -86,11 +86,7 @@
   display: none;
 }
 
-.smallContentBox {
-  padding: 16px;
-  position: relative;
-  max-width: 182px;
-}
+
 
 .smallContentImg {
   width: 150px

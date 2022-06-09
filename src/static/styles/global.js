@@ -50,6 +50,10 @@ const GlobalStyles = createGlobalStyle`
     border: 1px solid ${({ theme }) => !theme.text};
     background-color: ${({ theme }) => !theme.bodyBackground};
   }
+  .passportContainer {
+    border: 1px solid ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.bodyBackground};
+  }
 
 
 `;

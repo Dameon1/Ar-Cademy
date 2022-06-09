@@ -71,7 +71,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           setIsLoading(false);
         }}>
           <img src={icons.bundlr} alt="Bundlr network" />
-          <h4>Bundlr ($MATIC)</h4>
+          <h4>Bundlr</h4>
         </div>
         <div className="wallet" onClick={async () => {
           setIsLoading(true);

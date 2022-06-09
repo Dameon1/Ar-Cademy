@@ -1,7 +1,7 @@
 export const Modules = {
     'All': {
         description: 'Collection of videos on all topics',
-        moduleImage: "https://i.pinimg.com/736x/37/d3/e6/37d3e64cdee3e56cdd8fa1bd04b909d9.jpg",
+        moduleImage: "https://th.bing.com/th/id/OIP.Q6E9dSU7D9U2Lg0B2N0L2AAAAA?pid=ImgDet&rs=1",
     },
     'Deployment': {
         description: 'Learn to Deploy',

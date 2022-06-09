@@ -7,7 +7,7 @@ export function ProfileContentContainer(props) {
   let content = props.contentObjects;
   let cards = content.map(content => {
     return (
-      <Link key={content.uid} to={`/playground/${content.uid}`} className="pageBoxes">
+      <Link key={content.uid} to={`/playground/${content.uid}`} className="cardLinks">
         <Card content={content} />
       </Link>)
   })

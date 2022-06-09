@@ -8,7 +8,57 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: justify;
+}
+
+.moduleContent {
+  width: 185px;
+  margin: 25px;
+  border-radius: 9px;
+  text-align: center;
+  text-decoration: auto;
+  transition: 0.15s;
+  background-color: #717C86;
+  color: #ECF5E6;
+  -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.moduleHeaders {
+  font-size: 24px;
+  padding: 5px;
+  font-weight: bold;
+  color: #ECF5E6;
+  text-align: center;
   text-decoration: none;
+  margin: 5px 0px;
+}
+
+.card {
+  width: 210px;
+  height: 320px;
+  margin: 20px;
+  border: 1px solid white;
+  border-radius: 9px;
+  text-align: center;
+  transition: 0.15s;
+  background-color: #717C86;
+  color: #ECF5E6;
+  -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.cardImageContainer {
+  width: 100%;
+  height: auto;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  padding: 9px;
+  border-radius: 16px;
 }
 
 .connection {
@@ -47,52 +97,24 @@
   margin-top: 10px;
 }
 
-
-.pageBoxes {
-  width: 185px;
-  margin: 25px;
-  border-radius: 9px;
-  text-align: center;
-  text-decoration: auto;
-  transition: 0.15s;
-  background-color: #717C86;
-  color: #ECF5E6;
-
-  -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
-  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+.cardLinks {
+  text-decoration: none;
 }
+
 
 .site-introduction {
   text-align: justify;
 }
 
-.pageBoxes p {
-  color: #efefef;
-}
-
-.pageBoxes:hover {
+.card:hover,
+.pageBoxes:hover,
+.moduleContent:hover {
   transition: 0.15s;
   transform: scale(1.01);
   cursor: pointer;
   -webkit-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
   box-shadow: 1px 3px 8px 2px rgba(0, 0, 0, 0.35);
-}
-
-.pageBoxes p {
-  padding: 0 10px;
-}
-
-.moduleHeaders {
-  display: block;
-  font-size: 1.5em;
-  font-weight: bold;
-  text-decoration: none;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
 }
 
 .heroImage {
