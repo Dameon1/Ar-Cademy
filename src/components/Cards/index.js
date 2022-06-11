@@ -13,7 +13,7 @@ export function Card(props) {
           <AsyncImageLoader src={content.videoImage} alt={content.videoTitle} />
         </Suspense>
       </div>
-      <h3 className="cardTitle">{content.videoTitle}</h3>
+      <h2 className="cardTitle">{content.videoTitle}</h2>
       <p className="cardText">{content.description}</p>
     </div>
   )

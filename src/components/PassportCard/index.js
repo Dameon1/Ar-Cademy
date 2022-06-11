@@ -20,9 +20,8 @@ export function PassportCard(props) {
   const [ansName, setAnsName] = React.useState("");
   const [currentAddr, setCurrentAddr] = React.useState("");
   const [isLoading, setIsLoading] = React.useState();
-  const { profileObject } = props;
-  let { avatar } = props.profileObject;
 
+  let heroImage = props.authorObject.avatar
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,10 +38,11 @@ export function PassportCard(props) {
     setIsLoading(false);
   }, [props.isArweaveWalletConnected]);
 
+  console.log(currentAddr, ansName, isLoading)
   return (
-    <div >
+    <div className="passportContainer">
       <div className="passport">
-        <img className="passportImage" src={avatar} alt="heroImage" />
+        <img className="passportImage" src={heroImage} alt="heroImage" />
         {props.isArweaveWalletConnected && <div className="passportCard-text">
           <ul className="passportTextUl">
             <li className='passportText'>Current Addr</li>

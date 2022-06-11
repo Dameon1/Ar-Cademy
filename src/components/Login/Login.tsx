@@ -13,7 +13,7 @@ function Login({ onClick }: { onClick?: () => void }) {
     addr,
     walletName,
     setWalletName,
-    setAddr } = useContext(MainContext);
+    setaddr } = useContext(MainContext);
   const arConnect = useArConnect();
 
   useEffect(() => {
@@ -21,31 +21,31 @@ function Login({ onClick }: { onClick?: () => void }) {
     (async () => {
       try {
         if ((await arConnect.getPermissions()).includes("ACCESS_ADDRESS")) {
-          setAddr(await arConnect.getActiveAddress());
+          setaddr(await arConnect.getActiveAddress());
         }
       } catch {
         alert("Error: Could not get ACCESS_ADDRESS permission");
       }
     })();
-  }, [arConnect, addr, setAddr]);
+  }, [arConnect, addr, setaddr]);
 
   const disconnectWallet = async () => {
     await AMW.disconnect();
-    setAddr(null);
+    setaddr(null);
   };
 
   const login = {
     arconnect: async () => {
-      setAddr(await AMW.connect("arconnect", arConnect));
+      setaddr(await AMW.connect("arconnect", arConnect));
       setWalletName("arconnect");
     },
     arweaveWebWallet: async () => {
-      setAddr(await AMW.connect("webwallet"));
+      setaddr(await AMW.connect("webwallet"));
       setWalletName("webwallet");
     },
     bundlr: async () => {
       console.log("bundlr");
-      setAddr(await AMW.connect("bundlr"));
+      setaddr(await AMW.connect("bundlr"));
       setWalletName("bundlr");
     }
   }

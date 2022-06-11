@@ -9,10 +9,8 @@ import { GlobalStyles } from '../static/styles/global';
 import { a11yDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { T_walletName } from '../utils/types';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import { AMW } from '../utils/api';
 
-
-
+const queryClient = new QueryClient();
 
 function App() {
 
@@ -21,15 +19,11 @@ function App() {
   const setTheme = (t) => {
     updateTheme(t);
   }
-  const [addr, setAddr] = useState(null);
+  const [addr, setaddr] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [walletName, setWalletName] = useState<T_walletName>();
-  const queryClient = new QueryClient();
 
-  const disconnectWallet = async () => {
-    await AMW.disconnect();
-    setAddr(null);
-  };
+
   function changeState(data) {
     setIsLoading(true);
     // setIsArweaveWalletConnected(true);
@@ -43,10 +37,9 @@ function App() {
       theme,
       setTheme,
       addr,
-      setAddr,
+      setaddr,
       walletName,
-      setWalletName,
-      disconnectWallet
+      setWalletName
     }}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme ? dark : light} >

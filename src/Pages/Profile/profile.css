@@ -6,11 +6,11 @@
 
 .passportContainer {
   min-width: 350px;
-  max-width: 675px;
-  margin: auto;
   text-align: justify;
   text-decoration: none;
-  border-radius: 9px;
+  border: 2px solid black;
+  margin: 10px;
+  border-radius: 10px;
   height: 240px;
 
   -webkit-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);

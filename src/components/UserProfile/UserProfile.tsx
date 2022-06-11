@@ -145,6 +145,7 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
               <Button onClick={() => setModalIsOpen(true)} color="success" size="xl" css={{ marginTop: '30px' }}>Activate my Account</Button>
             </div>
             <Button auto onClick={disconnectWallet} icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
+
           </>}
         </>}
     </div>

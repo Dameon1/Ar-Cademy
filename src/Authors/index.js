@@ -7,7 +7,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 1,
         username: "@1UniverseMusic",
-        avatar: "https://pbs.twimg.com/profile_images/1515256314959577091/oVsxDW3E_200x200.jpg",
+        avatar: "https://pbs.twimg.com/profile_images/1515256314959577091/oVsxDW3E_400x400.jpg",
     },
     '2': {
         authorLink: "https://twitter.com/KoiiNetwork",
@@ -17,7 +17,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 2,
         username: "@KoiiNetwork",
-        avatar: "https://pbs.twimg.com/profile_images/1424786684194041859/lkDa9l1U_200x200.png",
+        avatar: "https://pbs.twimg.com/profile_images/1424786684194041859/lkDa9l1U_400x400.png",
     },
     '3': {
         author: "Shperon",
@@ -27,7 +27,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 3,
         username: "@SpheronHQ",
-        avatar: "https://pbs.twimg.com/profile_images/1476901301950693383/YvJ0POFI_200x200.jpg",
+        avatar: "https://pbs.twimg.com/profile_images/1476901301950693383/YvJ0POFI_400x400.jpg",
     },
     '4': {
         author: "Ardrive",
@@ -37,7 +37,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 4,
         username: "@ardriveapp",
-        avatar: "https://pbs.twimg.com/profile_images/1380527128186327043/XFPK_fKC_200x200.png",
+        avatar: "https://pbs.twimg.com/profile_images/1380527128186327043/XFPK_fKC_400x400.png",
 
     },
     '5': {
@@ -69,7 +69,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 7,
         username: "@onlyarweave",
-        avatar: "https://pbs.twimg.com/profile_images/1395167901473181706/QGSGttf2_200x200.jpg",
+        avatar: "https://pbs.twimg.com/profile_images/1395167901473181706/QGSGttf2_400x400.jpg",
     },
     '8': {
         author: 'Sam Williams',
@@ -79,7 +79,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 8,
         username: "@samecwilliams",
-        avatar: "https://pbs.twimg.com/profile_images/1113074197255860224/PKahsyCP_200x200.png",
+        avatar: "https://pbs.twimg.com/profile_images/1113074197255860224/PKahsyCP_400x400.png",
     },
     '9': {
         author: 'Redstone',
@@ -89,7 +89,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 9,
         username: "@redstone_defi",
-        avatar: "https://pbs.twimg.com/profile_images/1405602838915522562/jf6E8c-K_200x200.png",
+        avatar: "https://pbs.twimg.com/profile_images/1405602838915522562/jf6E8c-K_400x400.png",
     },
     '10': {
         author: "Kwil",
@@ -99,18 +99,17 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 10,
         username: "@Kwil_App",
-        avatar: "https://pbs.twimg.com/profile_images/1466900253844459524/PnxUVPrt_200x200.jpg"
+        avatar: "https://pbs.twimg.com/profile_images/1466900253844459524/PnxUVPrt_400x400.jpg"
     },
     '11': {
         author: "Tom Wilson",
-        DiD: "z8TMOgInmRMva8oQZC7rbDZzIOZpJ5qaQtdB4zYGJqg",
         authorLink: "https://twitter.com/twilson63",
         authorWebsite: "https://hyper63.com/",
         createdVideosByID: ["26", "24", "14", "15", "16", "17", "18", "19", "20"],
         createdContentByID: ["ContentID"],
         uid: "11",
         username: "@twilson63",
-        avatar: "https://pbs.twimg.com/profile_images/1293584015992279040/gc6Cnrn1_200x200.jpg"
+        avatar: "https://pbs.twimg.com/profile_images/1293584015992279040/gc6Cnrn1_400x400.jpg"
     },
     '12': {
         author: "Meson",
@@ -120,7 +119,7 @@ export const Authors = {
         createdContentByID: ["ContentID"],
         uid: "12",
         username: "@NetworkMeson",
-        avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_200x200.jpg"
+        avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_400x400.jpg"
     },
     '13': {
         author: "Dmac",
@@ -140,7 +139,7 @@ export const Authors = {
         createdContentByID: ["ContentID"],
         uid: "14",
         username: "@xendarboh",
-        avatar: "https://pbs.twimg.com/profile_images/3422271797/caf9c1d59faf35ea559117e521a3b131_200x200.png"
+        avatar: "https://pbs.twimg.com/profile_images/3422271797/caf9c1d59faf35ea559117e521a3b131_400x400.png"
     },
 }
 

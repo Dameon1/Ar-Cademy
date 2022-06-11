@@ -1,5 +1,5 @@
 export const Modules = {
-    'Learn': {
+    'All': {
         description: 'Collection of videos on all topics',
         moduleImage: "https://th.bing.com/th/id/OIP.Q6E9dSU7D9U2Lg0B2N0L2AAAAA?pid=ImgDet&rs=1",
     },
