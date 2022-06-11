@@ -1,5 +1,10 @@
 // import Arweave from 'arweave';
-
+export function urlObject() {
+  let module = new URL(window.location.href).pathname.split('/');
+  let url = module[1];
+  let string = `/${url}`;
+  return { module, url, string };
+}
 // export const arweave = Arweave.init({
 //   host: "arweave.net",
 //   port: 443,

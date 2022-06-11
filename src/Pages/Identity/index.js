@@ -1,6 +1,8 @@
 //import { ArweaveWebWallet } from 'arweave-wallet-connector'
 //import ArConnect from '../../api/ArConnect';
 import Login from '../../components/Login/Login';
+import { urlObject } from "src/lib/api";
+
 //import ArweaveAccount from '../../api/ArweaveAccount';
 // async function connect(changeState) {
 //   const wallet = new ArweaveWebWallet({
@@ -14,6 +16,7 @@ import Login from '../../components/Login/Login';
 // }
 
 export function Identity() {
+  console.log(urlObject)
   return (
     <>
       <div className="text-container">

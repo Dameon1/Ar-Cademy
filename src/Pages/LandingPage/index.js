@@ -7,9 +7,9 @@ export function LandingPage() {
 
   const moduleCards = modules.map((module, index) => {
     return (
-      <Link to={`/modules/${module}`} key={index} className="pageBoxes" >
+      <Link to={`/modules/${module}`} key={index} className="moduleContent" >
         <li>
-          <h2 className="moduleHeaders">{modules[index]}</h2>
+          <p className="moduleHeaders">{modules[index]}</p>
           <img src={Modules[module].moduleImage} className="heroImage"
             alt={`Follow of ${Modules[module].title}`} />
           <p className="sample-path-description">{Modules[module].description}</p>
@@ -18,7 +18,7 @@ export function LandingPage() {
     );
   });
 
-  console.log("Welcome to the Permaweb!", "This site is perma-stored on Arweave and https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I is the permanent link to it.");
+  console.log("Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0.");
 
   return (
     <>
@@ -30,10 +30,7 @@ export function LandingPage() {
           Upload your own instructional videos and make the community leader board or learn a new skill with our community
           of developers and creators to show Proof of Knowledge (PoK) to the world.
         </p>
-        <p className="site-introduction">
-          Instructional videos are currently curated and comes with a sandbox to get a more intuitive feel of the content
-          and to practice with your own code.
-        </p>
+       
       </div>
       <div>
         <ul className="moduleCards">
@@ -43,3 +40,5 @@ export function LandingPage() {
     </>
   );
 }
+
+export default LandingPage;

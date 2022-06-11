@@ -8,6 +8,11 @@ import { light, dark } from '../utils/colors';
 import { GlobalStyles } from '../static/styles/global';
 import { a11yDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { T_walletName } from '../utils/types';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { AMW } from '../utils/api';
+
+
+
 
 function App() {
 
@@ -16,11 +21,15 @@ function App() {
   const setTheme = (t) => {
     updateTheme(t);
   }
-  const [addr, setaddr] = useState(null);
+  const [addr, setAddr] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [walletName, setWalletName] = useState<T_walletName>();
+  const queryClient = new QueryClient();
 
-
+  const disconnectWallet = async () => {
+    await AMW.disconnect();
+    setAddr(null);
+  };
   function changeState(data) {
     setIsLoading(true);
     // setIsArweaveWalletConnected(true);
@@ -34,14 +43,17 @@ function App() {
       theme,
       setTheme,
       addr,
-      setaddr,
+      setAddr,
       walletName,
-      setWalletName
+      setWalletName,
+      disconnectWallet
     }}>
-      <ThemeProvider theme={theme ? dark : light} >
-        <GlobalStyles />
-        <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme ? dark : light} >
+          <GlobalStyles />
+          <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
+        </ThemeProvider>
+      </QueryClientProvider>
     </MainContext.Provider>
   );
 }

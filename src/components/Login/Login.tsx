@@ -13,7 +13,7 @@ function Login({ onClick }: { onClick?: () => void }) {
     addr,
     walletName,
     setWalletName,
-    setaddr } = useContext(MainContext);
+    setAddr } = useContext(MainContext);
   const arConnect = useArConnect();
 
   useEffect(() => {
@@ -21,31 +21,31 @@ function Login({ onClick }: { onClick?: () => void }) {
     (async () => {
       try {
         if ((await arConnect.getPermissions()).includes("ACCESS_ADDRESS")) {
-          setaddr(await arConnect.getActiveAddress());
+          setAddr(await arConnect.getActiveAddress());
         }
       } catch {
         alert("Error: Could not get ACCESS_ADDRESS permission");
       }
     })();
-  }, [arConnect, addr, setaddr]);
+  }, [arConnect, addr, setAddr]);
 
   const disconnectWallet = async () => {
     await AMW.disconnect();
-    setaddr(null);
+    setAddr(null);
   };
 
   const login = {
     arconnect: async () => {
-      setaddr(await AMW.connect("arconnect", arConnect));
+      setAddr(await AMW.connect("arconnect", arConnect));
       setWalletName("arconnect");
     },
     arweaveWebWallet: async () => {
-      setaddr(await AMW.connect("webwallet"));
+      setAddr(await AMW.connect("webwallet"));
       setWalletName("webwallet");
     },
     bundlr: async () => {
       console.log("bundlr");
-      setaddr(await AMW.connect("bundlr"));
+      setAddr(await AMW.connect("bundlr"));
       setWalletName("bundlr");
     }
   }
@@ -71,7 +71,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           setIsLoading(false);
         }}>
           <img src={icons.bundlr} alt="Bundlr network" />
-          <h4>Bundlr ($MATIC)</h4>
+          <h4>Bundlr</h4>
         </div>
         <div className="wallet" onClick={async () => {
           setIsLoading(true);
