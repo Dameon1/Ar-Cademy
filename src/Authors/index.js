@@ -105,7 +105,7 @@ export const Authors = {
         author: "Tom Wilson",
         authorLink: "https://twitter.com/twilson63",
         authorWebsite: "https://hyper63.com/",
-        createdVideosByID: ["26", "24", "14", "15", "16", "17", "18", "19", "20"],
+        createdVideosByID: ["24", "14", "15", "16", "17", "18", "19", "20"],
         createdContentByID: ["ContentID"],
         uid: "11",
         username: "@twilson63",

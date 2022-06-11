@@ -106,7 +106,7 @@ export const Videos = {
     },
     "7": {
         uid: "7",
-        videoSrc: "https://coldcdn.com/api/cdn/e5q8d6",
+        videoSrc: "https://coldcdn.com/api/cdn/rvk7pw",
         videoImage: "https://uploads-ssl.webflow.com/625de12f70312b8d7d1aa91b/6269d28cd3e415a0d1544b18_Arweave_Onboarder_Permaweb.gif",
         videoTitle: "Intro to Arweave",
         description: "Arweave org explaining an introduction to data as scalable api's.",
@@ -406,22 +406,6 @@ export const Videos = {
         sandboxLinks: {
             preferred: "repl",
             repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
-        },
-    },
-    "26": {
-        uid: "26",
-        videoSrc: "https://www.youtube.com/watch?v=ak6bDOOW1H4",
-        videoImage: "https://i3.ytimg.com/vi/ak6bDOOW1H4/mqdefault.jpg",
-        videoTitle: "Intro to DataFI Part 1",
-        description: "DataFi is the concept of combining permanent Data + NFT (Non-Fungible Token) + Permaweb + SmartWeave Contracts + PST (Profit Sharing Token) in ways that provide decentralized finalization features for immutable storage in the Arweave community.",
-        authorID: "11",
-        tags: ["Atomic", "Token", "Smartweave", "Intro"],
-        sandboxLinks: {
-            preferred: "repl",
-            repl: "https://replit.com/@Dameon1/datafi-smartweave-dapp?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
             graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
