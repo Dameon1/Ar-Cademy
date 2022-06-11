@@ -8,9 +8,6 @@ import { light, dark } from '../utils/colors';
 import { GlobalStyles } from '../static/styles/global';
 import { a11yDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { T_walletName } from '../utils/types';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-
-const queryClient = new QueryClient();
 
 function App() {
 
@@ -41,12 +38,10 @@ function App() {
       walletName,
       setWalletName
     }}>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme ? dark : light} >
-          <GlobalStyles />
-          <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
-        </ThemeProvider>
-      </QueryClientProvider>
+      <ThemeProvider theme={theme ? dark : light} >
+        <GlobalStyles />
+        <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
+      </ThemeProvider>
     </MainContext.Provider>
   );
 }

@@ -18,4 +18,3 @@ export function MainHeader() {
   );
 }
 
-export default MainHeader;
