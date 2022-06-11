@@ -30,10 +30,7 @@ export function LandingPage() {
           Upload your own instructional videos and make the community leader board or learn a new skill with our community
           of developers and creators to show Proof of Knowledge (PoK) to the world.
         </p>
-        <p className="site-introduction">
-          Instructional videos are currently curated and comes with a sandbox to get a more intuitive feel of the content
-          and to practice with your own code.
-        </p>
+       
       </div>
       <div>
         <ul className="moduleCards">

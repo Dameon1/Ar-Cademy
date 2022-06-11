@@ -41,6 +41,7 @@
   border: 1px solid white;
   border-radius: 9px;
   text-align: center;
+  padding: 6px;
   transition: 0.15s;
   background-color: #717C86;
   color: #ECF5E6;

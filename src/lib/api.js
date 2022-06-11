@@ -3,7 +3,6 @@ export function urlObject() {
   let module = new URL(window.location.href).pathname.split('/');
   let url = module[1];
   let string = `/${url}`;
-  console.log(module, url, string)
   return { module, url, string };
 }
 // export const arweave = Arweave.init({

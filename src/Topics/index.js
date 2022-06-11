@@ -1,6 +1,6 @@
 // Modules [ Music, Deployment, Build, Storage, API's, ArFS, Community Tokens, Identity]
 export const Topics = {
-    'All': {
+    'Learn': {
         topics: ['!Tags'],
         videosById: ["26", "25", "11", "23", "13", "14", "21", "22", "7", "2", "3", "4", "6", "8", "9", "10"],
     },

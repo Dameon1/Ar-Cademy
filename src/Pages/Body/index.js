@@ -9,13 +9,13 @@ import Footer from '../../components/Footer';
 import Profile from '../Profile';
 import { urlObject } from "src/lib/api";
 
+
+
 function Body({ syntaxTheme }) {
   let getUrl = urlObject();
-  console.log(getUrl)
   let module = new URL(window.location.href).pathname.split('/');
   let url = module[1];
   let string = `/${url}`;
-  console.log(module, url, string)
 
   return (
     <div className="app" >

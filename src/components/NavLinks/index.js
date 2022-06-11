@@ -4,8 +4,11 @@ export function NavLinks() {
   return (
     <nav className="site-nav">
       <ul>
-        <li>
+        {/* <li>
           <Link className="nav-link" to={-1}>back</Link>
+        </li> */}
+        <li>
+          <Link className="nav-link" to="/">Home</Link>
         </li>
         {/* <li>
           <Link className="nav-link" to="/Ar-Cademy/test">test</Link>
@@ -13,9 +16,7 @@ export function NavLinks() {
         <li>
           <Link className="nav-link" to="/Ar-Cademy/dashboard">Dashboard</Link>
         </li>
-        <li>
-          <Link className="nav-link" to="/">Home</Link>
-        </li>
+
       </ul>
 
     </nav>
