@@ -13,7 +13,7 @@
   margin-top: 20px;
 }
 
-filterListStyle {
+.filterListStyle {
   display: flex;
   align-items: flex-start;
 }
@@ -34,4 +34,7 @@ filterListStyle {
 .sandboxButton:hover {
   box-shadow: 0 3px 10px #da81c8;
   color: black;
+}
+.sandboxIframe {
+  height: 100%;
 }

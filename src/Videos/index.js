@@ -25,7 +25,6 @@ export const Videos = {
         authorID: "2",
         tags: ["Deployment", "React", "Arweave", "Build"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -43,10 +42,9 @@ export const Videos = {
         authorID: "3",
         tags: ["Deployment"],
         sandboxLinks: {
-            preferred: "arcode",
+            arcode: "https://arcode.studio/#/",
             repl: "https://replit.com/@Dameon1/nextExample",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql",
         },
     },
@@ -61,7 +59,6 @@ export const Videos = {
         authorID: "4",
         tags: ["Information"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -80,7 +77,6 @@ export const Videos = {
         authorID: "3",
         tags: ["Deployment"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -96,11 +92,10 @@ export const Videos = {
         authorID: "6",
         tags: ["Build", "Deployment", "ArweaveNative"],
         sandboxLinks: {
-            preferred: "graphql",
+            graphql: "https://arweave.net/graphql",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql",
             
         },
     },
@@ -113,11 +108,10 @@ export const Videos = {
         authorID: "7",
         tags: ["Intro"],
         sandboxLinks: {
-            preferred: "graphql",
+            graphql: "https://arweave.net/graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql",
         },
     },
     "8": {
@@ -129,10 +123,9 @@ export const Videos = {
         authorID: "8",
         tags: ["Build"],
         sandboxLinks: {
-            preferred: "arcode",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
+            repl: "https://meson.network/",
+            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             graphql: "https://arweave.net/graphql"
         },
     },
@@ -145,11 +138,10 @@ export const Videos = {
         authorID: "6",
         tags: ["Build", "Deployment"],
         sandboxLinks: {
-            preferred: "graphql",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
         },
     },
     "10": {
@@ -161,7 +153,6 @@ export const Videos = {
         authorID: "4",
         tags: ["ArFS"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -177,9 +168,8 @@ export const Videos = {
         authorID: "9",
         tags: ["Contracts"],
         sandboxLinks: {
-            preferred: "arcodeArweave",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
@@ -193,9 +183,8 @@ export const Videos = {
         authorID: "10",
         tags: ["Storage", "Intro"],
         sandboxLinks: {
-            preferred: "arcodeArweave",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
@@ -209,9 +198,8 @@ export const Videos = {
         authorID: "10",
         tags: ["Build", "Storage"],
         sandboxLinks: {
-            preferred: "arcodeArweave",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
             arcode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
@@ -225,7 +213,6 @@ export const Videos = {
         authorID: "11", 
          tags: ["Near", "Arweave", "React", "Build", "Intro",],
          sandboxLinks: {
-             preferred: "repl",
              repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
              arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
              arcode: "https://arcode.studio/#/",
@@ -241,7 +228,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -257,7 +243,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -273,7 +258,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -289,7 +273,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -305,7 +288,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -321,7 +303,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -337,8 +318,7 @@ export const Videos = {
         authorID: "12", 
         tags: ["CDN", "Meson", "Network", "Accelerated", "Intro"],
         sandboxLinks: {
-            preferred: "self",
-            self: "https://meson.network/",
+            Meson: "https://meson.network/",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -354,8 +334,7 @@ export const Videos = {
         authorID: "4", 
         tags: ["ArDrive", "Manifest", "Intro", "Build"],
         sandboxLinks: {
-            preferred: "self",
-            self: "https://meson.network/",
+            Meson: "https://meson.network/",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -371,7 +350,6 @@ export const Videos = {
         authorID: "13", 
         tags: ["Transfers", "Arweave", "Intro", "Build"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/nft-uploader?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -387,8 +365,7 @@ export const Videos = {
         authorID: "11",
         tags: ["Bundlr", "Arkb", "Deno", "Deployment", "Intro"],
         sandboxLinks: {
-            preferred: "self",
-            self: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
+            notes: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -404,7 +381,6 @@ export const Videos = {
         authorID: "14",
         tags: ["Kwil", "DB", "Setup", "Intro"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
@@ -420,7 +396,6 @@ export const Videos = {
         authorID: "11",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
-            preferred: "repl",
             repl: "https://replit.com/@Dameon1/datafi-smartweave-dapp?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
