@@ -16,11 +16,11 @@ export function MainHeader() {
       <h1 className="site-logo">Arcademy</h1>
       <div className="form-redirect-container">
         {addr ?
-              <Button auto onClick={disconnectWallet} icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
-          // <button className="form-redirect-button">{addr}</button>
+          <Button auto onClick={disconnectWallet} className="form-redirect-link signOutLink" icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
           : <Link to="/identity" className="form-redirect-link identityLink">
             {"Identity"}
-          </Link>}
+          </Link>
+          }
         <ThemeSwitch />
       </div>
     </header>

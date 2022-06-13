@@ -3,15 +3,14 @@ import MainContext from '../../context';
 import './sandbox.css';
 
 export default function Sandbox(props) {
-  const { isLoading, setIsLoading } = useContext(MainContext);
   const [sandboxContent, setSandboxContent] = useState(props.sandboxContent);
 
   let sandboxButtonTypes = Object.keys(props.sandboxLinks);
   let src = props.sandboxLinks[sandboxButtonTypes[0]];
 
-  useEffect(() => {
-    setSandboxContent(src);
-  }, [props.sandboxContent]);
+  // useEffect(() => {
+  //   setSandboxContent(src);
+  // }, [src]);
 
 
   function setFilter(newContent) {
@@ -20,6 +19,7 @@ export default function Sandbox(props) {
     }
   }
  
+  // These two function are to keep the iFrame from autoscrolling the page on load.
   function noscroll() {
     window.scrollTo(0, 0);
   }
@@ -32,18 +32,6 @@ export default function Sandbox(props) {
       window.removeEventListener('scroll', noscroll);
     }, 2000);
   }
-
-  // function SandboxButtons() {
-  //   return sandboxTypes.map((sandboxType, i) => {
-  //     return (
-  //       <button key={i} className="sandboxButton"
-  //               onClick={() => setFilter(sandboxType)}>
-  //         {sandboxType}
-  //       </button>
-  //     );
-  //   });
-  // }
-
 
   function SandboxButtons(data) {
     console.log(data.data,"data")
@@ -65,7 +53,7 @@ export default function Sandbox(props) {
           </div>
       </div>
       <div className="sandboxIframe">
-      <iframe onLoad={onMyFrameLoad} frameBorder="0" width="100%" height="100%" scrolling="no" title={props.title} src={sandboxContent}></iframe>
+      <iframe onLoad={onMyFrameLoad} frameBorder="0" width="100%" height="100%" title={props.title} src={src}></iframe>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ function Body({ syntaxTheme }) {
       <main className="main-content">
         <Routes>
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
-          <Route path="/Ar-Cademy/dashboard" element={<Dashboard />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/profile/:id" element={<Profile />} />

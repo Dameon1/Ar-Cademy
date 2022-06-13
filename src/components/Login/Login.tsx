@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import  {useNavigate}  from 'react-router-dom';
 import useArConnect from 'use-arconnect';
 import { icons } from '../../static';
 import UserProfile from '../UserProfile/UserProfile';
@@ -7,6 +8,7 @@ import { AMW } from '../../utils/api';
 import MainContext from '../../context';
 
 function Login({ onClick }: { onClick?: () => void }) {
+  let navigate = useNavigate();
   const { isLoading,
     setIsLoading,
     theme,
@@ -44,7 +46,6 @@ function Login({ onClick }: { onClick?: () => void }) {
       setWalletName("webwallet");
     },
     bundlr: async () => {
-      console.log("bundlr");
       setAddr(await AMW.connect("bundlr"));
       setWalletName("bundlr");
     }
@@ -61,6 +62,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           setIsLoading(true);
           await login.arconnect();
           setIsLoading(false);
+          navigate('/Dashboard');
         }}>
           <img src={icons.arconnect} alt="ArConnect" />
           <h4>ArConnect</h4>
@@ -69,6 +71,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           setIsLoading(true);
           await login.bundlr();
           setIsLoading(false);
+          navigate('/Dashboard');
         }}>
           <img src={icons.bundlr} alt="Bundlr network" />
           <h4>Bundlr</h4>
@@ -77,6 +80,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           setIsLoading(true);
           await login.arweaveWebWallet();
           setIsLoading(false);
+          navigate('/Dashboard');
         }}>
           <img src={theme ? icons.arweaveWebWallet.dark : icons.arweaveWebWallet.light} alt="arweave.app" />
           <h4>arweave.app</h4>
