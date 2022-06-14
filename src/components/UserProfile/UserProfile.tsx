@@ -72,7 +72,6 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
 
           <Grid.Container gap={3} justify="space-between" alignItems='center'>
             <Button auto onClick={() => setModalIsOpen(true)} iconRight={<FiEdit size={18} />} color="gradient">Edit Profile</Button>
-            {/* <Button auto onClick={disconnectWallet} icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button> */}
             {walletName === "bundlr" && <>
               Balance: {balance}
               <a href="https://demo.bundlr.network/" target="_blank" rel="noreferrer">Top-up my bundlr account</a>
@@ -118,7 +117,6 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
               </VertoIDinfo>
             </BoxVertoID>
             <Grid.Container gap={3} justify="space-between" alignItems='center'>
-              <Button auto onClick={disconnectWallet} icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
               {/* <Button auto onClick={() => console.log("upload file")} iconRight={<AiOutlineUpload size={18} />} color="success">Create</Button> */}
             </Grid.Container>
           </> : <>
@@ -144,7 +142,6 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
               </div>
               <Button onClick={() => setModalIsOpen(true)} color="success" size="xl" css={{ marginTop: '30px' }}>Activate my Account</Button>
             </div>
-            <Button auto onClick={disconnectWallet} icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
           </>}
         </>}
     </div>

@@ -14,7 +14,7 @@ export function NavLinks() {
           <Link className="nav-link" to="/Ar-Cademy/test">test</Link>
         </li> */}
         <li>
-          <Link className="nav-link" to="/Ar-Cademy/dashboard">Dashboard</Link>
+          <Link className="nav-link" to="/Dashboard">Dashboard</Link>
         </li>
 
       </ul>

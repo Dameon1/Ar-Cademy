@@ -123,7 +123,7 @@ export const Videos = {
         authorID: "8",
         tags: ["Build"],
         sandboxLinks: {
-            arcode: "https://arcode.studio/#/",
+            viewblock: "https://viewblock.io/arweave",
             repl: "https://meson.network/",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             graphql: "https://arweave.net/graphql"
