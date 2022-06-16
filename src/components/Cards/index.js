@@ -1,8 +1,11 @@
 import { Suspense, lazy } from 'react';
-const AsyncImageLoader = lazy(() => import("src/components/AsyncImageLoader"));
+import {KoiiCard} from "./KoiiCards";
 
-export function Card(props) {
+
+function Card(props) {
+  const AsyncImageLoader = lazy(() => import("src/components/AsyncImageLoader"));
   let { content } = props;
+  console.log("content", content);
   let cardDescriptionLength = content.description.length;
   cardDescriptionLength > 140 ? content.description = (content.description.slice(0, 140) + ' ...') : console.log(cardDescriptionLength);
 
@@ -19,4 +22,4 @@ export function Card(props) {
   )
 }
 
-export default Card;
+export { Card, KoiiCard};

@@ -3,7 +3,7 @@ import { Topics } from "../../Topics";
 import { Videos } from "../../Videos";
 import { Link } from "react-router-dom";
 
-import Card from "../../components/Cards";
+import {Card} from "../../components/Cards";
 
 function ModulePage() {
 

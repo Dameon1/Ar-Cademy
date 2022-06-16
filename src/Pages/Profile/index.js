@@ -9,7 +9,6 @@ export default function Profile() {
 
   let profileId = new URL(window.location.href).pathname.split('/').at(-1);
   let profileObject = Authors[profileId];
-
   let videoIds = Authors[profileId].createdVideosByID;
   let videoObjects = videoIds.map(videoId => Videos[videoId]);
 
