@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AiOutlinePoweroff, AiOutlineUpload } from 'react-icons/ai';
+import {  AiOutlineUpload } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { FaTwitter, FaInstagram, FaFacebook, FaGithub, FaDiscord } from 'react-icons/fa';
 import { Button, Grid, Loading, Text, Spacer } from '@nextui-org/react';

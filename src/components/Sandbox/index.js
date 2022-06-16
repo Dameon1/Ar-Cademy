@@ -1,5 +1,4 @@
-import {useState, useContext, useEffect } from "react";
-import MainContext from '../../context';
+import {useState } from "react";
 import './sandbox.css';
 
 export default function Sandbox(props) {
@@ -7,11 +6,6 @@ export default function Sandbox(props) {
 
   let sandboxButtonTypes = Object.keys(props.sandboxLinks);
   let src = props.sandboxLinks[sandboxButtonTypes[0]];
-
-  // useEffect(() => {
-  //   setSandboxContent(src);
-  // }, [src]);
-
 
   function setFilter(newContent) {
     if (sandboxContent !== newContent) {
@@ -34,7 +28,6 @@ export default function Sandbox(props) {
   }
 
   function SandboxButtons(data) {
-    console.log(data.data,"data")
     return data.data.map((sandboxType, i) => {
       return (
         <button key={i} className="sandboxButton"

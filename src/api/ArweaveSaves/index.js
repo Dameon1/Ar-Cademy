@@ -1,6 +1,5 @@
 import { querySchema, gqlTemplate } from "../../utils/arweave/gql.js";
 import { arweaveSavePer } from "../../Queries/Test";
-import { arweave } from "../../utils/api";
 
 export async function getArweaveSaves(address) {
   try {

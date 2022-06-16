@@ -26,10 +26,6 @@ export function Identity() {
           we need to be able to connect with the people and communities that we are connected to, with the Identity that we are
           comfortable with. Some of these are security risks to personal safety, privacy, and trust.
         </p>
-        <p className="site-introduction">
-          More to come on the Identity connecting solutions by ArVerify, Decentraland, Verto.Id, and others soon. For now, the
-          passport we are using arweave.app
-        </p>
       </div>
       <Login />
     </>

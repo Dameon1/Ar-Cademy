@@ -1,7 +1,6 @@
 import { Authors } from '../../Authors';
 import { Videos } from '../../Videos';
 import PassportCard from '../../components/PassportCard';
-import TestProfile from '../../components/TestProfile';
 import ProfileContentContainer from '../../components/ProfileContentContainer';
 import './profile.css'
 
@@ -19,7 +18,7 @@ export default function Profile() {
         {/* <TestProfile profileObject={profileObject} /> */}
         <PassportCard profileObject={profileObject} />
       </div>
-      <ProfileContentContainer contentObjects={videoObjects} contentType={"Videos"} />
+      <ProfileContentContainer contentObjects={videoObjects} contentType={"Videos"} label="AuthorVideos"/>
     </div>
   );
 }

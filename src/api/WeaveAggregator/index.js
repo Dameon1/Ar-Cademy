@@ -52,5 +52,7 @@ import { getKoii } from "../Koii";
   
       // case "ans-cache":
       //   return await getAnsSafeCache();
+      default: 
+      return
     }
   }

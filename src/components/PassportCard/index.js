@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
-//import { getVerification } from "arverify";
 import { ans } from "../../api/ANS/ans.js";
 
-// async function getArVerificationStatus(addr) {
-//   const verification = await getVerification(addr);
-//   console.log(verification, "verification");
-//   return verification.percentage
-// }
+
 
 function getANS(addr) {
   const ansHandle = ans.find((holder) => holder.address === addr);
@@ -19,14 +14,11 @@ export function PassportCard(props) {
   //const [arVerifyScore, setArVerifyScore] = React.useState(0);
   const [ansName, setAnsName] = React.useState("");
   const [currentAddr, setCurrentAddr] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState();
-  const { profileObject } = props;
   let { avatar } = props.profileObject;
 
 
   useEffect(() => {
-    setIsLoading(true);
-    async function fetchData() {
+    function fetchData() {
       if (props.isArweaveWalletConnected) {
         let address = window.arweaveWallet.getActiveAddress();
         //let arVerifyReturnedScore = await getArVerificationStatus(address);
@@ -36,7 +28,6 @@ export function PassportCard(props) {
       }
     }
     fetchData();
-    setIsLoading(false);
   }, [props.isArweaveWalletConnected]);
 
   return (
