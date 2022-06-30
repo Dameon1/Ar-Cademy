@@ -1,0 +1,132 @@
+.selectStyle {
+  margin-bottom: 20px;
+  min-width: 400px;
+  border-color: red;
+}
+
+
+.selectContainerStyle {
+  margin: 10px 0px 20px;
+}
+
+.linkStyle {
+  margin: 15px 0px;
+}
+
+
+.containerStyle {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.inputContainerStyle {
+  margin: 0px 0px 15px;
+}
+
+.videoStyle {
+  margin-bottom: 20px;
+}
+
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 0px 0px;
+}
+
+.bottomFormStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 0px 0px;
+  margin-top: 35px;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.labelStyle {
+  margin: 0px 0px 5px;
+}
+
+.inputStyle {
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, .08);
+  margin-bottom: 15px;
+}
+
+.textAreaStyle {
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, .08);
+  margin-bottom: 15px;
+  width: 350px;
+  height: 90px;
+}
+
+.buttonStyle {
+  background-color: black;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  width: 180;
+  transition: all .35s;
+  cursor: pointer;
+}
+
+.buttonStyle:hover {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.saveVideoButtonStyle {
+  background-color: black;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  width: 180;
+  transition: all .35s;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  width: 180;
+  transition: all .35s;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.saveVideoButtonStyle:hover {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.wideButtonStyle {
+  background-color: black;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  width: 180;
+  transition: all .35s;
+  cursor: pointer;
+}
+
+.wideButtonStyle:hover {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.balanceStyle {
+  padding: 10px 25px;
+  background-color: rgba(0, 0, 0, .08);
+  border-radius: 30px;
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+}

@@ -13,18 +13,18 @@ async function getData(network, option) {
 }
 
 // let returnedSavesData = getData("arweave-saves", "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE");
-// let returnedArdriveData = getData("ardrive", "waGdO_7V0hUsm5v7lUFC-bT0tSXQG7g_K1s2bheistk");
-
+ 
 
 export function Dashboard() {
   const { addr } = useContext(MainContext);
   const [userContent, setUserContent] = useState([]);
-  
   useEffect(() => {
     if (addr) {
       async function update(){
-        let data = await getData("koii", addr).then(data => data)
-        setUserContent(data);
+        let koiiData = await getData("koii", addr)
+        let returnedArdriveData = await getData("ardrive", addr);
+        console.log("data:",koiiData)
+        setUserContent(koiiData,returnedArdriveData);
       }
       update()
     }

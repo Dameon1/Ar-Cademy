@@ -22,6 +22,7 @@ function App() {
     updateTheme(t);
   }
   const [addr, setAddr] = useState(null);
+  const [currency, setCurrency] = useState('')
   const [isLoading, setIsLoading] = useState(false);
   const [walletName, setWalletName] = useState<T_walletName>();
   const queryClient = new QueryClient();
@@ -46,7 +47,9 @@ function App() {
       setAddr,
       walletName,
       setWalletName,
-      disconnectWallet
+      disconnectWallet,
+      currency, 
+      setCurrency
     }}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme ? dark : light} >

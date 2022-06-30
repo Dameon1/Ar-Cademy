@@ -125,6 +125,7 @@ export const Videos = {
         sandboxLinks: {
             viewblock: "https://viewblock.io/arweave",
             repl: "https://meson.network/",
+            test: "https://coldcdn.com/api/cdn/1x12fq",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             graphql: "https://arweave.net/graphql"
         },

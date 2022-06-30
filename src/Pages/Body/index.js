@@ -7,7 +7,7 @@ import ModulePage from '../ModulePage';
 import Playground from '../Playground';
 import Footer from '../../components/Footer';
 import Profile from '../Profile';
-
+import Upload from '../Upload'
 
 
 function Body({ syntaxTheme }) {
@@ -28,6 +28,7 @@ function Body({ syntaxTheme }) {
           <Route exact path="/identity" element={<Identity />} />
           <Route exact path="/modules/:id" element={<ModulePage />} />
           <Route exact path="/playground/:videoIndex" element={<Playground />} />
+          <Route exact path="/upload" element={<Upload />} />
         </Routes>
       </main>
       <Footer />

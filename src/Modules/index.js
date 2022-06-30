@@ -1,7 +1,7 @@
 export const Modules = {
     'Learn': {
         description: 'Collection of videos on all topics',
-        moduleImage: "https://th.bing.com/th/id/OIP.Q6E9dSU7D9U2Lg0B2N0L2AAAAA?pid=ImgDet&rs=1",
+        moduleImage: "https://media-exp1.licdn.com/dms/image/C4D0BAQH-0pICKzYLvg/company-logo_200_200/0/1583424242994?e=2147483647&v=beta&t=726Ls-QhLFlq-yz0KukkUhrZR2TL0771kI_wK1E3bvs",
     },
     'Deployment': {
         description: 'Learn to Deploy',
@@ -23,7 +23,7 @@ export const Modules = {
         description: 'Encryption on the Arweave Filesystem',
         moduleImage: "https://avatars.githubusercontent.com/u/69483974?s=200&v=4",
     },
-    'Community_Tokens': {
+    'Tokenomics': {
         description: 'Taking gated content to the next level',
         moduleImage: "https://pbs.twimg.com/profile_images/1425087873037053958/ZyG44LKg_400x400.jpg",
     },

@@ -1,11 +1,15 @@
-import {useState } from "react";
+import { useState, useEffect } from "react";
 import './sandbox.css';
 
 export default function Sandbox(props) {
-  const [sandboxContent, setSandboxContent] = useState(props.sandboxContent);
+  const [sandboxContent, setSandboxContent] = useState("");
+  const sandboxButtonTypes = Object.keys(props.sandboxLinks);
+  let initialProp = sandboxButtonTypes[0]
+  useEffect(() => {
+    setSandboxContent(props.sandboxLinks[initialProp])
+    console.log("2", props.sandboxLinks)
 
-  let sandboxButtonTypes = Object.keys(props.sandboxLinks);
-  let src = props.sandboxLinks[sandboxButtonTypes[0]];
+  }, [props.sandboxLinks,initialProp])
 
   function setFilter(newContent) {
     if (sandboxContent !== newContent) {
@@ -46,7 +50,7 @@ export default function Sandbox(props) {
           </div>
       </div>
       <div className="sandboxIframe">
-      <iframe onLoad={onMyFrameLoad} frameBorder="0" width="100%" height="100%" title={props.title} src={src}></iframe>
+      <iframe onLoad={onMyFrameLoad} frameBorder="0" width="100%" height="100%" title={props.title} src={sandboxContent}></iframe>
       </div>
     </div>
   );
