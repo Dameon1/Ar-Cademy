@@ -7,7 +7,7 @@ import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/Ar-Cademy">
+    <Router basename="/">
       <App />
     </Router>
   </React.StrictMode>,
