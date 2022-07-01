@@ -345,7 +345,7 @@ export const Videos = {
      "23": {
         uid: "23",
         videoSrc: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
-         videoImage: "https://th.bing.com/th?id=OVF.P1G5oycUFgkBKTCSnAbPGg&w=257&h=144&c=7&rs=1&qlt=90&o=5&dpr=1.38&pid=2.1",
+         videoImage: "https://i1.ytimg.com/vi/TMzKoxpf_GU/hqdefault.jpg",
         videoTitle: "ETHShanghai",
         description: "DMac explains how to use Arweave to build a decentralized app with ETHShanghai",
         authorID: "13", 

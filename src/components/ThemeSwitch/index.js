@@ -14,7 +14,7 @@ function ThemeSwitch() {
       iconOn={<BiMoon />}
       iconOff={<BiSun />}
       onChange={() => setTheme(!theme)}
-      color="secondary"
+      color="white"
       style={{ color: 'black' }}
     />
   );

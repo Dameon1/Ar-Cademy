@@ -8,16 +8,17 @@ import { AiOutlinePoweroff } from 'react-icons/ai';
 
 export function MainHeader() {
   const { addr, disconnectWallet } = useContext(MainContext);
-  console.log(addr,"addr");
-  console.log(disconnectWallet,"disconnectWallet");
   return (
     <header className="main-header">
       <NavLinks />
-      <h1 className="site-logo">Arcademy</h1>
-      <div className="form-redirect-container">
+      <h1 className="site-logo">
+        <span className="dark">AR</span>
+        <span className="light">cademy</span>    
+      </h1>
+      <div className="identity-container">
         {addr ?
-          <Button auto onClick={disconnectWallet} className="form-redirect-link signOutLink" icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
-          : <Link to="/identity" className="form-redirect-link identityLink">
+          <Button auto onClick={disconnectWallet} className="identity-link signOutLink" icon={<AiOutlinePoweroff size={18} />} color="error">Logout</Button>
+          : <Link to="/identity" className="identity-link identityLink">
             {"Identity"}
           </Link>
           }

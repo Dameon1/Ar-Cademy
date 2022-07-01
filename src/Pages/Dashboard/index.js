@@ -28,7 +28,6 @@ export function Dashboard() {
       }
       update()
     }
-    console.log("addr", addr)
   }, [addr])
   
 

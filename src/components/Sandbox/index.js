@@ -7,7 +7,6 @@ export default function Sandbox(props) {
   let initialProp = sandboxButtonTypes[0]
   useEffect(() => {
     setSandboxContent(props.sandboxLinks[initialProp])
-    console.log("2", props.sandboxLinks)
 
   }, [props.sandboxLinks,initialProp])
 

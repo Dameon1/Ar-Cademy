@@ -27,7 +27,6 @@ function EditProfileModale({ addr, profile, isOpen, hasClosed }: { addr: T_addr,
     if (!profileData.handle || (profileData.handle && profileData.handle.length) <= 0)
       setHandleError(true);
     else {
-      console.log(profileData);
       setIsLoading(true);
       const result = await AMW.write(JSON.stringify(profileData), [
         { name: "Protocol-Name", value: protocolName },
@@ -37,14 +36,12 @@ function EditProfileModale({ addr, profile, isOpen, hasClosed }: { addr: T_addr,
         alert("Your profile information has been saved. txid: " + result.txid + "\nPlease wait for miners to confirm the transaction.");
       else
         alert("something wrong happened :(");
-      console.log("save result: ", result);
       setIsLoading(false);
       hasClosed();
     }
   }
 
   const handleChangePicture = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log("handleChangePicture");
     const files = e.currentTarget.files;
     if (files && files.length > 0) {
       setPicture({
@@ -65,7 +62,6 @@ function EditProfileModale({ addr, profile, isOpen, hasClosed }: { addr: T_addr,
         if (reader.result) {
           try {
             const result = await AMW.write(reader.result, [{ name: "Content-Type", value: picture.type }]);
-            console.log("picture result", result);
             setProfileData({ ...profileData, avatar: result.txid })
           }
           catch (e) {

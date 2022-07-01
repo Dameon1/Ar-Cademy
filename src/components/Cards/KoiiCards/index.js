@@ -2,7 +2,7 @@
 export function KoiiCard(props) {
   let { content } = props;
   let cardDescriptionLength = content.description.length;
-  cardDescriptionLength > 140 ? content.description = (content.description.slice(0, 140) + ' ...') : console.log(cardDescriptionLength);
+  cardDescriptionLength > 140 ? content.description = (content.description.slice(0, 140) + ' ...') : console.log(content.description);
   
   return (
     <div className="card">

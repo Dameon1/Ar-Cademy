@@ -27,7 +27,6 @@
 @media (min-width: 800px) {
   .site-creator-link {
     text-decoration: none;
-    color: #da81c8;
     position: relative;
     padding: 4px;
     font-weight: 600;
@@ -40,7 +39,7 @@
   .site-creator-link:before,
   .site-creator-link:after {
     content: '';
-    background: #da81c8;
+    background: #008c9e;
     position: absolute;
     width: 0;
     height: 2px;
