@@ -23,7 +23,7 @@ function Body({ syntaxTheme }) {
         <Routes>
           {console.log(string)}
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
-          <Route exact path={string} element={<LandingPage />} />
+          {/* <Route exact path={string} element={<LandingPage />} /> */}
           <Route exact path="/" element={<LandingPage />} />
 
           <Route exact path="/profile/:id" element={<Profile />} />
