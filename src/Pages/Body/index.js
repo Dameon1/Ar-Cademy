@@ -21,21 +21,22 @@ function Body({ syntaxTheme }) {
       <MainHeader />
       <main className="main-content">
         <Routes>
-          {console.log(string)}
+          {console.log("string", string)}
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
-          {/* <Route exact path={string} element={<LandingPage />} /> */}
+          <Route exact path="/identity" element={<Identity />} />
+
           <Route exact path="/" element={<LandingPage />} />
 
           <Route exact path="/profile/:id" element={<Profile />} />
 
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route exact path="/Dashboard" element={<Dashboard />} />
 
-          <Route exact path="/identity" element={<Identity />} />
 
           <Route exact path="/modules/:id" element={<ModulePage />} />
 
           <Route exact path="/playground/:videoIndex" element={<Playground />} />
 
+          <Route exact path={string} element={<LandingPage />} />
           {/* <Route exact path="/upload" element={<Upload />} /> */}
         </Routes>
       </main>

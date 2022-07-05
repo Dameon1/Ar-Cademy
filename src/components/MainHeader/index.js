@@ -17,7 +17,7 @@ export function MainHeader() {
       </h1>
       <div className="identity-container">
         {addr ?
-          <button auto onClick={disconnectWallet} className="identity-link signOutLink" icon={<AiOutlinePoweroff size={18} />} color="">Logout</button>
+          <Button auto onClick={disconnectWallet} className="identity-link signOutLink" icon={<AiOutlinePoweroff size={18} />} color="">Logout</Button>
           : <Link to="/identity" className="identity-link identityLink">
             {"Identity"}
           </Link>

@@ -151,7 +151,7 @@ ul {
 
 .site-logo {
   letter-spacing: 3px;
-  font-family: 'Ubuntu', cursive;
+  font-family: 'Work Sans';
   margin: 0 auto;
   text-align: center;
   transition: ease 0.2s;
@@ -247,7 +247,7 @@ ul {
   margin: 0 1em;
   list-style: none;
   font-size: 0.7em;
-  font-family: 'Ubuntu', cursive;
+  font-family: 'Work Sans';
   color: #ECF5E6;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -312,7 +312,7 @@ ul {
   letter-spacing: 1px;
   margin: 0px;
   padding: 0px;
-  font-family: 'Ubuntu', cursive;
+  font-family: 'Work Sans';
 }
 
 .video-recap {
@@ -389,7 +389,7 @@ ul {
 }
 
 .video-player-container h2 {
-  font-family: 'Ubuntu', cursive;
+  font-family: 'Work Sans';
 }
 
 .video-recap {
