@@ -31,7 +31,6 @@ function Body({ syntaxTheme }) {
 
           <Route exact path="/Dashboard" element={<Dashboard />} />
 
-
           <Route exact path="/modules/:id" element={<ModulePage />} />
 
           <Route exact path="/playground/:videoIndex" element={<Playground />} />
