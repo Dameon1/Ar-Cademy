@@ -15,9 +15,9 @@ declare module 'styled-components' {
 const common = {
   profile: {
     username: '#485aff',
-    handle: 'pink'
+    handle: 'gold'
   },
-  userAction: 'rgb(238, 22, 173)'
+  userAction: '#008c9e',
 }
 
 const light = {

@@ -18,15 +18,18 @@ async function getData(network, option) {
 export function Dashboard() {
   const { addr } = useContext(MainContext);
   const [userContent, setUserContent] = useState([]);
+  const [isLoading, setIsLoading] = useState();
   useEffect(() => {
     if (addr) {
+      setIsLoading(true);
       async function update(){
-        let koiiData = await getData("koii", addr)
-        let returnedArdriveData = await getData("ardrive", addr);
-        console.log("data:",koiiData)
-        setUserContent(koiiData,returnedArdriveData);
+        let koiiData = await getWeaveAggregator("koii", addr)
+        //let returnedArdriveData = await getData("ardrive", addr);
+        console.log(typeof addr)
+        setUserContent(koiiData);
       }
       update()
+      setIsLoading(false);
     }
   }, [addr])
   
@@ -34,7 +37,9 @@ export function Dashboard() {
   return (
     <div className="dashboard">
       <Login />
-      {addr && <ProfileContentContainer contentObjects={userContent} contentType={"NFTs"} label="koii"/>}
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && addr && <ProfileContentContainer contentObjects={userContent} contentType={"NFTs"} label="koii"/>}
+      
       {/* <PassportCard isArweaveWalletConnected={props.isArweaveWalletConnected} />
       <ContentVideoCards />
       <ContentSandboxCards />

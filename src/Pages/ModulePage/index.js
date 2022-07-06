@@ -24,7 +24,6 @@ function ModulePage() {
     <div className="">
       <section className="">
         <h1 className="">
-          {console.log(module)}
           {module}
         </h1>
         <p>

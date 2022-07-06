@@ -1,6 +1,12 @@
 .app {
   text-align: center;
 }
+.textNoDec {
+  text-decoration: none;
+}
+.textNoDec:hover {
+  color:#ffa537
+}
 
 .moduleCards {
   list-style: none;
@@ -247,7 +253,7 @@ ul {
   margin: 0 1em;
   list-style: none;
   font-size: 0.7em;
-  font-family: 'Work Sans';
+  font-family: 'Open Sans';
   color: #ECF5E6;
   text-transform: uppercase;
   letter-spacing: 1px;

@@ -12,16 +12,13 @@ import Upload from '../Upload'
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split('/');
-  let url = module[1];
   let string = `/${module[1]}`;
-  console.log(module)
   return (
     
     <div className="app" >
       <MainHeader />
       <main className="main-content">
         <Routes>
-          {console.log("string", string)}
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
           <Route exact path="/identity" element={<Identity />} />
 

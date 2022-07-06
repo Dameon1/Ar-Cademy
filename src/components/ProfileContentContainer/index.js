@@ -12,10 +12,10 @@ export function ProfileContentContainer(props) {
   })
 
   let koiiCards = props.contentObjects.map((content, i) => {
-    console.log(content)
     return (
       <div key={i} className="cardLinks">
-        <a href={`https://koi.rocks/content-detail/${content.id}`}   >
+        <a href={`https://koi.rocks/content-detail/${content.id}`} target="_blank"
+          rel="noopener noreferrer" className="textNoDec" >
           <KoiiCard key={content.uid} content={content} />
         </a>
       </div>)
@@ -26,6 +26,8 @@ export function ProfileContentContainer(props) {
       <h1>{props.contentType}:</h1>
       <div className="hs">
         {props.label === "koii" && koiiCards}
+      </div>
+      <div className="hs">
         {props.label === "AuthorVideos" && cards}
       </div>
     </div >

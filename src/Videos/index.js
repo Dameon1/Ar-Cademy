@@ -123,9 +123,8 @@ export const Videos = {
         authorID: "8",
         tags: ["Build"],
         sandboxLinks: {
+            arWiki:"https://arwiki.wiki/#/en/main",
             viewblock: "https://viewblock.io/arweave",
-            repl: "https://meson.network/",
-            test: "https://coldcdn.com/api/cdn/1x12fq",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             graphql: "https://arweave.net/graphql"
         },
@@ -140,9 +139,7 @@ export const Videos = {
         tags: ["Build", "Deployment"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
+            
         },
     },
     "10": {
@@ -397,10 +394,23 @@ export const Videos = {
         authorID: "11",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
-            repl: "https://replit.com/@Dameon1/datafi-smartweave-dapp?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
+            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/"
+        },
+    },
+    "27": {
+        uid: "27",
+        videoSrc: "https://www.youtube.com/watch?v=qu6SEjYrMA0",
+        videoImage: "https://i3.ytimg.com/vi/qu6SEjYrMA0/mqdefault.jpg",
+        videoTitle: "Intro to DataFI Part 2",
+        description: "In this workshop, we walk through step by step the Atomic NFT concept from creating a smart contract to minting, to checking owner balance and transferring ownership.",
+        authorID: "11",
+        tags: ["Atomic", "Token", "Smartweave", "Intro"],
+        sandboxLinks: {
+            notes: "https://permanotes.app/#/notes/KmLNIowE2DhWHnW-YQzWwTO0O1r7PAlFCj29vPq4BQ0",
+            demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
+            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/"
         },
     },
 }

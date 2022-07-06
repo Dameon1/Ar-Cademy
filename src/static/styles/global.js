@@ -44,6 +44,7 @@ const GlobalStyles = createGlobalStyle`
   }
   .wallet:hover {
     border: 1px solid ${({ theme }) => theme.userAction};
+    color: #ffa537;
   }
 
   .pageBoxes {

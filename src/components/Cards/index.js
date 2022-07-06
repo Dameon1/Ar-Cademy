@@ -5,7 +5,9 @@ import AsyncImageLoader from 'src/components/AsyncImageLoader';
 function Card(props) {
   let { content } = props;
   let cardDescriptionLength = content.description.length;
-  cardDescriptionLength > 140 ? content.description = (content.description.slice(0, 140) + ' ...') : console.log(">140");
+  if (cardDescriptionLength > 140){
+    content.description = (content.description.slice(0, 140) + ' ...')
+  } 
 
   return (
     <div className="card">

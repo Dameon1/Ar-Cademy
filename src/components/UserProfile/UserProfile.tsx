@@ -4,6 +4,7 @@ import { AiOutlineUpload } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { FaTwitter, FaInstagram, FaFacebook, FaGithub, FaDiscord } from 'react-icons/fa';
 import { Button, Grid, Loading, Text, Spacer } from '@nextui-org/react';
+
 import {
   AvatarS,
   Bio,
@@ -63,7 +64,7 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
         </Grid.Container>
         <Spacer y={2} />
         <Grid.Container gap={1} justify="center">
-          <Button color="secondary" onClick={disconnectWallet}>Retry</Button>
+          <Button color="secondary" onClick={disconnectWallet} className="identity-link" >Retry</Button>
         </Grid.Container>
         <Spacer y={3} />
       </>
@@ -71,15 +72,17 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
           <EditProfileModal addr={addr} profile={profileData} isOpen={modalIsOpen} hasClosed={() => setModalIsOpen(false)} />
 
           <Grid.Container gap={3} justify="space-between" alignItems='center'>
-            <Button auto onClick={() => setModalIsOpen(true)} iconRight={<FiEdit size={18} />} color="gradient">Edit Profile</Button>
+            <Button auto onClick={() => setModalIsOpen(true)} iconRight={<FiEdit size={18} />} className="identity-link">Edit Profile</Button>
             {walletName === "bundlr" && <>
               Balance: {balance}
               <a href="https://demo.bundlr.network/" target="_blank" rel="noreferrer">Top-up my bundlr account</a>
             </>}
-            
-            <Button auto className="nav-link" onClick={() => console.log("upload file")} iconRight={<AiOutlineUpload size={18} />} color="success">
-              <Link to='/upload' >Create</Link>
-            </Button>
+
+            <Link to='/upload' className='textNoDec nav-link' >
+              <Button auto className="nav-link identity-link " onClick={() => console.log("upload file")} iconRight={<AiOutlineUpload size={18} />} color="success">
+                Create
+              </Button>
+            </Link>
           </Grid.Container>
 
           {profileData ? <>

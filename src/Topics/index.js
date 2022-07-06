@@ -2,7 +2,7 @@
 export const Topics = {
     'Learn': {
         topics: ['!Tags'],
-        videosById: ["8", "26", "25", "11", "23", "13", "14", "21", "22", "7", "2", "3", "4", "6", "9", "10"],
+        videosById: ["8", "27", "9", "4", "25", "11", "23", "13", "14", "21", "22", "7", "2", "3", "6", "10"],
     },
     'Deployment': {
         topics: [],
@@ -20,7 +20,7 @@ export const Topics = {
         topics: [],
         videosById: ["11", "2", "3", "6"],
     },
-    'Community_Tokens': {
+    'Tokenomics': {
         topics: [],
         videosById: ["7", "2", "3", "4"],
     },
