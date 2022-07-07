@@ -33,7 +33,7 @@ export default function Sandbox(props) {
   function SandboxButtons(data) {
     return data.data.map((sandboxType, i) => {
       return (
-        <button key={i} className=" nav-link identity-link"
+        <button key={i} className="sandboxButton"
         onClick={() => setFilter(sandboxType)}>
           {sandboxType}
         </button>

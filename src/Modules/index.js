@@ -1,6 +1,6 @@
 export const Modules = {
     'Learn': {
-        description: 'Collection of videos on all topics',
+        description: 'Collection of intro videos',
         moduleImage: "https://media-exp1.licdn.com/dms/image/C4D0BAQH-0pICKzYLvg/company-logo_200_200/0/1583424242994?e=2147483647&v=beta&t=726Ls-QhLFlq-yz0KukkUhrZR2TL0771kI_wK1E3bvs",
     },
     'Deployment': {

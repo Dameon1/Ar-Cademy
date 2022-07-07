@@ -8,6 +8,9 @@ import {Card} from "../../components/Cards";
 function ModulePage() {
 
   const module = new URL(window.location.href).pathname.split('/').at(-1);
+  const location = new URL(window.location.href).pathname.split('/')
+  console.log(location)
+  console.log("moddules",module);
   const videoIds = Topics[module].videosById;
 
 

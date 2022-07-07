@@ -19,22 +19,44 @@
 }
 
 .sandboxButton {
-  color: white;
-  background-image: linear-gradient(120deg, #ff266a 0%, #ee16ad 50%, #7928ca 100%);
   padding: 3px 5px;
   border-radius: 7px 0px;
   margin: 5px;
-  border: none;
   outline: none;
-  box-shadow: 0 1px 3px #da81c8;
   cursor: pointer;
-  transition: all .3s;
+  color: black;
+  border: 2px solid #008c9e;
+  background-color: white;
+  -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+}
+.identity-link {
+  color: black;
+  border: 2px solid #008c9e;
+  font-size: 0.75em;
+  padding: 0.3em;
+  background-color: white;
+  -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
 }
 
-.sandboxButton:hover {
-  box-shadow: 0 3px 10px #da81c8;
-  color: black;
+.sandboxButton:hover
+ {
+  transition: 0.15s;
+  cursor: pointer;
+  border: 2px solid #008c9e;
+  color: #ffa537;
+  background-color: #023749;
+  -webkit-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
 }
+
 .sandboxIframe {
   height: 100%;
 }

@@ -16,7 +16,6 @@ import { urlObject } from "src/lib/api";
 // }
 
 export function Identity() {
-  console.log(urlObject)
   return (
     <>
       <div className="text-container">
