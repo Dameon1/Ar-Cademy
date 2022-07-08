@@ -1,23 +1,23 @@
 export const Videos = {
     "1": {
         uid: "1",
-        videoSrc: "https://us.glassapi.xyz/1647535901.bL2OWhS7ErNoBj8dUxq7T2lU3CiGWJfljQBPik7-ZJg.c9fc2423-2a68-4830-8f43-864b5a5008d4_uploaded_video_1_1_audio.mp4",
-        videoImage: "https://arweave.net/3mevYgrmg-zja8aO9D8BVEebYu6ELAXLkUnvCDh8GOg",
-        videoTitle: "Shine Your Light",
-        description: "Our artist name is 1 because we are all 1.",
-        tags: ["Music"],
-        authorID: "1",
+        videoSrc: "https://coldcdn.com/api/cdn/7fx36k",
+        videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
+        videoTitle: "Arweave Build",
+        description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
+        authorID: "8",
+        tags: ["Build"],
         sandboxLinks: {
-            preferred: "graphql",
-            repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
+            arWiki:" https://arwiki.wiki/#/en/creating-a-dapp",
+            viewblock: "https://viewblock.io/arweave",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://demo.bundlr.network/",
-            graphql: "https://arweave.net/graphql",
+            graphql: "https://arweave.net/graphql"
         },
     },
     "2": {
         author: "Koii",
         uid: "2",
+        repo: "https://github.com/koii-network/koii.X",
         videoSrc: "https://www.youtube.com/watch?v=PBJDM_ZY2WI",
         videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
         videoTitle: "React App with Koii",
@@ -25,11 +25,10 @@ export const Videos = {
         authorID: "2",
         tags: ["Deployment", "React", "Arweave", "Build"],
         sandboxLinks: {
+            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/",
+            repo: "https://github.com/koii-network/koii.X",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql",
-            
         },
     },
     "3": {
@@ -37,15 +36,12 @@ export const Videos = {
         uid: "3",
         videoSrc: "https://www.youtube.com/watch?v=Ynfwggyl5rY",
         videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
-        videoTitle: "Deploy on Spheron",
+        videoTitle: "Achieve Full Decentralization with ENS using Spheron!",
         description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
         authorID: "3",
         tags: ["Deployment"],
         sandboxLinks: {
-            arcode: "https://arcode.studio/#/",
-            repl: "https://replit.com/@Dameon1/nextExample",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            graphql: "https://arweave.net/graphql",
+            Spheron: "https://argoapp.net",
         },
     },
     "4": {
@@ -114,21 +110,7 @@ export const Videos = {
             arcode: "https://arcode.studio/#/",
         },
     },
-    "8": {
-        uid: "8",
-        videoSrc: "https://coldcdn.com/api/cdn/7fx36k",
-        videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
-        videoTitle: "Arweave Build",
-        description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
-        authorID: "8",
-        tags: ["Build"],
-        sandboxLinks: {
-            arWiki:"https://arwiki.wiki/#/en/main",
-            viewblock: "https://viewblock.io/arweave",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            graphql: "https://arweave.net/graphql"
-        },
-    },
+    
     "9": {
         uid: "9",
         videoSrc: "https://www.youtube.com/watch?v=aUU-eHCB6j8",
@@ -396,7 +378,7 @@ export const Videos = {
         sandboxLinks: {
             demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
             arcode: "https://arcode.studio/#/",
-            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/"
+           
         },
     },
     "27": {

@@ -75,7 +75,7 @@ export const Authors = {
         author: 'Sam Williams',
         authorLink: "https://twitter.com/samecwilliams",
         authorWebsite: "https://arweave.build/",
-        createdVideosByID: ['8'],
+        createdVideosByID: ['1'],
         createdContentByID: ['ContentID'],
         uid: 8,
         username: "@samecwilliams",

@@ -2,7 +2,7 @@
 export const Topics = {
     'Learn': {
         topics: ['!Tags'],
-        videosById: ["8", "27", "9", "4", "25", "11", "23", "13", "14", "21", "22", "7", "2", "3", "6", "10"],
+        videosById: ["1", "27", "9", "4", "25", "11", "23", "13", "14", "21", "22", "7", "2", "3", "6", "10"],
     },
     'Deployment': {
         topics: [],
@@ -10,7 +10,7 @@ export const Topics = {
     },
     'Build': {
         topics: [],
-        videosById: ["8", "6", "9", "2", "13", "14", "22"],
+        videosById: ["1", "6", "9", "2", "13", "14", "22"],
     },
     'Storage': {
         topics: [],
