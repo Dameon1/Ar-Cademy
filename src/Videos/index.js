@@ -54,13 +54,9 @@ export const Videos = {
         authorID: "4",
         tags: ["Information"],
         sandboxLinks: {
+            home: "https://ardrive.io/",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql",
-            
         },
-
     },
     "5": {
         author: "Spheron",
@@ -73,9 +69,6 @@ export const Videos = {
         tags: ["Deployment"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/nextExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql",
         },
     },
     "6": {
@@ -87,11 +80,9 @@ export const Videos = {
         authorID: "6",
         tags: ["Build", "Deployment", "ArweaveNative"],
         sandboxLinks: {
+            home: "https://edgeandnode.com/",
             graphql: "https://arweave.net/graphql",
-            repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            
         },
     },
     "7": {
@@ -103,9 +94,9 @@ export const Videos = {
         authorID: "7",
         tags: ["Intro"],
         sandboxLinks: {
+            home: "https://arwiki.wiki/#/en/main",
             graphql: "https://arweave.net/graphql",
             repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             arcode: "https://arcode.studio/#/",
         },
     },
@@ -119,7 +110,8 @@ export const Videos = {
         authorID: "6",
         tags: ["Build", "Deployment"],
         sandboxLinks: {
-            repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true",
+            bundlr: "https://bundlr.network/",
+            repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true"
             
         },
     },
