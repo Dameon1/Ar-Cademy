@@ -28,7 +28,6 @@ export const Videos = {
             atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/",
             repo: "https://github.com/koii-network/koii.X",
             repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
         },
     },
     "3": {

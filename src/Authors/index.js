@@ -1,14 +1,4 @@
 export const Authors = {
-    '1': {
-        authorLink: "https://twitter.com/1UniverseMusic",
-        authorName: "1",
-        authorWebsite: "https://1universe.fm/",
-        createdVideosByID: ['1'],
-        createdContentByID: ['ContentID'],
-        uid: 1,
-        username: "@1UniverseMusic",
-        avatar: "https://pbs.twimg.com/profile_images/1515256314959577091/oVsxDW3E_200x200.jpg",
-    },
     '2': {
         authorLink: "https://twitter.com/KoiiNetwork",
         author: "Koii-X",
