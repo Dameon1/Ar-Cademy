@@ -95,12 +95,10 @@ export const Videos = {
         tags: ["Intro"],
         sandboxLinks: {
             home: "https://arwiki.wiki/#/en/main",
+            viewblock: "https://viewblock.io/arweave",
             graphql: "https://arweave.net/graphql",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
-            arcode: "https://arcode.studio/#/",
         },
     },
-    
     "9": {
         uid: "9",
         videoSrc: "https://www.youtube.com/watch?v=aUU-eHCB6j8",
@@ -112,7 +110,6 @@ export const Videos = {
         sandboxLinks: {
             bundlr: "https://bundlr.network/",
             repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true"
-            
         },
     },
     "10": {
@@ -125,9 +122,6 @@ export const Videos = {
         tags: ["ArFS"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "11": {
@@ -139,10 +133,8 @@ export const Videos = {
         authorID: "9",
         tags: ["Contracts"],
         sandboxLinks: {
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
+            home: "https://academy.warp.cc/",
             arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "12": {
@@ -150,14 +142,12 @@ export const Videos = {
         videoSrc: "https://www.youtube.com/watch?v=r0p40pcLEE0&t=316s",
         videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
         videoTitle: "Setting Up KwilDB",
-        description: "Learn how to set up your KwilDB from scratch!Head to db.kwil.com to get started!",
+        description: "Learn how to set up your KwilDB from scratch!",
         authorID: "10",
         tags: ["Storage", "Intro"],
         sandboxLinks: {
+            home: "https://db.kwil.com/",
             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "13": {
@@ -169,25 +159,20 @@ export const Videos = {
         authorID: "10",
         tags: ["Build", "Storage"],
         sandboxLinks: {
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            repl: "https://replit.com/@Dameon1/Web3Guide?lite=true",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            home: "https://db.kwil.com/",
         },
     },
      "14": {
         uid: "14",
-         videoSrc:"https://www.youtube.com/watch?v=a-L2XxHELXg",
-         videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
-         videoTitle: "NEAR + Arweave  1",
+        videoSrc:"https://www.youtube.com/watch?v=a-L2XxHELXg",
+        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoTitle: "NEAR + Arweave  1",
         description:"This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11", 
          tags: ["Near", "Arweave", "React", "Build", "Intro",],
          sandboxLinks: {
              repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-             arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-             arcode: "https://arcode.studio/#/",
-             graphql: "https://arweave.net/graphql"
+            
          },
     },
     "15": {
@@ -200,9 +185,6 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "16": {
@@ -215,9 +197,6 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "17": {
@@ -230,9 +209,6 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "18": {
@@ -245,9 +221,6 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "19": {
@@ -260,9 +233,6 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "20": {
@@ -275,9 +245,6 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
      "21": {
@@ -290,41 +257,32 @@ export const Videos = {
         tags: ["CDN", "Meson", "Network", "Accelerated", "Intro"],
         sandboxLinks: {
             Meson: "https://meson.network/",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            
         },
     },
      "22": {
         uid: "22",
         videoSrc: "https://www.youtube.com/watch?v=KBP1J3hStDw",
-         videoImage: "https://img.youtube.com/vi/KBP1J3hStDw/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/KBP1J3hStDw/maxresdefault.jpg",
         videoTitle: "Ardrive Manifests",
         description: "How to use manifests with: (1) ArDrive web (2) the CLI (3) and ArDrive core",
         authorID: "4", 
         tags: ["ArDrive", "Manifest", "Intro", "Build"],
         sandboxLinks: {
-            Meson: "https://meson.network/",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            home: "https://ardrive.io/",
         },
     },
      "23": {
         uid: "23",
         videoSrc: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
-         videoImage: "https://i1.ytimg.com/vi/TMzKoxpf_GU/hqdefault.jpg",
+        videoImage: "https://i1.ytimg.com/vi/TMzKoxpf_GU/hqdefault.jpg",
         videoTitle: "ETHShanghai",
         description: "DMac explains how to use Arweave to build a decentralized app with ETHShanghai",
         authorID: "13", 
         tags: ["Transfers", "Arweave", "Intro", "Build"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/nft-uploader?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
+            publicSquare: "https://arweave.net/S3Y9JkOAXRgFexoDvPkdhYfVNBJPb9hCUEkbMOy1MVE/",
         },
     },
     "24": {
@@ -338,9 +296,6 @@ export const Videos = {
         sandboxLinks: {
             notes: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://arweave.net/graphql"
         },
     },
     "25": {
@@ -349,13 +304,10 @@ export const Videos = {
         videoImage: "https://i3.ytimg.com/vi/Oeaq1yXiYxs/mqdefault.jpg",
         videoTitle: "Kwil walk-through",
         description: "SQL setup and transfer demo",
-        authorID: "14",
+        authorID: "10",
         tags: ["Kwil", "DB", "Setup", "Intro"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
-            arcode: "https://arcode.studio/#/",
-            graphql: "https://replit.com/@Dameon1/kwildb-cli#src/kwildb-cli.js?lite=true"
         },
     },
     "26": {
