@@ -25,31 +25,18 @@ function App() {
   const [currency, setCurrency] = useState('')
   const [isLoading, setIsLoading] = useState(false);
   const [walletName, setWalletName] = useState<T_walletName>();
+  const [userData, setUserData] = useState(null);
   const queryClient = new QueryClient();
 
   const disconnectWallet = async () => {
     await AMW.disconnect();
     setAddr(null);
   };
-  function changeState(data) {
-    setIsLoading(true);
-    // setIsArweaveWalletConnected(true);
-    // setCurrentPassportAddress(data);
-  }
+  
   return (
     <MainContext.Provider value={{
-      isLoading,
-      setIsLoading,
-      changeState,
-      theme,
-      setTheme,
-      addr,
-      setAddr,
-      walletName,
-      setWalletName,
-      disconnectWallet,
-      currency, 
-      setCurrency
+      isLoading, setIsLoading, theme, setTheme, addr, setAddr, walletName, setWalletName, disconnectWallet,
+      currency, setCurrency, userData, setUserData
     }}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme ? dark : light} >

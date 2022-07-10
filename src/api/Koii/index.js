@@ -1,7 +1,7 @@
 import { querySchema, gqlTemplate } from "../../utils/arweave/gql.js";
 import { koiiCollectiblePer } from "../../Queries/Koii";;
 
-export async function getKoii(address) {
+export async function getKoii(address)  {
   try {
     let nfts;
     const feed = [];

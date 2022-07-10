@@ -27,9 +27,9 @@ export function ProfileContentContainer(props) {
       <div className="hs">
         {props.label === "koii" && koiiCards}
       </div>
-      <div className="hs">
+      {/* <div className="hs">
         {props.label === "AuthorVideos" && cards}
-      </div>
+      </div> */}
     </div >
   )
 }
