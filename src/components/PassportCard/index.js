@@ -31,10 +31,9 @@ export function PassportCard(props) {
   }, [props.isArweaveWalletConnected]);
 
   return (
-    <div >
       <div className="passport">
         <img className="passportImage" src={avatar} alt="heroImage" />
-        {props.isArweaveWalletConnected && <div className="passportCard-text">
+         <div className="passportCard-text">
           <ul className="passportTextUl">
             <li className='passportText'>Current Addr</li>
             <li className='passportInfo'>{currentAddr}</li>
@@ -45,9 +44,8 @@ export function PassportCard(props) {
             <li className='passportText'>Arweave Passport score</li>
             <li className='passportInfo'>{"score"}</li>
           </ul>
-        </div>}
+        </div>
       </div>
-    </div>
   );
 }
 

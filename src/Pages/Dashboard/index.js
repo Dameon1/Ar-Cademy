@@ -36,17 +36,6 @@ export function Dashboard() {
     }
   }, [addr])
 
-      // async function update() {
-      //   if(addr) {
-      //     let koiiData = await getWeaveAggregator("koii", addr)
-      //     //let returnedArdriveData = await getData("ardrive", addr);
-      //     console.log(koiiData);
-      //     console.log(typeof addr)
-      //     setUserContent(koiiData);
-      //   }
-      // }
-      // update()
-
   let koiiCards = userContent.map((content, i) => {
     return (
       <div key={i} className="cardLinks">
@@ -57,24 +46,11 @@ export function Dashboard() {
       </div>)
   })
 
-
   return (
-    <div className="dashboard">
-      <Login />
+    <div className="">
       {isLoading && <div>Loading...</div>}
-      {!isLoading && addr && <ProfileContentContainer contentObjects={userContent} contentType={"a-NFTs"} label="koii" />}
-      {/* <div className="contentScrollContainer">
-        <h1>NFTs:</h1>
-        <div className="hs">
-          {koiiCards}
-        </div>
-      </div > */}
-
-      
-      {/* <PassportCard isArweaveWalletConnected={props.isArweaveWalletConnected} />
-      <ContentVideoCards />
-      <ContentSandboxCards />
-      <ContentSandboxCards /> */}
+      <Login />
+      {!isLoading && addr && <ProfileContentContainer contentObjects={userContent} contentType={"aNFTs"} label="koii" />}
     </div>
   );
 }

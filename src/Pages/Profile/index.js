@@ -5,6 +5,9 @@ import PassportCard from '../../components/PassportCard';
 import ProfileContentContainer from '../../components/ProfileContentContainer';
 import './profile.css'
 import { Card } from '../../components/Cards';
+import Login from "src/components/Login/Login";
+
+
 export default function Profile() {
 
   let profileId = new URL(window.location.href).pathname.split('/').at(-1);
@@ -20,19 +23,20 @@ export default function Profile() {
   })
 
   return (
-    <div>
+    <>
       <h1>Profile</h1>
       <div className="passportContainer">
-        {/* <TestProfile profileObject={profileObject} /> */}
         <PassportCard profileObject={profileObject} />
       </div>
 
-      <div className="contentScrollContainer">
+      <div>
         <h1>Videos</h1>
+        <div className="contentScrollContainer">
         <div className="hs">
           {cards}
         </div>
+        </div>
       </div >
-    </div>
+    </>
   );
 }

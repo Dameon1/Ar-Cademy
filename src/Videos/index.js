@@ -10,7 +10,7 @@ export const Videos = {
         sandboxLinks: {
             arWiki:" https://arwiki.wiki/#/en/creating-a-dapp",
             viewblock: "https://viewblock.io/arweave",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            ArCode_Studio: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
             graphql: "https://arweave.net/graphql"
         },
     },
