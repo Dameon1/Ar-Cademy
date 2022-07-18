@@ -64,7 +64,7 @@
 }
 
 .contentScrollContainer {
-  align-content: start;
+  align-content: flex-start;
   display: flex;
 }
 

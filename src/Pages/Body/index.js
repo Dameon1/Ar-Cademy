@@ -34,8 +34,8 @@ function Body({ syntaxTheme }) {
 
           <Route exact path="/playground/:videoIndex" element={<Playground />} />
 
+          <Route exact path="/upload" element={<Upload />} />
           <Route exact path={string} element={<LandingPage />} />
-          {/* <Route exact path="/upload" element={<Upload />} /> */}
         </Routes>
       </main>
       <Footer />

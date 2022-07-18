@@ -1,7 +1,11 @@
 import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 import 'devextreme/dist/css/dx.light.css';
+import { bundleAndSignData, createData } from "arbundles";
+// import testGenerateTransactionChunksAsync from '../../utils/asyncFunctions';
 
+import { createTransactionAsync } from '../../utils/uploadTransactions/create-transaction-async.js';
+import { generateTransactionChunksAsync } from '../../utils/uploadTransactions/generate-transaction-chunks-async';
 class TestUploader extends React.Component {
   constructor(props) {
     super(props);
@@ -10,14 +14,18 @@ class TestUploader extends React.Component {
     this.onUploadStarted = this.onUploadStarted.bind(this);
   }
 
+
   render() {
     return (
       <div className="dx-viewport">
+        <button onClick={() => createTransactionAsync(this.state.chunks)}>createTrans</button>
+        <button onClick={() => generateTransactionChunksAsync(this.state.chunks)}>genChunks</button>
+
         <FileUploader
           name="file"
           accept="video/*"
           uploadUrl="https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/ChunkUpload"
-          chunkSize={1000000}
+          chunkSize={200000}
           onUploadStarted={this.onUploadStarted}
           onProgress={this.onUploadProgress} />
         <span className="note">Allowed file extensions: <span>.jpg, .jpeg, .gif, .png</span>.</span>
@@ -34,18 +42,22 @@ class TestUploader extends React.Component {
             </div>)
           }
           {this.state.chunks.length > 0 && <div className="total-size">Total size: {this.getValueInKb(this.state.chunks.reduce((acc, c) => acc + c.bytesLoaded, 0))}</div>}
-          
-          <button onClick={()=>this.props.updateChunks(this.state.chunks)}>CHUNK-STATE</button>
+
+
         </div>
       </div>
     );
   }
 
   onUploadProgress(e) {
+    console.log(e)
+
     const chunk = {
+      file: e.file,
       segmentSize: e.segmentSize,
       bytesLoaded: e.bytesLoaded,
       bytesTotal: e.bytesTotal,
+      byteLength: e.segmentSize,
     };
     this.setState({ chunks: [...this.state.chunks, chunk] });
   }

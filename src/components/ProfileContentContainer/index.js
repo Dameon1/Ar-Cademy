@@ -25,9 +25,9 @@ export function ProfileContentContainer(props) {
     <>
       <h1>{props.contentType}:</h1>
       <div className="contentScrollContainer">
-      <div className="hs">
-        {props.label === "koii" && koiiCards}
-      </div>
+        <div className="hs">
+          {props.label === "koii" && koiiCards}
+        </div>
       </div>
     </>
   )
