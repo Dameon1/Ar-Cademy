@@ -30,6 +30,19 @@ object-assign
  */
 
 /*!
+ * devextreme-react
+ * Version: 21.2.8
+ * Build date: Tue Jun 07 2022
+ *
+ * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
+ *
+ * This software may be modified and distributed under the terms
+ * of the MIT license. See the LICENSE file in the root of the project for details.
+ *
+ * https://github.com/DevExpress/devextreme-react
+ */
+
+/*!
  * http-errors
  * Copyright(c) 2014 Jonathan Ong
  * Copyright(c) 2016 Douglas Christopher Wilson
