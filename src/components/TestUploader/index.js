@@ -6,7 +6,7 @@ import { bundleAndSignData, createData } from "arbundles";
 // import testGenerateTransactionChunksAsync from '../../utils/asyncFunctions';
 
 import { createTransactionAsync } from '../../utils/uploadTransactions/create-transaction-async';
-import { generateTransactionChunksAsync } from '../../utils/uploadTransactions/generate-transaction-chunks-async';
+//import { generateTransactionChunksAsync } from '../../utils/uploadTransactions/generate-transaction-chunks-async';
 import { uploadTransactionAsync } from '../../utils/uploadTransactions/upload-transaction-async';
 
 class TestUploader extends React.Component {
@@ -18,6 +18,7 @@ class TestUploader extends React.Component {
     this.onFileChange = props.onFileChange.bind(this);
   }
 
+  //updateChunks//={updateChunks} file={file} rawFile={rawFile} onFileChange={onFileChange}
   createTransaction(preGeneratedChunks) {
     //const chunkedData = await generateTransactionChunksAsync(preGeneratedChunks).then(data => data);
     //console.log(chunkedData);
@@ -28,12 +29,11 @@ class TestUploader extends React.Component {
     return data
   }
 
-  async uploadData(preChunkedData) { 
+  async uploadData(preChunkedData) {
     //const uploadStatus = uploadTransaction(await data)
-    //console.log("client return",await data, uploadStatus)
     let data2 = await createTransactionAsync(preChunkedData)
     let data = await uploadTransactionAsync(data2)
-    console.log("data",data,"data2", data2)
+    console.log("client return", data)
     return data
   }
 
@@ -42,14 +42,15 @@ class TestUploader extends React.Component {
       <div className="dx-viewport">
         <button onClick={() => this.createTransaction(this.state.chunks)}>createTrans</button>
         <button onClick={() => this.uploadData(this.state.chunks)}>uploadTrans</button>
-        
 
-        <div className={"inputContainerStyle"}>
+        <br />
+        <br />
+        {/* <div className={"inputContainerStyle"}>
           <input
             type="file"
             onChange={this.onFileChange}
           />
-        </div>
+        </div> */}
 
         <FileUploader
           name="file"

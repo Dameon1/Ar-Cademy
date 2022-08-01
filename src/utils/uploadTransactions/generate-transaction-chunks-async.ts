@@ -82,11 +82,13 @@ export async function generateTransactionChunksAsync(source) {
     minByteRange: 0,
     maxByteRange: 200000,
   }
-  await addChunk(chunkStreamByteIndex,mockChunks)
+  chunks.push(mockChunks);
 
   async function generateLeaves(chunks){
+    //addChunk(chunkStreamByteIndex,mockChunks)
     return chunks.map(
         async ( chunk ) => {
+          console.log(chunk)
           console.log("minByteRange: ", chunk.minByteRange)
           console.log("maxByteRange: ", chunk.maxByteRange)
           return {

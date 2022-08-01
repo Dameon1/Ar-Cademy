@@ -35,7 +35,7 @@ const MAX_CONCURRENT_CHUNK_UPLOAD_COUNT = 128;
  */
 export async function uploadTransactionAsync(tx: Transaction, createTx = true) {
   console.log("uploadTransactionAsync: ", tx);
-  console.log(tx.chunks)
+  console.log("tx.chunks",tx.chunks)
   
   if (!tx.chunks) {
     throw Error('Transaction has no computed chunks!');

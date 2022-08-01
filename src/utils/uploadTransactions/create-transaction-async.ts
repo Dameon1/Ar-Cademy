@@ -13,13 +13,13 @@ import { arweave } from '../api';
  */
 export async function createTransactionAsync(
   attributes,
-  jwk,
+  JWKInterface,
 ) {
     //const chunks = await pipeline(source, generateTransactionChunksAsync());
     const chunks = await generateTransactionChunksAsync(attributes); 
     const txAttrs = Object.assign({}, attributes);
-     txAttrs.owner ??= jwk?.n;
-     txAttrs.last_tx ??= await arweave.transactions.getTransactionAnchor();
+     txAttrs.owner ??= JWKInterface?.n;
+     txAttrs.last_tx = await arweave.transactions.getTransactionAnchor();
 
      const lastChunk = attributes[attributes.length - 1];
      const dataByteLength = lastChunk.maxByteRange;
@@ -31,6 +31,5 @@ export async function createTransactionAsync(
 
      tx.chunks = chunks;
      tx.data_root = bufferTob64Url(chunks.data_root);
-     console.log("tx:",tx)
      return tx;
   };

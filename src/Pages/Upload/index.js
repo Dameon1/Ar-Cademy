@@ -171,10 +171,10 @@ export default function Upload() {
       await tx.sign()
       const { data } = await tx.upload()
 
+        setTimeout(() => {
       console.log(`http://arweave.net/${data.id}`)
-      //   setTimeout(() => {
-      //     router.push('/')
-      //   }, 2000)
+          
+        }, 2000)
     } catch (err) {
       console.log('error uploading video with metadata: ', err)
     }
@@ -182,7 +182,7 @@ export default function Upload() {
 
   return (
     <div>
-      <div className={"formStyle"}>
+      {/* <div className={"formStyle"}>
         
         {
           URI && (
@@ -248,13 +248,13 @@ export default function Upload() {
           <h4>Step 2</h4>
           <p className={"labelStyle"}>Payment prep</p>
           <div className={"selectContainerStyle"} >
-            {/* <Select
+            <Select
               onChange={({ value }) => setCurrency(value)}
               options={currencyOptions}
               defaultValue={{ value: currency, label: currency }}
               classNamePrefix="select"
               instanceId="currency"
-            /> */}
+            />
 
           </div>
           <div className={"bottomFormStyle"}>
@@ -271,7 +271,7 @@ export default function Upload() {
           <p className={"labelStyle"}>Containerize and Finalise</p>
           <button className={"buttonStyle"} onClick={fundWallet}>Send transaction</button>
         </div>
-      </div>
+      </div> */}
       <TestUploader updateChunks={updateChunks} file={file} rawFile={rawFile} onFileChange={onFileChange}/>
       {/* <UploadTester file={file}/> */}
     </div>
