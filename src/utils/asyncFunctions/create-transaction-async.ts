@@ -1,37 +1,38 @@
-import Arweave from 'arweave';
-import { CreateTransactionInterface } from 'arweave/node/common';
-import Transaction, { TransactionInterface } from 'arweave/node/lib/transaction';
-import { bufferTob64Url } from 'arweave/node/lib/utils';
-import { JWKInterface } from 'arweave/node/lib/wallet';
-//import { pipeline } from 'stream/promises';
-import { generateTransactionChunksAsync } from './generate-transaction-chunks-async';
+export {}
+// import Arweave from 'arweave';
+// import { CreateTransactionInterface } from 'arweave/node/common';
+// import Transaction, { TransactionInterface } from 'arweave/node/lib/transaction';
+// import { bufferTob64Url } from 'arweave/node/lib/utils';
+// import { JWKInterface } from 'arweave/node/lib/wallet';
+// //import { pipeline } from 'stream/promises';
+// import { generateTransactionChunksAsync } from './generate-transaction-chunks-async';
 
-/**
- * Creates an Arweave transaction from the piped data stream.
- */
-export async function createTransactionAsync(
-  attributes: Partial<Omit<CreateTransactionInterface, 'data'>>,
-  arweave: Arweave,
-  jwk: JWKInterface | null | undefined,
-) {
-    const chunks = generateTransactionChunksAsync(attributes); 
+// /**
+//  * Creates an Arweave transaction from the piped data stream.
+//  */
+// export async function createTransactionAsync(
+//   attributes: Partial<Omit<CreateTransactionInterface, 'data'>>,
+//   arweave: Arweave,
+//   jwk: JWKInterface | null | undefined,
+// ) {
+//     const chunks = generateTransactionChunksAsync(attributes); 
 
-    const txAttrs = Object.assign({}, attributes);
+//     const txAttrs = Object.assign({}, attributes);
 
-    txAttrs.owner ??= jwk?.n;
-    txAttrs.last_tx ??= await arweave.transactions.getTransactionAnchor();
+//     txAttrs.owner ??= jwk?.n;
+//     txAttrs.last_tx ??= await arweave.transactions.getTransactionAnchor();
 
-    const lastChunk = chunks.chunks[chunks.chunks.length - 1];
-    const dataByteLength = lastChunk.maxByteRange;
+//     const lastChunk = chunks.chunks[chunks.chunks.length - 1];
+//     const dataByteLength = lastChunk.maxByteRange;
 
-    txAttrs.reward ??= await arweave.transactions.getPrice(dataByteLength, txAttrs.target);
+//     txAttrs.reward ??= await arweave.transactions.getPrice(dataByteLength, txAttrs.target);
 
-    txAttrs.data_size = dataByteLength.toString();
+//     txAttrs.data_size = dataByteLength.toString();
 
-    const tx = new Transaction(txAttrs as TransactionInterface);
+//     const tx = new Transaction(txAttrs as TransactionInterface);
 
-    tx.chunks = chunks;
-    tx.data_root = bufferTob64Url(chunks.data_root);
+//     tx.chunks = chunks;
+//     tx.data_root = bufferTob64Url(chunks.data_root);
 
-    return tx;
-  };
+//     return tx;
+//   };

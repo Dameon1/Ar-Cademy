@@ -17,20 +17,14 @@ export async function createTransactionAsync(
 ) {
     //const chunks = await pipeline(source, generateTransactionChunksAsync());
     const chunks = await generateTransactionChunksAsync(attributes); 
-    console.log("attributes: ", attributes);
-    console.log("chunks: ", chunks);
     const txAttrs = Object.assign({}, attributes);
-    console.log("txAttrs",txAttrs)
      txAttrs.owner ??= jwk?.n;
      txAttrs.last_tx ??= await arweave.transactions.getTransactionAnchor();
 
      const lastChunk = attributes[attributes.length - 1];
-     console.log(lastChunk)
      const dataByteLength = lastChunk.maxByteRange;
-     console.log("dataByteLength: ", dataByteLength);
      txAttrs.reward ??= await arweave.transactions.getPrice(dataByteLength, txAttrs.target);
      let ar =  arweave.ar.winstonToAr(txAttrs.reward)
-     console.log("ar:,",ar)
      txAttrs.data_size = dataByteLength.toString();
 
      const tx = new Transaction(txAttrs as TransactionInterface);
