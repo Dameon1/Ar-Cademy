@@ -51,6 +51,7 @@ export default function Upload() {
   const { bundlrInstance, fetchBalance, addr, setIsLoading, currency, setCurrency } = useContext(MainContext)
   const [file, setFile] = useState();
   const [rawFile, setRawFile] = useState();
+  const [dataFile, setDataFile] = useState();
   const [image, setImage] = useState()
   const [title, setTitle] = useState('')
   const [fileCost, setFileCost] = useState(0)
@@ -68,7 +69,6 @@ export default function Upload() {
   useEffect(() => {
     const fetchData = async () => {
       const currentBalance = await AMW.getBalance();
-      console.log(currentBalance)
       setBalance(currentBalance)
     }
     fetchData();
@@ -116,7 +116,7 @@ export default function Upload() {
         }
       }
       
-
+      setRawFile(file);
       reader.readAsArrayBuffer(file)
     }
   }
@@ -272,7 +272,7 @@ export default function Upload() {
           <button className={"buttonStyle"} onClick={fundWallet}>Send transaction</button>
         </div>
       </div>
-      <TestUploader updateChunks={updateChunks} file={file} rawFile={rawFile}/>
+      <TestUploader updateChunks={updateChunks} file={file} rawFile={rawFile} onFileChange={onFileChange}/>
       {/* <UploadTester file={file}/> */}
     </div>
   )

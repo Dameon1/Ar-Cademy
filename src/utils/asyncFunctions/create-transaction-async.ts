@@ -9,14 +9,12 @@ import { generateTransactionChunksAsync } from './generate-transaction-chunks-as
 /**
  * Creates an Arweave transaction from the piped data stream.
  */
-export function createTransactionAsync(
+export async function createTransactionAsync(
   attributes: Partial<Omit<CreateTransactionInterface, 'data'>>,
   arweave: Arweave,
   jwk: JWKInterface | null | undefined,
 ) {
-  return async (source: AsyncIterable<Buffer>): Promise<Transaction> => {
-    const chunks = await generateTransactionChunksAsync(source); 
-    //await pipeline(source, generateTransactionChunksAsync());
+    const chunks = generateTransactionChunksAsync(attributes); 
 
     const txAttrs = Object.assign({}, attributes);
 
@@ -37,4 +35,3 @@ export function createTransactionAsync(
 
     return tx;
   };
-}

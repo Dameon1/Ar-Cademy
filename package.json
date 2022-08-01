@@ -22,6 +22,7 @@
     "arweave-account": "^1.2.5",
     "arweave-bundles": "^1.0.3",
     "arweave-js": "^1.0.0",
+    "arweave-stream-tx": "^1.1.0",
     "arweave-wallet-connector": "^0.0.25",
     "assert": "^2.0.0",
     "axios": "^0.27.2",
