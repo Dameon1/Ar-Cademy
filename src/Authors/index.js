@@ -64,12 +64,13 @@ export const Authors = {
     '8': {
         author: 'Sam Williams',
         authorLink: "https://twitter.com/samecwilliams",
-        authorWebsite: "https://arweave.build/",
+        authorWebsite: "sam.arweave.dev",
         createdVideosByID: ['1'],
         createdContentByID: ['ContentID'],
         uid: 8,
         username: "@samecwilliams",
         avatar: "https://pbs.twimg.com/profile_images/1113074197255860224/PKahsyCP_200x200.png",
+        addr: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw"
     },
     '9': {
         author: 'Redstone',

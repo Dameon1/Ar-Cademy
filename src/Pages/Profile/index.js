@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom"; 
 import { Authors } from '../../Authors';
 import { Videos } from '../../Videos';
@@ -6,6 +7,7 @@ import ProfileContentContainer from '../../components/ProfileContentContainer';
 import './profile.css'
 import { Card } from '../../components/Cards';
 import Login from "src/components/Login/Login";
+import { getWeaveAggregator } from "../../api/WeaveAggregator";
 
 
 export default function Profile() {

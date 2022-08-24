@@ -48,13 +48,13 @@ export function VideoPlayerContainer() {
           </a>
 
           <p>About Creator :</p>
-          <a href={contentObject.authorObject.authorWebsite}
+          <a href={`https://${contentObject.authorObject.authorWebsite}`}
             className="video-creator-link"
             target="_blank"
             rel="noreferrer"
-          >
-            <p>{contentObject.videoObject.description}</p>
-          </a>
+          >{contentObject.authorObject.authorWebsite}</a>
+            <p className="video-creator-link">{contentObject.videoObject.description}</p>
+          
         </footer>
 
       </div >)
