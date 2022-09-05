@@ -32,21 +32,35 @@ export function Dashboard() {
     setIsLoading(true);
     console.log("dashboard mounted")
     if (addr) {
-      let checksumAddress = ethers.utils.getAddress(addr)
       async function update() {
+        let user;
         const res = await fetch(`https://ark-api.decent.land/v1/profile/arweave/${addr}`);
-        const ans = await res.json();
-
+        const ans = await res.json()
+        if(ans.res === undefined){
+          let checksumAddress = ethers.utils.getAddress(addr) 
         const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
         const eth = await fetch(ethString);
-        const ens = await eth.json()
+        const ens = await eth.json();
+        user = ens.res
+        } else {
+          user = ans.res
+        }
+        // let checksumAddress = ethers.utils.getAddress(addr) 
+        // const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
+        // const eth = await fetch(ethString);
+        // const ens = await eth.json()
+        
+        // ans.res === undefined ? user = ens.res : user = ans.res
+        console.log(addr)
 
-        console.log("eth:", eth)
+
+
+        //https://ark-api.decent.land/v1/profile/evm/0x921d812b1ec6ec8b70847efa318d72cdbcc20416
+        
+        
+        
         console.log("ans:", ans.res)
-        console.log("ens:", ens.res)
-
-        let user;
-        ans.res === undefined ? user = ens.res : user = ans.res
+        console.log("user: ", user)
         setUserContent(user)
         setIsLoading(false);
       }
