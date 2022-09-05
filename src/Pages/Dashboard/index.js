@@ -4,24 +4,9 @@ import './dashboard.css';
 //import Card from "../../components/Cards";
 import MainContext from '../../context';
 import Login from "src/components/Login/Login";
-import { getWeaveAggregator } from "../../api/WeaveAggregator";
+//import { getWeaveAggregator } from "../../api/WeaveAggregator";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import {ethers} from "ethers";
-// ethers.js をインポート
-
-
-
-
-
-async function getData(network, option) {
-  const data = await getWeaveAggregator(network, option);
-  return data;
-}
-
-
-
-// let returnedSavesData = getData("arweave-saves", "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE");
-
 
 export function Dashboard() {
   const { addr } = useContext(MainContext);
@@ -38,29 +23,13 @@ export function Dashboard() {
         const ans = await res.json()
         if(ans.res === undefined){
           let checksumAddress = ethers.utils.getAddress(addr) 
-        const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
-        const eth = await fetch(ethString);
-        const ens = await eth.json();
-        user = ens.res
+          const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
+          const eth = await fetch(ethString);
+          const ens = await eth.json();
+          user = ens.res
         } else {
           user = ans.res
         }
-        // let checksumAddress = ethers.utils.getAddress(addr) 
-        // const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
-        // const eth = await fetch(ethString);
-        // const ens = await eth.json()
-        
-        // ans.res === undefined ? user = ens.res : user = ans.res
-        console.log(addr)
-
-
-
-        //https://ark-api.decent.land/v1/profile/evm/0x921d812b1ec6ec8b70847efa318d72cdbcc20416
-        
-        
-        
-        console.log("ans:", ans.res)
-        console.log("user: ", user)
         setUserContent(user)
         setIsLoading(false);
       }

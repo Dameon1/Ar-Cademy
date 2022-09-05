@@ -37,7 +37,6 @@ export function ProfileContentContainer(props) {
                 />
               </div>
               <h3 className="cardTitle">{content.event.name}</h3>
-              <p className="cardText">{content.event.description}</p>
             </div>
           </div>
         );
@@ -65,7 +64,6 @@ export function ProfileContentContainer(props) {
                 />
               </div>
               <h3 className="cardTitle">{dataObject.name}</h3>
-              <p className="cardText">{dataObject.description}</p>
             </div>
           </div>
         );
