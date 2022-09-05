@@ -6,12 +6,19 @@ import MainContext from '../../context';
 import Login from "src/components/Login/Login";
 import { getWeaveAggregator } from "../../api/WeaveAggregator";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
-import { KoiiCard } from "src/components/Cards";
+import {ethers} from "ethers";
+// ethers.js をインポート
+
+
+
+
 
 async function getData(network, option) {
   const data = await getWeaveAggregator(network, option);
   return data;
 }
+
+
 
 // let returnedSavesData = getData("arweave-saves", "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE");
 
@@ -19,38 +26,45 @@ async function getData(network, option) {
 export function Dashboard() {
   const { addr } = useContext(MainContext);
   const [userContent, setUserContent] = useState([]);
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
+    console.log("dashboard mounted")
     if (addr) {
-      setIsLoading(true);
+      let checksumAddress = ethers.utils.getAddress(addr)
       async function update() {
-        let koiiData = await getWeaveAggregator("koii", addr)
-        //let returnedArdriveData = await getData("ardrive", addr);
-        console.log(koiiData);
-        console.log(typeof addr)
-        setUserContent(koiiData);
-      }
-      update()
-      setIsLoading(false);
-    }
-  }, [addr])
+        const res = await fetch(`https://ark-api.decent.land/v1/profile/arweave/${addr}`);
+        const ans = await res.json();
 
-  let koiiCards = userContent.map((content, i) => {
-    return (
-      <div key={i} className="cardLinks">
-        <a href={`https://koi.rocks/content-detail/${content.id}`} target="_blank"
-          rel="noopener noreferrer" className="textNoDec" >
-          <KoiiCard key={content.uid} content={content} />
-        </a>
-      </div>)
-  })
+        const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
+        const eth = await fetch(ethString);
+        const ens = await eth.json()
+
+        console.log("eth:", eth)
+        console.log("ans:", ans.res)
+        console.log("ens:", ens.res)
+
+        let user;
+        ans.res === undefined ? user = ens.res : user = ans.res
+        setUserContent(user)
+        setIsLoading(false);
+      }
+      update();
+    }
+  },[addr])
+
+ 
 
   return (
     <div className="">
-      {isLoading && <div>Loading...</div>}
       <Login />
-      {!isLoading && addr && <ProfileContentContainer contentObjects={userContent} contentType={"aNFTs"} label="koii" />}
+      {isLoading && <div>Loading</div>}
+      {console.log(userContent)}
+      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
+      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
+      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.MORALIS_NFTS} contentType={"MORALIS_NFTS"} label="MORALIS_NFTS" />}
+
     </div>
   );
 }

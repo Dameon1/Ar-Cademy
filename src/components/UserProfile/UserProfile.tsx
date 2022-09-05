@@ -43,7 +43,6 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
         }
       }
       catch (e) {
-        console.log(e);
         setHasFailed(JSON.stringify(e));
       }
       finally {
@@ -51,6 +50,8 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
       }
     })()
   }, [addr]);
+   
+
 
   return (
     <div className='gradient-border' style={{ padding: '5px' }}>{isLoading

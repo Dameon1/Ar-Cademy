@@ -16,18 +16,18 @@ function Login({ onClick }: { onClick?: () => void }) {
     setAddr } = useContext(MainContext);
   const arConnect = useArConnect();
 
-  useEffect(() => {
-    if (!arConnect) return;
-    (async () => {
-      try {
-        if ((await arConnect.getPermissions()).includes("ACCESS_ADDRESS")) {
-          setAddr(await arConnect.getActiveAddress());
-        }
-      } catch {
-        alert("Error: Could not get ACCESS_ADDRESS permission");
-      }
-    })();
-  }, [arConnect, addr, setAddr]);
+  // useEffect(() => {
+  //   if (!arConnect) return;
+  //   (async () => {
+  //     try {
+  //       if ((await arConnect.getPermissions()).includes("ACCESS_ADDRESS")) {
+  //         setAddr(await arConnect.getActiveAddress());
+  //       }
+  //     } catch {
+  //       alert("Error: Could not get ACCESS_ADDRESS permission");
+  //     }
+  //   })();
+  // }, [arConnect, addr, setAddr]);
 
   const disconnectWallet = async () => {
     await AMW.disconnect();
@@ -54,6 +54,7 @@ function Login({ onClick }: { onClick?: () => void }) {
       <Loading size="xl" css={{ padding: '$24' }} />
     </Grid.Container>
     : addr && walletName
+    // User signed in
       ? <UserProfile addr={addr} walletName={walletName} disconnectWallet={disconnectWallet} />
       : <div className="connection">
         <div className="wallet" onClick={async () => {

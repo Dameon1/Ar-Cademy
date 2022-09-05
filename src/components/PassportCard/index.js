@@ -48,9 +48,13 @@ export function PassportCard(props) {
         <ul className="passportTextUl">
           <li className='passportText'>ArNS</li>
           <li className='passportInfo'>{authorWebsite}</li>
+          <a className='passportInfo' href={`https://${authorWebsite}`} target="_blank"
+            rel="noreferrer" >{`${ANSname}`}</a>
           
           <li className='passportText'>ANS</li>
           <li className='passportInfo'>{ANSname}</li>
+          <a className='passportInfo' href={`https://${ANSname}.ar.page`} target="_blank"
+            rel="noreferrer" >{`${ANSname}.page`}</a>
 
           <li className='passportText'>V.Dao Approval</li>
           {isApproved && (<li className='passportInfo'>{isApproved?"true":"false"}</li>)}
