@@ -1,4 +1,4 @@
-import { Card, KoiiCard } from "../Cards";
+import { KoiiCard } from "../Cards";
 
 export function ProfileContentContainer(props) {
   let content;
