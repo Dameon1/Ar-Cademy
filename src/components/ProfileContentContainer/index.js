@@ -1,7 +1,4 @@
-import { useState } from "react";
 import { Card, KoiiCard } from "../Cards";
-import { Link } from "react-router-dom";
-import { Divider } from "@nextui-org/react";
 
 export function ProfileContentContainer(props) {
   let content;
