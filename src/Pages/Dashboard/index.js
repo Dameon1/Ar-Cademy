@@ -34,6 +34,7 @@ export function Dashboard() {
         setIsLoading(false);
       }
       update();
+
     }
   },[addr])
 
@@ -42,11 +43,11 @@ export function Dashboard() {
   return (
     <div className="">
       <Login />
-      {isLoading && <div>Loading</div>}
+      {isLoading ? <div>Loading</div> : <p>Welcome</p>}
       {console.log(userContent)}
-      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
-      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
-      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.MORALIS_NFTS} contentType={"MORALIS_NFTS"} label="MORALIS_NFTS" />}
+      {userContent.POAPS > 0  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
+      {userContent.ANFTS.koii.length > 0  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
+      {userContent.MORALIS_NFTS.length> 0  && !isLoading && <ProfileContentContainer contentObjects={userContent.MORALIS_NFTS} contentType={"MORALIS_NFTS"} label="MORALIS_NFTS" />}
 
     </div>
   );
