@@ -2,16 +2,17 @@ import { KoiiCard } from "../Cards";
 
 export function ProfileContentContainer(props) {
   let content;
-  let koiiCards = props.contentObjects.map((content, i) => {
+  console.log("props:", props)
+  let koiiCards = props.contentObjects.map((item, i) => {
     return (
       <div key={i} className="cardLinks">
         <a
-          href={`https://koi.rocks/content-detail/${content.id}`}
+          href={`https://koi.rocks/content-detail/${item.id}`}
           target="_blank"
           rel="noopener noreferrer"
           className="textNoDec"
         >
-          <KoiiCard key={content.uid} content={content} />
+          <KoiiCard key={item.uid} content={item} />
         </a>
       </div>
     );
@@ -39,7 +40,7 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
-    case "MORALIS_NFTS":
+    case "ERC_NFTS":
       content = props.contentObjects.map((content, i) => {
         let dataObject = JSON.parse(content.metadata);
         let {image} = dataObject

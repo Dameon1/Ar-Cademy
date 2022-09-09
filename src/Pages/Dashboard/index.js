@@ -46,7 +46,7 @@ export function Dashboard() {
       {console.log(userContent)}
       {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
       {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
-      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.MORALIS_NFTS} contentType={"MORALIS_NFTS"} label="MORALIS_NFTS" />}
+      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
 
     </div>
   );
