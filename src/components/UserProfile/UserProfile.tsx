@@ -79,11 +79,11 @@ function UserProfile({ addr, walletName, disconnectWallet }: { addr: T_addr, wal
               <a href="https://demo.bundlr.network/" target="_blank" rel="noreferrer">Top-up my bundlr account</a>
             </>}
 
-            <Link to='/upload' className='textNoDec nav-link' >
+            
               <Button auto className="nav-link identity-link " onClick={() => console.log("upload file")} iconRight={<AiOutlineUpload size={18} />} color="success">
-                Create
+              <Link to='/upload' className='textNoDec nav-link' >Create</Link>
               </Button>
-            </Link>
+            
           </Grid.Container>
 
           {profileData ? <>
