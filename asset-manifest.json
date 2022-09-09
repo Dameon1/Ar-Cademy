@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Ar-Cademy/static/css/main.56de20f4.css",
+    "main.js": "/Ar-Cademy/static/js/main.dfefe1cd.js",
+    "static/media/dxicons.ttf": "/Ar-Cademy/static/media/dxicons.4d3cea0a08c2038308fc.ttf",
+    "static/media/dxicons.woff": "/Ar-Cademy/static/media/dxicons.d5288d8f61ece0a2f2ab.woff",
+    "static/media/dxicons.woff2": "/Ar-Cademy/static/media/dxicons.e4acc9c2c884e566ddc4.woff2",
+    "index.html": "/Ar-Cademy/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.56de20f4.css",
+    "static/js/main.dfefe1cd.js"
+  ]
+}
