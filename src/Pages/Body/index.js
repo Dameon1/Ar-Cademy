@@ -8,7 +8,7 @@ import Playground from '../Playground';
 import Footer from '../../components/Footer';
 import Profile from '../Profile';
 import Upload from '../Upload'
-
+import AccountViewer from "../AccountViewer"
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split('/');
@@ -21,7 +21,7 @@ function Body({ syntaxTheme }) {
         <Routes>
           {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
           <Route path="/" element={<LandingPage />} />
-
+          <Route path="/AccountViewer/:addr" element={<AccountViewer />} />
           <Route exact path="/identity" element={<Identity />} />
 
           <Route exact path="/profile/:id" element={<Profile />} />

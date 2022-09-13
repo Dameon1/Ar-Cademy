@@ -142,10 +142,10 @@ export default class ArweaveMultiWallet {
 
   public async disconnect(): Promise<void> {
     console.log("this.walletEngine", this.walletEngine);
-    if (this.walletName === "arconnect" || this.walletName === "webwallet")
+    if (this.walletName === "arconnect" || this.walletName === "webwallet"){
       this.walletEngine.disconnect();
-
-    this.walletEngine = null;
+      this.walletEngine = null;
+    }
   }
 
   public async getBalance() {
@@ -153,6 +153,49 @@ export default class ArweaveMultiWallet {
       const balance = await this.walletEngine.getLoadedBalance();
       console.log("balance", balance);
       return this.walletEngine.utils.unitConverter(balance).toFixed(7, 2).toString() + " " + this.walletEngine.currencyConfig.ticker.toLowerCase()
+    }
+  }
+  public async getPrice(bytes) {
+    console.log(this.walletName, "NAME1", bytes)
+    if (this.walletName === "bundlr") {
+      return await this.walletEngine.getPrice(bytes);
+    }
+  }
+  public async fund(amount) {
+    console.log(this.walletName, "funding bundlr network",await amount)
+    if (this.walletName === "bundlr") {
+      return await this.walletEngine.fund(amount);
+    }
+  }
+  public async withdrawBalance(amount) {
+    console.log(this.walletName, "funding bundlr network", amount)
+    if (this.walletName === "bundlr") {
+      return await this.walletEngine.withdrawBalance(amount);
+    }
+  }
+  public async currencyConfig(amount) {
+    console.log(this.walletName, "funding bundlr network", amount)
+    if (this.walletName === "bundlr") {
+      return await this.walletEngine.currencyconfig;
+    }
+  }
+  public async uploader(file, tags) {
+    console.log(this.walletName, "bundlr uploading", file, tags)
+    if (this.walletName === "bundlr") {
+      return await this.walletEngine.uploader.upload(file, tags)
+    }
+  }
+  public async createTransaction(data, tags) {
+    console.log(this.walletName, "bundlr uploading", data, tags)
+    if (this.walletName === "bundlr") {
+      const tx = this.walletEngine.createTransaction(data, { tags });
+        console.log("tx", tx);
+        await tx.sign();
+        console.log("signed");
+        const result = await tx.upload();
+        console.log("result", result);
+        return { ...result, txid: result.data.id };
+      //return await this.walletEngine.uploader.upload(data, tags)
     }
   }
 }
