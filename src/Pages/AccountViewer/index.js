@@ -142,12 +142,25 @@ export function AccountViewer() {
     //await update(addr)
     setIsLoading(!isLoading)
   }
+  function onSubmit(event){
+    event.preventDefault();
+    console.log(event.target.value);
+
+  }
 
   return (
     <>
+      <div className="text-container">
+        <h2>Search Arweave Related Content</h2>
+        <p className="site-introduction">
+          Enter an address to find the Arweave related content associated connected to it. Not all users have content to diplay or have
+          created an account on the various network calls that are made here.
+        </p>
+      </div>
       <div>
+        <form onSubmit={onSubmit}>
         <input
-          placeholder="Enter name"
+          placeholder="Enter address"
           onChange={handleInput}
           required
           minLength="42"
@@ -157,6 +170,7 @@ export function AccountViewer() {
         <button onClick={logValue} type="submit">
           Log value
         </button>
+        </form>
       </div>
       <div className="inputBox">
         <button onClick={reRender}>Go to Account</button>
