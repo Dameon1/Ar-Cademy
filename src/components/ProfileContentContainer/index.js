@@ -1,26 +1,37 @@
 import { KoiiCard } from "../Cards";
 
 export function ProfileContentContainer(props) {
+
+  // useEffect((props) => {
+  //   (async () => {
+  //     try {
+        
+  //     }
+  //     catch (e) {
+  //     }
+  //     finally {
+  //     }
+  //   })()
+  // }, []);
+
   let content;
-  console.log("props:", props)
-  let koiiCards = props.contentObjects.map((item, i) => {
-    return (
-      <div key={i} className="cardLinks">
-        <a
-          href={`https://koi.rocks/content-detail/${item.id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="textNoDec"
-        >
-          <KoiiCard key={item.uid} content={item} />
-        </a>
-      </div>
-    );
-  });
 
   switch (props.label) {
     case "koii":
-      content = koiiCards;
+      content = props.contentObjects.map((item, i) => {
+        return (
+          <div key={i} className="cardLinks">
+            <a
+              href={`https://koi.rocks/content-detail/${item.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="textNoDec"
+            >
+              <KoiiCard key={item.uid} content={item} />
+            </a>
+          </div>
+        );
+      });
       break;
     case "POAPS":
       content = props.contentObjects.map((content, i) => {

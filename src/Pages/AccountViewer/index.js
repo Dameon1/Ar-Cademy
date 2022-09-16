@@ -2,94 +2,192 @@ import { useContext, useEffect, useState } from "react";
 //import { AMW } from '../../utils/api';
 //import Card from "../../components/Cards";
 import MainContext from "../../context";
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom";
 import Login from "src/components/Login/Login";
 //import { getWeaveAggregator } from "../../api/WeaveAggregator";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import { ethers } from "ethers";
 import UserProfile from "../../components/UserProfile/UserProfile";
-import './accountViewer.css';
+import "./accountViewer.css";
 
 export function AccountViewer() {
-  const addr = new URL(window.location.href).pathname.split("/").at(-1);
-  console.log(addr);
+  let url = new URL(window.location.href).pathname.split("/").at(-1);
   const { walletName, disconnectWallet } = useContext(MainContext);
   const [userContent, setUserContent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [url, setUrl] = useState("")
+  const [addr, setAddr] = useState();
+  const [input,setInput] = useState();
+  const [hasFailed, setHasFailed] = useState();
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+  //   const signal = abortController.signal;
+  //   fetch(url, { signal:signal  })
+  //     .then(data => {
+  //       setTodos(data)
+  //     })
+  //     .catch(error => {
+  //       if (error.name === "AbortError") {
+  //         console.log("Aborted")
+  //       } else {
+  //         console.log("Error fetching data", error?.response)
+  //       }
+  //     })
+  //     return () => {
+  //       abortController.abort()
+  //     }
+  // })
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       let user;
+  //       const res = await fetch(`https://ark-api.decent.land/v1/profile/arweave/${addr}`);
+  //       const ans = await res.json()
+  //       user = ans;
+  //       setUserContent(user)
+  //       // if (user === undefined) {
+  //       //   setUserContent(user);
+  //       //   //setProfileTxid(user.txid);
+  //       //   //setBalance(await AMW.getBalance());
+  //       // }
 
+  //     }
+  //     catch (error) {
+  //       if (error.name === "AbortError") {
+  //         console.log("Aborted")
+  //       }
+  //     }
+  //     finally {
+  //       //setIsLoading(false);
+  //     }
+  //   })()
+  // },[addr]);
+
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   const abortController = new AbortController();
+  //   const signal = abortController.signal;
+  //   if(isLoading){
+  //     fetch(`https://ark-api.decent.land/v1/profile/arweave/${addr}`, { signal:signal  })
+  //       .then(async (data) => {
+  //         const ans = await data.json();
+  //         console.log(ans)
+  //         setUserContent(ans)
+  //         setIsLoading(false)
+  //       })
+  //       .catch(error => {
+  //         if (error.name === "AbortError") {
+  //           console.log("Aborted")
+  //         } else {
+  //           console.log("Error fetching data", error?.response)
+  //         }
+  //       })
+  //       return () => {
+
+  //         abortController.abort()
+  //       }
+  //   }
+
+  // }, [addr])
 
   useEffect(() => {
-    setIsLoading(true);
-    console.log("dashboard mounted");
-    if (addr) {
-      async function update() {
+    (async () => {
+      try {
+        console.log(addr);
+        //setIsLoading(true)
+        //console.log(isLoading)
         let user;
+        setUserContent([]);
+        let address= addr
         const res = await fetch(
-          `https://ark-api.decent.land/v1/profile/arweave/${addr}`
+          `https://ark-api.decent.land/v1/profile/arweave/${address}`
         );
         const ans = await res.json();
-        if (ans.res === undefined) {
-          let checksumAddress = ethers.utils.getAddress(addr);
+        user = ans;
+        //setUserContent(user);
+        console.log(ans, "loading");
+        if (Object.entries(user).length === 0 || ans.res === undefined) {
+          let checksumAddress = ethers.utils.getAddress(address);
+          console.log("check", checksumAddress);
+
           const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
           const eth = await fetch(ethString);
           const ens = await eth.json();
           user = ens.res;
-        } else {
-          user = ans.res;
-        }
-        setUserContent(user);
+          setUserContent(user);
+        } else { setUserContent(ans.res)}
         setIsLoading(false);
+        console.log(user, "done loading");
+      } catch (e) {
+        setHasFailed(JSON.stringify(e));
+      } finally {
+        console.log("done")
+        //setIsLoading(false);
       }
-      update();
-    }
+    })();
   }, [addr]);
 
-  function updateAddrSearch(event) {
-    setUrl(event.target.value);
+  const handleInput = (event) => {
+    //addr = event.target.value
+    //event.preventDefault();
+    console.log(event.target.value);
+    setInput(event.target.value);
+  };
+
+  const logValue = () => {
+    console.log(addr);
+  };
+
+  async function reRender() {
+    setAddr(input);
+    //await update(addr)
+    setIsLoading(!isLoading)
   }
 
   return (
     <>
-      <div className="inputBox">
-        <label for="name">Enter address:</label>
+      <div>
         <input
-          onChange={updateAddrSearch}
-          type="text"
-          id="name"
-          name="name"
+          placeholder="Enter name"
+          onChange={handleInput}
           required
-          minlength="8"
-          maxlength="46"
+          minLength="42"
+          maxLength="44"
           size="48"
-        >
-        </input>
-      <Link to={`/AccountViewer/${url}`}><button>Go to Account</button></Link>
-      <p>Current Addr: {addr}</p>
-      </div>
-          
-      <div className="">
-        <UserProfile
-          addr={addr}
-          walletName={walletName}
-          disconnectWallet={disconnectWallet}
         />
-        {isLoading && <div>Loading</div>}
+        <button onClick={logValue} type="submit">
+          Log value
+        </button>
+      </div>
+      <div className="inputBox">
+        <button onClick={reRender}>Go to Account</button>
+        <p>Current Addr: {addr}</p>
+      </div>
+
+      <div className="">
         {addr && !isLoading && (
+          <UserProfile
+            addr={addr}
+            walletName={walletName}
+            disconnectWallet={disconnectWallet}
+          />
+        )}
+        {isLoading && <div>Loading</div>}
+        {(Object.entries(userContent).length !== 0) && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.POAPS}
             contentType={"POAPS"}
             label="POAPS"
           />
         )}
-        {addr && !isLoading && (
+        {console.log("userContent", userContent)}
+        {(Object.entries(userContent).length !== 0) && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ANFTS.koii}
             contentType={"aNFTs"}
             label="koii"
           />
         )}
-        {addr && !isLoading && (
+        {(Object.entries(userContent).length !== 0) && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ERC_NFTS}
             contentType={"ERC_NFTS"}

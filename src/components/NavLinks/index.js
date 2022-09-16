@@ -16,6 +16,9 @@ export function NavLinks() {
         <li>
           <Link className="nav-link" to="/Dashboard">Dashboard</Link>
         </li>
+        <li>
+          <Link className="nav-link" to="/AccountViewer">Search</Link>
+        </li>
 
       </ul>
 
