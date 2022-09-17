@@ -1,19 +1,4 @@
-//import { ArweaveWebWallet } from 'arweave-wallet-connector'
-//import ArConnect from '../../api/ArConnect';
 import Login from '../../components/Login/Login';
-import { urlObject } from "src/lib/api";
-
-//import ArweaveAccount from '../../api/ArweaveAccount';
-// async function connect(changeState) {
-//   const wallet = new ArweaveWebWallet({
-//     // optionally provide information about your app that will be displayed in the wallet provider interface
-//     name: 'Arcademy',
-//     logo: '../../light.png'
-//   })
-//   wallet.setUrl('arweave.app')
-//   await wallet.connect()
-//   changeState(window.arweaveWallet.getActiveAddress());
-// }
 
 export function Identity() {
   return (

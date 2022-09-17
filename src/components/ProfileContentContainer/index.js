@@ -2,18 +2,6 @@ import { KoiiCard } from "../Cards";
 
 export function ProfileContentContainer(props) {
 
-  // useEffect((props) => {
-  //   (async () => {
-  //     try {
-        
-  //     }
-  //     catch (e) {
-  //     }
-  //     finally {
-  //     }
-  //   })()
-  // }, []);
-
   let content;
 
   switch (props.label) {
@@ -73,6 +61,25 @@ export function ProfileContentContainer(props) {
                 />
               </div>
               <h3 className="cardTitle">{dataObject.name}</h3>
+            </div>
+          </div>
+        );
+      });
+      break;
+      case "GALAXY_CREDS":
+      content = props.contentObjects.map(async (content, i) => {
+        return (
+          <div key={i} className="cardLinks">
+            <div className="card">
+              <div className="cardImageContainer">
+                {/* <img
+                  src={image}
+                  alt={dataObject.name}
+                  className="cardImage"
+                /> */}
+              </div>
+              <h3 className="cardTitle">{content.name}</h3>
+              <h4>{content.id}</h4>
             </div>
           </div>
         );

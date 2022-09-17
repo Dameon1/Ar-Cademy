@@ -1,10 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import './dashboard.css';
-//import { AMW } from '../../utils/api';
-//import Card from "../../components/Cards";
 import MainContext from '../../context';
 import Login from "src/components/Login/Login";
-//import { getWeaveAggregator } from "../../api/WeaveAggregator";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import {ethers} from "ethers";
 
@@ -15,7 +12,6 @@ export function Dashboard() {
 
   useEffect(() => {
     setIsLoading(true);
-    console.log("dashboard mounted")
     if (addr) {
       async function update() {
         let user;
@@ -36,8 +32,6 @@ export function Dashboard() {
       update();
     }
   },[addr])
-
- 
 
   return (
     <div className="">

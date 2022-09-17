@@ -30,7 +30,6 @@ export function LandingPage() {
           Upload your own instructional videos and make the community leader board or learn a new skill with our community
           of developers and creators to show Proof of Knowledge (PoK) to the world.
         </p>
-       
       </div>
       <div>
         <ul className="moduleCards">

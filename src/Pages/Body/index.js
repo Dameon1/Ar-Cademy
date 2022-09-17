@@ -18,7 +18,6 @@ function Body({ syntaxTheme }) {
       <MainHeader />
       <main className="main-content">
         <Routes>
-          {/* <Route exact path="/Ar-Cademy/test" element={<Test />} /> */}
           <Route path="/AccountViewer" element={<AccountViewer />} />
           <Route exact path="/identity" element={<Identity />} />
           <Route exact path="/profile/:id" element={<Profile />} />

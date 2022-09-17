@@ -1,8 +1,6 @@
 import React from "react";
-
 import { WebBundlr } from "@bundlr-network/client"
 import BigNumber from "bignumber.js";
-
 import { providers } from "ethers"
 import { Web3Provider } from "@ethersproject/providers";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
@@ -25,22 +23,15 @@ function BundlrDemo() {
   const [img, setImg] = React.useState<Buffer>();
   const [price, setPrice] = React.useState<BigNumber>();
   const [bundler, setBundler] = React.useState<WebBundlr>();
-  const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>(
-    "https://node1.bundlr.network"
-  );
-
+  const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>("https://node2.bundlr.network");
   const [rpcUrl, setRpcUrl] = React.useState<string>();
   const [contractAddress, setContractAddress] = React.useState<string>();
   const [devMode, setDevMode] = React.useState<boolean>(false);
   const [chainChange, setChainChange] = React.useState<boolean>(true);
-
   const [fundAmount, setFundingAmount] = React.useState<string>();
   const [withdrawAmount, setWithdrawAmount] = React.useState<string>();
   const [provider, setProvider] = React.useState<Web3Provider>();
-
-  //const console.log = useconsole.log();
   const intervalRef = React.useRef<number>();
-
 
   const clean = async () => {
     clearInterval(intervalRef.current)
