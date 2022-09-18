@@ -6,6 +6,7 @@ import "./upload.css";
 import { AMW } from "../../utils/api";
 import Select from "react-select";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo";
+import { Button } from '@nextui-org/react';
 
 const supportedCurrencies = {
   matic: "matic",
@@ -172,9 +173,9 @@ export default function Upload() {
           <p>Currency: {currency}</p>
         </div>
         <div className={"containerStyle"}>
-          <button className={"wideButtonStyle"} onClick={bundlr}>
+          <Button onPress={bundlr}>
             Connect Wallet
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -183,7 +184,7 @@ export default function Upload() {
   return (
     <div>
       <div className="text-container">
-        <h2>Welcome to Ar-cademy</h2>
+        <h2>Welcome to Ar-Cademy</h2>
         <p className="site-introduction">
           This is a work in progress. Experimenting with the spectrum of uploads
           on Arweave. These range from simple string metadata stored directly on
@@ -194,15 +195,13 @@ export default function Upload() {
         </p>
       </div>
       <div className="connection">
-        <div className="wallet">
-          <BundlrDemo />
-        </div>
-        <div
-          className="wallet"
+        
+        <div className="wallet"
         >
           <h4>Step 1</h4>
           <p className={"labelStyle"}>Payment prep</p>
-          <div className={"selectContainerStyle"}>
+          <BundlrDemo />
+          {/* <div className={"selectContainerStyle"}>
             <Select
               onChange={({ value }) => setCurrency(value)}
               options={currencyOptions}
@@ -210,8 +209,8 @@ export default function Upload() {
               classNamePrefix="select"
               instanceId="currency"
             />
-          </div>
-          <div className={"bottomFormStyle"}>
+          </div> */}
+          {/* <div className={"bottomFormStyle"}>
             <p className={"labelStyle"}>Load Bundlr</p>
             <input
               placeholder="amount"
@@ -220,8 +219,8 @@ export default function Upload() {
             />
             <h2>💰 Balance {balance}</h2>
 
+          </div> */}
             {/* <h3 >💰 Balance {Math.round(balance * 100) / 100}</h3> */}
-          </div>
         </div>
         <div
           className="wallet"
@@ -244,9 +243,9 @@ export default function Upload() {
           {fileCost && (
             <h4>Cost to upload: {Math.round(fileCost * 1000) / 1000} MATIC</h4>
           )}
-          <button className={"buttonStyle"} onClick={uploadFile}>
+          <Button onPress={uploadFile}>
             Upload Video
-          </button>
+          </Button>
         </div>
 
         <div
@@ -255,9 +254,9 @@ export default function Upload() {
         >
           <h4>Step 3</h4>
           <p className={"labelStyle"}>Containerize and Finalise</p>
-          <button className={"buttonStyle"} onClick={fundWallet}>
+          <Button onPress={fundWallet}>
             Send transaction
-          </button>
+          </Button>
         </div>
       </div>
       <div className={"formStyle"}>
@@ -286,9 +285,9 @@ export default function Upload() {
                 onChange={(e) => setDescription(e.target.value)}
                 className={"textAreaStyle"}
               />
-              <button className={"saveVideoButtonStyle"} onClick={saveVideo}>
+              <Button  onPress={saveVideo}>
                 Save Video
-              </button>
+              </Button>
             </div>
           </div>
         )}
