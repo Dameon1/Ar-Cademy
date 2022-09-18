@@ -10,7 +10,7 @@ import { Web3Provider } from "@ethersproject/providers";
 import * as nearAPI from "near-api-js"
 import { WalletConnection } from "near-api-js";
 
-//import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
 //import WalletConnectProvider from "@walletconnect/web3-provider";
 //const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
 
@@ -31,7 +31,7 @@ function BundlrDemo() {
   const [price, setPrice] = React.useState<BigNumber>();
   const [bundler, setBundler] = React.useState<WebBundlr>();
   const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>(
-    "https://node2.bundlr.network"
+    "https://node1.bundlr.network"
   );
 
   const [rpcUrl, setRpcUrl] = React.useState<string>();
@@ -205,10 +205,9 @@ function BundlrDemo() {
     "Phantom": async (c: any) => {
       if (window.solana.isPhantom) {
         await window.solana.connect();
-        // const p = new PhantomWalletAdapter()
-        // await p.connect()
-        // return p;
-        return null
+        const p = new PhantomWalletAdapter()
+        await p.connect()
+        return p;
       }
     },
     "wallet.near.org": async (c: any) => {
@@ -370,8 +369,8 @@ function BundlrDemo() {
           <Dropdown.Button  >
             {toProperCase(currency)}
           </Dropdown.Button>
-          <Dropdown.Menu onAction={(key: any) => setCurrency(key)}>
-          {/* // onAction={() => { clean(); setCurrency() }}> */}
+          <Dropdown.Menu onAction={(key: any) =>setCurrency(key)}>
+          {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {Object.keys(currencyMap).map((v) => {
               return (<Dropdown.Item key={v} >{toProperCase(v)}</Dropdown.Item>) // proper/title case
             })}
@@ -381,22 +380,22 @@ function BundlrDemo() {
           <Dropdown.Button disabled={currency === defaultCurrency}>
             {selection}
           </Dropdown.Button>
-          <Dropdown.Menu onAction={(key: any) => setSelection(key)} items={providerMap}>
-          {Object.keys(providerMap).map((v) => {
-              return (<Dropdown.Item key={v} >{toProperCase(v)}</Dropdown.Item>) // proper/title case
-            })}
-            {/* {Object.keys(providerMap).map((v) => {
+          <Dropdown.Menu onAction={(key: any) => setSelection(key)}>
+          {/* {Object.keys(currencyMap).map((v) => {
+              return (<Dropdown.Item key={v} >{toProperCase(v)+"e"}</Dropdown.Item>) // proper/title case
+            })} */}
+            {Object.keys(providerMap).map((v) => {
               return ((currencyMap[currency] && currencyMap[currency].providers.indexOf(v) !== -1) ?
                (<Dropdown.Item key={v} >{v}</Dropdown.Item>) :
-                undefined)
-            })} */}
+               (<Dropdown.Item key={v} >{v}</Dropdown.Item>))
+            })}
           </Dropdown.Menu>
         </Dropdown>
         <Button disabled={!(selection !== defaultSelection && currency !== defaultCurrency && bundlerHttpAddress.length > 8)} onPress={async () => await initProvider()}>
           {provider ? "Disconnect" : "Connect"}
         </Button>
       </Row>
-      <Text>Connected Account: {address ?? "None"}</Text>
+      <p>Connected Account: {address ?? "None"}</p>
       <Row>
         <Button  disabled={!provider} onPress={async () => await initBundlr()}>
           Connect to Bundlr
@@ -448,9 +447,9 @@ function BundlrDemo() {
               </Button>
               {balance && (
                 <Tooltip content={`(${balance} ${bundler.currencyConfig.base[0]})`}>
-                  <Text>
+                  <p>
                     {toProperCase(currency)} Balance: {bundler.utils.unitConverter(balance).toFixed(7, 2).toString()} {bundler.currencyConfig.ticker.toLowerCase()}
-                  </Text>
+                  </p>
                 </Tooltip>
               )}
             </Row>

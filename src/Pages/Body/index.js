@@ -10,6 +10,7 @@ import Profile from "../Profile";
 import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo"
+import TestPage from "../TestPage";
 
 
 function Body({ syntaxTheme }) {
@@ -33,6 +34,7 @@ function Body({ syntaxTheme }) {
           <Route exact path="/upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/BundlrDemo" element={<BundlrDemo />} />
+          <Route exact path={"/testpage"} element={<TestPage />} />
 
           <Route exact path={string} element={<LandingPage />} />
           <Route
