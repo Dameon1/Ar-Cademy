@@ -1,12 +1,19 @@
 import React from "react";
+
 import { WebBundlr } from "@bundlr-network/client"
 import BigNumber from "bignumber.js";
+//import { Button } from "@chakra-ui/button";
+//import { Input, Row,  Col, Dropdown, DropdownButton, DropdownList, DropdownItem, Tooltip } from "@chakra-ui/react";
+//import { ChevronDownIcon } from "@chakra-ui/icons"
+import { Button, Grid, Loading, Text, Spacer, Input,Dropdown, Tooltip,Container, Row, Col } from '@nextui-org/react';
+
+//import WalletConnectProvider from "@walletconnect/web3-provider";
 import { providers } from "ethers"
 import { Web3Provider } from "@ethersproject/providers";
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
+//import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
 import * as nearAPI from "near-api-js"
 import { WalletConnection } from "near-api-js";
-import { Button, Grid, Loading, Text, Spacer, Input, Dropdown } from '@nextui-org/react';
+
 const { keyStores, connect } = nearAPI;
 
 declare var window: any // TODO: specifically extend type to valid injected objects.
@@ -23,14 +30,21 @@ function BundlrDemo() {
   const [img, setImg] = React.useState<Buffer>();
   const [price, setPrice] = React.useState<BigNumber>();
   const [bundler, setBundler] = React.useState<WebBundlr>();
-  const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>("https://node2.bundlr.network");
+  const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>(
+    "https://node1.bundlr.network"
+  );
+
   const [rpcUrl, setRpcUrl] = React.useState<string>();
   const [contractAddress, setContractAddress] = React.useState<string>();
   const [devMode, setDevMode] = React.useState<boolean>(false);
   const [chainChange, setChainChange] = React.useState<boolean>(true);
+
   const [fundAmount, setFundingAmount] = React.useState<string>();
   const [withdrawAmount, setWithdrawAmount] = React.useState<string>();
   const [provider, setProvider] = React.useState<Web3Provider>();
+
+  function toast(x){
+    return console.log(x);}
   const intervalRef = React.useRef<number>();
 
   const clean = async () => {
@@ -43,7 +57,6 @@ function BundlrDemo() {
     setAddress(undefined);
     setCurrency(defaultCurrency);
     setSelection(defaultSelection);
-
   }
 
 
@@ -85,26 +98,26 @@ function BundlrDemo() {
     if (img) {
       await bundler?.uploader.upload(img, [{ name: "Content-Type", value: "image/png" }])
         .then((res) => {
-          console.log({
+          toast({
             status: res?.status === 200 || res?.status === 201 ? "success" : "error",
             title: res?.status === 200 || res?.status === 201 ? "Successful!" : `Unsuccessful! ${res?.status}`,
             description: res?.data.id ? `https://arweave.net/${res.data.id}` : undefined,
             duration: 15000,
           });
         })
-        .catch(e => { console.log({ status: "error", title: `Failed to upload - ${e}` }) })
+        .catch(e => { toast({ status: "error", title: `Failed to upload - ${e}` }) })
     }
   };
 
   const fund = async () => {
     if (bundler && fundAmount) {
-      console.log({ status: "info", title: "Funding...", duration: 15000 })
+      toast({ status: "info", title: "Funding...", duration: 15000 })
       const value = parseInput(fundAmount)
       if (!value) return
       await bundler.fund(value)
-        .then(res => { console.log({ status: "success", title: `Funded ${res?.target}`, description: ` tx ID : ${res?.id}`, duration: 10000 }) })
+        .then(res => { toast({ status: "success", title: `Funded ${res?.target}`, description: ` tx ID : ${res?.id}`, duration: 10000 }) })
         .catch(e => {
-          console.log({ status: "error", title: `Failed to fund - ${e.data?.message || e.message}` })
+          toast({ status: "error", title: `Failed to fund - ${e.data?.message || e.message}` })
         })
     }
 
@@ -112,20 +125,20 @@ function BundlrDemo() {
 
   const withdraw = async () => {
     if (bundler && withdrawAmount) {
-      console.log({ status: "info", title: "Withdrawing..", duration: 15000 })
+      toast({ status: "info", title: "Withdrawing..", duration: 15000 })
       const value = parseInput(withdrawAmount)
       if (!value) return
       await bundler
         .withdrawBalance(value)
         .then((data) => {
-          console.log({
+          toast({
             status: "success",
             title: `Withdrawal successful - ${data.data?.tx_id}`,
             duration: 5000,
           });
         })
         .catch((err: any) => {
-          console.log({
+          toast({
             status: "error",
             title: "Withdrawal Unsuccessful!",
             description: err.message,
@@ -192,21 +205,22 @@ function BundlrDemo() {
     "Phantom": async (c: any) => {
       if (window.solana.isPhantom) {
         await window.solana.connect();
-        const p = new PhantomWalletAdapter()
-        await p.connect()
-        return p;
+        // const p = new PhantomWalletAdapter()
+        // await p.connect()
+        // return p;
+        return null
       }
     },
     "wallet.near.org": async (c: any) => {
       const near = await connect(c);
       const wallet = new WalletConnection(near, "bundlr");
       if (!wallet.isSignedIn()) {
-        console.log({ status: "info", title: "You are being redirected to authorize this application..." })
+        toast({ status: "info", title: "You are being redirected to authorize this application..." })
         window.setTimeout(() => { wallet.requestSignIn() }, 4000)
         // wallet.requestSignIn();
       }
       else if (!await c.keyStore.getKey(wallet._networkId, wallet.getAccountId())) {
-        console.log({ status: "warning", title: "Click 'Connect' to be redirected to authorize access key creation." })
+        toast({ status: "warning", title: "Click 'Connect' to be redirected to authorize access key creation." })
       }
       return wallet
     }
@@ -303,17 +317,17 @@ function BundlrDemo() {
     const p = providerMap[pname] // get provider entry
     const c = currencyMap[cname]
     console.log(`loading: ${pname} for ${cname}`)
-    const providerInstance = await p(c.opts).catch((e: Error) => { console.log({ status: "error", title: `Failed to load provider ${pname}`, duration: 10000 }); console.log(e); return; })
+    const providerInstance = await p(c.opts).catch((e: Error) => { toast({ status: "error", title: `Failed to load provider ${pname}`, duration: 10000 }); console.log(e); return; })
     setProvider(providerInstance)
   };
 
   const initBundlr = async () => {
-    const bundlr = new WebBundlr(bundlerHttpAddress, currency, provider)
+    const bundlr = new WebBundlr(bundlerHttpAddress, currency, provider, { providerUrl: rpcUrl })
     try {
       // Check for valid bundlr node
       await bundlr.utils.getBundlerAddress(currency)
     } catch {
-      console.log({ status: "error", title: `Failed to connect to bundlr ${bundlerHttpAddress}`, duration: 10000 })
+      toast({ status: "error", title: `Failed to connect to bundlr ${bundlerHttpAddress}`, duration: 10000 })
       return;
     }
     try {
@@ -324,7 +338,7 @@ function BundlrDemo() {
     if (!bundlr.address) {
       console.log("something went wrong");
     }
-    console.log({ status: "success", title: `Connected to ${bundlerHttpAddress}` })
+    toast({ status: "success", title: `Connected to ${bundlerHttpAddress}` })
     setAddress(bundlr?.address)
     setBundler(bundlr);
   }
@@ -342,167 +356,148 @@ function BundlrDemo() {
   const parseInput = (input: string | number) => {
     const conv = new BigNumber(input).multipliedBy(bundler!.currencyConfig.base[1]);
     if (conv.isLessThan(1)) {
-      console.log({ status: "error", title: `Value too small!` })
+      toast({ status: "error", title: `Value too small!` })
       return;
     }
     return conv;
   }
 
   return (
-    <div>
-      {/* <Menu >
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+    <Col  >
+      <Row>
+        {" "}
+        <Dropdown >
+          <Dropdown.Button  >
             {toProperCase(currency)}
-          </MenuButton>
-          <MenuList>
+          </Dropdown.Button>
+          <Dropdown.Menu onAction={() => { clean(); setCurrency("matic") }}>
             {Object.keys(currencyMap).map((v) => {
-              return (<MenuItem key={v} onClick={() => { clean(); setCurrency(v) }}>{toProperCase(v)}</MenuItem>) // proper/title case
+              return (<Dropdown.Item key={v} >{toProperCase(v)}</Dropdown.Item>) // proper/title case
             })}
-          </MenuList>
-        </Menu> 
-        <Menu >*/}
-
-      {" "}
-      <Dropdown>
-      <Dropdown.Button flat>Trigger</Dropdown.Button>
-      <Dropdown.Menu aria-label="Dynamic Actions" items={currencyMap}>
-      {Object.keys(currencyMap).map((v) => {
-            return (
-            <Dropdown.Item key={v}  >
-              {toProperCase(v)}
-              </Dropdown.Item>) // proper/title case
-          })}
-        {/* {({item},i) => (
-          <Dropdown.Item
-            key={i}
-            color={i === "delete" ? "error" : "default"}
-          >
-            {item}
-          </Dropdown.Item>
-        )} */}
-      </Dropdown.Menu>
-    </Dropdown>
-    <Dropdown>
-    <Dropdown.Button disabled={currency === defaultCurrency} >
-          {selection}
-        </Dropdown.Button>
-        <Dropdown.Menu>
-          {/* {Object.keys(providerMap).map((v) => {
-            return ((currencyMap[currency] && currencyMap[currency].providers.indexOf(v) !== -1) ? (<Dropdown.Item key={v} >{v}</Dropdown.Item>) : undefined)
-          })} */}
-        </Dropdown.Menu>
-    </Dropdown>
-      {/* <select >
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          {toProperCase(currency)}
-        </MenuButton>
-        <MenuList>
+          </Dropdown.Menu>
+        </Dropdown>
+        <Dropdown >
+          <Dropdown.Button disabled={currency === defaultCurrency}>
+            {selection}
+          </Dropdown.Button>
+          <Dropdown.Menu onAction={(x) => setSelection("MetaMask")}>
           {Object.keys(currencyMap).map((v) => {
-            return (<MenuItem key={v} onClick={() => { clean(); setCurrency(v) }}>{toProperCase(v)}</MenuItem>) // proper/title case
-          })}
-        </MenuList>
-      </Menu>
-      <Menu >
-        <MenuButton disabled={currency === defaultCurrency} as={Button} rightIcon={<ChevronDownIcon />}>
-          {selection}
-        </MenuButton>
-        <MenuList>
-          {Object.keys(providerMap).map((v) => {
-            return ((currencyMap[currency] && currencyMap[currency].providers.indexOf(v) !== -1) ? (<MenuItem key={v} onClick={() => setSelection(v)}>{v}</MenuItem>) : undefined)
-          })}
-        </MenuList>
-      </select> */}
-      <Button disabled={!(selection !== defaultSelection && currency !== defaultCurrency && bundlerHttpAddress.length > 8)} onClick={async () => await initProvider()}>
-        {provider ? "Disconnect" : "Connect"}
-      </Button>
+              return (<Dropdown.Item key={v} >{toProperCase(v)+"e"}</Dropdown.Item>) // proper/title case
+            })}
+            {/* {Object.keys(providerMap).map((v) => {
+              return ((currencyMap[currency] && currencyMap[currency].providers.indexOf(v) !== -1) ?
+               (<Dropdown.Item key={v} >{v}</Dropdown.Item>) :
+                undefined)
+            })} */}
+          </Dropdown.Menu>
+        </Dropdown>
+        <Button disabled={!(selection !== defaultSelection && currency !== defaultCurrency && bundlerHttpAddress.length > 8)} onPress={async () => await initProvider()}>
+          {provider ? "Disconnect" : "Connect"}
+        </Button>
+      </Row>
       <Text>Connected Account: {address ?? "None"}</Text>
-      <Button disabled={!provider} onClick={async () => await initBundlr()}>
-        Connect to Bundlr
-      </Button>
-      <Input
-        value={bundlerHttpAddress}
-        onChange={updateAddress}
-        placeholder="Bundler Address"
-      />
+      <Row>
+        <Button  disabled={!provider} onPress={async () => await initBundlr()}>
+          Connect to Bundlr
+        </Button>
+        <Input
+          value={bundlerHttpAddress}
+          onChange={updateAddress}
+          placeholder="Bundler Address"
+        />
+      </Row>
       {devMode && (
         <>
           <Text>Advanced Overrides (Only change if you know what you're doing!)</Text>
-          <Input
-            value={rpcUrl}
-            onChange={(evt: React.BaseSyntheticEvent) => { setRpcUrl(evt.target.value) }}
-            placeholder="RPC Url"
-          />
-          <Input
-            value={contractAddress}
-            onChange={(evt: React.BaseSyntheticEvent) => { setContractAddress(evt.target.value) }}
-            placeholder="Contract address"
-          />
-          <Button onClick={() => setChainChange(!chainChange)} >
-            {chainChange ? "Disable" : "Enable"} Chain Changing
-          </Button>
+          <Row >
+            <Input
+              value={rpcUrl}
+              onChange={(evt: React.BaseSyntheticEvent) => { setRpcUrl(evt.target.value) }}
+              placeholder="RPC Url"
+            />
+            <Input
+              value={contractAddress}
+              onChange={(evt: React.BaseSyntheticEvent) => { setContractAddress(evt.target.value) }}
+              placeholder="Contract address"
+            />
+            <Button onPress={() => setChainChange(!chainChange)} >
+              {chainChange ? "Disable" : "Enable"} Chain Changing
+            </Button>
 
+          </Row>
         </>
       )}
       {
         bundler && (
           <>
-            <Button
-              onClick={async () => {
-                address &&
-                  bundler!
-                    .getBalance(address)
-                    .then((res: BigNumber) => {
-                      setBalance(res.toString())
-                    });
-                await toggleRefresh();
-              }}
+            <Row>
+              <Button
+                onPress={async () => {
+                  address &&
+                    bundler!
+                      .getBalance(address)
+                      .then((res: BigNumber) => {
+                        setBalance(res.toString())
+                      });
+                  await toggleRefresh();
+                }}
 
-            >
-              Get {toProperCase(currency)} Balance
-            </Button>
-            {balance && (
-              <Text>
-                {toProperCase(currency)} Balance: {bundler.utils.unitConverter(balance).toFixed(7, 2).toString()} {bundler.currencyConfig.ticker.toLowerCase()}
-              </Text>
-            )}
-            <Button onClick={fund}>
-              Fund Bundlr
-            </Button>
-            <Input
-              placeholder={`${toProperCase(currency)} Amount`}
-              value={fundAmount}
-              onChange={updateFundAmount}
-            />
-            <Button onClick={withdraw}>
-              Withdraw Balance
-            </Button>
-            <Input
-              placeholder={`${toProperCase(currency)} Amount`}
-              value={withdrawAmount}
-              onChange={updateWithdrawAmount}
-            />
-            <Button onClick={handleFileClick}>Select file from Device</Button>
+              >
+                Get {toProperCase(currency)} Balance
+              </Button>
+              {balance && (
+                <Tooltip content={`(${balance} ${bundler.currencyConfig.base[0]})`}>
+                  <Text>
+                    {toProperCase(currency)} Balance: {bundler.utils.unitConverter(balance).toFixed(7, 2).toString()} {bundler.currencyConfig.ticker.toLowerCase()}
+                  </Text>
+                </Tooltip>
+              )}
+            </Row>
+            <Row>
+              <Button onPress={fund}>
+                Fund Bundlr
+              </Button>
+              <Input
+                placeholder={`${toProperCase(currency)} Amount`}
+                value={fundAmount}
+                onChange={updateFundAmount}
+              />
+            </Row>
+            <Row>
+              <Button  onPress={withdraw}>
+                Withdraw Balance
+              </Button>
+              <Input
+                placeholder={`${toProperCase(currency)} Amount`}
+                value={withdrawAmount}
+                onChange={updateWithdrawAmount}
+              />
+            </Row>
+            <Button onPress={handleFileClick}>Select file from Device</Button>
             {
               img && (
                 <>
-                  <Button onClick={handlePrice}>Get Price</Button>
-                  {price && (
-                    <Text>{`Cost: ${bundler.utils.unitConverter(price).toString()} ${bundler.currencyConfig.ticker.toLowerCase()} `}</Text>
-                  )}
-                  <Button onClick={uploadFile}>Upload to Bundlr Network</Button>
+                  <Row>
+                    <Button onPress={handlePrice}>Get Price</Button>
+                    {price && (
+                      <Text>{`Cost: ${bundler.utils.unitConverter(price).toString()} ${bundler.currencyConfig.ticker.toLowerCase()} `}</Text>
+                    )}
+                  </Row>
+                  <Button onPress={uploadFile}>Upload to Bundlr Network</Button>
                 </>
               )
             }
           </>
         )
       }
-      <Button onClick={() => { setDevMode(!devMode) }}>
+      <Button onPress={() => { setDevMode(!devMode) }}>
         {devMode ? "Hide" : "Show"} Advanced Options
       </Button>
-    </div>
+    </Col >
+
   );
-
-
 }
+
+
 
 export default BundlrDemo;

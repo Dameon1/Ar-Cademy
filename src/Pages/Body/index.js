@@ -9,6 +9,8 @@ import Footer from "../../components/Footer";
 import Profile from "../Profile";
 import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
+import BundlrDemo from "../../components/BundlrDemo/BundlrDemo"
+
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
@@ -30,6 +32,8 @@ function Body({ syntaxTheme }) {
           />
           <Route exact path="/upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/BundlrDemo" element={<BundlrDemo />} />
+
           <Route exact path={string} element={<LandingPage />} />
           <Route
             path="*"
