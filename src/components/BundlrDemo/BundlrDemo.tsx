@@ -2,22 +2,22 @@ import React from "react";
 
 import { WebBundlr } from "@bundlr-network/client"
 import BigNumber from "bignumber.js";
-//import { Button } from "@chakra-ui/button";
-//import { Input, Row,  Col, Dropdown, DropdownButton, DropdownList, DropdownItem, Tooltip } from "@chakra-ui/react";
-//import { ChevronDownIcon } from "@chakra-ui/icons"
+
 import { Button, Grid, Loading, Text, Spacer, Input,Dropdown, Tooltip,Container, Row, Col } from '@nextui-org/react';
 
-//import WalletConnectProvider from "@walletconnect/web3-provider";
 import { providers } from "ethers"
 import { Web3Provider } from "@ethersproject/providers";
-//import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
 import * as nearAPI from "near-api-js"
 import { WalletConnection } from "near-api-js";
+
+//import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom"
+//import WalletConnectProvider from "@walletconnect/web3-provider";
+//const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
 
 const { keyStores, connect } = nearAPI;
 
 declare var window: any // TODO: specifically extend type to valid injected objects.
-//const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
+
 
 
 function BundlrDemo() {
@@ -31,7 +31,7 @@ function BundlrDemo() {
   const [price, setPrice] = React.useState<BigNumber>();
   const [bundler, setBundler] = React.useState<WebBundlr>();
   const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>(
-    "https://node1.bundlr.network"
+    "https://node2.bundlr.network"
   );
 
   const [rpcUrl, setRpcUrl] = React.useState<string>();
@@ -370,7 +370,8 @@ function BundlrDemo() {
           <Dropdown.Button  >
             {toProperCase(currency)}
           </Dropdown.Button>
-          <Dropdown.Menu onAction={() => { clean(); setCurrency("matic") }}>
+          <Dropdown.Menu onAction={(key: any) => setCurrency(key)}>
+          {/* // onAction={() => { clean(); setCurrency() }}> */}
             {Object.keys(currencyMap).map((v) => {
               return (<Dropdown.Item key={v} >{toProperCase(v)}</Dropdown.Item>) // proper/title case
             })}
@@ -380,9 +381,9 @@ function BundlrDemo() {
           <Dropdown.Button disabled={currency === defaultCurrency}>
             {selection}
           </Dropdown.Button>
-          <Dropdown.Menu onAction={(x) => setSelection("MetaMask")}>
-          {Object.keys(currencyMap).map((v) => {
-              return (<Dropdown.Item key={v} >{toProperCase(v)+"e"}</Dropdown.Item>) // proper/title case
+          <Dropdown.Menu onAction={(key: any) => setSelection(key)} items={providerMap}>
+          {Object.keys(providerMap).map((v) => {
+              return (<Dropdown.Item key={v} >{toProperCase(v)}</Dropdown.Item>) // proper/title case
             })}
             {/* {Object.keys(providerMap).map((v) => {
               return ((currencyMap[currency] && currencyMap[currency].providers.indexOf(v) !== -1) ?
@@ -400,11 +401,11 @@ function BundlrDemo() {
         <Button  disabled={!provider} onPress={async () => await initBundlr()}>
           Connect to Bundlr
         </Button>
-        <Input
+        {/* <Input
           value={bundlerHttpAddress}
           onChange={updateAddress}
           placeholder="Bundler Address"
-        />
+        /> */}
       </Row>
       {devMode && (
         <>
@@ -490,9 +491,9 @@ function BundlrDemo() {
           </>
         )
       }
-      <Button onPress={() => { setDevMode(!devMode) }}>
+      {/* <Button onPress={() => { setDevMode(!devMode) }}>
         {devMode ? "Hide" : "Show"} Advanced Options
-      </Button>
+      </Button> */}
     </Col >
 
   );
