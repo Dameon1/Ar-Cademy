@@ -1,9 +1,10 @@
 import Arweave from 'arweave'
 
 export const arweave = Arweave.init({})
-export const APP_NAME = process.env.NEXT_PUBLIC_ARWEAVE_APP_NAME || "PERMA_VIDEO_APP_TEST_NAME_3"
+ const APP_NAME =  "Arcademy"
 
 export const createPostInfo = async (node) => {
+  console.log(node)
   const ownerAddress = node.owner.address;
   const height = node.block ? node.block.height : -1;
   const timestamp = node.block ? parseInt(node.block.timestamp, 10) * 1000 : -1;

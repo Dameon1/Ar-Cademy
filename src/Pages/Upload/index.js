@@ -6,6 +6,8 @@ import "./upload.css";
 import { AMW } from "../../utils/api";
 import Select from "react-select";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo";
+import PermaVideo from "../../components/PermaVideo";
+
 import { Button } from '@nextui-org/react';
 
 const supportedCurrencies = {
@@ -23,7 +25,7 @@ const currencyOptions = Object.keys(supportedCurrencies).map((v) => {
   };
 });
 
-const APP_NAME = "Ar-cademy-Test";
+const APP_NAME = "Arcademy";
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },
   { value: "defi", label: "DeFi" },
@@ -142,8 +144,8 @@ export default function Upload() {
 
     try {
       let tx = await AMW.createTransaction(JSON.stringify(video), { tags });
-      await tx.sign()
-      await tx.upload()
+      // await tx.sign()
+      // await tx.upload()
 
       console.log(`http://arweave.net/${tx.txid}`);
       setTimeout(() => {
@@ -222,7 +224,7 @@ export default function Upload() {
           </div> */}
             {/* <h3 >💰 Balance {Math.round(balance * 100) / 100}</h3> */}
         </div>
-        <div
+        {/* <div
           className="wallet"
         >
           <h4>Step 2</h4>
@@ -246,8 +248,10 @@ export default function Upload() {
           <Button onPress={uploadFile}>
             Upload Video
           </Button>
+        </div> */}
+        <div className="wallet">
+          <PermaVideo />
         </div>
-
         <div
           className="wallet"
          

@@ -28,6 +28,7 @@
     "arweave-wallet-connector": "^0.0.25",
     "assert": "^2.0.0",
     "axios": "^0.27.2",
+    "bignumber": "^1.1.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "buffer-browserify": "^0.2.5",

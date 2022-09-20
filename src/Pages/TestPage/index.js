@@ -1,7 +1,7 @@
 import { buildQuery, arweave, createPostInfo, tagSelectOptions } from '../../utils'
 
 import { useEffect, useState } from 'react'
-import Select from 'react-select'
+//import Select from 'react-select'
 import { Button, Grid, Loading, Text, Spacer, Input,Dropdown, Tooltip,Container, Row, Col } from '@nextui-org/react';
 
 const wait = (ms) => new Promise((res) => setTimeout(res, ms))
@@ -10,6 +10,7 @@ export default function TestPage() {
   const defaultLabel = "Optional Label Selection"
   const [videos, setVideos] = useState([]);
   const [label, setLabel] = useState("Optional Label Selection")
+  
   useEffect(() => {
     async function getPostInfo(topicFilter = null, depth = 0) {
         try {
@@ -19,6 +20,7 @@ export default function TestPage() {
               console.error('GraphQL query failed')
               throw new Error(err);
             });
+            
           const edges = results.data.data.transactions.edges
           const posts = await Promise.all(
             edges.map(async edge => await createPostInfo(edge.node))
@@ -43,6 +45,7 @@ export default function TestPage() {
           console.error('GraphQL query failed')
           throw new Error(err);
         });
+      console.log("results: ", results)
       const edges = results.data.data.transactions.edges
       const posts = await Promise.all(
         edges.map(async edge => await createPostInfo(edge.node))
@@ -63,6 +66,7 @@ export default function TestPage() {
   }
 
   return (
+    <>
     <div className={"containerStyle"}>
          <Dropdown >
           <Dropdown.Button  >
@@ -76,12 +80,15 @@ export default function TestPage() {
           </Dropdown.Menu>
         </Dropdown>
       <Button onPress={async () => runFilterQuery(label)}>Search</Button>
+      </div>
       {
-        videos.map(video => (
+        videos.map((video,i) => (
+          <div key={i}>
           <div className={"videoContainerStyle"} key={video.URI}>
             <video key={video.URI} width="720px" height="405" controls className={"videoStyle"}>
               <source src={video.URI} type="video/mp4"/>
             </video>
+            </div><div>
             <div className={"titleContainerStyle"}>
               <h3 className={"titleStyle"}>{video.title}</h3>
               <a className={"iconStyle"}  target="_blank" rel="noreferrer" href={video.URI}>
@@ -90,9 +97,9 @@ export default function TestPage() {
             </div>
             <p className={"descriptionStyle"}>{video.description}</p>
           </div>
-        ))
+          </div>))
       }
-    </div>
+   </>
   )
 }
 
