@@ -40,7 +40,7 @@ export default function TestPage() {
   async function getPostInfo(topicFilter = null, depth = 0) {
     try {
       const query = buildQuery(topicFilter)
-      const results = await arweave.api.post('/graphql', query)
+      const results = await arweave.api.post('/graphql/', query)
         .catch(err => {
           console.error('GraphQL query failed')
           throw new Error(err);
