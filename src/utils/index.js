@@ -1,7 +1,7 @@
 import Arweave from 'arweave'
 
 export const arweave = Arweave.init({})
- const APP_NAME =  "Arcademy"
+ const APP_NAME =  "Ar-Cademy"
 
 export const createPostInfo = async (node) => {
   console.log(node)

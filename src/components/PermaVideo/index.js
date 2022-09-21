@@ -10,7 +10,7 @@ import { providers, utils } from 'ethers'
 //import { css } from '@emotion/css'
 import Link from 'react-router-dom'
 
-const APP_NAME = "Arcademy";
+const APP_NAME = "Ar-Cademy";
 
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },

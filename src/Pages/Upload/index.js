@@ -25,7 +25,7 @@ const currencyOptions = Object.keys(supportedCurrencies).map((v) => {
   };
 });
 
-const APP_NAME = "Arcademy";
+const APP_NAME = "Ar-Cademy";
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },
   { value: "defi", label: "DeFi" },

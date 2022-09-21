@@ -15,7 +15,7 @@ export default function TestPage() {
     async function getPostInfo(topicFilter = null, depth = 0) {
         try {
           const query = buildQuery(topicFilter)
-          const results = await arweave.api.post('/graphql', query)
+          const results = await arweave.api.get('graphql', query)
             .catch(err => {
               console.error('GraphQL query failed')
               throw new Error(err);
@@ -37,28 +37,54 @@ export default function TestPage() {
     //getPostInfo()
   },[])
 
-  async function getPostInfo(topicFilter = null, depth = 0) {
-    try {
-      const query = buildQuery(topicFilter)
-      const results = await arweave.api.post('/graphql/', query)
-        .catch(err => {
-          console.error('GraphQL query failed')
-          throw new Error(err);
-        });
-      console.log("results: ", results)
-      const edges = results.data.data.transactions.edges
+   async function getPostInfo(topicFilter) {
+    
+    const query = buildQuery(topicFilter)
+    const res = await fetch("https://arweave.net/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(query),
+    });
+    // const results = await arweave.api.post("/graphql", query).catch((err) => {
+    // 	console.error("GraphQL query failed");
+    // 	throw new Error(err);
+    // });
+    const results = await res.json();
+    const edges = results.data.transactions.edges;
+          console.log("results: ", results)
       const posts = await Promise.all(
         edges.map(async edge => await createPostInfo(edge.node))
       )
       let sorted = posts.sort((a, b) => new Date(b.request.data.createdAt) - new Date(a.request.data.createdAt))
       sorted = sorted.map(s => s.request.data)
-      setVideos(sorted)
-    } catch (err) {
-      await wait(2 ** depth * 10)
-      getPostInfo(topicFilter, depth + 1)
-      console.log('error: ', err)
-    }
+    setVideos(sorted)
+    //scursor = last(edges).cursor
+    return edges.map((edge) => createPostInfo(edge.node));
   }
+  // async function getPostInfo(topicFilter = null, depth = 0) {
+  //   try {
+  //     const query = buildQuery(topicFilter)
+  //     const results = await arweave.api.post('graphql',  query)
+  //       .catch(err => {
+  //         console.error('GraphQL query failed')
+  //         throw new Error(err);
+  //       });
+  //     console.log("results: ", results)
+  //     const edges = results.data.data.transactions.edges
+  //     const posts = await Promise.all(
+  //       edges.map(async edge => await createPostInfo(edge.node))
+  //     )
+  //     let sorted = posts.sort((a, b) => new Date(b.request.data.createdAt) - new Date(a.request.data.createdAt))
+  //     sorted = sorted.map(s => s.request.data)
+  //     setVideos(sorted)
+  //   } catch (err) {
+  //     await wait(2 ** depth * 10)
+  //     getPostInfo(topicFilter, depth + 1)
+  //     console.log('error: ', err)
+  //   }
+  // }
   
 
   async function runFilterQuery(data) {
