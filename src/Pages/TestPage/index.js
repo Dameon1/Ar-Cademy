@@ -140,7 +140,7 @@ export default function TestPage() {
               <source src={video.URI} type="video/mp4" />
             </video>
           </div> */}
-          {console.log(video)}
+          {console.log("video: ", video)}
           {/* <div>
             <div className={"titleContainerStyle"}>
               <h3 className={"titleStyle"}>{video.title}</h3>
