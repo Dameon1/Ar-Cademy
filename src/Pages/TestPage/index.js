@@ -137,7 +137,7 @@ export default function TestPage() {
               controls
               className={"videoStyle"}
             >
-              <source src={"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"} type="video/mp4" />
+              <source src={video.URI} type="video/mp4" />
             </video>
           </div>
           {console.log("video: ", video)}
