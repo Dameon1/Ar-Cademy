@@ -85,6 +85,26 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
+       case "STAMPS":
+        console.log("testing")
+        content = props.contentObjects.map( (content, i) => {
+          return (
+            <div key={i} className="cardLinks">
+              <div className="card">
+                <div className="cardImageContainer">
+                  <img
+                    src={`https://arweave.net/${content.stampedAsset}`}
+                    alt={"dataObject.name"}
+                    className="cardImage"
+                  />
+                </div>
+                <h3 className="cardTitle">"string"</h3>
+                <h4>string</h4>
+              </div>
+            </div>
+          )
+        });
+       break;
     default:
       console.log(props.label);
   }

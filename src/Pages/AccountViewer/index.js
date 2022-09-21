@@ -95,6 +95,13 @@ export function AccountViewer() {
             ARK={"ARKAPI"}
           />
         )}
+        {Object.entries(userContent).length !== 0 && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.STAMPS}
+            contentType={"STAMPS"}
+            label="STAMPS"
+          />
+        )}
         {isLoading && <div>Loading</div>}
         {Object.entries(userContent).length !== 0 && !isLoading && (
           <ProfileContentContainer
