@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom"
 import { MainContext } from "../../context";
 import { utils } from "ethers";
 import BigNumber from "bignumber.js";
@@ -58,6 +59,7 @@ export default function Upload() {
   const [URI, setURI] = useState();
   const [amount, setAmount] = useState();
   const [balance, setBalance] = useState(0);
+  const navigate = useNavigate();
 
   async function fetchBalance() {
     const bal = await AMW.getBalance();
@@ -114,13 +116,14 @@ export default function Upload() {
     const tags = [{ name: "Content-Type", value: "video/mp4" }];
     try {
       let tx = await AMW.uploader(file, tags);
-      setURI(`http://arweave.net/${tx.data.id}`);
+      setURI(`https://arweave.net/${tx.data.id}`);
     } catch (err) {
       console.log("Error uploading video: ", err);
     }
   }
 
   async function saveVideo() {
+    
     if (!file || !title || !description) return;
     const tags = [
       { name: "Content-Type", value: "application/json" },
@@ -147,9 +150,10 @@ export default function Upload() {
       // await tx.sign()
       // await tx.upload()
 
-      console.log(`http://arweave.net/${tx.txid}`);
+      console.log(`https://arweave.net/${tx.txid}`);
       setTimeout(() => {
-        console.log("/redirect to new page displaying upload");
+        navigate("/testpage")
+        //console.log("/redirect to new page displaying upload");
       }, 2000);
     } catch (err) {
       console.log("error uploading video with metadata: ", err);

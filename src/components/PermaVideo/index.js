@@ -8,7 +8,7 @@ import Select from 'react-select'
 import { WebBundlr } from "@bundlr-network/client"
 import { providers, utils } from 'ethers'
 //import { css } from '@emotion/css'
-import Link from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
 const APP_NAME = "Ar-Cademy";
 
@@ -55,6 +55,8 @@ export default function PermaVideo() {
   const [currency, setCurrency] = useState('matic')
 
   const bundlrRef = useRef()
+
+  const navigate = useNavigate();
   async function initialiseBundlr() {
     await window.ethereum.enable()
   
@@ -125,7 +127,7 @@ export default function PermaVideo() {
     const tags = [{ name: 'Content-Type', value: 'video/mp4' }]
     try {
       let tx = await bundlrInstance.uploader.upload(file, tags)
-      setURI(`http://arweave.net/${tx.data.id}`)
+      setURI(`https://arweave.net/${tx.data.id}`)
     } catch (err) {
       console.log('Error uploading video: ', err)
     }
@@ -157,9 +159,9 @@ export default function PermaVideo() {
       await tx.sign()
       const { data } = await tx.upload()
 
-      console.log(`http://arweave.net/${data.id}`)
+      console.log(`https://arweave.net/${data.id}`)
       setTimeout(() => {
-        console.log('/make a redirect link')
+        navigate('/testpage')
       }, 2000)
     } catch (err) {
       console.log('error uploading video with metadata: ', err)
