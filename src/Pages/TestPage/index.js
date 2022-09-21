@@ -82,6 +82,7 @@ export default function TestPage() {
     );
     sorted = sorted.map((s) => s.request.data);
     setVideos(sorted);
+    console.log(posts)
     //scursor = last(edges).cursor
     return posts;
   }
@@ -128,7 +129,7 @@ export default function TestPage() {
       </div>
       {videos.map((video, i) => (
         <div key={i}>
-          <div className={"videoContainerStyle"} key={video.URI}>
+          {/* <div className={"videoContainerStyle"} key={video.URI}>
             <video
               key={video.URI}
               width="720px"
@@ -138,8 +139,9 @@ export default function TestPage() {
             >
               <source src={video.URI} type="video/mp4" />
             </video>
-          </div>
-          <div>
+          </div> */}
+          {console.log(video)}
+          {/* <div>
             <div className={"titleContainerStyle"}>
               <h3 className={"titleStyle"}>{video.title}</h3>
               <a
@@ -148,11 +150,10 @@ export default function TestPage() {
                 rel="noreferrer"
                 href={video.URI}
               >
-                <img src="/arrow.svg" />
               </a>
             </div>
             <p className={"descriptionStyle"}>{video.description}</p>
-          </div>
+          </div> */}
         </div>
       ))}
     </>

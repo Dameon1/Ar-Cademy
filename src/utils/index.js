@@ -67,7 +67,6 @@ export const createPostInfo = async (node) => {
       }
     }
   }`}
-  console.log('queryObject: ', queryObject)
   return queryObject;
 }
 
