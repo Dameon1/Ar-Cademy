@@ -15,8 +15,8 @@ export const createPostInfo = async (node) => {
     length: node.data.size,
     timestamp: timestamp,
   }
-  
-  postInfo.request = await arweave.api.get(`/${node.id}`, { timeout: 10000 })
+  postInfo.request = await arweave.api.get(`https://arweave.net/${node.id}`, { timeout: 20000 })
+  console.log("postInfo: ", postInfo)
   return postInfo;
  }
 

@@ -72,7 +72,7 @@ export default function TestPage() {
     // });
     const results = await res.json();
     const edges = results.data.transactions.edges;
-    console.log("results: ", results);
+    console.log("edges: ", edges);
     const posts = await Promise.all(
       edges.map(async (edge) => await createPostInfo(edge.node))
     );
@@ -82,7 +82,7 @@ export default function TestPage() {
     );
     sorted = sorted.map((s) => s.request.data);
     setVideos(sorted);
-    console.log(posts)
+    console.log("videos", videos)
     //scursor = last(edges).cursor
     return posts;
   }
@@ -110,7 +110,7 @@ export default function TestPage() {
   // }
 
   async function runFilterQuery(data) {
-    getPostInfo(data ? data.value : null);
+    await getPostInfo(data ? data.value : null);
   }
 
   return (
@@ -129,7 +129,7 @@ export default function TestPage() {
       </div>
       {videos.map((video, i) => (
         <div key={i}>
-          {/* <div className={"videoContainerStyle"} key={video.URI}>
+          <div className={"videoContainerStyle"} key={video.URI}>
             <video
               key={video.URI}
               width="720px"
@@ -137,9 +137,9 @@ export default function TestPage() {
               controls
               className={"videoStyle"}
             >
-              <source src={video.URI} type="video/mp4" />
+              <source src={"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"} type="video/mp4" />
             </video>
-          </div> */}
+          </div>
           {console.log("video: ", video)}
           {/* <div>
             <div className={"titleContainerStyle"}>
