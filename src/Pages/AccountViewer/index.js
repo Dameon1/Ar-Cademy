@@ -7,6 +7,9 @@ import ProfileContentContainer from "src/components/ProfileContentContainer";
 import "./accountViewer.css";
 import ArweaveAccount from "src/components/ArweaveAccount";
 
+import { ans } from "../../api/ANS/ans.js";
+
+
 export function AccountViewer() {
   const { walletName, disconnectWallet } = useContext(MainContext);
   const [userContent, setUserContent] = useState([]);
@@ -51,9 +54,18 @@ export function AccountViewer() {
     setInput(event.target.value);
   };
 
+  function getAddrByANS(ansName) {
+    const ansHandle = ans.find((holder) => holder.username === ansName);
+    if (ansHandle) {
+      return ansHandle.address;
+    }
+  }
+
   function onSubmit(event) {
     event.preventDefault();
-    setAddr(input);
+    const ansAddr = getAddrByANS(input)
+    console.log(ansAddr)
+    setAddr(ansAddr || input);
     setIsLoading(!isLoading);
   }
   
@@ -73,7 +85,6 @@ export function AccountViewer() {
             placeholder="Enter address"
             onChange={handleInput}
             required
-            minLength="42"
             maxLength="44"
             size="48"
           />

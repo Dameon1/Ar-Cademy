@@ -17,8 +17,17 @@ export function PassportCard(props) {
       return ansHandle.username;
     }
   }
+
+  function getAddrByANS(ansName) {
+    const ansHandle = ans.find((holder) => holder.username === ansName);
+    if (ansHandle) {
+      return ansHandle.address;
+    }
+  }
+
   approved(addr);
-  let ANSname = getANS(addr);
+  let ansName = getANS(addr);
+  let ansAddr = getAddrByANS(addr)
   return (
     <div className="passport">
       <img className="passportImage" src={avatar} alt="heroImage" />
@@ -31,15 +40,15 @@ export function PassportCard(props) {
             href={`https://${authorWebsite}`}
             target="_blank"
             rel="noreferrer"
-          >{`${ANSname}`}</a>
+          >{`${ansName}`}</a>
           <li className="passportText">ANS</li>
-          <li className="passportInfo">{ANSname}</li>
+          <li className="passportInfo">{ansName}</li>
           <a
             className="passportInfo"
-            href={`https://${ANSname}.ar.page`}
+            href={`https://${ansName}.ar.page`}
             target="_blank"
             rel="noreferrer"
-          >{`${ANSname}.page`}</a>
+          >{`${ansName}.page`}</a>
           <li className="passportText">V.Dao Approval</li>
           {isApproved && (
             <li className="passportInfo">{isApproved ? "true" : "false"}</li>
