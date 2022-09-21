@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/Ar-Cademy/static/css/main.0b91efc4.css",
-    "main.js": "/Ar-Cademy/static/js/main.bd698eea.js",
+    "main.js": "/Ar-Cademy/static/js/main.c26bff54.js",
     "index.html": "/Ar-Cademy/index.html"
   },
   "entrypoints": [
     "static/css/main.0b91efc4.css",
-    "static/js/main.bd698eea.js"
+    "static/js/main.c26bff54.js"
   ]
 }
