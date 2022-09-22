@@ -18,16 +18,16 @@ export function PassportCard(props) {
     }
   }
 
-  function getAddrByANS(ansName) {
-    const ansHandle = ans.find((holder) => holder.username === ansName);
-    if (ansHandle) {
-      return ansHandle.address;
-    }
-  }
+  // function getAddrByANS(ansName) {
+  //   const ansHandle = ans.find((holder) => holder.username === ansName);
+  //   if (ansHandle) {
+  //     return ansHandle.address;
+  //   }
+  // }
 
   approved(addr);
   let ansName = getANS(addr);
-  let ansAddr = getAddrByANS(addr)
+  //let ansAddr = getAddrByANS(addr)
   return (
     <div className="passport">
       <img className="passportImage" src={avatar} alt="heroImage" />

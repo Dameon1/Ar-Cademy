@@ -13,13 +13,14 @@ import {
   VertoIDinfo,
 } from '../../static/styles/Profile';
 
-import { T_addr, T_profile, T_walletName, T_txid } from '../../utils/types';
+import { T_addr, T_profile, T_walletName, T_txid, T_ansProfile } from '../../utils/types';
 import Account from 'arweave-account';
 
 function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: T_addr, walletName: T_walletName, disconnectWallet: () => void }) {
 
   const [profileData, setProfileData] = useState<T_profile>();
   const [profileTxid, setProfileTxid] = useState<T_txid>();
+  const [ansProfile, setAnsProfile] = useState<T_ansProfile>();
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState<string | false>(false);
 
@@ -28,6 +29,11 @@ function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string
       try {
         const account = new Account();
         const user = await account.get(addr);
+        const res = await fetch(
+          `https://ans-testnet.herokuapp.com/profile/${addr}`
+        );
+        const ans = await res.json();
+        if(ans){setAnsProfile(ans)}
         if (user) {
           setProfileData(user.profile);
           setProfileTxid(user.txid);
@@ -129,7 +135,7 @@ function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string
                 </div>
               </div>
             </>
-            }
+          }
         </>
         }
     </div>

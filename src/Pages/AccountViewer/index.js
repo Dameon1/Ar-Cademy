@@ -75,7 +75,7 @@ export function AccountViewer() {
         <h2>Search Arweave Related Content</h2>
         <p className="site-introduction">
           Enter an address to find the Arweave related content associated
-          connected to it. Not all users have content to diplay or have created
+          connected to it. Not all users have content to display or have created
           an account on the various network calls that are made here.
         </p>
       </div>
@@ -94,16 +94,18 @@ export function AccountViewer() {
         </form>
       </div>
       <div className="inputBox">
+        <p>Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE</p>
+      </div>
+      <div className="inputBox">
         <p>Current Addr: {addr}</p>
       </div>
 
       <div className="">
-        {addr && !isLoading && (
+        {Object.entries(userContent).length !== 0 && addr && !isLoading && (
           <ArweaveAccount
             addr={addr}
             walletName={walletName}
             disconnectWallet={disconnectWallet}
-            ARK={"ARKAPI"}
           />
         )}
         {Object.entries(userContent).length !== 0 && !isLoading && (

@@ -87,7 +87,6 @@ export function ProfileContentContainer(props) {
       break;
        case "STAMPS":
          content = props.contentObjects.map( (content, i) => {
-          console.log(content)
           return (
             <div key={i} className="cardLinks">
               <div className="card">
