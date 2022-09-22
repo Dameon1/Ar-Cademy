@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 
-import { useAns } from '../';
+import useAns from './index';
 
-import * as lang from '../en.json';
+//import * as lang from '../en.json';
 
 export const Default_Badge = () => {
 
     //will replace later
-    const connector = lang.connector;
+    //const connector = lang.connector;
 
     const {
         walletConnected,
@@ -43,7 +43,11 @@ export const Default_Badge = () => {
                         className='btn btn-primary btn-sm md:btn-md text-sm md:text-base'
                         onClick={arconnectConnect}
                     >
-                        <img className='w-3.5 h-3.5 mr-3.5 md:w-4 md:h-4 md:mr-4' src="https://nanofuxion.ar.page/favicon.png"></img> {(connector.login)}
+                        <img alt="Change ALT here" 
+                             className='w-3.5 h-3.5 mr-3.5 md:w-4 md:h-4 md:mr-4' 
+                             src="https://nanofuxion.ar.page/favicon.png">
+                        </img> 
+                        <p>Create Login here</p>
                     </div>
                 )}
         </>

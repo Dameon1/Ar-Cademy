@@ -6,7 +6,7 @@ import MainContext from "../../context";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import "./accountViewer.css";
 import ArweaveAccount from "src/components/ArweaveAccount";
-
+import UseAns from "src/components/ANSForAll";
 import { ans } from "../../api/ANS/ans.js";
 
 
@@ -72,11 +72,13 @@ export function AccountViewer() {
   return (
     <>
       <div className="text-container">
-        <h2>Search Arweave Related Content</h2>
+        <h2>Search Arweave Related Kontent</h2>
         <p className="site-introduction">
           Enter an address to find the Arweave related content associated
-          connected to it. Not all users have content to display or have created
-          an account on the various network calls that are made here.
+          connected to it.
+        </p>
+        <p> --Not all users have content to display or have created
+          an account on the various network calls that are made here.--
         </p>
       </div>
       <div>
@@ -103,6 +105,13 @@ export function AccountViewer() {
       <div className="">
         {Object.entries(userContent).length !== 0 && addr && !isLoading && (
           <ArweaveAccount
+            addr={addr}
+            walletName={walletName}
+            disconnectWallet={disconnectWallet}
+          />
+        )}
+        {Object.entries(userContent).length !== 0 && addr && !isLoading && (
+          <UseAns
             addr={addr}
             walletName={walletName}
             disconnectWallet={disconnectWallet}
