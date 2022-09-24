@@ -83,7 +83,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
                     {ansProfile.links.github && <UserSocial href={`https://github.com/${ansProfile.links.github}`} target="_blank" rel="noreferrer">
                       <FaGithub size={25} />
                     </UserSocial>}
-                    {ansProfile.links.customUrl && <UserSocial href={`https://github.com/${ansProfile.links.customUrl}`} target="_blank" rel="noreferrer">
+                    {ansProfile.links.customUrl && <UserSocial href={`${ansProfile.links.customUrl}`} target="_blank" rel="noreferrer">
                       <FaGlobe size={25} />
                     </UserSocial>}
                     

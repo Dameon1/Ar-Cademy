@@ -97,7 +97,7 @@ function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string
                       <FaFacebook size={25} />
                     </UserSocial>}
                     {profileData.links.discord && <span>
-                      <FaDiscord size={25} /> {profileData.links.discord}
+                      <FaDiscord size={25} />
                     </span>}
                   </DetailsS>
                 </VertoIDinfo>

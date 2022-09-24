@@ -9,6 +9,7 @@ import ArweaveAccount from "src/components/ArweaveAccount";
 import UseAns from "src/components/ANSForAll";
 import { ans } from "../../api/ANS/ans.js";
 
+import { Button, Grid, Loading, Text, Spacer } from '@nextui-org/react';
 
 export function AccountViewer() {
   const { walletName, disconnectWallet } = useContext(MainContext);
@@ -101,7 +102,9 @@ export function AccountViewer() {
       <div className="inputBox">
         <p>Current Addr: {addr}</p>
       </div>
-
+      {(isLoading && <Grid.Container gap={1} justify="center">
+        <Loading size="xl" css={{ padding: '$24' }} color="success" />
+      </Grid.Container>)}
       <div className="">
         {Object.entries(userContent).length !== 0 && addr && !isLoading && (
           <ArweaveAccount
