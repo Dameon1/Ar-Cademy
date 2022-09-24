@@ -31,7 +31,7 @@ function BundlrDemo() {
   const [price, setPrice] = React.useState<BigNumber>();
   const [bundler, setBundler] = React.useState<WebBundlr>();
   const [bundlerHttpAddress, setBundlerAddress] = React.useState<string>(
-    "https://node1.bundlr.network"
+    "https://node2.bundlr.network"
   );
 
   const [rpcUrl, setRpcUrl] = React.useState<string>();

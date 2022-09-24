@@ -4,6 +4,8 @@ export function ProfileContentContainer(props) {
 
   let content;
 
+  console.log(props.contentObjects)
+
   switch (props.label) {
     case "koii":
       content = props.contentObjects.map((item, i) => {
@@ -22,6 +24,8 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "POAPS":
+      console.log("object props POAPS", props.contentObjects)
+      console.log(typeof Object.keys(props.contentObjects))
       content = props.contentObjects.map((content, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -40,6 +44,7 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "ERC_NFTS":
+      console.log("object props ERC", props.contentObjects)
       content = props.contentObjects.map((content, i) => {
         let dataObject = JSON.parse(content.metadata);
         let {image} = dataObject

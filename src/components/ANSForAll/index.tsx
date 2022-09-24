@@ -70,10 +70,10 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
                     : <AvatarS sx={{ width: 200, height: 200, fontSize: 'xx-large', fontFamily: 'monospace' }}>#{addr.slice(0, 3)}{addr.slice(-3)}</AvatarS>
                   }
                 <VertoIDinfo>
-                  {ansProfile.currentLabel && <Name>{ansProfile.currentLabel}</Name>}
-                  <UserAddr href={`https://${ansProfile.currentLabel}.ar.page`} target="_blank" rel="noreferrer">
+                  {ansProfile.currentLabel && <h2>{ansProfile.currentLabel}</h2>}
+                  <a href={`https://${ansProfile.currentLabel}.ar.page`} target="_blank" rel="noreferrer">
                     <p>{ansProfile.currentLabel}.ar.page</p>
-                  </UserAddr>
+                  </a>
                   <DetailsS>
                     <Bio>{ansProfile.bio}</Bio>
                     {ansProfile.links.twitter &&

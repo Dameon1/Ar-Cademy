@@ -2,8 +2,7 @@
     margin: 10px;
 }
 .acctViewTextContainer {
-    border: solid 3px black;
-    margin-bottom: 50px;
-    border-radius: 5px;
+    border: solid 1px black;
+    border-radius: 15px;
     padding: 5px;
 }

@@ -165,27 +165,27 @@ export default function Upload() {
     setWalletName("bundlr");
   }
 
-  if (walletName !== "bundlr") {
-    return (
-      <div>
-        <div className={"selectContainerStyle"}>
-          <Select
-            onChange={({ value }) => setCurrency(value)}
-            options={currencyOptions}
-            defaultValue={{ value: currency, label: currency }}
-            classNamePrefix="select"
-            instanceId="currency"
-          />
-          <p>Currency: {currency}</p>
-        </div>
-        <div className={"containerStyle"}>
-          <Button onPress={bundlr}>
-            Connect Wallet
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  // if (walletName !== "bundlr") {
+  //   return (
+  //     <div>
+  //       <div className={"selectContainerStyle"}>
+  //         <Select
+  //           onChange={({ value }) => setCurrency(value)}
+  //           options={currencyOptions}
+  //           defaultValue={{ value: currency, label: currency }}
+  //           classNamePrefix="select"
+  //           instanceId="currency"
+  //         />
+  //         <p>Currency: {currency}</p>
+  //       </div>
+  //       <div className={"containerStyle"}>
+  //         <Button onPress={bundlr}>
+  //           Connect Wallet
+  //         </Button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>

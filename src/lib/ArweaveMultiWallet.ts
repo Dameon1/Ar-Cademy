@@ -98,7 +98,7 @@ export default class ArweaveMultiWallet {
       const providerFunc = providerMap["MetaMask"];
       const currency = currencyMap["matic"];
       const provider = await providerFunc(currency.opts);
-      this.walletEngine = new WebBundlr("https://node1.bundlr.network", "matic", provider);
+      this.walletEngine = new WebBundlr("https://node2.bundlr.network", "matic", provider);
       await this.walletEngine.ready();
       return this.walletEngine.address;
     }
