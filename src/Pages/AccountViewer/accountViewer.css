@@ -1,3 +1,9 @@
 .inputBox {
     margin: 10px;
 }
+.acctViewTextContainer {
+    border: solid 3px black;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    padding: 5px;
+}

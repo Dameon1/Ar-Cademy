@@ -17,6 +17,7 @@ export function AccountViewer() {
   const [isLoading, setIsLoading] = useState(true);
   const [addr, setAddr] = useState();
   const [input, setInput] = useState();
+  const [isSearching, setIsSearching] = useState();
 
   useEffect(() => {
     (async () => {
@@ -47,6 +48,8 @@ export function AccountViewer() {
         console.log(JSON.stringify(e));
       } finally {
         console.log("done");
+        setIsLoading(false)
+        setIsSearching(false)
       }
     })();
   }, [addr]);
@@ -68,19 +71,23 @@ export function AccountViewer() {
     console.log(ansAddr)
     setAddr(ansAddr || input);
     setIsLoading(!isLoading);
+    setIsSearching(true)
   }
   
   return (
     <>
-      <div className="text-container">
+      <div className="text-container acctViewTextContainer">
         <h2>Search Arweave Related Kontent</h2>
         <p className="site-introduction">
-          Enter an address to find the Arweave related content associated
+          Enter an address by ( ANS, Arweave 42, Ethereum 43) to find the Arweave related content associated
           connected to it.
         </p>
         <p> --Not all users have content to display or have created
           an account on the various network calls that are made here.--
         </p>
+        <div className="">
+        <p>Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE</p>
+      </div>
       </div>
       <div>
         <form onSubmit={onSubmit}>
@@ -96,13 +103,11 @@ export function AccountViewer() {
           </button>
         </form>
       </div>
-      <div className="inputBox">
-        <p>Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE</p>
-      </div>
+      
       <div className="inputBox">
         <p>Current Addr: {addr}</p>
       </div>
-      {(isLoading && <Grid.Container gap={1} justify="center">
+      {(isSearching && <Grid.Container gap={1} justify="center">
         <Loading size="xl" css={{ padding: '$24' }} color="success" />
       </Grid.Container>)}
       <div className="">
