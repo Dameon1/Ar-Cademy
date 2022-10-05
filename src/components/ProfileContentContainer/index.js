@@ -1,5 +1,5 @@
 import { KoiiCard } from "../Cards";
-
+import Stamp from '../Stamp'
 export function ProfileContentContainer(props) {
 
   let content;
@@ -102,8 +102,7 @@ export function ProfileContentContainer(props) {
                     className="cardImage"
                   />
                 </div>
-                <h3 className="cardTitle">"string"</h3>
-                <h4>string</h4>
+                <Stamp txId={content.stampedAsset}/>
               </div>
             </div>
           )

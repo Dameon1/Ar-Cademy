@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
 import { BrowserRouter as Router } from "react-router-dom";
 import App from './App';
 import './index.css';
 
+const container = document.getElementById('root');
 
-ReactDOM.render(
-  <React.StrictMode>
+let root = createRoot(container)
+
+root.render(
+  <StrictMode>
     <Router basename="/Ar-Cademy">
       <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
-
+  </StrictMode>
 );
+
+
+//const root = createRoot(root);
+
+
 

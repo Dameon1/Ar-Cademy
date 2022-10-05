@@ -119,6 +119,7 @@ export function AccountViewer() {
             disconnectWallet={disconnectWallet}
           />
         )}
+        {console.log(walletName)}
         {Object.entries(userContent).length !== 0 && addr && !isLoading && (
           <UseAns
             addr={addr}
@@ -128,18 +129,18 @@ export function AccountViewer() {
         )}
         {Object.entries(userContent).length !== 0 && !isLoading && (
           <ProfileContentContainer
-            contentObjects={userContent.STAMPS}
-            contentType={"STAMPS"}
-            label="STAMPS"
+          contentObjects={userContent.POAPS}
+          contentType={"POAPS"}
+          label="POAPS"
           />
-        )}
-        {Object.entries(userContent).length !== 0 && !isLoading && (
-          <ProfileContentContainer
-            contentObjects={userContent.POAPS}
-            contentType={"POAPS"}
-            label="POAPS"
-          />
-        )}
+          )}
+          {Object.entries(userContent).length !== 0 && !isLoading && (
+            <ProfileContentContainer
+              contentObjects={userContent.STAMPS}
+              contentType={"STAMPS"}
+              label="STAMPS"
+            />
+          )}
         {Object.entries(userContent).length !== 0 && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ANFTS.koii}

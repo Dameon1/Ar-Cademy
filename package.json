@@ -33,6 +33,7 @@
     "buffer": "^6.0.3",
     "buffer-browserify": "^0.2.5",
     "console": "^0.7.2",
+    "constants-browserify": "^1.0.0",
     "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.0",
     "devextreme": "21.2.8",
@@ -54,6 +55,7 @@
     "use-arconnect": "^1.0.1",
     "vouchdao": "^0.1.5",
     "walletconnect": "^1.7.8",
+    "warp-contracts": "^1.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
