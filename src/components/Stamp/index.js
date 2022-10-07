@@ -6,10 +6,6 @@ export default function Stamp(props) {
   
   useEffect(() => {
     getStampCount(props.txId)   
-  
-    return () => {
-      console.log('mounted')
-    }
   })
   
   const stamp = async (txId) => {
@@ -24,10 +20,10 @@ export default function Stamp(props) {
   const CACHE =
     "https://cache.permapages.app/aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA";
   const warp = WarpFactory.forMainnet();
+  
   const getStampCount = async (txId) => {
     const state = await getState();
     let stamps = Object.values(state.stamps).filter((s) => s.asset === txId);
-    console.log(stamps.length);
     setStampCount(stamps.length);
     return stamps.length;
   };
@@ -37,21 +33,13 @@ export default function Stamp(props) {
 
     return await fetch(CACHE)
       .then((res) => res.json())
-      .catch((_) =>
-        warp
-          .contract(STAMPCOIN)
-          .setEvaluationOptions({
-            allowUnsafeClient: true,
-          })
-          .readState()
-          .then((result) => result.state)
-      );
+      
   }
 
   return (
     <div>
-      <p>Stamps Collected {stampCount}</p>
-      <button onClick={() => console.log(stampCount)}>Click Me</button>
+      <h3 className="cardTitle">Stamps Collected {stampCount}</h3>
+      <button onClick={() => stamp(props.txId)}>Click Me</button>
     </div>
   );
 }

@@ -65,12 +65,6 @@ function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string
 
           {profileData ? 
             <>
-              {profileTxid && 
-                <Grid.Container gap={2} justify="center">
-                  <a href={`https://viewblock.io/arweave/tx/${profileTxid}`} target="_blank" rel="noreferrer" style={{ fontFamily: "monospace", fontSize: "larger" }}>
-                    txid: {profileTxid}
-                  </a>
-                </Grid.Container>}
                 <BoxVertoID>
                   {profileData.avatar
                     ? <AvatarS src={`https://arweave.net/${profileData.avatar}`} sx={{ width: 200, height: 200 }} />

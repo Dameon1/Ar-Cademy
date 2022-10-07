@@ -7,7 +7,7 @@ import ProfileContentContainer from "src/components/ProfileContentContainer";
 import "./accountViewer.css";
 import ArweaveAccount from "src/components/ArweaveAccount";
 import UseAns from "src/components/ANSForAll";
-import { ans } from "../../api/ANS/ans.js";
+import { ans as ansAPI } from "../../api/ANS/ans.js";
 
 import { Button, Grid, Loading, Text, Spacer } from "@nextui-org/react";
 
@@ -15,69 +15,86 @@ export function AccountViewer() {
   const { walletName, disconnectWallet } = useContext(MainContext);
   const [userContent, setUserContent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [addr, setAddr] = useState();
+  const [addr, setAddr] = useState('');
   const [input, setInput] = useState();
-  const [isSearching, setIsSearching] = useState();
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
-        let user;
+        if(addr.length === 0 ) return  
+        console.log(addr)
         const arweaveAccount = new Account();
-        const arweaveAccountUser = await arweaveAccount.get(addr);
-        console.log("arweaveAccount:", arweaveAccountUser);
-        setUserContent([]);
-        let address = addr;
-        const res = await fetch(
-          `https://ark-api.decent.land/v1/profile/arweave/${address}`
-        );
-        const ans = await res.json();
-        user = ans;
-        if (Object.entries(user).length === 0 || ans.res === undefined) {
-          let checksumAddress = ethers.utils.getAddress(address);
-          const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
-          const eth = await fetch(ethString);
-          const ens = await eth.json();
-          user = ens.res;
-          setUserContent(user);
-        } else {
-          setUserContent(ans.res);
-        }
-        setIsLoading(false);
+        let user={};
+        user.ARWEAVEACCOUNT = await arweaveAccount.get(addr);
+        user.ARK = await fetch(
+          `https://ark-api.decent.land/v1/profile/arweave/${addr}`
+          ).then((res) =>
+          res.ok ? res.json() : Promise.reject("CONTRACT NOT FOUND!")
+          );
+          console.log("user:",user)
+        // console.log("arweaveAccount:", arweaveAccountUser);
+        //let address = addr;
+        // const ark = await fetch(
+        //   `https://ark-api.decent.land/v1/profile/arweave/${addr}`
+        //   );
+        //let user = await ark.json();
+        //user = ans;
+
+
+        
+        // if (Object.entries(user).length === 0 ) {
+        //   let checksumAddress = ethers.utils.getAddress(addr);
+        //   const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
+        //   const eth = await fetch(ethString);
+        //   const ens = await eth.json();
+        //   user = ens.res;
+        //   setUserContent(user);
+        // } else {
+        //   console.log("ans.res",user.res)
+        //   setUserContent(user.res);
+        // }
+        setUserContent(user);
+        
       } catch (e) {
         console.log(JSON.stringify(e));
       } finally {
         console.log("done");
-        setIsLoading(false);
         setIsSearching(false);
+        setIsLoading(false);
       }
     })();
   }, [addr]);
+
+  //let newCache = fetch("https://cache.permapages.app/aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA").then((res) => res.json())
 
   const handleInput = (event) => {
     setInput(event.target.value);
   };
 
   function getAddrByANS(ansName) {
-    const ansHandle = ans.find((holder) => holder.username === ansName);
+    const ansHandle = ansAPI.find((holder) => holder.username === ansName);
     if (ansHandle) {
       return ansHandle.address;
     }
   }
 
+  // async function getCache(){
+  //   let newCache = await fetch("https://cache.permapages.app/aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA").then((res) => res.json());
+  //   return newCache;
+  // }
+
   function onSubmit(event) {
     event.preventDefault();
-    const ansAddr = getAddrByANS(input);
-    console.log(ansAddr);
-    setAddr(ansAddr || input);
-    setIsLoading(!isLoading);
+    setAddr(input);
+    setUserContent([]);
     setIsSearching(true);
   }
 
   return (
     <>
       <div className="text-container acctViewTextContainer">
-        <h2>Search Arweave Related Kontent</h2>
+        <h2>Search Arweave Related Content</h2>
         <p>
           Enter an address by ANS, Arweave, or Eth identity to find the
           Arweave related content.
@@ -104,7 +121,7 @@ export function AccountViewer() {
       </div>
 
       <div className="inputBox">
-        
+        {console.log("rendering some component")}
       </div>
       {isSearching && (
         <Grid.Container gap={1} justify="center">
@@ -119,7 +136,7 @@ export function AccountViewer() {
             disconnectWallet={disconnectWallet}
           />
         )}
-        {console.log(walletName)}
+        {console.log("userContent")}
         {Object.entries(userContent).length !== 0 && addr && !isLoading && (
           <UseAns
             addr={addr}
@@ -127,34 +144,35 @@ export function AccountViewer() {
             disconnectWallet={disconnectWallet}
           />
         )}
-        {Object.entries(userContent).length !== 0 && !isLoading && (
+        {console.log("userContent:", userContent)}
+        {userContent.length !== 0 && !isLoading && (
           <ProfileContentContainer
-          contentObjects={userContent.POAPS}
-          contentType={"POAPS"}
-          label="POAPS"
+            contentObjects={userContent.ARK.res.POAPS}
+            contentType={"POAPS"}
+            label="POAPS"
           />
-          )}
-          {Object.entries(userContent).length !== 0 && !isLoading && (
-            <ProfileContentContainer
-              contentObjects={userContent.STAMPS}
-              contentType={"STAMPS"}
-              label="STAMPS"
-            />
-          )}
-        {Object.entries(userContent).length !== 0 && !isLoading && (
+        )}
+        {userContent.length !== 0 && 
           <ProfileContentContainer
-            contentObjects={userContent.ANFTS.koii}
+            contentObjects={userContent.ARK.res.STAMPS}
+            contentType={"STAMPS"}
+            label="STAMPS"
+          />
+        }
+        {userContent.length !== 0 && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.ARK.res.ANFTS.koii}
             contentType={"aNFTs"}
             label="koii"
           />
         )}
-        {Object.entries(userContent).length !== 0 && !isLoading && (
+        {/* {userContent.length !== 0 && !isLoading && (
           <ProfileContentContainer
-            contentObjects={userContent.ERC_NFTS}
+            contentObjects={userContent.ARK.res.ERC_NFTS}
             contentType={"ERC_NFTS"}
             label="ERC_NFTS"
           />
-        )}
+        )} */}
       </div>
     </>
   );

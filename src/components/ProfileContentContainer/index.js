@@ -102,6 +102,7 @@ export function ProfileContentContainer(props) {
                     className="cardImage"
                   />
                 </div>
+                
                 <Stamp txId={content.stampedAsset}/>
               </div>
             </div>

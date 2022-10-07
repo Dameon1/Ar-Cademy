@@ -30,7 +30,6 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
         );
         const ans = await res.json();
         if(ans){setAnsProfile(ans)}
-       
       }
       catch (e) {
         setHasFailed(JSON.stringify(e));
@@ -70,11 +69,12 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
                     : <AvatarS sx={{ width: 200, height: 200, fontSize: 'xx-large', fontFamily: 'monospace' }}>#{addr.slice(0, 3)}{addr.slice(-3)}</AvatarS>
                   }
                 <VertoIDinfo>
+               
                   {ansProfile.currentLabel && <h2>{ansProfile.currentLabel}</h2>}
                   <a href={`https://${ansProfile.currentLabel}.ar.page`} target="_blank" rel="noreferrer">
-                    <p>{ansProfile.currentLabel}.ar.page</p>
+                    <h3>{ansProfile.currentLabel}.ar.page</h3>
                   </a>
-                  <DetailsS>
+                  {/* <DetailsS>
                     <Bio>{ansProfile.bio}</Bio>
                     {ansProfile.links.twitter &&
                       <UserSocial href={`https://twitter.com/${ansProfile.links.twitter}`} target="_blank" rel="noreferrer">
@@ -88,6 +88,19 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
                     </UserSocial>}
                     
                    
+                  </DetailsS> */}
+                  <DetailsS>
+                    <Bio>{ansProfile.bio}</Bio>
+                    {ansProfile.links.twitter &&
+                      <UserSocial href={`https://twitter.com/${ansProfile.links.twitter}`} target="_blank" rel="noreferrer">
+                        <FaTwitter size={25} />
+                      </UserSocial>}
+                    {ansProfile.links.github && <UserSocial href={`https://github.com/${ansProfile.links.github}`} target="_blank" rel="noreferrer">
+                      <FaGithub size={25} />
+                    </UserSocial>}
+                    
+                    
+                    
                   </DetailsS>
                 </VertoIDinfo>
               </BoxVertoID>
