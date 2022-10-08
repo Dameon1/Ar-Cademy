@@ -22,7 +22,7 @@ export function AccountViewer() {
   useEffect(() => {
     (async () => {
       try {
-        if(addr.length === 0 ) return  
+        if(addr.length !== 43 ) return  
         console.log(addr)
         const arweaveAccount = new Account();
         let user={};
@@ -86,6 +86,18 @@ export function AccountViewer() {
 
   function onSubmit(event) {
     event.preventDefault();
+    async function sanitizeAddr(text){
+      console.log(text)
+      //regular Arweave
+      //ANS
+      //ETH
+      //ANS
+
+
+
+
+    }
+    //sanitizeAddr(input)
     setAddr(input);
     setUserContent([]);
     setIsSearching(true);
@@ -166,6 +178,15 @@ export function AccountViewer() {
             label="koii"
           />
         )}
+        {userContent.length !== 0 && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.ARK.res.ANFTS.permapages_img}
+            contentType={"permapages_img"}
+            label="permapages_img"
+          />
+        )}
+        
+
         {/* {userContent.length !== 0 && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARK.res.ERC_NFTS}

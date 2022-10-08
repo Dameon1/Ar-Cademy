@@ -1,10 +1,9 @@
 import { KoiiCard } from "../Cards";
-import Stamp from '../Stamp'
+import Stamp from "../Stamp";
 export function ProfileContentContainer(props) {
-
   let content;
 
-  console.log(props.contentObjects)
+  console.log(props.contentObjects);
 
   switch (props.label) {
     case "koii":
@@ -24,8 +23,8 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "POAPS":
-      console.log("object props POAPS", props.contentObjects)
-      console.log(typeof Object.keys(props.contentObjects))
+      console.log("object props POAPS", props.contentObjects);
+      console.log(typeof Object.keys(props.contentObjects));
       content = props.contentObjects.map((content, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -44,26 +43,23 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "ERC_NFTS":
-      console.log("object props ERC", props.contentObjects)
+      console.log("object props ERC", props.contentObjects);
       content = props.contentObjects.map((content, i) => {
         let dataObject = JSON.parse(content.metadata);
-        let {image} = dataObject
+        let { image } = dataObject;
 
         if (image === undefined) {
-          image = "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image"
-        }       
-        image = image.replace("ipfs://ipfs", "https://ipfs.io/ipfs/")
-        image = image.replace("ipfs://", "https://ipfs.io/ipfs/")
-       
+          image =
+            "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
+        }
+        image = image.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
+        image = image.replace("ipfs://", "https://ipfs.io/ipfs/");
+
         return (
           <div key={i} className="cardLinks">
             <div className="card">
               <div className="cardImageContainer">
-                <img
-                  src={image}
-                  alt={dataObject.name}
-                  className="cardImage"
-                />
+                <img src={image} alt={dataObject.name} className="cardImage" />
               </div>
               <h3 className="cardTitle">{dataObject.name}</h3>
             </div>
@@ -71,7 +67,7 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
-      case "GALAXY_CREDS":
+    case "GALAXY_CREDS":
       content = props.contentObjects.map(async (content, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -90,25 +86,47 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
-       case "STAMPS":
-         content = props.contentObjects.map( (content, i) => {
-          return (
-            <div key={i} className="cardLinks">
-              <div className="card">
-                <div className="cardImageContainer">
-                  <img
-                    src={`https://arweave.net/${content.stampedAsset}`}
-                    alt={"dataObject.name"}
-                    className="cardImage"
-                  />
-                </div>
-                
-                <Stamp txId={content.stampedAsset}/>
+    case "STAMPS":
+      content = props.contentObjects.map((content, i) => {
+        return (
+          <div key={i} className="cardLinks">
+            <div className="card">
+              <div className="cardImageContainer">
+                <img
+                  src={`https://arweave.net/${content.stampedAsset}`}
+                  alt={"dataObject.name"}
+                  className="cardImage"
+                />
               </div>
+
+              <Stamp txId={content.stampedAsset} />
             </div>
-          )
-        });
-       break;
+          </div>
+        );
+      });
+      break;
+    case "permapages_img":
+      content = props.contentObjects.map((content, i) => {
+        return (
+          <div key={i} className="cardLinks">
+            <div className="card">
+             
+              <div className="cardImageContainer">
+                {/* <img
+                  src={`https://arweave.net/${content.id}`}
+                  alt={"dataObject.name"}
+                  
+                /> */}
+                <img className="cardImage" src={`https://arweave.net/${content.id}`} alt={content.title} onerror="this.src = 'assets/img.png'"></img>
+              </div>
+              <h3>{content.title}</h3>
+                <h4>{content.description}</h4>
+              <Stamp txId={content.id} />
+            </div>
+          </div>
+        );
+      });
+      break;
     default:
       console.log(props.label);
   }

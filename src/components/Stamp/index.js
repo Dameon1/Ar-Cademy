@@ -39,7 +39,7 @@ export default function Stamp(props) {
   return (
     <div>
       <h3 className="cardTitle">Stamps Collected {stampCount}</h3>
-      <button onClick={() => stamp(props.txId)}>Click Me</button>
+      <button onClick={() => stamp(props.txId)}>Stamp</button>
     </div>
   );
 }
