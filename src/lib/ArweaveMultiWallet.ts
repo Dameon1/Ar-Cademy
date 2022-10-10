@@ -162,7 +162,7 @@ export default class ArweaveMultiWallet {
     }
   }
   public async fund(amount) {
-    console.log(this.walletName, "funding bundlr network",await amount)
+    console.log(this.walletName, "funding bundlr network",amount)
     if (this.walletName === "bundlr") {
       return await this.walletEngine.fund(amount);
     }

@@ -88,8 +88,10 @@ export function ProfileContentContainer(props) {
       break;
     case "STAMPS":
       content = props.contentObjects.map((content, i) => {
-        return (
+        let type = content.stampedAssetType;
+        if(type === "image"){return (
           <div key={i} className="cardLinks">
+            
             <div className="card">
               <div className="cardImageContainer">
                 <img
@@ -103,6 +105,7 @@ export function ProfileContentContainer(props) {
             </div>
           </div>
         );
+      } else { return null}
       });
       break;
     case "permapages_img":
