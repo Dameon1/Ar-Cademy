@@ -173,18 +173,19 @@ export function AccountViewer() {
         }
         {userContent.length !== 0 && !isLoading && (
           <ProfileContentContainer
-            contentObjects={userContent.ARK.res.ANFTS.koii}
-            contentType={"aNFTs"}
-            label="koii"
-          />
-        )}
-        {userContent.length !== 0 && !isLoading && (
-          <ProfileContentContainer
             contentObjects={userContent.ARK.res.ANFTS.permapages_img}
             contentType={"permapages_img"}
             label="permapages_img"
           />
         )}
+        {userContent.length !== 0 && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.ARK.res.ANFTS.koii}
+            contentType={"aNFTs"}
+            label="koii"
+          />
+        )}
+        
         
 
         {/* {userContent.length !== 0 && !isLoading && (

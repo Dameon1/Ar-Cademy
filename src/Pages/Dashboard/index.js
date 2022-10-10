@@ -46,8 +46,10 @@ export function Dashboard() {
         />
         )}
         {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
+        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ARK.res.STAMPS} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
+        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ARK.res.ANFTS.permapages_img} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
         {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
-        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
+        {/* {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS" />} */}
     </div>
   );
 }
