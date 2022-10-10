@@ -56,7 +56,7 @@ async function post(ctx) {
 
 async function dispatch(ctx) {
   const tx = await createAndTag(ctx)
-  const result = AMW.uploader(ctx)
+  const result = AMW.uploader(tx)
   //const result = await arweaveWallet.dispatch(tx)
   return { ...ctx, atomicId: result.id }
 }

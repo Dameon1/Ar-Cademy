@@ -38,6 +38,7 @@ export function Dashboard() {
       <Login />
       {isLoading && <div>Loading</div>}
       {console.log(userContent)}
+      {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
       {Object.entries(userContent).length !== 0 && !isLoading && (
         <ProfileContentContainer
         contentObjects={userContent.STAMPS}
@@ -45,11 +46,9 @@ export function Dashboard() {
         label="STAMPS"
         />
         )}
-        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
-        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ARK.res.STAMPS} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
-        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ARK.res.ANFTS.permapages_img} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
+        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img" />}
         {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
-        {/* {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS" />} */}
+        {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS" />}
     </div>
   );
 }
