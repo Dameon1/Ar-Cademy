@@ -6,9 +6,9 @@ export function KoiiCard(props) {
   
   return (
     <div className="card">
-            <img onError={(e) => {
-                e.target.src = 'https://pbs.twimg.com/profile_images/1424786684194041859/lkDa9l1U_400x400.png'}} 
-                src={`https://koii.live/${content.id}.png`}
+            <img src={`https://koii.live/${content.id}.png`}
+                onError={(e) => {
+                e.target.src = 'https://pbs.twimg.com/profile_images/1578815653615734785/Dc6rUG0m_400x400.jpg'}} 
                 objectFit="cover"
                 alt={content.videoTitle}/>
             <h3 className="cardTitle">{content.videoTitle}</h3>

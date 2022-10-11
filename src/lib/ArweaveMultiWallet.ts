@@ -151,8 +151,9 @@ export default class ArweaveMultiWallet {
   public async getBalance() {
     if (this.walletName === "bundlr") {
       const balance = await this.walletEngine.getLoadedBalance();
-      console.log("balance", balance);
-      return this.walletEngine.utils.unitConverter(balance).toFixed(7, 2).toString() + " " + this.walletEngine.currencyConfig.ticker.toLowerCase()
+      console.log("balance", this.walletEngine.utils.unitConverter(balance).toFixed(7, 2));
+      return this.walletEngine.utils.unitConverter(balance).toFixed(7, 2)
+      // return this.walletEngine.utils.unitConverter(balance).toFixed(7, 2).toString() + " " + this.walletEngine.currencyConfig.ticker.toLowerCase()
     }
   }
   public async getPrice(bytes) {
@@ -162,7 +163,7 @@ export default class ArweaveMultiWallet {
     }
   }
   public async fund(amount) {
-    console.log(this.walletName, "funding bundlr network",amount)
+    console.log(this.walletName, "funding bundlr network with ",typeof amount,amount)
     if (this.walletName === "bundlr") {
       return await this.walletEngine.fund(amount);
     }
@@ -176,15 +177,15 @@ export default class ArweaveMultiWallet {
   public async currencyConfig(amount) {
     console.log(this.walletName, "funding bundlr network", amount)
     if (this.walletName === "bundlr") {
-      return await this.walletEngine.currencyconfig;
+      return await this.walletEngine.currencyconfig(amount);
     }
   }
-  public async uploader(file, tags) {
-    console.log(this.walletName, "bundlr uploading", file, tags)
+  public async uploader(file) {
+    console.log(this.walletName, "bundlr uploading", file.data, file.tags)
     if (this.walletName === "bundlr") {
-      return await this.walletEngine.uploader.upload(file, tags)
+      return await this.walletEngine.uploader.upload(file.data, file.tags)
     }
-  }
+  } 
   public async createTransaction(data, tags) {
     console.log(this.walletName, "bundlr uploading", data, tags)
     if (this.walletName === "bundlr") {

@@ -160,37 +160,38 @@ export default function StampDemo() {
             tags: [{ name: "Content-Type", value: files[0].type }],
           }
         );
-
         await trx.sign();
-
+        
         const result = await trx.upload();
+        console.log("result", result)
 
         const addr = await bundlr.address;
-
+        
         const result2 = await deployBundlr(
-          title,
-          description,
-          addr,
-          files[0].type,
-          result.data.id,
-          topics
-        );
-
-        deployDlg = false;
-
-        // reset form
-        document.forms[0].reset();
-
-        setTx(result2.id);
-
-        setImgCache([
-          ...imgCache,
-          { id: result2.id, src: URL.createObjectURL(files[0]) },
-        ]);
-
-        confirmDlg = true;
-      } catch (e) {
-        console.log(e);
+            title,
+            description,
+            addr,
+            files[0].type,
+            result.data.id,
+            topics
+            );
+            
+            deployDlg = false;
+            
+            // reset form
+            document.forms[0].reset();
+            
+            setTx(result2.id);
+            
+            setImgCache([
+                ...imgCache,
+                { id: result2.id, src: URL.createObjectURL(files[0]) },
+            ]);
+            
+            confirmDlg = true;
+            console.log("breaking2")
+        } catch (e) {
+            console.log(e);
         deployDlg = false;
         errorMessage = e.message;
         errorDlg = true;
@@ -410,7 +411,7 @@ const previewImage = e => {
                         )}
                         <img className="cardImage" id="preview" alt="your upload here"/>
                         
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label
                               htmlFor="file"
                               className="bg-gray-200 h-[200px] md:h-[350px] w-full md:w-[500px] grid place-items-center rounded-xl hover:shadow-xl"
@@ -429,9 +430,9 @@ const previewImage = e => {
                             //   bind:files
                               accept="image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml"
                             />
-                            </div>
+                            </div> */}
                             <button onClick={handleFileClick}>Select file from Device</button>
-                        {files.length === 0 && (
+                        {/* {files.length === 0 && (
                             
                             <div className="form-control">
                             <label
@@ -460,7 +461,7 @@ const previewImage = e => {
                               so. NSFW content is not permitted on this service.
                             </p>
                           </div>
-                        )}
+                        )} */}
                       </div>
                       <div>
                         <div className="form-control">

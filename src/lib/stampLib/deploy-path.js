@@ -16,7 +16,7 @@ const BAR = 'mMffEC07TyoAFAI_O6q_nskj2bT8n4UFvckQ3yELeic'
  * Then create a path manifest to upload to
  * both sequencer and bundlr
  */
-const SRC = 'BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q'
+const SRC = '6fRImnrXGpdbz_S-IhOiS_yCgPAEkn8LUIv2mJLQ_-4'
 const URL = 'https://d1o5nlqr4okus2.cloudfront.net/gateway/contracts/deploy'
 //const of = Promise.resolve
 //const slugify = compose(toLower, join('-'), split(' '))
@@ -39,26 +39,30 @@ export async function deployBundlr(name, description, addr, contentType, assetId
 
 async function post(ctx) {
   const tx = await createAndTag(ctx)
-  await arweave.transactions.sign(tx)
   tx.id = ctx.atomicId
-  const result = await fetch(URL, {
-    method: 'POST',
-    body: JSON.stringify({ contractTx: tx }),
-    headers: {
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    }
-  })
-  console.log("post:", result)
+  await arweave.transactions.sign(tx)
+  arweave.transactions.post(tx)
+    console.log("tx:,", tx)
+//   const result = await fetch(URL, {
+//     method: 'POST',
+//     body: JSON.stringify({ contractTx: tx }),
+//     headers: {
+//       'Accept-Encoding': 'gzip, deflate, br',
+//       'Content-Type': 'application/json',
+//       Accept: 'application/json'
+//     }
+//   })
+  
   return { id: ctx.atomicId }
 }
 
 async function dispatch(ctx) {
   const tx = await createAndTag(ctx)
-  const result = AMW.uploader(tx)
+  console.log(tx)
+  const result = await AMW.uploader(tx)
+  console.log(result)
   //const result = await arweaveWallet.dispatch(tx)
-  return { ...ctx, atomicId: result.id }
+  return { ...ctx, atomicId: result.data.id }
 }
 
 async function createAndTag(ctx) {
@@ -102,7 +106,7 @@ async function createAndTag(ctx) {
   map(trim, split(',', ctx.topics)).forEach(t => {
     tx.addTag('Topic:' + t, t)
   })
-
+  console.log(tx)
   return tx
 }
 //if arweave wallet?

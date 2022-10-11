@@ -120,7 +120,7 @@ export function ProfileContentContainer(props) {
                   alt={"dataObject.name"}
                   
                 /> */}
-                <img className="cardImage" src={`https://arweave.net/${content.id}`} alt={content.title} onerror="this.src = 'assets/img.png'"></img>
+                <img className="cardImage" src={`https://arweave.net/${content.id}`} alt={content.title} onError="this.src = 'assets/img.png'"></img>
               </div>
               <h3>{content.title}</h3>
                 <h4>{content.description}</h4>
