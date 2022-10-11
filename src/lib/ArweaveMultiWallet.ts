@@ -8,8 +8,8 @@ import { T_addr, T_walletName } from "../utils/types";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
-  "ACCESS_ALL_ADDRESSES",
-  "SIGN_TRANSACTION"
+  "SIGN_TRANSACTION",
+  "dispatch"
 ];
 
 const webWallet = new ArweaveWebWallet({
@@ -47,7 +47,7 @@ export default class ArweaveMultiWallet {
       }
     }
     else if (walletName === "webwallet") {
-      await webWallet.connect();
+      await webWallet.connect(arConnectPermissions);
       this.walletEngine = await webWallet.namespaces.arweaveWallet;
       const addr = await this.walletEngine.getActiveAddress();
       return addr ? addr : null;

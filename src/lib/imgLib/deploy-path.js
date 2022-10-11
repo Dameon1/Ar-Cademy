@@ -1,6 +1,5 @@
 import { compose, toLower, join, split, map, trim } from 'ramda'
 import Arweave from 'arweave';
-import { AMW } from "../../utils/api";
 
 const arweave = Arweave.init({
   host: 'arweave.net',
@@ -8,15 +7,17 @@ const arweave = Arweave.init({
   protocol: 'https'
 })
 
-//change this to "personal asset"
 const BAR = 'mMffEC07TyoAFAI_O6q_nskj2bT8n4UFvckQ3yELeic'
+
 /*
  * Need to upload to arweave using post
  * Then create a path manifest to upload to
  * both sequencer and bundlr
  */
 const SRC = 'BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q'
-
+const URL = 'https://d1o5nlqr4okus2.cloudfront.net/gateway/contracts/deploy'
+//const of = Promise.resolve
+const slugify = compose(toLower, join('-'), split(' '))
 
 export async function deploy(name, description, addr, contentType, data, topics = "") {
   return Promise.resolve({ name, description, addr, contentType, data, topics })
@@ -35,20 +36,31 @@ export async function deployBundlr(name, description, addr, contentType, assetId
 }
 
 async function post(ctx) {
+  console.log("ctx",ctx)
   const tx = await createAndTag(ctx)
-  tx.id = ctx.atomicId
+  console.log("tx",tx)
+
   await arweave.transactions.sign(tx)
-  arweave.transactions.dispatch(tx)
+  tx.id = ctx.atomicId
+  const result = await fetch(URL, {
+    method: 'POST',
+    body: JSON.stringify({ contractTx: tx }),
+    headers: {
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  })
+  console.log(result)
   return { id: ctx.atomicId }
 }
 
 async function dispatch(ctx) {
   const tx = await createAndTag(ctx)
-  
-  //const result = await AMW.uploader(tx)
+  console.log("1",tx)
   const result = await window.arweaveWallet.dispatch(tx)
-
-  return { ...ctx, atomicId: result.data.id }
+  console.log("result1:", result)
+  return { ...ctx, atomicId: result.id }
 }
 
 async function createAndTag(ctx) {
@@ -86,16 +98,15 @@ async function createAndTag(ctx) {
   }))
   tx.addTag('Title', ctx.name)
   tx.addTag('Description', ctx.description)
-  //create dynamic tags
   tx.addTag('Type', 'image')
-  //user added tags
+
   map(trim, split(',', ctx.topics)).forEach(t => {
     tx.addTag('Topic:' + t, t)
   })
-  console.log(tx)
+
   return tx
 }
-//if arweave wallet?
+
 async function upload(ctx) {
   const tx = await arweave.createTransaction({ data: ctx.data })
   tx.addTag('Content-Type', ctx.contentType)

@@ -8,7 +8,9 @@ import { AMW } from "../../utils/api";
 import Select from "react-select";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo";
 import PermaVideo from "../../components/PermaVideo";
-import StampDemo from "../../components/StampDemo";
+//import StampDemo from "../../components/StampDemo";
+import IMG from "../../components/IMG";
+
 import { Button } from '@nextui-org/react';
 
 const supportedCurrencies = {
@@ -300,7 +302,8 @@ export default function Upload() {
           </div>
         )}
       </div>
-      <StampDemo/>
+      {/* <StampDemo/> */}
+      <IMG/>
     </div>
   );
 }
