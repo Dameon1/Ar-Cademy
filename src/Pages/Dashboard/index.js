@@ -4,6 +4,8 @@ import MainContext from '../../context';
 import Login from "src/components/Login/Login";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import {ethers} from "ethers";
+import { Loading } from '@nextui-org/react';
+import UseAns from "src/components/ANSForAll";
 
 export function Dashboard() {
   const { addr } = useContext(MainContext);
@@ -36,16 +38,22 @@ export function Dashboard() {
   return (
     <div className="">
       <Login />
-      {isLoading && <div>Loading</div>}
+      {(addr  && isLoading) ?  <><p>Searching for content</p><Loading/></> : false ? <p>NICE JOB</p> : null}
+      {addr  && !isLoading && (
+          <UseAns
+            addr={addr}
+        
+          />
+        )}
       {console.log(userContent)}
       {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />}
-      {Object.entries(userContent).length !== 0 && !isLoading && (
-        <ProfileContentContainer
+
+        {addr  && !isLoading && <ProfileContentContainer
         contentObjects={userContent.STAMPS}
         contentType={"STAMPS"}
         label="STAMPS"
-        />
-        )}
+        />}
+
         {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img" />}
         {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii" />}
         {addr  && !isLoading && <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS" />}

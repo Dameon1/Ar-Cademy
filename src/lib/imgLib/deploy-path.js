@@ -16,7 +16,6 @@ const BAR = 'mMffEC07TyoAFAI_O6q_nskj2bT8n4UFvckQ3yELeic'
  */
 const SRC = 'BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q'
 const URL = 'https://d1o5nlqr4okus2.cloudfront.net/gateway/contracts/deploy'
-//const of = Promise.resolve
 const slugify = compose(toLower, join('-'), split(' '))
 
 export async function deploy(name, description, addr, contentType, data, topics = "") {

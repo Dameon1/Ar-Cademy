@@ -1,6 +1,6 @@
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web'
 import { add, compose, propEq, values, length, prop, filter, reduce, pluck, path } from 'ramda'
-
+import Arweave from 'arweave'
 const arweave = Arweave.init({
   host: 'arweave.net',
   port: 443,
