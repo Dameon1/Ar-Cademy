@@ -21,6 +21,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
   const [ansProfile, setAnsProfile] = useState<T_ansProfile>();
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState<string | false>(false);
+  const [hasAccount, setHasAccount] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -29,7 +30,9 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
           `https://ans-testnet.herokuapp.com/profile/${addr}`
         );
         const ans = await res.json();
-        if(ans){setAnsProfile(ans)}
+        if(ans){
+          setHasAccount(true)
+          setAnsProfile(ans)}
       }
       catch (e) {
         setHasFailed(JSON.stringify(e));
@@ -39,7 +42,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
       }
     })()
   }, [addr]);
-
+  if (isLoading){return <Loading/>}
   return (
     <div className='gradient-border' style={{ padding: '5px' }}>{
       isLoading
@@ -91,14 +94,14 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
                   </DetailsS> */}
                   <DetailsS>
                     <Bio>{ansProfile.bio}</Bio>
-                    {ansProfile.links.twitter &&
+                    {/* {ansProfile.links.twitter &&
                       <UserSocial href={`https://twitter.com/${ansProfile.links.twitter}`} target="_blank" rel="noreferrer">
                         <FaTwitter size={25} />
                       </UserSocial>}
                     {ansProfile.links.github && <UserSocial href={`https://github.com/${ansProfile.links.github}`} target="_blank" rel="noreferrer">
                       <FaGithub size={25} />
                     </UserSocial>}
-                    
+                     */}
                     
                     
                   </DetailsS>
@@ -107,30 +110,30 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
               <Grid.Container gap={3} justify="space-between" alignItems='center'>
               </Grid.Container>
             </> 
-            : 
-            <>
-              <div style={{
-                fontSize: 'xx-large',
-                textAlign: 'center',
-                padding: '70px',
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                <div>
-                  Hello{` `}
-                  <span style={{
-                    fontSize: '',
-                    fontFamily: 'monospace'
-                  }}>
-                    <a href={`https://viewblock.io/arweave/address/${addr}`} target="_blank" rel="noreferrer">
-                      {`${addr.slice(0, 5)}...${addr.slice(addr.length - 5, addr.length)}`}
-                    </a>
-                  </span>
-                  {` 🙂`}
-                </div>
-              </div>
-            </>
+            : null
+            // <>
+            //   <div style={{
+            //     fontSize: 'xx-large',
+            //     textAlign: 'center',
+            //     padding: '70px',
+            //     alignItems: 'center',
+            //     display: 'flex',
+            //     flexDirection: 'column'
+            //   }}>
+            //     <div>
+            //       Hello{` `}
+            //       <span style={{
+            //         fontSize: '',
+            //         fontFamily: 'monospace'
+            //       }}>
+            //         <a href={`https://viewblock.io/arweave/address/${addr}`} target="_blank" rel="noreferrer">
+            //           {`${addr.slice(0, 5)}...${addr.slice(addr.length - 5, addr.length)}`}
+            //         </a>
+            //       </span>
+            //       {` 🙂`}
+            //     </div>
+            //   </div>
+            // </>
           }
         </>
         }
