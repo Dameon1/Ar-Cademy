@@ -110,14 +110,11 @@ function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string
                 flexDirection: 'column'
               }}>
                 <div>
-                  Hello{` `}
+                  <h4>No Account found"</h4>
                   <span style={{
                     fontSize: '',
                     fontFamily: 'monospace'
                   }}>
-                    <a href={`https://viewblock.io/arweave/address/${addr}`} target="_blank" rel="noreferrer">
-                      {`${addr.slice(0, 5)}...${addr.slice(addr.length - 5, addr.length)}`}
-                    </a>
                   </span>
                   {` 🙂`}
                 </div>

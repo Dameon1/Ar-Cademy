@@ -26,6 +26,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
   useEffect(() => {
     (async () => {
       try {
+        if (addr.length !== 43){return}
         const res = await fetch(
           `https://ans-testnet.herokuapp.com/profile/${addr}`
         );
@@ -42,7 +43,10 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
       }
     })()
   }, [addr]);
-  if (isLoading){return <Loading/>}
+
+
+
+
   return (
     <div className='gradient-border' style={{ padding: '5px' }}>{
       isLoading

@@ -227,11 +227,11 @@ function UserProfile({
                 }}
               >
                 <div>
-                  Hello{` EVM PROFILE `}
+                  {` No Account Found `}
                   {` 🙂`}
                 </div>
 
-                <Link to="/upload" className="textNoDec nav-link">
+                {/* <Link to="/upload" className="textNoDec nav-link">
                   <Button
                     auto
                     className="nav-link identity-link"
@@ -241,8 +241,10 @@ function UserProfile({
                   >
                     Create
                   </Button>
-                </Link>
-                {/* <Button onClick={() => setModalIsOpen(true)} color="success" size="xl" css={{ marginTop: '30px' }}>Activate my Account</Button> */}
+                </Link> */}
+             <Button auto
+                    className="nav-link identity-link"
+                    iconRight={<AiOutlineUpload size={18} />} onClick={() => setModalIsOpen(true)} color="success" size="xl" css={{ marginTop: '30px' }}>Activate my Account</Button> 
               </div>
             </>
           )}

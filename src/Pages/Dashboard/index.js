@@ -18,20 +18,20 @@ export function Dashboard() {
     if (addr) {
       async function update() {
         let user;
-        const res = await fetch(
+        const arArk = await fetch(
           `https://ark-api.decent.land/v1/profile/arweave/${addr}`
         );
-        const ans = await res.json();
-        if (ans.res === undefined) {
+        const ark = await arArk.json();
+        if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
             let checksumAddress = ethers.utils.getAddress(addr);
             const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
-            const eth = await fetch(ethString);
-            const ens = await eth.json();
-            user = ens.res;
+            const ethArk = await fetch(ethString);
+            const evmArk = await ethArk.json();
+            user = evmArk.res;
           }
         } else {
-          user = ans.res;
+          user = ark.res;
         }
         setUserContent(user);
         setIsLoading(false);
@@ -39,8 +39,7 @@ export function Dashboard() {
       update();
     }
   }, [addr]);
-  console.log(addr , !isLoading)
-  console.log(userContent === undefined)
+  
   return (
     <div className="">
       <Login />

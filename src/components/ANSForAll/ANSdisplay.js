@@ -37,7 +37,6 @@ function ANSdisplay( content ) {
     })()
   },[content]);
   console.log(content.content)  
-  if (isLoading){return <Loading/>}
   return (
          
             <div className='gradient-border' style={{ padding: '5px' }}>
@@ -45,7 +44,8 @@ function ANSdisplay( content ) {
                      <AvatarS src={`https://arweave.net/${content.content.avatar}`} sx={{ width: 200, height: 200 }} />
                   
                 <VertoIDinfo>
-                  {content.currentLabel && <h2>{content.content.currentLabel}</h2>}
+                  {content.content.currentLabel && <h2>{content.content.currentLabel}</h2>}
+                  
                   <a href={`https://${content.content.currentLabel}.ar.page`} target="_blank" rel="noreferrer">
                     <h3>{content.content.currentLabel}.ar.page</h3>
                   </a>
