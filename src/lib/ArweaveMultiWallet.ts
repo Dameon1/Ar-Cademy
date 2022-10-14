@@ -8,7 +8,7 @@ import { T_addr, T_walletName } from "../utils/types";
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
   "SIGN_TRANSACTION",
-  "dispatch"
+  "DISPATCH"
 ];
         
 

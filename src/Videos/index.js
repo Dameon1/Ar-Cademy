@@ -1,7 +1,7 @@
 export const Videos = {
     "1": {
         uid: "1",
-        videoSrc: "https://coldcdn.com/api/cdn/7fx36k",
+        videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
         videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
         videoTitle: "Arweave Build",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",

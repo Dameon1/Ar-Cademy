@@ -263,10 +263,11 @@ export default function Upload() {
          
         >
           <h4>Step 3</h4>
-          <p className={"labelStyle"}>Containerize and Finalise</p>
+          <IMG/>
+          {/* <p className={"labelStyle"}>Containerize and Finalise</p>
           <Button onPress={fundWallet}>
             Send transaction
-          </Button>
+          </Button> */}
         </div>
       </div>
       <div className={"formStyle"}>
@@ -303,7 +304,7 @@ export default function Upload() {
         )}
       </div>
       {/* <StampDemo/> */}
-      <IMG/>
+      
     </div>
   );
 }
