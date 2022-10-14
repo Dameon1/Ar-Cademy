@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context";
 import { utils } from "ethers";
 import BigNumber from "bignumber.js";
@@ -11,7 +11,7 @@ import PermaVideo from "../../components/PermaVideo";
 //import StampDemo from "../../components/StampDemo";
 import IMG from "../../components/IMG";
 
-import { Button } from '@nextui-org/react';
+import { Button } from "@nextui-org/react";
 
 const supportedCurrencies = {
   matic: "matic",
@@ -125,7 +125,6 @@ export default function Upload() {
   }
 
   async function saveVideo() {
-    
     if (!file || !title || !description) return;
     const tags = [
       { name: "Content-Type", value: "application/json" },
@@ -154,7 +153,7 @@ export default function Upload() {
 
       console.log(`https://arweave.net/${tx.txid}`);
       setTimeout(() => {
-        navigate("/testpage")
+        navigate("/testpage");
         //console.log("/redirect to new page displaying upload");
       }, 2000);
     } catch (err) {
@@ -203,9 +202,7 @@ export default function Upload() {
         </p>
       </div>
       <div className="connection">
-        
-        <div className="wallet"
-        >
+        <div className="wallet">
           <h4>Step 1</h4>
           <p className={"labelStyle"}>Payment prep</p>
           <BundlrDemo />
@@ -228,7 +225,7 @@ export default function Upload() {
             <h2>💰 Balance {balance}</h2>
 
           </div> */}
-            {/* <h3 >💰 Balance {Math.round(balance * 100) / 100}</h3> */}
+          {/* <h3 >💰 Balance {Math.round(balance * 100) / 100}</h3> */}
         </div>
         {/* <div
           className="wallet"
@@ -255,19 +252,12 @@ export default function Upload() {
             Upload Video
           </Button>
         </div> */}
-        <div className="wallet">
+        {/* <div className="wallet">
           <PermaVideo />
-        </div>
-        <div
-          className="wallet"
-         
-        >
+        </div> */}
+        <div className="wallet">
           <h4>Step 3</h4>
-          <IMG/>
-          {/* <p className={"labelStyle"}>Containerize and Finalise</p>
-          <Button onPress={fundWallet}>
-            Send transaction
-          </Button> */}
+          <IMG />
         </div>
       </div>
       <div className={"formStyle"}>
@@ -296,16 +286,12 @@ export default function Upload() {
                 onChange={(e) => setDescription(e.target.value)}
                 className={"textAreaStyle"}
               />
-              <Button  onPress={saveVideo}>
-                Save Video
-              </Button>
+              <Button onPress={saveVideo}>Save Video</Button>
             </div>
           </div>
         )}
       </div>
       {/* <StampDemo/> */}
-      
     </div>
   );
 }
-

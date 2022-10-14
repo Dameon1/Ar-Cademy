@@ -20,6 +20,8 @@ import {
 //import { deploy, deployBundlr } from "../../lib/stampLib/deploy-path.js";
 import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
 
+import image from "../../assets/favicon.ico";
+
 //   import DeployDialog from "../dialogs/deploy.svelte";
 //   import ErrorDialog from "../dialogs/error.svelte";
 //   import ConfirmDialog from "../dialogs/confirm.svelte";
@@ -98,7 +100,8 @@ export default function IMG() {
   const handleFileClick = () => {
     var fileInputEl = document.createElement("input");
     fileInputEl.type = "file";
-    fileInputEl.accept = "image/* image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml";
+    fileInputEl.accept =
+      "image/* image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml";
     fileInputEl.style.display = "none";
     document.body.appendChild(fileInputEl);
     fileInputEl.addEventListener("input", function (e) {
@@ -427,179 +430,122 @@ export default function IMG() {
   return (
     <>
       <main>
-        <section className="hero min-h-screen bg-base-100 items-start ">
-          <Col>
-            <Row>
-              <div className=" gradient-border">
+        <Container fluid>
+          <Col justify="center" align="center" gap={1}>
+            <div className="gradient-border">
               <h4>Atomic Assets</h4>
-                <form className="form mt-16 px-4 md:px-0" onSubmit={doDeploy}>
-                  <div className="flex flex-col md:flex-row md:space-x-16 justify-center">
-                    <div>
-                      {files[0] !== undefined && (
-                        <>
-                          {/* <img
-                          className="border-2 border-secondary w-full md:w-[500px]"
-                          src={URL.createObjectURL(files[0])}
-                          alt="img"
-                        /> */}
-                          <div className="mt-2 flex justify-end">
-                            <Button
-                            aria-label="Static Actions"
-                              onClick={() => setFiles([])}
-                              className="link"
-                            >
-                              clear
-                            </Button>
-                          </div>
-                        </>
-                      )}
-                      <img
-                        className="cardImage"
-                        id="preview"
-                        alt="your upload here"
-                      />
-
-                      {/* <div className="form-control">
-                          <label
-                            htmlFor="file"
-                            className="bg-gray-200 h-[200px] md:h-[350px] w-full md:w-[500px] grid place-items-center rounded-xl hover:shadow-xl"
-                          >
-                            <div>
-                              <span className="text-gray-400">Select Image</span>
-                              <img src="public/favicon.ico" alt="icon" />
-                            </div>
-                          </label>
-                          
-                          <input
-                            id="file"
-                            type="file"
-                            className="hidden input input-bordered"
-                            onChange={previewImage}
-                          //   bind:files
-                            accept="image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml"
-                          />
-                          </div> */}
-                      <Button onClick={handleFileClick} aria-label="Static Actions">
-                        Select file from Device
-                      </Button>
-                      {/* {files.length === 0 && (
-                          
-                          <div className="form-control">
-                          <label
-                            htmlFor="file"
-                            className="bg-gray-200 h-[200px] md:h-[350px] w-full md:w-[500px] grid place-items-center rounded-xl hover:shadow-xl"
-                          >
-                            <div>
-                              <span className="text-gray-400">Select Image</span>
-                              <img src="public/favicon.ico" alt="icon" />
-                            </div>
-                          </label>
-                          <input
-                            id="file"
-                            type="file"
-                            className="hidden input input-bordered"
-                            onChange={previewImage}
-                          //   bind:files
-                            accept="image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml"
-                          />
-                          <p
-                            className="py-8 w-full md:w-[500px] bg-whitesmoke-200 text-gray-500 text-sm"
-                          >
-                            When uploading images, it is important to note that you are
-                            storing these images on a permanent blockchain and by
-                            uploading you are indicating that you have permission to do
-                            so. NSFW content is not permitted on this service.
-                          </p>
-                        </div>
-                      )} */}
-                    </div>
-                    <div>
-                      <div className="form-control">
-                        <label htmlFor="title" className="label" required>
-                          Title *
-                        </label>
-                        <Input
-                          label="title"
-                          id="title"
-                          className="input input-bordered"
-                          aria-label="Static Actions"
-                          onChange={changeTitle}
-                          //bind:value={title}
-                          //required
-                        />
-                      </div>
-                      <div className="form-control">
-                        <label htmlFor="desc" className="label">
-                          Description
-                        </label>
-                        <Textarea
-                        label="title"
-                          id="Description"
-                          aria-label="Static Actions"
-                          className="textarea textarea-bordered"
-                          onChange={changeDescription}
-                        />
-                      </div>
-                      <div className="form-control">
-                        <label htmlFor="topics" className="label">
-                          Topics
-                        </label>
-                        <Input
-                          id="topics"
-                          label="topics"
-                          aria-label="Static Actions"
-                          className="input input-bordered"
-                          onChange={changeTopics}
-                        />
-                        <label className="label text-sm text-gray-400">
-                          Enter a comma-separated list topics (e.g. collection,
-                          category, etc)
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <Dropdown aria-label="Static Actions">
-                          <Dropdown.Button>
-                            {"Currency: "}
-                            {currency}
-                          </Dropdown.Button>
-                          <Dropdown.Menu
-                            onAction={(key) => setCurrency(key)}
-                            aria-label="Static Actions"
-                          >
-                            {Object.keys(currencyMap).map((v) => {
-                              return <Dropdown.Item key={v}>{v}</Dropdown.Item>; // proper/title case
-                            })}
-                          </Dropdown.Menu>
-                        </Dropdown>
-                        {/* <label htmlFor="currency" className="label">
-                      Currency *
-                    </label>
-                    <select
-                      className="select select-bordered"
-                      onChange={changeCurrency}
+              <form className="" onSubmit={doDeploy}>
+                <Row justify="center" align="center" gap={1}>
+                  <img
+                    className="cardImage"
+                    src={image}
+                    id="preview"
+                    alt="your upload here"
+                  />
+                </Row>
+                <Row justify="center" align="center" gap={1}>
+                  <Col justify="center" align="center">
+                    <Button
+                      onClick={handleFileClick}
+                      aria-label="Static Actions"
                     >
-                      <option value="none">Choose</option>
-                      <option value="sol">$SOL</option>
-                      <option value="matic">$MATIC</option>
-                      <option value="ar">$AR</option>
-                      {/* <--
-                          <option value="near">$near</option>
-                          --> */}
+                      Select file from Device
+                    </Button>
+                  </Col>
 
-                        {/*</select>
-                          
-                    <label className="label text-sm text-gray-400">
-                      (when using $AR you also mint $BAR)
-                    </label> */}
+                  {files[0] !== undefined && (
+                    <Col justify="center" align="center">
+                      <div className="mt-2 flex justify-end">
+                        <Button
+                          aria-label="Reset"
+                          onClick={() => setFiles([])}
+                          className="link"
+                        >
+                          clear
+                        </Button>
                       </div>
-                      <Button type="submit">Deploy</Button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </Row>
+                    </Col>
+                  )}
+                </Row>
+
+                <Spacer y={2} />
+
+                <Row
+                  className="form-control"
+                  justify="center"
+                  align="center"
+                  gap={1}
+                >
+                  <Input
+                    id="title"
+                    className="input input-bordered"
+                    labelPlaceholder="Make a Title"
+                    status="secondary"
+                    aria-label="Title"
+                    onChange={changeTitle}
+                    required
+                  />
+                </Row>
+                <Spacer y={2} />
+                <Row
+                  className="form-control"
+                  justify="center"
+                  align="center"
+                  gap={1}
+                >
+                  <Textarea
+                    id="Description"
+                    aria-label="description"
+                    className="textarea textarea-bordered"
+                    labelPlaceholder="Give a description"
+                    status="secondary"
+                    onChange={changeDescription}
+                    required
+                  />
+                </Row>
+                <Spacer y={2} />
+                <Row
+                  className="form-control"
+                  justify="center"
+                  align="center"
+                  gap={1}
+                >
+                  <Input
+                    id="topics"
+                    aria-label="Data tags"
+                    className="input input-bordered"
+                    labelPlaceholder="Add a tag or 2 with ','"
+                    status="secondary"
+                    onChange={changeTopics}
+                    required
+                  />
+                </Row>
+                <Spacer y={2} />
+                <Row justify="center" align="center" gap={1}>
+                  <Col className="form-control">
+                    <Dropdown aria-label="Static Actions" required>
+                      <Dropdown.Button>
+                        {"Currency: "}
+                        {currency}
+                      </Dropdown.Button>
+                      <Dropdown.Menu
+                        onAction={(key) => setCurrency(key)}
+                        aria-label="Static Actions"
+                      >
+                        {Object.keys(currencyMap).map((v) => {
+                          return <Dropdown.Item key={v}>{v}</Dropdown.Item>; // proper/title case
+                        })}
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Col>
+                  <Col>
+                    <Button type="submit">Deploy</Button>
+                  </Col>
+                </Row>
+              </form>
+            </div>
           </Col>
-        </section>
+        </Container>
       </main>
 
       {/* <DeployDialog open={deployDlg} />
