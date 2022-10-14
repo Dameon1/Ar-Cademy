@@ -5,15 +5,15 @@ import Arweave from 'arweave';
 
 import { icons } from "../static";
 import { T_addr, T_walletName } from "../utils/types";
-
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
   "SIGN_TRANSACTION",
   "dispatch"
 ];
+        
 
 const webWallet = new ArweaveWebWallet({
-  name: 'Account',
+  name: 'Arcademy',
   logo: icons.metaweave
 });
 webWallet.setUrl('arweave.app');
@@ -37,7 +37,7 @@ export default class ArweaveMultiWallet {
         return null;
       }
       try {
-        await walletEngine.connect(arConnectPermissions);
+        await walletEngine.connect(arConnectPermissions, { name: "Arcademy" });
         return await walletEngine.getActiveAddress();
       } catch {
         alert("Error: Could not connect to ArConnect");
@@ -47,11 +47,11 @@ export default class ArweaveMultiWallet {
       }
     }
     else if (walletName === "webwallet") {
-      await webWallet.connect(arConnectPermissions);
+      await webWallet.connect();
       this.walletEngine = await webWallet.namespaces.arweaveWallet;
       const addr = await this.walletEngine.getActiveAddress();
       return addr ? addr : null;
-    }
+    } 
     else if (walletName === "bundlr") {
       const connectWeb3 = async (connector: any) => {
         const p = new providers.Web3Provider(connector);
@@ -196,7 +196,6 @@ export default class ArweaveMultiWallet {
         const result = await tx.upload();
         console.log("result", result);
         return { ...result, txid: result.data.id };
-      //return await this.walletEngine.uploader.upload(data, tags)
     }
   }
 }

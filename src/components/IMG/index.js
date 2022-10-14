@@ -2,13 +2,28 @@ import { useState } from "react";
 import { providers } from "ethers";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import * as nearAPI from "near-api-js";
+import {
+  Button,
+  Textarea,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Input,
+  Dropdown,
+  Tooltip,
+  Container,
+  Row,
+  Col,
+} from "@nextui-org/react";
 
 //import { deploy, deployBundlr } from "../../lib/stampLib/deploy-path.js";
+import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
+
 //   import DeployDialog from "../dialogs/deploy.svelte";
 //   import ErrorDialog from "../dialogs/error.svelte";
 //   import ConfirmDialog from "../dialogs/confirm.svelte";
 //import { imgCache } from "../store.js";
-import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
 
 import { WebBundlr } from "@bundlr-network/client";
 //const WebBundlr = Bundlr.default;
@@ -36,10 +51,10 @@ export default function IMG() {
   //   let title = "";
   //   let description = "";
   //   let topics = "";
-//   let deployDlg = false;
-//   let errorMessage = "";
-//   let errorDlg = false;
-//   let confirmDlg = false;
+  //   let deployDlg = false;
+  //   let errorMessage = "";
+  //   let errorDlg = false;
+  //   let confirmDlg = false;
 
   const c = (event) => {
     console.log(event.target.value);
@@ -83,7 +98,7 @@ export default function IMG() {
   const handleFileClick = () => {
     var fileInputEl = document.createElement("input");
     fileInputEl.type = "file";
-    fileInputEl.accept = "image/*";
+    fileInputEl.accept = "image/* image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml";
     fileInputEl.style.display = "none";
     document.body.appendChild(fileInputEl);
     fileInputEl.addEventListener("input", function (e) {
@@ -111,7 +126,7 @@ export default function IMG() {
   };
 
   function showError(msg) {
-    console.log("error:",msg)
+    console.log("error:", msg);
   }
 
   const toArrayBuffer = (file) =>
@@ -127,73 +142,70 @@ export default function IMG() {
     e.preventDefault();
     console.log("currency:", currency);
     if (currency === "matic") {
-        if (!window.ethereum) {
-          showError("Metamask is required!");
-          return;
+      if (!window.ethereum) {
+        showError("Metamask is required!");
+        return;
+      }
+      try {
+        await window.ethereum.enable();
+        const provider = new providers.Web3Provider(window.ethereum);
+        await provider._ready();
+
+        const bundlr = new WebBundlr(
+          "https://node2.bundlr.network",
+          "matic",
+          provider
+        );
+
+        await bundlr.ready();
+
+        // fund account
+        const price = await bundlr.getPrice(files[0].size);
+        const balance = await bundlr.getLoadedBalance();
+
+        if (balance.isLessThan(price)) {
+          await bundlr.fund(price.minus(balance).multipliedBy(1.1).toFixed(0));
         }
-        try {
-          await window.ethereum.enable();
-          const provider = new providers.Web3Provider(window.ethereum);
-          await provider._ready();
-  
-          const bundlr = new WebBundlr(
-            "https://node2.bundlr.network",
-            "matic",
-            provider
-          );
-  
-          await bundlr.ready();
-  
-          // fund account
-          const price = await bundlr.getPrice(files[0].size);
-          const balance = await bundlr.getLoadedBalance();
-  
-          if (balance.isLessThan(price)) {
-            await bundlr.fund(price.minus(balance).multipliedBy(1.1).toFixed(0));
-          }
-  
-          const trx =  bundlr.createTransaction(
-            await toArrayBuffer(files[0]),
-            {
-              tags: [{ name: "Content-Type", value: files[0].type }],
-            }
-          );
-  
-          await trx.sign();
-  
-          const result = await trx.upload();
-  
-          const addr = "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE";
-            console.log("DEPLOY BUNDLR PROPS",title,
-                description,
-                addr,
-                files[0].type,
-                result.data.id,
-                topics)
-          const result2 = await deployBundlr(
-            title,
-            description,
-            addr,
-            files[0].type,
-            result.data.id,
-            topics
-          );
-  
-  
-          // reset form
-          document.forms[0].reset();
-  
-          setTx(result2.id);
-  
-          setImgCache ([
-            ...imgCache,
-            { id: result2.id, src: URL.createObjectURL(files[0]) },
-          ]);
-  
-        } catch (e) {
-          console.log(e);
-          
-        }
+
+        const trx = bundlr.createTransaction(await toArrayBuffer(files[0]), {
+          tags: [{ name: "Content-Type", value: files[0].type }],
+        });
+
+        await trx.sign();
+
+        const result = await trx.upload();
+
+        const addr = "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE";
+        console.log(
+          "DEPLOY BUNDLR PROPS",
+          title,
+          description,
+          addr,
+          files[0].type,
+          result.data.id,
+          topics
+        );
+        const result2 = await deployBundlr(
+          title,
+          description,
+          addr,
+          files[0].type,
+          result.data.id,
+          topics
+        );
+
+        // reset form
+        document.forms[0].reset();
+
+        setTx(result2.id);
+
+        setImgCache([
+          ...imgCache,
+          { id: result2.id, src: URL.createObjectURL(files[0]) },
+        ]);
+      } catch (e) {
+        console.log(e);
+      }
       // } else if (currency === "near") {
       //   /** wip
       //    * need to handle redirect for success and failure
@@ -384,36 +396,70 @@ export default function IMG() {
     //handleFileClick(e);
   };
 
+  const ethProviders = ["MetaMask", "WalletConnect"];
+
+  const currencyMap = {
+    solana: {
+      providers: ["Phantom"],
+      opts: {},
+    },
+    matic: {
+      providers: ethProviders,
+      opts: {
+        chainId: 137,
+        chainName: "Polygon Mainnet",
+        rpcUrls: ["https://polygon-rpc.com"],
+      },
+    },
+    near: {
+      providers: ["wallet.near.org"],
+      opts: {
+        networkId: "mainnet",
+        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        nodeUrl: "https://rpc.mainnet.near.org",
+        walletUrl: "https://wallet.mainnet.near.org",
+        helperUrl: "https://helper.mainnet.near.org",
+        explorerUrl: "https://explorer.mainnet.near.org",
+      },
+    },
+  };
+
   return (
     <>
       <main>
-        <section className="hero min-h-screen bg-base-100 items-start">
-          <div className="flex flex-col items-center justify-start">
-            <p>Upload</p>
-            <form className="form mt-16 px-4 md:px-0" onSubmit={doDeploy}>
-              <div className="flex flex-col md:flex-row md:space-x-16 justify-center">
-                <div>
-                  {files[0] !== undefined && (
-                    <>
-                      {/* <img
+        <section className="hero min-h-screen bg-base-100 items-start ">
+          <Col>
+            <Row>
+              <div className=" gradient-border">
+              <h4>Atomic Assets</h4>
+                <form className="form mt-16 px-4 md:px-0" onSubmit={doDeploy}>
+                  <div className="flex flex-col md:flex-row md:space-x-16 justify-center">
+                    <div>
+                      {files[0] !== undefined && (
+                        <>
+                          {/* <img
                           className="border-2 border-secondary w-full md:w-[500px]"
                           src={URL.createObjectURL(files[0])}
                           alt="img"
                         /> */}
-                      <div className="mt-2 flex justify-end">
-                        <button onClick={() => setFiles([])} className="link">
-                          clear
-                        </button>
-                      </div>
-                    </>
-                  )}
-                  <img
-                    className="cardImage"
-                    id="preview"
-                    alt="your upload here"
-                  />
+                          <div className="mt-2 flex justify-end">
+                            <Button
+                            aria-label="Static Actions"
+                              onClick={() => setFiles([])}
+                              className="link"
+                            >
+                              clear
+                            </Button>
+                          </div>
+                        </>
+                      )}
+                      <img
+                        className="cardImage"
+                        id="preview"
+                        alt="your upload here"
+                      />
 
-                  {/* <div className="form-control">
+                      {/* <div className="form-control">
                           <label
                             htmlFor="file"
                             className="bg-gray-200 h-[200px] md:h-[350px] w-full md:w-[500px] grid place-items-center rounded-xl hover:shadow-xl"
@@ -433,10 +479,10 @@ export default function IMG() {
                             accept="image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml"
                           />
                           </div> */}
-                  <button onClick={handleFileClick}>
-                    Select file from Device
-                  </button>
-                  {/* {files.length === 0 && (
+                      <Button onClick={handleFileClick} aria-label="Static Actions">
+                        Select file from Device
+                      </Button>
+                      {/* {files.length === 0 && (
                           
                           <div className="form-control">
                           <label
@@ -466,55 +512,72 @@ export default function IMG() {
                           </p>
                         </div>
                       )} */}
-                </div>
-                <div>
-                  <div className="form-control">
-                    <label htmlFor="title" className="label" required>
-                      Title *
-                    </label>
-                    <input
-                      id="title"
-                      className="input input-bordered"
-                      onChange={changeTitle}
-                      //bind:value={title}
-                      //required
-                    />
-                  </div>
-                  <div className="form-control">
-                    <label htmlFor="desc" className="label">
-                      Description
-                    </label>
-                    <textarea
-                      id="desc"
-                      className="textarea textarea-bordered"
-                      onChange={changeDescription}
-                      //bind:value={description}
-                    />
-                  </div>
-                  <div className="form-control">
-                    <label htmlFor="topics" className="label">
-                      Topics
-                    </label>
-                    <input
-                      id="topics"
-                      className="input input-bordered"
-                      onChange={changeTopics}
-                      //bind:value={topics}
-                    />
-                    <label className="label text-sm text-gray-400">
-                      Enter a comma-separated list topics (e.g. collection,
-                      category, etc)
-                    </label>
-                  </div>
-                  <div className="form-control">
-                    <label htmlFor="currency" className="label">
+                    </div>
+                    <div>
+                      <div className="form-control">
+                        <label htmlFor="title" className="label" required>
+                          Title *
+                        </label>
+                        <Input
+                          label="title"
+                          id="title"
+                          className="input input-bordered"
+                          aria-label="Static Actions"
+                          onChange={changeTitle}
+                          //bind:value={title}
+                          //required
+                        />
+                      </div>
+                      <div className="form-control">
+                        <label htmlFor="desc" className="label">
+                          Description
+                        </label>
+                        <Textarea
+                        label="title"
+                          id="Description"
+                          aria-label="Static Actions"
+                          className="textarea textarea-bordered"
+                          onChange={changeDescription}
+                        />
+                      </div>
+                      <div className="form-control">
+                        <label htmlFor="topics" className="label">
+                          Topics
+                        </label>
+                        <Input
+                          id="topics"
+                          label="topics"
+                          aria-label="Static Actions"
+                          className="input input-bordered"
+                          onChange={changeTopics}
+                        />
+                        <label className="label text-sm text-gray-400">
+                          Enter a comma-separated list topics (e.g. collection,
+                          category, etc)
+                        </label>
+                      </div>
+                      <div className="form-control">
+                        <Dropdown aria-label="Static Actions">
+                          <Dropdown.Button>
+                            {"Currency: "}
+                            {currency}
+                          </Dropdown.Button>
+                          <Dropdown.Menu
+                            onAction={(key) => setCurrency(key)}
+                            aria-label="Static Actions"
+                          >
+                            {Object.keys(currencyMap).map((v) => {
+                              return <Dropdown.Item key={v}>{v}</Dropdown.Item>; // proper/title case
+                            })}
+                          </Dropdown.Menu>
+                        </Dropdown>
+                        {/* <label htmlFor="currency" className="label">
                       Currency *
                     </label>
                     <select
                       className="select select-bordered"
                       onChange={changeCurrency}
                     >
-                      {/* //</div> bind:value={currency}> */}
                       <option value="none">Choose</option>
                       <option value="sol">$SOL</option>
                       <option value="matic">$MATIC</option>
@@ -522,19 +585,20 @@ export default function IMG() {
                       {/* <--
                           <option value="near">$near</option>
                           --> */}
-                    </select>
+
+                        {/*</select>
+                          
                     <label className="label text-sm text-gray-400">
                       (when using $AR you also mint $BAR)
-                    </label>
+                    </label> */}
+                      </div>
+                      <Button type="submit">Deploy</Button>
+                    </div>
                   </div>
-                  {/* <div className="my-16 space-y-4">
-                        <button disabled={notValid} className="btn btn-block">Deploy</button>
-                      </div> */}
-                  <button type="submit">Deploy</button>
-                </div>
+                </form>
               </div>
-            </form>
-          </div>
+            </Row>
+          </Col>
         </section>
       </main>
 
