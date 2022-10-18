@@ -4,8 +4,19 @@ import {
   createPostInfo,
   tagSelectOptions,
 } from "../../utils";
+import { reject, concat, sortWith, descend, prop, takeLast } from "ramda";
 
-import { useEffect, useState } from "react";
+import MainContext from "../../context";
+
+import {
+  imagesByOwner,
+  transfer,
+  excludeTransferred,
+  includeTransferred,
+  assetDetails,
+} from "../../lib/imgLib/asset";
+
+import { useEffect, useState, useContext } from "react";
 //import Select from 'react-select'
 import {
   Button,
@@ -21,12 +32,93 @@ import {
   Col,
 } from "@nextui-org/react";
 
+import AtomicImages from './AtomicImages';
 const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
 export default function TestPage() {
-  const defaultLabel = "Optional Label Selection";
+  const defaultLabel = "Type Selection";
   const [videos, setVideos] = useState([]);
   const [label, setLabel] = useState("Optional Label Selection");
+  const { addr } = useContext(MainContext);
+  const [images, setImages] = useState([]);
+
+  let profile;
+  let items = {};
+  let showTransfer = false;
+  let transferData = { id: "0", title: "unknown" };
+
+  let showConnect = false;
+  let showHelp = false;
+  let canTransfer = false;
+  let showTransfering = false;
+  let showError = false;
+  let errorMessage = "An Error Occuried!";
+
+  function handleCopy(id) {
+    items[id] = false;
+    return () => {
+      setTimeout(() => (items[id] = false), 2000);
+      navigator.clipboard.writeText(id);
+      items[id] = true;
+    };
+  }
+
+  function tweetLink(title, id) {
+    return `https://twitter.com/intent/tweet?text=${encodeURI(
+      "🪧 STAMP\n\n" + title.replace("#", "no ") + "\n\n🐘"
+    )}&url=https://img.arweave.dev/%23/show/${id}`;
+  }
+
+  function connected() {
+    canTransfer = true;
+  }
+
+  async function handleTransfer(e) {
+    if (!profile.addr) {
+      showConnect = true;
+      return;
+    }
+
+    showTransfer = false;
+    showTransfering = true;
+    transferData = e.detail;
+    try {
+      const result = await transfer({
+        asset: transferData.id,
+        title: transferData.title,
+        caller: profile.addr,
+        addr: transferData.addr,
+        percent: transferData.percent,
+      });
+
+      if (result.ok) {
+        showTransfering = false;
+        transferData = { id: "0", title: "unknown" };
+        setImages(getImages(addr));
+      } else {
+        showTransfering = false;
+        transferData = { id: "0", title: "unknown" };
+        errorMessage = result.message;
+        showError = true;
+      }
+    } catch (e) {
+      showTransfering = false;
+      errorMessage = e.message;
+      showError = true;
+    }
+  }
+
+  async function getImages(addr,type) {
+    const transferredImages = await excludeTransferred(addr);
+    console.log(transferredImages);
+    return (
+      Promise.all([imagesByOwner(addr), includeTransferred(addr)])
+        .then((results) => concat(results[0], results[1]))
+        .then(reject((a) => transferredImages[a.id] === 100))
+        // sort!
+        .then(sortWith([descend(prop("timestamp"))]))
+    );
+  }
 
   useEffect(() => {
     async function getPostInfo(topicFilter = null, depth = 0) {
@@ -82,7 +174,7 @@ export default function TestPage() {
     );
     sorted = sorted.map((s) => s.request.data);
     setVideos(sorted);
-    console.log("videos", videos)
+    console.log("videos", videos);
     //scursor = last(edges).cursor
     return posts;
   }
@@ -109,13 +201,27 @@ export default function TestPage() {
   //   }
   // }
 
-  async function runFilterQuery(data) {
-    await getPostInfo(data ? data.value : null);
+  async function runFilterQuery(addr) {
+    console.log("what?");
+    let newQuery = await getImages(addr ? addr : null);
+    let res = await newQuery;
+    setImages(res);
+    console.log(res);
   }
 
   return (
     <>
       <div className={"containerStyle"}>
+        {console.log("working")}
+        <Dropdown>
+          <Dropdown.Button>{defaultLabel}</Dropdown.Button>
+          <Dropdown.Menu onAction={(key) => setLabel(key)}>
+            {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
+            {tagSelectOptions.map((v) => {
+              return <Dropdown.Item key={v.label}>{v.label}</Dropdown.Item>; // proper/title case
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
         <Dropdown>
           <Dropdown.Button>{label}</Dropdown.Button>
           <Dropdown.Menu onAction={(key) => setLabel(key)}>
@@ -125,8 +231,10 @@ export default function TestPage() {
             })}
           </Dropdown.Menu>
         </Dropdown>
-        <Button onPress={async () => runFilterQuery(label)}>Search</Button>
+        <Button onPress={async () => runFilterQuery(addr)}>Search</Button>
       </div>
+      {images && (<AtomicImages images={images} />)}
+
       {videos.map((video, i) => (
         <div key={i}>
           <div className={"videoContainerStyle"} key={video.URI}>

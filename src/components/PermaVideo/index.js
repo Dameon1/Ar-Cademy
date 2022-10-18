@@ -202,7 +202,7 @@ export default function PermaVideo() {
         </div>
         {
           localVideo && (
-            <video key={localVideo} width="520" controls className={"videoStyle"}>
+            <video key={localVideo}width="320" height="240" controls  className={"videoStyle"}>
               <source src={localVideo} type="video/mp4"/>
             </video>
           )

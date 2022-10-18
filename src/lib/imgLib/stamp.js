@@ -45,7 +45,7 @@ export async function stamp(transactionId) {
         .then(path(['cachedValue', 'state']))
 
       )
-      .then(state => (data = state, data))
+      .then(state => (data = state))
       .then(_ => x)
     )
 }
@@ -73,7 +73,7 @@ export async function getCount(asset) {
 
   return fetch(`${CACHE}/${STAMPCOIN}`)
     .then(res => res.json())
-    .then(state => (data = state, state))
+    .then(state => (data =  state))
     .then(stampCount(asset))
 }
 
@@ -84,6 +84,6 @@ export async function getRewards(asset) {
   }
   return fetch(`${CACHE}/${STAMPCOIN}`)
     .then(res => res.json())
-    .then(state => (data = state, state))
+    .then(state => (data =  state))
     .then(rewardSum(asset))
 }

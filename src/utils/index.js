@@ -27,7 +27,7 @@ export const createPostInfo = async (node) => {
   },
   {
     name: "Content-Type",
-    values: ["text/plain"]
+    values: ["video/mp4"]
   }
 ]
 

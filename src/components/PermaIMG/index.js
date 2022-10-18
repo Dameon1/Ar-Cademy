@@ -1,5 +1,12 @@
-import { useState } from "react";
-import { providers } from "ethers";
+import { useNavigate } from "react-router-dom";
+
+import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
+import image from "../../assets/favicon.ico";
+
+import { WebBundlr } from "@bundlr-network/client";
+import { AMW } from "../../utils/api";
+
+import { useState, useRef } from "react";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import * as nearAPI from "near-api-js";
 import {
@@ -16,24 +23,337 @@ import {
   Row,
   Col,
 } from "@nextui-org/react";
+import BigNumber from "bignumber.js";
+import Select from "react-select";
+import { providers, utils } from "ethers";
+//import { css } from '@emotion/css'
 
-import { useNavigate } from "react-router-dom";
+const APP_NAME = "Ar-Cademy";
 
-//import { deploy, deployBundlr } from "../../lib/stampLib/deploy-path.js";
-import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
+export const tagSelectOptions = [
+  { value: "daos", label: "DAOs" },
+  { value: "defi", label: "DeFi" },
+  { value: "nfts", label: "NFTs" },
+  { value: "developers", label: "Developers" },
+  { value: "gaming", label: "Gaming" },
+  { value: "investing", label: "Investing" },
+  { value: "public-goods", label: "Public Goods" },
+  { value: "education", label: "Education" },
+];
 
-import image from "../../assets/favicon.ico";
+const supportedCurrencies = {
+  matic: "matic",
+  ethereum: "ethereum",
+  avalanche: "avalanche",
+  bnb: "bnb",
+  arbitrum: "arbitrum",
+};
 
-//   import DeployDialog from "../dialogs/deploy.svelte";
-//   import ErrorDialog from "../dialogs/error.svelte";
-//   import ConfirmDialog from "../dialogs/confirm.svelte";
-//import { imgCache } from "../store.js";
+const currencyOptions = Object.keys(supportedCurrencies).map((v) => {
+  return {
+    value: v,
+    label: v,
+  };
+});
 
-import { WebBundlr } from "@bundlr-network/client";
-//const WebBundlr = Bundlr.default;
-import { AMW } from "../../utils/api";
+export default function PermaIMG() {
+  //const { balance, bundlrInstance, fetchBalance, initialiseBundlr, currency, setCurrency } = useContext(MainContext)
+  const [file, setFile] = useState();
+  const [localVideo, setLocalVideo] = useState();
+  const [topics, setTopics] = useState("");
 
-export default function IMG() {
+  const [title, setTitle] = useState("");
+  const [fileCost, setFileCost] = useState();
+  const [description, setDescription] = useState("");
+  const [tagSelectState, setTagSelectState] = useState();
+  //const router = useRouter()
+
+  const [URI, setURI] = useState();
+  const [amount, setAmount] = useState();
+  const [imgCache, setImgCache] = useState([]);
+
+  const [bundlrInstance, setBundlrInstance] = useState();
+  const [balance, setBalance] = useState(0);
+  const [currency, setCurrency] = useState("matic");
+  const [originalFile, setOriginalFile] = useState();
+  const [fileSizeBytes, SetFileSizeBytes] = useState(0)
+  const bundlrRef = useRef();
+
+  const navigate = useNavigate();
+  async function initialiseBundlr() {
+    await window.ethereum.enable();
+
+    const provider = new providers.Web3Provider(window.ethereum);
+    await provider._ready();
+
+    const bundlr = new WebBundlr(
+      "https://node2.bundlr.network",
+      currency,
+      provider
+    );
+    await bundlr.ready();
+
+    setBundlrInstance(bundlr);
+    bundlrRef.current = bundlr;
+    fetchBalance();
+  }
+
+  async function fetchBalance() {
+    const bal = await bundlrRef.current.getLoadedBalance();
+    console.log("bal: ", utils.formatEther(bal.toString()));
+    setBalance(utils.formatEther(bal.toString()));
+  }
+
+  async function fundWallet() {
+    if (!amount) return;
+    const amountParsed = parseInput(amount);
+    try {
+      await bundlrInstance.fund(amountParsed);
+      fetchBalance();
+    } catch (err) {
+      console.log("Error funding wallet: ", err);
+    }
+  }
+
+  function parseInput(input) {
+    const conv = new BigNumber(input).multipliedBy(
+      bundlrInstance.currencyConfig.base[1]
+    );
+    if (conv.isLessThan(1)) {
+      console.log("error: value too small");
+      return;
+    } else {
+      return conv;
+    }
+  }
+
+  function onFileChange(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    setOriginalFile(file)
+    checkUploadCost(file.size);
+    if (file) {
+      const video = URL.createObjectURL(file);
+      setLocalVideo(video);
+      let reader = new FileReader();
+      reader.onload = function (e) {
+        if (reader.result) {
+          setFile(Buffer.from(reader.result));
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+  }
+
+  async function checkUploadCost(bytes) {
+    if (bytes) {
+      const cost = await bundlrInstance.getPrice(bytes);
+      setFileCost(utils.formatEther(cost));
+    }
+  }
+
+  async function uploadFile() {
+    if (!file) return;
+    const tags = [{ name: "Content-Type", value: "video/mp4" }];
+    try {
+      let tx = await bundlrInstance.uploader.upload(file, tags);
+      setURI(`https://arweave.net/${tx.data.id}`);
+    } catch (err) {
+      console.log("Error uploading video: ", err);
+    }
+  }
+
+  async function saveVideo() {
+    if (!file || !title || !description) return;
+    const tags = [
+      { name: "Content-Type", value: "text/plain" },
+      { name: "App-Name", value: APP_NAME },
+    ];
+
+    if (tagSelectState) {
+      tags.push({
+        value: tagSelectState.value,
+      });
+    }
+
+    const video = {
+      title,
+      description,
+      URI,
+      createdAt: new Date(),
+      createdBy: bundlrInstance.address,
+    };
+
+    try {
+      let tx = await bundlrInstance.createTransaction(JSON.stringify(video), {
+        tags,
+      });
+      await tx.sign();
+      const { data } = await tx.upload();
+
+      console.log(`https://arweave.net/${data.id}`);
+      setTimeout(() => {
+        navigate("/testpage");
+      }, 2000);
+    } catch (err) {
+      console.log("error uploading video with metadata: ", err);
+    }
+  }
+
+  const toArrayBuffer = (file) =>
+    new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.readAsArrayBuffer(file);
+      fr.addEventListener("loadend", (evt) => {
+        resolve(evt.target.result);
+      });
+    });
+
+    function showError(msg) {
+        console.log("error:", msg);
+      }
+
+
+  //Create a checkpoint
+
+async function doDeploy(e) {
+    console.log("currency:", currency);
+    //const topics = [{ name: "Content-Type", value: "video/mp4" }];
+
+    if (currency === "matic") {
+      if (!window.ethereum) {
+        showError("Metamask is required!");
+        return;
+      }
+      try {
+        await window.ethereum.enable();
+        const provider = new providers.Web3Provider(window.ethereum);
+        await provider._ready();
+
+        const bundlr = new WebBundlr(
+          "https://node2.bundlr.network",
+          "matic",
+          provider
+        );
+
+        await bundlr.ready();
+
+        // fund account
+        const price = await bundlr.getPrice(originalFile.size);
+        const balance = await bundlr.getLoadedBalance();
+        const uploadCost = utils.formatEther(price.minus(balance).multipliedBy(1.1).toFixed(0));
+        if (balance.isLessThan(price)) {
+          await bundlr.fund(price.minus(balance).multipliedBy(1.1).toFixed(0));
+        }
+
+        const trx = bundlr.createTransaction(file, {
+          tags: [{ name: "Content-Type", value: originalFile.type }],
+        });
+
+        await trx.sign();
+        console.log("Signed transaction")
+        const result = await trx.upload();
+        console.log("Uploaded")
+        const addr = "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE";
+        console.log(
+          "DEPLOY BUNDLR PROPS",
+          title,
+          description,
+          addr,
+          originalFile.type,
+          result.data.id,
+          topics,
+          uploadCost
+        );
+        const result2 = await deployBundlr(
+          title,
+          description,
+          addr,
+          originalFile.type,
+          result.data.id,
+          topics,
+          uploadCost
+        );
+        console.log("Completed Upload, redirecting 3...");
+        // reset form
+        document.forms[0].reset();
+        console.log("Completed Upload, redirecting 2...");
+
+        //setTx(result2.id);
+        console.log("Completed Upload, redirecting 1...");
+
+        setImgCache([
+          ...imgCache,
+          { id: result2.id, src: URL.createObjectURL(originalFile) },
+        ]);
+        console.log(`https://arweave.net/${result.data.id}`);
+        console.log("Completed Upload, redirecting 0...");
+
+        setTimeout(() => {
+          navigate("/testpage");
+        }, 2000);
+      } catch (e) {
+        console.log(e);
+      }
+    }}  
+
+  return (
+    <div>
+     
+      <div className={"formStyle"}>
+        <p className={"labelStyle"}>Add Video</p>
+        <div className={"inputContainerStyle"}>
+          <input type="file" onChange={onFileChange} />
+        </div>
+        {localVideo && (
+          <video
+            key={localVideo}
+            width="320"
+            height="240"
+            controls
+            className={"videoStyle"}
+          >
+            <source src={localVideo} type="video/mp4" />
+          </video>
+        )}
+        {fileCost && (
+          <h4>Cost to upload: {Math.round(fileCost * 1000) / 1000} MATIC</h4>
+        )}
+        {/* <button className={"buttonStyle"} onClick={uploadFile}>Upload Video</button> */}
+
+        <div>
+          
+          <div className={"formStyle"}>
+            <p className={"labelStyle"}>Tag</p>
+            <Select
+              options={tagSelectOptions}
+              className={"selectStyle"}
+              onChange={(data) => setTagSelectState(data)}
+              isClearable
+            />
+            <p className={"labelStyle"}>Title</p>
+            <input
+              className={"inputStyle"}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Video title"
+            />
+            <p className={"labelStyle"}>Description</p>
+            <textarea
+              placeholder="Video description"
+              onChange={(e) => setDescription(e.target.value)}
+              className={"textAreaStyle"}
+            />
+            
+          </div>
+        </div>
+      </div>
+      <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
+      <IMG />
+    </div>
+  );
+}
+
+export function IMG() {
   const { connect, keyStores, WalletConnection } = nearAPI;
   const [imgCache, setImgCache] = useState([]);
   const [files, setFiles] = useState([]);
@@ -52,19 +372,6 @@ export default function IMG() {
   };
   const navigate = useNavigate();
 
-  //let files = [];
-  //   let title = "";
-  //   let description = "";
-  //   let topics = "";
-  //   let deployDlg = false;
-  //   let errorMessage = "";
-  //   let errorDlg = false;
-  //   let confirmDlg = false;
-
-  const c = (event) => {
-    console.log(event.target.value);
-    setFiles(event.target.value);
-  };
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
@@ -199,20 +506,20 @@ export default function IMG() {
           result.data.id,
           topics
         );
-          console.log("Completed Upload, redirecting 3...")
+        console.log("Completed Upload, redirecting 3...");
         // reset form
         document.forms[0].reset();
-        console.log("Completed Upload, redirecting 2...")
+        console.log("Completed Upload, redirecting 2...");
 
         setTx(result2.id);
-        console.log("Completed Upload, redirecting 1...")
+        console.log("Completed Upload, redirecting 1...");
 
         setImgCache([
           ...imgCache,
           { id: result2.id, src: URL.createObjectURL(files[0]) },
         ]);
         console.log(`https://arweave.net/${result.data.id}`);
-        console.log("Completed Upload, redirecting ...")
+        console.log("Completed Upload, redirecting 0...");
 
         setTimeout(() => {
           navigate("/testpage");
@@ -560,12 +867,12 @@ export default function IMG() {
       </main>
 
       {/* <DeployDialog open={deployDlg} />
-      <ErrorDialog
-          open={errorDlg}
-         msg={errorMessage}
-         on:cancel={() => (errorDlg = false)}
-        />
-      <ConfirmDialog {tx} open={confirmDlg} on:cancel={() => (confirmDlg = false)} /> */}
+        <ErrorDialog
+            open={errorDlg}
+           msg={errorMessage}
+           on:cancel={() => (errorDlg = false)}
+          />
+        <ConfirmDialog {tx} open={confirmDlg} on:cancel={() => (confirmDlg = false)} /> */}
     </>
   );
 }

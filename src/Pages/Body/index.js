@@ -11,7 +11,7 @@ import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo"
 import TestPage from "../TestPage";
-
+import SingleAsset from "../AssetManagement"
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
@@ -37,6 +37,7 @@ function Body({ syntaxTheme }) {
           <Route exact path={"/testpage"} element={<TestPage />} />
 
           <Route exact path={string} element={<LandingPage />} />
+          <Route exact path={"/AssetManagement/:assetId"} element={<SingleAsset/>} />
           <Route
             path="*"
             element={

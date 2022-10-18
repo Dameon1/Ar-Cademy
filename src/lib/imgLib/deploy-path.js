@@ -1,5 +1,6 @@
 import { compose, toLower, join, split, map, trim } from 'ramda'
 import Arweave from 'arweave';
+import { privateDecrypt } from 'crypto';
 
 const arweave = Arweave.init({
   host: 'arweave.net',
@@ -28,8 +29,8 @@ export async function deploy(name, description, addr, contentType, data, topics 
     .then(post)
 }
 
-export async function deployBundlr(name, description, addr, contentType, assetId, topics = "") {
-  return Promise.resolve({ name, description, addr, contentType, assetId, topics })
+export async function deployBundlr(name, description, addr, contentType, assetId, topics = "",uploadCost, currency) {
+  return Promise.resolve({ name, description, addr, contentType, assetId, topics, uploadCost, currency })
     .then(dispatch)
     .then(post)
 }
@@ -91,6 +92,8 @@ async function createAndTag(ctx) {
     contentType: ctx.contentType,
     emergencyHaltWallet: ctx.addr,
     pairs: [],
+    uploadCost: ctx.uploadCost,
+    currencyUsed: ctx.currency,
     invocations: [],
     foreignCalls: [],
     settings: [["isTradeable", true]]

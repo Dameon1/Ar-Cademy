@@ -8,6 +8,7 @@ import { AMW } from "../../utils/api";
 import Select from "react-select";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo";
 import PermaVideo from "../../components/PermaVideo";
+import PermaIMG from "../../components/PermaIMG"
 //import StampDemo from "../../components/StampDemo";
 import IMG from "../../components/IMG";
 
@@ -151,11 +152,7 @@ export default function Upload() {
       // await tx.sign()
       // await tx.upload()
 
-      console.log(`https://arweave.net/${tx.txid}`);
-      setTimeout(() => {
-        navigate("/testpage");
-        //console.log("/redirect to new page displaying upload");
-      }, 2000);
+      
     } catch (err) {
       console.log("error uploading video with metadata: ", err);
     }
@@ -252,9 +249,9 @@ export default function Upload() {
             Upload Video
           </Button>
         </div> */}
-        {/* <div className="wallet">
+        <div className="wallet">
           <PermaVideo />
-        </div> */}
+        </div>
         <div className="wallet">
           <h4>Step 3</h4>
           <IMG />
@@ -291,6 +288,11 @@ export default function Upload() {
           </div>
         )}
       </div>
+      <div className="connection">
+        <div className="wallet">
+          <PermaIMG />
+          </div>
+          </div>
       {/* <StampDemo/> */}
     </div>
   );

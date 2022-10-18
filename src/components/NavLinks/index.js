@@ -19,6 +19,9 @@ export function NavLinks() {
         <li>
           <Link className="nav-link" to="/AccountViewer">Search</Link>
         </li>
+        <li>
+          <Link className="nav-link" to="/testpage">test</Link>
+        </li>
 
       </ul>
 
