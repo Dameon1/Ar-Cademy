@@ -15,23 +15,23 @@ import SingleAsset from "../AssetManagement"
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
-  let string = `/${module[1]}`;
+  let string = `/${module[module.length - 1]}`;
   return (
     <div className="app">
       <MainHeader />
       <main className="main-content">
         <Routes>
           <Route path="/AccountViewer" element={<AccountViewer />} />
-          <Route exact path="/identity" element={<Identity />} />
-          <Route exact path="/profile/:id" element={<Profile />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route path="modules/:topic" element={<ModulePage />} />
+          <Route exact path="/Identity" element={<Identity />} />
+          <Route exact path="/Profile/:id" element={<Profile />} />
+          <Route exact path="/Dashboard" element={<Dashboard />} />
+          <Route path="Modules/:topic" element={<ModulePage />} />
           <Route
             exact
-            path="/playground/:videoIndex"
+            path="/Playground/:videoIndex"
             element={<Playground />}
           />
-          <Route exact path="/upload" element={<Upload />} />
+          <Route exact path="/Upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/BundlrDemo" element={<BundlrDemo />} />
           <Route exact path={"/testpage"} element={<TestPage />} />

@@ -70,6 +70,8 @@ query {
 }
 
 export async function assetDetails(asset, addr) {
+  console.log("asset:",asset)
+  console.log("addr:",addr)
   // const state = await fetch('https://cache.permapages.app/' + asset)
   //   .then(res => res.ok ? res.json() : Promise.reject(new Error('could not find asset state!')))
   const state = await warp
@@ -84,10 +86,11 @@ export async function assetDetails(asset, addr) {
     const addrBalance = balances[addr];
     const percentOwned = Math.floor((addrBalance / totalBalance) * 100);
     const a = await account.get(state.emergencyHaltWallet);
-
+    console.log("a: ", a)
     return {
+      state,
       percent: percentOwned,
-      handle: "@" + a.profile.handleName,
+      handle: "@" + a.profile.handle,
     };
   } catch (e) {
     console.log(e);

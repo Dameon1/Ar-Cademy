@@ -1,10 +1,21 @@
-import { Card, Grid, Row, Text, Col, Button, Avatar, Container } from "@nextui-org/react";
-import { useState, useEffect } from "react";
-import { getAssetData } from "../../lib/imgLib/asset.js";
+import {
+  Card,
+  Grid,
+  Row,
+  Text,
+  Col,
+  Button,
+  Avatar,
+  Container,
+  Loading,
+} from "@nextui-org/react";
+import { useState, useEffect, useContext } from "react";
+import { getAssetData, assetDetails } from "../../lib/imgLib/asset.js";
 import { atomicToStamp } from "../../lib/imgLib/utils.js";
-
+import MainContext from "../../context";
 import { take, takeLast } from "ramda";
-
+import Account from "arweave-account";
+import { Link } from "react-router-dom";
 //import { imgCache, profile } from "../store.js";
 import {
   isVouched,
@@ -12,19 +23,22 @@ import {
   getCount,
   getRewards,
 } from "../../lib/imgLib/stamp.js";
-import { getProfile } from "../../lib/imgLib/account.js";
+import { getProfile, getProfilePicture } from "../../lib/imgLib/account.js";
 
 export default function SingleAsset() {
+  const { addr } = useContext(MainContext);
   const [asset, setAsset] = useState();
   const [ownerData, setOwnerData] = useState();
   const [count, setCount] = useState();
   const [rewards, setRewards] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [contractData, setContractData] = useState();
+  const [ownersAddressArray, setOwnersAddressArray] = useState([]);
 
   let module = new URL(window.location.href).pathname.split("/");
   let itemId = module[module.length - 1];
+  const account = new Account();
 
-  console.log(itemId);
   let id;
   let src = "https://placehold.co/400";
   let imageMsg = "";
@@ -38,18 +52,23 @@ export default function SingleAsset() {
   useEffect(() => {
     async function data(id) {
       let assetData = await getAssetData(itemId);
+      let assetContractData = await assetDetails(itemId, addr);
       let profileData = await getProfile(assetData.owner);
       let assetCount = await getCount(id);
       let rewards = await getRewards(id);
+      let ownersArray = Object.keys(assetContractData.state.balances);
+      //let ownersAvatars = await getAllOwnersAvatar();
+      //console.log(ownersAvatars)
+      setContractData(assetContractData);
       setAsset(assetData);
       setOwnerData(profileData);
       setCount(assetCount);
       setRewards(rewards);
+      setOwnersAddressArray(ownersArray);
       setIsLoading(false);
-      console.log(assetCount, assetData, profileData);
     }
     data(itemId);
-  }, [itemId]);
+  }, [addr, itemId]);
 
   //   useEffect(() => {
   //     (async () => {
@@ -68,7 +87,43 @@ export default function SingleAsset() {
   //       }
   //     })();
   //   }, [addr]);
-
+  async function getAllOwnersAvatar() {
+    if (ownersAddressArray.length < 1) {
+      return;
+    }
+    // const res =  account.get(addr);
+    // async function profilePicture(id) {
+    //   let profilePicture = Promise.resolve(getProfilePicture(id));
+    //   return profilePicture;
+    // }
+    let data = ownersAddressArray
+      .map(async (item) => {
+        const res = await account.get(item);
+        if (res !== null) {
+          if (res.profile !== null) {
+            if (res.profile.avatar !== undefined) {
+              console.log(res.profile.avatar);
+            }
+          }
+        } else {
+          return "assets";
+        }
+        //   let picture = profilePicture(item);
+        //   let newPicture =  picture;
+        //   return newPicture;
+        //      profile(x){
+        //     }
+        //     return profile(x)
+        // })
+      })
+      .filter((word) => word !== "assets");
+    return data;
+  }
+  //    let ownersImages = Object.keys(contractData.state.balances).map((x) => {
+  //     let profile = getAllOwnersAvatar(x)
+  //     console.log(profile)
+  //     return (<p>{x}</p>)
+  //   })
   let constructionDlg = false;
   let msg = "";
 
@@ -142,6 +197,7 @@ export default function SingleAsset() {
 
   return (
     <main>
+      {isLoading && <Loading />}
       {!isLoading && (
         <section className="hero min-h-screen bg-base-100">
           <Grid.Container gap={2} justify="flex-start">
@@ -232,74 +288,90 @@ export default function SingleAsset() {
                   </p>
                 )} */}
                 </Row>
-                <Row>
-                  <Container className="mt-4">
-                    <Row className="flex justify-between">
-                      <div>
-                        <div className="mb-2 uppercase">Holders</div>
-                        {ownerData && (
-                          <div className="flex items-center space-x-2">
-                            <Avatar
-                              src={`https://arweave.net/${ownerData.profile.avatar}`}
-                              size="lg"
-                            />
 
-                            {ownerData.profile.handleName === "" ? (
-                              <div>{asset.owner}</div>
-                            ) : (
-                              <div>{ownerData.profile.handleName}</div>
-                            )}
-                          </div>
-                        )}
+                <Container className="mt-8 space-y-4">
+                  <Row className="flex justify-between">
+                    <div className="mb-4 flex flex-col">
+                      <div>STAMPS Earned</div>
+                      <div className="flex space-x-4 items-center">
+                        <img
+                          className="h-[35px] w-[35px]"
+                          src="../../assets/stamp2.svg"
+                          alt="stamp"
+                        />
+                        {count && <div>{count}</div>}
                       </div>
-                      
-                    </Row>
-                  </Container>
-                  <div className="mt-8 space-y-4">
-                    <div className="flex justify-between">
-                      <div className="mb-4 flex flex-col">
-                        <div>STAMPS Earned</div>
-                        <div className="flex space-x-4 items-center">
-                          <img
-                            className="h-[35px] w-[35px]"
-                            src="../../assets/stamp2.svg"
-                            alt="stamp"
-                          />
-                          {count && <div>{count}</div>}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="flex flex-col">
-                          <div className="uppercase">Rewards</div>
-                          <div className="flex space-x-4">
-                            <div className="font-bold">$TAMP</div>
-                            {rewards && (
-                              <div>
-                                {Number(atomicToStamp(rewards)).toFixed(5)}
-                              </div>
-                            )}
-                          </div>
+                    </div>
+                    <div>
+                      <div className="flex flex-col">
+                        <div className="uppercase">Rewards</div>
+                        <div className="flex space-x-4">
+                          <div className="font-bold">$TAMP</div>
+                          {rewards && (
+                            <div>
+                              {Number(atomicToStamp(rewards)).toFixed(5)}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
-                    <div className="md:hidden">
-                      Link:{" "}
-                      <a className="link" href="https://arweave.net/{id}">
-                        SOME RANDOM LINK TO IDK
-                      </a>
-                    </div>
-                    <div className="hidden md:block">
-                      Link:{" "}
-                      <a className="link" href="https://arweave.net/{id}">
-                        {id}
-                      </a>
-                    </div>
-                  </div>
-                </Row>
+                  </Row>
+                </Container>
 
                 <div className="md:w-1/2 px-0 mx-0 grid place-items-center">
                   {imageMsg !== "" && <p>{imageMsg}</p>}
                 </div>
+                <Container>
+                  <Row className="flex justify-between">
+                    <div>
+                      <div className="mb-2 uppercase">
+                        Holders (coming soon)
+                      </div>
+                      <Grid xs={12}>
+                        <Avatar.Group count={ownersAddressArray.length - 4}>
+                          {ownersAddressArray.slice(0, 4).map((name, index) => (
+                            <>
+                              <Link to={`/Profile/${name}`}>
+                                <Avatar
+                                  key={index}
+                                  size="lg"
+                                  pointer
+                                  text={name}
+                                  color="gradient"
+                                  stacked
+                                />
+                              </Link>
+                            </>
+                          ))}
+                        </Avatar.Group>
+                      </Grid>
+                      {ownerData && (
+                        <div>
+                          {/* <div className="hs">
+                            <div className="flex items-center space-x-2">
+                              {
+                                ownersAddressArray.map((item, i) => {
+                                  return (
+                                    <Avatar size="lg" key={i}>
+                                      <p>{item.slice(0, 5)}</p>
+                                    </Avatar>
+                                  );
+                                })
+                              }
+                              
+                            </div>
+                          </div> */}
+
+                          {ownerData.profile.handleName === "" ? (
+                            <div>{asset.owner}</div>
+                          ) : (
+                            <div>{ownerData.profile.handleName}</div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </Row>
+                </Container>
               </Col>
 
               <Col className="hero-content w-[350px] md:w-full p-0 m-0 flex-col md:flex-row md:space-x-4">
