@@ -70,8 +70,8 @@ query {
 }
 
 export async function assetDetails(asset, addr) {
-  console.log("asset:",asset)
-  console.log("addr:",addr)
+  console.log("asset:", asset);
+  console.log("addr:", addr);
   // const state = await fetch('https://cache.permapages.app/' + asset)
   //   .then(res => res.ok ? res.json() : Promise.reject(new Error('could not find asset state!')))
   const state = await warp
@@ -86,7 +86,7 @@ export async function assetDetails(asset, addr) {
     const addrBalance = balances[addr];
     const percentOwned = Math.floor((addrBalance / totalBalance) * 100);
     const a = await account.get(state.emergencyHaltWallet);
-    console.log("a: ", a)
+    console.log("a: ", a);
     return {
       state,
       percent: percentOwned,
@@ -248,8 +248,9 @@ query {
     .then((x) => x);
 }
 
-export async function imagesByOwner(addr) {
-  console.log("addr: ", addr);
+export async function imagesByOwner(addr, type) {
+  
+  console.log("addr: ", addr, type);
   let images = await fetch("https://arweave.net/graphql", {
     method: "POST",
     headers: {
@@ -258,7 +259,7 @@ export async function imagesByOwner(addr) {
     body: JSON.stringify({
       query: `
 query {
-  transactions(first: 100, owners: ["${addr}"], tags: {name: "Type", values: ["image"]}) {
+  transactions(first: 100, owners: ["${addr}"], tags: {name: "Type", values: ["${type}"]}) {
     edges {
       node {
         id

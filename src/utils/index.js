@@ -80,3 +80,9 @@ export const tagSelectOptions = [
   { value: 'public-goods', label: 'Public Goods' },
   { value: 'education', label: 'Education' }
 ]
+
+export const contentTypeSelectOptions = [
+  { value: 'image', label: 'Image' },
+  { value: 'video', label: 'Video' },
+  { value: 'audio', label: 'Audio' },
+]

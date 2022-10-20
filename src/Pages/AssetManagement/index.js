@@ -58,7 +58,7 @@ export default function SingleAsset() {
       let rewards = await getRewards(id);
       let ownersArray = Object.keys(assetContractData.state.balances);
       //let ownersAvatars = await getAllOwnersAvatar();
-      //console.log(ownersAvatars)
+      console.log(assetData);
       setContractData(assetContractData);
       setAsset(assetData);
       setOwnerData(profileData);
@@ -200,7 +200,7 @@ export default function SingleAsset() {
       {isLoading && <Loading />}
       {!isLoading && (
         <section className="hero min-h-screen bg-base-100">
-          <Grid.Container gap={2} justify="flex-start">
+          <Grid.Container gap={2} justify="flex-wrap">
             <Row>
               <Col>
                 <Row>
@@ -209,13 +209,27 @@ export default function SingleAsset() {
                       css={{ position: "absolute", zIndex: 1, top: 5 }}
                     ></Card.Header>
                     <Card.Body css={{ p: 0 }}>
-                      <Card.Image
+                      {console.log(asset)}
+                      {asset.type === "video" 
+                      ? 
+                        (<video objectFit="contain" width="100%" type="videos" controls src={`https://arweave.net/${itemId}`} ></video>)
+                      : (<Card.Image
                         src={`https://arweave.net/${itemId}`}
                         objectFit="cover"
                         width="100%"
                         height="100%"
                         alt="Relaxing app background"
-                      />
+                      />)}
+                      {/* <Card.Image
+                        src={`https://arweave.net/${itemId}`}
+                        objectFit="cover"
+                        width="100%"
+                        height="100%"
+                        alt="Relaxing app background"
+                      /> */}
+                      {/* <video objectFit="contain" width="100%" type="videos" controls src={`https://arweave.net/${itemId}`} > </video> */}
+                      
+                       
                     </Card.Body>
                     <Card.Footer
                       isBlurred
@@ -229,48 +243,53 @@ export default function SingleAsset() {
                     >
                       <Row>
                         <Col>
-                          <Row>
+                          <Row align="flex-end">
                             <Col span={3}>
-                              <Card.Image
-                                src={`https://arweave.net/${ownerData.profile.avatar}`}
-                                css={{ bg: "black", br: "50%" }}
-                                height={40}
-                                width={40}
-                                alt={asset.title}
-                              />
+                              <Link
+                                to={`/Profile/${contractData.state.emergencyHaltWallet}`}
+                              >
+                                <Card.Image
+                                  src={`https://arweave.net/${ownerData.profile.avatar}`}
+                                  css={{ bg: "black", br: "50%" }}
+                                  height={40}
+                                  width={40}
+                                  alt={asset.title}
+                                />
+                              </Link>
                             </Col>
                             <Col>
-                              <Text color="#d1d1d1" size={12}>
-                                {asset.title}
-                              </Text>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col>
-                          <Row justify="flex-end">
-                            <a
-                              target="_blank"
-                              rel="noreferrer"
-                              className="textNoDec"
-                              href={tweetLink(asset.title, itemId)}
-                              v="btn btn-outline btn-sm rounded-none font-normal"
-                            >
-                              <Button
-                                flat
-                                auto
-                                rounded
-                                css={{ color: "#94f9f0", bg: "#94f9f026" }}
-                              >
-                                <Text
-                                  css={{ color: "inherit" }}
-                                  size={12}
-                                  weight="bold"
-                                  transform="uppercase"
-                                >
-                                  Share
+                              <Row justify="flex-start" gap={1}>
+                                <Text color="#d1d1d1" size={12}>
+                                  {asset.title}
                                 </Text>
-                              </Button>
-                            </a>
+                              </Row>
+                            </Col>
+
+                            <Row justify="flex-end">
+                              <a
+                                target="_blank"
+                                rel="noreferrer"
+                                className="textNoDec"
+                                href={tweetLink(asset.title, itemId)}
+                                v="btn btn-outline btn-sm rounded-none font-normal"
+                              >
+                                <Button
+                                  flat
+                                  auto
+                                  rounded
+                                  css={{ color: "#94f9f0", bg: "#94f9f026" }}
+                                >
+                                  <Text
+                                    css={{ color: "inherit" }}
+                                    size={12}
+                                    weight="bold"
+                                    transform="uppercase"
+                                  >
+                                    Share
+                                  </Text>
+                                </Button>
+                              </a>
+                            </Row>
                           </Row>
                         </Col>
                       </Row>
@@ -278,10 +297,31 @@ export default function SingleAsset() {
                   </Card>
                 </Row>
                 <Row>
-                  <h1 className="text-3xl">Asset Description</h1>
+                  <h3>Holders:</h3>
+                  <Grid xs={12}>
+                    <Avatar.Group count={ownersAddressArray.length - 4}>
+                      {ownersAddressArray.slice(0, 4).map((name, index) => (
+                        <>
+                          <Link to={`/Profile/${name}`}>
+                            <Avatar
+                              key={index}
+                              size="lg"
+                              pointer
+                              text={name}
+                              color="gradient"
+                              stacked
+                            />
+                          </Link>
+                        </>
+                      ))}
+                    </Avatar.Group>
+                  </Grid>
                 </Row>
                 <Row>
-                  <p className="text-xl">{asset.description}</p>
+                  <h3>Asset Description</h3>
+                </Row>
+                <Row>
+                  <p c>{asset.description}</p>
                   {/* {asset.topics.length > 0 && (
                   <p className="mt-4 text-sm">
                     Topics: {asset.topics.join(", ")}
@@ -289,89 +329,50 @@ export default function SingleAsset() {
                 )} */}
                 </Row>
 
-                <Container className="mt-8 space-y-4">
-                  <Row className="flex justify-between">
-                    <div className="mb-4 flex flex-col">
-                      <div>STAMPS Earned</div>
-                      <div className="flex space-x-4 items-center">
-                        <img
-                          className="h-[35px] w-[35px]"
-                          src="../../assets/stamp2.svg"
-                          alt="stamp"
-                        />
-                        {count && <div>{count}</div>}
+                <Row justify="center">
+                  <Col>
+                    <div>
+                      <h4>STAMPS Earned</h4>
+                    </div>
+
+                    {count && (
+                      <div>
+                        <p>{count}</p>
                       </div>
+                    )}
+                  </Col>
+                  <Col>
+                    <div>
+                      <h4>$TAMP Rewards</h4>
                     </div>
                     <div>
-                      <div className="flex flex-col">
-                        <div className="uppercase">Rewards</div>
-                        <div className="flex space-x-4">
-                          <div className="font-bold">$TAMP</div>
-                          {rewards && (
-                            <div>
-                              {Number(atomicToStamp(rewards)).toFixed(5)}
-                            </div>
-                          )}
+                      {rewards && (
+                        <div>
+                          <p> {Number(atomicToStamp(rewards)).toFixed(5)}</p>
                         </div>
+                      )}
+                    </div>
+                  </Col>
+                  <Col>
+                    <div>
+                      <div>
+                        <h4>Cost to Upload</h4>
+                      </div>
+                      <div>
+                        <div>currency</div>
+                        {rewards && (
+                          <div>
+                            <h6>Asset.cost</h6>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </Row>
-                </Container>
+                  </Col>
+                </Row>
 
                 <div className="md:w-1/2 px-0 mx-0 grid place-items-center">
                   {imageMsg !== "" && <p>{imageMsg}</p>}
                 </div>
-                <Container>
-                  <Row className="flex justify-between">
-                    <div>
-                      <div className="mb-2 uppercase">
-                        Holders (coming soon)
-                      </div>
-                      <Grid xs={12}>
-                        <Avatar.Group count={ownersAddressArray.length - 4}>
-                          {ownersAddressArray.slice(0, 4).map((name, index) => (
-                            <>
-                              <Link to={`/Profile/${name}`}>
-                                <Avatar
-                                  key={index}
-                                  size="lg"
-                                  pointer
-                                  text={name}
-                                  color="gradient"
-                                  stacked
-                                />
-                              </Link>
-                            </>
-                          ))}
-                        </Avatar.Group>
-                      </Grid>
-                      {ownerData && (
-                        <div>
-                          {/* <div className="hs">
-                            <div className="flex items-center space-x-2">
-                              {
-                                ownersAddressArray.map((item, i) => {
-                                  return (
-                                    <Avatar size="lg" key={i}>
-                                      <p>{item.slice(0, 5)}</p>
-                                    </Avatar>
-                                  );
-                                })
-                              }
-                              
-                            </div>
-                          </div> */}
-
-                          {ownerData.profile.handleName === "" ? (
-                            <div>{asset.owner}</div>
-                          ) : (
-                            <div>{ownerData.profile.handleName}</div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </Row>
-                </Container>
               </Col>
 
               <Col className="hero-content w-[350px] md:w-full p-0 m-0 flex-col md:flex-row md:space-x-4">
@@ -379,7 +380,10 @@ export default function SingleAsset() {
                 <Row>
                   <Col>
                     <p>Percentage Owned</p>
-                    <p>(PERCENT)</p>
+                    <p class="text-[18px] font-light">
+                      {contractData.percent} %
+                    </p>
+                    <p>Total owned: {contractData.state.balances[addr]}</p>
                   </Col>
                   <Col>
                     <p>Transfer Ownership %</p>
@@ -413,21 +417,6 @@ export default function SingleAsset() {
                         <button>"No Current Orders"</button>
                       </Col>
                     </Row>
-                  </div>
-
-                  <div className="mt-8 space-y-4">
-                    <div className="md:hidden">
-                      Link:{" "}
-                      <a className="link" href="https://arweave.net/{id}">
-                        SOME RANDOM LINK TO IDK
-                      </a>
-                    </div>
-                    <div className="hidden md:block">
-                      Link:{" "}
-                      <a className="link" href="https://arweave.net/{id}">
-                        {id}
-                      </a>
-                    </div>
                   </div>
                 </div>
               </Col>

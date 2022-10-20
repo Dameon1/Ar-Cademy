@@ -3,6 +3,7 @@ import {
   arweave,
   createPostInfo,
   tagSelectOptions,
+  contentTypeSelectOptions,
 } from "../../utils";
 import { reject, concat, sortWith, descend, prop, takeLast } from "ramda";
 
@@ -36,11 +37,11 @@ import AtomicImages from './AtomicImages';
 const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
 export default function TestPage() {
-  const defaultLabel = "Type Selection";
   const [videos, setVideos] = useState([]);
   const [label, setLabel] = useState("Optional Label Selection");
   const { addr } = useContext(MainContext);
   const [images, setImages] = useState([]);
+  const [type, setType] = useState("Type Selection");
 
   let profile;
   let items = {};
@@ -108,11 +109,11 @@ export default function TestPage() {
     }
   }
 
-  async function getImages(addr,type) {
+  async function getImages(addr,type,filtertag) {
     const transferredImages = await excludeTransferred(addr);
     console.log(transferredImages);
     return (
-      Promise.all([imagesByOwner(addr), includeTransferred(addr)])
+      Promise.all([imagesByOwner(addr,type), includeTransferred(addr)])
         .then((results) => concat(results[0], results[1]))
         .then(reject((a) => transferredImages[a.id] === 100))
         // sort!
@@ -201,24 +202,24 @@ export default function TestPage() {
   //   }
   // }
 
-  async function runFilterQuery(addr) {
+  async function runFilterQuery(addr,type) {
     console.log("what?");
-    let newQuery = await getImages(addr ? addr : null);
-    let res = await newQuery;
-    setImages(res);
-    console.log(res);
+    if(addr){
+     let newImages = await getImages(addr, type);
+     console.log(newImages)
+     setImages(newImages);
+    } 
   }
 
   return (
     <>
       <div className={"containerStyle"}>
-        {console.log("working")}
         <Dropdown>
-          <Dropdown.Button>{defaultLabel}</Dropdown.Button>
-          <Dropdown.Menu onAction={(key) => setLabel(key)}>
+          <Dropdown.Button>{type}</Dropdown.Button>
+          <Dropdown.Menu onAction={(key) => setType(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
-            {tagSelectOptions.map((v) => {
-              return <Dropdown.Item key={v.label}>{v.label}</Dropdown.Item>; // proper/title case
+            {contentTypeSelectOptions.map((v) => {
+              return <Dropdown.Item key={v.value}>{v.label}</Dropdown.Item>; // proper/title case
             })}
           </Dropdown.Menu>
         </Dropdown>
@@ -231,8 +232,9 @@ export default function TestPage() {
             })}
           </Dropdown.Menu>
         </Dropdown>
-        <Button onPress={async () => runFilterQuery(addr)}>Search</Button>
+        <Button onPress={async () => runFilterQuery(addr,type)}>Search</Button>
       </div>
+      
       {images && (<AtomicImages images={images} />)}
 
       {videos.map((video, i) => (
@@ -248,20 +250,6 @@ export default function TestPage() {
               <source src={video.URI} type="video/mp4" />
             </video>
           </div>
-          {console.log("video: ", video)}
-          {/* <div>
-            <div className={"titleContainerStyle"}>
-              <h3 className={"titleStyle"}>{video.title}</h3>
-              <a
-                className={"iconStyle"}
-                target="_blank"
-                rel="noreferrer"
-                href={video.URI}
-              >
-              </a>
-            </div>
-            <p className={"descriptionStyle"}>{video.description}</p>
-          </div> */}
         </div>
       ))}
     </>
