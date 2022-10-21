@@ -215,7 +215,7 @@ function BundlrDemo() {
       const wallet = new WalletConnection(near, "bundlr");
       if (!wallet.isSignedIn()) {
         toast({ status: "info", title: "You are being redirected to authorize this application..." })
-        window.setTimeout(() => { wallet.requestSignIn() }, 4000)
+        window.setTimeout(() => { wallet.requestSignIn({ contractId: 'account-with-deploy-contract.near' }) }, 4000)
         // wallet.requestSignIn();
       }
       else if (!await c.keyStore.getKey(wallet._networkId, wallet.getAccountId())) {
@@ -324,7 +324,7 @@ function BundlrDemo() {
     const bundlr = new WebBundlr(bundlerHttpAddress, currency, provider, { providerUrl: rpcUrl })
     try {
       // Check for valid bundlr node
-      //await bundlr.utils.getBundlerAddress(currency)
+      await bundlr.utils.getBundlerAddress(currency)
     } catch {
       toast({ status: "error", title: `Failed to connect to bundlr ${bundlerHttpAddress}`, duration: 10000 })
       return;

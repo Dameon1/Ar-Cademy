@@ -148,6 +148,6 @@ export const currencyMap = {
     },
     arweave: {
       providers: ["arconnect","arweave.app"],
-     
     },
   } ;
+  

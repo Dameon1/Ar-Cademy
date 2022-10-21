@@ -1,6 +1,6 @@
 import { compose, toLower, join, split, map, trim } from 'ramda'
 import Arweave from 'arweave';
-import { privateDecrypt } from 'crypto';
+import { letterSpacing } from '@mui/system';
 
 const arweave = Arweave.init({
   host: 'arweave.net',
@@ -8,7 +8,7 @@ const arweave = Arweave.init({
   protocol: 'https'
 })
 
-const BAR = 'mMffEC07TyoAFAI_O6q_nskj2bT8n4UFvckQ3yELeic'
+const BAR = 'VFr3Bk-uM-motpNNkkFg4lNW1BMmSfzqsVO551Ho4hA'
 
 /*
  * Need to upload to arweave using post
@@ -17,7 +17,8 @@ const BAR = 'mMffEC07TyoAFAI_O6q_nskj2bT8n4UFvckQ3yELeic'
  */
 const SRC = 'BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q'
 const URL = 'https://d1o5nlqr4okus2.cloudfront.net/gateway/contracts/deploy'
-const slugify = compose(toLower, join('-'), split(' '))
+//const slugify = compose(toLower, join('-'), split(' '))
+
 
 export async function deploy(name, description, addr, contentType, data, topics = "") {
   return Promise.resolve({ name, description, addr, contentType, data, topics })
@@ -36,10 +37,7 @@ export async function deployBundlr(name, description, addr, contentType, assetId
 }
 
 async function post(ctx) {
-  console.log("ctx",ctx)
   const tx = await createAndTag(ctx)
-  console.log("tx",tx)
-
   await arweave.transactions.sign(tx)
   tx.id = ctx.atomicId
   const result = await fetch(URL, {
@@ -100,7 +98,11 @@ async function createAndTag(ctx) {
   }))
   tx.addTag('Title', ctx.name)
   tx.addTag('Description', ctx.description)
-  tx.addTag('Type', ctx.contentType)
+  let assetType = ctx.contentType.split('/')[0] || 'image'
+  if (assetType === 'application') {
+    assetType = ctx.contentType.split('/')[1]
+  }
+  tx.addTag('Type', assetType)
 
   map(trim, split(',', ctx.topics)).forEach(t => {
     tx.addTag('Topic:' + t, t)

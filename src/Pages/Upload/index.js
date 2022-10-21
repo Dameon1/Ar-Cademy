@@ -30,12 +30,12 @@ import {
 import { providers } from "ethers";
 import { Web3Provider } from "@ethersproject/providers";
 import * as nearAPI from "near-api-js";
-import { WalletConnection } from "near-api-js";
+
+import { connect, keyStores,WalletConnection } from "near-api-js";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 //import WalletConnectProvider from "@walletconnect/web3-provider";
 //const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
 
-const { keyStores, connect } = nearAPI;
 
 const supportedCurrencies = {
   matic: "matic",
@@ -73,6 +73,7 @@ export default function Upload() {
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
   const [fileCost, setFileCost] = useState(0);
+  const [address, setAddress] = useState("");
   // const [uploadFileCost, setUploadFileCost] = useState();
   // const [withdrawAmount, setWithdrawAmount] = useState();
   const [description, setDescription] = useState("");
@@ -82,6 +83,28 @@ export default function Upload() {
   const [amount, setAmount] = useState();
   const [balance, setBalance] = useState(0);
   const navigate = useNavigate();
+
+  function toast(x) {
+    return console.log(x);
+  }
+
+  const clean = async () => {
+    //clearInterval(intervalRef.current)
+    setBalance(undefined);
+    setBundlrInstance(undefined)
+    //setImg(undefined);
+    //setPrice(undefined);
+    //setBundler(undefined);
+    //setProvider(undefined);
+    setAddress("");
+    setCurrency(defaultCurrency);
+    //setSelection(defaultSelection);
+  };
+
+  async function handleCurrencyChange(currency){
+    clean();
+    setCurrency(currency);
+  }
 
   async function fetchBalance() {
     const bal = await AMW.getBalance();
@@ -182,21 +205,121 @@ export default function Upload() {
   const toProperCase = (string) => {
     return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
   };
+  const providerMap = {
+    MetaMask: async (c) => {
+      const provider = new providers.Web3Provider(window.ethereum);
+      await provider._ready();
+      const bundlr = new WebBundlr(
+        "https://node2.bundlr.network",
+        currency,
+        provider
+      );
+      await bundlr.utils.getBundlerAddress(currency);
+      await bundlr.ready();
+      setAddress(bundlr?.address);
+      setBundlrInstance(bundlr);
+    },
+    //"WalletConnect": async (c: any) => { return await connectWeb3(await (new WalletConnectProvider(c)).enable()) },
+    Phantom: async (c) => {
+      if (window.solana.isPhantom) {
+        await window.solana.connect();
+        const p = new PhantomWalletAdapter();
+        await p.connect();
+        const bundlr = new WebBundlr(
+          "https://node2.bundlr.network",
+          currency,
+          p
+        );
+        await bundlr.ready();
+        setAddress(bundlr?.address);
+        setBundlrInstance(bundlr);
+      }
+    },
+    Near: async () => {
+      const connectionConfig = {
+        networkId: "mainnet",
+        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        nodeUrl: "https://rpc.mainnet.near.org",
+        walletUrl: "https://wallet.mainnet.near.org",
+        helperUrl: "https://helper.mainnet.near.org",
+        explorerUrl: "https://explorer.mainnet.near.org",
+      };
+      
+      // connect to NEAR
+      const nearConnection = await connect(connectionConfig);
+      
+      // create wallet connection
+      const walletConnection = new WalletConnection(nearConnection);
+
+      // const nearConfig = {
+      //   networkId: "mainnet",
+      //   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+      //   nodeUrl: "https://rpc.mainnet.near.org",
+      //   walletUrl: "https://wallet.mainnet.near.org",
+      //   helperUrl: "https://helper.mainnet.near.org",
+      //   explorerUrl: "https://explorer.mainnet.near.org",
+      // }
+      // const near = await connect(nearConfig);
+      // const wallet = new WalletConnection(near, "Arcademy");
+      // const nearKeyStore = new keyStores.BrowserLocalStorageKeyStore();
+
+      // const providerInstance = await connect({
+      //   networkId: "mainnet",
+      //   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+      //   nodeUrl: "https://rpc.mainnet.near.org",
+      //   walletUrl: "https://wallet.mainnet.near.org",
+      //   helperUrl: "https://helper.mainnet.near.org",
+      //   explorerUrl: "https://explorer.mainnet.near.org",
+      // }).catch((e) => {
+      //   toast({
+      //     status: "error",
+      //     title: `Failed to load provider ${wallet}`,
+      //     duration: 10000,
+      //   });
+      //   console.log(e);
+      //   return;
+      // });
+
+
+      if (!walletConnection.isSignedIn()) {
+        toast({
+          status: "info",
+          title: "You are being redirected to authorize this application...",
+        });
+        window.setTimeout(() => {
+          walletConnection.requestSignIn("Arcademy");
+        }, 4000);
+        // wallet.requestSignIn();
+      } else {
+        setAddress(walletConnection.getAccountId())
+      } 
+
+      const bundlr = new WebBundlr(
+        "https://node2.bundlr.network",
+        currency,
+        walletConnection
+      );
+      await bundlr.ready();
+      setAddress(bundlr?.address);
+      setBundlrInstance(bundlr);
+    },
+  };
 
   async function initializeBundlr() {
-    await window.ethereum.enable();
-
-    const provider = new providers.Web3Provider(window.ethereum);
-    await provider._ready();
-
-    const bundlr = new WebBundlr(
-      "https://node2.bundlr.network",
-      currency,
-      provider
-    );
-    await bundlr.ready();
-
-    setBundlrInstance(bundlr);
+    switch (currency) {
+      case "solana":
+        await providerMap.Phantom();
+        break;
+      case "near":
+        await providerMap.Near();
+        break;
+      case "arweave":
+        console.log("connectArweave");
+        break;
+      default:
+        await providerMap.MetaMask();
+        return;
+    }
   }
 
   return (
@@ -221,7 +344,7 @@ export default function Upload() {
               <Col className="form-control">
                 <Dropdown>
                   <Dropdown.Button>{toProperCase(currency)}</Dropdown.Button>
-                  <Dropdown.Menu onAction={(key) => setCurrency(key)}>
+                  <Dropdown.Menu onAction={(key) => handleCurrencyChange(key) }>
                     {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
                     {Object.keys(currencyMap).map((v) => {
                       return (
@@ -240,8 +363,9 @@ export default function Upload() {
                 </Button>
               </Col>
             </Row>
+            <p>{toProperCase(currency)} Account:{address} </p>
           </Col>
-          <BundlrDemo />
+          {/* <BundlrDemo /> */}
         </div>
 
         <div className="wallet">
