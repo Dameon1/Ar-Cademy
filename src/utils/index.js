@@ -1,4 +1,5 @@
 import Arweave from 'arweave'
+import * as nearAPI from "near-api-js";
 
 export const arweave = Arweave.init({})
  const APP_NAME =  "Ar-Cademy"
@@ -19,7 +20,7 @@ export const createPostInfo = async (node) => {
   console.log("postInfo: ", postInfo)
   return postInfo;
  }
-
+ const { keyStores, connect } = nearAPI;
  let tags = [
   {
     name: "App-Name",
@@ -86,3 +87,67 @@ export const contentTypeSelectOptions = [
   { value: 'video', label: 'Video' },
   { value: 'audio', label: 'Audio' },
 ]
+
+const ethProviders = ["MetaMask", "WalletConnect"];
+
+export const currencyMap = {
+    solana: {
+      providers: ["Phantom"],
+      opts: {},
+    },
+    matic: {
+      providers: ethProviders,
+      opts: {
+        chainId: 137,
+        chainName: "Polygon Mainnet",
+        rpcUrls: ["https://polygon-rpc.com"],
+      },
+    },
+    arbitrum: {
+      providers: ethProviders,
+      opts: {
+        chainName: "Arbitrum One",
+        chainId: 42161,
+        rpcUrls: ["https://arb1.arbitrum.io/rpc"],
+      },
+    },
+    bnb: {
+      providers: ethProviders,
+      opts: {
+        chainName: "Binance Smart Chain",
+        chainId: 56,
+        rpcUrls: ["https://bsc-dataseed.binance.org/"],
+      },
+    },
+    avalanche: {
+      providers: ethProviders,
+      opts: {
+        chainName: "Avalanche Network",
+        chainId: 43114,
+        rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
+      },
+    },
+    boba: {
+      providers: ethProviders,
+      opts: {
+        chainName: "BOBA L2",
+        chainId: 288,
+        rpcUrls: ["https://mainnet.boba.network"],
+      },
+    },
+    near: {
+      providers: ["wallet.near.org"],
+      opts: {
+        networkId: "mainnet",
+        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        nodeUrl: "https://rpc.mainnet.near.org",
+        walletUrl: "https://wallet.mainnet.near.org",
+        helperUrl: "https://helper.mainnet.near.org",
+        explorerUrl: "https://explorer.mainnet.near.org",
+      },
+    },
+    arweave: {
+      providers: ["arconnect","arweave.app"],
+     
+    },
+  } ;

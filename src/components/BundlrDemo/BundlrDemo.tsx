@@ -324,7 +324,7 @@ function BundlrDemo() {
     const bundlr = new WebBundlr(bundlerHttpAddress, currency, provider, { providerUrl: rpcUrl })
     try {
       // Check for valid bundlr node
-      await bundlr.utils.getBundlerAddress(currency)
+      //await bundlr.utils.getBundlerAddress(currency)
     } catch {
       toast({ status: "error", title: `Failed to connect to bundlr ${bundlerHttpAddress}`, duration: 10000 })
       return;

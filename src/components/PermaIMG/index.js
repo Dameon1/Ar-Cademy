@@ -80,6 +80,7 @@ export default function PermaIMG() {
   const bundlrRef = useRef();
 
   const navigate = useNavigate();
+  
   async function initialiseBundlr() {
     await window.ethereum.enable();
 
@@ -148,6 +149,7 @@ export default function PermaIMG() {
   async function checkUploadCost(bytes) {
     if (bytes) {
       const cost = await bundlrInstance.getPrice(bytes);
+      console.log(cost)
       setFileCost(utils.formatEther(cost));
     }
   }
@@ -232,7 +234,7 @@ async function doDeploy(e) {
 
         const bundlr = new WebBundlr(
           "https://node2.bundlr.network",
-          "matic",
+          currency,
           provider
         );
 
@@ -290,7 +292,7 @@ async function doDeploy(e) {
         console.log("Completed Upload, redirecting 0...");
 
         setTimeout(() => {
-          navigate("/testpage");
+          navigate(`/AssetManagement/${result.data.id}`);
         }, 2000);
       } catch (e) {
         console.log(e);
@@ -343,12 +345,11 @@ async function doDeploy(e) {
               onChange={(e) => setDescription(e.target.value)}
               className={"textAreaStyle"}
             />
-            
           </div>
         </div>
       </div>
       <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
-      <IMG />
+      {/* <IMG /> */}
     </div>
   );
 }
@@ -466,7 +467,7 @@ export function IMG() {
 
         const bundlr = new WebBundlr(
           "https://node2.bundlr.network",
-          "matic",
+          currency,
           provider
         );
 

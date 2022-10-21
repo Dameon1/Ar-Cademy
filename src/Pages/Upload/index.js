@@ -5,14 +5,37 @@ import { utils } from "ethers";
 import BigNumber from "bignumber.js";
 import "./upload.css";
 import { AMW } from "../../utils/api";
+import { currencyMap } from "../../utils/index";
 import Select from "react-select";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo";
 import PermaVideo from "../../components/PermaVideo";
-import PermaIMG from "../../components/PermaIMG"
+import PermaIMG from "../../components/PermaIMG";
 //import StampDemo from "../../components/StampDemo";
 import IMG from "../../components/IMG";
+import React from "react";
+import { WebBundlr } from "@bundlr-network/client";
+import {
+  Button,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Input,
+  Dropdown,
+  Tooltip,
+  Container,
+  Row,
+  Col,
+} from "@nextui-org/react";
+import { providers } from "ethers";
+import { Web3Provider } from "@ethersproject/providers";
+import * as nearAPI from "near-api-js";
+import { WalletConnection } from "near-api-js";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
+//import WalletConnectProvider from "@walletconnect/web3-provider";
+//const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
 
-import { Button } from "@nextui-org/react";
+const { keyStores, connect } = nearAPI;
 
 const supportedCurrencies = {
   matic: "matic",
@@ -30,6 +53,7 @@ const currencyOptions = Object.keys(supportedCurrencies).map((v) => {
 });
 
 const APP_NAME = "Ar-Cademy";
+
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },
   { value: "defi", label: "DeFi" },
@@ -42,15 +66,10 @@ export const tagSelectOptions = [
 ];
 
 export default function Upload() {
-  const {
-    bundlrInstance,
-    addr,
-    setAddr,
-    setWalletName,
-    currency,
-    setCurrency,
-    walletName,
-  } = useContext(MainContext);
+  const { addr, setAddr, setWalletName, walletName } = useContext(MainContext);
+  const defaultCurrency = "Select a Currency";
+  const [currency, setCurrency] = useState(defaultCurrency);
+  const [bundlrInstance, setBundlrInstance] = useState();
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
   const [fileCost, setFileCost] = useState(0);
@@ -151,8 +170,6 @@ export default function Upload() {
       let tx = await AMW.createTransaction(JSON.stringify(video), { tags });
       // await tx.sign()
       // await tx.upload()
-
-      
     } catch (err) {
       console.log("error uploading video with metadata: ", err);
     }
@@ -162,28 +179,25 @@ export default function Upload() {
     setAddr(await AMW.connect("bundlr"));
     setWalletName("bundlr");
   }
+  const toProperCase = (string) => {
+    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+  };
 
-  // if (walletName !== "bundlr") {
-  //   return (
-  //     <div>
-  //       <div className={"selectContainerStyle"}>
-  //         <Select
-  //           onChange={({ value }) => setCurrency(value)}
-  //           options={currencyOptions}
-  //           defaultValue={{ value: currency, label: currency }}
-  //           classNamePrefix="select"
-  //           instanceId="currency"
-  //         />
-  //         <p>Currency: {currency}</p>
-  //       </div>
-  //       <div className={"containerStyle"}>
-  //         <Button onPress={bundlr}>
-  //           Connect Wallet
-  //         </Button>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  async function initializeBundlr() {
+    await window.ethereum.enable();
+
+    const provider = new providers.Web3Provider(window.ethereum);
+    await provider._ready();
+
+    const bundlr = new WebBundlr(
+      "https://node2.bundlr.network",
+      currency,
+      provider
+    );
+    await bundlr.ready();
+
+    setBundlrInstance(bundlr);
+  }
 
   return (
     <div>
@@ -202,53 +216,34 @@ export default function Upload() {
         <div className="wallet">
           <h4>Step 1</h4>
           <p className={"labelStyle"}>Payment prep</p>
+          <Col justify="center" align="center" gap={1}>
+            <Row justify="center" align="center">
+              <Col className="form-control">
+                <Dropdown>
+                  <Dropdown.Button>{toProperCase(currency)}</Dropdown.Button>
+                  <Dropdown.Menu onAction={(key) => setCurrency(key)}>
+                    {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
+                    {Object.keys(currencyMap).map((v) => {
+                      return (
+                        <Dropdown.Item key={v}>{toProperCase(v)}</Dropdown.Item>
+                      ); // proper/title case
+                    })}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <Button
+                  disabled={currency === defaultCurrency}
+                  onPress={async () => await initializeBundlr()}
+                >
+                  {bundlrInstance ? "Connected" : "Connect"}
+                </Button>
+              </Col>
+            </Row>
+          </Col>
           <BundlrDemo />
-          {/* <div className={"selectContainerStyle"}>
-            <Select
-              onChange={({ value }) => setCurrency(value)}
-              options={currencyOptions}
-              defaultValue={{ value: currency, label: currency }}
-              classNamePrefix="select"
-              instanceId="currency"
-            />
-          </div> */}
-          {/* <div className={"bottomFormStyle"}>
-            <p className={"labelStyle"}>Load Bundlr</p>
-            <input
-              placeholder="amount"
-              className={"inputStyle"}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-            <h2>💰 Balance {balance}</h2>
-
-          </div> */}
-          {/* <h3 >💰 Balance {Math.round(balance * 100) / 100}</h3> */}
         </div>
-        {/* <div
-          className="wallet"
-        >
-          <h4>Step 2</h4>
-          <p className={"labelStyle"}>Preview and Start</p>
-          <div className={"inputContainerStyle"}>
-            <input type="file" onChange={onFileChange} />
-          </div>
-          {localVideo && (
-            <video
-              key={localVideo}
-              width="220"
-              controls
-              className={"videoStyle"}
-            >
-              <source src={localVideo} type="video/mp4" />
-            </video>
-          )}
-          {fileCost && (
-            <h4>Cost to upload: {Math.round(fileCost * 1000) / 1000} MATIC</h4>
-          )}
-          <Button onPress={uploadFile}>
-            Upload Video
-          </Button>
-        </div> */}
+
         <div className="wallet">
           <PermaVideo />
         </div>
@@ -257,43 +252,12 @@ export default function Upload() {
           <IMG />
         </div>
       </div>
-      <div className={"formStyle"}>
-        {URI && (
-          <div>
-            <p className={"linkStyle"}>
-              <a href={URI}>{URI}</a>
-            </p>
-            <div className={"formStyle"}>
-              <p className={"labelStyle"}>Tag (optional)</p>
-              <Select
-                options={tagSelectOptions}
-                className={"selectStyle"}
-                onChange={(data) => setTagSelectState(data)}
-                isClearable
-              />
-              <p className={"labelStyle"}>Title</p>
-              <input
-                className={"inputStyle"}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Video title"
-              />
-              <p className={"labelStyle"}>Description</p>
-              <textarea
-                placeholder="Video description"
-                onChange={(e) => setDescription(e.target.value)}
-                className={"textAreaStyle"}
-              />
-              <Button onPress={saveVideo}>Save Video</Button>
-            </div>
-          </div>
-        )}
-      </div>
+      <div className={"formStyle"}></div>
       <div className="connection">
         <div className="wallet">
           <PermaIMG />
-          </div>
-          </div>
-      {/* <StampDemo/> */}
+        </div>
+      </div>
     </div>
   );
 }

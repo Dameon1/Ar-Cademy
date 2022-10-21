@@ -51,7 +51,7 @@ export function AccountViewer() {
     })();
   }, [addr]);
 
-  //let newCache = fetch("https://cache.permapages.app/aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA").then((res) => res.json())
+  //let newCache = fetch("https://cache.permapages.app/jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw").then((res) => res.json())
 
   const handleInput = (event) => {
     setInput(event.target.value);
@@ -65,7 +65,7 @@ export function AccountViewer() {
   }
 
   // async function getCache(){
-  //   let newCache = await fetch("https://cache.permapages.app/aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA").then((res) => res.json());
+  //   let newCache = await fetch("https://cache.permapages.app/jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw").then((res) => res.json());
   //   return newCache;
   // }
 

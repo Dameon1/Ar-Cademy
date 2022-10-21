@@ -100,7 +100,7 @@ async function createAndTag(ctx) {
   }))
   tx.addTag('Title', ctx.name)
   tx.addTag('Description', ctx.description)
-  tx.addTag('Type', 'image')
+  tx.addTag('Type', ctx.contentType)
 
   map(trim, split(',', ctx.topics)).forEach(t => {
     tx.addTag('Topic:' + t, t)

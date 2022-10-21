@@ -210,26 +210,23 @@ export default function SingleAsset() {
                     ></Card.Header>
                     <Card.Body css={{ p: 0 }}>
                       {console.log(asset)}
-                      {asset.type === "video" 
-                      ? 
-                        (<video objectFit="contain" width="100%" type="videos" controls src={`https://arweave.net/${itemId}`} ></video>)
-                      : (<Card.Image
-                        src={`https://arweave.net/${itemId}`}
-                        objectFit="cover"
-                        width="100%"
-                        height="100%"
-                        alt="Relaxing app background"
-                      />)}
-                      {/* <Card.Image
-                        src={`https://arweave.net/${itemId}`}
-                        objectFit="cover"
-                        width="100%"
-                        height="100%"
-                        alt="Relaxing app background"
-                      /> */}
-                      {/* <video objectFit="contain" width="100%" type="videos" controls src={`https://arweave.net/${itemId}`} > </video> */}
-                      
-                       
+                      {asset.type === "video" ? (
+                        <video
+                          objectFit="contain"
+                          width="100%"
+                          type="videos"
+                          controls
+                          src={`https://arweave.net/${itemId}`}
+                        />
+                      ) : (
+                        <Card.Image
+                          src={`https://arweave.net/${itemId}`}
+                          objectFit="cover"
+                          width="100%"
+                          height="100%"
+                          alt="Relaxing app background"
+                        />
+                      )}
                     </Card.Body>
                     <Card.Footer
                       isBlurred

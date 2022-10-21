@@ -16,9 +16,9 @@ export default function Stamp(props) {
     });
   };
 
-  const STAMPCOIN = "aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA";
+  const STAMPCOIN = "jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw";
   const CACHE =
-    "https://cache.permapages.app/aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA";
+    "https://cache.permapages.app/jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw";
   const warp = WarpFactory.forMainnet();
   
   const getStampCount = async (txId) => {
@@ -29,7 +29,7 @@ export default function Stamp(props) {
   };
 
   async function getState() {
-    let STAMPCOIN = "aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA";
+    let STAMPCOIN = "jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw";
 
     return await fetch(CACHE)
       .then((res) => res.json())

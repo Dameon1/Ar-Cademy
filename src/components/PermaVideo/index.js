@@ -52,7 +52,7 @@ export default function PermaVideo() {
 
   const [bundlrInstance, setBundlrInstance] = useState()
   const [balance, setBalance] = useState(0)
-  const [currency, setCurrency] = useState('matic')
+  const [currency, setCurrency] = useState('select currency')
 
   const bundlrRef = useRef()
 
@@ -68,7 +68,6 @@ export default function PermaVideo() {
     
     setBundlrInstance(bundlr)
     bundlrRef.current = bundlr
-    fetchBalance()
   }
 
   async function fetchBalance() {
@@ -118,6 +117,7 @@ export default function PermaVideo() {
   async function checkUploadCost(bytes) {
     if (bytes) {
       const cost = await bundlrInstance.getPrice(bytes)
+      console.log(cost)
       setFileCost(utils.formatEther(cost.toString()))
     }
   }
@@ -208,7 +208,7 @@ export default function PermaVideo() {
           )
         }
         {
-          fileCost && <h4>Cost to upload: {Math.round((fileCost) * 1000) / 1000} MATIC</h4>
+          fileCost && <h4>Cost to upload: {Math.round((fileCost) * 1000) / 1000} {currency}</h4>
         }
         <button className={"buttonStyle"} onClick={uploadFile}>Upload Video</button>
         {
