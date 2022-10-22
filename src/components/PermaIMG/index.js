@@ -748,9 +748,9 @@ export function IMG() {
 
   return (
     <>
-      <main>
+      <section>
         <Container fluid>
-          <Col justify="center" align="center" gap={1}>
+          {/* <Col justify="center" align="center" gap={1}>
             <div className="gradient-border">
               <h4>Atomic Assets</h4>
               <form className="" onSubmit={doDeploy}>
@@ -863,9 +863,9 @@ export function IMG() {
                 </Row>
               </form>
             </div>
-          </Col>
+          </Col> */}
         </Container>
-      </main>
+      </section>
 
       {/* <DeployDialog open={deployDlg} />
         <ErrorDialog

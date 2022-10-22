@@ -8,6 +8,7 @@ import { AMW } from "../../utils/api";
 import { currencyMap } from "../../utils/index";
 import Select from "react-select";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo";
+import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
 import PermaVideo from "../../components/PermaVideo";
 import PermaIMG from "../../components/PermaIMG";
 //import StampDemo from "../../components/StampDemo";
@@ -31,11 +32,10 @@ import { providers } from "ethers";
 import { Web3Provider } from "@ethersproject/providers";
 import * as nearAPI from "near-api-js";
 
-import { connect, keyStores,WalletConnection } from "near-api-js";
+import { connect, keyStores, WalletConnection } from "near-api-js";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 //import WalletConnectProvider from "@walletconnect/web3-provider";
 //const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
-
 
 const supportedCurrencies = {
   matic: "matic",
@@ -67,13 +67,15 @@ export const tagSelectOptions = [
 
 export default function Upload() {
   const { addr, setAddr, setWalletName, walletName } = useContext(MainContext);
+  const [imgCache, setImgCache] = useState([]);
   const defaultCurrency = "Select a Currency";
   const [currency, setCurrency] = useState(defaultCurrency);
   const [bundlrInstance, setBundlrInstance] = useState();
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
-  const [fileCost, setFileCost] = useState(0);
+  const [fileCost, setFileCost] = useState();
   const [address, setAddress] = useState("");
+  const [originalFile, setOriginalFile] = useState();
   // const [uploadFileCost, setUploadFileCost] = useState();
   // const [withdrawAmount, setWithdrawAmount] = useState();
   const [description, setDescription] = useState("");
@@ -82,26 +84,33 @@ export default function Upload() {
   const [URI, setURI] = useState();
   const [amount, setAmount] = useState();
   const [balance, setBalance] = useState(0);
+  const [topics, setTopics] = useState("");
+
   const navigate = useNavigate();
 
   function toast(x) {
     return console.log(x);
   }
+  function showError(msg) {
+    console.log("error:", msg);
+  }
 
   const clean = async () => {
     //clearInterval(intervalRef.current)
     setBalance(undefined);
-    setBundlrInstance(undefined)
+    setBundlrInstance(undefined);
     //setImg(undefined);
     //setPrice(undefined);
     //setBundler(undefined);
     //setProvider(undefined);
+    setLocalVideo(undefined);
+    setFileCost("");
     setAddress("");
     setCurrency(defaultCurrency);
     //setSelection(defaultSelection);
   };
 
-  async function handleCurrencyChange(currency){
+  async function handleCurrencyChange(currency) {
     clean();
     setCurrency(currency);
   }
@@ -132,10 +141,28 @@ export default function Upload() {
     }
   }
 
+  // function onFileChange(e) {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
+  //   checkUploadCost(file.size);
+  //   if (file) {
+  //     const video = URL.createObjectURL(file);
+  //     setLocalVideo(video);
+  //     let reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       if (reader.result) {
+  //         setFile(Buffer.from(reader.result));
+  //       }
+  //     };
+  //     reader.readAsArrayBuffer(file);
+  //   }
+  // }
   function onFileChange(e) {
     const file = e.target.files[0];
     if (!file) return;
+    console.log(file);
     checkUploadCost(file.size);
+    setOriginalFile(file);
     if (file) {
       const video = URL.createObjectURL(file);
       setLocalVideo(video);
@@ -148,13 +175,21 @@ export default function Upload() {
       reader.readAsArrayBuffer(file);
     }
   }
-
   async function checkUploadCost(bytes) {
     if (bytes) {
-      const cost = await AMW.getPrice(bytes);
-      setFileCost(utils.formatEther(cost.toString()));
+      const cost = await bundlrInstance.getPrice(bytes);
+      console.log(cost);
+      //setFileCost(utils.formatEther(cost.toString()));
+      setFileCost(bundlrInstance.utils.unitConverter(cost).toString());
+      //bundlrInstance.utils.unitConverter(price).toString()
     }
   }
+  // async function checkUploadCost(bytes) {
+  //   if (bytes) {
+  //     const cost = await AMW.getPrice(bytes);
+  //     setFileCost(utils.formatEther(cost));
+  //   }
+  // }
 
   async function uploadFile() {
     if (!file) return;
@@ -167,36 +202,36 @@ export default function Upload() {
     }
   }
 
-  async function saveVideo() {
-    if (!file || !title || !description) return;
-    const tags = [
-      { name: "Content-Type", value: "application/json" },
-      { name: "App-Name", value: APP_NAME },
-    ];
+  // async function saveVideo() {
+  //   if (!file || !title || !description) return;
+  //   const tags = [
+  //     { name: "Content-Type", value: "application/json" },
+  //     { name: "App-Name", value: APP_NAME },
+  //   ];
 
-    if (tagSelectState) {
-      tags.push({
-        name: "Topic",
-        value: tagSelectState.value,
-      });
-    }
+  //   if (tagSelectState) {
+  //     tags.push({
+  //       name: "Topic",
+  //       value: tagSelectState.value,
+  //     });
+  //   }
 
-    const video = {
-      title,
-      description,
-      URI,
-      createdAt: new Date(),
-      createdBy: addr,
-    };
+  //   const video = {
+  //     title,
+  //     description,
+  //     URI,
+  //     createdAt: new Date(),
+  //     createdBy: addr,
+  //   };
 
-    try {
-      let tx = await AMW.createTransaction(JSON.stringify(video), { tags });
-      // await tx.sign()
-      // await tx.upload()
-    } catch (err) {
-      console.log("error uploading video with metadata: ", err);
-    }
-  }
+  //   try {
+  //     let tx = await AMW.createTransaction(JSON.stringify(video), { tags });
+  //     // await tx.sign()
+  //     // await tx.upload()
+  //   } catch (err) {
+  //     console.log("error uploading video with metadata: ", err);
+  //   }
+  // }
 
   async function bundlr() {
     setAddr(await AMW.connect("bundlr"));
@@ -244,10 +279,10 @@ export default function Upload() {
         helperUrl: "https://helper.mainnet.near.org",
         explorerUrl: "https://explorer.mainnet.near.org",
       };
-      
+
       // connect to NEAR
       const nearConnection = await connect(connectionConfig);
-      
+
       // create wallet connection
       const walletConnection = new WalletConnection(nearConnection);
 
@@ -280,7 +315,6 @@ export default function Upload() {
       //   return;
       // });
 
-
       if (!walletConnection.isSignedIn()) {
         toast({
           status: "info",
@@ -291,8 +325,8 @@ export default function Upload() {
         }, 4000);
         // wallet.requestSignIn();
       } else {
-        setAddress(walletConnection.getAccountId())
-      } 
+        setAddress(walletConnection.getAccountId());
+      }
 
       const bundlr = new WebBundlr(
         "https://node2.bundlr.network",
@@ -318,70 +352,226 @@ export default function Upload() {
         break;
       default:
         await providerMap.MetaMask();
+    }
+  }
+  async function doDeploy(e) {
+    console.log("currency:", currency);
+    //const topics = [{ name: "Content-Type", value: "video/mp4" }];
+
+    if (currency === "matic") {
+      if (!window.ethereum) {
+        showError("Metamask is required!");
         return;
+      }
+      try {
+        await window.ethereum.enable();
+        const provider = new providers.Web3Provider(window.ethereum);
+        await provider._ready();
+
+        const bundlr = new WebBundlr(
+          "https://node2.bundlr.network",
+          currency,
+          provider
+        );
+
+        await bundlr.ready();
+
+        // fund account
+        const price = await bundlrInstance.getPrice(originalFile.size);
+        const balance = await bundlr.getLoadedBalance();
+        const uploadCost = utils.formatEther(
+          price.minus(balance).multipliedBy(1.1).toFixed(0)
+        );
+        if (balance.isLessThan(price)) {
+          await bundlr.fund(price.minus(balance).multipliedBy(1.1).toFixed(0));
+        }
+
+        const trx = bundlr.createTransaction(file, {
+          tags: [{ name: "Content-Type", value: originalFile.type }],
+        });
+
+        await trx.sign();
+        console.log("Signed transaction");
+        const result = await trx.upload();
+        console.log("Uploaded");
+        //const addr = "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE";
+        console.log(
+          "DEPLOY BUNDLR PROPS",
+          title,
+          description,
+          addr,
+          originalFile.type,
+          result.data.id,
+          topics,
+          uploadCost
+        );
+        const result2 = await deployBundlr(
+          title,
+          description,
+          addr,
+          originalFile.type,
+          result.data.id,
+          topics,
+          uploadCost
+        );
+        console.log("Completed Upload, redirecting 3...");
+        // reset form
+        document.forms[0].reset();
+        console.log("Completed Upload, redirecting 2...");
+
+        //setTx(result2.id);
+        console.log("Completed Upload, redirecting 1...");
+
+        setImgCache([
+          ...imgCache,
+          { id: result2.id, src: URL.createObjectURL(originalFile) },
+        ]);
+        console.log(`https://arweave.net/${result2.id}`);
+        console.log("Completed Upload, redirecting 0...");
+
+        setTimeout(() => {
+          navigate(`/AssetManagement/${result2.id}`);
+        }, 2000);
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 
   return (
-    <div>
-      <div className="text-container">
-        <h2>Welcome to Ar-Cademy</h2>
-        <p className="site-introduction">
-          This is a work in progress. Experimenting with the spectrum of uploads
-          on Arweave. These range from simple string metadata stored directly on
-          Arweave completely, to a range of NFT capabilities that store on
-          Ardrive, can be managed on Darkblock or Koii Network, that includes
-          serving the content through the Meson Networks CDN Polygon contract
-          and uses the new WARP contracts from Redstone.
-        </p>
-      </div>
-      <div className="connection">
-        <div className="wallet">
-          <h4>Step 1</h4>
-          <p className={"labelStyle"}>Payment prep</p>
-          <Col justify="center" align="center" gap={1}>
-            <Row justify="center" align="center">
-              <Col className="form-control">
-                <Dropdown>
-                  <Dropdown.Button>{toProperCase(currency)}</Dropdown.Button>
-                  <Dropdown.Menu onAction={(key) => handleCurrencyChange(key) }>
-                    {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
-                    {Object.keys(currencyMap).map((v) => {
-                      return (
-                        <Dropdown.Item key={v}>{toProperCase(v)}</Dropdown.Item>
-                      ); // proper/title case
-                    })}
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Col>
-              <Col>
-                <Button
-                  disabled={currency === defaultCurrency}
-                  onPress={async () => await initializeBundlr()}
-                >
-                  {bundlrInstance ? "Connected" : "Connect"}
-                </Button>
-              </Col>
-            </Row>
-            <p>{toProperCase(currency)} Account:{address} </p>
+    <>
+      <div>
+        <Row className="text-container">
+          <Col>
+            <h2>Welcome to Ar-Cademy</h2>
+            <p className="site-introduction">
+              This is a work in progress. Experimenting with the spectrum of
+              uploads on Arweave. These range from simple string metadata stored
+              directly on Arweave completely, to a range of NFT capabilities
+              that store on Ardrive, can be managed on Darkblock or Koii
+              Network, that includes serving the content through the Meson
+              Networks CDN Polygon contract and uses the new WARP contracts from
+              Redstone.
+            </p>
           </Col>
-          {/* <BundlrDemo /> */}
-        </div>
+        </Row>
+        <Grid.Container gap={4}>
+          <Grid>
+            <Col className="wallet">
+              <h4>Step 1</h4>
+              <p className={"labelStyle"}>Payment prep</p>
+              <Col justify="center" align="center" gap={1}>
+                <Row justify="center" align="center">
+                  <Col className="form-control">
+                    <Dropdown>
+                      <Dropdown.Button>
+                        {toProperCase(currency)}
+                      </Dropdown.Button>
+                      <Dropdown.Menu
+                        onAction={(key) => handleCurrencyChange(key)}
+                      >
+                        {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
+                        {Object.keys(currencyMap).map((v) => {
+                          return (
+                            <Dropdown.Item key={v}>
+                              {toProperCase(v)}
+                            </Dropdown.Item>
+                          ); // proper/title case
+                        })}
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Col>
+                  <Col>
+                    <Button
+                      disabled={currency === defaultCurrency}
+                      onPress={
+                        bundlrInstance
+                          ? () => clean()
+                          : async () => await initializeBundlr()
+                      }
+                      color={bundlrInstance ? "warning" : "gradient"}
+                    >
+                      {bundlrInstance ? "Disconnect" : "Connect"}
+                    </Button>
+                  </Col>
+                </Row>
+                <p>
+                  {toProperCase(currency)} Account:{address}{" "}
+                </p>
+              </Col>
+              {/* <BundlrDemo /> */}
 
+              <div>
+                <div className={"formStyle"}>
+                  <p className={"labelStyle"}>Add Video</p>
+
+                  <div>
+                    <input type="file" onChange={onFileChange} />
+                  </div>
+
+                  {localVideo && (
+                    <video
+                      key={localVideo}
+                      width="320"
+                      height="240"
+                      controls
+                      className={"videoStyle"}
+                    >
+                      <source src={localVideo} type="video/mp4" />
+                    </video>
+                  )}
+
+                  {fileCost && (
+                    <h4>
+                      Cost to upload: {Math.round(fileCost * 1000) / 1000}{" "}
+                      {toProperCase(currency)}
+                    </h4>
+                  )}
+                  {/* <button className={"buttonStyle"} onClick={uploadFile}>Upload Video</button> */}
+
+                  <div>
+                    <div className={"formStyle"}>
+                      <p className={"labelStyle"}>Title</p>
+                      <input
+                        className={"inputStyle"}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Video title"
+                      />
+                      <p className={"labelStyle"}>Description</p>
+                      <textarea
+                        placeholder="Video description"
+                        onChange={(e) => setDescription(e.target.value)}
+                        className={"textAreaStyle"}
+                      />
+                      <p className={"labelStyle"}>Tag</p>
+                      <Select
+                        options={tagSelectOptions}
+                        className={"selectStyle"}
+                        onChange={(data) => setTagSelectState(data)}
+                        isClearable
+                      />
+                    </div>
+                  </div>
+                </div>
+                <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
+                {/* <IMG /> */}
+              </div>
+            </Col>
+          </Grid>
+          <Grid>
+            <Col className="wallet">
+              <h4>Step 3</h4>
+              <IMG />
+            </Col>
+          </Grid>
+        </Grid.Container>
+        {/* <div className={"formStyle"}></div> */}
+        {/* <div className="connection">
         <div className="wallet">
           <PermaVideo />
         </div>
-        <div className="wallet">
-          <h4>Step 3</h4>
-          <IMG />
-        </div>
+      </div> */}
       </div>
-      <div className={"formStyle"}></div>
-      <div className="connection">
-        <div className="wallet">
-          <PermaIMG />
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

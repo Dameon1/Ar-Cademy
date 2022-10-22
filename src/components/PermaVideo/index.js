@@ -57,6 +57,7 @@ export default function PermaVideo() {
   const bundlrRef = useRef()
 
   const navigate = useNavigate();
+  
   async function initialiseBundlr() {
     await window.ethereum.enable()
   
@@ -113,6 +114,7 @@ export default function PermaVideo() {
       reader.readAsArrayBuffer(file)
     }
   }
+  
 
   async function checkUploadCost(bytes) {
     if (bytes) {
@@ -191,7 +193,6 @@ export default function PermaVideo() {
 
   return (
     <div>
-      <h3 className={"balanceStyle"}>💰 Balance {Math.round(balance * 100) / 100}</h3>
       <div className={"formStyle"}>
         <p className={"labelStyle"}>Add Video</p>
         <div className={"inputContainerStyle"}>
