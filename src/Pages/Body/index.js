@@ -11,11 +11,13 @@ import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
 import BundlrDemo from "../../components/BundlrDemo/BundlrDemo"
 import TestPage from "../TestPage";
-import SingleAsset from "../AssetManagement"
+import AssetManagement from "../AssetManagement";
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
-  let string = `/${module[module.length - 1]}`;
+  let string = `/${module[1]}`;
+  console.log(module)
+  console.log(string, module)
   return (
     <div className="app">
       <MainHeader />
@@ -37,7 +39,7 @@ function Body({ syntaxTheme }) {
           <Route exact path={"/testpage"} element={<TestPage />} />
 
           <Route exact path={string} element={<LandingPage />} />
-          <Route exact path={"/AssetManagement/:assetId"} element={<SingleAsset/>} />
+          <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
           <Route
             path="*"
             element={

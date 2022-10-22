@@ -249,7 +249,6 @@ query {
 }
 
 export async function imagesByOwner(addr, type) {
-  
   console.log("addr: ", addr, type);
   let images = await fetch("https://arweave.net/graphql", {
     method: "POST",

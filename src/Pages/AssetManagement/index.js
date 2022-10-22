@@ -25,7 +25,7 @@ import {
 } from "../../lib/imgLib/stamp.js";
 import { getProfile, getProfilePicture } from "../../lib/imgLib/account.js";
 
-export default function SingleAsset() {
+export default function AssetManagement() {
   const { addr } = useContext(MainContext);
   const [asset, setAsset] = useState();
   const [ownerData, setOwnerData] = useState();
@@ -34,7 +34,7 @@ export default function SingleAsset() {
   const [isLoading, setIsLoading] = useState(true);
   const [contractData, setContractData] = useState();
   const [ownersAddressArray, setOwnersAddressArray] = useState([]);
-
+  const [assetStampCount, setAssetStampCount] = useState()
   let module = new URL(window.location.href).pathname.split("/");
   let itemId = module[module.length - 1];
   const account = new Account();
@@ -54,7 +54,7 @@ export default function SingleAsset() {
       let assetData = await getAssetData(itemId);
       let assetContractData = await assetDetails(itemId, addr);
       let profileData = await getProfile(assetData.owner);
-      let assetCount = await getCount(id);
+      let assetStampedCount = await getCount(id);
       let rewards = await getRewards(id);
       let ownersArray = Object.keys(assetContractData.state.balances);
       //let ownersAvatars = await getAllOwnersAvatar();
@@ -62,7 +62,7 @@ export default function SingleAsset() {
       setContractData(assetContractData);
       setAsset(assetData);
       setOwnerData(profileData);
-      setCount(assetCount);
+      setAssetStampCount(assetStampedCount);
       setRewards(rewards);
       setOwnersAddressArray(ownersArray);
       setIsLoading(false);
@@ -170,7 +170,7 @@ export default function SingleAsset() {
             )
       )
       .then((res) => {
-        assetCount = getCount(id);
+        setAssetStampCount(getCount(id));
         stampDlg = false;
       })
       .catch((e) => {
@@ -186,14 +186,14 @@ export default function SingleAsset() {
     )}&url=https://img.arweave.dev/%23/show/${id}`;
   }
 
-  function connected() {
-    if (tryingToStamp) {
-      handleStamp();
-    }
-  }
+  // function connected() {
+  //   if (tryingToStamp) {
+  //     handleStamp();
+  //   }
+  // }
 
-  let assetCount = getCount(id);
-  let assetData = getAssetData(id);
+  //let assetCount = getCount(id);
+  //let assetData = getAssetData(id);
 
   return (
     <main>
@@ -299,9 +299,8 @@ export default function SingleAsset() {
                     <Avatar.Group count={ownersAddressArray.length - 4}>
                       {ownersAddressArray.slice(0, 4).map((name, index) => (
                         <>
-                          <Link to={`/Profile/${name}`}>
+                          <Link to={`/Profile/${name}`} key={index}>
                             <Avatar
-                              key={index}
                               size="lg"
                               pointer
                               text={name}
@@ -332,9 +331,9 @@ export default function SingleAsset() {
                       <h4>STAMPS Earned</h4>
                     </div>
 
-                    {count && (
+                    {assetStampCount && (
                       <div>
-                        <p>{count}</p>
+                        <p>{assetStampCount}</p>
                       </div>
                     )}
                   </Col>
