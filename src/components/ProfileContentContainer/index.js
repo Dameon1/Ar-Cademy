@@ -23,8 +23,6 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "POAPS":
-      console.log("object props POAPS", props.contentObjects);
-      console.log(typeof Object.keys(props.contentObjects));
       content = props.contentObjects.map((content, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -44,8 +42,10 @@ export function ProfileContentContainer(props) {
       break;
     case "ERC_NFTS":
       console.log("object props ERC", props.contentObjects);
+      if (props.contentObjects === null) return null
       content = props.contentObjects.map((content, i) => {
         let dataObject = JSON.parse(content.metadata);
+        if (dataObject === null) { return null}
         let { image } = dataObject;
 
         if (image === undefined) {

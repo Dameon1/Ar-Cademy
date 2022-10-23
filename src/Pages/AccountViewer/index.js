@@ -40,6 +40,7 @@ export function AccountViewer() {
         } else {
           user = ark.res;
         }
+        console.log(user)
         setUserContent(user);
         setIsSearching(false);
       } catch (e) {
@@ -61,7 +62,7 @@ export function AccountViewer() {
     const ansHandle = ansAPI.find((holder) => holder.username === ansName);
     if (ansHandle) {
       return ansHandle.address;
-    }
+    } else { return ansName}
   }
 
   // async function getCache(){
@@ -71,6 +72,7 @@ export function AccountViewer() {
 
   function onSubmit(event) {
     event.preventDefault();
+    let ansAddr = getAddrByANS(input)
     // async function sanitizeAddr(text) {
     //   //regular Arweave
     //   let sanitized = "";
@@ -79,12 +81,12 @@ export function AccountViewer() {
     //   //ANS
     // }
     //sanitizeAddr(input)
-    setAddr(input);
+    setAddr(ansAddr);
     setUserContent({});
     setIsSearching(true);
   }
 
-  const isEmpty = (input) => Object.keys(input).length === 0;
+  function isEmpty(input=[]) { return Object.keys(input).length !== 0};
 
   return (
     <>
@@ -121,9 +123,9 @@ export function AccountViewer() {
           <Loading size="xl" css={{ padding: "$24" }} />
         </Grid.Container>
       )}
-      <div className="">
+      <div>
         {addr && !isLoading && !isSearching && (
-          <ArweaveAccount addr={addr} walletName={walletName} disconnectWallet={disconnectWallet}/>
+          <ArweaveAccount addr={addr}  disconnectWallet={disconnectWallet}/>
         )}
 
         {isSearching && ( 
@@ -140,25 +142,34 @@ export function AccountViewer() {
           : null
         }
 
-        {addr && userContent && !isSearching && (
+        {isEmpty(userContent.POAPS) &&  (
           <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />
         )}
-
-        {addr && userContent && !isSearching && (
+        {isEmpty(userContent.STAMPS) &&  (
           <ProfileContentContainer contentObjects={userContent.STAMPS} contentType={"STAMPS"} label="STAMPS" />
         )}
-
-        {addr && userContent && !isSearching && (
+        {isEmpty(userContent.ANFTS) && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img"/>
         )}
-
-        {addr && userContent && !isSearching && (
+        {isEmpty(userContent.ANFTS) &&  (
           <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii"/>
         )}
-
-        {addr && userContent && !isSearching && (
+        {isEmpty(userContent.ERC_NFTS) &&  (
           <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS"/>
         )}
+
+        {/* {addr && userContent && !isSearching && (
+          
+        )}
+
+        {addr && userContent && !isSearching && (
+        )}
+
+        {addr && userContent && !isSearching && (
+        )}
+
+        {addr && userContent && !isSearching && (
+        )} */}
       </div>
     </>
   );

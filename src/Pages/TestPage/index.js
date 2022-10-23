@@ -213,6 +213,12 @@ export default function TestPage() {
 
   return (
     <>
+    <div className="text-container acctViewTextContainer">
+        <h2>Search Arweave Related Content</h2>
+        <p>
+          **Sign in to an arweave account to use*.
+        </p>
+      </div>
       <div className={"containerStyle"}>
         <Dropdown>
           <Dropdown.Button>{type}</Dropdown.Button>

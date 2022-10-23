@@ -455,7 +455,7 @@ export default function Upload() {
             </p>
           </Col>
         </Row>
-        <Grid.Container gap={4}>
+        <Grid.Container gap={2}>
           <Grid>
             <Col className="wallet">
               <h4>Step 1</h4>

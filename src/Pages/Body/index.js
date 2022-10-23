@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainHeader from "../../components/MainHeader";
 import Dashboard from "../Dashboard";
 import LandingPage from "../LandingPage";
@@ -9,7 +9,6 @@ import Footer from "../../components/Footer";
 import Profile from "../Profile";
 import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
-import BundlrDemo from "../../components/BundlrDemo/BundlrDemo"
 import TestPage from "../TestPage";
 import AssetManagement from "../AssetManagement";
 
@@ -17,7 +16,6 @@ function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
   let string = `/${module[1]}`;
   console.log(module)
-  console.log(string, module)
   return (
     <div className="app">
       <MainHeader />
@@ -28,24 +26,16 @@ function Body({ syntaxTheme }) {
           <Route exact path="/Profile/:id" element={<Profile />} />
           <Route exact path="/Dashboard" element={<Dashboard />} />
           <Route path="Modules/:topic" element={<ModulePage />} />
-          <Route
-            exact
-            path="/Playground/:videoIndex"
-            element={<Playground />}
-          />
+          <Route exact path="/Playground/:videoIndex" element={<Playground />} />
           <Route exact path="/Upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
-          <Route path="/BundlrDemo" element={<BundlrDemo />} />
-          <Route exact path={"/testpage"} element={<TestPage />} />
-
+          <Route exact path={"/Testpage"} element={<TestPage />} />
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>There's nothing to see here!</p>
-              </main>
+          <Route path="*" element={
+            <main style={{ padding: "1rem" }}>          
+              <p>There's nothing to see here!</p>
+            </main>
             }
           />
         </Routes>
