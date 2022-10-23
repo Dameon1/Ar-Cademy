@@ -413,27 +413,13 @@ export default function IMG() {
   const ethProviders = ["MetaMask", "WalletConnect"];
 
   const currencyMap = {
-    solana: {
-      providers: ["Phantom"],
-      opts: {},
-    },
+    
     matic: {
       providers: ethProviders,
       opts: {
         chainId: 137,
         chainName: "Polygon Mainnet",
         rpcUrls: ["https://polygon-rpc.com"],
-      },
-    },
-    near: {
-      providers: ["wallet.near.org"],
-      opts: {
-        networkId: "mainnet",
-        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-        nodeUrl: "https://rpc.mainnet.near.org",
-        walletUrl: "https://wallet.mainnet.near.org",
-        helperUrl: "https://helper.mainnet.near.org",
-        explorerUrl: "https://explorer.mainnet.near.org",
       },
     },
   };
