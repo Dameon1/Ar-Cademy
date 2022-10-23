@@ -40,7 +40,7 @@ export function AccountViewer() {
         } else {
           user = ark.res;
         }
-        console.log(user)
+        console.log("USer://///////////////////////",user)
         setUserContent(user);
         setIsSearching(false);
       } catch (e) {
