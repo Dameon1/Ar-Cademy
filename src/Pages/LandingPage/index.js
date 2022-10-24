@@ -22,7 +22,7 @@ export function LandingPage() {
 
   return (
     <>
-      <div className="text-container">
+      <div  className="text-container acctViewTextContainer">
         <h2>Welcome to ARcademy</h2>
         <p className="site-introduction">
           Arcademy is community-driven and developed learning platform, for the Arweave ecosystem.

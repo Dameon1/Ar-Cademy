@@ -146,8 +146,8 @@ export const currencyMap = {
         explorerUrl: "https://explorer.mainnet.near.org",
       },
     },
-    arweave: {
-      providers: ["arconnect","arweave.app"],
-    },
+    // arweave: {
+    //   providers: ["arconnect","arweave.app"],
+    // },
   } ;
   

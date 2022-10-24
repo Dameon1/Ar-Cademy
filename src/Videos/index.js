@@ -10,7 +10,7 @@ export const Videos = {
         sandboxLinks: {
             arWiki:" https://arwiki.wiki/#/en/creating-a-dapp",
             viewblock: "https://viewblock.io/arweave",
-            ArCode_Studio: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            ArCode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
         },
     },
@@ -82,7 +82,7 @@ export const Videos = {
         sandboxLinks: {
             home: "https://edgeandnode.com/",
             graphql: "https://arweave.net/graphql",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            ArCode: "https://arcode.studio/#/",
         },
     },
     "7": {
@@ -134,7 +134,7 @@ export const Videos = {
         tags: ["Contracts"],
         sandboxLinks: {
             home: "https://academy.warp.cc/",
-            arcode: "https://arcode.studio/#/",
+            ArCode: "https://arcode.studio/#/",
         },
     },
     "12": {
@@ -147,7 +147,7 @@ export const Videos = {
         tags: ["Storage", "Intro"],
         sandboxLinks: {
             home: "https://db.kwil.com/",
-            arcodeArweave: "https://binrhooxfuw3dh5k6dye45lkm2wn2tqvkhoa4ktkyteyvnvshm.arweave.net/ChsTudctLbGfqvDwTnVqZqzdThVR3A4qasT_JirayO0/#/",
+            arcodeArweave: "https://arcode.studio/#/",
         },
     },
     "13": {
