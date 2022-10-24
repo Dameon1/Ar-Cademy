@@ -40,7 +40,7 @@ export function AccountViewer() {
         } else {
           user = ark.res;
         }
-        console.log("USer://///////////////////////",user)
+        console.log(user)
         setUserContent(user);
         setIsSearching(false);
       } catch (e) {
@@ -86,7 +86,7 @@ export function AccountViewer() {
     setIsSearching(true);
   }
 
-  function isEmpty(input=[]) { return Object.keys(input).length !== 0};
+  const isEmpty = (input) => Object.keys(input).length === 0;
 
   return (
     <>
@@ -142,34 +142,25 @@ export function AccountViewer() {
           : null
         }
 
-        {isEmpty(userContent.POAPS) &&  (
+        {addr && userContent && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />
         )}
-        {isEmpty(userContent.STAMPS) &&  (
+
+        {addr && userContent && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.STAMPS} contentType={"STAMPS"} label="STAMPS" />
         )}
-        {isEmpty(userContent.ANFTS) && !isSearching && (
+
+        {addr && userContent && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img"/>
         )}
-        {isEmpty(userContent.ANFTS) &&  (
+
+        {addr && userContent && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii"/>
         )}
-        {isEmpty(userContent.ERC_NFTS) &&  (
+
+        {addr && userContent && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS"/>
         )}
-
-        {/* {addr && userContent && !isSearching && (
-          
-        )}
-
-        {addr && userContent && !isSearching && (
-        )}
-
-        {addr && userContent && !isSearching && (
-        )}
-
-        {addr && userContent && !isSearching && (
-        )} */}
       </div>
     </>
   );

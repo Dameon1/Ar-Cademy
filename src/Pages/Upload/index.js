@@ -455,122 +455,108 @@ export default function Upload() {
             </p>
           </Col>
         </Row>
-        <Grid.Container gap={2}>
-          <Grid>
-            <Col className="wallet">
-              <h4>Step 1</h4>
-              <p className={"labelStyle"}>Payment prep</p>
-              <Col justify="center" align="center" gap={1}>
-                <Row justify="center" align="center">
-                  <Col className="form-control">
-                    <Dropdown>
-                      <Dropdown.Button>
-                        {toProperCase(currency)}
-                      </Dropdown.Button>
-                      <Dropdown.Menu
-                        onAction={(key) => handleCurrencyChange(key)}
-                      >
-                        {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
-                        {Object.keys(currencyMap).map((v) => {
-                          return (
-                            <Dropdown.Item key={v}>
-                              {toProperCase(v)}
-                            </Dropdown.Item>
-                          ); // proper/title case
-                        })}
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Col>
-                  <Col>
-                    <Button
-                      disabled={currency === defaultCurrency}
-                      onPress={
-                        bundlrInstance
-                          ? () => clean()
-                          : async () => await initializeBundlr()
-                      }
-                      color={bundlrInstance ? "warning" : "gradient"}
+        <Row justify="flex-wrap" wrap="wrap">
+          <Col className="wallet">
+            <h4>Step 1</h4>
+            <p className={"labelStyle"}>Payment prep</p>
+            <Col justify="center" align="center" gap={1}>
+              <Row justify="center" align="center">
+                <Col className="form-control">
+                  <Dropdown>
+                    <Dropdown.Button>{toProperCase(currency)}</Dropdown.Button>
+                    <Dropdown.Menu
+                      onAction={(key) => handleCurrencyChange(key)}
                     >
-                      {bundlrInstance ? "Disconnect" : "Connect"}
-                    </Button>
-                  </Col>
-                </Row>
-                <p>
-                  {toProperCase(currency)} Account:{address}{" "}
-                </p>
-              </Col>
-              {/* <BundlrDemo /> */}
+                      {Object.keys(currencyMap).map((v) => {
+                        return (
+                          <Dropdown.Item key={v}>
+                            {toProperCase(v)}
+                          </Dropdown.Item>
+                        ); // proper/title case
+                      })}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
+                <Col>
+                  <Button
+                    disabled={currency === defaultCurrency}
+                    onPress={
+                      bundlrInstance
+                        ? () => clean()
+                        : async () => await initializeBundlr()
+                    }
+                    color={bundlrInstance ? "warning" : "gradient"}
+                  >
+                    {bundlrInstance ? "Disconnect" : "Connect"}
+                  </Button>
+                </Col>
+              </Row>
+              <p>
+                {toProperCase(currency)} Account:{address}{" "}
+              </p>
+            </Col>
 
-              <div>
-                <div className={"formStyle"}>
-                  <p className={"labelStyle"}>Add Video</p>
+            <div>
+              <div className={"formStyle"}>
+                <p className={"labelStyle"}>Add Video</p>
 
-                  <div>
-                    <input type="file" onChange={onFileChange} />
-                  </div>
+                <div>
+                  <input type="file" onChange={onFileChange} />
+                </div>
 
-                  {localVideo && (
-                    <video
-                      key={localVideo}
-                      width="320"
-                      height="240"
-                      controls
-                      className={"videoStyle"}
-                    >
-                      <source src={localVideo} type="video/mp4" />
-                    </video>
-                  )}
+                {localVideo && (
+                  <video
+                    key={localVideo}
+                    width="320"
+                    height="240"
+                    controls
+                    className={"videoStyle"}
+                  >
+                    <source src={localVideo} type="video/mp4" />
+                  </video>
+                )}
 
-                  {fileCost && (
-                    <h4>
-                      Cost to upload: {Math.round(fileCost * 1000) / 1000}{" "}
-                      {toProperCase(currency)}
-                    </h4>
-                  )}
-                  {/* <button className={"buttonStyle"} onClick={uploadFile}>Upload Video</button> */}
+                {fileCost && (
+                  <h4>
+                    Cost to upload: {Math.round(fileCost * 1000) / 1000}{" "}
+                    {toProperCase(currency)}
+                  </h4>
+                )}
+                {/* <button className={"buttonStyle"} onClick={uploadFile}>Upload Video</button> */}
 
-                  <div>
-                    <div className={"formStyle"}>
-                      <p className={"labelStyle"}>Title</p>
-                      <input
-                        className={"inputStyle"}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Video title"
-                      />
-                      <p className={"labelStyle"}>Description</p>
-                      <textarea
-                        placeholder="Video description"
-                        onChange={(e) => setDescription(e.target.value)}
-                        className={"textAreaStyle"}
-                      />
-                      <p className={"labelStyle"}>Tag</p>
-                      <Select
-                        options={tagSelectOptions}
-                        className={"selectStyle"}
-                        onChange={(data) => setTagSelectState(data)}
-                        isClearable
-                      />
-                    </div>
+                <div>
+                  <div className={"formStyle"}>
+                    <p className={"labelStyle"}>Title</p>
+                    <input
+                      className={"inputStyle"}
+                      onChange={(e) => setTitle(e.target.value)}
+                      placeholder="Video title"
+                    />
+                    <p className={"labelStyle"}>Description</p>
+                    <textarea
+                      placeholder="Video description"
+                      onChange={(e) => setDescription(e.target.value)}
+                      className={"textAreaStyle"}
+                    />
+                    <p className={"labelStyle"}>Tag</p>
+                    <Select
+                      options={tagSelectOptions}
+                      className={"selectStyle"}
+                      onChange={(data) => setTagSelectState(data)}
+                      isClearable
+                    />
                   </div>
                 </div>
-                <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
-                {/* <IMG /> */}
               </div>
-            </Col>
-          </Grid>
-          <Grid>
-            <Col className="wallet">
-              <h4>Step 3</h4>
-              <IMG />
-            </Col>
-          </Grid>
-        </Grid.Container>
-        {/* <div className={"formStyle"}></div> */}
-        {/* <div className="connection">
-        <div className="wallet">
-          <PermaVideo />
-        </div>
-      </div> */}
+              <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
+            </div>
+          </Col>
+
+          <Col className="wallet">
+            <h4>Step 3</h4>
+            <IMG />
+          </Col>
+        </Row>
       </div>
     </>
   );
