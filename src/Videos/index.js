@@ -147,7 +147,7 @@ export const Videos = {
         tags: ["Storage", "Intro"],
         sandboxLinks: {
             home: "https://db.kwil.com/",
-            arcodeArweave: "https://arcode.studio/#/",
+            ArCode: "https://arcode.studio/#/",
         },
     },
     "13": {
@@ -320,7 +320,7 @@ export const Videos = {
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
             demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
-            arcode: "https://arcode.studio/#/",
+            ArCode: "https://arcode.studio/#/",
            
         },
     },

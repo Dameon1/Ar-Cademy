@@ -62,7 +62,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           await login.arconnect();
           setIsLoading(false);
         }}>
-          <img src={icons.arconnect} alt="ArConnect" />
+          <img className="iconImg" src={icons.arconnect} alt="ArConnect" />
           <h4 className="walletText">ArConnect</h4>
         </div>
         <div className="wallet" onClick={async () => {
@@ -70,7 +70,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           await login.bundlr();
           setIsLoading(false);
         }}>
-          <img src={icons.bundlr} alt="Bundlr network" />
+          <img className="iconImg" src={icons.bundlr} alt="Bundlr network" />
           <h4 className="walletText">Bundlr</h4>
         </div>
         <div className="wallet" onClick={async () => {
@@ -78,7 +78,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           await login.arweaveWebWallet();
           setIsLoading(false);
         }}>
-          <img src={theme ? icons.arweaveWebWallet.dark : icons.arweaveWebWallet.light} alt="arweave.app" />
+          <img className="iconImg" src={theme ? icons.arweaveWebWallet.dark : icons.arweaveWebWallet.light} alt="arweave.app" />
           <h4 className="walletText">arweave.app</h4>
         </div>
       </div>);

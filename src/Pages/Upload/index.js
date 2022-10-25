@@ -15,8 +15,10 @@ import PermaIMG from "../../components/PermaIMG";
 import IMG from "../../components/IMG";
 import React from "react";
 import { WebBundlr } from "@bundlr-network/client";
+
 import {
   Button,
+  Image,
   Grid,
   Loading,
   Text,
@@ -27,6 +29,7 @@ import {
   Container,
   Row,
   Col,
+  Textarea,
 } from "@nextui-org/react";
 import { providers } from "ethers";
 import { Web3Provider } from "@ethersproject/providers";
@@ -36,6 +39,19 @@ import { connect, keyStores, WalletConnection } from "near-api-js";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 //import WalletConnectProvider from "@walletconnect/web3-provider";
 //const PhantomWalletAdapter = require("@solana/wallet-adapter-phantom/lib/cjs/index").PhantomWalletAdapter
+
+import {} from "@nextui-org/react";
+
+//import { deploy, deployBundlr } from "../../lib/stampLib/deploy-path.js";
+
+import image from "../../assets/favicon.ico";
+
+//   import DeployDialog from "../dialogs/deploy.svelte";
+//   import ErrorDialog from "../dialogs/error.svelte";
+//   import ConfirmDialog from "../dialogs/confirm.svelte";
+//import { imgCache } from "../store.js";
+
+//const WebBundlr = Bundlr.default;
 
 const supportedCurrencies = {
   matic: "matic",
@@ -66,25 +82,26 @@ export const tagSelectOptions = [
 ];
 
 export default function Upload() {
-  const { addr, setAddr, setWalletName, walletName } = useContext(MainContext);
-  const [imgCache, setImgCache] = useState([]);
+  const { addr, setAddr, setWalletName } = useContext(MainContext);
   const defaultCurrency = "Select a Currency";
   const [currency, setCurrency] = useState(defaultCurrency);
+  const [isLoading, setIsLoading] = useState(false);
+  //bundlr instance and address
   const [bundlrInstance, setBundlrInstance] = useState();
-  const [file, setFile] = useState();
-  const [title, setTitle] = useState("");
-  const [fileCost, setFileCost] = useState();
   const [address, setAddress] = useState("");
+
   const [originalFile, setOriginalFile] = useState();
-  // const [uploadFileCost, setUploadFileCost] = useState();
-  // const [withdrawAmount, setWithdrawAmount] = useState();
+  const [file, setFile] = useState();
+
+  const [fileCost, setFileCost] = useState();
+
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [tagSelectState, setTagSelectState] = useState();
-  const [localVideo, setLocalVideo] = useState();
-  const [URI, setURI] = useState();
-  const [amount, setAmount] = useState();
-  const [balance, setBalance] = useState(0);
   const [topics, setTopics] = useState("");
+
+  const [localVideo, setLocalVideo] = useState();
+
+  const [amount, setAmount] = useState();
 
   const navigate = useNavigate();
 
@@ -95,9 +112,12 @@ export default function Upload() {
     console.log("error:", msg);
   }
 
+  const changeTopics = (event) => {
+    setTopics(event.target.value);
+  };
+
   const clean = async () => {
     //clearInterval(intervalRef.current)
-    setBalance(undefined);
     setBundlrInstance(undefined);
     //setImg(undefined);
     //setPrice(undefined);
@@ -113,22 +133,6 @@ export default function Upload() {
   async function handleCurrencyChange(currency) {
     clean();
     setCurrency(currency);
-  }
-
-  async function fetchBalance() {
-    const bal = await AMW.getBalance();
-    setBalance(utils.formatEther(bal.toString()));
-  }
-
-  async function fundWallet() {
-    if (!amount) return;
-    const amountParsed = parseInput(amount);
-    try {
-      await bundlrInstance.fund(amountParsed);
-      fetchBalance();
-    } catch (err) {
-      console.log("Error funding wallet: ", err);
-    }
   }
 
   function parseInput(input) {
@@ -167,7 +171,7 @@ export default function Upload() {
       const video = URL.createObjectURL(file);
       setLocalVideo(video);
       let reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = function () {
         if (reader.result) {
           setFile(Buffer.from(reader.result));
         }
@@ -179,24 +183,16 @@ export default function Upload() {
     if (bytes) {
       const cost = await bundlrInstance.getPrice(bytes);
       console.log(cost);
-      //setFileCost(utils.formatEther(cost.toString()));
       setFileCost(bundlrInstance.utils.unitConverter(cost).toString());
-      //bundlrInstance.utils.unitConverter(price).toString()
     }
   }
-  // async function checkUploadCost(bytes) {
-  //   if (bytes) {
-  //     const cost = await AMW.getPrice(bytes);
-  //     setFileCost(utils.formatEther(cost));
-  //   }
-  // }
 
   async function uploadFile() {
     if (!file) return;
     const tags = [{ name: "Content-Type", value: "video/mp4" }];
     try {
       let tx = await AMW.uploader(file, tags);
-      setURI(`https://arweave.net/${tx.data.id}`);
+      //setURI(`https://arweave.net/${tx.data.id}`);
     } catch (err) {
       console.log("Error uploading video: ", err);
     }
@@ -286,35 +282,6 @@ export default function Upload() {
       // create wallet connection
       const walletConnection = new WalletConnection(nearConnection);
 
-      // const nearConfig = {
-      //   networkId: "mainnet",
-      //   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-      //   nodeUrl: "https://rpc.mainnet.near.org",
-      //   walletUrl: "https://wallet.mainnet.near.org",
-      //   helperUrl: "https://helper.mainnet.near.org",
-      //   explorerUrl: "https://explorer.mainnet.near.org",
-      // }
-      // const near = await connect(nearConfig);
-      // const wallet = new WalletConnection(near, "Arcademy");
-      // const nearKeyStore = new keyStores.BrowserLocalStorageKeyStore();
-
-      // const providerInstance = await connect({
-      //   networkId: "mainnet",
-      //   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-      //   nodeUrl: "https://rpc.mainnet.near.org",
-      //   walletUrl: "https://wallet.mainnet.near.org",
-      //   helperUrl: "https://helper.mainnet.near.org",
-      //   explorerUrl: "https://explorer.mainnet.near.org",
-      // }).catch((e) => {
-      //   toast({
-      //     status: "error",
-      //     title: `Failed to load provider ${wallet}`,
-      //     duration: 10000,
-      //   });
-      //   console.log(e);
-      //   return;
-      // });
-
       if (!walletConnection.isSignedIn()) {
         toast({
           status: "info",
@@ -394,7 +361,6 @@ export default function Upload() {
         console.log("Signed transaction");
         const result = await trx.upload();
         console.log("Uploaded");
-        //const addr = "zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE";
         console.log(
           "DEPLOY BUNDLR PROPS",
           title,
@@ -422,10 +388,10 @@ export default function Upload() {
         //setTx(result2.id);
         console.log("Completed Upload, redirecting 1...");
 
-        setImgCache([
-          ...imgCache,
-          { id: result2.id, src: URL.createObjectURL(originalFile) },
-        ]);
+        // setImgCache([
+        //   ...imgCache,
+        //   { id: result2.id, src: URL.createObjectURL(originalFile) },
+        // ]);
         console.log(`https://arweave.net/${result2.id}`);
         console.log("Completed Upload, redirecting 0...");
 
@@ -437,6 +403,57 @@ export default function Upload() {
       }
     }
   }
+
+  const handleFileClick = (type) => {
+    console.log("type", type);
+    var fileInputEl = document.createElement("input");
+    fileInputEl.type = "file";
+    let currentType = {
+      image:
+        "image/* image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml",
+      video: "video/*",
+    };
+    fileInputEl.accept = currentType[type];
+    fileInputEl.style.display = "none";
+    document.body.appendChild(fileInputEl);
+    fileInputEl.addEventListener("input", function (e) {
+      handleUpload(e, type);
+      document.body.removeChild(fileInputEl);
+    });
+    fileInputEl.click();
+  };
+
+  const handleUpload = async (evt, type) => {
+    let eventFile = evt.target.files[0];
+    if (!eventFile) return;
+    checkUploadCost(eventFile.size);
+    setOriginalFile(eventFile);
+    console.log(eventFile.type);
+    //setFiles(evt.target.files);
+    //previewVideo(evt)
+    let reader = new FileReader();
+    const fileUrl = URL.createObjectURL(eventFile);
+    if (type === "image") {
+    }
+    if (type === "video") {
+      setLocalVideo(fileUrl);
+      reader.onload = function () {
+        if (reader.result && type === "video") {
+          //const video = URL.createObjectURL(file);
+          //setLocalVideo(video);
+          setFile(Buffer.from(reader.result));
+        }
+      };
+      reader.readAsArrayBuffer(eventFile);
+      //previewImage(evt);
+    }
+  };
+  const previewImage = (e) => {
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(e.target.files[0]);
+    preview.onload = () => URL.revokeObjectURL(preview.src);
+    //handleFileClick(e);
+  };
 
   return (
     <>
@@ -472,7 +489,7 @@ export default function Upload() {
                           <Dropdown.Item key={v}>
                             {toProperCase(v)}
                           </Dropdown.Item>
-                        ); // proper/title case
+                        );
                       })}
                     </Dropdown.Menu>
                   </Dropdown>
@@ -487,24 +504,18 @@ export default function Upload() {
                     }
                     color={bundlrInstance ? "warning" : "gradient"}
                   >
-                    {bundlrInstance ? "Disconnect" : "Connect"}
+                    {bundlrInstance ? "Reset" : "Connect"}
                   </Button>
                 </Col>
               </Row>
               <p>
-                {toProperCase(currency)} Account:{address}{" "}
+                {currency !== defaultCurrency
+                  ? `${toProperCase(currency)} Account:${address.slice(0, 4)}`
+                  : null}
               </p>
-            </Col>
-
-            <div>
-              <div className={"formStyle"}>
-                <p className={"labelStyle"}>Add Video</p>
-
-                <div>
-                  <input type="file" onChange={onFileChange} />
-                </div>
-
-                {localVideo && (
+              <Row justify="center" align="center" gap={1} height={100}>
+                {/* {localVideo && (
+                <>
                   <video
                     key={localVideo}
                     width="320"
@@ -514,8 +525,126 @@ export default function Upload() {
                   >
                     <source src={localVideo} type="video/mp4" />
                   </video>
+                  <p>video preview</p>
+                  <video
+                    key={localVideo}
+                    id="preview"
+                    width="320"
+                    height="240"
+                    controls
+                    src={localVideo}
+                    type="video"
+                    className={"videoStyle"}
+                  />
+                  </>
+                )} */}
+                {/* {originalFile?.type.split("/")[0] === "image" && (
+                  <>
+                    <p>img preview</p>
+                    <img
+                      className="cardImage"
+                      src={image}
+                      width="320"
+                      height="240"
+                      id="imagePreview"
+                      alt="your upload here"
+                    />
+                  </>
+                )} */}
+                {/* {localVideo && (
+                  <>
+                    <p>video preview</p>
+                    <video
+                      key={localVideo}
+                      width="320"
+                      height="240"
+                      controls
+                      id="videoPreview"
+                      src={localVideo}
+                      type="video"
+                      className={"videoStyle"}
+                    />
+                  </>
+                )} */}
+                {!isLoading && originalFile?.type.split("/")[0] === "image" ? (
+                  // <div>
+                  //   <img
+                  //     src={URL.createObjectURL(originalFile)}
+                  //     width="100%"
+                  //     alt="your upload here"
+                  //   />
+                  // </div>
+                  <Col>
+                    <Image
+                      src={URL.createObjectURL(originalFile)}
+                      alt="your upload here"
+                      objectFit="cover"
+                      width={160}
+                      height={160}
+                    />
+                  </Col>
+                ) : originalFile?.type.split("/")[0] === "video" ? (
+                  <Col>
+                    <video
+                      key={localVideo}
+                      width="160"
+                      height="160"
+                      controls
+                      id="videoPreview"
+                      src={URL.createObjectURL(originalFile)}
+                      type="video"
+                      className={"videoStyle"}
+                    />
+                  </Col>
+                ) : (
+                  <Col>
+                    <Image
+                      src={image}
+                      alt="Default Image"
+                      objectFit="cover"
+                      width={160}
+                      height={160}
+                    />
+                  </Col>
                 )}
+              </Row>
+              <Spacer y={0.5} />
+              <Row>
+                <Col>
+                  <Button
+                    onPress={() => handleFileClick("image")}
+                    aria-label="Select Image"
+                  >
+                    Select Image
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    onPress={() => handleFileClick("video")}
+                    aria-label="Select Video"
+                  >
+                    Select Video
+                  </Button>
+                </Col>
+              </Row>
+              <Row></Row>
+              <Row></Row>
+              <Row></Row>
+            </Col>
 
+            <div>
+              <div className={"formStyle"}>
+                {/* {localVideo && (
+                  <video
+                    key={localVideo}
+                    width="320"
+                    height="240"
+                    controls
+                    className={"videoStyle"}
+                  >
+                    <source src={localVideo} type="video/mp4" />
+                  </video>
+                )} */}
                 {fileCost && (
                   <h4>
                     Cost to upload: {Math.round(fileCost * 1000) / 1000}{" "}
@@ -523,32 +652,67 @@ export default function Upload() {
                   </h4>
                 )}
                 {/* <button className={"buttonStyle"} onClick={uploadFile}>Upload Video</button> */}
-
-                <div>
-                  <div className={"formStyle"}>
-                    <p className={"labelStyle"}>Title</p>
-                    <input
-                      className={"inputStyle"}
-                      onChange={(e) => setTitle(e.target.value)}
-                      placeholder="Video title"
-                    />
-                    <p className={"labelStyle"}>Description</p>
-                    <textarea
-                      placeholder="Video description"
-                      onChange={(e) => setDescription(e.target.value)}
-                      className={"textAreaStyle"}
-                    />
-                    <p className={"labelStyle"}>Tag</p>
-                    <Select
-                      options={tagSelectOptions}
-                      className={"selectStyle"}
-                      onChange={(data) => setTagSelectState(data)}
-                      isClearable
-                    />
-                  </div>
-                </div>
+                <Row
+                  className="form-control"
+                  justify="center"
+                  align="center"
+                  gap={1}
+                >
+                  <Input
+                    id="title"
+                    className="input input-bordered"
+                    labelPlaceholder="Make a Title"
+                    status="secondary"
+                    aria-label="Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                    s
+                    required
+                  />
+                </Row>
+                <Spacer y={2} />
+                <Row
+                  className="form-control"
+                  justify="center"
+                  align="center"
+                  gap={1}
+                >
+                  <Textarea
+                    id="Description"
+                    aria-label="description"
+                    className="textarea textarea-bordered"
+                    labelPlaceholder="Give a description"
+                    status="secondary"
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                  />
+                </Row>
+                <Spacer y={2} />
+                <Row
+                  className="form-control"
+                  justify="center"
+                  align="center"
+                  gap={1}
+                >
+                  <Dropdown>
+                    <Dropdown.Button>
+                      {topics ? toProperCase(topics) : "Add a Tag"}
+                    </Dropdown.Button>
+                    <Dropdown.Menu onAction={(key) => setTopics(key)}>
+                      {tagSelectOptions.map((v) => {
+                        return (
+                          <Dropdown.Item key={v.value}>
+                            {toProperCase(v.value)}
+                          </Dropdown.Item>
+                        );
+                      })}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Row>
+                <Spacer y={1} />
+                <Row justify="center" align="center" gap={1}>
+                  <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
+                </Row>
               </div>
-              <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
             </div>
           </Col>
 

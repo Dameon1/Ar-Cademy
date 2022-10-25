@@ -10,7 +10,7 @@ const arweave = Arweave.init({
 const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true })
 const CACHE = 'https://cache.permapages.app'
 
-const STAMPCOIN = 'jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw'
+const STAMPCOIN = 'FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA'
 let data = null
 
 const stampCount = asset => compose(

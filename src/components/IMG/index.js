@@ -1,17 +1,12 @@
 import { useState } from "react";
 import { providers } from "ethers";
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import * as nearAPI from "near-api-js";
 import {
   Button,
   Textarea,
-  Grid,
-  Loading,
-  Text,
   Spacer,
   Input,
   Dropdown,
-  Tooltip,
   Container,
   Row,
   Col,
@@ -61,10 +56,10 @@ export default function IMG() {
   //   let errorDlg = false;
   //   let confirmDlg = false;
 
-  const c = (event) => {
-    console.log(event.target.value);
-    setFiles(event.target.value);
-  };
+  // const c = (event) => {
+  //   console.log(event.target.value);
+  //   setFiles(event.target.value);
+  // };
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
@@ -78,27 +73,27 @@ export default function IMG() {
     setTopics(event.target.value);
   };
 
-  const changeTx = (event) => {
-    setTx(event.target.value);
-  };
+  // const changeTx = (event) => {
+  //   setTx(event.target.value);
+  // };
 
-  const changeCurrency = (event) => {
-    setCurrency(event.target.value);
-  };
+  // const changeCurrency = (event) => {
+  //   setCurrency(event.target.value);
+  // };
 
-  const changeFile = () => {
-    var fileInputEl = document.createElement("input");
-    fileInputEl.type = "file";
-    fileInputEl.accept =
-      "image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml";
-    fileInputEl.style.display = "none";
-    document.body.appendChild(fileInputEl);
-    fileInputEl.addEventListener("input", function (e) {
-      changeFile(e);
-      document.body.removeChild(fileInputEl);
-    });
-    fileInputEl.click();
-  };
+  // const changeFile = () => {
+  //   var fileInputEl = document.createElement("input");
+  //   fileInputEl.type = "file";
+  //   fileInputEl.accept =
+  //     "image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml";
+  //   fileInputEl.style.display = "none";
+  //   document.body.appendChild(fileInputEl);
+  //   fileInputEl.addEventListener("input", function (e) {
+  //     changeFile(e);
+  //     document.body.removeChild(fileInputEl);
+  //   });
+  //   fileInputEl.click();
+  // };
 
   const handleFileClick = () => {
     var fileInputEl = document.createElement("input");

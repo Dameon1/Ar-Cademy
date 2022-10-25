@@ -123,7 +123,6 @@ export function ProfileContentContainer(props) {
                 <img className="cardImage" src={`https://arweave.net/${content.id}`} alt={content.title} onError={()=>console.log("this.src = 'assets/img.png'")}></img>
               </div>
               <h3>{content.title}</h3>
-                <h4>{content.description}</h4>
               <Stamp txId={content.id} />
             </div>
           </div>
