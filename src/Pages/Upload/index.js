@@ -7,10 +7,18 @@ import "./upload.css";
 import { AMW } from "../../utils/api";
 import { currencyMap } from "../../utils/index";
 import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
-import React from "react";
 import { WebBundlr } from "@bundlr-network/client";
 
-import { Button, Image, Spacer, Input,Dropdown, Row, Col, Textarea,} from "@nextui-org/react";
+import {
+  Button,
+  Image,
+  Spacer,
+  Input,
+  Dropdown,
+  Row,
+  Col,
+  Textarea,
+} from "@nextui-org/react";
 import { providers } from "ethers";
 
 import { connect, keyStores, WalletConnection } from "near-api-js";
@@ -36,7 +44,7 @@ export default function Upload() {
   const { addr } = useContext(MainContext);
   const defaultCurrency = "Select a Currency";
   const [currency, setCurrency] = useState(defaultCurrency);
-  
+
   //bundlr instance and address
   const [bundlrInstance, setBundlrInstance] = useState();
   const [address, setAddress] = useState("");
@@ -325,16 +333,18 @@ export default function Upload() {
       <div>
         <Row className="text-container">
           <Col>
-            <h2>Welcome to Ar-Cademy</h2>
-            <p className="site-introduction">
-              This is a work in progress. Experimenting with the spectrum of
-              uploads on Arweave. These range from simple string metadata stored
-              directly on Arweave completely, to a range of NFT capabilities
-              that store on Ardrive, can be managed on Darkblock or Koii
-              Network, that includes serving the content through the Meson
-              Networks CDN Polygon contract and uses the new WARP contracts from
-              Redstone.
-            </p>
+            <div>
+              <h2>Welcome to Ar-Cademy</h2>
+              <p className="site-introduction">
+                This is a work in progress. Experimenting with the spectrum of
+                uploads on Arweave. These range from simple string metadata
+                stored directly on Arweave completely, to a range of NFT
+                capabilities that store on Ardrive, can be managed on Darkblock
+                or Koii Network, that includes serving the content through the
+                Meson Networks CDN Polygon contract and uses the new WARP
+                contracts from Redstone.
+              </p>
+            </div>
           </Col>
         </Row>
         <Row justify="flex-wrap" wrap="wrap">

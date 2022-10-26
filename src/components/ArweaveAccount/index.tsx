@@ -110,7 +110,7 @@ function ArweaveAccount({ addr, walletName, disconnectWallet, ARK }: {ARK:string
                 flexDirection: 'column'
               }}>
                 <div>
-                  <h4>No Account found"</h4>
+                  <h4>No Arweave-Account found"</h4>
                   <span style={{
                     fontSize: '',
                     fontFamily: 'monospace'
