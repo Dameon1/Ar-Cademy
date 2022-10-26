@@ -38,11 +38,11 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  .wallet {
+  .wallet, .uploadContainer {
     border: 1px solid ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.bodyBackground};
   }
-  .wallet:hover {
+  .wallet:hover, .uploadContainer:hover {
     border: 1px solid ${({ theme }) => theme.userAction};
     color: #ffa537;
   }

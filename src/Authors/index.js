@@ -67,7 +67,7 @@ export const Authors = {
         authorWebsite: "sam.arweave.dev",
         createdVideosByID: ['1'],
         createdContentByID: ['ContentID'],
-        uid: 8,
+        uid: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw",
         username: "@samecwilliams",
         avatar: "https://pbs.twimg.com/profile_images/1113074197255860224/PKahsyCP_200x200.png",
         addr: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw"

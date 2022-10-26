@@ -93,7 +93,10 @@
   cursor: pointer;
 }
 
-
+.wallet img {
+  width: 100px;
+  height: 100px;
+}
 
 .wallet h4 {
   margin: 0;
@@ -130,6 +133,19 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  border-radius: 15px;
+  font-size: x-large;
+  flex: 1;
+  margin: 10px;
 }
 
 .hide {
