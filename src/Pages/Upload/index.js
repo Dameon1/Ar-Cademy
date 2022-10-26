@@ -331,9 +331,8 @@ export default function Upload() {
   return (
     <main>
       <div>
-        <Row className="text-container">
-          <Col>
-            <div>
+        <Row align="center" >
+            <div className="text-container">
               <h2>Welcome to Ar-Cademy</h2>
               <p className="site-introduction">
                 This is a work in progress. Experimenting with the spectrum of
@@ -345,7 +344,6 @@ export default function Upload() {
                 contracts from Redstone.
               </p>
             </div>
-          </Col>
         </Row>
         <Row justify="flex-wrap" wrap="wrap">
           <Col className="uploadContainer">

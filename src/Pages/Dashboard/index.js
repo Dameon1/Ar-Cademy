@@ -4,9 +4,11 @@ import MainContext from "../../context";
 import Login from "src/components/Login/Login";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import { ethers } from "ethers";
-import { Loading } from "@nextui-org/react";
 import UseAns from "src/components/ANSForAll";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
+import { Button, Grid, Loading, Text, Spacer, Row, Col } from "@nextui-org/react";
+import { AiOutlineUpload } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export function Dashboard() {
   const { addr } = useContext(MainContext);
@@ -39,26 +41,47 @@ export function Dashboard() {
       update();
     }
   }, [addr]);
-  
+
   return (
     <div className="">
+      <Spacer y={1} />
+      {addr && (
+        <Row>
+          <Col>
+            <h4>Arweave Account</h4>
+          </Col>
+          <Col>
+            <Button
+              auto
+              className="nav-link identity-link "
+              onClick={() => console.log("upload file")}
+              iconRight={<AiOutlineUpload size={18} />}
+              color="success"
+            >
+              <Link to="/upload" className="textNoDec nav-link">
+                Create
+              </Link>
+            </Button>
+          </Col>
+        </Row>
+      )}
       <Login />
-      {addr && isLoading &&
+      {addr && isLoading && (
         <>
           <p>Searching for content</p>
-         <Loading />
+          <Loading />
         </>
-       }
+      )}
 
+      <div></div>
 
-        
-
-      {(addr && userContent && !isLoading) ? (
+      {addr && userContent && !isLoading ? (
         <ANSdisplay content={userContent.ANS} />
-      ) : (addr  && !isLoading) ? <UseAns addr={addr}   /> : null }
+      ) : addr && !isLoading ? (
+        <UseAns addr={addr} />
+      ) : null}
 
-      
-       {(addr && userContent && !isLoading) && (
+      {addr && userContent && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.POAPS}
           contentType={"POAPS"}
@@ -66,7 +89,7 @@ export function Dashboard() {
         />
       )}
 
-      {(addr && userContent && !isLoading) && (
+      {addr && userContent && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.STAMPS}
           contentType={"STAMPS"}
@@ -74,27 +97,27 @@ export function Dashboard() {
         />
       )}
 
-      {(addr && userContent && !isLoading) && (
+      {addr && userContent && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ANFTS.permapages_img}
           contentType={"permapages_img"}
           label="permapages_img"
         />
       )}
-      {(addr && userContent && !isLoading) && (
+      {addr && userContent && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ANFTS.koii}
           contentType={"aNFTs"}
           label="koii"
         />
       )}
-      {(addr && userContent && !isLoading) && (
+      {addr && userContent && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ERC_NFTS}
           contentType={"ERC_NFTS"}
           label="ERC_NFTS"
         />
-      )} 
+      )}
     </div>
   );
 }

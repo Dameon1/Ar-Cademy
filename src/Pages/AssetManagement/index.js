@@ -376,13 +376,14 @@ export default function AssetManagement() {
                 <Row>
                   <Col>
                     <p>Percentage Owned</p>
-                    <p class="text-[18px] font-light">
+                    <p >
                       {contractData.percent} %
                     </p>
                     <p>Total owned: {contractData.state.balances[addr]}</p>
                   </Col>
                   <Col>
                     <p>Transfer Ownership %</p>
+                  <input type="Ftext"/>
                     <button>Transfer</button>
                   </Col>
                 </Row>
