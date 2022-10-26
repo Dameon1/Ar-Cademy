@@ -1,33 +1,34 @@
-import { useContext, useEffect } from 'react';
-import useArConnect from 'use-arconnect';
-import { icons } from '../../static';
-import UserProfile from '../UserProfile/UserProfile';
-import { Grid, Loading } from '@nextui-org/react';
-import { AMW } from '../../utils/api';
-import MainContext from '../../context';
+// This file is for Arcademy identity
+//
+
+import { useContext } from "react";
+import useArConnect from "use-arconnect";
+import { icons } from "../../static";
+import UserProfile from "../UserProfile/UserProfile";
+import { AMW } from "../../utils/api";
+import MainContext from "../../context";
+import {
+  Container,
+  Button,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Row,
+  Col,
+} from "@nextui-org/react";
 
 function Login({ onClick }: { onClick?: () => void }) {
-  const { isLoading,
+  const {
+    isLoading,
     setIsLoading,
     theme,
     addr,
     walletName,
     setWalletName,
-    setAddr } = useContext(MainContext);
+    setAddr,
+  } = useContext(MainContext);
   const arConnect = useArConnect();
-
-  // useEffect(() => {
-  //   if (!arConnect) return;
-  //   (async () => {
-  //     try {
-  //       if ((await arConnect.getPermissions()).includes("ACCESS_ADDRESS")) {
-  //         setAddr(await arConnect.getActiveAddress());
-  //       }
-  //     } catch {
-  //       alert("Error: Could not get ACCESS_ADDRESS permission");
-  //     }
-  //   })();
-  // }, [arConnect, addr, setAddr]);
 
   const disconnectWallet = async () => {
     await AMW.disconnect();
@@ -46,42 +47,65 @@ function Login({ onClick }: { onClick?: () => void }) {
     bundlr: async () => {
       setAddr(await AMW.connect("bundlr"));
       setWalletName("bundlr");
-    }
-  }
+    },
+  };
 
-  return (isLoading
-    ? <Grid.Container gap={1} justify="center">
-      <Loading size="xl" css={{ padding: '$24' }} />
+  return isLoading ? (
+    <Grid.Container gap={1} justify="center">
+      <Loading size="xl" css={{ padding: "$24" }} />
     </Grid.Container>
-    : addr && walletName
+  ) : addr && walletName ? (
     // User signed in
-      ? <UserProfile addr={addr} walletName={walletName} disconnectWallet={disconnectWallet} />
-      : <div className="connection">
-        <div className="wallet" onClick={async () => {
-          setIsLoading(true);
-          await login.arconnect();
-          setIsLoading(false);
-        }}>
+    <UserProfile
+      addr={addr}
+      walletName={walletName}
+      disconnectWallet={disconnectWallet}
+    />
+  ) : (
+    <Container>
+      <Row wrap="wrap" align="center" justify="center">
+        <Col
+          className="wallet"
+          onClick={async () => {
+            setIsLoading(true);
+            await login.arconnect();
+            setIsLoading(false);
+          }}
+        >
           <img className="iconImg" src={icons.arconnect} alt="ArConnect" />
           <h4 className="walletText">ArConnect</h4>
-        </div>
-        <div className="wallet" onClick={async () => {
-          setIsLoading(true);
-          await login.bundlr();
-          setIsLoading(false);
-        }}>
+        </Col>
+        <Col
+          className="wallet"
+          onClick={async () => {
+            setIsLoading(true);
+            await login.bundlr();
+            setIsLoading(false);
+          }}
+        >
           <img className="iconImg" src={icons.bundlr} alt="Bundlr network" />
           <h4 className="walletText">Bundlr</h4>
-        </div>
-        <div className="wallet" onClick={async () => {
-          setIsLoading(true);
-          await login.arweaveWebWallet();
-          setIsLoading(false);
-        }}>
-          <img className="iconImg" src={theme ? icons.arweaveWebWallet.dark : icons.arweaveWebWallet.light} alt="arweave.app" />
+        </Col>
+        <Col
+          className="wallet"
+          onClick={async () => {
+            setIsLoading(true);
+            await login.arweaveWebWallet();
+            setIsLoading(false);
+          }}
+        >
+          <img
+            className="iconImg"
+            src={
+              theme ? icons.arweaveWebWallet.dark : icons.arweaveWebWallet.light
+            }
+            alt="arweave.app"
+          />
           <h4 className="walletText">arweave.app</h4>
-        </div>
-      </div>);
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default Login;

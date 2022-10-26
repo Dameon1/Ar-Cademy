@@ -6,7 +6,15 @@ import ProfileContentContainer from "src/components/ProfileContentContainer";
 import { ethers } from "ethers";
 import UseAns from "src/components/ANSForAll";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
-import { Button, Grid, Loading, Text, Spacer, Row, Col } from "@nextui-org/react";
+import {
+  Button,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Row,
+  Col,
+} from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -65,7 +73,10 @@ export function Dashboard() {
           </Col>
         </Row>
       )}
-      <Login />
+      <Row>
+        <Login />
+      </Row>
+
       {addr && isLoading && (
         <>
           <p>Searching for content</p>
@@ -73,15 +84,13 @@ export function Dashboard() {
         </>
       )}
 
-      <div></div>
-
-      {addr && userContent && !isLoading ? (
+      {addr && userContent?.ANS && !isLoading ? (
         <ANSdisplay content={userContent.ANS} />
       ) : addr && !isLoading ? (
         <UseAns addr={addr} />
       ) : null}
 
-      {addr && userContent && !isLoading && (
+      {addr && userContent?.POAPS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.POAPS}
           contentType={"POAPS"}
@@ -89,7 +98,7 @@ export function Dashboard() {
         />
       )}
 
-      {addr && userContent && !isLoading && (
+      {addr && userContent?.STAMPS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.STAMPS}
           contentType={"STAMPS"}
@@ -97,21 +106,21 @@ export function Dashboard() {
         />
       )}
 
-      {addr && userContent && !isLoading && (
+      {addr && userContent?.ANFTS?.permapages_img && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ANFTS.permapages_img}
           contentType={"permapages_img"}
           label="permapages_img"
         />
       )}
-      {addr && userContent && !isLoading && (
+      {addr && userContent?.ANFTS?.koii && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ANFTS.koii}
           contentType={"aNFTs"}
           label="koii"
         />
       )}
-      {addr && userContent && !isLoading && (
+      {addr && userContent?.ERC_NFTS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ERC_NFTS}
           contentType={"ERC_NFTS"}
