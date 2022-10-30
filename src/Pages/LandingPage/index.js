@@ -7,7 +7,7 @@ export function LandingPage() {
 
   const moduleCards = modules.map((module, index) => {
     return (
-      <Link to={`/modules/${module}`} key={index} className="moduleContent" >
+      <Link to={`/modules/${module}`} key={module} className="moduleContent" >
         <li>
           <p className="moduleHeaders">{modules[index]}</p>
           <img src={Modules[module].moduleImage} className="heroImage"

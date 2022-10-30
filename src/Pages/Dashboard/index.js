@@ -6,15 +6,7 @@ import ProfileContentContainer from "src/components/ProfileContentContainer";
 import { ethers } from "ethers";
 import UseAns from "src/components/ANSForAll";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
-import {
-  Button,
-  Grid,
-  Loading,
-  Text,
-  Spacer,
-  Row,
-  Col,
-} from "@nextui-org/react";
+import { Button, Grid, Loading, Text, Spacer, Row, Col } from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -73,16 +65,14 @@ export function Dashboard() {
           </Col>
         </Row>
       )}
-      <Row>
-        <Login />
-      </Row>
-
+      <Login />
       {addr && isLoading && (
         <>
           <p>Searching for content</p>
           <Loading />
         </>
       )}
+
 
       {addr && userContent?.ANS && !isLoading ? (
         <ANSdisplay content={userContent.ANS} />

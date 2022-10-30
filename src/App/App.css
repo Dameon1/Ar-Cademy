@@ -1,11 +1,13 @@
-.app {
-  text-align: center;
-}
+
 .textNoDec {
   text-decoration: none;
 }
 .textNoDec:hover {
   color:#ffa537
+}
+
+.collapseMenuText {
+  color: black
 }
 
 .moduleCards {
@@ -157,7 +159,7 @@ ul {
 .main-header {
   font-size: 1.4rem;
   background-color: #717C86;
-  max-width: 100%;
+     max-width: 100%; 
 }
 
 .main-header a {
@@ -172,7 +174,7 @@ ul {
 .site-logo {
   letter-spacing: 3px;
   font-family: 'Work Sans';
-  margin: 0 auto;
+  font-size:28px;
   text-align: center;
   transition: ease 0.2s;
   padding: 16px;
@@ -277,11 +279,23 @@ ul {
   color: #f9f6f8;
 }
 
-.nav-link {
+.navigationLinks {
+  color: #f9f6f8;
+  font-size: 1.2em;
+  font-family: 'Open Sans';
+  color: #ECF5E6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: ease 0.2s;
+  text-decoration: none;
+  padding: 0px 5px;
+}
+
+.nav-link, .navigationLinks {
   transition: color 0.2s ease-in-out;
 }
 
-.nav-link:hover {
+.nav-link:hover, .navigationLinks:hover {
   color: #ffa537;
 }
 
@@ -302,11 +316,6 @@ ul {
 .site-logo-wrapper {
   display: flex;
 }
-
-.main-content {
-  padding: 0;
-}
-
 
 .playground-section {
   display: flex;
@@ -458,7 +467,7 @@ ul {
 }
 
 @media (max-width: 420px) {
-  .site-nav {
+  .nav-linkHidden {
     display: none;
   }
 }

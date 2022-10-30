@@ -34,6 +34,7 @@
     "buffer-browserify": "^0.2.5",
     "console": "^0.7.2",
     "constants-browserify": "^1.0.0",
+    "crocks": "^0.12.4",
     "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.0",
     "devextreme": "21.2.8",

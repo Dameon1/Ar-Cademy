@@ -64,29 +64,7 @@ function Login({ onClick }: { onClick?: () => void }) {
   ) : (
     <Container>
       <Row wrap="wrap" align="center" justify="center">
-        <Col
-          className="wallet"
-          onClick={async () => {
-            setIsLoading(true);
-            await login.arconnect();
-            setIsLoading(false);
-          }}
-        >
-          <img className="iconImg" src={icons.arconnect} alt="ArConnect" />
-          <h4 className="walletText">ArConnect</h4>
-        </Col>
-        <Col
-          className="wallet"
-          onClick={async () => {
-            setIsLoading(true);
-            await login.bundlr();
-            setIsLoading(false);
-          }}
-        >
-          <img className="iconImg" src={icons.bundlr} alt="Bundlr network" />
-          <h4 className="walletText">Bundlr</h4>
-        </Col>
-        <Col
+      <Col
           className="wallet"
           onClick={async () => {
             setIsLoading(true);
@@ -102,6 +80,29 @@ function Login({ onClick }: { onClick?: () => void }) {
             alt="arweave.app"
           />
           <h4 className="walletText">arweave.app</h4>
+        </Col>
+       
+        <Col
+          className="wallet"
+          onClick={async () => {
+            setIsLoading(true);
+            await login.bundlr();
+            setIsLoading(false);
+          }}
+        >
+          <img className="iconImg" src={icons.bundlr} alt="Bundlr network" />
+          <h4 className="walletText">Bundlr</h4>
+        </Col>
+        <Col
+          className="wallet"
+          onClick={async () => {
+            setIsLoading(true);
+            await login.arconnect();
+            setIsLoading(false);
+          }}
+        >
+          <img className="iconImg" src={icons.arconnect} alt="ArConnect" />
+          <h4 className="walletText">ArConnect</h4>
         </Col>
       </Row>
     </Container>

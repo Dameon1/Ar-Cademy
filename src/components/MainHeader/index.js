@@ -5,11 +5,12 @@ import ThemeSwitch from "../ThemeSwitch";
 import MainContext from 'src/context';
 import { Button  } from '@nextui-org/react';
 import { AiOutlinePoweroff } from 'react-icons/ai';
-
+import Navigation from "../Navigation"
 export function MainHeader() {
   const { addr, disconnectWallet } = useContext(MainContext);
   return (
     <header className="main-header">
+      
       <NavLinks />
       <h1 className="site-logo">
         <span className="dark">AR</span>
