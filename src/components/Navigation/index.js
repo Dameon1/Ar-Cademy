@@ -1,19 +1,8 @@
-import {
-  Navbar,
-  Text,
-  Avatar,
-  Dropdown,
-  Input,
-  Image,
-  Tooltip,
-} from "@nextui-org/react";
+import {Navbar, Text, Avatar, Dropdown, Image, Tooltip } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { NavLinks } from "../NavLinks";
 import ThemeSwitch from "../ThemeSwitch";
 import MainContext from "src/context";
-import { Button } from "@nextui-org/react";
-import { AiOutlinePoweroff } from "react-icons/ai";
 import image from "../../assets/favicon.ico";
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
@@ -33,11 +22,11 @@ export default function Navigation() {
     (async () => {
       try {
         if (!addr) return;
-        let user ={}
+        let user = {};
         user.bar = await myBar(addr);
         user.stamp = await myRewards(addr);
         user.code = await myCode(addr);
-        setUserData(user)
+        setUserData(user);
       } catch (error) {
         console.log(error);
       } finally {
@@ -67,7 +56,7 @@ export default function Navigation() {
       <Navbar.Collapse showIn="lg">
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={index}>
-            <Link
+            {/* <Link
               className="textNoDec collapseMenuText"
               key={item.value}
               color="inherit"
@@ -75,9 +64,9 @@ export default function Navigation() {
                 minWidth: "100%",
               }}
               to={`/${item.page}`}
-            >
-              {item.value}
-            </Link>
+            > */}
+              <p onClick={()=>navigate(`/${item.page}`)}>{item.value}</p>
+            {/* </Link> */}
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
@@ -161,26 +150,26 @@ export default function Navigation() {
                 )}
               </Dropdown.Item>
               <Dropdown.Item key="balances" withDivider textValue="balances">
-                 BALANCES 
-                </Dropdown.Item>
+                BALANCES
+              </Dropdown.Item>
 
-              {addr && (
+              {addr && userData &&
                 <Dropdown.Item key="$bAR" withDivider textValue="number of Bar">
-                 $bAR: {Number(atomicToBar(userData.bar)).toFixed(2)}
+                  $bAR: {Number(atomicToBar(userData.bar)).toFixed(2)}
                 </Dropdown.Item>
-              )}
-              {addr && (
+              }
+              {addr && userData && (
                 <Dropdown.Item key="$code" textValue="number of Code">
-                  $Code: {userData.code} 
+                  $Code: {userData.code}
                 </Dropdown.Item>
               )}
-              {addr && (
+              {addr && userData && (
                 <Dropdown.Item key="$Stamp" textValue="number of Stamp">
                   $Stamp: {Number(atomicToStamp(userData.stamp)).toFixed(2)}
                 </Dropdown.Item>
               )}
 
-              {addr && (
+              {addr && userData && (
                 <Dropdown.Item
                   key="logout"
                   withDivider

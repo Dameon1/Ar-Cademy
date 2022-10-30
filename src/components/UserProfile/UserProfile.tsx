@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUpload } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import {
@@ -43,7 +43,7 @@ function UserProfile({
   const [hasFailed, setHasFailed] = useState<string | false>(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [balance, setBalance] = useState<string>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       try {
@@ -111,13 +111,13 @@ function UserProfile({
             <Button
                   auto
                   className="nav-link identity-link "
-                  onClick={() => console.log("upload file")}
+                  onClick={() => navigate("/upload")}
                   iconRight={<AiOutlineUpload size={18} />}
-                  color="success"
-                >
-                  <Link to="/upload" className="textNoDec nav-link">
+                  
+                > Create
+                  {/* <Link to="/upload" className="textNoDec nav-link">
                     Create
-                  </Link>
+                  </Link> */}
                 </Button>
             {/* {walletName === "bundlr" && <>
               Balance: {balance}

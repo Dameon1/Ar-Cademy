@@ -8,13 +8,13 @@ import UseAns from "src/components/ANSForAll";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
 import { Button, Grid, Loading, Text, Spacer, Row, Col } from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Dashboard() {
   const { addr } = useContext(MainContext);
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
+  const navigate = useNavigate();
   useEffect(() => {
     setIsLoading(true);
     if (addr) {
@@ -52,15 +52,13 @@ export function Dashboard() {
           </Col>
           <Col>
             <Button
-              auto
               className="nav-link identity-link "
-              onClick={() => console.log("upload file")}
+              onClick={() => navigate("/upload")}
               iconRight={<AiOutlineUpload size={18} />}
-              color="success"
             >
-              <Link to="/upload" className="textNoDec nav-link">
+             
                 Create
-              </Link>
+             
             </Button>
           </Col>
         </Row>

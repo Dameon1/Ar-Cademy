@@ -1,3 +1,8 @@
+/* NextUI overide to not show text */
+.nextui-c-iWjDFM .nextui-button-text{
+  z-index:0; 
+}
+
 
 .textNoDec {
   text-decoration: none;
