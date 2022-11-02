@@ -112,9 +112,10 @@ function ANSdisplay(props) {
         href={`https://${props.content.currentLabel}.ar.page`}
         target="_blank"
         rel="noreferrer"
+        className="textNoDec"
       >
-        <Button className="identity-link textNoDec">
-          {props.content.currentLabel}.ar.page
+        <Button className="identity-link ">
+          <p >{props.content.currentLabel}.ar.page</p>
         </Button>
       </a>
     </div>

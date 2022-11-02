@@ -18,7 +18,7 @@ export function LandingPage() {
     );
   });
 
-  console.log("Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0.");
+  console.log("Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/2LXqBORyAjIo4cz-MXBkIZC2RmFPGMq4nLZp0rgksMw");
 
   return (
     <>

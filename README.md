@@ -14,13 +14,13 @@
   - [here](https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0)
 
   ## V4
-  - [here](https://arweave.net/idYElVB6O--2VlR2dwuaOnW2uAm-42S9Xy07Fz64hq8) 
+  - [https://arweave.net/2LXqBORyAjIo4cz-MXBkIZC2RmFPGMq4nLZp0rgksMw](https://arweave.net/2LXqBORyAjIo4cz-MXBkIZC2RmFPGMq4nLZp0rgksMw) 
 
 ## Instructions
 
   - In the playground you have a video and have an coding editor presented to you.
 
-  - The video will not automatically start and once started it, it will retain your place in the video if you happen to
+  - The video will not automatically start. Once started, it will retain your place in the video if you happen to
     leave and come back.
 
   - The structure of the editor has 3 parts.
