@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUpload } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
@@ -10,6 +10,7 @@ import {
   FaDiscord,
 } from "react-icons/fa";
 import { Button, Grid, Loading, Text, Spacer } from "@nextui-org/react";
+import MainContext from "../../context";
 
 import {
   AvatarS,
@@ -28,15 +29,7 @@ import Account from "arweave-account";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { AMW } from "../../utils/api";
 
-function UserProfile({
-  addr,
-  walletName,
-  disconnectWallet,
-}: {
-  addr: T_addr;
-  walletName: T_walletName;
-  disconnectWallet: () => void;
-}) {
+function UserProfile() {
   const [profileData, setProfileData] = useState<T_profile>();
   const [profileTxid, setProfileTxid] = useState<T_txid>();
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +37,10 @@ function UserProfile({
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [balance, setBalance] = useState<string>();
   const navigate = useNavigate();
+  const {
+    addr,
+  } = useContext(MainContext);
+
   useEffect(() => {
     (async () => {
       try {
@@ -63,7 +60,7 @@ function UserProfile({
   }, [addr]);
 
   return (
-    <div className="gradient-border" style={{ padding: "5px" }}>
+    <div  style={{ padding: "5px" }}>
       {isLoading ? (
         <Grid.Container gap={1} justify="center">
           <Loading size="xl" css={{ padding: "$24" }} color="success" />
@@ -77,8 +74,6 @@ function UserProfile({
           <Spacer y={2} />
           <Grid.Container gap={1} justify="center">
             <Button
-              color="secondary"
-              onClick={disconnectWallet}
               className="identity-link"
             >
               Retry
@@ -161,7 +156,7 @@ function UserProfile({
                   </UserAddr>
                   <DetailsS>
                     <Bio>{profileData.bio}</Bio>
-                    {profileData.links.twitter && (
+                    {profileData?.links?.twitter && (
                       <UserSocial
                         href={`https://twitter.com/${profileData.links.twitter}`}
                         target="_blank"
@@ -170,7 +165,7 @@ function UserProfile({
                         <FaTwitter size={25} />
                       </UserSocial>
                     )}
-                    {profileData.links.github && (
+                    {profileData?.links?.github && (
                       <UserSocial
                         href={`https://github.com/${profileData.links.github}`}
                         target="_blank"
@@ -179,7 +174,7 @@ function UserProfile({
                         <FaGithub size={25} />
                       </UserSocial>
                     )}
-                    {profileData.links.instagram && (
+                    {profileData?.links?.instagram && (
                       <UserSocial
                         href={`https://instagram.com/${profileData.links.instagram}`}
                         target="_blank"
@@ -188,7 +183,7 @@ function UserProfile({
                         <FaInstagram size={25} />
                       </UserSocial>
                     )}
-                    {profileData.links.facebook && (
+                    {profileData?.links?.facebook && (
                       <UserSocial
                         href={`https://facebook.com/${profileData.links.facebook}`}
                         target="_blank"
@@ -197,7 +192,7 @@ function UserProfile({
                         <FaFacebook size={25} />
                       </UserSocial>
                     )}
-                    {profileData.links.discord && (
+                    {profileData?.links?.discord && (
                       <span>
                         <FaDiscord size={25} /> {profileData.links.discord}
                       </span>

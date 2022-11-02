@@ -5,8 +5,8 @@ import { transition } from './global';
 const AvatarS = styled(Avatar)`
   ${transition}
   display: inline-flex;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   font-size: xxx-large;
   background-color: ${({ theme }) => theme.profile.username};
   color: ${({ theme }) => theme.profile.username};

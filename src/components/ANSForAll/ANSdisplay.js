@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { FaTwitter,  FaGithub, FaGlobe } from 'react-icons/fa';
-import { Button, Grid, Loading, Text, Spacer } from '@nextui-org/react';
+import { useEffect, useState } from "react";
+import { FaTwitter, FaGithub, FaGlobe } from "react-icons/fa";
+import { Button, Grid, Loading, Text, Spacer } from "@nextui-org/react";
 
 import {
   AvatarS,
@@ -11,64 +11,113 @@ import {
   UserAddr,
   UserSocial,
   VertoIDinfo,
-} from '../../static/styles/Profile';
+} from "../../static/styles/Profile";
 
-import { T_addr, T_profile, T_walletName, T_txid, T_ansProfile } from '../../utils/types';
-import Account from 'arweave-account';
+import {
+  T_addr,
+  T_profile,
+  T_walletName,
+  T_txid,
+  T_ansProfile,
+} from "../../utils/types";
+import Account from "arweave-account";
 
-function ANSdisplay( content ) {
-
+function ANSdisplay(props) {
   const [ansProfile, setAnsProfile] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState(false);
-  const [hasAccount, setHasAccount] = useState(false)
+  const [hasAccount, setHasAccount] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        
-          setAnsProfile(content)}
-            catch (e) {
-        setHasFailed(JSON.stringify(e));
-      }
-      finally {
-        setIsLoading(false);
-      }
-    })()
-  },[content]);
-  console.log(content.content)  
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       setAnsProfile(content);
+  //     } catch (e) {
+  //       setHasFailed(JSON.stringify(e));
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   })();
+  // }, [content]);
+
   return (
-         
-            <div className='gradient-border' style={{ padding: '5px' }}>
-                <BoxVertoID>
-                     <AvatarS src={`https://arweave.net/${content.content.avatar}`} sx={{ width: 200, height: 200 }} />
-                  
-                <VertoIDinfo>
-                  {content.content.currentLabel && <h2>{content.content.currentLabel}</h2>}
-                  
-                  <a href={`https://${content.content.currentLabel}.ar.page`} target="_blank" rel="noreferrer">
-                    <h3>{content.content.currentLabel}.ar.page</h3>
-                  </a>
-                  <DetailsS>
-                    <Bio>{content.content.bio}</Bio>
-                    {content.content.links.twitter &&
-                      <UserSocial href={`https://twitter.com/${content.content.links.twitter}`} target="_blank" rel="noreferrer">
-                        <FaTwitter size={25} />
-                      </UserSocial>}
-                    {content.content.links.github && <UserSocial href={`https://github.com/${content.content.links.github}`} target="_blank" rel="noreferrer">
-                      <FaGithub size={25} />
-                    </UserSocial>}
-                    {content.content.links.customUrl && <UserSocial href={`${content.content.links.customUrl}`} target="_blank" rel="noreferrer">
-                      <FaGlobe size={25} />
-                    </UserSocial>}
-                  </DetailsS>
-                  <DetailsS>
-                  </DetailsS>
-                </VertoIDinfo>
-              </BoxVertoID>
-              <Grid.Container gap={3} justify="space-between" alignItems='center'>
-              </Grid.Container>
-           </div>
+    <div style={{ padding: "5px" }}>
+      <AvatarS
+        src={`https://arweave.net/${props.content.avatar}`}
+        sx={{ width: 100, height: 100 }}
+      />
+      <>
+        {props.content.currentLabel && <h2>{props.content.currentLabel}</h2>}
+
+        <>
+          <Bio>{props.content.bio}</Bio>
+          {props.content.links.twitter && (
+            <UserSocial
+              href={`https://twitter.com/${props.content.links.twitter}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaTwitter size={25} />
+            </UserSocial>
+          )}
+          {props.content.links.github && (
+            <UserSocial
+              href={`https://github.com/${props.content.links.github}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGithub size={25} />
+            </UserSocial>
+          )}
+          {props.content.links.customUrl && (
+            <UserSocial
+              href={`${props.content.links.customUrl}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGlobe size={25} />
+            </UserSocial>
+          )}
+          {props.content.links.customUrl && (
+            <UserSocial
+              href={`${props.content.links.customUrl}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGlobe size={25} />
+            </UserSocial>
+          )}
+          {props.content.links.customUrl && (
+            <UserSocial
+              href={`${props.content.links.customUrl}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGlobe size={25} />
+            </UserSocial>
+          )}
+          {props.content.links.customUrl && (
+            <UserSocial
+              href={`${props.content.links.customUrl}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGlobe size={25} />
+            </UserSocial>
+          )}
+        </>
+      </>
+      <Spacer y={1} />
+      <a
+        href={`https://${props.content.currentLabel}.ar.page`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Button className="identity-link textNoDec">
+          {props.content.currentLabel}.ar.page
+        </Button>
+      </a>
+    </div>
     // <div className='gradient-border' style={{ padding: '5px' }}>
     //     {
     //   isLoading
@@ -79,8 +128,8 @@ function ANSdisplay( content ) {
     //       <Grid.Container gap={3} justify="space-between" alignItems='center'>
     //       </Grid.Container>
 
-    //       {ansProfile ? 
-    
+    //       {ansProfile ?
+
     //         : null
     //         // <>
     //         //   <div style={{
@@ -112,5 +161,4 @@ function ANSdisplay( content ) {
   );
 }
 
-
-export default ANSdisplay
+export default ANSdisplay;

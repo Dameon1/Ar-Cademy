@@ -424,7 +424,7 @@ export default function IMG() {
       <main>
         <Container fluid>
           <Col justify="center" align="center" gap={1}>
-            <div className="gradient-border">
+            <div >
               <h4>Atomic Assets</h4>
               <form className="" onSubmit={doDeploy}>
                 <Row justify="center" align="center" gap={1}>

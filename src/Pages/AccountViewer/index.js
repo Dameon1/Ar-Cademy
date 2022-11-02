@@ -10,7 +10,7 @@ import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
 import {Grid, Loading} from "@nextui-org/react";
 import UserProfile from 'src/components//UserProfile/UserProfile';
-
+import ArProfile from "src/components/ArProfile";
 
 export function AccountViewer() {
   const { walletName, disconnectWallet } = useContext(MainContext);
@@ -40,7 +40,7 @@ export function AccountViewer() {
         } else {
           user = ark.res;
         }
-        console.log(user)
+        console.log("userrrrrrrrrrrrrr========",user)
         setUserContent(user);
         setIsSearching(false);
       } catch (e) {
@@ -125,7 +125,7 @@ export function AccountViewer() {
       )}
       <div>
         {addr && !isLoading && !isSearching && (
-          <ArweaveAccount addr={addr}  disconnectWallet={disconnectWallet}/>
+          <ArProfile addr={addr}  />
         )}
 
         {isSearching && ( 
@@ -142,23 +142,23 @@ export function AccountViewer() {
           : null
         }
 
-        {addr && userContent && !isSearching && (
+        {addr && userContent?.POAPS && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />
         )}
 
-        {addr && userContent && !isSearching && (
+        {addr && userContent?.STAMPS && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.STAMPS} contentType={"STAMPS"} label="STAMPS" />
         )}
 
-        {addr && userContent && !isSearching && (
+        {addr && userContent?.ANFTS?.permapages_img && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img"/>
         )}
 
-        {addr && userContent && !isSearching && (
+        {addr && userContent?.ANFTS?.koii && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii"/>
         )}
 
-        {addr && userContent && !isSearching && (
+        {addr && userContent?.ERC_NFTS && !isSearching && (
           <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS"/>
         )}
       </div>

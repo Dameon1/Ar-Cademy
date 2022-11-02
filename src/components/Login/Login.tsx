@@ -54,14 +54,12 @@ function Login({ onClick }: { onClick?: () => void }) {
     <Grid.Container gap={1} justify="center">
       <Loading size="xl" css={{ padding: "$24" }} />
     </Grid.Container>
-  ) : addr && walletName ? (
-    // User signed in
-    <UserProfile
-      addr={addr}
-      walletName={walletName}
-      disconnectWallet={disconnectWallet}
-    />
-  ) : (
+  ) : 
+  // addr && walletName ? (
+  //   // User signed in
+  //   <UserProfile/>
+  // ) : 
+  (
     <Container>
       <Row wrap="wrap" align="center" justify="center">
       <Col

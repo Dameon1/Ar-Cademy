@@ -7,6 +7,7 @@ export function ProfileContentContainer(props) {
 
   switch (props.label) {
     case "koii":
+      if(props.contentObjects.length === 0){return null}
       content = props.contentObjects.map((item, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -23,6 +24,7 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "POAPS":
+      if(props.contentObjects.length === 0){return null}
       content = props.contentObjects.map((content, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -41,8 +43,7 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "ERC_NFTS":
-      console.log("object props ERC", props.contentObjects);
-      if (props.contentObjects === null) return null
+      if(props.contentObjects.length === 0){return null}
       content = props.contentObjects.map((content, i) => {
         let dataObject = JSON.parse(content.metadata);
         if (dataObject === null) { return null}
@@ -68,6 +69,7 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "GALAXY_CREDS":
+      if(props.contentObjects.length === 0){return null}
       content = props.contentObjects.map(async (content, i) => {
         return (
           <div key={i} className="cardLinks">
@@ -87,6 +89,7 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "STAMPS":
+      if(props.contentObjects.length === 0){return null}
       content = props.contentObjects.map((content, i) => {
         let type = content.stampedAssetType;
         if(type === "image"){return (
@@ -109,6 +112,7 @@ export function ProfileContentContainer(props) {
       });
       break;
     case "permapages_img":
+      if(props.contentObjects.length === 0){return null}
       content = props.contentObjects.map((content, i) => {
         return (
           <div key={i} className="cardLinks">

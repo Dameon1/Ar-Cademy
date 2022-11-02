@@ -32,18 +32,6 @@
   box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-in-out;
 }
-.identity-link {
-  color: black;
-  border: 2px solid #008c9e;
-  font-size: 0.75em;
-  padding: 0.3em;
-  background-color: white;
-  -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  transition: all 0.2s ease-in-out;
-}
 
 .sandboxButton:hover
  {

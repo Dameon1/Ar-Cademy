@@ -6,9 +6,19 @@ import ProfileContentContainer from "src/components/ProfileContentContainer";
 import { ethers } from "ethers";
 import UseAns from "src/components/ANSForAll";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
-import { Button, Grid, Loading, Text, Spacer, Row, Col } from "@nextui-org/react";
+import {
+  Button,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Row,
+  Col,
+  Container,
+} from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
+import ArProfile from "src/components/ArProfile";
 
 export function Dashboard() {
   const { addr } = useContext(MainContext);
@@ -44,11 +54,19 @@ export function Dashboard() {
 
   return (
     <div className="">
+      <div className="text-container">
+        <h2>Identity needs Security</h2>
+        <p className="site-introduction">
+          Identity is a topic that Arweave is looking to solve in multiple different ways. As our connection to the world grows,
+          we need to be able to connect with the people and communities that we are connected to, with the Identity that we are
+          comfortable with. Some of these are security risks to personal safety, privacy, and trust.
+        </p>
+      </div>
       <Spacer y={1} />
       {addr && (
         <Row>
           <Col>
-            <h4>Arweave Account</h4>
+            <h4>Arweave Profile</h4>
           </Col>
           <Col>
             <Button
@@ -56,27 +74,40 @@ export function Dashboard() {
               onClick={() => navigate("/upload")}
               iconRight={<AiOutlineUpload size={18} />}
             >
-             
-                Create
-             
+              Create
             </Button>
           </Col>
         </Row>
       )}
-      <Login />
+      <Spacer y={1} />
+      {/*Create New ArProfile Component  */}
+      <Container className="gradient-border" style={{ padding: "5px" }}>
+        {!addr && <Login />}
+        {addr && (
+          <Row>
+            <Col align="center">
+              <h3>ANS Profile:</h3>
+
+              {addr && <ArProfile addr={addr} forDashboard={true} />}
+            </Col>
+            <Col align="center">
+              <h3>ArkProfile:</h3>
+              {addr && userContent?.ANS && !isLoading ? (
+                <ANSdisplay content={userContent.ANS} />
+              ) : addr && !isLoading ? (
+                <UseAns addr={addr} />
+              ) : <Loading />}
+            </Col>
+          </Row>
+        )}
+      </Container>
+
       {addr && isLoading && (
         <>
           <p>Searching for content</p>
           <Loading />
         </>
       )}
-
-
-      {addr && userContent?.ANS && !isLoading ? (
-        <ANSdisplay content={userContent.ANS} />
-      ) : addr && !isLoading ? (
-        <UseAns addr={addr} />
-      ) : null}
 
       {addr && userContent?.POAPS && !isLoading && (
         <ProfileContentContainer
