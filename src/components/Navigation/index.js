@@ -20,9 +20,9 @@ export default function Navigation() {
   const navigate = useNavigate();
   const collapseItems = [
     { value: "Home", page: "/" },
-    { value: "Dashboard", page: "/Dashboard" },
-    { value: "Search", page: "/AccountViewer" },
-    { value: "Testpage", page: "/Testpage" },
+    { value: "Dashboard", page: "Dashboard" },
+    { value: "Search", page: "AccountViewer" },
+    { value: "Testpage", page: "Testpage" },
   ];
 
   useEffect(() => {
@@ -70,10 +70,10 @@ export default function Navigation() {
         ))}
       </Navbar.Collapse>
       <Navbar.Content hideIn="sm" variant="highlight" justify="flex-end">
-        <Link to="/" className="navigationLinks">
+        <Link to="." className="navigationLinks">
           <Image src={image} />
         </Link>
-        <Link to="/Dashboard" className="navigationLinks">
+        <Link to="/Dashboard" className="navigationLinks" onClick={() => navigate("/Dashboard")}>
           Dashboard
         </Link>
         <Link to="/AccountViewer" className="navigationLinks">

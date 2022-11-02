@@ -8,8 +8,8 @@ import ArweaveAccount from "src/components/ArweaveAccount";
 import UseAns from "src/components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
-import {Grid, Loading} from "@nextui-org/react";
-import UserProfile from 'src/components//UserProfile/UserProfile';
+import { Grid, Loading, Container, Row, Col } from "@nextui-org/react";
+import UserProfile from "src/components//UserProfile/UserProfile";
 import ArProfile from "src/components/ArProfile";
 
 export function AccountViewer() {
@@ -40,7 +40,7 @@ export function AccountViewer() {
         } else {
           user = ark.res;
         }
-        console.log("userrrrrrrrrrrrrr========",user)
+        console.log("userrrrrrrrrrrrrr========", user);
         setUserContent(user);
         setIsSearching(false);
       } catch (e) {
@@ -62,7 +62,9 @@ export function AccountViewer() {
     const ansHandle = ansAPI.find((holder) => holder.username === ansName);
     if (ansHandle) {
       return ansHandle.address;
-    } else { return ansName}
+    } else {
+      return ansName;
+    }
   }
 
   // async function getCache(){
@@ -72,7 +74,7 @@ export function AccountViewer() {
 
   function onSubmit(event) {
     event.preventDefault();
-    let ansAddr = getAddrByANS(input)
+    let ansAddr = getAddrByANS(input);
     // async function sanitizeAddr(text) {
     //   //regular Arweave
     //   let sanitized = "";
@@ -123,43 +125,75 @@ export function AccountViewer() {
           <Loading size="xl" css={{ padding: "$24" }} />
         </Grid.Container>
       )}
+      {isSearching && (
+        <>
+          <p>Searching for content</p>
+          <Loading />
+        </>
+      )}
       <div>
         {addr && !isLoading && !isSearching && (
-          <ArProfile addr={addr}  />
-        )}
+          <Container className="gradient-border" style={{ padding: "5px" }}>
+            {addr && (
+              <Row>
+                <Col align="center">
+                  <h3>ANS Profile:</h3>
 
-        {isSearching && ( 
-          <>
-            <p>Searching for content</p>
-            <Loading />
-          </>
+                  {addr && <ArProfile addr={addr} forDashboard={false} />}
+                </Col>
+                <Col align="center">
+                  <h3>ArkProfile:</h3>
+                  {addr && userContent?.ANS && !isLoading ? (
+                    <ANSdisplay content={userContent.ANS} />
+                  ) : addr && !isLoading ? (
+                    <UseAns addr={addr} />
+                  ) : (
+                    <Loading />
+                  )}
+                </Col>
+              </Row>
+            )}
+          </Container>
         )}
-
-        {addr && userContent && !isSearching 
-          ? (<ANSdisplay content={userContent.ANS} />) 
-          : addr && !isSearching 
-          ? (<UseAns addr={addr} />) 
-          : null
-        }
 
         {addr && userContent?.POAPS && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />
+          <ProfileContentContainer
+            contentObjects={userContent.POAPS}
+            contentType={"POAPS"}
+            label="POAPS"
+          />
         )}
 
         {addr && userContent?.STAMPS && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.STAMPS} contentType={"STAMPS"} label="STAMPS" />
+          <ProfileContentContainer
+            contentObjects={userContent.STAMPS}
+            contentType={"STAMPS"}
+            label="STAMPS"
+          />
         )}
 
         {addr && userContent?.ANFTS?.permapages_img && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img"/>
+          <ProfileContentContainer
+            contentObjects={userContent.ANFTS.permapages_img}
+            contentType={"permapages_img"}
+            label="permapages_img"
+          />
         )}
 
         {addr && userContent?.ANFTS?.koii && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii"/>
+          <ProfileContentContainer
+            contentObjects={userContent.ANFTS.koii}
+            contentType={"aNFTs"}
+            label="koii"
+          />
         )}
 
         {addr && userContent?.ERC_NFTS && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS"/>
+          <ProfileContentContainer
+            contentObjects={userContent.ERC_NFTS}
+            contentType={"ERC_NFTS"}
+            label="ERC_NFTS"
+          />
         )}
       </div>
     </>
