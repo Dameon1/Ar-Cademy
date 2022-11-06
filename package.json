@@ -1,8 +1,8 @@
 {
   "homepage": "https://www.dameonmendoza.com/Ar-Cademy/",
   "name": "ar-cademy",
-  "version": "4.0.01",
-  "private": true,
+  "version": "4.0.02",
+  "private": false,
   "dependencies": {
     "@bundlr-network/client": "^0.5.16",
     "@emotion/react": "^11.10.4",
