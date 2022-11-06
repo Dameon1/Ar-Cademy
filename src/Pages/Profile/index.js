@@ -9,8 +9,8 @@ import UseAns from "src/components/ANSForAll";
 import "./profile.css";
 import { Card } from "../../components/Cards";
 import { ethers } from "ethers";
-import ArweaveAccount from "src/components/ArweaveAccount";
-import {Grid, Loading} from "@nextui-org/react";
+import ArProfile from "src/components/ArProfile";
+import { Grid, Loading, Container, Row, Col } from "@nextui-org/react";
 
 export default function Profile() {
   // let profileId = new URL(window.location.href).pathname.split("/")[-1];
@@ -55,17 +55,6 @@ export default function Profile() {
       }
     })();
   }, [addr]);
-  // let cards = videoObjects.map((content) => {
-  //   return (
-  //     <Link
-  //       key={content.uid}
-  //       to={`/playground/${content.uid}`}
-  //       className="cardLinks"
-  //     >
-  //       <Card content={content} />
-  //     </Link>
-  //   );
-  // });
 
   return (
     <>
@@ -80,43 +69,72 @@ export default function Profile() {
           <div className="hs">{cards}</div>
         </div>
       </div> */}
-      <div className="">
-        {addr && !isLoading && !isSearching && (
-          <ArweaveAccount addr={addr}/>
-        )}
 
-        {isLoading && ( 
+      <div className="">
+        {isLoading && (
           <>
             <p>Searching for content</p>
             <Loading />
           </>
         )}
+        <Container
+          className="gradient-border"
+          style={{ padding: "5px", maxWidth: "640px" }}
+        >
+          <Row>
+            <Col align="center">
+              {addr && !isLoading && !isSearching && <ArProfile addr={addr} />}
+            </Col>
+            <Col align="center">
+              {addr && userContent && !isSearching ? (
+                <ANSdisplay content={userContent} />
+              ) : addr && !isSearching ? (
+                <UseAns addr={addr} />
+              ) : null}
+            </Col>
+          </Row>
+        </Container>
 
-        {addr && userContent && !isSearching 
-          ? (<ANSdisplay content={userContent.ANS} />) 
-          : addr && !isSearching 
-          ? (<UseAns addr={addr} />) 
-          : null
-        }
+        {console.log(userContent)}
 
         {addr && userContent && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.POAPS} contentType={"POAPS"} label="POAPS" />
+          <ProfileContentContainer
+            contentObjects={userContent.POAPS}
+            contentType={"POAPS"}
+            label="POAPS"
+          />
         )}
 
         {addr && userContent && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.STAMPS} contentType={"STAMPS"} label="STAMPS" />
+          <ProfileContentContainer
+            contentObjects={userContent.STAMPS}
+            contentType={"STAMPS"}
+            label="STAMPS"
+          />
         )}
 
         {addr && userContent && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.ANFTS.permapages_img} contentType={"permapages_img"} label="permapages_img"/>
+          <ProfileContentContainer
+            contentObjects={userContent.ANFTS.permapages_img}
+            contentType={"permapages_img"}
+            label="permapages_img"
+          />
         )}
 
         {addr && userContent && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.ANFTS.koii} contentType={"aNFTs"} label="koii"/>
+          <ProfileContentContainer
+            contentObjects={userContent.ANFTS.koii}
+            contentType={"aNFTs"}
+            label="koii"
+          />
         )}
 
         {addr && userContent && !isSearching && (
-          <ProfileContentContainer contentObjects={userContent.ERC_NFTS} contentType={"ERC_NFTS"} label="ERC_NFTS"/>
+          <ProfileContentContainer
+            contentObjects={userContent.ERC_NFTS}
+            contentType={"ERC_NFTS"}
+            label="ERC_NFTS"
+          />
         )}
       </div>
     </>

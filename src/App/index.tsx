@@ -11,9 +11,6 @@ import { T_walletName } from '../utils/types';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AMW } from '../utils/api';
 
-
-
-
 function App() {
 
   const mq = window.matchMedia('(prefers-color-scheme: light)');

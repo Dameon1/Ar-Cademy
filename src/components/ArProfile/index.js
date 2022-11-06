@@ -211,9 +211,7 @@ function ArProfile(props) {
             <>
               <div
                 style={{
-                  fontSize: "xx-large",
                   textAlign: "center",
-                  padding: "70px",
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "column",
@@ -223,28 +221,14 @@ function ArProfile(props) {
                   {` No Account Found `}
                   {` 🙂`}
                 </div>
-
-                {/* <Link to="/upload" className="textNoDec nav-link">
-                  <Button
-                    auto
-                    className="nav-link identity-link"
-                    css={{ marginTop: "30px" }}
-                    iconRight={<AiOutlineUpload size={18} />}
-                    color="success"
-                  >
-                    Create
-                  </Button>
-                </Link> */}
+                <Spacer y={1}/>
                 <Button
                   auto
                   className="nav-link identity-link buttonText"
                   iconRight={<AiOutlineUpload size={18} />}
                   onClick={() => setModalIsOpen(true)}
-                  color="success"
-                  size="xl"
-                  css={{ marginTop: "30px" }}
                 >
-                  Activate my Account
+                  Create and ArProfile
                 </Button>
               </div>
             </>
