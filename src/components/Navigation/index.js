@@ -10,16 +10,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "../ThemeSwitch";
 import MainContext from "src/context";
-import image from "../../assets/favicon.ico";
+import image from "../../favicon.ico";
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 
 export default function Navigation() {
-  const { addr, disconnectWallet } = useContext(MainContext);
-  const [userData, setUserData] = useState();
+  const { addr, disconnectWallet, userData } = useContext(MainContext);
+  const [userBalances, setUserBalances] = useState();
+  const [avatar, setAvatar] = useState(image);
   const navigate = useNavigate();
+
+  // let { ANS, ARK, ArProfile } = userData;
+  // console.log("HEADER ACCESS TO",ANS,ARK,ArProfile)
   const collapseItems = [
-    { value: "Home", page: "/" },
+    { value: "Home", page: "." },
     { value: "Dashboard", page: "Dashboard" },
     { value: "Search", page: "AccountViewer" },
     { value: "Testpage", page: "Testpage" },
@@ -28,22 +32,39 @@ export default function Navigation() {
   useEffect(() => {
     (async () => {
       try {
-        if (!addr) return;
-        let user = {};
-        user.bar = await myBar(addr);
-        user.stamp = await myRewards(addr);
-        user.code = await myCode(addr);
-        setUserData(user);
+        console.log("Reload Triggered:", addr, userData);
+        setAvatar(image);
+        setUserBalances(null)
+        if (userData) {
+          let user = {};
+          console.log("getting bar");
+          user.bar = await myBar(addr);
+          console.log("getting rewards");
+          user.stamp = await myRewards(addr);
+          console.log("getting code");
+          user.code = await myCode(addr);
+          console.log(userData);
+          if (userData !== null) {
+            let { ANS, ARK, ArProfile } = userData;
+            ARK?.ANS?.avatar
+              ? setAvatar(`https://arweave.net/${ARK.ANS.avatar}`)
+              : ANS?.avatar
+              ? setAvatar(`https://arweave.net/${ANS.avatar}`)
+              : ArProfile?.avatar
+              ? setAvatar(`https://arweave.net/${ArProfile.avatar}`)
+              : setAvatar(image);
+          }
+          console.log("loading balances and avatar1", userData);
+          setUserBalances(user);
+        }
+        console.log("loading balances and avatar2", userData);
       } catch (error) {
         console.log(error);
       } finally {
+        console.log("done");
       }
     })();
-  }, [addr]);
-
-  function actionHandler(key) {
-    console.log(key);
-  }
+  }, [addr, userData]);
 
   return (
     <Navbar
@@ -70,10 +91,10 @@ export default function Navigation() {
         ))}
       </Navbar.Collapse>
       <Navbar.Content hideIn="sm" variant="highlight" justify="flex-end">
-        <Link to="." className="navigationLinks">
-          <Image src={image} />
+        <Link to="/" className="navigationLinks">
+          <img src={image} alt="Winston" />
         </Link>
-        <Link to="/Dashboard" className="navigationLinks" onClick={() => navigate("/Dashboard")}>
+        <Link to="/Dashboard" className="navigationLinks">
           Dashboard
         </Link>
         <Link to="/AccountViewer" className="navigationLinks">
@@ -107,13 +128,7 @@ export default function Navigation() {
         <Navbar.Item>
           <Dropdown placement="bottom-right">
             <Dropdown.Trigger>
-              <Avatar
-                bordered
-                as="button"
-                color="warning"
-                size="md"
-                src={addr ? null : image}
-              />
+              <Avatar bordered size="xl" src={avatar ? avatar : null} />
             </Dropdown.Trigger>
 
             <Dropdown.Menu aria-label="User menu actions" color="secondary">
@@ -144,28 +159,28 @@ export default function Navigation() {
                 )}
               </Dropdown.Item>
 
-              {addr && userData && (
+              {addr && userBalances && (
                 <Dropdown.Item key="balances" withDivider textValue="balances">
                   BALANCES
                 </Dropdown.Item>
               )}
-              {addr && userData && (
+              {addr && userBalances && (
                 <Dropdown.Item key="$bAR" withDivider textValue="number of Bar">
-                  $bAR: {Number(atomicToBar(userData.bar)).toFixed(2)}
+                  $bAR: {Number(atomicToBar(userBalances.bar)).toFixed(2)}
                 </Dropdown.Item>
               )}
-              {addr && userData && (
+              {addr && userBalances && (
                 <Dropdown.Item key="$code" textValue="number of Code">
-                  $Code: {userData.code}
+                  $Code: {userBalances.code}
                 </Dropdown.Item>
               )}
-              {addr && userData && (
+              {addr && userBalances && (
                 <Dropdown.Item key="$Stamp" textValue="number of Stamp">
-                  $Stamp: {Number(atomicToStamp(userData.stamp)).toFixed(2)}
+                  $Stamp: {Number(atomicToStamp(userBalances.stamp)).toFixed(2)}
                 </Dropdown.Item>
               )}
 
-              {addr && userData && (
+              {addr && userBalances && (
                 <Dropdown.Item
                   key="logout"
                   withDivider

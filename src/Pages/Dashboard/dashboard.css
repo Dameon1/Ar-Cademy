@@ -50,22 +50,7 @@
   margin: -2px;
 }
 
-.hs {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-rows: minmax(150px, 1fr);
-  grid-auto-flow: column;
-  overflow-x: scroll;
-  scroll-snap-type: x proximity;
-}
 
-.hs>li:last-child {
-  margin-right: 20px;
-}
-
-.hs::-webkit-scrollbar {
-  display: none;
-}
 
 .smallContentBox {
   -webkit-box-flex: 1;

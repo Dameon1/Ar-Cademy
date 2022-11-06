@@ -1,19 +1,15 @@
 import { ethers } from "ethers";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import MainContext from "../../context";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import "./accountViewer.css";
-import ArweaveAccount from "src/components/ArweaveAccount";
 import UseAns from "src/components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
-import { Grid, Loading, Container, Row, Col } from "@nextui-org/react";
-import UserProfile from "src/components//UserProfile/UserProfile";
+import { Grid, Loading, Container, Row, Col, Input, Spacer } from "@nextui-org/react";
 import ArProfile from "src/components/ArProfile";
 
 export function AccountViewer() {
-  const { walletName, disconnectWallet } = useContext(MainContext);
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [addr, setAddr] = useState("");
@@ -102,18 +98,13 @@ export function AccountViewer() {
           *Not all users have content to display or have created an account on
           the various network calls that are made here.--
         </p>
-        <div className="">
           <p>Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE</p>
-        </div>
         <form onSubmit={onSubmit}>
           <label aria-labelledby="input"></label>
-          <input
-            placeholder="Enter address"
+          <Input clearable placeholder="Enter address"
             onChange={handleInput}
-            required
-            maxLength="44"
-            size="48"
-          />
+            required />
+            <Spacer y={1}/>
           <button type="submit">search</button>
           <p>Current Addr: {addr}</p>
         </form>
@@ -137,8 +128,7 @@ export function AccountViewer() {
             {addr && (
               <Row>
                 <Col align="center">
-                  <h3>ANS Profile:</h3>
-
+                  <h3>ArProfile:</h3>
                   {addr && <ArProfile addr={addr} forDashboard={false} />}
                 </Col>
                 <Col align="center">

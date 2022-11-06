@@ -19,84 +19,111 @@ import {
 import { AiOutlineUpload } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import ArProfile from "src/components/ArProfile";
+import Account from "arweave-account";
 
 export function Dashboard() {
-  const { addr } = useContext(MainContext);
+  const { addr, userData, setUserData } = useContext(MainContext);
+
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
   useEffect(() => {
     setIsLoading(true);
     if (addr) {
       async function update() {
-        let user;
+        //create user
+        let user = {};
+
+        //fetch ArProfile
+        const account = new Account();
+        user.ArProfile = await account.get(addr);
+
+        //fetch Ark profile on Arweave
         const arArk = await fetch(
           `https://ark-api.decent.land/v1/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
+        console.log(ark);
+        //fetch Ark profile if no Arweave account
         if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
             let checksumAddress = ethers.utils.getAddress(addr);
             const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
             const ethArk = await fetch(ethString);
             const evmArk = await ethArk.json();
-            user = evmArk.res;
+            if (evmArk) {
+              console.log("testing1");
+              user.ARK = evmArk.res;
+              console.log("testing2");
+              user.ANS = evmArk.res.ANS;
+            }
+            console.log("testing3");
+            console.log(user.ANS);
           }
         } else {
-          user = ark.res;
+          console.log("testing4");
+          user.ARK = ark.res;
+          console.log("testing5");
+          user.ANS = ark.res.ANS;
         }
+
+        //fetch ANS Data
+
+        setUserData(user);
         setUserContent(user);
         setIsLoading(false);
       }
       update();
     }
-  }, [addr]);
+  }, [addr, setUserData]);
 
   return (
     <div className="">
       <div className="text-container">
         <h2>Identity needs Security</h2>
         <p className="site-introduction">
-          Identity is a topic that Arweave is looking to solve in multiple different ways. As our connection to the world grows,
-          we need to be able to connect with the people and communities that we are connected to, with the Identity that we are
-          comfortable with. Some of these are security risks to personal safety, privacy, and trust.
+          Identity is a topic that Arweave is looking to solve in multiple
+          different ways. As our connection to the world grows, we need to be
+          able to connect with the people and communities that we are connected
+          to, with the Identity that we are comfortable with. Some of these are
+          security risks to personal safety, privacy, and trust.
         </p>
       </div>
       <Spacer y={1} />
       {addr && (
-        <Row>
-          <Col>
-            <h4>Arweave Profile</h4>
-          </Col>
-          <Col>
-            <Button
-              className="nav-link identity-link "
-              onClick={() => navigate("/upload")}
-              iconRight={<AiOutlineUpload size={18} />}
-            >
-              Create
-            </Button>
-          </Col>
+        <Row align="center" justify="center">
+          <Button
+            className="nav-link identity-link buttonText"
+            onClick={() => navigate("/upload")}
+            iconRight={<AiOutlineUpload size={18} />}
+          >
+            Create
+          </Button>
         </Row>
       )}
       <Spacer y={1} />
       {/*Create New ArProfile Component  */}
-      <Container className="gradient-border" style={{ padding: "5px" }}>
+      <Container
+        className="gradient-border"
+        style={{ padding: "5px", maxWidth: "640px" }}
+      >
         {!addr && <Login />}
         {addr && (
           <Row>
             <Col align="center">
-              <h3>ANS Profile:</h3>
-
+              <h3>ArProfile:</h3>
               {addr && <ArProfile addr={addr} forDashboard={true} />}
             </Col>
             <Col align="center">
-              <h3>ArkProfile:</h3>
-              {addr && userContent?.ANS && !isLoading ? (
-                <ANSdisplay content={userContent.ANS} />
+              <h3>ANS Profile:</h3>
+              {addr && userContent?.ARK?.ANS && !isLoading ? (
+                <ANSdisplay content={userContent.ARK} />
               ) : addr && !isLoading ? (
                 <UseAns addr={addr} />
-              ) : <Loading />}
+              ) : (
+                <Loading />
+              )}
             </Col>
           </Row>
         )}
@@ -109,39 +136,39 @@ export function Dashboard() {
         </>
       )}
 
-      {addr && userContent?.POAPS && !isLoading && (
+      {addr && userContent.ARK?.POAPS && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.POAPS}
+          contentObjects={userContent.ARK.POAPS}
           contentType={"POAPS"}
           label="POAPS"
         />
       )}
 
-      {addr && userContent?.STAMPS && !isLoading && (
+      {addr && userContent?.ARK?.STAMPS && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.STAMPS}
+          contentObjects={userContent.ARK.STAMPS}
           contentType={"STAMPS"}
           label="STAMPS"
         />
       )}
 
-      {addr && userContent?.ANFTS?.permapages_img && !isLoading && (
+      {addr && userContent?.ARK?.ANFTS?.permapages_img && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ANFTS.permapages_img}
+          contentObjects={userContent.ARK.ANFTS.permapages_img}
           contentType={"permapages_img"}
           label="permapages_img"
         />
       )}
-      {addr && userContent?.ANFTS?.koii && !isLoading && (
+      {addr && userContent?.ARK?.ANFTS?.koii && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ANFTS.koii}
+          contentObjects={userContent.ARK.ANFTS.koii}
           contentType={"aNFTs"}
           label="koii"
         />
       )}
-      {addr && userContent?.ERC_NFTS && !isLoading && (
+      {addr && userContent?.ARK?.ERC_NFTS && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ERC_NFTS}
+          contentObjects={userContent.ARK.ERC_NFTS}
           contentType={"ERC_NFTS"}
           label="ERC_NFTS"
         />

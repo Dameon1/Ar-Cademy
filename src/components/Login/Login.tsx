@@ -1,5 +1,4 @@
 // This file is for Arcademy identity
-//
 
 import { useContext } from "react";
 import useArConnect from "use-arconnect";
@@ -30,10 +29,8 @@ function Login({ onClick }: { onClick?: () => void }) {
   } = useContext(MainContext);
   const arConnect = useArConnect();
 
-  const disconnectWallet = async () => {
-    await AMW.disconnect();
-    setAddr(null);
-  };
+
+ 
 
   const login = {
     arconnect: async () => {

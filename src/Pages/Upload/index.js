@@ -26,7 +26,7 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 
 import {} from "@nextui-org/react";
 
-import image from "../../assets/favicon.ico";
+import image from "../../favicon.ico";
 
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },
@@ -353,13 +353,13 @@ export default function Upload() {
               <Row justify="center" align="center">
                 <Col className="form-control">
                   <Dropdown>
-                    <Dropdown.Button>{toProperCase(currency)}</Dropdown.Button>
+                    <Dropdown.Button className="buttonText">{toProperCase(currency)}</Dropdown.Button>
                     <Dropdown.Menu
                       onAction={(key) => handleCurrencyChange(key)}
                     >
                       {Object.keys(currencyMap).map((v) => {
                         return (
-                          <Dropdown.Item key={v}>
+                          <Dropdown.Item key={v} className="buttonText">
                             {toProperCase(v)}
                           </Dropdown.Item>
                         );
@@ -370,6 +370,7 @@ export default function Upload() {
                 <Col>
                   <Button
                     disabled={currency === defaultCurrency}
+                    className="buttonText"
                     onPress={
                       bundlrInstance
                         ? () => clean()
@@ -401,9 +402,9 @@ export default function Upload() {
                   <></>
                 ) : (
                   <Col>
-                    <Image
+                    <img
                       src={image}
-                      alt="Default Image"
+                      alt="Winston"
                       objectFit="cover"
                       width={160}
                       height={160}
@@ -434,6 +435,7 @@ export default function Upload() {
                   <Button
                     onPress={() => handleFileClick("image")}
                     aria-label="Select Image"
+                    className="buttonText"
                   >
                     Select Image
                   </Button>
@@ -442,6 +444,7 @@ export default function Upload() {
                   <Button
                     onPress={() => handleFileClick("video")}
                     aria-label="Select Video"
+                    className="buttonText"
                   >
                     Select Video
                   </Button>
@@ -500,13 +503,13 @@ export default function Upload() {
                   gap={1}
                 >
                   <Dropdown>
-                    <Dropdown.Button>
+                    <Dropdown.Button className="buttonText">
                       {topics ? toProperCase(topics) : "Add a Tag"}
                     </Dropdown.Button>
                     <Dropdown.Menu onAction={(key) => setTopics(key)}>
                       {tagSelectOptions.map((v) => {
                         return (
-                          <Dropdown.Item key={v.value}>
+                          <Dropdown.Item key={v.value} className="buttonText">
                             {toProperCase(v.value)}
                           </Dropdown.Item>
                         );
@@ -516,7 +519,7 @@ export default function Upload() {
                 </Row>
                 <Spacer y={1} />
                 <Row justify="center" align="center" gap={1}>
-                  <Button onPress={doDeploy}>DEPLOY ATOMIC VIDEO</Button>
+                  <Button onPress={doDeploy} className="buttonText">DEPLOY ATOMIC VIDEO</Button>
                 </Row>
               </div>
             </div>

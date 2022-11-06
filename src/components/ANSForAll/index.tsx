@@ -48,7 +48,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
 
 
   return (
-    <div className='gradient-border' style={{ padding: '5px' }}>{
+    <div>{
       isLoading
       ? <Grid.Container gap={1} justify="center">
         <Loading size="xl" css={{ padding: '$24' }} color="success" />
@@ -60,7 +60,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }: {ARK:string, addr: 
         </Grid.Container>
         <Spacer y={2} />
         <Grid.Container gap={1} justify="center">
-          <Button color="secondary" onClick={disconnectWallet} className="identity-link" >Retry</Button>
+          <Button color="secondary" onClick={disconnectWallet} className="identity-link buttonText" >Retry</Button>
         </Grid.Container>
         <Spacer y={3} />
       </>

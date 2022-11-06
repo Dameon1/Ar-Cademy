@@ -1,13 +1,8 @@
 import { useState,useRef } from 'react'
-//import { MainContext } from '../context'
-//import { useRouter } from 'next/router'
-//import { css } from '@emotion/css'
 import BigNumber from 'bignumber.js'
 import Select from 'react-select'
-//import '../styles/globals.css'
 import { WebBundlr } from "@bundlr-network/client"
 import { providers, utils } from 'ethers'
-//import { css } from '@emotion/css'
 import { useNavigate } from "react-router-dom"
 
 const APP_NAME = "Ar-Cademy";

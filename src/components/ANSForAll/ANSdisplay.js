@@ -1,121 +1,218 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { FaTwitter, FaGithub, FaGlobe } from "react-icons/fa";
-import { Button, Grid, Loading, Text, Spacer } from "@nextui-org/react";
-
+import {
+  Button,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Image,
+  Row,
+  Col,
+  Tooltip,
+  Link,
+} from "@nextui-org/react";
+import { icons } from "../../static";
 import {
   AvatarS,
   Bio,
-  BoxVertoID,
-  DetailsS,
-  Name,
-  UserAddr,
-  UserSocial,
-  VertoIDinfo,
+ 
 } from "../../static/styles/Profile";
 
-import {
-  T_addr,
-  T_profile,
-  T_walletName,
-  T_txid,
-  T_ansProfile,
-} from "../../utils/types";
-import Account from "arweave-account";
+import MainContext from "../../context";
+
+
 
 function ANSdisplay(props) {
-  const [ansProfile, setAnsProfile] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasFailed, setHasFailed] = useState(false);
-  const [hasAccount, setHasAccount] = useState(false);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       setAnsProfile(content);
-  //     } catch (e) {
-  //       setHasFailed(JSON.stringify(e));
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   })();
-  // }, [content]);
+  console.log(props)
+  const { theme } = useContext(MainContext);
+  const lensLabel = props.content.LENS_HANDLES[0]?.replace("@", "")
 
   return (
     <div style={{ padding: "5px" }}>
       <AvatarS
-        src={`https://arweave.net/${props.content.avatar}`}
+        src={`https://arweave.net/${props.content.ANS.avatar}`}
         sx={{ width: 100, height: 100 }}
       />
-      <>
-        {props.content.currentLabel && <h2>{props.content.currentLabel}</h2>}
+      
+        {props.content.ANS.currentLabel && <h2>{props.content.ANS.currentLabel}</h2>}
+        
+        <Bio>{props.content.ANS.bio}</Bio>
+        <Row wrap="wrap" align="center" justify="space-around">
+          {props.content.ANS.links.twitter && (
+            <>
+              <Tooltip content={`${props.content.ANS.links.twitter}`}>
+                <Link
+                  href={`https://twitter.com/${props.content.ANS.links.twitter}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaTwitter
+                    className="socialImageLinks"
+                    size={25}
+                    aria-hidden="true"
+                  />
+                </Link>
+              </Tooltip>
+            </>
+          )}
 
-        <>
-          <Bio>{props.content.bio}</Bio>
-          {props.content.links.twitter && (
-            <UserSocial
-              href={`https://twitter.com/${props.content.links.twitter}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaTwitter size={25} />
-            </UserSocial>
+          {props.content.ANS.links.github && (
+            <Tooltip content={`${props.content.ANS.links.github}`}>
+              <Link
+                href={`https://github.com/${props.content.ANS.links.github}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-hidden="true"
+              >
+                <FaGithub
+                  href={`https://github.com/${props.content.ANS.links.github}`}
+                  size={25}
+                  className="socialImageLinks"
+                />
+              </Link>
+            </Tooltip>
           )}
-          {props.content.links.github && (
-            <UserSocial
-              href={`https://github.com/${props.content.links.github}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub size={25} />
-            </UserSocial>
+          {props.content.ANS.links.customUrl && (
+            <Tooltip content={`${props.content.ANS.links.customUrl}`}>
+              <Link
+                href={`${props.content.ANS.links.customUrl}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-hidden="true"
+              >
+                <FaGlobe
+                  className="socialImageLinks"
+                  size={25}
+                />
+              </Link>
+            </Tooltip>
           )}
-          {props.content.links.customUrl && (
-            <UserSocial
-              href={`${props.content.links.customUrl}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGlobe size={25} />
-            </UserSocial>
+        </Row>
+        <Spacer y={1} />
+        <Row wrap="wrap" align="center" justify="space-around">
+        {props.content.LENS_HANDLES && (
+            <Tooltip content={`${lensLabel}`}>
+              <Link
+                href={`https://lenster.xyz/u/${lensLabel}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-hidden="true"
+              >
+                <img
+                  height={30}
+                  width={30}
+                  className="socialImageLinks"
+                  src="https://raw.githubusercontent.com/lens-protocol/brand-kit/main/Logo/SVG/LENS%20LOGO_%20copy_Icon%20Only.svg"
+                  alt="Lens logo"
+                />
+              </Link>
+            </Tooltip>
           )}
-          {props.content.links.customUrl && (
-            <UserSocial
-              href={`${props.content.links.customUrl}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGlobe size={25} />
-            </UserSocial>
+           {props.content.ANS.currentLabel && (
+            <Tooltip content={`${props.content.ANS.currentLabel}`}>
+              <Link
+                href={`https://${props.content.ANS.currentLabel}.ar.page`}
+                target="_blank"
+              >
+                <img
+                  width={30}
+                  height={30}
+                  className="socialImageLinks"
+                  src={
+                    !theme
+                      ? icons.arweaveWebWallet.light
+                      : icons.arweaveWebWallet.dark
+                  }
+                  alt="Arweave logo"
+                  quality={50}
+                />
+              </Link>
+            </Tooltip>
           )}
-          {props.content.links.customUrl && (
-            <UserSocial
-              href={`${props.content.links.customUrl}`}
+           {props.content.ENS && (
+            <Tooltip content={`${props.content.ENS}`}>
+            <Link
+              href={`https://etherscan.io/enslookup-search?search=${props.content.ENS}`}
               target="_blank"
-              rel="noreferrer"
             >
-              <FaGlobe size={25} />
-            </UserSocial>
+              <img
+                height={30}
+                width={30}
+                src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=002"
+                alt="Eth logo"
+                quality={50}
+              />
+             </Link>
+            </Tooltip>
           )}
-          {props.content.links.customUrl && (
-            <UserSocial
-              href={`${props.content.links.customUrl}`}
+        </Row>
+        {/* <Row wrap="wrap" align="center" justify="space-around">
+          {props.ANS.content.links.customUrl && (
+            <Tooltip content={`${props.ANS.content.links.LENS}`}>
+              <Link
+                href={`https://lenster.xyz/u/${props.ANS.content.links.LENS}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-hidden="true"
+              >
+                <img
+                  height={30}
+                  width={30}
+                  className="socialImageLinks"
+                  src="https://raw.githubusercontent.com/lens-protocol/brand-kit/main/Logo/SVG/LENS%20LOGO_%20copy_Icon%20Only.svg"
+                  alt="Lens logo"
+                />
+              </Link>
+            </Tooltip>
+          )}
+          {props.ANS.content.links.customUrl && (
+            <Tooltip content={`${props.ANS.content.links.twitter}`}>
+              <Link
+                href={`https://twitter.com/${props.ANS.content.links.twitter}`}
+                target="_blank"
+              >
+                <img
+                  width={30}
+                  height={30}
+                  className="socialImageLinks"
+                  src={
+                    !theme
+                      ? icons.arweaveWebWallet.light
+                      : icons.arweaveWebWallet.dark
+                  }
+                  alt="Arweave logo"
+                  quality={50}
+                />
+              </Link>
+            </Tooltip>
+          )}
+          {props.ANS.content.links.customUrl && (
+            <Tooltip content={`${props.ANS.content.links.twitter}`}>
+            <Link
+              href={`https://twitter.com/${props.ANS.content.links.twitter}`}
               target="_blank"
-              rel="noreferrer"
             >
-              <FaGlobe size={25} />
-            </UserSocial>
+              <img
+                height={30}
+                width={30}
+                src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=002"
+                alt="Eth logo"
+                quality={50}
+              />
+             </Link>
+            </Tooltip>
           )}
-        </>
-      </>
+        </Row> */}
       <Spacer y={1} />
       <a
-        href={`https://${props.content.currentLabel}.ar.page`}
+        href={`https://${props.content.ANS.currentLabel}.ar.page`}
         target="_blank"
         rel="noreferrer"
         className="textNoDec"
       >
-        <Button className="identity-link ">
-          <p >{props.content.currentLabel}.ar.page</p>
+        <Button className="identity-link buttonText">
+          <p>{props.content.ANS.currentLabel}.ar.page</p>
         </Button>
       </a>
     </div>

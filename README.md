@@ -14,11 +14,11 @@
   - [here](https://arweave.net/cMPDTzxFy311wPT1LI2DDULQf1Ed8PFlqLQaiDiLjQ0)
 
   ## V4
-  - [https://arweave.net/2LXqBORyAjIo4cz-MXBkIZC2RmFPGMq4nLZp0rgksMw](https://arweave.net/2LXqBORyAjIo4cz-MXBkIZC2RmFPGMq4nLZp0rgksMw) 
+  - [https://arweave.net/tW-_DB-W6xkvxhkD-98otWFi32FikSe_DY8hC_czlwk](https://arweave.net/tW-_DB-W6xkvxhkD-98otWFi32FikSe_DY8hC_czlwk) 
 
 ## Instructions
 
-  - In the playground you have a video and have an coding editor presented to you.
+  - In the playground, you have a video and a playground of tabs to further explain.
 
   - The video will not automatically start. Once started, it will retain your place in the video if you happen to
     leave and come back.
@@ -29,13 +29,13 @@
 
      2.The editor to work in. 
 
-     3.A browser like windwow that has a play button and 2 tabs. 
+     3.A browser like window that has a play button and 2 tabs. 
 
   - Access the file tree by clicking the page icon located on the left. 
 
   - Clicking on the editor will allow you to add to the code.
 
-  - Clicking the play button will run the editor and display the beautiful codework you did. 
+  - Clicking the play button will run the editor and display the beautiful code work you did. 
 
   *HAPPY CODING
 

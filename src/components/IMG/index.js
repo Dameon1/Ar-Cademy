@@ -439,7 +439,7 @@ export default function IMG() {
                   <Col justify="center" align="center">
                     <Button
                       onClick={handleFileClick}
-                      aria-label="Static Actions"
+                      aria-label="Select file"
                     >
                       Select file from Device
                     </Button>
@@ -451,7 +451,7 @@ export default function IMG() {
                         <Button
                           aria-label="Reset"
                           onClick={() => setFiles([])}
-                          className="link"
+                          className="link buttonText"
                         >
                           clear
                         </Button>

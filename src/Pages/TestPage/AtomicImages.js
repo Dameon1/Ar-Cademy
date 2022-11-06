@@ -1,7 +1,7 @@
 import { Card, Grid, Row, Text, Col, Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
-import fallbackImage from "../../assets/favicon.ico";
+import fallbackImage from "../../favicon.ico";
 
 export default function AtomicImages(props) {
   return (

@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUpload } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import {
@@ -8,6 +7,7 @@ import {
   FaFacebook,
   FaGithub,
   FaDiscord,
+  FaGlobe,
 } from "react-icons/fa";
 import {
   Button,
@@ -17,6 +17,8 @@ import {
   Spacer,
   Row,
   Col,
+  Link,
+  Tooltip,
 } from "@nextui-org/react";
 import MainContext from "../../context";
 
@@ -46,7 +48,6 @@ function ArProfile(props) {
       try {
         const account = new Account();
         const user = await account.get(props.addr);
-        console.log("addr:", user);
         if (user) {
           setProfileData(user.profile);
         }
@@ -72,7 +73,7 @@ function ArProfile(props) {
           </Grid.Container>
           <Spacer y={2} />
           <Grid.Container gap={1} justify="center">
-            <Button className="identity-link">Retry</Button>
+            <Button className="identity-link buttonText">Retry</Button>
           </Grid.Container>
           <Spacer y={3} />
         </>
@@ -89,6 +90,7 @@ function ArProfile(props) {
             <>
               <Row align="center">
                 <Col align="center">
+                  
                   {profileData.avatar ? (
                     <AvatarS
                       src={`https://arweave.net/${profileData.avatar}`}
@@ -107,56 +109,91 @@ function ArProfile(props) {
                       {props.addr.slice(-3)}
                     </AvatarS>
                   )}
-
                   {profileData.name && <Name>{profileData.name}</Name>}
                   <Bio>{profileData.bio}</Bio>
                 </Col>
               </Row>
-              <Spacer y={1} />
 
-              <div>
-                {profileData?.links?.twitter && (
-                  <UserSocial
-                    href={`https://twitter.com/${profileData.links.twitter}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaTwitter size={25} />
-                  </UserSocial>
-                )}
-                {profileData?.links?.github && (
-                  <UserSocial
-                    href={`https://github.com/${profileData.links.github}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaGithub size={25} />
-                  </UserSocial>
+              
+              <Row wrap="wrap" align="center" justify="space-around">
+                {profileData.links.twitter && (
+                  <Tooltip content={`${profileData.links.twitter}`}>
+                    <Link
+                      href={`https://twitter.com/${profileData.links.twitter}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaTwitter
+                        className="socialImageLinks"
+                        size={25}
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  </Tooltip>
                 )}
                 {profileData?.links?.instagram && (
-                  <UserSocial
-                    href={`https://instagram.com/${profileData.links.instagram}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaInstagram size={25} />
-                  </UserSocial>
+                  <Tooltip content={`${profileData.links.instagram}`}>
+                    <Link
+                      href={`https://instagram.com/${profileData.links.instagram}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaInstagram className="socialImageLinks" size={25} />
+                    </Link>
+                  </Tooltip>
                 )}
                 {profileData?.links?.facebook && (
-                  <UserSocial
-                    href={`https://facebook.com/${profileData.links.facebook}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaFacebook size={25} />
-                  </UserSocial>
+                  <Tooltip content={`${profileData.links.facebook}`}>
+                    <Link
+                      href={`https://facebook.com/${profileData.links.facebook}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaFacebook
+                        href={`https://facebook.com/${profileData.links.facebook}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="socialImageLinks"
+                        size={25}
+                      />
+                    </Link>
+                  </Tooltip>
+                )}
+                {profileData.links.github && (
+                  <Tooltip content={`${profileData.links.github}`}>
+                    <Link
+                      href={`https://github.com/${profileData.links.github}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-hidden="true"
+                    >
+                      <FaGithub
+                        href={`https://github.com/${profileData.links.github}`}
+                        size={25}
+                        className="socialImageLinks"
+                      />
+                    </Link>
+                  </Tooltip>
                 )}
                 {profileData?.links?.discord && (
-                  <span>
-                    <FaDiscord size={25} />
-                  </span>
+                  <Tooltip content={`${profileData.links.github}`}>
+                    <Link
+                      href={`https://github.com/${profileData.links.github}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-hidden="true"
+                    >
+                      <FaDiscord
+                        size={25}
+                        className="socialImageLinks"
+                        href={`https://facebook.com/${profileData.links.discord}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      />
+                    </Link>
+                  </Tooltip>
                 )}
-              </div>
+              </Row>
               <Spacer y={1} />
 
               {props.forDashboard && (
@@ -164,7 +201,7 @@ function ArProfile(props) {
                   auto
                   onClick={() => setModalIsOpen(true)}
                   iconRight={<FiEdit size={18} />}
-                  className="identity-link"
+                  className="identity-link buttonText"
                 >
                   Edit Profile
                 </Button>
@@ -200,7 +237,7 @@ function ArProfile(props) {
                 </Link> */}
                 <Button
                   auto
-                  className="nav-link identity-link"
+                  className="nav-link identity-link buttonText"
                   iconRight={<AiOutlineUpload size={18} />}
                   onClick={() => setModalIsOpen(true)}
                   color="success"
@@ -214,9 +251,6 @@ function ArProfile(props) {
           )}
         </>
       )}
-      {/* <Button auto className="nav-link identity-link" css={{ marginTop: '30px' }}  iconRight={<AiOutlineUpload size={18} />} color="success">
-              <Link to='/upload' className='textNoDec nav-link' >Create</Link>
-              </Button> */}
     </>
   );
 }

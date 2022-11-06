@@ -30,6 +30,7 @@ function App() {
 
   const disconnectWallet = async () => {
     await AMW.disconnect();
+    setUserData(null)
     setAddr(null);
   };
   
