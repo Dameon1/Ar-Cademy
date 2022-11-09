@@ -5,7 +5,7 @@ import Login from "src/components/Login/Login";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import { ethers } from "ethers";
 import UseAns from "src/components/ANSForAll";
-import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
+import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
 import {
   Button,
   Grid,
@@ -104,12 +104,13 @@ export function Dashboard() {
       )}
       <Spacer y={1} />
       {/*Create New ArProfile Component  */}
-      <Container
-        className="gradient-border"
-        style={{ padding: "5px", maxWidth: "640px" }}
-      >
-        {!addr && <Login />}
-        {addr && (
+
+      {!addr && <Login />}
+      {addr && (
+        <Container
+          className="gradient-border"
+          style={{ padding: "5px", maxWidth: "640px" }}
+        >
           <Row>
             <Col align="center">
               <h3>ArProfile:</h3>
@@ -118,7 +119,7 @@ export function Dashboard() {
             <Col align="center">
               <h3>ANS Profile:</h3>
               {addr && userContent?.ARK?.ANS && !isLoading ? (
-                <ANSdisplay content={userContent.ARK} />
+                <ARKdisplay content={userContent.ARK} />
               ) : addr && !isLoading ? (
                 <UseAns addr={addr} />
               ) : (
@@ -126,8 +127,8 @@ export function Dashboard() {
               )}
             </Col>
           </Row>
-        )}
-      </Container>
+        </Container>
+      )}
 
       {addr && isLoading && (
         <>

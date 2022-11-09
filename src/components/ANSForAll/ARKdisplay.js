@@ -23,7 +23,7 @@ import MainContext from "../../context";
 
 
 
-function ANSdisplay(props) {
+function ARKdisplay(props) {
   console.log(props)
   const { theme } = useContext(MainContext);
   const lensLabel = props.content.LENS_HANDLES[0]?.replace("@", "")
@@ -259,4 +259,4 @@ function ANSdisplay(props) {
   );
 }
 
-export default ANSdisplay;
+export default ARKdisplay;

@@ -4,7 +4,7 @@ import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
 import PassportCard from "../../components/PassportCard";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
-import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
+import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
 import UseAns from "src/components/ANSForAll";
 import "./profile.css";
 import { Card } from "../../components/Cards";
@@ -77,24 +77,25 @@ export default function Profile() {
             <Loading />
           </>
         )}
-        <Container
-          className="gradient-border"
-          style={{ padding: "5px", maxWidth: "640px" }}
-        >
-          <Row>
-            <Col align="center">
-              {addr && !isLoading && !isSearching && <ArProfile addr={addr} />}
-            </Col>
-            <Col align="center">
-              {addr && userContent && !isSearching ? (
-                <ANSdisplay content={userContent} />
-              ) : addr && !isSearching ? (
-                <UseAns addr={addr} />
-              ) : null}
-            </Col>
-          </Row>
-        </Container>
-
+        {addr && !isLoading && !isSearching && (
+          <Container
+            className="gradient-border"
+            style={{ padding: "5px", maxWidth: "640px" }}
+          >
+            <Row>
+              <Col align="center">
+                <ArProfile addr={addr} />
+              </Col>
+              <Col align="center">
+                {addr && userContent && !isSearching ? (
+                  <ARKdisplay content={userContent} />
+                ) : addr && !isSearching ? (
+                  <UseAns addr={addr} />
+                ) : null}
+              </Col>
+            </Row>
+          </Container>
+        )}
         {console.log(userContent)}
 
         {addr && userContent && !isSearching && (

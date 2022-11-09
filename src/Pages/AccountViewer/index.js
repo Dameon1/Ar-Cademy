@@ -5,7 +5,7 @@ import ProfileContentContainer from "src/components/ProfileContentContainer";
 import "./accountViewer.css";
 import UseAns from "src/components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
-import ANSdisplay from "src/components/ANSForAll/ANSdisplay";
+import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
 import { Grid, Loading, Container, Row, Col, Input, Spacer } from "@nextui-org/react";
 import ArProfile from "src/components/ArProfile";
 
@@ -134,7 +134,7 @@ export function AccountViewer() {
                 <Col align="center">
                   <h3>ArkProfile:</h3>
                   {addr && userContent?.ANS && !isLoading ? (
-                    <ANSdisplay content={userContent.ANS} />
+                    <ARKdisplay content={userContent.ANS} />
                   ) : addr && !isLoading ? (
                     <UseAns addr={addr} />
                   ) : (
