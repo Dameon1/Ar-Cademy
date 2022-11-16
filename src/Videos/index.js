@@ -2,7 +2,7 @@ export const Videos = {
     "1": {
         uid: "1",
         videoSrc: "https://arweave.net/xlraoyFTfk9l4RvaCJ86IYe51xeVEA-gI7KC2hTwh6o",
-        videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/FKdWW6vI_SU/1.jpg",
         videoTitle: "Arweave Build",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
         authorID: "8",
@@ -19,7 +19,7 @@ export const Videos = {
         uid: "2",
         repo: "https://github.com/koii-network/koii.X",
         videoSrc: "https://www.youtube.com/watch?v=PBJDM_ZY2WI",
-        videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/1.jpg",
         videoTitle: "React App with Koii",
         description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
         authorID: "2",
@@ -33,13 +33,14 @@ export const Videos = {
     "3": {
         author: "Spheron",
         uid: "3",
-        videoSrc: "https://www.youtube.com/watch?v=Ynfwggyl5rY",
-        videoImage: "https://img.youtube.com/vi/Ynfwggyl5rY/maxresdefault.jpg",
-        videoTitle: "Achieve Full Decentralization with ENS using Spheron!",
-        description: "Spheron makes deploying React apps easy with Koii and Arweave. This is a great way to get started with React and Arweave.",
+        videoSrc: "https://www.youtube.com/watch?v=8-I4m30gLZc",
+        videoImage: "https://img.youtube.com/vi/8-I4m30gLZc/1.jpg",
+        videoTitle: "How to deploy using Spheron in just 3 minutes!",
+        description: "This is a Spheron Documentation tutorial, where we walk you through deploying on Spheron in just 3 mins! ",
         authorID: "3",
         tags: ["Deployment"],
         sandboxLinks: {
+            Docs:"https://docs.spheron.network/",
             Spheron: "https://argoapp.net",
         },
     },
@@ -47,7 +48,7 @@ export const Videos = {
         author: "Ardrive",
         uid: "4",
         videoSrc: "https://www.youtube.com/watch?v=UG5Ns9rNXG4",
-        videoImage: "https://img.youtube.com/vi/UG5Ns9rNXG4/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/UG5Ns9rNXG4/1.jpg",
         videoTitle: "Ardrive NFT tracker",
         authorWebsite: "https://ardrive.io/",
         description: "ArDrive offers never-ending storage of your most valuable files.",
@@ -62,7 +63,7 @@ export const Videos = {
         author: "Spheron",
         uid: "5",
         videoSrc: "https://www.youtube.com/watch?v=GKrGFiaE2Oc",
-        videoImage: "https://img.youtube.com/vi/GKrGFiaE2Oc/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/GKrGFiaE2Oc/1.jpg",
         videoTitle: "Deploy to Spheron",
         description: "Spheron makes deploying React apps easy with Arweave.",
         authorID: "3",
@@ -102,7 +103,7 @@ export const Videos = {
     "9": {
         uid: "9",
         videoSrc: "https://www.youtube.com/watch?v=aUU-eHCB6j8",
-        videoImage: "https://img.youtube.com/vi/aUU-eHCB6j8/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/aUU-eHCB6j8/1.jpg",
         videoTitle: "Bundlr and Next.js",
         description: "By the end of this video you should have a good understanding of how to build full stack applications with Bundlr and Arweave.",
         authorID: "6",
@@ -115,7 +116,7 @@ export const Videos = {
     "10": {
         uid: "10",
         videoSrc: "https://www.youtube.com/watch?v=eZl_Mtyy-MU",
-        videoImage: "https://img.youtube.com/vi/eZl_Mtyy-MU/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/eZl_Mtyy-MU/1.jpg",
         videoTitle: "What are ArFS",
         description: "MC Lars explains how encryption works leveraging the power of Arweave.",
         authorID: "4",
@@ -127,7 +128,7 @@ export const Videos = {
     "11": {
         uid: "11",
         videoSrc: "https://www.youtube.com/watch?v=fNjUV7mHFqw",
-        videoImage: "https://img.youtube.com/vi/fNjUV7mHFqw/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/fNjUV7mHFqw/1.jpg",
         videoTitle: "Smartweave",
         description: "Redstone describes how to migrate and use their new SDK for contracts on Arweave.",
         authorID: "9",
@@ -140,7 +141,7 @@ export const Videos = {
     "12": {
         uid: "12",
         videoSrc: "https://www.youtube.com/watch?v=r0p40pcLEE0&t=316s",
-        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/1.jpg",
         videoTitle: "Setting Up KwilDB",
         description: "Learn how to set up your KwilDB from scratch!",
         authorID: "10",
@@ -153,7 +154,7 @@ export const Videos = {
     "13": {
         uid: "13",
         videoSrc: "https://www.youtube.com/watch?v=R_FaSS51iq8",
-        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/r0p40pcLEE0/1.jpg",
         videoTitle: "KwilDB Social Graph",
         description: "Learn how to use KwilDB to make a simple social graph, which tracks relationships between MetaMask wallets",
         authorID: "10",
@@ -165,7 +166,7 @@ export const Videos = {
      "14": {
         uid: "14",
         videoSrc:"https://www.youtube.com/watch?v=a-L2XxHELXg",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/1.jpg",
         videoTitle: "NEAR + Arweave  1",
         description:"This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11", 
@@ -178,7 +179,7 @@ export const Videos = {
     "15": {
         uid: "15",
         videoSrc: "https://www.youtube.com/watch?v=2A__hYEhm7U",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage:"https://img.youtube.com/vi/2A__hYEhm7U/1.jpg",
         videoTitle: "NEAR + Arweave  2",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -190,7 +191,7 @@ export const Videos = {
     "16": {
         uid: "16",
         videoSrc: "https://www.youtube.com/watch?v=0nJAiiu7p_s",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/0nJAiiu7p_s/1.jpg",
         videoTitle: "NEAR + Arweave  3",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -202,7 +203,7 @@ export const Videos = {
     "17": {
         uid: "17",
         videoSrc: "https://www.youtube.com/watch?v=_budvIB1tGs",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  4",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -214,7 +215,7 @@ export const Videos = {
     "18": {
         uid: "18",
         videoSrc: "https://www.youtube.com/watch?v=Io1RhzcfXR0",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  5",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -226,7 +227,7 @@ export const Videos = {
     "19": {
         uid: "19",
         videoSrc: "https://www.youtube.com/watch?v=xLymcg8maZE",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave  6",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -238,7 +239,7 @@ export const Videos = {
     "20": {
         uid: "20",
         videoSrc: "https://www.youtube.com/watch?v=ywziPVC0C2A",
-        videoImage: "https://i3.ytimg.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/mqdefault.jpg",
         videoTitle: "NEAR + Arweave 7",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -263,7 +264,7 @@ export const Videos = {
      "22": {
         uid: "22",
         videoSrc: "https://www.youtube.com/watch?v=KBP1J3hStDw",
-        videoImage: "https://img.youtube.com/vi/KBP1J3hStDw/maxresdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/KBP1J3hStDw/1.jpg",
         videoTitle: "Ardrive Manifests",
         description: "How to use manifests with: (1) ArDrive web (2) the CLI (3) and ArDrive core",
         authorID: "4", 
@@ -275,7 +276,7 @@ export const Videos = {
      "23": {
         uid: "23",
         videoSrc: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
-        videoImage: "https://i1.ytimg.com/vi/TMzKoxpf_GU/hqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/TMzKoxpf_GU/hqdefault.jpg",
         videoTitle: "ETHShanghai",
         description: "DMac explains how to use Arweave to build a decentralized app with ETHShanghai",
         authorID: "13", 
@@ -288,7 +289,7 @@ export const Videos = {
     "24": {
         uid: "24",
         videoSrc: "https://www.youtube.com/watch?v=ZduvXKxSgkQ",
-        videoImage: "https://i3.ytimg.com/vi/ZduvXKxSgkQ/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/ZduvXKxSgkQ/mqdefault.jpg",
         videoTitle: "Deploying to the Permaweb - with Bundlr",
         description: "The permaweb is a cloud platform designed to publish and serve web artifacts from a decentralized permanent storage network. Along with a permanotes side",
         authorID: "11",
@@ -301,7 +302,7 @@ export const Videos = {
     "25": {
         uid: "25",
         videoSrc: "https://www.youtube.com/watch?v=Oeaq1yXiYxs",
-        videoImage: "https://i3.ytimg.com/vi/Oeaq1yXiYxs/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/Oeaq1yXiYxs/mqdefault.jpg",
         videoTitle: "Kwil walk-through",
         description: "SQL setup and transfer demo",
         authorID: "10",
@@ -313,7 +314,7 @@ export const Videos = {
     "26": {
         uid: "26",
         videoSrc: "https://www.youtube.com/watch?v=ak6bDOOW1H4",
-        videoImage: "https://i3.ytimg.com/vi/ak6bDOOW1H4/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/ak6bDOOW1H4/mqdefault.jpg",
         videoTitle: "Intro to DataFI Part 1",
         description: "DataFi is the concept of combining permanent Data + NFT (Non-Fungible Token) + Permaweb + SmartWeave Contracts + PST (Profit Sharing Token) in ways that provide decentralized finalization features for immutable storage in the Arweave community.",
         authorID: "11",
@@ -327,7 +328,7 @@ export const Videos = {
     "27": {
         uid: "27",
         videoSrc: "https://www.youtube.com/watch?v=qu6SEjYrMA0",
-        videoImage: "https://i3.ytimg.com/vi/qu6SEjYrMA0/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/qu6SEjYrMA0/mqdefault.jpg",
         videoTitle: "Intro to DataFI Part 2",
         description: "In this workshop, we walk through step by step the Atomic NFT concept from creating a smart contract to minting, to checking owner balance and transferring ownership.",
         authorID: "11",
@@ -336,6 +337,20 @@ export const Videos = {
             notes: "https://permanotes.app/#/notes/KmLNIowE2DhWHnW-YQzWwTO0O1r7PAlFCj29vPq4BQ0",
             demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
             atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/"
+        },
+    },
+    "28": {
+        uid: "28",
+        videoSrc: "https://cdn.livepeer.com/asset/664ev9jc5iijwhyb/video",
+        videoImage: "https://lens.infura-ipfs.io/ipfs/bafybeier7diojgfigd2ggohrjze4uraezo2famsfuagleki7oylc7awv2a",
+        videoTitle: "Building Full Stack Permanent Applications with Arweave, Smartweave, and Next.js",
+        description: "In this video you'll learn how to build full stack dapps on Arweave with Smartweave, Warp, and Next.js.",
+        authorID: "6",
+        tags: ["Atomic", "Token", "Smartweave", "Intro"],
+        sandboxLinks: {
+            home: "https://edgeandnode.com/",
+            graphql: "https://arweave.net/graphql",
+            ArCode: "https://arcode.studio/#/",
         },
     },
 }

@@ -45,7 +45,7 @@ export const Authors = {
         author: "Edge and Node",
         authorLink: "https://twitter.com/dabit3",
         authorWebsite: "https://edgeandnode.com/",
-        createdVideosByID: ['6', '9'],
+        createdVideosByID: ['6', '9', '28'],
         createdContentByID: ['ContentID'],
         uid: 6,
         username: "@edgeandnode",

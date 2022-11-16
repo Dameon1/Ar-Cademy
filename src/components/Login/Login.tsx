@@ -29,9 +29,6 @@ function Login({ onClick }: { onClick?: () => void }) {
   } = useContext(MainContext);
   const arConnect = useArConnect();
 
-
- 
-
   const login = {
     arconnect: async () => {
       setAddr(await AMW.connect("arconnect", arConnect));
@@ -51,15 +48,10 @@ function Login({ onClick }: { onClick?: () => void }) {
     <Grid.Container gap={1} justify="center">
       <Loading size="xl" css={{ padding: "$24" }} />
     </Grid.Container>
-  ) : 
-  // addr && walletName ? (
-  //   // User signed in
-  //   <UserProfile/>
-  // ) : 
-  (
+  ) : (
     <Container>
       <Row wrap="wrap" align="center" justify="center">
-      <Col
+        <Col
           className="wallet"
           onClick={async () => {
             setIsLoading(true);
@@ -76,7 +68,7 @@ function Login({ onClick }: { onClick?: () => void }) {
           />
           <h4 className="walletText">arweave.app</h4>
         </Col>
-       
+
         <Col
           className="wallet"
           onClick={async () => {

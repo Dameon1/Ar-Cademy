@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import {KoiiCard} from "./KoiiCards";
+import MediaCards from "./MediaCards";
 import AsyncImageLoader from 'src/components/AsyncImageLoader';
 
 function Card(props) {
@@ -7,7 +8,9 @@ function Card(props) {
   let cardDescriptionLength = content.description.length;
   if (cardDescriptionLength > 140){
     content.description = (content.description.slice(0, 140) + ' ...')
-  } 
+  }
+  
+ 
 
   return (
     <div className="card">
@@ -23,4 +26,4 @@ function Card(props) {
   )
 }
 
-export { Card, KoiiCard};
+export { Card, KoiiCard, MediaCards }

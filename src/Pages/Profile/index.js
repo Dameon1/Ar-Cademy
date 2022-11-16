@@ -13,12 +13,28 @@ import ArProfile from "src/components/ArProfile";
 import { Grid, Loading, Container, Row, Col } from "@nextui-org/react";
 
 export default function Profile() {
-  // let profileId = new URL(window.location.href).pathname.split("/")[-1];
-  // let profileObject = Authors[profileId];
-  // let videoIds = Authors[profileId].createdVideosByID;
-  // let videoObjects = videoIds.map((videoId) => Videos[videoId]);
+  
+  
+  
   let urlArray = new URL(window.location.href).pathname.split("/");
-  let addr = urlArray[urlArray.length - 1];
+  let profileId = urlArray[urlArray.length - 1];
+  let addr = urlArray[urlArray.length - 2];
+  //let profileObject = Authors[profileId];
+
+  //TEMPORARY FIX FOR SAM WILLIAMS
+  if(addr === 'vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw'){
+    profileId = 8
+  }
+
+
+
+  let videoIds = Authors[profileId].createdVideosByID;
+  let videoObjects = videoIds.map((videoId) => Videos[videoId]);
+  console.log("VIDDDDDDEO", videoObjects)
+  
+  console.log(profileId)
+
+
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   //const [addr, setAddr] = useState("");
@@ -54,7 +70,19 @@ export default function Profile() {
         setIsLoading(false);
       }
     })();
-  }, [addr]);
+  });
+
+  let cards = videoObjects.map((content) => {
+    return (
+      <Link
+        key={content.uid}
+        to={`/playground/${content.uid}`}
+        className="cardLinks"
+      >
+        <Card content={content} />
+      </Link>
+    );
+  });
 
   return (
     <>
@@ -63,12 +91,7 @@ export default function Profile() {
         <PassportCard profileObject={profileObject} />
       </div> */}
 
-      {/* <div>
-        <h1>Videos</h1>
-        <div className="contentScrollContainer">
-          <div className="hs">{cards}</div>
-        </div>
-      </div> */}
+      
 
       <div className="">
         {isLoading && (
@@ -90,13 +113,23 @@ export default function Profile() {
                 {addr && userContent && !isSearching ? (
                   <ARKdisplay content={userContent} />
                 ) : addr && !isSearching ? (
+                  <>
                   <UseAns addr={addr} />
-                ) : null}
+                  </>
+                ) : null
+                }
               </Col>
             </Row>
           </Container>
         )}
         {console.log(userContent)}
+
+        <div>
+        <h1>Videos</h1>
+        <div className="contentScrollContainer">
+          <div className="hs">{cards}</div>
+        </div>
+      </div>
 
         {addr && userContent && !isSearching && (
           <ProfileContentContainer

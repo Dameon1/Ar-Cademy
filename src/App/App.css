@@ -391,6 +391,10 @@ ul {
   background-color: #292C2D;
 }
 
+.video-description {
+  color: #008c9e;
+}
+
 .video-creator-link {
   text-decoration: none;
   color: #008c9e;

@@ -50,6 +50,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
           `https://ans-testnet.herokuapp.com/profile/${addr}`
         );
         const ans = await res.json();
+        console.log(Object.keys(ans).length)
         if (ans) {
           setHasAccount(true);
           setAnsProfile(ans);
@@ -66,7 +67,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
     <div>
       {isLoading ? (
         <Grid.Container gap={1} justify="center">
-          <Loading size="xl" css={{ padding: "$24" }} color="success" />
+          <Loading size="xl" />
         </Grid.Container>
       ) : hasFailed ? (
         <>
@@ -88,11 +89,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
         </>
       ) : (
         <>
-          <Grid.Container
-            gap={3}
-            justify="space-between"
-            alignItems="center"
-          ></Grid.Container>
+       
 
           {
             ansProfile ? (
@@ -228,30 +225,21 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
                   </a>
                 </div>
               </>
-            ) : null
-            // <>
-            //   <div style={{
-            //     fontSize: 'xx-large',
-            //     textAlign: 'center',
-            //     padding: '70px',
-            //     alignItems: 'center',
-            //     display: 'flex',
-            //     flexDirection: 'column'
-            //   }}>
-            //     <div>
-            //       Hello{` `}
-            //       <span style={{
-            //         fontSize: '',
-            //         fontFamily: 'monospace'
-            //       }}>
-            //         <a href={`https://viewblock.io/arweave/address/${addr}`} target="_blank" rel="noreferrer">
-            //           {`${addr.slice(0, 5)}...${addr.slice(addr.length - 5, addr.length)}`}
-            //         </a>
-            //       </span>
-            //       {` 🙂`}
-            //     </div>
-            //   </div>
-            // </>
+            ) : <>
+            <div
+              style={{
+                textAlign: "center",
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div>
+                {` No Account Found `}
+                {` 🙂`}
+              </div>
+            </div>
+          </> 
           }
         </>
       )}

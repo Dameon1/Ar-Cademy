@@ -6,7 +6,7 @@ import "./accountViewer.css";
 import UseAns from "src/components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
-import { Grid, Loading, Container, Row, Col, Input, Spacer } from "@nextui-org/react";
+import { Grid, Loading, Container, Row, Col, Input, Spacer,Button } from "@nextui-org/react";
 import ArProfile from "src/components/ArProfile";
 
 export function AccountViewer() {
@@ -101,11 +101,15 @@ export function AccountViewer() {
           <p>Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE</p>
         <form onSubmit={onSubmit}>
           <label aria-labelledby="input"></label>
+          <Spacer y={1}/>
           <Input clearable placeholder="Enter address"
             onChange={handleInput}
+            width="320px"
+            bordered
+            status="primary" 
             required />
             <Spacer y={1}/>
-          <button type="submit">search</button>
+          <button className="identity-link buttonText" type="submit">search</button>
           <p>Current Addr: {addr}</p>
         </form>
       </div>

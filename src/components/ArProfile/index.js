@@ -63,7 +63,7 @@ function ArProfile(props) {
     <>
       {isLoading ? (
         <Grid.Container gap={1} justify="center">
-          <Loading size="xl" css={{ padding: "$24" }} color="success" />
+          <Loading />
         </Grid.Container>
       ) : hasFailed ? (
         <>
@@ -90,7 +90,6 @@ function ArProfile(props) {
             <>
               <Row align="center">
                 <Col align="center">
-                  
                   {profileData.avatar ? (
                     <AvatarS
                       src={`https://arweave.net/${profileData.avatar}`}
@@ -114,7 +113,6 @@ function ArProfile(props) {
                 </Col>
               </Row>
 
-              
               <Row wrap="wrap" align="center" justify="space-around">
                 {profileData.links.twitter && (
                   <Tooltip content={`${profileData.links.twitter}`}>
@@ -221,15 +219,17 @@ function ArProfile(props) {
                   {` No Account Found `}
                   {` 🙂`}
                 </div>
-                <Spacer y={1}/>
-                <Button
-                  auto
-                  className="nav-link identity-link buttonText"
-                  iconRight={<AiOutlineUpload size={18} />}
-                  onClick={() => setModalIsOpen(true)}
-                >
-                  Create and ArProfile
-                </Button>
+                <Spacer y={1} />
+                {props.forDashboard && (
+                  <Button
+                    auto
+                    className="nav-link identity-link buttonText"
+                    iconRight={<AiOutlineUpload size={18} />}
+                    onClick={() => setModalIsOpen(true)}
+                  >
+                    Create an ArProfile
+                  </Button>
+                )}
               </div>
             </>
           )}
