@@ -179,7 +179,7 @@ export const Videos = {
     "15": {
         uid: "15",
         videoSrc: "https://www.youtube.com/watch?v=2A__hYEhm7U",
-        videoImage:"https://img.youtube.com/vi/2A__hYEhm7U/1.jpg",
+        videoImage:"https://img.youtube.com/vi/2A__hYEhm7U/3.jpg",
         videoTitle: "NEAR + Arweave  2",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -191,7 +191,7 @@ export const Videos = {
     "16": {
         uid: "16",
         videoSrc: "https://www.youtube.com/watch?v=0nJAiiu7p_s",
-        videoImage: "https://img.youtube.com/vi/0nJAiiu7p_s/1.jpg",
+        videoImage: "https://img.youtube.com/vi/0nJAiiu7p_s/3.jpg",
         videoTitle: "NEAR + Arweave  3",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -203,7 +203,7 @@ export const Videos = {
     "17": {
         uid: "17",
         videoSrc: "https://www.youtube.com/watch?v=_budvIB1tGs",
-        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/3.jpg",
         videoTitle: "NEAR + Arweave  4",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",
@@ -215,7 +215,7 @@ export const Videos = {
     "18": {
         uid: "18",
         videoSrc: "https://www.youtube.com/watch?v=Io1RhzcfXR0",
-        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/mqdefault.jpg",
+        videoImage: "https://img.youtube.com/vi/a-L2XxHELXg/3.jpg",
         videoTitle: "NEAR + Arweave  5",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
         authorID: "11",

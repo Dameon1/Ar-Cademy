@@ -2,9 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import { MediaCards } from "../Cards";
-import { Grid, Loading, Container, Row, Col } from "@nextui-org/react";
-
+import { Card, MediaCards } from "../Cards";
+import {
+  Grid,
+  Row,
+  Text,
+  Col,
+  Loading,
+  Container,
+  Button,
+} from "@nextui-org/react";
+import fallbackImage from "../../favicon.ico";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 
@@ -35,6 +43,23 @@ export function VideoPlayerContainer() {
   }, []);
 
   if (contentObject) {
+    console.log(contentObject);
+    let cards = contentObject.authorVideos.map((content) => {
+      return (
+        <div>
+          <Link
+            key={content.uid}
+            to={`/playground/${content.uid}`}
+            className="cardLinks"
+          >
+            <p>1</p>
+
+            <MediaCards content={content} />
+          </Link>
+        </div>
+      );
+    });
+
     return (
       <div className="video-player-container">
         <header className="video-header">
@@ -49,7 +74,7 @@ export function VideoPlayerContainer() {
           <Row justify="center" align="space-evenly">
             <Col>
               <a
-                href={`https://${contentObject.authorObject.authorWebsite}`}
+                href={`${contentObject.authorObject.authorWebsite}`}
                 className="video-creator-link"
                 target="_blank"
                 rel="noreferrer"
@@ -79,9 +104,7 @@ export function VideoPlayerContainer() {
 
           <h1>Videos</h1>
           <div className="contentScrollContainer">
-            <div className="hs">
-              <MediaCards images={contentObject.authorVideos} />
-            </div>
+            <div className="hs">{cards}</div>
           </div>
 
           {/* <h2>To learn more about this video, visit the author's </h2>
