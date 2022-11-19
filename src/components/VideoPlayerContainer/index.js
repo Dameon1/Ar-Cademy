@@ -16,46 +16,38 @@ import fallbackImage from "../../favicon.ico";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 
-export function VideoPlayerContainer() {
+export function VideoPlayerContainer(props) {
   const [contentObject, setContentObject] = useState(null);
-
-  function getContentInfo() {
-    let videoId = new URL(window.location.href).pathname.split("/").at(-1);
-    let videoObject = Videos[videoId];
-    let authorObject = Authors[videoObject.authorID];
-    let authorVideos = authorObject.createdVideosByID
-      .map((x) => Videos[x])
-      .filter((x) => x.uid !== videoId);
-    console.log(authorVideos);
-    let contentObject = {
-      authorVideos,
-      videoId,
-      videoObject,
-      authorObject,
-      src: videoObject.videoSrc,
-    };
-    return contentObject;
-  }
-
+  const { videoID, setState } = props;
   useEffect(() => {
+    function getContentInfo() {
+      //let videoId = new URL(window.location.href).pathname.split("/").at(-1);
+      let videoObject = Videos[videoID];
+      let authorObject = Authors[videoObject.authorID];
+      let authorVideos = authorObject.createdVideosByID
+        .map((x) => Videos[x])
+        .filter((x) => x.uid !== videoID);
+      console.log(authorVideos);
+      console.log("reloaded");
+      let contentObject = {
+        authorVideos,
+        videoID,
+        videoObject,
+        authorObject,
+        src: videoObject.videoSrc,
+      };
+      return contentObject;
+    }
     const response = getContentInfo();
     setContentObject(response);
-  }, []);
+  }, [videoID]);
 
   if (contentObject) {
     console.log(contentObject);
-    let cards = contentObject.authorVideos.map((content) => {
+    let cards = contentObject.authorVideos.map((content, index) => {
       return (
-        <div>
-          <Link
-            key={content.uid}
-            to={`/playground/${content.uid}`}
-            className="cardLinks"
-          >
-            <p>1</p>
-
-            <MediaCards content={content} />
-          </Link>
+        <div className="videoThumbnails" key={index}>
+          <MediaCards content={content} setState={setState} />
         </div>
       );
     });
@@ -106,10 +98,6 @@ export function VideoPlayerContainer() {
           <div className="contentScrollContainer">
             <div className="hs">{cards}</div>
           </div>
-
-          {/* <h2>To learn more about this video, visit the author's </h2>
-
-          <p>About Creator :</p> */}
         </footer>
       </div>
     );

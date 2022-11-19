@@ -10,7 +10,7 @@ let root = createRoot(container);
 
 root.render(
   <StrictMode>
-    <Router basename="/Ar-Cademy">
+    <Router basename="/Ar-Cademy" forceRefresh= {true}>
       <App />
     </Router>
   </StrictMode>

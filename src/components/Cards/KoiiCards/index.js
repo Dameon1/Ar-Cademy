@@ -13,7 +13,7 @@ export function KoiiCard(props) {
           e.target.src =
             "https://pbs.twimg.com/profile_images/1578815653615734785/Dc6rUG0m_400x400.jpg";
         }}
-        objectfit="cover"
+        objectfit="contain"
         alt={content.videoTitle}
       />
       <h3 className="cardTitle">{content.videoTitle}</h3>

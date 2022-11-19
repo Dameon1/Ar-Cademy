@@ -349,7 +349,8 @@ export const Videos = {
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
             home: "https://edgeandnode.com/",
-            graphql: "https://arweave.net/graphql",
+            warp: "https://warp.cc/",
+            tutorial: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",
             ArCode: "https://arcode.studio/#/",
         },
     },

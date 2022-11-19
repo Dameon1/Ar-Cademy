@@ -221,7 +221,7 @@ export default function AssetManagement() {
                       ) : (
                         <Card.Image
                           src={`https://arweave.net/${itemId}`}
-                          objectFit="cover"
+                          objectFit="contain"
                           width="100%"
                           height="100%"
                           alt="Relaxing app background"

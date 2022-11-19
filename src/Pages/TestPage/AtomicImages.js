@@ -17,7 +17,7 @@ export default function AtomicImages(props) {
                     onError={(e) => {
                       e.target.src = fallbackImage;
                     }}
-                    objectFit="cover"
+                    objectFit="contain"
                     width="100%"
                     height={140}
                     alt={img.title}

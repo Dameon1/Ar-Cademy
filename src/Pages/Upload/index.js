@@ -393,7 +393,7 @@ export default function Upload() {
                     <Image
                       src={URL.createObjectURL(originalFile)}
                       alt="your upload here"
-                      objectFit="cover"
+                      objectFit="contain"
                       width={160}
                       height={160}
                     />
@@ -405,7 +405,7 @@ export default function Upload() {
                     <img
                       src={image}
                       alt="Winston"
-                      objectFit="cover"
+                      objectFit="contain"
                       width={160}
                       height={160}
                     />

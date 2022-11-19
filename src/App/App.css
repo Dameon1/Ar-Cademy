@@ -394,6 +394,9 @@ ul {
 .video-description {
   color: #008c9e;
 }
+.videoThumbnails {
+  width: 140px
+}
 
 .video-creator-link {
   text-decoration: none;
