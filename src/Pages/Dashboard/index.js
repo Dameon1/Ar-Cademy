@@ -104,7 +104,7 @@ export function Dashboard() {
       )}
       <Spacer y={1} />
       {/*Create New ArProfile Component  */}
-
+        {console.log(userContent)}
       {!addr && <Login />}
       {addr && (
         <Container
@@ -124,7 +124,9 @@ export function Dashboard() {
                 <UseAns addr={addr} />
               ) : (
                 <Loading />
-              )}
+              )
+              
+              }
             </Col>
           </Row>
         </Container>

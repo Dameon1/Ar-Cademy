@@ -348,9 +348,10 @@ export const Videos = {
         authorID: "6",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
+            finished: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",
+            sonar: "https://sonar.warp.cc/#/app/contracts",
             home: "https://edgeandnode.com/",
             warp: "https://warp.cc/",
-            tutorial: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",
             ArCode: "https://arcode.studio/#/",
         },
     },
