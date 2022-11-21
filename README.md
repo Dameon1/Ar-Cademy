@@ -16,6 +16,9 @@
   ## V4
   - [https://arweave.net/yzRdVrhNMjVxFSm4cMirpLTU7PQ19Ix1EN1Rr1Kc9q4](https://arweave.net/yzRdVrhNMjVxFSm4cMirpLTU7PQ19Ix1EN1Rr1Kc9q4) 
 
+  ## V4.1
+  - [https://arweave.net/yzRdVrhNMjVxFSm4cMirpLTU7PQ19Ix1EN1Rr1Kc9q4](https://arweave.net/yzRdVrhNMjVxFSm4cMirpLTU7PQ19Ix1EN1Rr1Kc9q4)
+
 ## Instructions
 
   - In the playground, you have a video and a playground of tabs to further explain.
