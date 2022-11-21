@@ -4,7 +4,6 @@ import image from "../../favicon.ico";
 
 export function ProfileContentContainer(props) {
   let content;
-  console.log(props.label,"   ",props)
   switch (props.label) {
     case "koii":
       if (props.contentObjects.length === 0) {
@@ -63,7 +62,6 @@ export function ProfileContentContainer(props) {
 
         return (
           <div key={i} className="cardLinks">
-            {console.log(image)}
             <div className="card">
               <div className="cardImageContainer">
                 <img src={image} alt={dataObject.name} className="cardImage" />

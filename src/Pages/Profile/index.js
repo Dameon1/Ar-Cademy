@@ -116,7 +116,7 @@ export default function Profile() {
                   <>
                   <UseAns addr={addr} />
                   </>
-                ) : null
+                ) : <Loading />
                 }
               </Col>
             </Row>

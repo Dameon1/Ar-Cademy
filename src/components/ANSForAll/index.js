@@ -16,21 +16,10 @@ import {
 import {
   AvatarS,
   Bio,
-  BoxVertoID,
-  DetailsS,
-  Name,
-  UserAddr,
-  UserSocial,
-  VertoIDinfo,
+ 
 } from "../../static/styles/Profile";
 import MainContext from "../../context";
-import {
-  T_addr,
-  T_profile,
-  T_walletName,
-  T_txid,
-  T_ansProfile,
-} from "../../utils/types";
+
 import { icons } from "../../static";
 
 function UseAns({ addr, walletName, disconnectWallet, ARK }) {

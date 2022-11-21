@@ -138,7 +138,7 @@ export function AccountViewer() {
                 <Col align="center">
                   <h3>ArkProfile:</h3>
                   {addr && userContent?.ANS && !isLoading ? (
-                    <ARKdisplay content={userContent.ANS} />
+                    <ARKdisplay content={userContent} />
                   ) : addr && !isLoading ? (
                     <UseAns addr={addr} />
                   ) : (
