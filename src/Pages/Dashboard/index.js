@@ -41,7 +41,7 @@ export function Dashboard() {
 
         //fetch Ark profile on Arweave
         const arArk = await fetch(
-          `https://ark-api.decent.land/v1/profile/arweave/${addr}`
+          `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
         console.log(ark);
@@ -49,22 +49,17 @@ export function Dashboard() {
         if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
             let checksumAddress = ethers.utils.getAddress(addr);
-            const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
+            const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
             const ethArk = await fetch(ethString);
             const evmArk = await ethArk.json();
             if (evmArk) {
-              console.log("testing1");
               user.ARK = evmArk.res;
-              console.log("testing2");
               user.ANS = evmArk.res.ANS;
             }
-            console.log("testing3");
             console.log(user.ANS);
           }
         } else {
-          console.log("testing4");
           user.ARK = ark.res;
-          console.log("testing5");
           user.ANS = ark.res.ANS;
         }
 
@@ -117,15 +112,16 @@ export function Dashboard() {
             </Col>
             <Col align="center">
               <h3>ANS Profile:</h3>
-              {addr && userContent?.ARK?.ANS && !isLoading ? (
-                <ARKdisplay content={userContent.ARK} />
+              {addr && userContent?.ARK?.ARWEAVE?.ANS && !isLoading ? (
+                <>
+                {console.log(userContent.ARK.primary_address)}
+                  <ARKdisplay content={userContent.ARK} evmAddr={userContent.ARK.primary_address}  />
+                </>
               ) : addr && !isLoading ? (
                 <UseAns addr={addr} />
               ) : (
                 <Loading />
-              )
-              
-              }
+              )}
             </Col>
           </Row>
         </Container>
@@ -137,40 +133,40 @@ export function Dashboard() {
           <Loading />
         </>
       )}
-
-      {addr && userContent.ARK?.POAPS && !isLoading && (
+  {console.log(userContent)}
+      {addr && userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ARK.POAPS}
+          contentObjects={userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS}
           contentType={"POAPS"}
           label="POAPS"
         />
       )}
 
-      {addr && userContent?.ARK?.STAMPS && !isLoading && (
+      {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ARK.STAMPS}
+          contentObjects={userContent.ARK.ARWEAVE.STAMPS}
           contentType={"STAMPS"}
           label="STAMPS"
         />
       )}
 
-      {addr && userContent?.ARK?.ANFTS?.permapages_img && !isLoading && (
+      {addr && userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ARK.ANFTS.permapages_img}
+          contentObjects={userContent.ARK.ARWEAVE.ANFTS.permapages_img}
           contentType={"permapages_img"}
           label="permapages_img"
         />
       )}
-      {addr && userContent?.ARK?.ANFTS?.koii && !isLoading && (
+      {addr && userContent?.ARK?.ARWEAVE?.ANFTS?.koii && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ARK.ANFTS.koii}
+          contentObjects={userContent.ARK.ARWEAVE.ANFTS.koii}
           contentType={"aNFTs"}
           label="koii"
         />
       )}
-      {addr && userContent?.ARK?.ERC_NFTS && !isLoading && (
+      {addr && userContent?.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS && !isLoading && (
         <ProfileContentContainer
-          contentObjects={userContent.ARK.ERC_NFTS}
+          contentObjects={userContent.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS}
           contentType={"ERC_NFTS"}
           label="ERC_NFTS"
         />

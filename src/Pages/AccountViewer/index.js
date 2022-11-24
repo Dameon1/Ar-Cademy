@@ -22,13 +22,13 @@ export function AccountViewer() {
         if (addr.length === 0) return;
         let user;
         const arArk = await fetch(
-          `https://ark-api.decent.land/v1/profile/arweave/${addr}`
+          `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
         if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
             let checksumAddress = ethers.utils.getAddress(addr);
-            const ethString = `https://ark-api.decent.land/v1/profile/evm/${checksumAddress}`;
+            const ethString = `https://ark-core.decent.land/2/profile/evm/${checksumAddress}`;
             const ethArk = await fetch(ethString);
             const evmArk = await ethArk.json();
             user = evmArk.res;

@@ -5,6 +5,7 @@ import image from "../../favicon.ico";
 export function ProfileContentContainer(props) {
   let content;
   switch (props.label) {
+    
     case "koii":
       if (props.contentObjects.length === 0) {
         return null;
@@ -17,6 +18,7 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
+
     case "POAPS":
       if (props.contentObjects.length === 0) {
         return null;
@@ -41,6 +43,7 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
+
     case "ERC_NFTS":
       if (props.contentObjects.length === 0) {
         return null;
@@ -72,6 +75,7 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
+
     case "GALAXY_CREDS":
       if (props.contentObjects.length === 0) {
         return;
@@ -94,6 +98,7 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
+
     case "STAMPS":
       if (props.contentObjects.length === 0) {
         return null;
@@ -121,6 +126,7 @@ export function ProfileContentContainer(props) {
         }
       });
       break;
+
     case "permapages_img":
       if (props.contentObjects.length === 0) {
         return null;
@@ -130,11 +136,6 @@ export function ProfileContentContainer(props) {
           <div key={i} className="cardLinks">
             <div className="card">
               <div className="cardImageContainer">
-                {/* <img
-                  src={`https://arweave.net/${content.id}`}
-                  alt={"dataObject.name"}
-                  
-                /> */}
                 <img
                   className="cardImage"
                   src={`https://arweave.net/${content.id}`}
