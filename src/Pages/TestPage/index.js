@@ -203,7 +203,6 @@ export default function TestPage() {
   // }
 
   async function runFilterQuery(addr,type) {
-    console.log("what?");
     if(addr){
      let newImages = await getImages(addr, type);
      console.log(newImages)
@@ -221,7 +220,7 @@ export default function TestPage() {
       </div>
       <div className={"containerStyle"}>
         <Dropdown>
-          <Dropdown.Button>{type}</Dropdown.Button>
+          <Dropdown.Button className="buttonText">{type}</Dropdown.Button>
           <Dropdown.Menu onAction={(key) => setType(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {contentTypeSelectOptions.map((v) => {
@@ -229,8 +228,9 @@ export default function TestPage() {
             })}
           </Dropdown.Menu>
         </Dropdown>
+        <Spacer x={1} />
         <Dropdown>
-          <Dropdown.Button>{label}</Dropdown.Button>
+          <Dropdown.Button className="buttonText">{label}</Dropdown.Button>
           <Dropdown.Menu onAction={(key) => setLabel(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {tagSelectOptions.map((v) => {
@@ -238,7 +238,8 @@ export default function TestPage() {
             })}
           </Dropdown.Menu>
         </Dropdown>
-        <Button onPress={async () => runFilterQuery(addr,type)}>Search</Button>
+        <Spacer x={1} />
+        <Button onPress={async () => runFilterQuery(addr,type)} className="buttonText">Search</Button>
       </div>
       
       {images && (<AtomicImages images={images} />)}

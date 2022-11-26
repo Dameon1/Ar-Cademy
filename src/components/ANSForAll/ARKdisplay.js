@@ -8,7 +8,7 @@ import MainContext from "../../context";
 
 function ARKdisplay(props) {
   const { content, evmAddr } = props;
-  console.log(content.EVM[evmAddr]);
+  console.log('addr',content.EVM[evmAddr]);
   const { theme } = useContext(MainContext);
   const lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "");
 
@@ -98,7 +98,7 @@ function ARKdisplay(props) {
         {content.ARWEAVE.ANS.currentLabel && (
           <Tooltip content={`${content.ARWEAVE.ANS.currentLabel}`}>
             <Link
-              href={`https://${content.ARWEAVE.ANS.currentLabel}.ar.page`}
+              href={`https://v2.viewblock.io/arweave/address/${content.ARWEAVE.ANS.currentLabel}`}
               target="_blank"
             >
               <img

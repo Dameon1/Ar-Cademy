@@ -10,16 +10,13 @@ import "./profile.css";
 import { Card } from "../../components/Cards";
 import { ethers } from "ethers";
 import ArProfile from "src/components/ArProfile";
-import { Grid, Loading, Container, Row, Col } from "@nextui-org/react";
+import {  Loading, Container, Row, Col } from "@nextui-org/react";
 
 export default function Profile() {
-  
-  
   
   let urlArray = new URL(window.location.href).pathname.split("/");
   let profileId = urlArray[urlArray.length - 1];
   let addr = urlArray[urlArray.length - 2];
-  //let profileObject = Authors[profileId];
 
   //TEMPORARY FIX FOR SAM WILLIAMS
   if(addr === 'vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw'){
@@ -30,15 +27,10 @@ export default function Profile() {
 
   let videoIds = Authors[profileId].createdVideosByID;
   let videoObjects = videoIds.map((videoId) => Videos[videoId]);
-  console.log("VIDDDDDDEO", videoObjects)
   
-  console.log(profileId)
-
 
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  //const [addr, setAddr] = useState("");
-  const [input, setInput] = useState();
   const [isSearching, setIsSearching] = useState(true);
 
   useEffect(() => {
@@ -66,7 +58,6 @@ export default function Profile() {
       } catch (e) {
         console.log(JSON.stringify(e));
       } finally {
-        console.log("done");
         setIsLoading(false);
       }
     })();
@@ -87,11 +78,6 @@ export default function Profile() {
   return (
     <>
       <h1>Profile</h1>
-      {/* <div className="passportContainer">
-        <PassportCard profileObject={profileObject} />
-      </div> */}
-
-      
 
       <div className="">
         {isLoading && (

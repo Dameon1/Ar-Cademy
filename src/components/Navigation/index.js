@@ -17,11 +17,10 @@ import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 export default function Navigation() {
   const { addr, disconnectWallet, userData } = useContext(MainContext);
   const [userBalances, setUserBalances] = useState();
-  const [avatar, setAvatar] = useState(image);
+  const [avatar, setAvatar] = useState();
   const navigate = useNavigate();
 
-  // let { ANS, ARK, ArProfile } = userData;
-  // console.log("HEADER ACCESS TO",ANS,ARK,ArProfile)
+  
   const collapseItems = [
     { value: "Home", page: "." },
     { value: "Dashboard", page: "Dashboard" },
@@ -46,8 +45,8 @@ export default function Navigation() {
           console.log(userData);
           if (userData !== null) {
             let { ANS, ARK, ArProfile } = userData;
-            ARK?.ANS?.avatar
-              ? setAvatar(`https://arweave.net/${ARK.ANS.avatar}`)
+            ARK?.ARWEAVE?.ANS?.avatar
+              ? setAvatar(`https://arweave.net/${ARK.ARWEAVE.ANS.avatar}`)
               : ANS?.avatar
               ? setAvatar(`https://arweave.net/${ANS.avatar}`)
               : ArProfile?.avatar

@@ -8,9 +8,7 @@ import UseAns from "src/components/ANSForAll";
 import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
 import {
   Button,
-  Grid,
   Loading,
-  Text,
   Spacer,
   Row,
   Col,
@@ -44,7 +42,7 @@ export function Dashboard() {
           `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
-        console.log(ark);
+        
         //fetch Ark profile if no Arweave account
         if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
@@ -133,7 +131,6 @@ export function Dashboard() {
           <Loading />
         </>
       )}
-  {console.log(userContent)}
       {addr && userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS}
@@ -164,7 +161,7 @@ export function Dashboard() {
           label="koii"
         />
       )}
-      {addr && userContent?.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS && !isLoading && (
+      {addr && userContent?.ARK?.EVM[userContent.ARK.primary_address].ERC_NFTS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS}
           contentType={"ERC_NFTS"}
