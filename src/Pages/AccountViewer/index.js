@@ -156,7 +156,10 @@ export function AccountViewer() {
                       evmAddr={userContent.primary_address}
                     />
                   ) : addr && !isLoading ? (
-                    <UseAns addr={addr} />
+                    <>
+                      {console.log(userContent)}
+                      <UseAns addr={addr} />
+                    </>
                   ) : (
                     <Loading />
                   )}
@@ -165,18 +168,14 @@ export function AccountViewer() {
             )}
           </Container>
         )}
-
-        {addr &&
-          userContent.EVM[userContent.primary_address]?.POAPS &&
-          !isLoading && (
-            <ProfileContentContainer
-              contentObjects={
-                userContent.EVM[userContent.primary_address]?.POAPS
-              }
-              contentType={"POAPS"}
-              label="POAPS"
-            />
-          )}
+        {console.log("hi", userContent)}
+        {addr && userContent?.primary_address && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.EVM[userContent.primary_address]?.POAPS}
+            contentType={"POAPS"}
+            label="POAPS"
+          />
+        )}
 
         {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
           <ProfileContentContainer
@@ -186,13 +185,14 @@ export function AccountViewer() {
           />
         )}
 
-        {addr && userContent?.ARWEAVE.ANFTS?.permapages_img && !isLoading && (
+        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.permapages_img}
             contentType={"permapages_img"}
             label="permapages_img"
           />
         )}
+
         {addr && userContent?.ARWEAVE?.ANFTS?.koii && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.koii}
@@ -200,9 +200,8 @@ export function AccountViewer() {
             label="koii"
           />
         )}
-        {addr &&
-          userContent?.EVM[userContent.primary_address].ERC_NFTS &&
-          !isLoading && (
+
+        {addr && userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS && !isLoading && (
             <ProfileContentContainer
               contentObjects={
                 userContent.EVM[userContent.primary_address].ERC_NFTS
@@ -211,6 +210,7 @@ export function AccountViewer() {
               label="ERC_NFTS"
             />
           )}
+
       </div>
     </>
   );

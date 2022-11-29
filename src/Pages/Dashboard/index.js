@@ -138,7 +138,7 @@ export function Dashboard() {
           label="POAPS"
         />
       )}
-
+{console.log("hi", userContent)}
       {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.STAMPS}

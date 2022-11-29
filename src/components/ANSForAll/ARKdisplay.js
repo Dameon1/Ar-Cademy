@@ -8,7 +8,6 @@ import MainContext from "../../context";
 
 function ARKdisplay(props) {
   const { content, evmAddr } = props;
-  console.log('addr',content.EVM[evmAddr]);
   const { theme } = useContext(MainContext);
   const lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "");
 

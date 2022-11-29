@@ -5,7 +5,6 @@ import image from "../../favicon.ico";
 export function ProfileContentContainer(props) {
   let content;
   switch (props.label) {
-    
     case "koii":
       if (props.contentObjects.length === 0) {
         return null;
@@ -33,7 +32,7 @@ export function ProfileContentContainer(props) {
                   alt={content.videoTitle}
                   className="cardImage"
                   onError={(e) => {
-                    e.target.src = image
+                    e.target.src = image;
                   }}
                 />
               </div>
@@ -59,7 +58,7 @@ export function ProfileContentContainer(props) {
           image =
             "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
         }
-        
+
         image = image.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
         image = image.replace("ipfs://", "https://ipfs.io/ipfs/");
 
@@ -104,11 +103,20 @@ export function ProfileContentContainer(props) {
         return null;
       }
       content = props.contentObjects.map((content, i) => {
+        let { description, title } = content;
         let type = content.stampedAssetType;
+        if (description) {
+          let cardDescriptionLength = description.length;
+          if (cardDescriptionLength > 14) {
+            description = description.slice(0, 14) + " ...";
+          }
+        }
+
         if (type === "image") {
           return (
             <div key={i} className="cardLinks">
               <div className="card">
+                <h5>{title}</h5>
                 <div className="cardImageContainer">
                   <img
                     src={`https://arweave.net/${content.stampedAsset}`}
@@ -116,7 +124,7 @@ export function ProfileContentContainer(props) {
                     className="cardImage"
                   />
                 </div>
-
+                <p>{description}</p>
                 <Stamp txId={content.stampedAsset} />
               </div>
             </div>
@@ -132,18 +140,26 @@ export function ProfileContentContainer(props) {
         return null;
       }
       content = props.contentObjects.map((content, i) => {
+        let { description, title } = content;
+        if (description) {
+          let cardDescriptionLength = description.length;
+          if (cardDescriptionLength > 14) {
+            description = description.slice(0, 14) + " ...";
+          }
+        }
         return (
           <div key={i} className="cardLinks">
             <div className="card">
+              <h5>{title}</h5>
               <div className="cardImageContainer">
                 <img
                   className="cardImage"
                   src={`https://arweave.net/${content.id}`}
                   alt={content.title}
-                  onError={() => console.log("this.src = 'assets/img.png'")}
+                  onError={() => this.src = "assets/img.png"}
                 ></img>
               </div>
-              <h3>{content.title}</h3>
+              <p>{description}</p>
               <Stamp txId={content.id} />
             </div>
           </div>
