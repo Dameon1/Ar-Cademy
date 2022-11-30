@@ -29,10 +29,7 @@ export function AccountViewer() {
     (async () => {
       try {
         if (addr.length === 0) return;
-        let resolvedAddr = fetch(`https://ark-core.decent.land/v2/address/resolve/${addr}`)
-          .then((res) => res.json());
-        resolvedAddr = await resolvedAddr;
-        console.log("????????????",resolvedAddr);
+        
 
         let user;
         const arArk = await fetch(
