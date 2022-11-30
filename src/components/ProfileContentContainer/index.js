@@ -166,6 +166,31 @@ export function ProfileContentContainer(props) {
         );
       });
       break;
+
+      case "NFTS":
+        if (props.contentObjects.length === 0) {
+          return null;
+        }
+        content = props.contentObjects.map((content, i) => {
+          let  { name, image } = content;
+          if (image === undefined) {
+            image = "assets/img.png";
+          }
+           let tokenId = content.token_id.split(":")[0];
+          return (
+            <div key={i} className="cardLinks">
+              <div className="card">
+                <div className="cardImageContainer">
+                  <img src={image} alt={name} className="cardImage" />
+                </div>
+                <h3 className="cardTitle">{name}</h3>
+                <a href={`https://paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`} target="_blank" rel="noreferrer">View on Paras</a>
+              
+              </div>
+            </div>
+          );
+        });
+        break;
     default:
       console.log(props.label);
   }

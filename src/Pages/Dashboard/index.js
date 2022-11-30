@@ -138,6 +138,13 @@ export function Dashboard() {
           label="POAPS"
         />
       )}
+      {addr && userContent.ARK?.NFTS && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.ARK.NFTS}
+            contentType={"NFTS"}
+            label="NFTS"
+          />
+        )}
 {console.log("hi", userContent)}
       {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
         <ProfileContentContainer

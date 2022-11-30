@@ -29,6 +29,11 @@ export function AccountViewer() {
     (async () => {
       try {
         if (addr.length === 0) return;
+        let resolvedAddr = fetch(`https://ark-core.decent.land/v2/address/resolve/${addr}`)
+          .then((res) => res.json());
+        resolvedAddr = await resolvedAddr;
+        console.log("????????????",resolvedAddr);
+
         let user;
         const arArk = await fetch(
           `https://ark-core.decent.land/v2/profile/arweave/${addr}`
@@ -78,6 +83,7 @@ export function AccountViewer() {
   function onSubmit(event) {
     event.preventDefault();
     let ansAddr = getAddrByANS(input);
+    
     // async function sanitizeAddr(text) {
     //   //regular Arweave
     //   let sanitized = "";
@@ -177,6 +183,14 @@ export function AccountViewer() {
           />
         )}
 
+        {addr && userContent?.NFTS && !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.NFTS}
+            contentType={"NFTS"}
+            label="NFTS"
+          />
+        )}
+
         {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.STAMPS}
@@ -201,7 +215,9 @@ export function AccountViewer() {
           />
         )}
 
-        {addr && userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS && !isLoading && (
+        {addr &&
+          userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS &&
+          !isLoading && (
             <ProfileContentContainer
               contentObjects={
                 userContent.EVM[userContent.primary_address].ERC_NFTS
@@ -210,7 +226,6 @@ export function AccountViewer() {
               label="ERC_NFTS"
             />
           )}
-
       </div>
     </>
   );
