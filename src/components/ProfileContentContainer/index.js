@@ -37,6 +37,7 @@ export function ProfileContentContainer(props) {
                 />
               </div>
               <h3 className="cardTitle">{content.event.name}</h3>
+              <a href={`https://app.poap.xyz/token/${content.tokenId}`} className="textNoDec" target="_blank" rel="noreferrer">View on Poap.app</a>
             </div>
           </div>
         );
@@ -69,6 +70,7 @@ export function ProfileContentContainer(props) {
                 <img src={image} alt={dataObject.name} className="cardImage" />
               </div>
               <h3 className="cardTitle">{dataObject.name}</h3>
+              <a href={`https://opensea.io/assets/ethereum/${content.token_address}/${content.token_id}`} className="textNoDec" target="_blank" rel="noreferrer">View on OpenSea</a>
             </div>
           </div>
         );
@@ -184,7 +186,7 @@ export function ProfileContentContainer(props) {
                   <img src={image} alt={name} className="cardImage" />
                 </div>
                 <h3 className="cardTitle">{name}</h3>
-                <a href={`https://paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`} target="_blank" rel="noreferrer">View on Paras</a>
+                <a href={`https://paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`} className="textNoDec" target="_blank" rel="noreferrer">View on Paras</a>
               
               </div>
             </div>

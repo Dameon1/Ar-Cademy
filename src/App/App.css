@@ -9,6 +9,7 @@
 
 .textNoDec {
   text-decoration: none;
+  color:white
 }
 .textNoDec:hover {
   color:#ffa537
