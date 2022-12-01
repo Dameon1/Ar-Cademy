@@ -6,6 +6,7 @@ export const Authors = {
         createdVideosByID: ['2'],
         createdContentByID: ['ContentID'],
         uid: 2,
+        addr: 0,
         username: "@KoiiNetwork",
         avatar: "https://pbs.twimg.com/profile_images/1424786684194041859/lkDa9l1U_200x200.png",
     },
@@ -16,6 +17,7 @@ export const Authors = {
         createdVideosByID: ['3'],
         createdContentByID: ['ContentID'],
         uid: 3,
+        addr: 0,
         username: "@SpheronHQ",
         avatar: "https://pbs.twimg.com/profile_images/1476901301950693383/YvJ0POFI_200x200.jpg",
     },
@@ -26,6 +28,7 @@ export const Authors = {
         createdVideosByID: ['4', "10", "22"],
         createdContentByID: ['ContentID'],
         uid: 4,
+        addr: 0,
         username: "@ardriveapp",
         avatar: "https://pbs.twimg.com/profile_images/1380527128186327043/XFPK_fKC_200x200.png",
 
@@ -37,6 +40,7 @@ export const Authors = {
         createdVideosByID: ['5'],
         createdContentByID: ['ContentID'],
         uid: 5,
+        addr: 0,
         username: "@saetaeth",
         avatar: "https://edgeandnode.com/images/logo-big.png",
 
@@ -48,6 +52,7 @@ export const Authors = {
         createdVideosByID: ['6', '9', '28'],
         createdContentByID: ['ContentID'],
         uid: 6,
+        addr: 0,
         username: "@edgeandnode",
         avatar: "https://edgeandnode.com/images/logo-big.png",
     },
@@ -58,6 +63,7 @@ export const Authors = {
         createdVideosByID: ['7'],
         createdContentByID: ['ContentID'],
         uid: 7,
+        addr: 0,
         username: "@onlyarweave",
         avatar: "https://pbs.twimg.com/profile_images/1395167901473181706/QGSGttf2_200x200.jpg",
     },
@@ -67,10 +73,10 @@ export const Authors = {
         authorWebsite: "sam.arweave.dev",
         createdVideosByID: ['1'],
         createdContentByID: ['ContentID'],
-        uid: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw",
+        uid: "8",
+        addr: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw",
         username: "@samecwilliams",
         avatar: "https://pbs.twimg.com/profile_images/1113074197255860224/PKahsyCP_200x200.png",
-        addr: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw"
     },
     '9': {
         author: 'Redstone',
@@ -79,6 +85,7 @@ export const Authors = {
         createdVideosByID: ['11'],
         createdContentByID: ['ContentID'],
         uid: 9,
+        addr: 0,
         username: "@redstone_defi",
         avatar: "https://pbs.twimg.com/profile_images/1405602838915522562/jf6E8c-K_200x200.png",
     },
@@ -89,6 +96,7 @@ export const Authors = {
         createdVideosByID: ['12', '13', "25"],
         createdContentByID: ['ContentID'],
         uid: 10,
+        addr: 0,
         username: "@Kwil_App",
         avatar: "https://pbs.twimg.com/profile_images/1466900253844459524/PnxUVPrt_200x200.jpg"
     },
@@ -111,6 +119,7 @@ export const Authors = {
         createdVideosByID: ["21"],
         createdContentByID: ["ContentID"],
         uid: "12",
+        addr: 0,
         username: "@NetworkMeson",
         avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_200x200.jpg"
     },
@@ -121,6 +130,7 @@ export const Authors = {
         createdVideosByID: ["23"],
         createdContentByID: ["ContentID"],
         uid: "13",
+        addr: 0,
         username: "@dmac_",
         avatar: "https://uploads-ssl.webflow.com/625de12f70312bc43c1aa952/6262fa88d9bc44f70e62426f_DMac%20MyMail%20Arweave.png"
     },
@@ -131,6 +141,7 @@ export const Authors = {
         createdVideosByID: ["25"],
         createdContentByID: ["ContentID"],
         uid: "14",
+        addr: 0,
         username: "@xendarboh",
         avatar: "https://pbs.twimg.com/profile_images/3422271797/caf9c1d59faf35ea559117e521a3b131_200x200.png"
     },

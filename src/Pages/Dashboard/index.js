@@ -42,7 +42,7 @@ export function Dashboard() {
           `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
-        
+
         //fetch Ark profile if no Arweave account
         if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
@@ -112,8 +112,11 @@ export function Dashboard() {
               <h3>ANS Profile:</h3>
               {addr && userContent?.ARK?.ARWEAVE?.ANS && !isLoading ? (
                 <>
-                {console.log(userContent.ARK.primary_address)}
-                  <ARKdisplay content={userContent.ARK} evmAddr={userContent.ARK.primary_address}  />
+                  {console.log(userContent.ARK.primary_address)}
+                  <ARKdisplay
+                    content={userContent.ARK}
+                    evmAddr={userContent.ARK.primary_address}
+                  />
                 </>
               ) : addr && !isLoading ? (
                 <UseAns addr={addr} />
@@ -131,21 +134,25 @@ export function Dashboard() {
           <Loading />
         </>
       )}
-      {addr && userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS && !isLoading && (
-        <ProfileContentContainer
-          contentObjects={userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS}
-          contentType={"POAPS"}
-          label="POAPS"
-        />
-      )}
-      {addr && userContent.ARK?.NFTS && !isLoading && (
+      {addr &&
+        userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS &&
+        !isLoading && (
           <ProfileContentContainer
-            contentObjects={userContent.ARK.NFTS}
-            contentType={"NFTS"}
-            label="NFTS"
+            contentObjects={
+              userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS
+            }
+            contentType={"POAPS"}
+            label="POAPS"
           />
         )}
-{console.log("hi", userContent)}
+      {addr && userContent.ARK?.NFTS && !isLoading && (
+        <ProfileContentContainer
+          contentObjects={userContent.ARK.NFTS}
+          contentType={"NFTS"}
+          label="NFTS"
+        />
+      )}
+      {console.log("hi", userContent)}
       {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.STAMPS}
@@ -154,13 +161,15 @@ export function Dashboard() {
         />
       )}
 
-      {addr && userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img && !isLoading && (
-        <ProfileContentContainer
-          contentObjects={userContent.ARK.ARWEAVE.ANFTS.permapages_img}
-          contentType={"permapages_img"}
-          label="permapages_img"
-        />
-      )}
+      {addr &&
+        userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img &&
+        !isLoading && (
+          <ProfileContentContainer
+            contentObjects={userContent.ARK.ARWEAVE.ANFTS.permapages_img}
+            contentType={"permapages_img"}
+            label="permapages_img"
+          />
+        )}
       {addr && userContent?.ARK?.ARWEAVE?.ANFTS?.koii && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.ANFTS.koii}
@@ -168,13 +177,17 @@ export function Dashboard() {
           label="koii"
         />
       )}
-      {addr && userContent?.ARK?.EVM[userContent.ARK.primary_address].ERC_NFTS && !isLoading && (
-        <ProfileContentContainer
-          contentObjects={userContent.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS}
-          contentType={"ERC_NFTS"}
-          label="ERC_NFTS"
-        />
-      )}
+      {addr &&
+        userContent?.ARK?.EVM[userContent.ARK.primary_address].ERC_NFTS &&
+        !isLoading && (
+          <ProfileContentContainer
+            contentObjects={
+              userContent.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS
+            }
+            contentType={"ERC_NFTS"}
+            label="ERC_NFTS"
+          />
+        )}
     </div>
   );
 }

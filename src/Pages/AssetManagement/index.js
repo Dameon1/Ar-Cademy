@@ -243,7 +243,7 @@ export default function AssetManagement() {
                           <Row align="flex-end">
                             <Col span={3}>
                               <Link
-                                to={`/Profile/${contractData.state.emergencyHaltWallet}`}
+                                to={`/Profile/${contractData.state.emergencyHaltWallet}/${contractData.state.emergencyHaltWallet}`}
                               >
                                 <Card.Image
                                   src={`https://arweave.net/${ownerData.profile.avatar}`}

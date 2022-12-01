@@ -29,8 +29,6 @@ export function AccountViewer() {
     (async () => {
       try {
         if (addr.length === 0) return;
-        
-
         let user;
         const arArk = await fetch(
           `https://ark-core.decent.land/v2/profile/arweave/${addr}`

@@ -86,7 +86,7 @@ export function VideoPlayerContainer(props) {
             </Col>
             <Col>
               <Link
-                to={`/profile/${contentObject.authorObject.uid}/${contentObject.authorObject.uid}`}
+                to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                 className="video-creator-link"
               >
                 <p>ArProfile</p>
