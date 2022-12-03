@@ -149,7 +149,7 @@ export function Dashboard() {
         <ProfileContentContainer
           contentObjects={userContent.ARK.NFTS}
           contentType={"NFTS"}
-          label="NFTS"
+          label="NEAR NFTS"
         />
       )}
       {console.log("hi", userContent)}

@@ -3,12 +3,14 @@ import image from "../../../favicon.ico";
 
 export default function Poap(props) {
   let { content } = props;
-  let title = content.event.name;
+  let title = content.collection.title;
+  let tokenId = content.token_id.split(":")[0];
   if (title.length > 30) {
     title = title.substring(0, 26) + "...";
   }
 
   return (
+    
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
       <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
         <Card.Header
@@ -16,15 +18,15 @@ export default function Poap(props) {
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
-              {content.event.name}
+              {title}
             </Text>
           </Col>
         </Card.Header>
 
         <Card.Body css={{ p: 30 }}>
           <Card.Image
-            src={content.event.image_url}
-            alt={content.videoTitle}
+            src={content.image}
+            alt={title}
             width="100%"
             height="100%"
             onError={(e) => {
@@ -46,16 +48,16 @@ export default function Poap(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                  <Text color="#d1d1d1" size={12}>
+                  {/* <Text color="#d1d1d1" size={12}>
                     {content.event.year}
-                  </Text>
+                  </Text> */}
                 </Col>
               </Row>
             </Col>
             <Col>
               <Row justify="center">
                 <a
-                  href={`https://app.poap.xyz/token/${content.tokenId}`}
+                  href={`https://paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`}
                   className="textNoDec"
                   target="_blank"
                   rel="noreferrer"
@@ -73,7 +75,7 @@ export default function Poap(props) {
                       weight="bold"
                       transform="uppercase"
                     >
-                     On Poap
+                      On Paras
                     </Text>
                   </Button>
                 </a>

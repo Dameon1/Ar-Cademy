@@ -2,10 +2,11 @@ import { KoiiCard } from "../Cards";
 import Stamp from "../Stamp";
 import image from "../../favicon.ico";
 import Poap from "../Cards/Media/Poap";
+import NearNFTS from "../Cards/Media/NearNFTS";
 
 export function ProfileContentContainer(props) {
   let content;
-  switch (props.label) {
+  switch (props.contentType) {
     case "koii":
       if (props.contentObjects.length === 0) {
         return null;
@@ -27,20 +28,6 @@ export function ProfileContentContainer(props) {
         return (
           <div key={i} className="cardLinks">
             <Poap content={content} />
-            {/* <div className="card">
-              <div className="cardImageContainer">
-                <img
-                  src={content.event.image_url}
-                  alt={content.videoTitle}
-                  className="cardImage"
-                  onError={(e) => {
-                    e.target.src = image;
-                  }}
-                />
-              </div>
-              <h3 className="cardTitle">{content.event.name}</h3>
-              <a href={`https://app.poap.xyz/token/${content.tokenId}`} className="textNoDec" target="_blank" rel="noreferrer">View on Poap.app</a>
-            </div> */}
           </div>
         );
       });
@@ -171,6 +158,7 @@ export function ProfileContentContainer(props) {
       });
       break;
 
+      // Near NFTS
       case "NFTS":
         if (props.contentObjects.length === 0) {
           return null;
@@ -183,25 +171,26 @@ export function ProfileContentContainer(props) {
            let tokenId = content.token_id.split(":")[0];
           return (
             <div key={i} className="cardLinks">
-              <div className="card">
+              <NearNFTS content={content} />
+              {/* <div className="card">
                 <div className="cardImageContainer">
                   <img src={image} alt={name} className="cardImage" />
                 </div>
                 <h3 className="cardTitle">{name}</h3>
                 <a href={`https://paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`} className="textNoDec" target="_blank" rel="noreferrer">View on Paras</a>
               
-              </div>
+              </div> */}
             </div>
           );
         });
         break;
     default:
-      console.log(props.label);
+      console.log(props.contentType);
   }
 
   return (
     <>
-      <h1>{props.contentType}:</h1>
+      <h1>{props.label}:</h1>
       <div className="contentScrollContainer">
         <div className="hs">{content}</div>
       </div>
