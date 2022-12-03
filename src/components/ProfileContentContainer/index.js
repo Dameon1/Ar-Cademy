@@ -1,6 +1,7 @@
 import { KoiiCard } from "../Cards";
 import Stamp from "../Stamp";
 import image from "../../favicon.ico";
+import Poap from "../Cards/Media/Poap";
 
 export function ProfileContentContainer(props) {
   let content;
@@ -25,7 +26,8 @@ export function ProfileContentContainer(props) {
       content = props.contentObjects.map((content, i) => {
         return (
           <div key={i} className="cardLinks">
-            <div className="card">
+            <Poap content={content} />
+            {/* <div className="card">
               <div className="cardImageContainer">
                 <img
                   src={content.event.image_url}
@@ -38,7 +40,7 @@ export function ProfileContentContainer(props) {
               </div>
               <h3 className="cardTitle">{content.event.name}</h3>
               <a href={`https://app.poap.xyz/token/${content.tokenId}`} className="textNoDec" target="_blank" rel="noreferrer">View on Poap.app</a>
-            </div>
+            </div> */}
           </div>
         );
       });

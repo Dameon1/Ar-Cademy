@@ -51,6 +51,12 @@
   margin: 5px 0px;
 }
 
+.mediaCards {
+  width: 240px;
+  padding:2px;
+ margin:2px
+}
+
 .card {
   width: 210px;
   height: 320px;
@@ -135,6 +141,9 @@
 
 .cardLinks {
   text-decoration: none;
+}
+
+.poapImage {
 }
 
 .socialImageLinks {
@@ -266,6 +275,7 @@ ul {
   transition: all 0.2s ease-in-out;
 }
 
+.mediaButton:hover,
 .identity-link:hover,
 .identity-link:focus {
   transition: 0.15s;
