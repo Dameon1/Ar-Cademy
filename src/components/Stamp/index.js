@@ -26,7 +26,7 @@ export default function Stamp(props) {
 
   return (
     <div>
-      <p className="cardTitle">Stamps Collected {stampCount}</p>
+      {/* <p className="cardTitle">Stamps Collected {stampCount}</p> */}
       <StampButton txId={props.txId}/>
     </div>
   );

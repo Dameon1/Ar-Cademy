@@ -16,7 +16,7 @@ export default function Poap(props) {
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
-              {content.event.name}
+              {title}
             </Text>
           </Col>
         </Card.Header>

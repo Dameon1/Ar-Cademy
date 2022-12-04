@@ -157,7 +157,7 @@ export function Dashboard() {
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.STAMPS}
           contentType={"STAMPS"}
-          label="STAMPS"
+          label="Stamped Assets"
         />
       )}
 
@@ -167,14 +167,14 @@ export function Dashboard() {
           <ProfileContentContainer
             contentObjects={userContent.ARK.ARWEAVE.ANFTS.permapages_img}
             contentType={"permapages_img"}
-            label="permapages_img"
+            label="Created Atomic Assets"
           />
         )}
       {addr && userContent?.ARK?.ARWEAVE?.ANFTS?.koii && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.ANFTS.koii}
-          contentType={"aNFTs"}
-          label="koii"
+          contentType={"koii"}
+          label="Koii NFTS"
         />
       )}
       {addr &&

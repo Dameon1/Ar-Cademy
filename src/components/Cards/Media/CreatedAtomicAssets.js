@@ -1,16 +1,16 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import image from "../../../favicon.ico";
+import Stamp from "../../Stamp";
 
-export default function Poap(props) {
+export default function StampedAssets(props) {
   let { content } = props;
-  let title = content.collection.title;
-  let tokenId = content.token_id.split(":")[0];
+  let title = content.title;
+  let type = content.stampedAssetType;
   if (title.length > 30) {
     title = title.substring(0, 26) + "...";
   }
 
   return (
-    
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
       <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
         <Card.Header
@@ -25,7 +25,7 @@ export default function Poap(props) {
 
         <Card.Body css={{ p: 30 }}>
           <Card.Image
-            src={content.image}
+            src={`https://arweave.net/${content.id}`}
             alt={title}
             width="100%"
             height="100%"
@@ -48,16 +48,14 @@ export default function Poap(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                  {/* <Text color="#d1d1d1" size={12}>
-                    {content.event.year}
-                  </Text> */}
+                <Stamp txId={content.stampedAsset} />
                 </Col>
               </Row>
             </Col>
             <Col>
               <Row justify="center">
                 <a
-                  href={`https://new.paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`}
+                  href={`https://img.arweave.dev/#/show/${content.stampedAsset}`}
                   className="textNoDec"
                   target="_blank"
                   rel="noreferrer"
@@ -75,7 +73,7 @@ export default function Poap(props) {
                       weight="bold"
                       transform="uppercase"
                     >
-                      On Paras
+                     On IMG
                     </Text>
                   </Button>
                 </a>

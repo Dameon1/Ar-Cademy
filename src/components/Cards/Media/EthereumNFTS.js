@@ -1,16 +1,28 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import image from "../../../favicon.ico";
 
-export default function Poap(props) {
-  let { content } = props;
-  let title = content.collection.title;
-  let tokenId = content.token_id.split(":")[0];
+export default function EthereumNFTS(props) {
+  let { content, EthImage, data } = props;
+  console.log(data)
+  //let dataObject = JSON.parse(content.metadata);
+//   if (dataObject === null) {
+//     return null;
+//   }
+//   let { ETHimage } = dataObject;
+
+//   if (ETHimage === undefined) {
+//     ETHimage =
+//       "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
+//   }
+
+//   ETHimage = ETHimage.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
+//   ETHimage = ETHimage.replace("ipfs://", "https://ipfs.io/ipfs/");
+  let title = data.name;
   if (title.length > 30) {
     title = title.substring(0, 26) + "...";
   }
 
   return (
-    
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
       <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
         <Card.Header
@@ -25,8 +37,8 @@ export default function Poap(props) {
 
         <Card.Body css={{ p: 30 }}>
           <Card.Image
-            src={content.image}
-            alt={title}
+            src={EthImage}
+            alt={content.videoTitle}
             width="100%"
             height="100%"
             onError={(e) => {
@@ -49,7 +61,7 @@ export default function Poap(props) {
               <Row>
                 <Col alignitems="flex-end">
                   {/* <Text color="#d1d1d1" size={12}>
-                    {content.event.year}
+                    {"content.event.year"}
                   </Text> */}
                 </Col>
               </Row>
@@ -57,7 +69,7 @@ export default function Poap(props) {
             <Col>
               <Row justify="center">
                 <a
-                  href={`https://new.paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`}
+                  href={`https://opensea.io/assets/ethereum/${content.token_address}/${content.token_id}`}
                   className="textNoDec"
                   target="_blank"
                   rel="noreferrer"
@@ -75,7 +87,7 @@ export default function Poap(props) {
                       weight="bold"
                       transform="uppercase"
                     >
-                      On Paras
+                      On OpenSea
                     </Text>
                   </Button>
                 </a>

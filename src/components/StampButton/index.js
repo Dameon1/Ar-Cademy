@@ -14,8 +14,16 @@ export default function StampButton(props) {
 
   return (
     <Row wrap="wrap" align="center" justify="space-around">
-      {" "}
-      <Button className="identity-link buttonText" onClick={() => stamp(props.txId)}>STAMP</Button>{" "}
+      <Button
+        flat
+        auto
+        rounded
+        className="mediaButton"
+        css={{ color: "#94f9f0", bg: "#94f9f026", m: 6 }}
+        onClick={() => stamp(props.txId)}
+      >
+        STAMP
+      </Button>
     </Row>
   );
 }

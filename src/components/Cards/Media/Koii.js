@@ -1,13 +1,13 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import image from "../../../favicon.ico";
 
-export default function Poap(props) {
+export default function Koii(props) {
   let { content } = props;
-  let title = content.collection.title;
-  let tokenId = content.token_id.split(":")[0];
-  if (title.length > 30) {
-    title = title.substring(0, 26) + "...";
-  }
+  let title = content.title;
+//   let tokenId = content.token_id.split(":")[0];
+//   if (title.length > 30) {
+//     title = title.substring(0, 26) + "...";
+//   }
 
   return (
     
@@ -25,7 +25,7 @@ export default function Poap(props) {
 
         <Card.Body css={{ p: 30 }}>
           <Card.Image
-            src={content.image}
+            src={`https://koii.live/${content.id}.png`}
             alt={title}
             width="100%"
             height="100%"
@@ -57,7 +57,7 @@ export default function Poap(props) {
             <Col>
               <Row justify="center">
                 <a
-                  href={`https://new.paras.id/token/x.paras.near::${tokenId}/${tokenId}%3A1`}
+                  href={`https://koi.rocks/content-detail/${content.id}`}
                   className="textNoDec"
                   target="_blank"
                   rel="noreferrer"
@@ -75,7 +75,7 @@ export default function Poap(props) {
                       weight="bold"
                       transform="uppercase"
                     >
-                      On Paras
+                      On Koii
                     </Text>
                   </Button>
                 </a>
