@@ -1,7 +1,7 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import image from "../../../favicon.ico";
 
-export default function Poap(props) {
+export default function NearNFTS(props) {
   let { content } = props;
   let title = content.collection.title;
   let tokenId = content.token_id.split(":")[0];
@@ -10,11 +10,18 @@ export default function Poap(props) {
   }
 
   return (
-    
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
-      <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
+      <Card
+        css={{ w: "100%", h: "290px", backgroundColor: "#023749" }}
+        className="mediaCardBorder"
+      >
         <Card.Header
-          css={{ position: "absolute", zIndex: 1, margin: "2px", padding: "0" }}
+          css={{
+            position: "absolute",
+            zIndex: 1,
+            margin: "2px",
+            padding: "10",
+          }}
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
@@ -23,7 +30,7 @@ export default function Poap(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 30 }}>
+        <Card.Body css={{ p: 20 }}>
           <Card.Image
             src={content.image}
             alt={title}

@@ -52,9 +52,17 @@
 }
 
 .mediaCards {
-  width: 240px;
+  width: 200px;
   padding:2px;
- margin:2px
+  margin:2px;
+}
+
+.mediaCardBorder {
+  border: 1px solid white;
+}
+
+.poapDateText {
+  color:#ffa537
 }
 
 .card {

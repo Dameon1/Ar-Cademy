@@ -1,6 +1,3 @@
-import { KoiiCard } from "../Cards";
-import Stamp from "../Stamp";
-//import image from "../../favicon.ico";
 import Poap from "../Cards/Media/Poap";
 import NearNFTS from "../Cards/Media/NearNFTS";
 import StampedAssets from "../Cards/Media/StampedAssets";
@@ -8,46 +5,54 @@ import CreatedAtomicAssets from "../Cards/Media/CreatedAtomicAssets";
 import Koii from "../Cards/Media/Koii";
 import EthereumNFTS from "../Cards/Media/EthereumNFTS";
 
-
 export function ProfileContentContainer(props) {
   let content;
 
-
   // Switch to display contents based on type
   switch (props.contentType) {
-
-    // Koii NFTS
-    case "koii":
-        if (props.contentObjects.length === 0) {
-        return null;
-      }
-      content = props.contentObjects.map((content, i) => {
-        return (
-          <div key={i} className="cardLinks">
-            <Koii content={content} />
-            {/* <p>Koii</p>
-            <KoiiCard key={item.uid} content={item} /> */}
-          </div>
-        );
-      });
-      break;
-
-    // POAPS 
+    // POAPS
     case "POAPS":
       if (props.contentObjects.length === 0) {
         return null;
       }
       content = props.contentObjects.map((content, i) => {
         return (
-          <div key={i} className="cardLinks">
+          <div key={i} className="mediaCards">
             <Poap content={content} />
           </div>
         );
       });
       break;
-    
 
-    // Ethereum NFTS  
+    // Near NFTS
+    case "NFTS":
+      if (props.contentObjects.length === 0) {
+        return null;
+      }
+      content = props.contentObjects.map((content, i) => {
+        return (
+          <div key={i} className="mediaCards">
+            <NearNFTS content={content} />
+          </div>
+        );
+      });
+      break;
+
+    // Koii NFTS
+    case "koii":
+      if (props.contentObjects.length === 0) {
+        return null;
+      }
+      content = props.contentObjects.map((content, i) => {
+        return (
+          <div key={i} className="mediaCards">
+            <Koii content={content} />
+          </div>
+        );
+      });
+      break;
+
+    // Ethereum NFTS
     case "ERC_NFTS":
       if (props.contentObjects.length === 0) {
         return null;
@@ -69,8 +74,12 @@ export function ProfileContentContainer(props) {
         image = image.replace("ipfs://", "https://ipfs.io/ipfs/");
 
         return (
-          <div key={i} className="cardLinks">
-            <EthereumNFTS content={content} EthImage={image} data={dataObject}/>
+          <div key={i} className="mediaCards">
+            <EthereumNFTS
+              content={content}
+              EthImage={image}
+              data={dataObject}
+            />
             {/* <div className="card">
               <div className="cardImageContainer">
                 <img src={image} alt={dataObject.name} className="cardImage" />
@@ -89,7 +98,7 @@ export function ProfileContentContainer(props) {
       }
       content = props.contentObjects.map(async (content, i) => {
         return (
-          <div key={i} className="cardLinks">
+          <div key={i} className="mediaCards">
             <div className="card">
               <div className="cardImageContainer">
                 {/* <img
@@ -123,7 +132,7 @@ export function ProfileContentContainer(props) {
 
         if (type === "image") {
           return (
-            <div key={i} className="cardLinks">
+            <div key={i} className="mediaCards">
               <StampedAssets content={content} />
               {/* <div className="card">
                 <h5>{title}</h5>
@@ -159,7 +168,7 @@ export function ProfileContentContainer(props) {
           }
         }
         return (
-          <div key={i} className="cardLinks">
+          <div key={i} className="mediaCards">
             <CreatedAtomicAssets content={content} />
             {/* <div className="card">
               <h5>{title}</h5>
@@ -179,20 +188,6 @@ export function ProfileContentContainer(props) {
       });
       break;
 
-      // Near NFTS
-      case "NFTS":
-        if (props.contentObjects.length === 0) {
-          return null;
-        }
-        content = props.contentObjects.map((content, i) => {
-          return (
-            <div key={i} className="cardLinks">
-              <NearNFTS content={content} />
-            
-            </div>
-          );
-        });
-        break;
     default:
       console.log(props.contentType);
   }

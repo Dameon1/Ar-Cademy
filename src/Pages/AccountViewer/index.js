@@ -205,8 +205,8 @@ export function AccountViewer() {
         {addr && userContent?.ARWEAVE?.ANFTS?.koii && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.koii}
-            contentType={"aNFTs"}
-            label="koii"
+            contentType={"koii"}
+          label="Koii NFTS"
           />
         )}
 

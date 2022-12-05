@@ -4,17 +4,24 @@ import image from "../../../favicon.ico";
 export default function Koii(props) {
   let { content } = props;
   let title = content.title;
-//   let tokenId = content.token_id.split(":")[0];
-//   if (title.length > 30) {
-//     title = title.substring(0, 26) + "...";
-//   }
+  //   let tokenId = content.token_id.split(":")[0];
+  //   if (title.length > 30) {
+  //     title = title.substring(0, 26) + "...";
+  //   }
 
   return (
-    
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
-      <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
+      <Card
+        css={{ w: "100%", h: "290px", backgroundColor: "#023749" }}
+        className="mediaCardBorder"
+      >
         <Card.Header
-          css={{ position: "absolute", zIndex: 1, margin: "2px", padding: "0" }}
+          css={{
+            position: "absolute",
+            zIndex: 1,
+            margin: "2px",
+            padding: "10",
+          }}
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
@@ -23,7 +30,7 @@ export default function Koii(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 30 }}>
+        <Card.Body css={{ p: 20 }}>
           <Card.Image
             src={`https://koii.live/${content.id}.png`}
             alt={title}

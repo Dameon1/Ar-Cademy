@@ -3,20 +3,20 @@ import image from "../../../favicon.ico";
 
 export default function EthereumNFTS(props) {
   let { content, EthImage, data } = props;
-  console.log(data)
+  console.log(data);
   //let dataObject = JSON.parse(content.metadata);
-//   if (dataObject === null) {
-//     return null;
-//   }
-//   let { ETHimage } = dataObject;
+  //   if (dataObject === null) {
+  //     return null;
+  //   }
+  //   let { ETHimage } = dataObject;
 
-//   if (ETHimage === undefined) {
-//     ETHimage =
-//       "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
-//   }
+  //   if (ETHimage === undefined) {
+  //     ETHimage =
+  //       "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
+  //   }
 
-//   ETHimage = ETHimage.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
-//   ETHimage = ETHimage.replace("ipfs://", "https://ipfs.io/ipfs/");
+  //   ETHimage = ETHimage.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
+  //   ETHimage = ETHimage.replace("ipfs://", "https://ipfs.io/ipfs/");
   let title = data.name;
   if (title.length > 30) {
     title = title.substring(0, 26) + "...";
@@ -24,9 +24,17 @@ export default function EthereumNFTS(props) {
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
-      <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
+      <Card
+        css={{ w: "100%", h: "290px", backgroundColor: "#023749" }}
+        className="mediaCardBorder"
+      >
         <Card.Header
-          css={{ position: "absolute", zIndex: 1, margin: "2px", padding: "0" }}
+          css={{
+            position: "absolute",
+            zIndex: 1,
+            margin: "2px",
+            padding: "10",
+          }}
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
@@ -35,7 +43,7 @@ export default function EthereumNFTS(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 30 }}>
+        <Card.Body css={{ p: 20 }}>
           <Card.Image
             src={EthImage}
             alt={content.videoTitle}

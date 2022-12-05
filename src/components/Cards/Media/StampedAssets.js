@@ -12,9 +12,17 @@ export default function StampedAssets(props) {
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
-      <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
+      <Card
+        css={{ w: "100%", h: "290px", backgroundColor: "#023749" }}
+        className="mediaCardBorder"
+      >
         <Card.Header
-          css={{ position: "absolute", zIndex: 1, margin: "2px", padding: "0" }}
+          css={{
+            position: "absolute",
+            zIndex: 1,
+            margin: "2px",
+            padding: "10",
+          }}
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
@@ -23,7 +31,7 @@ export default function StampedAssets(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 30 }}>
+        <Card.Body css={{ p: 20 }}>
           <Card.Image
             src={`https://arweave.net/${content.stampedAsset}`}
             alt={title}
@@ -48,7 +56,7 @@ export default function StampedAssets(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                <Stamp txId={content.stampedAsset} />
+                  <Stamp txId={content.stampedAsset} />
                 </Col>
               </Row>
             </Col>
@@ -73,7 +81,7 @@ export default function StampedAssets(props) {
                       weight="bold"
                       transform="uppercase"
                     >
-                     On IMG
+                      On IMG
                     </Text>
                   </Button>
                 </a>

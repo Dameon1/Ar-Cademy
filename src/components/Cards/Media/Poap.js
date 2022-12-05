@@ -10,9 +10,17 @@ export default function Poap(props) {
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
-      <Card css={{ w: "100%", h: "300px", backgroundColor: "#023749" }}>
+      <Card
+        css={{ w: "100%", h: "290px", backgroundColor: "#023749" }}
+        className="mediaCardBorder"
+      >
         <Card.Header
-          css={{ position: "absolute", zIndex: 1, margin: "2px", padding: "0" }}
+          css={{
+            position: "absolute",
+            zIndex: 1,
+            margin: "2px",
+            padding: "10",
+          }}
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
@@ -21,7 +29,7 @@ export default function Poap(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 30 }}>
+        <Card.Body css={{ p: 20 }}>
           <Card.Image
             src={content.event.image_url}
             alt={content.videoTitle}
@@ -46,7 +54,7 @@ export default function Poap(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                  <Text color="#d1d1d1" size={12}>
+                  <Text  size={12} css={{color: "#ffa537"}}>
                     {content.event.year}
                   </Text>
                 </Col>
@@ -73,7 +81,7 @@ export default function Poap(props) {
                       weight="bold"
                       transform="uppercase"
                     >
-                     On Poap
+                      On Poap
                     </Text>
                   </Button>
                 </a>
