@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/Ar-Cademy/static/css/main.81431ed4.css",
-    "main.js": "/Ar-Cademy/static/js/main.a19c2b18.js",
+    "main.js": "/Ar-Cademy/static/js/main.e1b0cd21.js",
     "static/media/favicon.ico": "/Ar-Cademy/static/media/favicon.b4fdc3077bbf07629434.ico",
     "index.html": "/Ar-Cademy/index.html"
   },
   "entrypoints": [
     "static/css/main.81431ed4.css",
-    "static/js/main.a19c2b18.js"
+    "static/js/main.e1b0cd21.js"
   ]
 }
