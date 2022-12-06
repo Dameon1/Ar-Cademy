@@ -137,6 +137,7 @@ export default function Navigation() {
                 css={{ height: "$18" }}
                 color="success"
                 textValue="disconnect"
+                onClick={() => console.log("BOX CLICKED") }
               >
                 {addr ? (
                   <>

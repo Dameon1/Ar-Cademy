@@ -243,6 +243,7 @@ export default function AssetManagement() {
                           <Row align="flex-end">
                             <Col span={3}>
                               <Link
+                              //to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                                 to={`/Profile/${contractData.state.emergencyHaltWallet}/${contractData.state.emergencyHaltWallet}`}
                               >
                                 <Card.Image
