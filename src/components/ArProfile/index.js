@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import {
@@ -7,7 +7,6 @@ import {
   FaFacebook,
   FaGithub,
   FaDiscord,
-  FaGlobe,
 } from "react-icons/fa";
 import {
   Button,
@@ -20,18 +19,8 @@ import {
   Link,
   Tooltip,
 } from "@nextui-org/react";
-import MainContext from "../../context";
 
-import {
-  AvatarS,
-  Bio,
-  BoxVertoID,
-  DetailsS,
-  Name,
-  UserAddr,
-  UserSocial,
-  VertoIDinfo,
-} from "../../static/styles/Profile";
+import { AvatarS, Bio, Name } from "../../static/styles/Profile";
 
 import Account from "arweave-account";
 

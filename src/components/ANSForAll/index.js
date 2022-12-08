@@ -6,9 +6,7 @@ import {
   Loading,
   Text,
   Spacer,
-  Image,
   Row,
-  Col,
   Tooltip,
   Link,
 } from "@nextui-org/react";
@@ -18,16 +16,11 @@ import MainContext from "../../context";
 
 import { icons } from "../../static";
 
-function UseAns({ addr, walletName, disconnectWallet, ARK }) {
+function UseAns({ addr, forDashboard }) {
   const [ansProfile, setAnsProfile] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState(false);
-  const [hasAccount, setHasAccount] = useState(false);
   const { theme } = useContext(MainContext);
-  // let lensLabel;
-  // if(content.EVM[evmAddr]?.LENS_HANDLES[0] !== undefined){
-  //   lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "")
-  // } 
 
   useEffect(() => {
     (async () => {
@@ -35,13 +28,13 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
         if (addr.length !== 43) {
           return;
         }
+
         const res = await fetch(
           `https://ans-testnet.herokuapp.com/profile/${addr}`
         );
         const ans = await res.json();
-        console.log("addr2", addr);
-        if (ans) {
-          setHasAccount(true);
+
+        if (Object.keys(ans).length > 0) {
           setAnsProfile(ans);
         }
       } catch (e) {
@@ -68,7 +61,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
           <Grid.Container gap={1} justify="center">
             <Button
               color="secondary"
-              onClick={disconnectWallet}
+              onPress={() => setIsLoading(true)}
               className="identity-link buttonText"
             >
               Retry
@@ -78,7 +71,7 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
         </>
       ) : ansProfile ? (
         <>
-        {console.log(ansProfile)}
+          {console.log(ansProfile)}
           <div style={{ padding: "5px" }}>
             <AvatarS
               src={`https://arweave.net/${ansProfile.avatar}`}
@@ -227,6 +220,17 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
               {` No Account Found `}
               {` 🙂`}
             </div>
+            <Spacer y={1} />
+            {/* {forDashboard && (
+                <Button
+                  auto
+                  // onClick={() => setModalIsOpen(true)}
+                  // iconRight={<FiEdit size={18} />}
+                  className="identity-link buttonText"
+                >
+                  Edit Profile
+                </Button>
+              )} */}
           </div>
         </>
       )}

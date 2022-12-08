@@ -1,14 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import PassportCard from "../../components/PassportCard";
 import ProfileContentContainer from "src/components/ProfileContentContainer";
 import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
 import UseAns from "src/components/ANSForAll";
 import "./profile.css";
 import { Card } from "../../components/Cards";
-import { ethers } from "ethers";
 import ArProfile from "src/components/ArProfile";
 import { Loading, Container, Row, Col } from "@nextui-org/react";
 
@@ -36,7 +34,6 @@ export default function Profile() {
     videoObjects = [];
   }
 
-  const [address, setAddress] = useState(addr);
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(true);
@@ -52,7 +49,6 @@ export default function Profile() {
         const ark = await arArk.json();
 
         user = await ark.res;
-        console.log(address, user);
         setUserContent(user);
         setIsSearching(false);
         setIsLoading(false);
@@ -62,7 +58,7 @@ export default function Profile() {
         console.log("finally");
       }
     })();
-  }, [address, addr, isSearching]);
+  }, [addr, isSearching]);
 
   let cards = videoObjects.map((content) => {
     return (
@@ -94,20 +90,19 @@ export default function Profile() {
           >
             <Row>
               <Col align="center">
+                <h3>ArProfile:</h3>
                 <ArProfile addr={addr} />
               </Col>
               <Col align="center">
                 {console.log(userContent)}
-                {(addr && userContent?.ARWEAVE?.ANS && !isSearching) ? (
+                <h3>ANS Profile:</h3>
+                {addr && userContent?.ARWEAVE?.ANS && !isSearching ? (
                   <ARKdisplay
                     content={userContent}
                     evmAddr={userContent.primary_address}
                   />
                 ) : addr && !isSearching ? (
-                  <>
-                  <p>ANS</p>
-                    <UseAns addr={addr} />
-                  </>
+                  <UseAns addr={addr} />
                 ) : (
                   <Loading />
                 )}

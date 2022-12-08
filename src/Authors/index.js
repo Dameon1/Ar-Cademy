@@ -52,7 +52,7 @@ export const Authors = {
         createdVideosByID: ['6', '9', '28'],
         createdContentByID: ['ContentID'],
         uid: 6,
-        addr: 0,
+        addr: "0",
         username: "@edgeandnode",
         avatar: "https://edgeandnode.com/images/logo-big.png",
     },

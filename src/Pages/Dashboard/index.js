@@ -15,12 +15,12 @@ import {
   Container,
 } from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ArProfile from "src/components/ArProfile";
 import Account from "arweave-account";
 
 export function Dashboard() {
-  const { addr, userData, setUserData } = useContext(MainContext);
+  const { addr, setUserData } = useContext(MainContext);
 
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -119,7 +119,7 @@ export function Dashboard() {
                   />
                 </>
               ) : addr && !isLoading ? (
-                <UseAns addr={addr} />
+                <UseAns addr={addr} forDashboard={true} />
               ) : (
                 <Loading />
               )}
