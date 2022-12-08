@@ -24,6 +24,10 @@ function UseAns({ addr, walletName, disconnectWallet, ARK }) {
   const [hasFailed, setHasFailed] = useState(false);
   const [hasAccount, setHasAccount] = useState(false);
   const { theme } = useContext(MainContext);
+  // let lensLabel;
+  // if(content.EVM[evmAddr]?.LENS_HANDLES[0] !== undefined){
+  //   lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "")
+  // } 
 
   useEffect(() => {
     (async () => {

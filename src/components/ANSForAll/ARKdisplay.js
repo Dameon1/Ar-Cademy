@@ -9,7 +9,10 @@ import MainContext from "../../context";
 function ARKdisplay(props) {
   const { content, evmAddr } = props;
   const { theme } = useContext(MainContext);
-  const lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "");
+  let lensLabel;
+  if(content.EVM[evmAddr]?.LENS_HANDLES[0] !== undefined){
+    lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "")
+  } 
 
   return (
     <div style={{ padding: "5px" }}>

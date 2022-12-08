@@ -78,7 +78,7 @@ export function AccountViewer() {
   function onSubmit(event) {
     event.preventDefault();
     let ansAddr = getAddrByANS(input);
-    
+
     // async function sanitizeAddr(text) {
     //   //regular Arweave
     //   let sanitized = "";
@@ -181,32 +181,32 @@ export function AccountViewer() {
         {addr && userContent?.NFTS && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.NFTS}
-            contentType={"NFTS"}
-            label="NFTS"
+            contentType="NFTS"
+            label="NEAR NFTS"
           />
         )}
 
         {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.STAMPS}
-            contentType={"STAMPS"}
-            label="STAMPS"
+            contentType="STAMPS"
+            label="Stamped Assets"
           />
         )}
 
         {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.permapages_img}
-            contentType={"permapages_img"}
-            label="permapages_img"
+            contentType="permapages_img"
+            label="Created Atomic Assets"
           />
         )}
 
         {addr && userContent?.ARWEAVE?.ANFTS?.koii && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.koii}
-            contentType={"koii"}
-          label="Koii NFTS"
+            contentType="koii"
+            label="Koii NFTS"
           />
         )}
 
@@ -217,7 +217,7 @@ export function AccountViewer() {
               contentObjects={
                 userContent.EVM[userContent.primary_address].ERC_NFTS
               }
-              contentType={"ERC_NFTS"}
+              contentType="ERC_NFTS"
               label="ERC_NFTS"
             />
           )}

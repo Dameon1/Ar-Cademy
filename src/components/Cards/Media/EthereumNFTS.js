@@ -18,7 +18,7 @@ export default function EthereumNFTS(props) {
   //   ETHimage = ETHimage.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
   //   ETHimage = ETHimage.replace("ipfs://", "https://ipfs.io/ipfs/");
   let title = data.name;
-  if (title.length > 30) {
+  if (title.length > 26) {
     title = title.substring(0, 26) + "...";
   }
 
@@ -33,7 +33,7 @@ export default function EthereumNFTS(props) {
             position: "absolute",
             zIndex: 1,
             margin: "2px",
-            padding: "10",
+            padding: "0",
           }}
         >
           <Col>
@@ -43,7 +43,7 @@ export default function EthereumNFTS(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 20 }}>
+        <Card.Body css={{ p: 15 }}>
           <Card.Image
             src={EthImage}
             alt={content.videoTitle}

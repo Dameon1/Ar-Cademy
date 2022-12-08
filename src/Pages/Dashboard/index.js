@@ -134,6 +134,7 @@ export function Dashboard() {
           <Loading />
         </>
       )}
+
       {addr &&
         userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS &&
         !isLoading && (
@@ -148,7 +149,7 @@ export function Dashboard() {
       {addr && userContent.ARK?.NFTS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.NFTS}
-          contentType={"NFTS"}
+          contentType="NFTS"
           label="NEAR NFTS"
         />
       )}
@@ -156,7 +157,7 @@ export function Dashboard() {
       {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.STAMPS}
-          contentType={"STAMPS"}
+          contentType="STAMPS"
           label="Stamped Assets"
         />
       )}
@@ -166,14 +167,14 @@ export function Dashboard() {
         !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARK.ARWEAVE.ANFTS.permapages_img}
-            contentType={"permapages_img"}
+            contentType="permapages_img"
             label="Created Atomic Assets"
           />
         )}
       {addr && userContent?.ARK?.ARWEAVE?.ANFTS?.koii && !isLoading && (
         <ProfileContentContainer
           contentObjects={userContent.ARK.ARWEAVE.ANFTS.koii}
-          contentType={"koii"}
+          contentType="koii"
           label="Koii NFTS"
         />
       )}
@@ -184,7 +185,7 @@ export function Dashboard() {
             contentObjects={
               userContent.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS
             }
-            contentType={"ERC_NFTS"}
+            contentType="ERC_NFTS"
             label="ERC_NFTS"
           />
         )}

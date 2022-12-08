@@ -22,9 +22,21 @@ export default function Profile() {
     profileId = 8;
   }
 
-  let videoIds = Authors[profileId].createdVideosByID;
-  let videoObjects = videoIds.map((videoId) => Videos[videoId]);
-  const [address, setAddress ] = useState(addr);
+  let videoIds;
+  if (Authors[profileId] !== undefined) {
+    videoIds = Authors[profileId].createdVideosByID;
+  } else {
+    videoIds = [];
+  }
+
+  let videoObjects;
+  if (videoIds.length > 0) {
+    videoObjects = videoIds.map((id) => Videos[id]);
+  } else {
+    videoObjects = [];
+  }
+
+  const [address, setAddress] = useState(addr);
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(true);
@@ -38,7 +50,7 @@ export default function Profile() {
           `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
-        
+
         user = await ark.res;
         console.log(address, user);
         setUserContent(user);
@@ -85,11 +97,15 @@ export default function Profile() {
                 <ArProfile addr={addr} />
               </Col>
               <Col align="center">
-              {console.log(userContent)}
-                {addr && userContent?.ARWEAVE?.ANS && !isSearching ? (
-                   <ARKdisplay content={userContent} evmAddr={userContent.primary_address}/>
+                {console.log(userContent)}
+                {(addr && userContent?.ARWEAVE?.ANS && !isSearching) ? (
+                  <ARKdisplay
+                    content={userContent}
+                    evmAddr={userContent.primary_address}
+                  />
                 ) : addr && !isSearching ? (
                   <>
+                  <p>ANS</p>
                     <UseAns addr={addr} />
                   </>
                 ) : (
@@ -100,13 +116,14 @@ export default function Profile() {
           </Container>
         )}
         {console.log(userContent)}
-
-        <div>
-          <h1>Videos</h1>
-          <div className="contentScrollContainer">
-            <div className="hs">{cards}</div>
+        {videoObjects.length > 0 && (
+          <div>
+            <h1>Videos</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">{cards}</div>
+            </div>
           </div>
-        </div>
+        )}
 
         {addr && userContent?.primary_address && !isLoading && (
           <ProfileContentContainer
@@ -119,35 +136,31 @@ export default function Profile() {
         {addr && userContent?.NFTS && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.NFTS}
-            contentType={"NFTS"}
-            label="NFTS"
+            contentType="NFTS"
+            label="NEAR NFTS"
           />
         )}
-
         {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.STAMPS}
-            contentType={"STAMPS"}
-            label="STAMPS"
+            contentType="STAMPS"
+            label="Stamped Assets"
           />
         )}
-
         {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.permapages_img}
-            contentType={"permapages_img"}
-            label="permapages_img"
+            contentType="permapages_img"
+            label="Created Atomic Assets"
           />
         )}
-
         {addr && userContent?.ARWEAVE?.ANFTS?.koii && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.ARWEAVE.ANFTS.koii}
-            contentType={"koii"}
-          label="Koii NFTS"
+            contentType="koii"
+            label="Koii NFTS"
           />
         )}
-
         {addr &&
           userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS &&
           !isLoading && (
@@ -155,11 +168,10 @@ export default function Profile() {
               contentObjects={
                 userContent.EVM[userContent.primary_address].ERC_NFTS
               }
-              contentType={"ERC_NFTS"}
+              contentType="ERC_NFTS"
               label="ERC_NFTS"
             />
           )}
-        
       </div>
     </>
   );

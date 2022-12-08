@@ -6,7 +6,7 @@ export default function CreatedAtomicAssets(props) {
   let { content } = props;
   let title = content.title;
   let type = content.stampedAssetType;
-  if (title.length > 30) {
+  if (title.length > 26) {
     title = title.substring(0, 26) + "...";
   }
 
@@ -21,7 +21,7 @@ export default function CreatedAtomicAssets(props) {
             position: "absolute",
             zIndex: 1,
             margin: "2px",
-            padding: "10",
+            padding: "0",
           }}
         >
           <Col>

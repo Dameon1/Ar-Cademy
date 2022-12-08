@@ -20,7 +20,7 @@ export default function Koii(props) {
             position: "absolute",
             zIndex: 1,
             margin: "2px",
-            padding: "10",
+            padding: "0",
           }}
         >
           <Col>
@@ -30,7 +30,7 @@ export default function Koii(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 20 }}>
+        <Card.Body css={{ p: 15 }}>
           <Card.Image
             src={`https://koii.live/${content.id}.png`}
             alt={title}

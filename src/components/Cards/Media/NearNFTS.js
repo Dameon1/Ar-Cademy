@@ -5,7 +5,7 @@ export default function NearNFTS(props) {
   let { content } = props;
   let title = content.collection.title;
   let tokenId = content.token_id.split(":")[0];
-  if (title.length > 30) {
+  if (title.length > 26) {
     title = title.substring(0, 26) + "...";
   }
 
@@ -20,7 +20,7 @@ export default function NearNFTS(props) {
             position: "absolute",
             zIndex: 1,
             margin: "2px",
-            padding: "10",
+            padding: "0",
           }}
         >
           <Col>
@@ -30,7 +30,7 @@ export default function NearNFTS(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 20 }}>
+        <Card.Body css={{ p: 10 }}>
           <Card.Image
             src={content.image}
             alt={title}

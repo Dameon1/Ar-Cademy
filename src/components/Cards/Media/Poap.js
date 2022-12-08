@@ -4,7 +4,7 @@ import image from "../../../favicon.ico";
 export default function Poap(props) {
   let { content } = props;
   let title = content.event.name;
-  if (title.length > 30) {
+  if (title.length > 26) {
     title = title.substring(0, 26) + "...";
   }
 
@@ -19,7 +19,7 @@ export default function Poap(props) {
             position: "absolute",
             zIndex: 1,
             margin: "2px",
-            padding: "10",
+            padding: "0",
           }}
         >
           <Col>
@@ -29,7 +29,7 @@ export default function Poap(props) {
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 20 }}>
+        <Card.Body css={{ p: 15 }}>
           <Card.Image
             src={content.event.image_url}
             alt={content.videoTitle}

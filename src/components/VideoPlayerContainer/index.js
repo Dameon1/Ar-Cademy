@@ -19,6 +19,7 @@ import "./videoPlayerContainer.css";
 export function VideoPlayerContainer(props) {
   const [contentObject, setContentObject] = useState(null);
   const { videoID, setState } = props;
+  
   useEffect(() => {
     function getContentInfo() {
       //let videoId = new URL(window.location.href).pathname.split("/").at(-1);
@@ -71,7 +72,7 @@ export function VideoPlayerContainer(props) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <p>{contentObject.authorObject.authorWebsite}</p>
+                <p>Website</p>
               </a>
             </Col>
             <Col>
@@ -89,7 +90,7 @@ export function VideoPlayerContainer(props) {
                 to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                 className="video-creator-link"
               >
-                <p>ArProfile</p>
+                <p>Profile</p>
               </Link>
             </Col>
           </Row>

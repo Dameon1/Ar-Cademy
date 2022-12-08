@@ -2564,4 +2564,9 @@ export const ans = [
     address: "6QfoWjXQm1sr-l5uiHNCj7qut_0Rd-UWDKlFh2AFSAA",
     cost: 11,
   },
+  {
+    username: "pwo.ar",
+    address: "IoHIUNrjKnzbi4dusZbkh6DZgb1HyIzgE4HT-EY-um4",
+    cost: 7,
+  },
 ];

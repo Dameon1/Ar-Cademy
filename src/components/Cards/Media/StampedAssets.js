@@ -6,7 +6,7 @@ export default function StampedAssets(props) {
   let { content } = props;
   let title = content.title;
   let type = content.stampedAssetType;
-  if (title.length > 30) {
+  if (title.length > 27) {
     title = title.substring(0, 26) + "...";
   }
 
@@ -21,7 +21,7 @@ export default function StampedAssets(props) {
             position: "absolute",
             zIndex: 1,
             margin: "2px",
-            padding: "10",
+            padding: "0",
           }}
         >
           <Col>

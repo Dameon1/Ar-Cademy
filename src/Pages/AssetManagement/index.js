@@ -298,13 +298,13 @@ export default function AssetManagement() {
                   <h3>Holders:</h3>
                   <Grid xs={12}>
                     <Avatar.Group count={ownersAddressArray.length - 4}>
-                      {ownersAddressArray.slice(0, 4).map((name, index) => (
+                      {ownersAddressArray.slice(0, 4).map((addr, index) => (
                         <>
-                          <Link to={`/Profile/${name}`} key={index}>
+                          <Link to={`/Profile/${addr}/${addr}`} key={index}>
                             <Avatar
                               size="lg"
                               pointer
-                              text={name}
+                              text={addr}
                               color="gradient"
                               stacked
                             />
