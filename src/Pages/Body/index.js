@@ -1,29 +1,26 @@
 import { Routes, Route } from "react-router-dom";
-import MainHeader from "../../components/MainHeader";
+//Pages
 import Dashboard from "../Dashboard";
 import LandingPage from "../LandingPage";
 import Identity from "../Identity";
 import ModulePage from "../ModulePage";
 import Playground from "../Playground";
-import Footer from "../../components/Footer";
 import Profile from "../Profile";
 import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
 import TestPage from "../TestPage";
 import AssetManagement from "../AssetManagement";
+//Components
 import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
 
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
   let string = `/${module[1]}`;
-  console.log(module)
   return (
     <div className="app">
-      {/* <MainHeader /> */}
       <Navigation />
-      
       <main className="main-content">
-      
         <Routes>
           <Route path="/AccountViewer" element={<AccountViewer />} />
           <Route exact path="/Identity" element={<Identity />} />
