@@ -92,7 +92,7 @@ export function AccountViewer() {
     setIsSearching(true);
   }
 
-  const isEmpty = (input) => Object.keys(input).length === 0;
+  //const isEmpty = (input) => Object.keys(input).length === 0;
 
   return (
     <>
@@ -169,7 +169,7 @@ export function AccountViewer() {
             )}
           </Container>
         )}
-        {console.log("hi", userContent)}
+        
         {addr && userContent?.primary_address && !isLoading && (
           <ProfileContentContainer
             contentObjects={userContent.EVM[userContent.primary_address]?.POAPS}

@@ -52,17 +52,13 @@ export function Dashboard() {
             const evmArk = await ethArk.json();
             if (evmArk) {
               user.ARK = evmArk.res;
-              user.ANS = evmArk.res.ANS;
             }
-            console.log(user.ANS);
           }
         } else {
           user.ARK = ark.res;
-          user.ANS = ark.res.ANS;
         }
 
         //fetch ANS Data
-
         setUserData(user);
         setUserContent(user);
         setIsLoading(false);
@@ -83,6 +79,7 @@ export function Dashboard() {
           security risks to personal safety, privacy, and trust.
         </p>
       </div>
+
       <Spacer y={1} />
       {addr && (
         <Row align="center" justify="center">
@@ -95,8 +92,8 @@ export function Dashboard() {
           </Button>
         </Row>
       )}
+      
       <Spacer y={1} />
-      {/*Create New ArProfile Component  */}
       {!addr && <Login />}
       {addr && (
         <Container

@@ -6,48 +6,41 @@ import {
   Col,
   Button,
   Avatar,
-  Container,
   Loading,
 } from "@nextui-org/react";
 import { useState, useEffect, useContext } from "react";
 import { getAssetData, assetDetails } from "../../lib/imgLib/asset.js";
 import { atomicToStamp } from "../../lib/imgLib/utils.js";
 import MainContext from "../../context";
-import { take, takeLast } from "ramda";
-import Account from "arweave-account";
+//import { take, takeLast } from "ramda";
 import { Link } from "react-router-dom";
 //import { imgCache, profile } from "../store.js";
-import {
-  isVouched,
-  stamp,
-  getCount,
-  getRewards,
-} from "../../lib/imgLib/stamp.js";
-import { getProfile, getProfilePicture } from "../../lib/imgLib/account.js";
+import { getCount, getRewards } from "../../lib/imgLib/stamp.js";
+import { getProfile } from "../../lib/imgLib/account.js";
 
 export default function AssetManagement() {
   const { addr } = useContext(MainContext);
   const [asset, setAsset] = useState();
   const [ownerData, setOwnerData] = useState();
-  const [count, setCount] = useState();
+  //const [count, setCount] = useState();
   const [rewards, setRewards] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [contractData, setContractData] = useState();
   const [ownersAddressArray, setOwnersAddressArray] = useState([]);
-  const [assetStampCount, setAssetStampCount] = useState()
+  const [assetStampCount, setAssetStampCount] = useState();
   let module = new URL(window.location.href).pathname.split("/");
   let itemId = module[module.length - 1];
-  const account = new Account();
+  //const account = new Account();
 
-  let id;
-  let src = "https://placehold.co/400";
+  // id;
   let imageMsg = "";
-  let stampDlg = false;
-  let errorDlg = false;
-  let errorMsg = "";
-  let showConnect = false;
-  let showHelp = false;
-  let tryingToStamp = false;
+  // let src = "https://placehold.co/400";
+  // let stampDlg = false;
+  // let errorDlg = false;
+  // let errorMsg = "";
+  // let showConnect = false;
+  // let showHelp = false;
+  // let tryingToStamp = false;
 
   useEffect(() => {
     async function data(id) {
@@ -87,98 +80,98 @@ export default function AssetManagement() {
   //       }
   //     })();
   //   }, [addr]);
-  async function getAllOwnersAvatar() {
-    if (ownersAddressArray.length < 1) {
-      return;
-    }
-    // const res =  account.get(addr);
-    // async function profilePicture(id) {
-    //   let profilePicture = Promise.resolve(getProfilePicture(id));
-    //   return profilePicture;
-    // }
-    let data = ownersAddressArray
-      .map(async (item) => {
-        const res = await account.get(item);
-        if (res !== null) {
-          if (res.profile !== null) {
-            if (res.profile.avatar !== undefined) {
-              console.log(res.profile.avatar);
-            }
-          }
-        } else {
-          return "assets";
-        }
-        //   let picture = profilePicture(item);
-        //   let newPicture =  picture;
-        //   return newPicture;
-        //      profile(x){
-        //     }
-        //     return profile(x)
-        // })
-      })
-      .filter((word) => word !== "assets");
-    return data;
-  }
+  // async function getAllOwnersAvatar() {
+  //   if (ownersAddressArray.length < 1) {
+  //     return;
+  //   }
+  //   // const res =  account.get(addr);
+  //   // async function profilePicture(id) {
+  //   //   let profilePicture = Promise.resolve(getProfilePicture(id));
+  //   //   return profilePicture;
+  //   // }
+  //   let data = ownersAddressArray
+  //     .map(async (item) => {
+  //       const res = await account.get(item);
+  //       if (res !== null) {
+  //         if (res.profile !== null) {
+  //           if (res.profile.avatar !== undefined) {
+  //             console.log(res.profile.avatar);
+  //           }
+  //         }
+  //       } else {
+  //         return "assets";
+  //       }
+  //       //   let picture = profilePicture(item);
+  //       //   let newPicture =  picture;
+  //       //   return newPicture;
+  //       //      profile(x){
+  //       //     }
+  //       //     return profile(x)
+  //       // })
+  //     })
+  //     .filter((word) => word !== "assets");
+  //   return data;
+  // }
   //    let ownersImages = Object.keys(contractData.state.balances).map((x) => {
   //     let profile = getAllOwnersAvatar(x)
   //     console.log(profile)
   //     return (<p>{x}</p>)
   //   })
-  let constructionDlg = false;
-  let msg = "";
+  // let constructionDlg = false;
+  // let msg = "";
 
-  function loadImage(url) {
-    return new Promise((resolve) => {
-      fetch(url)
-        // Extract as a blob
-        .then((resp) => resp.blob())
-        .then((blob) => {
-          console.log("got blob");
-          // Image element to load the image into. Could be passed as a variable if you already have an element to load into.
-          const img = document.createElement("img");
-          // Use blob as object url
-          //img.src = URL.createObjectURL(blob);
+  // function loadImage(url) {
+  //   return new Promise((resolve) => {
+  //     fetch(url)
+  //       // Extract as a blob
+  //       .then((resp) => resp.blob())
+  //       .then((blob) => {
+  //         console.log("got blob");
+  //         // Image element to load the image into. Could be passed as a variable if you already have an element to load into.
+  //         const img = document.createElement("img");
+  //         // Use blob as object url
+  //         //img.src = URL.createObjectURL(blob);
 
-          // wait for image to be loaded before resolving the promise
-          // img.onload = () => {
-          //   console.log("loaded");
-          //   resolve(img.src);
-          // };
-          resolve(URL.createObjectURL(blob));
-        });
-    });
-  }
+  //         // wait for image to be loaded before resolving the promise
+  //         // img.onload = () => {
+  //         //   console.log("loaded");
+  //         //   resolve(img.src);
+  //         // };
+  //         resolve(URL.createObjectURL(blob));
+  //       });
+  //   });
+  // }
 
-  async function handleStamp() {
-    if (!window.arweaveWallet) {
-      tryingToStamp = true;
-      showConnect = true;
-      return;
-    }
-    tryingToStamp = false;
-    stampDlg = true;
-    const addr = await window.arweaveWallet.getActiveAddress();
-    console.log(addr);
-    isVouched(addr)
-      .then((res) =>
-        res
-          ? stamp(id)
-          : Promise.reject(
-              new Error(
-                "Could not stamp asset, make sure you are Verified by a Vouch Service, <a target='_blank' className='link' href='https://vouchdao.xyz'>https://vouchdao.xyz</a>"
-              )
-            )
-      )
-      .then((res) => {
-        setAssetStampCount(getCount(id));
-        stampDlg = false;
-      })
-      .catch((e) => {
-        stampDlg = false;
-        errorMsg = e.message;
-        errorDlg = true;
-      });
-  }
+  // async function handleStamp() {
+  //   if (!window.arweaveWallet) {
+  //     tryingToStamp = true;
+  //     showConnect = true;
+  //     return;
+  //   }
+  //   tryingToStamp = false;
+  //   stampDlg = true;
+  //   const addr = await window.arweaveWallet.getActiveAddress();
+  //   console.log(addr);
+  //   isVouched(addr)
+  //     .then((res) =>
+  //       res
+  //         ? stamp(id)
+  //         : Promise.reject(
+  //             new Error(
+  //               "Could not stamp asset, make sure you are Verified by a Vouch Service, <a target='_blank' className='link' href='https://vouchdao.xyz'>https://vouchdao.xyz</a>"
+  //             )
+  //           )
+  //     )
+  //     .then((res) => {
+  //       setAssetStampCount(getCount(id));
+  //       stampDlg = false;
+  //     })
+  //     .catch((e) => {
+  //       stampDlg = false;
+  //       errorMsg = e.message;
+  //       errorDlg = true;
+  //     });
+  // }
 
   function tweetLink(title, id) {
     return `https://twitter.com/intent/tweet?text=${encodeURI(
@@ -243,7 +236,7 @@ export default function AssetManagement() {
                           <Row align="flex-end">
                             <Col span={3}>
                               <Link
-                              //to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
+                                //to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                                 to={`/Profile/${contractData.state.emergencyHaltWallet}/${contractData.state.emergencyHaltWallet}`}
                               >
                                 <Card.Image
@@ -377,14 +370,12 @@ export default function AssetManagement() {
                 <Row>
                   <Col>
                     <p>Percentage Owned</p>
-                    <p >
-                      {contractData.percent} %
-                    </p>
+                    <p>{contractData.percent} %</p>
                     <p>Total owned: {contractData.state.balances[addr]}</p>
                   </Col>
                   <Col>
                     <p>Transfer Ownership %</p>
-                  <input type="Ftext"/>
+                    <input type="Ftext" />
                     <button>Transfer</button>
                   </Col>
                 </Row>

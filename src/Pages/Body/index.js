@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 //Pages
 import Dashboard from "../Dashboard";
 import LandingPage from "../LandingPage";
-import Identity from "../Identity";
 import ModulePage from "../ModulePage";
 import Playground from "../Playground";
 import Profile from "../Profile";
@@ -22,8 +21,8 @@ function Body({ syntaxTheme }) {
       <Navigation />
       <main className="main-content">
         <Routes>
+          <Route exact path={string} element={<LandingPage />} />
           <Route path="/AccountViewer" element={<AccountViewer />} />
-          <Route exact path="/Identity" element={<Identity />} />
           <Route exact path="/Profile/:addr/:id" element={<Profile />} />
           <Route exact path="/Dashboard" element={<Dashboard />} />
           <Route path="Modules/:topic" element={<ModulePage />} />
@@ -31,7 +30,6 @@ function Body({ syntaxTheme }) {
           <Route exact path="/Upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
           <Route exact path={"/Testpage"} element={<TestPage />} />
-          <Route exact path={string} element={<LandingPage />} />
           <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>          
