@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./dashboard.css";
 import MainContext from "../../context";
 import Login from "src/components/Login/Login";
-import ProfileContentContainer from "src/components/ProfileContentContainer";
+
 import { ethers } from "ethers";
 import UseAns from "src/components/ANSForAll";
 import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
@@ -18,6 +18,14 @@ import { AiOutlineUpload } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import ArProfile from "src/components/ArProfile";
 import Account from "arweave-account";
+import {
+  Poap,
+  NearNFTS,
+  Koii,
+  EthereumNFTS,
+  StampedAssets,
+  CreatedAtomicAssets,
+} from "../../components/Cards/Media";
 
 export function Dashboard() {
   const { addr, setUserData } = useContext(MainContext);
@@ -92,7 +100,7 @@ export function Dashboard() {
           </Button>
         </Row>
       )}
-      
+
       <Spacer y={1} />
       {!addr && <Login />}
       {addr && (
@@ -109,7 +117,6 @@ export function Dashboard() {
               <h3>ANS Profile:</h3>
               {addr && userContent?.ARK?.ARWEAVE?.ANS && !isLoading ? (
                 <>
-                  {console.log(userContent.ARK.primary_address)}
                   <ARKdisplay
                     content={userContent.ARK}
                     evmAddr={userContent.ARK.primary_address}
@@ -132,59 +139,121 @@ export function Dashboard() {
         </>
       )}
 
+      {/*Poaps*/}
       {addr &&
-        userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS &&
+        userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS.length >
+          0 &&
         !isLoading && (
-          <ProfileContentContainer
-            contentObjects={
-              userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS
-            }
-            contentType={"POAPS"}
-            label="POAPS"
-          />
+          <>
+            <h1>Poaps:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent.ARK.EVM[userContent.ARK.primary_address].POAPS.map(
+                  (content, i) => {
+                    return (
+                      <div key={i} className="mediaCards">
+                        <Poap content={content} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </div>
+          </>
         )}
-      {addr && userContent.ARK?.NFTS && !isLoading && (
-        <ProfileContentContainer
-          contentObjects={userContent.ARK.NFTS}
-          contentType="NFTS"
-          label="NEAR NFTS"
-        />
+
+      {addr && userContent?.ARK?.NFTS.length > 0 && !isLoading && (
+        <>
+          <h1>NEAR NFTS:</h1>
+          <div className="contentScrollContainer">
+            <div className="hs">
+              {userContent.ARK.NFTS.map((content, i) => {
+                return (
+                  <div key={i} className="mediaCards">
+                    <NearNFTS content={content} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
       )}
-      {console.log("hi", userContent)}
       {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
-        <ProfileContentContainer
-          contentObjects={userContent.ARK.ARWEAVE.STAMPS}
-          contentType="STAMPS"
-          label="Stamped Assets"
-        />
+        <>
+          <h1>Stamped Assets:</h1>
+          <div className="contentScrollContainer">
+            <div className="hs">
+              {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
+                return (
+                  <div key={i} className="mediaCards">
+                    {console.log("content", content)}
+                    <StampedAssets content={content} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
       )}
 
       {addr &&
-        userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img &&
+        userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img.length > 0 &&
         !isLoading && (
-          <ProfileContentContainer
-            contentObjects={userContent.ARK.ARWEAVE.ANFTS.permapages_img}
-            contentType="permapages_img"
-            label="Created Atomic Assets"
-          />
+          <>
+            <h1>Created Atomic Assets:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img.map(
+                  (content, i) => {
+                    return (
+                      <div key={i} className="mediaCards">
+                        <CreatedAtomicAssets content={content} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </div>
+          </>
         )}
-      {addr && userContent?.ARK?.ARWEAVE?.ANFTS?.koii && !isLoading && (
-        <ProfileContentContainer
-          contentObjects={userContent.ARK.ARWEAVE.ANFTS.koii}
-          contentType="koii"
-          label="Koii NFTS"
-        />
-      )}
+
+      {addr &&
+        userContent?.ARK?.ARWEAVE?.ANFTS?.koii.length > 0 &&
+        !isLoading && (
+          <>
+            <h1>Koii NFTS:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.ARK?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <Koii content={content} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
       {addr &&
         userContent?.ARK?.EVM[userContent.ARK.primary_address].ERC_NFTS &&
         !isLoading && (
-          <ProfileContentContainer
-            contentObjects={
-              userContent.ARK.EVM[userContent.ARK.primary_address].ERC_NFTS
-            }
-            contentType="ERC_NFTS"
-            label="ERC_NFTS"
-          />
+          <>
+            <h1>Ethereum NFTS:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.ARK?.EVM[
+                  userContent.ARK.primary_address
+                ].ERC_NFTS.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <EthereumNFTS content={content} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
         )}
     </div>
   );

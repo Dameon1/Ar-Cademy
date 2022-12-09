@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import image from "../../../favicon.ico";
 import Stamp from "../../Stamp";
+import MainContext from "../../../context";
 
 export default function CreatedAtomicAssets(props) {
   let { content } = props;
+  const { userData } = useContext(MainContext);
   let title = content.title;
   let type = content.stampedAssetType;
   if (title.length > 26) {
@@ -56,7 +59,7 @@ export default function CreatedAtomicAssets(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                  <Stamp txId={content.stampedAsset} />
+                {userData?.ARK?.ARWEAVE?.IS_VOUCHED && <Stamp txId={content.stampedAsset} />}
                 </Col>
               </Row>
             </Col>

@@ -1,3 +1,4 @@
+
 import { Card, Row, Text, Col, Tooltip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { AiOutlinePlayCircle } from "react-icons/ai";
@@ -9,7 +10,6 @@ export default function MediaCards(props) {
   if (videoTitle.length > 20) {
     videoTitle = videoTitle.slice(0, 20) + " ...";
   }
-  console.log(content);
   return (
     <div>
       <Card css={{ mw: "400px" }}>

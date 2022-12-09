@@ -71,7 +71,6 @@ function UseAns({ addr, forDashboard }) {
         </>
       ) : ansProfile ? (
         <>
-          {console.log(ansProfile)}
           <div style={{ padding: "5px" }}>
             <AvatarS
               src={`https://arweave.net/${ansProfile.avatar}`}

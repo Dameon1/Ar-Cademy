@@ -110,7 +110,6 @@ export default function IMG() {
   };
 
   const handleUpload = async (evt) => {
-    console.log(evt.target.files);
     let files = evt.target.files;
     setFiles(evt.target.files);
     previewImage(evt);
@@ -141,7 +140,6 @@ export default function IMG() {
 
   async function doDeploy(e) {
     e.preventDefault();
-    console.log("currency:", currency);
     if (currency === "matic") {
       if (!window.ethereum) {
         showError("Metamask is required!");

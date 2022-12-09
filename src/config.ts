@@ -6,7 +6,7 @@ const config: Record<string, any> = {
   // To change the logo, Head to src/assets/logo.png and the replace image with yours.
   lang: "en", // language of your website
   locale: "en_US", // locale of your website
-  title: "Arcademy-Sanbox",
+  title: "Arcademy-Sandbox",
   description: "Content Creation and Management System",
   canonical: "https://www.dameonmendoza.com/Ar-Cademy/", // Your production website link
   twitterHandle: "@dameon_h2o", // Twitter username

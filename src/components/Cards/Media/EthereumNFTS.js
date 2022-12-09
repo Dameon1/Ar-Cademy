@@ -1,23 +1,22 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
-import image from "../../../favicon.ico";
+import fallbackImage from "../../../favicon.ico";
 
 export default function EthereumNFTS(props) {
   let { content, EthImage, data } = props;
-  console.log(data);
-  //let dataObject = JSON.parse(content.metadata);
-  //   if (dataObject === null) {
-  //     return null;
-  //   }
-  //   let { ETHimage } = dataObject;
+  let dataObject = JSON.parse(content.metadata);
+  if (dataObject === null) {
+    return null;
+  }
+  let { image } = dataObject;
 
-  //   if (ETHimage === undefined) {
-  //     ETHimage =
-  //       "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
-  //   }
+  if (image === undefined) {
+    image =
+      "https://metadata.ens.domains/mainnet/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/343467/image";
+  }
 
-  //   ETHimage = ETHimage.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
-  //   ETHimage = ETHimage.replace("ipfs://", "https://ipfs.io/ipfs/");
-  let title = data.name;
+  image = image.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
+  image = image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  let title = dataObject.name;
   if (title.length > 26) {
     title = title.substring(0, 26) + "...";
   }
@@ -45,12 +44,12 @@ export default function EthereumNFTS(props) {
 
         <Card.Body css={{ p: 15 }}>
           <Card.Image
-            src={EthImage}
+            src={image}
             alt={content.videoTitle}
             width="100%"
             height="100%"
             onError={(e) => {
-              e.target.src = image;
+              e.target.src = fallbackImage;
             }}
           />
         </Card.Body>
