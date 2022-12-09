@@ -57,6 +57,7 @@ export const Videos = {
         sandboxLinks: {
             home: "https://ardrive.io/",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
+            arns: "https://arns.arweave.dev/",
         },
     },
     "5": {
@@ -122,7 +123,9 @@ export const Videos = {
         authorID: "4",
         tags: ["ArFS"],
         sandboxLinks: {
+            home: "https://ardrive.io/",
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
+            arns: "https://arns.arweave.dev/",
         },
     },
     "11": {
@@ -271,6 +274,7 @@ export const Videos = {
         tags: ["ArDrive", "Manifest", "Intro", "Build"],
         sandboxLinks: {
             home: "https://ardrive.io/",
+            arns: "https://arns.arweave.dev/",
         },
     },
      "23": {

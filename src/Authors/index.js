@@ -31,6 +31,7 @@ export const Authors = {
         addr: 0,
         username: "@ardriveapp",
         avatar: "https://pbs.twimg.com/profile_images/1380527128186327043/XFPK_fKC_200x200.png",
+        arns: "arns.arweave.dev"
 
     },
     '5': {

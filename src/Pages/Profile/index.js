@@ -172,7 +172,7 @@ export default function Profile() {
                   return (
                     <div key={i} className="mediaCards">
                       {console.log("content", content)}
-                      <StampedAssets content={content} />
+                      <StampedAssets content={content} notForDashboard={true}/>
                     </div>
                   );
                 })}
@@ -189,7 +189,7 @@ export default function Profile() {
                   (content, i) => {
                     return (
                       <div key={i} className="mediaCards">
-                        <CreatedAtomicAssets content={content} />
+                        <CreatedAtomicAssets content={content} notForDashboard={true}/>
                       </div>
                     );
                   }

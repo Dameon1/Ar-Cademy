@@ -5,7 +5,7 @@ import Stamp from "../../Stamp";
 import MainContext from "../../../context";
 
 export default function CreatedAtomicAssets(props) {
-  let { content } = props;
+  let { content, notForDashboard } = props;
   const { userData } = useContext(MainContext);
   let title = content.title;
   let type = content.stampedAssetType;
@@ -59,7 +59,7 @@ export default function CreatedAtomicAssets(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                {userData?.ARK?.ARWEAVE?.IS_VOUCHED && <Stamp txId={content.stampedAsset} />}
+                {userData?.ARK?.ARWEAVE?.IS_VOUCHED && notForDashboard && <Stamp txId={content.stampedAsset} />}
                 </Col>
               </Row>
             </Col>

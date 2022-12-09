@@ -21,10 +21,11 @@ export function LandingPage() {
       </Link>
     );
   });
-
   console.log(
     "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/JE4YYPRLLrdXoHZnVlatTm27qu5WS3rIQQMbBMZpgq4"
   );
+  
+  
 
   return (
     <>

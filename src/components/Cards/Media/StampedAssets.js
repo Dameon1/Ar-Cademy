@@ -1,12 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import image from "../../../favicon.ico";
 import Stamp from "../../Stamp";
 import MainContext from "../../../context";
-
+import { isVouched } from "../../../lib/imgLib/stamp";
 export default function StampedAssets(props) {
-  const { userData } = useContext(MainContext);
-  let { content } = props;
+  const { userData, addr } = useContext(MainContext);
+  const [hasApproval, setHasApproval] = useState(false);
+  let { content, notForDashboard } = props;
+  
+  useEffect(() => {
+    async function getApproval() {
+      let approval = await isVouched(addr)
+      setHasApproval(approval)
+    }
+    getApproval()
+  }, [addr])
+  
+  
   let description = content.description;
   if (description) {
     if (description.length > 14) {
@@ -15,9 +26,7 @@ export default function StampedAssets(props) {
   }
   let title = content.title;
   let type = content.stampedAssetType;
-  // if (title.length > 27) {
-  //   title = title.substring(0, 26) + "...";
-  // }
+  
   if (type === "image") {
     return (
       <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
@@ -65,7 +74,8 @@ export default function StampedAssets(props) {
               <Col>
                 <Row>
                   <Col alignitems="flex-end">
-                    {userData?.ARK?.ARWEAVE?.IS_VOUCHED && (
+                    {console.log(userData?.ARK?.ARWEAVE?.IS_VOUCHED || hasApproval)}
+                    {(userData?.ARK?.ARWEAVE?.IS_VOUCHED || hasApproval) && notForDashboard && (
                       <Stamp txId={content.stampedAsset} />
                     )}
                   </Col>
@@ -152,7 +162,7 @@ export default function StampedAssets(props) {
               <Col>
                 <Row>
                   <Col alignitems="flex-end">
-                    {userData?.ARK?.ARWEAVE?.IS_VOUCHED && (
+                    {userData?.ARK?.ARWEAVE?.IS_VOUCHED && notForDashboard && (
                       <Stamp txId={content.stampedAsset} />
                     )}
                   </Col>

@@ -214,8 +214,7 @@ export function AccountViewer() {
                 {userContent.ARWEAVE.STAMPS.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
-                      {console.log("content", content)}
-                      <StampedAssets content={content} />
+                      <StampedAssets content={content} notForDashboard={true}/>
                     </div>
                   );
                 })}
@@ -233,7 +232,7 @@ export function AccountViewer() {
                   (content, i) => {
                     return (
                       <div key={i} className="mediaCards">
-                        <CreatedAtomicAssets content={content} />
+                        <CreatedAtomicAssets content={content} notForDashboard={true}/>
                       </div>
                     );
                   }
