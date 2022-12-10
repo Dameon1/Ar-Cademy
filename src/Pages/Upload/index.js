@@ -26,7 +26,7 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 
 import {} from "@nextui-org/react";
 
-import image from "../../favicon.ico";
+import image from "../../favicon.jpg";
 
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },

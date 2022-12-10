@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
-import image from "../../../favicon.ico";
+import image from "../../../favicon.jpg";
 import Stamp from "../../Stamp";
 import MainContext from "../../../context";
 

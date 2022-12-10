@@ -1,5 +1,5 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
-import image from "../../../favicon.ico";
+import image from "../../../favicon.jpg";
 
 export default function Poap(props) {
   let { content } = props;

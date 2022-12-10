@@ -12,7 +12,7 @@ import {
   Container,
   Button,
 } from "@nextui-org/react";
-import fallbackImage from "../../favicon.ico";
+import fallbackImage from "../../favicon.jpg";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 

@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "../ThemeSwitch";
 import MainContext from "src/context";
-import image from "../../favicon.ico";
+import image from "../../favicon.jpg";
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 
@@ -127,10 +127,11 @@ export default function Navigation() {
         </Navbar.Item>
         <Navbar.Item>
           <Dropdown placement="bottom-right">
+            <Tooltip content={addr ? null : "Sign-In"} placement="bottomStart" hideArrow  contentColor="success" trigger="hover">
             <Dropdown.Trigger>
               <Avatar bordered size="xl" src={avatar ? avatar : null} />
             </Dropdown.Trigger>
-
+          </Tooltip>
             <Dropdown.Menu aria-label="User menu actions" color="secondary">
               <Dropdown.Item
                 key="profile"

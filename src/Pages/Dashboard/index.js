@@ -186,7 +186,7 @@ export function Dashboard() {
               {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
                 return (
                   <div key={i} className="mediaCards">
-f                    <StampedAssets content={content} />
+                    <StampedAssets content={content} />
                   </div>
                 );
               })}

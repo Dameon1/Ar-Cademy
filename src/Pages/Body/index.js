@@ -20,16 +20,16 @@ function Body({ syntaxTheme }) {
     <div className="app">
       <Navigation />
       <main className="main-content">
-        <Routes>
-          <Route exact path={string} element={<LandingPage />} />
-          <Route path="/" element={<LandingPage />} />
+      <Routes>
           <Route path="/AccountViewer" element={<AccountViewer />} />
           <Route exact path="/Profile/:addr/:id" element={<Profile />} />
           <Route exact path="/Dashboard" element={<Dashboard />} />
           <Route path="Modules/:topic" element={<ModulePage />} />
           <Route exact path="/Playground/:videoIndex" element={<Playground />} />
           <Route exact path="/Upload" element={<Upload />} />
+          <Route path="/" element={<LandingPage />} />
           <Route exact path={"/Testpage"} element={<TestPage />} />
+          <Route exact path={string} element={<LandingPage />} />
           <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>          
