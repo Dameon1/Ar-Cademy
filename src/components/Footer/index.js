@@ -14,9 +14,9 @@ export function Footer() {
         &copy; 2022 Created for {" "}
         <a
           href="https://twitter.com/ArweaveNews"
-          className="site-creator-link"
           target="_blank"
           rel="noopener noreferrer"
+          className="textNoDec"
         >
 
           Arweave Devs

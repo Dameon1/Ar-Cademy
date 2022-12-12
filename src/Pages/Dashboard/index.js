@@ -28,13 +28,18 @@ import {
 } from "../../components/Cards/Media";
 
 export function Dashboard() {
-  const { addr, setUserData } = useContext(MainContext);
+  const { addr, setUserData, userData } = useContext(MainContext);
 
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (userData) {
+      setUserContent(userData);
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     if (addr) {
       async function update() {
@@ -73,7 +78,7 @@ export function Dashboard() {
       }
       update();
     }
-  }, [addr, setUserData]);
+  }, [addr, setUserData, userData]);
 
   return (
     <div className="">
@@ -141,7 +146,7 @@ export function Dashboard() {
 
       {/*Poaps*/}
       {addr &&
-        userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS.length >
+        userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS?.length >
           0 &&
         !isLoading && (
           <>
@@ -162,7 +167,7 @@ export function Dashboard() {
           </>
         )}
 
-      {addr && userContent?.ARK?.NFTS.length > 0 && !isLoading && (
+      {addr && userContent?.ARK?.NFTS?.length > 0 && !isLoading && (
         <>
           <h1>NEAR NFTS:</h1>
           <div className="contentScrollContainer">
@@ -178,7 +183,7 @@ export function Dashboard() {
           </div>
         </>
       )}
-      {addr && userContent?.ARK?.ARWEAVE?.STAMPS && !isLoading && (
+      {addr && userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 && !isLoading && (
         <>
           <h1>Stamped Assets:</h1>
           <div className="contentScrollContainer">
@@ -196,7 +201,7 @@ export function Dashboard() {
       )}
 
       {addr &&
-        userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img.length > 0 &&
+        userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img?.length > 0 &&
         !isLoading && (
           <>
             <h1>Created Atomic Assets:</h1>
@@ -217,7 +222,7 @@ export function Dashboard() {
         )}
 
       {addr &&
-        userContent?.ARK?.ARWEAVE?.ANFTS?.koii.length > 0 &&
+        userContent?.ARK?.ARWEAVE?.ANFTS?.koii?.length > 0 &&
         !isLoading && (
           <>
             <h1>Koii NFTS:</h1>
@@ -235,7 +240,7 @@ export function Dashboard() {
           </>
         )}
       {addr &&
-        userContent?.ARK?.EVM[userContent.ARK.primary_address].ERC_NFTS &&
+        userContent?.ARK?.EVM[userContent.ARK.primary_address]?.ERC_NFTS?.length > 0 &&
         !isLoading && (
           <>
             <h1>Ethereum NFTS:</h1>

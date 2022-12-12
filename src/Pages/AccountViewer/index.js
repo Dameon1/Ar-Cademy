@@ -158,7 +158,7 @@ export function AccountViewer() {
                     />
                   ) : addr && !isLoading ? (
                     <>
-                      {console.log(userContent)}
+                     
                       <UseAns addr={addr} />
                     </>
                   ) : (
@@ -188,7 +188,7 @@ export function AccountViewer() {
             </div>
           </>
         )}
-
+ {console.log("111111111",userContent)}
         {addr && userContent?.NFTS && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
@@ -242,7 +242,7 @@ export function AccountViewer() {
           </>
         )}
 
-        {addr && userContent?.ARWEAVE?.ANFTS?.koii && !isLoading && (
+        {addr && userContent?.ARWEAVE?.ANFTS?.koii.length > 0 && !isLoading && (
           <>
             <h1>Koii NFTS:</h1>
             <div className="contentScrollContainer">
@@ -268,6 +268,7 @@ export function AccountViewer() {
                 <div className="hs">
                   {userContent?.EVM[userContent.primary_address].ERC_NFTS.map(
                     (content, i) => {
+                      if(content?.metadata === null) return null
                       return (
                         <div key={i} className="mediaCards">
                           <EthereumNFTS content={content} />

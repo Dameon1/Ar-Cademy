@@ -11,16 +11,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "../ThemeSwitch";
 import MainContext from "src/context";
-import image from "../../favicon.jpg";
+import image from "../../winston.png";
+import logo from "../../static/media/favicon.png"
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 
 export default function Navigation() {
   const { addr, disconnectWallet, userData } = useContext(MainContext);
   const [userBalances, setUserBalances] = useState();
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState(image);
   const navigate = useNavigate();
-
+  //const fallbackImage = image;
   const collapseItems = [
     { value: "Home", page: "." },
     { value: "Dashboard", page: "Dashboard" },
@@ -32,29 +33,27 @@ export default function Navigation() {
     (async () => {
       try {
         console.log("Reload Triggered:", addr, userData);
-        setAvatar(image);
-        setUserBalances(null);
+        if (addr === null) {
+          setAvatar(image);
+          setUserBalances(null);
+        }
         if (userData) {
           let user = {};
 
           if (userData !== null) {
             let { ANS, ARK, ArProfile } = userData;
+            console.log("reloaded with userData", userData)
             ARK?.ARWEAVE?.ANS?.avatar
               ? setAvatar(`https://arweave.net/${ARK.ARWEAVE.ANS.avatar}`)
               : ANS?.avatar
               ? setAvatar(`https://arweave.net/${ANS.avatar}`)
-              : ArProfile?.avatar
-              ? setAvatar(`https://arweave.net/${ArProfile.avatar}`)
+              : ArProfile?.profile?.avatar
+              ? setAvatar(`https://arweave.net/${ArProfile.profile.avatar}`)
               : setAvatar(image);
           }
-          console.log("loading balances and avatar1", userData);
-          console.log("getting bar");
           user.bar = await myBar(addr);
-          console.log("getting rewards");
           user.stamp = await myRewards(addr);
-          console.log("getting code");
           user.code = await myCode(addr);
-          console.log(userData);
           setUserBalances(user);
         }
         console.log("loading balances and avatar2", userData);
@@ -92,7 +91,7 @@ export default function Navigation() {
       </Navbar.Collapse>
       <Navbar.Content hideIn="sm" variant="highlight" justify="flex-end">
         <Link to="/" className="navigationLinks">
-          <img src={image} alt="Winston" />
+          <Image src={image} alt="Winston" />
         </Link>
         <Link to="/Dashboard" className="navigationLinks">
           Dashboard
@@ -127,18 +126,24 @@ export default function Navigation() {
         </Navbar.Item>
         <Navbar.Item>
           <Dropdown placement="bottom-right">
-            <Tooltip content={addr ? null : "Sign-In"} placement="bottomStart" hideArrow  contentColor="success" trigger="hover">
-            <Dropdown.Trigger>
-              <Avatar bordered size="xl" src={avatar ? avatar : null} />
-            </Dropdown.Trigger>
-          </Tooltip>
+            <Tooltip
+              content={addr ? null : "Sign-In"}
+              placement="bottomStart"
+              hideArrow
+              contentColor="success"
+              trigger="hover"
+            >
+              <Dropdown.Trigger>
+                <Avatar bordered size="xl" src={userData ? avatar : image} />
+              </Dropdown.Trigger>
+            </Tooltip>
             <Dropdown.Menu aria-label="User menu actions" color="secondary">
               <Dropdown.Item
                 key="profile"
                 css={{ height: "$18" }}
                 color="success"
                 textValue="disconnect"
-                onClick={() => console.log("BOX CLICKED") }
+                onClick={() => console.log("BOX CLICKED")}
               >
                 {addr ? (
                   <>
@@ -148,7 +153,6 @@ export default function Navigation() {
                     <Text b color="inherit" css={{ d: "flex" }}>
                       YourName.eth.ar.lens{""}
                     </Text>
-                    
                   </>
                 ) : (
                   <Text
@@ -162,9 +166,10 @@ export default function Navigation() {
                 )}
               </Dropdown.Item>
 
-              {addr &&  (
+              {addr && (
                 <Dropdown.Item key="balances" withDivider textValue="balances">
-                  BALANCES{" "}{userBalances === null && <Loading type="points-opacity"/>}
+                  BALANCES{" "}
+                  {userBalances === null && <Loading type="points-opacity" />}
                 </Dropdown.Item>
               )}
               {addr && userBalances && (

@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
   .gradient-border {
     --borderWidth: 3px;
     background: ${({ theme }) => theme.bodyBackground};
+    border: var(--borderWidth) solid ${({ theme }) => theme.text};
     position: relative;
     border-radius: var(--borderWidth);
   }
@@ -38,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  .wallet, .uploadContainer {
+  .wallet, .uploadContainer, .profileBox {
     border: 1px solid ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.bodyBackground};
   }

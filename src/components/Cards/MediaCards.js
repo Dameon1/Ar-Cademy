@@ -2,7 +2,7 @@
 import { Card, Row, Text, Col, Tooltip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { AiOutlinePlayCircle } from "react-icons/ai";
-import fallbackImage from "../../favicon.jpg";
+import fallbackImage from "../../favicon.png";
 
 export default function MediaCards(props) {
   const { content, setState } = props;

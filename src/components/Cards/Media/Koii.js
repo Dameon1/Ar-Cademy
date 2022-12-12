@@ -1,5 +1,5 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
-import image from "../../../favicon.jpg";
+import image from "../../../favicon.png";
 
 export default function Koii(props) {
   let { content } = props;

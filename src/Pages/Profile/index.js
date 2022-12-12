@@ -102,7 +102,6 @@ export default function Profile() {
                 <ArProfile addr={addr} />
               </Col>
               <Col align="center">
-                {console.log(userContent)}
                 <h3>ANS Profile:</h3>
                 {addr && userContent?.ARWEAVE?.ANS && !isSearching ? (
                   <ARKdisplay
@@ -118,7 +117,6 @@ export default function Profile() {
             </Row>
           </Container>
         )}
-        {console.log(userContent)}
         {videoObjects.length > 0 && (
           <div>
             <h1>Videos</h1>
@@ -128,7 +126,7 @@ export default function Profile() {
           </div>
         )}
 
-        {addr && userContent?.primary_address && !isLoading && (
+        {addr && userContent.EVM[userContent.primary_address]?.POAPS?.length > 0 && !isLoading && (
           <>
             <h1>Poaps:</h1>
             <div className="contentScrollContainer">
@@ -147,7 +145,7 @@ export default function Profile() {
           </>
         )}
 
-        {addr && userContent?.NFTS && !isLoading && (
+        {addr && userContent?.NFTS?.length > 0 && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
             <div className="contentScrollContainer">
@@ -163,7 +161,7 @@ export default function Profile() {
             </div>
           </>
         )}
-        {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
+        {addr && userContent?.ARWEAVE?.STAMPS.length > 0 && !isLoading && (
           <>
             <h1>Stamped Assets:</h1>
             <div className="contentScrollContainer">
@@ -180,7 +178,7 @@ export default function Profile() {
             </div>
           </>
         )}
-        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
+        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img.length > 0 && !isLoading && (
           <>
             <h1>Created Atomic Assets:</h1>
             <div className="contentScrollContainer">
@@ -198,7 +196,7 @@ export default function Profile() {
             </div>
           </>
         )}
-        {addr && userContent?.ARWEAVE?.ANFTS?.koii && !isLoading && (
+        {addr && userContent?.ARWEAVE?.ANFTS?.koii.length > 0 && !isLoading && (
           <>
             <h1>Koii NFTS:</h1>
             <div className="contentScrollContainer">
@@ -215,7 +213,7 @@ export default function Profile() {
           </>
         )}
         {addr &&
-          userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS &&
+          userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS.length > 0 &&
           !isLoading && (
             <>
               <h1>Ethereum NFTS:</h1>

@@ -12,11 +12,12 @@ import AssetManagement from "../AssetManagement";
 //Components
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-
+import { NextUIProvider } from "@nextui-org/react";
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
   let string = `/${module[1]}`;
   return (
+      
     <div className="app">
       <Navigation />
       <main className="main-content">
@@ -41,6 +42,7 @@ function Body({ syntaxTheme }) {
       </main>
       <Footer />
     </div>
+      
   );
 }
 
