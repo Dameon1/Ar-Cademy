@@ -1,5 +1,5 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
-import fallbackImage from "../../../favicon.png";
+import fallbackImage from "../../../winstonMedia.png";
 
 export default function EthereumNFTS(props) {
   let { content, EthImage, data } = props;

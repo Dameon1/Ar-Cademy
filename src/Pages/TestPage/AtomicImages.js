@@ -1,7 +1,8 @@
 import { Card, Grid, Row, Text, Col, Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
-import fallbackImage from "../../favicon.png";
+
+import image from "../../winstonMedia.png";
 
 export default function AtomicImages(props) {
   return (
@@ -15,7 +16,7 @@ export default function AtomicImages(props) {
                   <Card.Image
                     src={`https://arweave.net/${img.id}`}
                     onError={(e) => {
-                      e.target.src = fallbackImage;
+                      e.target.src = image;
                     }}
                     objectFit="contain"
                     width="100%"
