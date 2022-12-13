@@ -12,14 +12,14 @@ import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "../ThemeSwitch";
 import MainContext from "src/context";
 import image from "../../winston.png";
-import logo from "../../static/media/favicon.png"
+import babyImage from "../../babyWinston.png";
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 
 export default function Navigation() {
   const { addr, disconnectWallet, userData } = useContext(MainContext);
   const [userBalances, setUserBalances] = useState();
-  const [avatar, setAvatar] = useState(image);
+  const [avatar, setAvatar] = useState(babyImage);
   const navigate = useNavigate();
   //const fallbackImage = image;
   const collapseItems = [
@@ -34,7 +34,7 @@ export default function Navigation() {
       try {
         console.log("Reload Triggered:", addr, userData);
         if (addr === null) {
-          setAvatar(image);
+          setAvatar(babyImage);
           setUserBalances(null);
         }
         if (userData) {
@@ -49,7 +49,7 @@ export default function Navigation() {
               ? setAvatar(`https://arweave.net/${ANS.avatar}`)
               : ArProfile?.profile?.avatar
               ? setAvatar(`https://arweave.net/${ArProfile.profile.avatar}`)
-              : setAvatar(image);
+              : setAvatar(babyImage);
           }
           user.bar = await myBar(addr);
           user.stamp = await myRewards(addr);
@@ -134,7 +134,7 @@ export default function Navigation() {
               trigger="hover"
             >
               <Dropdown.Trigger>
-                <Avatar bordered size="xl" src={userData ? avatar : image} />
+                <Avatar bordered size="xl" src={userData ? avatar : babyImage} />
               </Dropdown.Trigger>
             </Tooltip>
             <Dropdown.Menu aria-label="User menu actions" color="secondary">

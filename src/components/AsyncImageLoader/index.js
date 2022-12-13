@@ -20,7 +20,7 @@ const AsyncImageLoader = (props) => {
   }, [props.src, props.alt]);
   if (loadedSrc === props.src) {
     return (
-      <img {...props} alt={alt} className="cardImage" />
+      <img {...props} alt={alt}  />
     );
   }
   return null;
