@@ -151,18 +151,18 @@
   text-decoration: none;
 }
 
-.poapImage {
-}
-
-.socialImageLinks {
+.landingPageHeadline {
+  letter-spacing: 1px;
 }
 
 .socialImageLinks:hover {
   color: #ffa537;
 }
 
-.site-introduction {
+.page-introduction {
   text-align: justify;
+  letter-spacing: .25px;
+  font-size: 16px;
 }
 
 .card:hover,
@@ -213,18 +213,12 @@ ul {
   text-decoration: none;
 }
 
-.site-logo-container {
-  margin: auto;
-  max-width: 250px;
-}
 
 .site-logo {
   letter-spacing: 3px;
   font-family: 'Work Sans';
-  font-size:28px;
   text-align: center;
   transition: ease 0.2s;
-  padding: 16px;
   display: inline-flex;
 }
 

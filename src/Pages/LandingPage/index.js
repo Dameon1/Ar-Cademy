@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Modules } from "../../Modules";
-
 export function LandingPage() {
   const modules = Object.keys(Modules);
 
@@ -30,8 +29,8 @@ export function LandingPage() {
   return (
     <>
       <div className="text-container">
-        <h2>Welcome to ARcademy</h2>
-        <p className="site-introduction">
+        <h2 className="landingPageHeadline">Welcome to ARcademy</h2>
+        <p className="page-introduction">
           Arcademy is community-driven and developed learning platform, for the
           Arweave ecosystem. Maintaining a variety of modules, you can learn to
           code, design, and build with the Arweave blockchain. Upload your own

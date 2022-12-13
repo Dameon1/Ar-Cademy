@@ -335,7 +335,7 @@ export default function Upload() {
         <Row align="center" >
             <div className="text-container">
               <h2>Welcome to Ar-Cademy</h2>
-              <p className="site-introduction">
+              <p className="page-introduction">
                 This is a work in progress. Experimenting with the spectrum of
                 uploads on Arweave. These range from simple string metadata
                 stored directly on Arweave completely, to a range of NFT

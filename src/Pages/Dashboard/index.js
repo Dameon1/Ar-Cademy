@@ -84,7 +84,7 @@ export function Dashboard() {
     <div className="">
       <div className="text-container">
         <h2>Identity needs Security</h2>
-        <p className="site-introduction">
+        <p className="page-introduction">
           Identity is a topic that Arweave is looking to solve in multiple
           different ways. As our connection to the world grows, we need to be
           able to connect with the people and communities that we are connected
