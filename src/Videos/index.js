@@ -288,6 +288,7 @@ export const Videos = {
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/nft-uploader?lite=true",
             publicSquare: "https://arweave.net/S3Y9JkOAXRgFexoDvPkdhYfVNBJPb9hCUEkbMOy1MVE/",
+            blog: "https://spooky_blog.arweave.dev/"
         },
     },
     "24": {

@@ -11,17 +11,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "../ThemeSwitch";
 import MainContext from "src/context";
-import image from "../../winston.png";
-import babyImage from "../../babyWinston.png";
+
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 
+import image from "../../winston.png";
+//import babyImage from "../../winstonBaby.png";
+//import babyImage2 from "../../winstonBaby2.png";
+
 export default function Navigation() {
+  const fallbackImage = "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
   const { addr, disconnectWallet, userData } = useContext(MainContext);
   const [userBalances, setUserBalances] = useState();
-  const [avatar, setAvatar] = useState(babyImage);
+  const [avatar, setAvatar] = useState(fallbackImage);
   const navigate = useNavigate();
-  //const fallbackImage = image;
   const collapseItems = [
     { value: "Home", page: "." },
     { value: "Dashboard", page: "Dashboard" },
@@ -34,7 +37,7 @@ export default function Navigation() {
       try {
         console.log("Reload Triggered:", addr, userData);
         if (addr === null) {
-          setAvatar(babyImage);
+          setAvatar(fallbackImage);
           setUserBalances(null);
         }
         if (userData) {
@@ -49,7 +52,7 @@ export default function Navigation() {
               ? setAvatar(`https://arweave.net/${ANS.avatar}`)
               : ArProfile?.profile?.avatar
               ? setAvatar(`https://arweave.net/${ArProfile.profile.avatar}`)
-              : setAvatar(babyImage);
+              : setAvatar(fallbackImage);
           }
           user.bar = await myBar(addr);
           user.stamp = await myRewards(addr);
@@ -133,8 +136,11 @@ export default function Navigation() {
               contentColor="success"
               trigger="hover"
             >
-              <Dropdown.Trigger>
-                <Avatar bordered size="xl" src={userData ? avatar : babyImage} />
+              <Dropdown.Trigger css={{"border-radius":"50px"}}>
+                
+                <Image src={avatar} alt="Winston" height={50} style={{borderRadius:"50px", border:"1px solid #008c9e"}}
+                width={50} />
+                {/* <Avatar bordered size="xl" src={ avatar } alt="avatar" title="avatar"/> */}
               </Dropdown.Trigger>
             </Tooltip>
             <Dropdown.Menu aria-label="User menu actions" color="secondary">

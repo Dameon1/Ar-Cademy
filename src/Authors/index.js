@@ -54,7 +54,7 @@ export const Authors = {
         createdContentByID: ['ContentID'],
         uid: 6,
         addr: "0",
-        username: "@edgeandnode",
+        username: "@dabit3",
         avatar: "https://edgeandnode.com/images/logo-big.png",
     },
     '7': {
@@ -126,13 +126,13 @@ export const Authors = {
     },
     '13': {
         author: "Dmac",
-        authorLink: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
-        authorWebsite: "https://www.youtube.com/watch?v=TMzKoxpf_GU",
+        authorLink: "@DMacOnArweave",
+        authorWebsite: "https://spooky_blog.arweave.dev/",
         createdVideosByID: ["23"],
         createdContentByID: ["ContentID"],
         uid: "13",
         addr: 0,
-        username: "@dmac_",
+        username: "@DMacOnArweave",
         avatar: "https://uploads-ssl.webflow.com/625de12f70312bc43c1aa952/6262fa88d9bc44f70e62426f_DMac%20MyMail%20Arweave.png"
     },
     '14': {
