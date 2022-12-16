@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/Ar-Cademy/static/css/main.9c86aede.css",
-    "main.js": "/Ar-Cademy/static/js/main.fd188ec6.js",
+    "main.css": "/Ar-Cademy/static/css/main.147bd1fb.css",
+    "main.js": "/Ar-Cademy/static/js/main.6c0b63aa.js",
+    "static/media/arNewsLogo.png": "/Ar-Cademy/static/media/arNewsLogo.5c23397b6cee9f34b2e5.png",
     "index.html": "/Ar-Cademy/index.html"
   },
   "entrypoints": [
-    "static/css/main.9c86aede.css",
-    "static/js/main.fd188ec6.js"
+    "static/css/main.147bd1fb.css",
+    "static/js/main.6c0b63aa.js"
   ]
 }
