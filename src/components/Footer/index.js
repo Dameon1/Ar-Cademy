@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import permaSeal from "../../light.png"
+
 export function Footer() {
 
   return (
@@ -10,18 +11,21 @@ export function Footer() {
 
       </div>
 
-      <p>
-        &copy; 2022 Created for {" "}
+      <p className="footerText">
+        &copy;2023 {" "}
         <a
-          href="https://twitter.com/ArweaveNews"
+          href="https://arweave.news/"
           target="_blank"
           rel="noopener noreferrer"
-          className="textNoDec"
+          className="textNoDec "
         >
 
-          Arweave Devs
+          @Arweave News
+          
+          
+       
         </a>
-
+        
       </p>
     </footer>
   );

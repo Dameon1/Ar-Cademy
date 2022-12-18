@@ -1,7 +1,6 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 
-
 import "./accountViewer.css";
 import UseAns from "src/components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
@@ -98,11 +97,13 @@ export function AccountViewer() {
     <>
       <div className="text-container acctViewTextContainer">
         <h2>Search Arweave Related Content</h2>
-        <p>
+        <p className="searchPageText">
           Enter an address by ANS, Arweave, or Eth address to find the Arweave
           related content.
         </p>
-        <p>Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE</p>
+        <p className="searchPageText">
+          Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE
+        </p>
         <form onSubmit={onSubmit}>
           <label aria-labelledby="input"></label>
           <Spacer y={1} />
@@ -121,7 +122,7 @@ export function AccountViewer() {
               search
             </Button>
           </Row>
-          <p>Current Addr: {addr}</p>
+          <p className="searchPageText">Current Addr: {addr}</p>
         </form>
       </div>
       <Spacer y={1} />
@@ -158,7 +159,6 @@ export function AccountViewer() {
                     />
                   ) : addr && !isLoading ? (
                     <>
-                     
                       <UseAns addr={addr} />
                     </>
                   ) : (
@@ -188,7 +188,8 @@ export function AccountViewer() {
             </div>
           </>
         )}
- {console.log("111111111",userContent)}
+        {console.log("User Content:", userContent)}
+        
         {addr && userContent?.NFTS && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
@@ -214,7 +215,7 @@ export function AccountViewer() {
                 {userContent.ARWEAVE.STAMPS.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
-                      <StampedAssets content={content} notForDashboard={true}/>
+                      <StampedAssets content={content} notForDashboard={true} />
                     </div>
                   );
                 })}
@@ -232,7 +233,10 @@ export function AccountViewer() {
                   (content, i) => {
                     return (
                       <div key={i} className="mediaCards">
-                        <CreatedAtomicAssets content={content} notForDashboard={true}/>
+                        <CreatedAtomicAssets
+                          content={content}
+                          notForDashboard={true}
+                        />
                       </div>
                     );
                   }
@@ -268,7 +272,7 @@ export function AccountViewer() {
                 <div className="hs">
                   {userContent?.EVM[userContent.primary_address].ERC_NFTS.map(
                     (content, i) => {
-                      if(content?.metadata === null) return null
+                      if (content?.metadata === null) return null;
                       return (
                         <div key={i} className="mediaCards">
                           <EthereumNFTS content={content} />

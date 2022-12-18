@@ -14,9 +14,11 @@ function ModulePage() {
   let topicCards = videoIds.map((videoId, index) => {
     let videoObject = Videos[videoId];
     return (
+      <li key={videoObject.videoId || index}>
       <Link key={videoObject.videoId || index} to={`/playground/${videoId}`} className="cardLinks">
         <Card content={videoObject} />
       </Link>
+      </li>
     );
   });
 

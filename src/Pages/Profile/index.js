@@ -93,31 +93,35 @@ export default function Profile() {
         )}
         {addr && !isLoading && !isSearching && (
           <Container
-            className="gradient-border"
-            style={{ padding: "5px", maxWidth: "640px" }}
-          >
+          className="gradient-border"
+          style={{ padding: "5px", maxWidth: "680px" }}
+        >
+          {addr && (
             <Row>
               <Col align="center">
                 <h3>ArProfile:</h3>
-                <ArProfile addr={addr} />
+                {addr && <ArProfile addr={addr} forDashboard={false} />}
               </Col>
               <Col align="center">
                 <h3>ANS Profile:</h3>
-                {addr && userContent?.ARWEAVE?.ANS && !isSearching ? (
+                {addr && userContent?.ARWEAVE && !isLoading ? (
                   <ARKdisplay
                     content={userContent}
                     evmAddr={userContent.primary_address}
                   />
-                ) : addr && !isSearching ? (
-                  <UseAns addr={addr} />
+                ) : addr && !isLoading ? (
+                  <>
+                    <UseAns addr={addr} />
+                  </>
                 ) : (
                   <Loading />
                 )}
               </Col>
             </Row>
-          </Container>
+          )}
+        </Container>
         )}
-        {videoObjects.length > 0 && (
+        {videoObjects?.length > 0 && (
           <div>
             <h1>Videos</h1>
             <div className="contentScrollContainer">
@@ -126,7 +130,7 @@ export default function Profile() {
           </div>
         )}
 
-        {addr && userContent.EVM[userContent.primary_address]?.POAPS?.length > 0 && !isLoading && (
+{addr && userContent?.primary_address && !isLoading && (
           <>
             <h1>Poaps:</h1>
             <div className="contentScrollContainer">
@@ -144,8 +148,9 @@ export default function Profile() {
             </div>
           </>
         )}
+        {console.log("User Content:", userContent)}
 
-        {addr && userContent?.NFTS?.length > 0 && !isLoading && (
+        {addr && userContent?.NFTS && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
             <div className="contentScrollContainer">
@@ -161,7 +166,7 @@ export default function Profile() {
             </div>
           </>
         )}
-        {addr && userContent?.ARWEAVE?.STAMPS.length > 0 && !isLoading && (
+        {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
           <>
             <h1>Stamped Assets:</h1>
             <div className="contentScrollContainer">
@@ -169,8 +174,7 @@ export default function Profile() {
                 {userContent.ARWEAVE.STAMPS.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
-                      {console.log("content", content)}
-                      <StampedAssets content={content} notForDashboard={true}/>
+                      <StampedAssets content={content} notForDashboard={true} />
                     </div>
                   );
                 })}
@@ -178,7 +182,7 @@ export default function Profile() {
             </div>
           </>
         )}
-        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img.length > 0 && !isLoading && (
+        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
           <>
             <h1>Created Atomic Assets:</h1>
             <div className="contentScrollContainer">
@@ -187,7 +191,10 @@ export default function Profile() {
                   (content, i) => {
                     return (
                       <div key={i} className="mediaCards">
-                        <CreatedAtomicAssets content={content} notForDashboard={true}/>
+                        <CreatedAtomicAssets
+                          content={content}
+                          notForDashboard={true}
+                        />
                       </div>
                     );
                   }
@@ -213,7 +220,7 @@ export default function Profile() {
           </>
         )}
         {addr &&
-          userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS.length > 0 &&
+          userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS &&
           !isLoading && (
             <>
               <h1>Ethereum NFTS:</h1>
@@ -221,6 +228,7 @@ export default function Profile() {
                 <div className="hs">
                   {userContent?.EVM[userContent.primary_address].ERC_NFTS.map(
                     (content, i) => {
+                      if (content?.metadata === null) return null;
                       return (
                         <div key={i} className="mediaCards">
                           <EthereumNFTS content={content} />
