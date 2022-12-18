@@ -1,31 +1,18 @@
-import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from "react-router-dom";
 //Pages
+import Dashboard from "../Dashboard";
 import LandingPage from "../LandingPage";
-//import Dashboard from "../Dashboard";
-//import ModulePage from "../ModulePage";
-//import Playground from "../Playground";
-//import Profile from "../Profile";
-//import Upload from "../Upload";
-//import AccountViewer from "../AccountViewer";
-//import TestPage from "../TestPage";
-//mport AssetManagement from "../AssetManagement";
-
+import ModulePage from "../ModulePage";
+import Playground from "../Playground";
+import Profile from "../Profile";
+import Upload from "../Upload";
+import AccountViewer from "../AccountViewer";
+import TestPage from "../TestPage";
+import AssetManagement from "../AssetManagement";
 //Components
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import {Loading} from "@nextui-org/react";
-
-const Dashboard = lazy(() => import("../Dashboard"));
-const ModulePage = lazy(() => import("../ModulePage"));
-const Playground = lazy(() => import("../Playground"));
-const Profile = lazy(() => import("../Profile"));
-const Upload = lazy(() => import("../Upload"));
-const AccountViewer = lazy(() => import("../AccountViewer"));
-const AssetManagement = lazy(() => import("../AssetManagement"))
-const TestPage = lazy(() => import("../TestPage"));
-
-
+import { NextUIProvider } from "@nextui-org/react";
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
   let string = `/${module[1]}`;
@@ -34,7 +21,6 @@ function Body({ syntaxTheme }) {
     <div className="app">
       <Navigation />
       <main className="main-content">
-      <Suspense fallback={<Loading/>}>
       <Routes>
           <Route path="/AccountViewer" element={<AccountViewer />} />
           <Route exact path="/Profile/:addr/:id" element={<Profile />} />
@@ -53,7 +39,6 @@ function Body({ syntaxTheme }) {
             }
           />
         </Routes>
-        </Suspense>
       </main>
       <Footer />
     </div>
