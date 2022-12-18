@@ -10,7 +10,28 @@ function Card(props) {
     content.description = (content.description.slice(0, 140) + ' ...')
   }
   
- 
+   // const moduleCards = modules.map((module, index) => {
+  //   return (
+  //     <li key={module} className="moduleContent">
+  //       <h4>{modules[index]}</h4>
+  //       <p>{Modules[module].description}</p>
+  //       <img
+  //         src={Modules[module].moduleImage}
+  //         className="heroImage"
+  //         alt={`Follow of ${Modules[module].title}`}
+  //       />
+  //       <Row justify="center">
+  //         <Button
+  //           className="nav-link identity-link buttonText"
+  //           onClick={() => navigate(`/modules/${module}`)}
+  //           iconRight={<AiOutlineArrowRight size={18} />}
+  //         >
+  //           Explore
+  //         </Button>
+  //       </Row>
+  //     </li>
+  //   );
+  // });
 
   return (
     <div className="card">

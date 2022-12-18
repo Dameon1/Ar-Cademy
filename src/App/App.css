@@ -26,7 +26,7 @@
 }
 
 .moduleContent {
-  
+  max-width:144px;
   margin: 5px;
   border-radius: 9px;
   text-align: center;
@@ -162,6 +162,11 @@
   letter-spacing: .25px;
   font-size: 16px;
 }
+.cardDescriptionText {
+  text-align: justify;
+  letter-spacing: .25px;
+  
+}
 
 .searchPageText {
   font-size: 16px;
@@ -184,8 +189,11 @@
 }
 
 .heroImage {
-  margin: 15px;
-  height: 50px;
+  margin: 0px;
+  padding:2px;
+  max-width:144px;
+  height: 100px;
+  border-radius:10px;
 }
 
 ul {
