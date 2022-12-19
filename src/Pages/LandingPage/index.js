@@ -26,7 +26,7 @@ export function LandingPage() {
             onClick={() => navigate(`/modules/${module}`)}
             iconRight={<AiOutlineArrowRight size={18} />}
           >
-            Explore
+            <p className="page-introduction">Explore</p>
           </Button>
         </Row>
       </li>
@@ -63,7 +63,7 @@ export function LandingPage() {
                 className="nav-link identity-link buttonText"
                 onClick={() => navigate("/playground/28")}
               >
-                Enter
+                <p className="page-introduction">Enter</p>
               </Button>
             </Row>
           </Col>
