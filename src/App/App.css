@@ -157,11 +157,6 @@
   color: #ffa537;
 }
 
-.page-introduction {
-  text-align: justify;
-  letter-spacing: .25px;
-  font-size: 16px;
-}
 .cardDescriptionText {
   text-align: justify;
   letter-spacing: .25px;
@@ -222,7 +217,7 @@ ul {
 .main-header {
   font-size: 1.4rem;
   background-color: #717C86;
-     max-width: 100%; 
+  max-width: 100%; 
 }
 
 .main-header a {
@@ -249,27 +244,27 @@ ul {
 .site-logo:hover {
   transition: ease 0.2s;
   text-shadow:
-    /* 0 1px 0 #da81c8,
-    0 2px 0 #da81c8,
-    0 3px 0 #ECF5E6,
-    0 4px 0 #ECF5E6, */
-
-    0 1px 0 #ECF5E6,
-    0 2px 0 #ECF5E6,
-    0 3px 0 #008c9e,
-    0 4px 0 #008c9e,
-    0 6px 1px rgba(255, 255, 255, .1),
-    0 0 5px rgba(255, 255, 255, .1),
-    0 1px 3px rgba(255, 255, 255, .3),
+  /* 0 1px 0 #da81c8,
+  0 2px 0 #da81c8,
+  0 3px 0 #ECF5E6,
+  0 4px 0 #ECF5E6, */
+  
+  0 1px 0 #ECF5E6,
+  0 2px 0 #ECF5E6,
+  0 3px 0 #008c9e,
+  0 4px 0 #008c9e,
+  0 6px 1px rgba(255, 255, 255, .1),
+  0 0 5px rgba(255, 255, 255, .1),
+  0 1px 3px rgba(255, 255, 255, .3),
     0 3px 5px rgba(255, 255, 255, .2),
     0 5px 10px rgba(255, 255, 255, .25),
     0 10px 10px rgba(255, 255, 255, .2),
     0 20px 20px rgba(255, 255, 255, .15);
-}
-
-.identity-container {
-  position: absolute;
-  top: 10px;
+  }
+  
+  .identity-container {
+    position: absolute;
+    top: 10px;
   right: 10px;
   display: flex;
 }
@@ -406,6 +401,12 @@ ul {
   padding: 0px;
   font-family: 'Work Sans';
 }
+.page-introduction {
+  text-align: justify;
+  letter-spacing: .25px;
+  font-size: 16px;
+  font-family: 'Work Sans';
+}
 
 .video-recap {
   color: #bdbcbb;
@@ -481,10 +482,6 @@ ul {
 
 .video-player {
   width: 100%;
-}
-
-.video-title {
-  letter-spacing: 1px;
 }
 
 .video-player-container h2 {

@@ -93,44 +93,48 @@ export default function Profile() {
         )}
         {addr && !isLoading && !isSearching && (
           <Container
-          className="gradient-border"
-          style={{ padding: "5px", maxWidth: "680px" }}
-        >
-          {addr && (
-            <Row>
-              <Col align="center">
-                <h3>ArProfile:</h3>
-                {addr && <ArProfile addr={addr} forDashboard={false} />}
-              </Col>
-              <Col align="center">
-                <h3>ANS Profile:</h3>
-                {addr && userContent?.ARWEAVE && !isLoading ? (
-                  <ARKdisplay
-                    content={userContent}
-                    evmAddr={userContent.primary_address}
-                  />
-                ) : addr && !isLoading ? (
-                  <>
-                    <UseAns addr={addr} />
-                  </>
-                ) : (
-                  <Loading />
-                )}
-              </Col>
-            </Row>
-          )}
-        </Container>
+            className="gradient-border"
+            style={{ padding: "5px", maxWidth: "680px" }}
+          >
+            {addr && (
+              <Row>
+                <Col align="center">
+                  <h3>ArProfile:</h3>
+                  {addr && <ArProfile addr={addr} forDashboard={false} />}
+                </Col>
+                <Col align="center">
+                  <h3>ANS Profile:</h3>
+                  {addr && userContent?.ARWEAVE && !isLoading ? (
+                    <ARKdisplay
+                      content={userContent}
+                      evmAddr={userContent.primary_address}
+                    />
+                  ) : addr && !isLoading ? (
+                    <>
+                      <UseAns addr={addr} />
+                    </>
+                  ) : (
+                    <Loading />
+                  )}
+                </Col>
+              </Row>
+            )}
+          </Container>
         )}
         {videoObjects?.length > 0 && (
           <div>
             <h1>Videos</h1>
             <div className="contentScrollContainer">
-              <div className="hs">{cards}</div>
+              <div className="hs">
+                {videoObjects.map((content, i) => {
+                  return <Card content={content} />;
+                })}
+              </div>
             </div>
           </div>
         )}
 
-{addr && userContent?.primary_address && !isLoading && (
+        {addr && userContent?.primary_address && !isLoading && (
           <>
             <h1>Poaps:</h1>
             <div className="contentScrollContainer">
@@ -144,6 +148,7 @@ export default function Profile() {
                     );
                   }
                 )}
+                
               </div>
             </div>
           </>

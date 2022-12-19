@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import { Card, MediaCards } from "../Cards";
+import { MediaCards } from "../Cards";
 import {
   Grid,
   Row,
@@ -11,8 +11,8 @@ import {
   Loading,
   Container,
   Button,
+  Spacer,
 } from "@nextui-org/react";
-import fallbackImage from "../../winstonMedia.png";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 
@@ -28,8 +28,6 @@ export function VideoPlayerContainer(props) {
       let authorVideos = authorObject.createdVideosByID
         .map((x) => Videos[x])
         .filter((x) => x.uid !== videoID);
-      console.log(authorVideos);
-      console.log("reloaded");
       let contentObject = {
         authorVideos,
         videoID,
@@ -44,7 +42,6 @@ export function VideoPlayerContainer(props) {
   }, [videoID]);
 
   if (contentObject) {
-    console.log(contentObject);
     let cards = contentObject.authorVideos.map((content, index) => {
       return (
         <div className="videoThumbnails" key={index}>
@@ -56,14 +53,16 @@ export function VideoPlayerContainer(props) {
     return (
       <div className="video-player-container">
         <header className="video-header">
-          <p className="video-title">{contentObject.videoObject.videoTitle}</p>
+          <h3 className="video-title">{contentObject.videoObject.videoTitle}</h3>
+          {/* <p className="page-introduction">{contentObject.videoObject.videoTitle}</p> */}
+          
         </header>
 
         <VideoPlayer src={contentObject.src} />
 
         <footer className="video-footer">
-          <p>{contentObject.videoObject.description}</p>
-          <p>About Creator :</p>
+          <p className="page-introduction">{contentObject.videoObject.description}</p>
+          <Spacer y={1} />
           <Row justify="center" align="space-evenly">
             <Col>
               <a
@@ -72,7 +71,7 @@ export function VideoPlayerContainer(props) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <p>Website</p>
+                <p className="page-introduction">Website</p>
               </a>
             </Col>
             <Col>
@@ -82,7 +81,7 @@ export function VideoPlayerContainer(props) {
                 rel="noreferrer"
                 className="video-creator-link"
               >
-                <p>{contentObject.authorObject.username}</p>
+                <p className="page-introduction">{contentObject.authorObject.username}</p>
               </a>
             </Col>
             <Col>
@@ -90,12 +89,12 @@ export function VideoPlayerContainer(props) {
                 to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                 className="video-creator-link"
               >
-                <p>Profile</p>
+                <p className="page-introduction">Profile</p>
               </Link>
             </Col>
           </Row>
-
-          <h1>Videos</h1>
+          <Spacer y={1} />
+          <h3>Videos</h3>
           <div className="contentScrollContainer">
             <div className="hs">{cards}</div>
           </div>

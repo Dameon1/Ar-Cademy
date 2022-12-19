@@ -1,50 +1,72 @@
-import { Suspense, lazy } from 'react';
-import {KoiiCard} from "./KoiiCards";
+import { Suspense, lazy } from "react";
+import { KoiiCard } from "./KoiiCards";
 import MediaCards from "./MediaCards";
-import AsyncImageLoader from 'src/components/AsyncImageLoader';
+import { Videos } from "src/Videos";
+import AsyncImageLoader from "src/components/AsyncImageLoader";
+import {
+  Button,
+  Image,
+  Spacer,
+  Row,
+  Col,
+  Container,
+  Tooltip,
+} from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 function Card(props) {
+  const navigate = useNavigate();
   let { content } = props;
   let cardDescriptionLength = content.description.length;
-  if (cardDescriptionLength > 140){
-    content.description = (content.description.slice(0, 140) + ' ...')
+  if (cardDescriptionLength > 140) {
+    content.description = content.description.slice(0, 140) + " ...";
   }
-  
-   // const moduleCards = modules.map((module, index) => {
-  //   return (
-  //     <li key={module} className="moduleContent">
-  //       <h4>{modules[index]}</h4>
-  //       <p>{Modules[module].description}</p>
-  //       <img
-  //         src={Modules[module].moduleImage}
-  //         className="heroImage"
-  //         alt={`Follow of ${Modules[module].title}`}
-  //       />
-  //       <Row justify="center">
-  //         <Button
-  //           className="nav-link identity-link buttonText"
-  //           onClick={() => navigate(`/modules/${module}`)}
-  //           iconRight={<AiOutlineArrowRight size={18} />}
-  //         >
-  //           Explore
-  //         </Button>
-  //       </Row>
-  //     </li>
-  //   );
-  // });
 
+  let videoObject = Videos[content.uid];
+  let videoTitle;
+  if (videoObject.videoTitle.length > 20) {
+    videoTitle = videoObject.videoTitle.slice(0, 20);
+  } else {
+    videoTitle = videoObject.videoTitle;
+  }
+
+  console.log(videoObject);
   return (
-    <div className="card">
-      <div className="cardImageContainer">
-        <img src={content.videoImage} alt={content.videoTitle} className="cardImage" />
-        {/* <Suspense fallback={<div>Loading...</div>}>
-          <AsyncImageLoader src={content.videoImage} alt={content.videoTitle} />
-        </Suspense> */}
-      </div>
-      <h3 className="cardTitle">{content.videoTitle}</h3>
-      <p className="cardText">{content.description}</p>
+    <div key={videoObject.uid} className="moduleContent">
+      <img
+        src={videoObject.videoImage}
+        className="heroImage"
+        alt={`Follow of ${videoObject.title}`}
+      />
+      <Row flex="wrap" justify="center">
+        <Tooltip
+          content={videoObject.videoTitle}
+          placement="top"
+          css={{ maxWidth: "140px" }}
+        >
+          <h4>{videoTitle}</h4>
+        </Tooltip>
+      </Row>
+
+      <Row justify="center">
+        <Tooltip content={videoObject.description} css={{ maxWidth: "140px" }}>
+          <Button
+            className="nav-link identity-link buttonText"
+            onClick={() => navigate(`/playground/${content.uid}`)}
+          >
+            <AiOutlineArrowRight size={18} />
+          </Button>
+        </Tooltip>
+      </Row>
     </div>
-  )
+  );
+
+  // return (
+  //   <li className="moduleCards">
+  //   {card}
+  //   </li>
+  // )
 }
 
-export { Card, KoiiCard, MediaCards }
+export { Card, KoiiCard, MediaCards };
