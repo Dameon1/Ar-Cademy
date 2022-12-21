@@ -11,7 +11,7 @@ export function Footer() {
 
       </div>
 
-      <p className="footerText">
+      <p className="pText">
         &copy;2023 {" "}
         <a
           href="https://arweave.news/"

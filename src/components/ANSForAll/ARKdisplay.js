@@ -10,9 +10,9 @@ function ARKdisplay(props) {
   const { content, evmAddr } = props;
   const { theme } = useContext(MainContext);
   let lensLabel;
-  if(content.EVM[evmAddr]?.LENS_HANDLES[0] !== undefined){
-    lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "")
-  } 
+  if (content.EVM[evmAddr]?.LENS_HANDLES[0] !== undefined) {
+    lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "");
+  }
 
   return (
     <div style={{ padding: "5px" }}>
@@ -143,8 +143,18 @@ function ARKdisplay(props) {
         rel="noreferrer"
         className="textNoDec"
       >
-        <Button className="identity-link buttonText">
-          <p>{content.ARWEAVE.ANS.currentLabel}.ar.page</p>
+        <Button
+          css={{
+            color: "black",
+            border: "2px solid #008c9e",
+            fontSize: "0.75em",
+            padding: "0.3em",
+            backgroundColor: "white",
+            transition: "all 0.2s ease-in-out",
+          }}
+          className="button buttonText"
+        >
+          <p className="pText">{content.ARWEAVE.ANS.currentLabel}.ar.page</p>
         </Button>
       </a>
     </div>

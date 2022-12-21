@@ -52,7 +52,15 @@ function ModulePage() {
             css={{ maxWidth: "140px" }}
           >
             <Button
-              className="nav-link identity-link buttonText"
+            css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }}
+              className="button buttonText"
               onClick={() => navigate(`/playground/${videoId}`)}
             >
               <AiOutlineArrowRight size={18} />

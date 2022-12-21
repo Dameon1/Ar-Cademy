@@ -109,7 +109,8 @@ function UserProfile() {
                   onClick={() => navigate("/upload")}
                   iconRight={<AiOutlineUpload size={18} />}
                   
-                > Create
+                > 
+                <p className="pText">Create</p>
                   {/* <Link to="/upload" className="textNoDec nav-link">
                     Create
                   </Link> */}

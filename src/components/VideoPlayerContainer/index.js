@@ -61,7 +61,7 @@ export function VideoPlayerContainer(props) {
         <VideoPlayer src={contentObject.src} />
 
         <footer className="video-footer">
-          <p className="page-introduction">{contentObject.videoObject.description}</p>
+          <p className="pText">{contentObject.videoObject.description}</p>
           <Spacer y={1} />
           <Row justify="center" align="space-evenly">
             <Col>
@@ -71,7 +71,7 @@ export function VideoPlayerContainer(props) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <p className="page-introduction">Website</p>
+                <p className="pText">Website</p>
               </a>
             </Col>
             <Col>
@@ -81,7 +81,7 @@ export function VideoPlayerContainer(props) {
                 rel="noreferrer"
                 className="video-creator-link"
               >
-                <p className="page-introduction">{contentObject.authorObject.username}</p>
+                <p className="pText">{contentObject.authorObject.username}</p>
               </a>
             </Col>
             <Col>
@@ -89,7 +89,7 @@ export function VideoPlayerContainer(props) {
                 to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                 className="video-creator-link"
               >
-                <p className="page-introduction">Profile</p>
+                <p className="pText">Profile</p>
               </Link>
             </Col>
           </Row>

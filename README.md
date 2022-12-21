@@ -5,8 +5,11 @@
   Arcademy is a community focused on the Arweave ecosystem. It is a platform for learning and sharing experiences using the Arweave blockchain. With developer friendly videos and a sandbox to explore some of the feature on display from some of the leaders in the community
 
 ## Where to find
+  ## Arcademy
+  - [arcademy.arweave.dev] (https://arcademy.arweave.dev/)
 
   This version is perma-stored, and you can find V1 [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) 
+
   ## V2
   - [here](https://arweave.net/gREdj0JOWoQpyb0K2cQvirEMs8tDW3ulq9bKD6iJE3I) 
 
@@ -19,11 +22,14 @@
   ## V4.1
   - [https://arweave.net/JE4YYPRLLrdXoHZnVlatTm27qu5WS3rIQQMbBMZpgq4](https://arweave.net/JE4YYPRLLrdXoHZnVlatTm27qu5WS3rIQQMbBMZpgq4)
 
- ## V4.1.1 
+  ## V4.1.1 
   - [https://arweave.net/YvZGIpPY1DrgHbcj0mGW4NpcOaEI-ao-mTUrqE7GnBw](https://arweave.net/YvZGIpPY1DrgHbcj0mGW4NpcOaEI-ao-mTUrqE7GnBw)
 
-   ## V4.1.2 (Current State)
+  ## V4.1.2 
   - [https://arweave.net/0XvwgvE5U2_s493WNqnq6cDrNuG7gmGPc9rRmIhVcNk](https://arweave.net/0XvwgvE5U2_s493WNqnq6cDrNuG7gmGPc9rRmIhVcNk)
+  
+  ## V4.1.3 (Current State)JpaOKeNkFPmrWWsiXUAUmlcT6c3WBlSyBQwq7mnuZWc
+  - [https://arweave.net/B926d0IxPNZ3J0TrcZ8XNlxqkpu75RensssGrFwJaaY](https://arweave.net/B926d0IxPNZ3J0TrcZ8XNlxqkpu75RensssGrFwJaaY)
 
 ## Instructions
 

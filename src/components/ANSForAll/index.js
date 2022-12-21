@@ -60,9 +60,17 @@ function UseAns({ addr, forDashboard }) {
           <Spacer y={2} />
           <Grid.Container gap={1} justify="center">
             <Button
+              css={{
+                color: "black",
+                border: "2px solid #008c9e",
+                fontSize: "0.75em",
+                padding: "0.3em",
+                backgroundColor: "white",
+                transition: "all 0.2s ease-in-out",
+              }}
               color="secondary"
               onPress={() => setIsLoading(true)}
-              className="identity-link buttonText"
+              className="button buttonText"
             >
               Retry
             </Button>
@@ -199,7 +207,17 @@ function UseAns({ addr, forDashboard }) {
               rel="noreferrer"
               className="textNoDec"
             >
-              <Button className="identity-link buttonText">
+              <Button
+                css={{
+                  color: "black",
+                  border: "2px solid #008c9e",
+                  fontSize: "0.75em",
+                  padding: "0.3em",
+                  backgroundColor: "white",
+                  transition: "all 0.2s ease-in-out",
+                }}
+                className="button buttonText"
+              >
                 <p>{ansProfile.currentLabel}.ar.page</p>
               </Button>
             </a>

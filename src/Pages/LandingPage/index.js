@@ -22,11 +22,19 @@ export function LandingPage() {
         />
         <Row justify="center">
           <Button
-            className="nav-link identity-link buttonText"
+            className="button buttonText"
+            css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }}
             onClick={() => navigate(`/modules/${module}`)}
             iconRight={<AiOutlineArrowRight size={18} />}
           >
-            <p className="page-introduction">Explore</p>
+            <p>Explore</p>
           </Button>
         </Row>
       </li>
@@ -40,40 +48,50 @@ export function LandingPage() {
     <>
       <div className="text-container">
         <h2 className="landingPageHeadline">Welcome to ARcademy</h2>
-        <p className="page-introduction">
+        <p className="pText">
           Arcademy is community-driven and developed learning platform, for the
           Arweave ecosystem. Maintaining a variety of modules, you can learn to
-          code, design, and build with the Arweave blockchain. Create atomic assets
-          and earn $Stampcoin along with stamping other profiles' content.
+          code, design, and build with the Arweave blockchain. Create atomic
+          assets and earn $Stampcoin along with stamping other profiles'
+          content.
         </p>
       </div>
       <Spacer y={2} />
       <Container justify="space-around" align="center">
         <Spacer y={2} />
         <Row justify="space-between" align="center" wrap="no-wrap">
-          <Col width="150px">
-            <h3>Learn with Nader</h3>
-            <p className="page-introduction">
-              Follow along with Nader as he teaches you how to build your first
-              Smartweave contract with zero transaction fees.
-            </p>
-            <Spacer y={1} />
-            <Row justify="center">
-              <Button
-                className="nav-link identity-link buttonText"
-                onClick={() => navigate("/playground/28")}
-              >
-                <p className="page-introduction">Enter</p>
-              </Button>
-            </Row>
-          </Col>
-          <Spacer x={2} />
+          
           <Col>
             <Image
               src={bundlrNader}
               alt="bundlrNader"
               css={{ maxWidth: "650px" }}
             />
+          </Col>
+          <Spacer x={2} />
+          <Col width="150px">
+            <h3>Learn with Nader</h3>
+            <p className="pText">
+              Follow along with Nader as he teaches you how to build your first
+              Smartweave contract with zero transaction fees.
+            </p>
+            <Spacer y={1} />
+            <Row justify="center">
+              <Button
+                css={{
+                  color: "black",
+                  border: "2px solid #008c9e",
+                  fontSize: "0.75em",
+                  padding: "0.3em",
+                  backgroundColor: "white",
+                  transition: "all 0.2s ease-in-out",
+                }}
+                className="button buttonText"
+                onClick={() => navigate("/playground/28")}
+              >
+                <p className="pText">Enter</p>
+              </Button>
+            </Row>
           </Col>
         </Row>
       </Container>

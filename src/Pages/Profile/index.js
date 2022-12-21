@@ -87,7 +87,7 @@ export default function Profile() {
       <div className="">
         {isLoading && (
           <>
-            <p>Searching for content</p>
+            <p className="pText">Searching for content</p>
             <Loading />
           </>
         )}

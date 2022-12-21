@@ -97,11 +97,11 @@ export function AccountViewer() {
     <>
       <div className="text-container acctViewTextContainer">
         <h2>Search Arweave Related Content</h2>
-        <p className="searchPageText">
+        <p className="pText">
           Enter an address by ANS, Arweave, or Eth address to find the Arweave
           related content.
         </p>
-        <p className="searchPageText">
+        <p className="pText">
           Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE
         </p>
         <form onSubmit={onSubmit}>
@@ -118,23 +118,30 @@ export function AccountViewer() {
           />
           <Spacer y={1} />
           <Row align="center" justify="center">
-            <Button className="identity-link buttonText" type="submit">
+            <Button css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }} className="button buttonText" type="submit">
               search
             </Button>
           </Row>
-          <p className="searchPageText">Current Addr: {addr}</p>
+          <p className="pText">Current Addr: {addr}</p>
         </form>
       </div>
       <Spacer y={1} />
       {isLoading && (
         <Grid.Container gap={1} justify="center">
-          <p>Searching for content</p>
+          <p className="pText">Searching for content</p>
           <Loading size="xl" css={{ padding: "$24" }} />
         </Grid.Container>
       )}
       {isSearching && (
         <>
-          <p>Searching for content</p>
+          <p className="pText">Searching for content</p>
           <Loading />
         </>
       )}

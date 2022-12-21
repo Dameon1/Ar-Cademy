@@ -220,7 +220,14 @@ export default function TestPage() {
       </div>
       <div className={"containerStyle"}>
         <Dropdown>
-          <Dropdown.Button className="buttonText">{type}</Dropdown.Button>
+          <Dropdown.Button css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }} className=" buuton buttonText">{type}</Dropdown.Button>
           <Dropdown.Menu onAction={(key) => setType(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {contentTypeSelectOptions.map((v) => {
@@ -230,7 +237,14 @@ export default function TestPage() {
         </Dropdown>
         <Spacer x={1} />
         <Dropdown>
-          <Dropdown.Button className="buttonText">{label}</Dropdown.Button>
+          <Dropdown.Button css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }} className="button buttonText">{label}</Dropdown.Button>
           <Dropdown.Menu onAction={(key) => setLabel(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {tagSelectOptions.map((v) => {
@@ -239,7 +253,14 @@ export default function TestPage() {
           </Dropdown.Menu>
         </Dropdown>
         <Spacer x={1} />
-        <Button onPress={async () => runFilterQuery(addr,type)} className="buttonText">Search</Button>
+        <Button css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }} onPress={async () => runFilterQuery(addr,type)} className=" button buttonText">Search</Button>
       </div>
       
       {images && (<AtomicImages images={images} />)}

@@ -84,7 +84,7 @@ export function Dashboard() {
     <div className="">
       <div className="text-container">
         <h2>Identity needs Security</h2>
-        <p className="page-introduction">
+        <p className="pText">
           Identity is a topic that Arweave is looking to solve in multiple
           different ways. As our connection to the world grows, we need to be
           able to connect with the people and communities that we are connected
@@ -96,12 +96,19 @@ export function Dashboard() {
       <Spacer y={1} />
       {addr && (
         <Row align="center" justify="center">
-          <Button
-            className="nav-link identity-link buttonText"
+          <Button css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }}
+            className="button buttonText"
             onClick={() => navigate("/upload")}
             iconRight={<AiOutlineUpload size={18} />}
           >
-            Create
+            <p className="pText">Create</p>
           </Button>
         </Row>
       )}
@@ -139,7 +146,7 @@ export function Dashboard() {
 
       {addr && isLoading && (
         <>
-          <p>Searching for content</p>
+          <p className="pText">Searching for content</p>
           <Loading />
         </>
       )}

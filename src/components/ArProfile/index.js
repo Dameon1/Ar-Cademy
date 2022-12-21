@@ -62,7 +62,19 @@ function ArProfile(props) {
           </Grid.Container>
           <Spacer y={2} />
           <Grid.Container gap={1} justify="center">
-            <Button className="identity-link buttonText">Retry</Button>
+            <Button
+              css={{
+                color: "black",
+                border: "2px solid #008c9e",
+                fontSize: "0.75em",
+                padding: "0.3em",
+                backgroundColor: "white",
+                transition: "all 0.2s ease-in-out",
+              }}
+              className="button buttonText"
+            >
+              Retry
+            </Button>
           </Grid.Container>
           <Spacer y={3} />
         </>
@@ -186,11 +198,19 @@ function ArProfile(props) {
               {props.forDashboard && (
                 <Button
                   auto
+                  css={{
+                    color: "black",
+                    border: "2px solid #008c9e",
+                    fontSize: "0.75em",
+                    padding: "0.3em",
+                    backgroundColor: "white",
+                    transition: "all 0.2s ease-in-out",
+                  }}
                   onClick={() => setModalIsOpen(true)}
                   iconRight={<FiEdit size={18} />}
-                  className="identity-link buttonText"
+                  className="button buttonText"
                 >
-                  Edit Profile
+                  <p className="pText">Edit Profile</p>
                 </Button>
               )}
             </>
@@ -212,11 +232,19 @@ function ArProfile(props) {
                 {props.forDashboard && (
                   <Button
                     auto
-                    className="nav-link identity-link buttonText"
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                    className="button buttonText"
                     iconRight={<AiOutlineUpload size={18} />}
                     onClick={() => setModalIsOpen(true)}
                   >
-                    Create an ArProfile
+                    <p className="pText">Create an ArProfile</p>
                   </Button>
                 )}
               </div>

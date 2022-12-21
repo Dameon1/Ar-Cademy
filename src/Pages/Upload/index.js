@@ -27,7 +27,7 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import {} from "@nextui-org/react";
 
 //import image from "../../favicon.png";
-import image from "../../winstonMedia.png";
+//import image from "../../winstonMedia.png";
 
 export const tagSelectOptions = [
   { value: "daos", label: "DAOs" },
@@ -42,6 +42,7 @@ export const tagSelectOptions = [
 ];
 
 export default function Upload() {
+  const image = "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
   const { addr } = useContext(MainContext);
   const defaultCurrency = "Select a Currency";
   const [currency, setCurrency] = useState(defaultCurrency);
@@ -332,29 +333,41 @@ export default function Upload() {
   return (
     <main>
       <div>
-        <Row align="center" >
-            <div className="text-container">
-              <h2>Ar-Cademy Uploads</h2>
-              <p className="page-introduction">
-                This is a work in progress. Experimenting with the spectrum of
-                uploads on Arweave. These range from simple string metadata
-                stored directly on Arweave completely, to a range of NFT
-                capabilities that store on Ardrive, can be managed on Darkblock
-                or Koii Network, that includes serving the content through the
-                Meson Networks CDN Polygon contract and uses the new WARP
-                contracts from Redstone.
-              </p>
-            </div>
+        <Row align="center">
+          <div className="text-container">
+            <h2>Ar-Cademy Uploads</h2>
+            <p className="pText">
+              This is a work in progress. Experimenting with the spectrum of
+              uploads on Arweave. These range from simple string metadata stored
+              directly on Arweave completely, to a range of NFT capabilities
+              that store on Ardrive, can be managed on Darkblock or Koii
+              Network, that includes serving the content through the Meson
+              Networks CDN Polygon contract and uses the new WARP contracts from
+              Redstone.
+            </p>
+          </div>
         </Row>
         <Row justify="flex-wrap" wrap="wrap">
           <Col className="uploadContainer">
-            <h4>Step 1</h4>
-            <p className={"labelStyle"}>Payment prep</p>
+            <h3>Step 1</h3>
+            <p className="pText">Payment prep</p>
             <Col justify="center" align="center" gap={1}>
               <Row justify="center" align="center">
                 <Col className="form-control">
                   <Dropdown>
-                    <Dropdown.Button className="buttonText">{toProperCase(currency)}</Dropdown.Button>
+                    <Dropdown.Button
+                      css={{
+                        color: "black",
+                        border: "2px solid #008c9e",
+                        fontSize: "0.75em",
+                        padding: "0.3em",
+                        backgroundColor: "white",
+                        transition: "all 0.2s ease-in-out",
+                      }}
+                      className="button buttonText"
+                    >
+                      {toProperCase(currency)}
+                    </Dropdown.Button>
                     <Dropdown.Menu
                       onAction={(key) => handleCurrencyChange(key)}
                     >
@@ -370,8 +383,16 @@ export default function Upload() {
                 </Col>
                 <Col>
                   <Button
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
                     disabled={currency === defaultCurrency}
-                    className="buttonText"
+                    className="button buttonText"
                     onPress={
                       bundlrInstance
                         ? () => clean()
@@ -383,7 +404,7 @@ export default function Upload() {
                   </Button>
                 </Col>
               </Row>
-              <p>
+              <p className="pText">
                 {currency !== defaultCurrency
                   ? `${toProperCase(currency)} Account:${address.slice(0, 4)}`
                   : null}
@@ -434,20 +455,36 @@ export default function Upload() {
               <Row>
                 <Col>
                   <Button
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
                     onPress={() => handleFileClick("image")}
                     aria-label="Select Image"
-                    className="buttonText"
+                    className="button buttonText"
                   >
-                    Select Image
+                    <p className="pText">Select Image</p>
                   </Button>
                 </Col>
                 <Col>
                   <Button
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
                     onPress={() => handleFileClick("video")}
                     aria-label="Select Video"
-                    className="buttonText"
+                    className="button buttonText"
                   >
-                    Select Video
+                    <p className="pText">Select Video</p>
                   </Button>
                 </Col>
               </Row>
@@ -504,14 +541,25 @@ export default function Upload() {
                   gap={1}
                 >
                   <Dropdown>
-                    <Dropdown.Button className="buttonText">
-                      {topics ? toProperCase(topics) : "Add a Tag"}
+                    <Dropdown.Button
+                      css={{
+                        color: "black",
+                        border: "2px solid #008c9e",
+                        fontSize: "0.75em",
+                        padding: "0.3em",
+                        backgroundColor: "white",
+                        transition: "all 0.2s ease-in-out",
+                      }}
+                      className="button buttonText"
+                    >
+                    <p className="pText">{topics ? toProperCase(topics) : "Add a Tag"}</p>
+                      
                     </Dropdown.Button>
                     <Dropdown.Menu onAction={(key) => setTopics(key)}>
                       {tagSelectOptions.map((v) => {
                         return (
                           <Dropdown.Item key={v.value} className="buttonText">
-                            {toProperCase(v.value)}
+                            <p className="pText">{toProperCase(v.value)}</p>
                           </Dropdown.Item>
                         );
                       })}
@@ -520,7 +568,20 @@ export default function Upload() {
                 </Row>
                 <Spacer y={1} />
                 <Row justify="center" align="center" gap={1}>
-                  <Button onPress={doDeploy} className="buttonText">DEPLOY ATOMIC VIDEO</Button>
+                  <Button
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                    onPress={doDeploy}
+                    className="button buttonText"
+                  >
+                    <p className="pText">DEPLOY ATOMIC ASSET</p>
+                  </Button>
                 </Row>
               </div>
             </div>

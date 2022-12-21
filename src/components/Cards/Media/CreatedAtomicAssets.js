@@ -66,11 +66,12 @@ export default function CreatedAtomicAssets(props) {
             <Col>
               <Row justify="center">
                 <a
-                  href={`https://img.arweave.dev/#/show/${content.stampedAsset}`}
+                  href={`https://img.arweave.dev/#/show/${content.id}`}
                   className="textNoDec"
                   target="_blank"
                   rel="noreferrer"
                 >
+                  {console.log(content)}
                   <Button
                     flat
                     auto

@@ -13,7 +13,6 @@ html {
 }
 
 body {
-  line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
   margin: 0px;
 }
@@ -24,7 +23,6 @@ body {
   min-height: 100vh;
   text-align: center;
 }
-
 
 img {
   max-width: 100%;

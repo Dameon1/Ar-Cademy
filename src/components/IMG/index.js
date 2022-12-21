@@ -192,20 +192,20 @@ export default function IMG() {
           result.data.id,
           topics
         );
-          console.log("Completed Upload, redirecting 3...")
+        console.log("Completed Upload, redirecting 3...");
         // reset form
         document.forms[0].reset();
-        console.log("Completed Upload, redirecting 2...")
+        console.log("Completed Upload, redirecting 2...");
 
         setTx(result2.id);
-        console.log("Completed Upload, redirecting 1...")
+        console.log("Completed Upload, redirecting 1...");
 
         setImgCache([
           ...imgCache,
           { id: result2.id, src: URL.createObjectURL(files[0]) },
         ]);
         console.log(`https://arweave.net/${result.data.id}`);
-        console.log("Completed Upload, redirecting ...")
+        console.log("Completed Upload, redirecting ...");
 
         setTimeout(() => {
           navigate("/testpage");
@@ -406,7 +406,6 @@ export default function IMG() {
   const ethProviders = ["MetaMask", "WalletConnect"];
 
   const currencyMap = {
-    
     matic: {
       providers: ethProviders,
       opts: {
@@ -422,7 +421,7 @@ export default function IMG() {
       <main>
         <Container fluid>
           <Col justify="center" align="center" gap={1}>
-            <div >
+            <div>
               <h4>Atomic Assets</h4>
               <form className="" onSubmit={doDeploy}>
                 <Row justify="center" align="center" gap={1}>
@@ -436,6 +435,14 @@ export default function IMG() {
                 <Row justify="center" align="center" gap={1}>
                   <Col justify="center" align="center">
                     <Button
+                      css={{
+                        color: "black",
+                        border: "2px solid #008c9e",
+                        fontSize: "0.75em",
+                        padding: "0.3em",
+                        backgroundColor: "white",
+                        transition: "all 0.2s ease-in-out",
+                      }}
                       onClick={handleFileClick}
                       aria-label="Select file"
                     >
