@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context";
 import { utils } from "ethers";
 import BigNumber from "bignumber.js";
+import fileReaderStream from "filereader-stream";
 import "./upload.css";
 import { AMW } from "../../utils/api";
 import { currencyMap } from "../../utils/index";
-import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
 import { WebBundlr } from "@bundlr-network/client";
-
+import { sleep } from "@bundlr-network/client/build/common/upload";
+import TestModal from "../../components/Modals/TestModal";
+import { WarpFactory } from "warp-contracts";
 import {
+  Container,
   Button,
   Image,
   Spacer,
@@ -30,40 +33,67 @@ import {} from "@nextui-org/react";
 //import image from "../../winstonMedia.png";
 
 export const tagSelectOptions = [
-  { value: "daos", label: "DAOs" },
-  { value: "defi", label: "DeFi" },
-  { value: "nfts", label: "NFTs" },
-  { value: "developers", label: "Developers" },
-  { value: "gaming", label: "Gaming" },
-  { value: "investing", label: "Investing" },
-  { value: "public-goods", label: "Public Goods" },
-  { value: "education", label: "Education" },
+  { value: "learn", label: "Learn" },
+  { value: "deployment", label: "Deployment" },
+  { value: "build", label: "Build" },
+  { value: "storage", label: "Storage" },
+  { value: "apis", label: "API's" },
+  { value: "tokenomics", label: "Tokenomics" },
+  { value: "identity", label: "Identity" },
+  { value: "arfs", label: "ArFS" },
   { value: "meme", label: "Meme" },
 ];
 
 export default function Upload() {
-  const image = "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
+  const image =
+    "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
+  const video =
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
   const { addr } = useContext(MainContext);
-  const defaultCurrency = "Select a Currency";
+  const defaultCurrency = "Currency";
   const [currency, setCurrency] = useState(defaultCurrency);
 
   //bundlr instance and address
   const [bundlrInstance, setBundlrInstance] = useState();
   const [address, setAddress] = useState("");
 
-  const [originalFile, setOriginalFile] = useState();
-  //readAsArrayBuffer file
+  //file vairables
   const [file, setFile] = useState();
+  const [size, setSize] = useState();
 
-  const [fileCost, setFileCost] = useState();
+  //original file variables
+  const [originalImage, setOriginalImage] = useState();
+  const [originalVideo, setOriginalVideo] = useState();
+  const [originalFile, setOriginalFile] = useState();
 
+  //Url variables for playback
+  const [localVideo, setLocalVideo] = useState(video);
+  const [localImage, setLocalImage] = useState(image);
+
+  //Upload stream for bundlr
+  const [imgStream, setImgStream] = useState(undefined);
+
+  //2 variable for cost Image and Video and total cost
+  const [imageCost, setImageCost] = useState(0);
+  const [videoCost, setVideoCost] = useState(0);
+  const [fileCost, setFileCost] = useState(imageCost + videoCost);
+
+  //metadata variables
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [topics, setTopics] = useState("");
-  //todo
-  //const [externalLinks, setExternalLinks] = useState("");
+  const [urls, setUrls] = useState([]);
+  const [externalLinks, setExternalLinks] = useState([
+    { value: "https://arwiki.wiki/#/en/creating-a-dapp", label: "arwiki" },
+  ]);
+  const [externarLinkTitle, setExternalLinkTitle] = useState([
+    { value: "https://arwiki.wiki/#/en/creating-a-dapp", label: "arwiki" },
+  ]);
+  const [mimeType, setMimeType] = useState();
 
-  const [localVideo, setLocalVideo] = useState();
+  //upload variables
+  const [totalUploaded, setTotalUploaded] = useState(0);
+  const [lastUploadId, setLastUploadId] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -74,15 +104,42 @@ export default function Upload() {
   const clean = async () => {
     setBundlrInstance(undefined);
     setOriginalFile(undefined);
-    setLocalVideo([]);
-    setFileCost("");
+    setLocalVideo(video);
+    setLocalImage(image);
     setAddress("");
     setCurrency(defaultCurrency);
+    setImgStream(undefined);
+    setTotalUploaded(0);
+    setLastUploadId(undefined);
+    setExternalLinks([
+      { value: "https://arwiki.wiki/#/en/creating-a-dapp", label: "arwiki" },
+    ]);
+    setExternalLinkTitle([]);
+    setImageCost(0);
+    setVideoCost(0);
+    setFileCost(0);
+    setTitle("");
+    setDescription("");
+    setUrls([]);
   };
 
   async function handleCurrencyChange(currency) {
     clean();
     setCurrency(currency);
+  }
+  const handleUrlSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const label = formData.get("label");
+    const url = formData.get("url");
+    setUrls([...urls, { label, url }]);
+  };
+  const handleUrlRemove = (index) => {
+    setUrls(urls.filter((_, i) => i !== index));
+  };
+
+  function canDeploy() {
+    return addr.length > 0 && currency.length > 0 && originalImage !== null && originalVideo !== null && title.length > 0 && description.length > 0 && topics && urls.length > 0;  
   }
 
   function parseInput(input) {
@@ -95,11 +152,17 @@ export default function Upload() {
     }
   }
 
-  async function checkUploadCost(bytes) {
+  async function checkUploadCost(bytes, type) {
     if (bytes) {
       const cost = await bundlrInstance.getPrice(bytes);
-      console.log(cost);
+      console.log("currentCost", cost);
+      if (type === "image")
+        setImageCost(bundlrInstance.utils.unitConverter(cost).toString());
+      if (type === "video")
+        setVideoCost(bundlrInstance.utils.unitConverter(cost).toString());
+
       setFileCost(bundlrInstance.utils.unitConverter(cost).toString());
+      return cost;
     }
   }
 
@@ -243,9 +306,10 @@ export default function Upload() {
         await connectorMap.MetaMask(currencyMap[currency].opts);
     }
   }
+
   async function doDeploy(e) {
-    console.log("currency:", currency);
     try {
+      console.log("step 1: fund upload");
       const price = await bundlrInstance.getPrice(originalFile.size);
       const balance = await bundlrInstance.getLoadedBalance();
       const uploadCost = utils.formatEther(
@@ -257,37 +321,44 @@ export default function Upload() {
         );
       }
 
+      console.log("step 2: Create transaction");
+
+      console.log("step 3: Sign Transaction");
       const trx = bundlrInstance.createTransaction(file, {
         tags: [{ name: "Content-Type", value: originalFile.type }],
       });
-
       await trx.sign();
-      console.log("Signed transaction");
       const result = await trx.upload();
-      console.log("Uploaded");
+
+      console.log("step 4: Upload Transaction");
+      uploadFile();
+      //   console.log("Uploaded");
       console.log(
         "DEPLOY BUNDLR PROPS",
         title,
         description,
         addr,
         originalFile.type,
-        result.data.id,
+        lastUploadId,
         topics,
         uploadCost
       );
-      const result2 = await deployBundlr(
-        title,
-        description,
-        addr,
-        originalFile.type,
-        result.data.id,
-        topics,
-        uploadCost
-      );
-      alert("success");
-      setTimeout(() => {
-        navigate(`/AssetManagement/${result2.id}`);
-      }, 2000);
+
+      console.log("step 5: Deploy Bundlr");
+      //   const result2 = await deployBundlr(
+      //     title,
+      //     description,
+      //     addr,
+      //     originalFile.type,
+      //     result.data.id,
+      //     topics,
+      //     uploadCost
+      //   );
+      //   console.log("Finalized");
+      //   alert("success");
+      //   setTimeout(() => {
+      //     navigate(`/AssetManagement/${result2.id}`);
+      //   }, 2000);
     } catch (e) {
       console.log(e);
     }
@@ -315,45 +386,346 @@ export default function Upload() {
   const handleUpload = async (evt, type) => {
     let eventFile = evt.target.files[0];
     if (!eventFile) return;
-    checkUploadCost(eventFile.size);
-    setOriginalFile(eventFile);
-    let reader = new FileReader();
-    const fileUrl = URL.createObjectURL(eventFile);
-    reader.onload = function () {
-      if (reader.result) {
-        setFile(Buffer.from(reader.result));
-      }
-    };
-    reader.readAsArrayBuffer(eventFile);
+    const uploadCost = await checkUploadCost(eventFile.size, type);
+    console.log("uploadCost", uploadCost);
+
+    if (type === "image") {
+      let reader = new FileReader();
+      //const fileUrl = URL.createObjectURL(eventFile);
+      reader.onload = function () {
+        if (reader.result) {
+          setFile(Buffer.from(reader.result));
+        }
+      };
+      reader.readAsArrayBuffer(eventFile);
+      setLocalImage(URL.createObjectURL(eventFile));
+      setOriginalImage(eventFile);
+    }
     if (type === "video") {
-      setLocalVideo(fileUrl);
+      setLocalVideo(URL.createObjectURL(eventFile));
+      setOriginalVideo(eventFile);
+      setMimeType(eventFile?.type ?? "application/octet-stream");
+      setSize(eventFile?.size ?? 0);
+      setImgStream(fileReaderStream(eventFile));
+    }
+    // setOriginalFile(eventFile);
+    // let reader = new FileReader();
+    // //const fileUrl = URL.createObjectURL(eventFile);
+    // reader.onload = function () {
+    //   if (reader.result) {
+    //     setFile(Buffer.from(reader.result));
+    //   }
+    // };
+    // reader.readAsArrayBuffer(eventFile);
+  };
+
+  const uploadFile = async () => {
+    console.log("step 1: fund upload");
+    const price = await bundlrInstance.getPrice(
+      originalImage.size + originalVideo.size
+    );
+    const balance = await bundlrInstance.getLoadedBalance();
+    const uploadCost = utils.formatEther(
+      price.minus(balance).multipliedBy(1.2).toFixed(0)
+    );
+    if (balance.isLessThan(price)) {
+      await bundlrInstance.fund(
+        price.minus(balance).multipliedBy(1.2).toFixed(0)
+      );
+    }
+    const trx = bundlrInstance.createTransaction(file, {
+      tags: [{ name: "Content-Type", value: originalImage.type }],
+    });
+    await trx.sign();
+    const result = await trx.upload();
+    console.log("result", result);
+    const contractTags = [
+      { name: "Content-Type", value: originalVideo.type },
+      { name: "App-Name", value: "SmartWeaveContract" },
+      { name: "App-Version", value: "0.3.0" },
+      {
+        name: "Contract-Src",
+        value: "x0ojRwrcHBmZP20Y4SY0mgusMRx-IYTjg5W8c3UFoNs",
+      },
+      {
+        name: "Init-State",
+        value: JSON.stringify({
+          ticker: "ATOMIC-ASSET-" + title,
+          claimable: [],
+          claims: [],
+          contentType: originalVideo.type,
+          emergencyHaltWallet: addr,
+          pairs: [],
+          uploadCost: uploadCost,
+          currencyUsed: currency,
+          invocations: [],
+          foreignCalls: [],
+          settings: [["isTradeable", true]],
+          owner: addr,
+          canEvolve: true,
+          balances: {
+            [addr]: 10000,
+          },
+          wallets: {},
+        }),
+      },
+      { name: "Title", value: title },
+      { name: "Description", value: description },
+      { name: "Type", value: originalVideo.type },
+      { name: "Topics", value: topics },
+      { name: "Upload-Cost", value: uploadCost },
+      {
+        name: "External-Links",
+        value: JSON.stringify({ links: externalLinks }),
+      },
+      { name: "Video-Image-Id", value: result.id },
+    ];
+
+    if (imgStream) {
+      toast({ title: "Starting upload...", status: "info" });
+      setTotalUploaded(0);
+      setLastUploadId(undefined);
+      await sleep(2_000); // sleep as this is all main thread (TODO: move to web worker?)
+      const uploader = bundlrInstance?.uploader.chunkedUploader;
+      uploader?.setBatchSize(2);
+      uploader?.setChunkSize(2_000_000);
+      uploader?.on("chunkUpload", (e) => {
+        setTotalUploaded(e.totalUploaded);
+      });
+      //@ts-ignore
+      uploader
+        ?.uploadData(imgStream, {
+          tags: contractTags,
+        })
+        .then(async (res) => {
+          console.log("res", res);
+          const warp = WarpFactory.forMainnet();
+          const { contractTxId } = await warp.register(res.data.id, "node2");
+          console.log(`Check the data: https://arweave.net/${contractTxId}`);
+          setLastUploadId(res.data.id);
+          setTimeout(() => {
+            navigate(`/AssetManagement/${res.data.id}`);
+          }, 5000);
+          alert(`https://arweave.net/${res.data.id}`);
+        })
+        .catch((e) => {
+          toast({ status: "error", title: `Failed to upload - ${e}` });
+        });
     }
   };
 
   return (
     <main>
       <div>
-        <Row align="center">
-          <div className="text-container">
-            <h2>Ar-Cademy Uploads</h2>
-            <p className="pText">
-              This is a work in progress. Experimenting with the spectrum of
-              uploads on Arweave. These range from simple string metadata stored
-              directly on Arweave completely, to a range of NFT capabilities
-              that store on Ardrive, can be managed on Darkblock or Koii
-              Network, that includes serving the content through the Meson
-              Networks CDN Polygon contract and uses the new WARP contracts from
-              Redstone.
-            </p>
-          </div>
+        <Container>
+          <Row align="center">
+            <div className="text-container">
+              <h2>Ar-Cademy Uploads</h2>
+              <p className="pText">
+                This is a work in progress. Experimenting with the spectrum of
+                uploads on Arweave. These range from simple string metadata
+                stored directly on Arweave completely, to a range of NFT
+                capabilities that store on Ardrive, can be managed on Darkblock
+                or Koii Network, that includes serving the content through the
+                Meson Networks CDN Polygon contract and uses the new WARP
+                contracts from Redstone.
+              </p>
+            </div>
+          </Row>
+        </Container>
+        <Spacer y={1} />
+        <Row align="center" justify="center">
+          <TestModal />
         </Row>
-        <Row justify="flex-wrap" wrap="wrap">
-          <Col className="uploadContainer">
-            <h3>Step 1</h3>
-            <p className="pText">Payment prep</p>
-            <Col justify="center" align="center" gap={1}>
-              <Row justify="center" align="center">
-                <Col className="form-control">
+        <Spacer y={1} />
+        <Container
+          justify="center"
+          align="center"
+          className="uploadContainer"
+          xs
+        >
+          <Spacer y={0.25} />
+          <Row justify="center" align="center">
+            <Col>
+              <h3>Step 1: Payment prep</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Dropdown>
+                <Dropdown.Button
+                  css={{
+                    color: "black",
+                    border: "2px solid #008c9e",
+                    fontSize: "0.75em",
+                    padding: "0.3em",
+                    backgroundColor: "white",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                  className="button buttonText"
+                >
+                  <p className="pText">{toProperCase(currency)}</p>
+                </Dropdown.Button>
+                <Dropdown.Menu onAction={(key) => handleCurrencyChange(key)}>
+                  {Object.keys(currencyMap).map((v) => {
+                    return (
+                      <Dropdown.Item key={v} className="buttonText">
+                        {toProperCase(v)}
+                      </Dropdown.Item>
+                    );
+                  })}
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+            <Col>
+              <Button
+                auto
+                css={{
+                  color: "black",
+                  border: "2px solid #008c9e",
+                  fontSize: "0.75em",
+                  padding: "0.3em",
+                  backgroundColor: "white",
+                  transition: "all 0.2s ease-in-out",
+                }}
+                disabled={currency === defaultCurrency}
+                className="button buttonText"
+                onPress={
+                  bundlrInstance
+                    ? () => clean()
+                    : async () => await initializeBundlr()
+                }
+                color={bundlrInstance ? "warning" : "gradient"}
+              >
+                <p className="pText">{bundlrInstance ? "Reset" : "Connect"}</p>
+              </Button>
+              <Spacer y={0.5} />
+            </Col>
+          </Row>
+          <Row align="center">
+            <Col>
+              <p className="pText">
+                {currency !== defaultCurrency
+                  ? `${toProperCase(currency)} Account:${address.slice(0, 4)}`
+                  : null}
+              </p>
+            </Col>
+          </Row>
+        </Container>
+        <Spacer y={1} />
+        <Container
+          justify="center"
+          align="center"
+          className="uploadContainer"
+          xs
+        >
+          <Spacer y={0.25} />
+          <Row justify="center" align="center">
+            <Col>
+              <h3>Step 2: Media</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button
+                auto
+                disabled={currency === defaultCurrency}
+                css={{
+                  color: "black",
+                  border: "2px solid #008c9e",
+                  fontSize: "0.75em",
+                  padding: "0.3em",
+                  backgroundColor: "white",
+                  transition: "all 0.2s ease-in-out",
+                }}
+                onPress={() => handleFileClick("image")}
+                aria-label="Select Image"
+                className="button buttonText"
+              >
+                <p className="pText">Image</p>
+              </Button>
+              <p className="pText">Preview</p>
+              <Col>
+                <Image
+                  src={localImage ? localImage : image}
+                  alt="your upload here"
+                  objectFit="contain"
+                  width={160}
+                  height={160}
+                />
+                <Spacer y={0.5} />
+                <h4>Cost: {Math.round(imageCost * 100000) / 100000}</h4>
+              </Col>
+            </Col>
+            <Spacer x={0.5} />
+            <Col>
+              <Button
+                auto
+                disabled={currency === defaultCurrency}
+                css={{
+                  color: "black",
+                  border: "2px solid #008c9e",
+                  fontSize: "0.75em",
+                  padding: "0.3em",
+                  backgroundColor: "white",
+                  transition: "all 0.2s ease-in-out",
+                }}
+                onPress={() => handleFileClick("video")}
+                aria-label="Select Video"
+                className="button buttonText"
+              >
+                <p className="pText">Video</p>
+              </Button>
+              <p className="pText">Preview</p>
+              <video key={localVideo} width={160} height={160} controls>
+                <source src={localVideo} />
+              </video>
+              <h4>Cost: {Math.round(videoCost * 100000) / 100000}</h4>
+            </Col>
+          </Row>
+          <Spacer y={0.5} />
+          <Row justify="center" align="center">
+            <h3>
+              Total Cost:{" "}
+              {Math.round(imageCost * 100000) / 100000 +
+                Math.round(videoCost * 100000) / 100000}
+            </h3>
+          </Row>
+        </Container>
+        <Spacer y={1} />
+        <Container
+          justify="center"
+          align="center"
+          className="uploadContainer"
+          xs
+        >
+          <Spacer y={0.25} />
+          <Row justify="center" align="center">
+            <Col>
+              <h3>Step 3: Add Extras</h3>
+            </Col>
+          </Row>
+          <div>
+            <div>
+              <Row
+                className="form-control"
+                justify="center"
+                align="center"
+                gap={1}
+              >
+                <Col>
+                  <Input
+                    id="title"
+                    className="input input-bordered"
+                    labelPlaceholder="Make a Title"
+                    status="secondary"
+                    aria-label="Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                    clearable
+                  />
+                </Col>
+                <Col>
                   <Dropdown>
                     <Dropdown.Button
                       css={{
@@ -366,158 +738,23 @@ export default function Upload() {
                       }}
                       className="button buttonText"
                     >
-                      {toProperCase(currency)}
+                      <p className="pText">
+                        {topics ? toProperCase(topics) : "Add a Tag"}
+                      </p>
                     </Dropdown.Button>
-                    <Dropdown.Menu
-                      onAction={(key) => handleCurrencyChange(key)}
-                    >
-                      {Object.keys(currencyMap).map((v) => {
+                    <Dropdown.Menu onAction={(key) => setTopics(key)}>
+                      {tagSelectOptions.map((v) => {
                         return (
-                          <Dropdown.Item key={v} className="buttonText">
-                            {toProperCase(v)}
+                          <Dropdown.Item key={v.value} className="buttonText">
+                            <p className="pText">{toProperCase(v.value)}</p>
                           </Dropdown.Item>
                         );
                       })}
                     </Dropdown.Menu>
                   </Dropdown>
                 </Col>
-                <Col>
-                  <Button
-                    css={{
-                      color: "black",
-                      border: "2px solid #008c9e",
-                      fontSize: "0.75em",
-                      padding: "0.3em",
-                      backgroundColor: "white",
-                      transition: "all 0.2s ease-in-out",
-                    }}
-                    disabled={currency === defaultCurrency}
-                    className="button buttonText"
-                    onPress={
-                      bundlrInstance
-                        ? () => clean()
-                        : async () => await initializeBundlr()
-                    }
-                    color={bundlrInstance ? "warning" : "gradient"}
-                  >
-                    {bundlrInstance ? "Reset" : "Connect"}
-                  </Button>
-                </Col>
-              </Row>
-              <p className="pText">
-                {currency !== defaultCurrency
-                  ? `${toProperCase(currency)} Account:${address.slice(0, 4)}`
-                  : null}
-              </p>
-              <Row justify="center" align="center" gap={1} height={100}>
-                {originalFile?.type.split("/")[0] === "image" ? (
-                  <Col>
-                    <Image
-                      src={URL.createObjectURL(originalFile)}
-                      alt="your upload here"
-                      objectFit="contain"
-                      width={160}
-                      height={160}
-                    />
-                  </Col>
-                ) : originalFile?.type.split("/")[0] === "video" ? (
-                  <></>
-                ) : (
-                  <Col>
-                    <img
-                      src={image}
-                      alt="Winston"
-                      objectFit="contain"
-                      width={160}
-                      height={160}
-                    />
-                  </Col>
-                )}
-                {originalFile?.type.split("/")[0] === "video" ? (
-                  <Col>
-                    {localVideo && (
-                      <video
-                        key={localVideo}
-                        width="240"
-                        height="180"
-                        controls
-                        className={"videoStyle"}
-                      >
-                        <source src={URL.createObjectURL(originalFile)} />
-                      </video>
-                    )}
-                  </Col>
-                ) : (
-                  <></>
-                )}
-              </Row>
-              <Spacer y={0.5} />
-              <Row>
-                <Col>
-                  <Button
-                    css={{
-                      color: "black",
-                      border: "2px solid #008c9e",
-                      fontSize: "0.75em",
-                      padding: "0.3em",
-                      backgroundColor: "white",
-                      transition: "all 0.2s ease-in-out",
-                    }}
-                    onPress={() => handleFileClick("image")}
-                    aria-label="Select Image"
-                    className="button buttonText"
-                  >
-                    <p className="pText">Select Image</p>
-                  </Button>
-                </Col>
-                <Col>
-                  <Button
-                    css={{
-                      color: "black",
-                      border: "2px solid #008c9e",
-                      fontSize: "0.75em",
-                      padding: "0.3em",
-                      backgroundColor: "white",
-                      transition: "all 0.2s ease-in-out",
-                    }}
-                    onPress={() => handleFileClick("video")}
-                    aria-label="Select Video"
-                    className="button buttonText"
-                  >
-                    <p className="pText">Select Video</p>
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-
-            <div>
-              <div className={"formStyle"}>
-                {fileCost && (
-                  <h4>
-                    Cost to upload: {Math.round(fileCost * 100000) / 100000}
-                    {` in ${currency}`}
-                    {console.log(parseInput(fileCost))}
-                  </h4>
-                )}
-                <Row
-                  className="form-control"
-                  justify="center"
-                  align="center"
-                  gap={1}
-                >
-                  <Input
-                    id="title"
-                    className="input input-bordered"
-                    labelPlaceholder="Make a Title"
-                    status="secondary"
-                    aria-label="Title"
-                    onChange={(e) => setTitle(e.target.value)}
-                    s
-                    required
-                  />
-                </Row>
-                <Spacer y={2} />
-                <Row
+                <Spacer x={0.5} />
+                <Col
                   className="form-control"
                   justify="center"
                   align="center"
@@ -531,17 +768,45 @@ export default function Upload() {
                     status="secondary"
                     onChange={(e) => setDescription(e.target.value)}
                     required
+                    clearable
                   />
-                </Row>
-                <Spacer y={2} />
-                <Row
-                  className="form-control"
-                  justify="center"
-                  align="center"
-                  gap={1}
-                >
-                  <Dropdown>
-                    <Dropdown.Button
+                </Col>
+                <Spacer x={0.5} />
+              </Row>
+              <Spacer y={1} />
+              <Row justify="center" align="center" gap={1}>
+                <h3>Add External Link:</h3>
+              </Row>
+              <Row justify="center" align="center" gap={1}>
+                <Col>
+                  <form onSubmit={handleUrlSubmit}>
+                    <Input
+                      type="text"
+                      name="label"
+                      id="label"
+                      aria-label="description"
+                      className="input input-bordered"
+                      labelPlaceholder="URL Label"
+                      status="secondary"
+                      required
+                      clearable
+                    />
+                    <Spacer y={1} />
+                    <Input
+                      type="text"
+                      id="url"
+                      name="url"
+                      aria-label="add url"
+                      className="input input-bordered"
+                      labelPlaceholder="Add URL"
+                      status="secondary"
+                      required
+                      clearable
+                    />
+                    <Spacer y={1} />
+                    <Button
+                      type="submit"
+                      disabled={urls.length === 5}
                       css={{
                         color: "black",
                         border: "2px solid #008c9e",
@@ -552,41 +817,80 @@ export default function Upload() {
                       }}
                       className="button buttonText"
                     >
-                    <p className="pText">{topics ? toProperCase(topics) : "Add a Tag"}</p>
-                      
-                    </Dropdown.Button>
-                    <Dropdown.Menu onAction={(key) => setTopics(key)}>
-                      {tagSelectOptions.map((v) => {
-                        return (
-                          <Dropdown.Item key={v.value} className="buttonText">
-                            <p className="pText">{toProperCase(v.value)}</p>
-                          </Dropdown.Item>
-                        );
-                      })}
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Row>
-                <Spacer y={1} />
-                <Row justify="center" align="center" gap={1}>
-                  <Button
-                    css={{
-                      color: "black",
-                      border: "2px solid #008c9e",
-                      fontSize: "0.75em",
-                      padding: "0.3em",
-                      backgroundColor: "white",
-                      transition: "all 0.2s ease-in-out",
-                    }}
-                    onPress={doDeploy}
-                    className="button buttonText"
-                  >
-                    <p className="pText">DEPLOY ATOMIC ASSET</p>
-                  </Button>
-                </Row>
-              </div>
+                      <p className="pText">Add URL</p>
+                    </Button>
+                    <Spacer y={1} />
+                  </form>
+                  <ul>
+                    {urls.map((url, index) => (
+                      <li key={index}>
+                        <Row wrap="no-wrap">
+                          <p className="pText">
+                            {url.label}: {url.url}
+                          </p>
+                        </Row>
+                        <Button
+                          css={{
+                            color: "black",
+                            border: "2px solid #008c9e",
+                            fontSize: "0.75em",
+                            padding: "0.3em",
+                            backgroundColor: "white",
+                            transition: "all 0.2s ease-in-out",
+                          }}
+                          className="button buttonText"
+                          type="button"
+                          onClick={() => handleUrlRemove(index)}
+                        >
+                          <p className="pText">Remove</p>
+                        </Button>
+                      </li>
+                    ))}
+                  </ul>
+                </Col>
+                <Col>
+                  <Row justify="center" align="center" gap={1}>
+                    <p className="pText">URL Preview</p>
+                  </Row>
+                  <iframe
+                    src={
+                      urls.length === 0
+                        ? "https://weavedb.dev/"
+                        : urls[urls.length - 1].url
+                    }
+                    title={
+                      urls.length === 0
+                        ? "Placeholder Preview"
+                        : urls[urls.length - 1].label
+                    }
+                    height="250"
+                    width="350"
+                  />
+                </Col>
+              </Row>
+              <Spacer y={0.5} />
+              <Row justify="center" align="center" gap={1}>
+                <Button
+                  disabled={()=>canDeploy()}
+                  css={{
+                    color: "black",
+                    border: "2px solid #008c9e",
+                    fontSize: "0.75em",
+                    padding: "0.3em",
+                    backgroundColor: "white",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                  onPress={uploadFile}
+                  className="button buttonText"
+                >
+                  <p className="pText">DEPLOY ATOMIC ASSET</p>
+                </Button>
+              </Row>
+              {console.log(canDeploy())}
+              <Spacer y={0.5} />
             </div>
-          </Col>
-        </Row>
+          </div>
+        </Container>
       </div>
     </main>
   );

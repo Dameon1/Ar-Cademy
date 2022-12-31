@@ -17,21 +17,28 @@ import { Link } from "react-router-dom";
 //import { imgCache, profile } from "../store.js";
 import { getCount, getRewards } from "../../lib/imgLib/stamp.js";
 import { getProfile } from "../../lib/imgLib/account.js";
+import { defaultCacheOptions, WarpFactory } from "warp-contracts/web";
 
 export default function AssetManagement() {
   const { addr } = useContext(MainContext);
-  const [asset, setAsset] = useState();
+  const [assetData, setAssetData] = useState();
+  const [contractData, setContractData] = useState();
   const [ownerData, setOwnerData] = useState();
+  const [ownersAddressArray, setOwnersAddressArray] = useState([]);
+  const [contractState, setContractState] = useState({});
+
+  const [asset, setAsset] = useState();
   //const [count, setCount] = useState();
   const [rewards, setRewards] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [contractData, setContractData] = useState();
-  const [ownersAddressArray, setOwnersAddressArray] = useState([]);
   const [assetStampCount, setAssetStampCount] = useState();
   let module = new URL(window.location.href).pathname.split("/");
   let itemId = module[module.length - 1];
   //const account = new Account();
-
+  // const warp = WarpFactory.forMainnet({
+  //   ...defaultCacheOptions,
+  //   inMemory: true,
+  // });
   // id;
   let imageMsg = "";
   // let src = "https://placehold.co/400";
@@ -41,27 +48,101 @@ export default function AssetManagement() {
   // let showConnect = false;
   // let showHelp = false;
   // let tryingToStamp = false;
+  const [name, setName] = useState("");
+
+  const contractId = "AXQySVEJO3BCY8rUfCZwM5dNWc0ns6_9GNnyLKd_27Y";
+
+  // const getContract = async (id) => {
+  //   const wallet = await warp.arweave.wallets.generate();
+  //   const contract = await warp.contract(id).connect(wallet);
+  //   return contract;
+  // };
+  const getState = async (contract) => {
+    const { cachedValue } = await contract.readState();
+    const state = cachedValue.state;
+    return state;
+  };
+
+  // const getContractAndState = async (id) => {
+  //   const contract = await getContract(id);
+  //   const state = await getState(contract);
+  //   setContractState((prevState) => ({ ...prevState, state }));
+  //   console.log(state);
+  // };
+
+  // useEffect(() => {
+  //   // async function fetchContractData() {
+  //   //   const contract = await getContract();
+  //   //   const state = await getState(contract);
+  //   //   setContractState((prevState) => ({ ...prevState, state }));
+  //   //   console.log(state)
+  //   // }
+  //   // fetchContractData();
+  //   async function data() {
+  //     //const contract = await getContract(itemId);
+  //     //const contractState = await getState(contract);
+  //     //setAssetData(getContractAndState(id));
+  //     //const contract = await getContract();
+  //     //const state = await getState(contract);
+  //     let assetData = await getAssetData(itemId);
+  //     //let assetContractData = await assetDetails(itemId, addr);
+  //     //let profileData = await getProfile(assetData.owner);
+  //     //let assetStampedCount = await getCount(id);
+  //     //let rewards = await getRewards(id);
+  //     //let ownersArray = Object.keys(assetContractData.state.balances);
+  //     //let ownersAvatars = await getAllOwnersAvatar();
+  //     //console.log(assetData, contractState);
+  //     //setAssetData(assetData);
+  //     //(contractState);
+  //     //((prevState) => ({ ...prevState, state }));
+  //     //((prevState) => ({ ...prevState, state }));
+  //     //setAsset(assetData);
+  //     //setOwnerData(profileData);
+  //     //setAssetStampCount(assetStampedCount);
+  //     //setRewards(rewards);
+  //     //setOwnersAddressArray(ownersArray);
+  //     setIsLoading(false);
+  //   }
+  //   //data();
+  // });
+
+  
 
   useEffect(() => {
-    async function data(id) {
-      let assetData = await getAssetData(itemId);
-      let assetContractData = await assetDetails(itemId, addr);
-      let profileData = await getProfile(assetData.owner);
-      let assetStampedCount = await getCount(id);
-      let rewards = await getRewards(id);
-      let ownersArray = Object.keys(assetContractData.state.balances);
-      //let ownersAvatars = await getAllOwnersAvatar();
-      console.log(assetData);
-      setContractData(assetContractData);
-      setAsset(assetData);
-      setOwnerData(profileData);
-      setAssetStampCount(assetStampedCount);
-      setRewards(rewards);
-      setOwnersAddressArray(ownersArray);
-      setIsLoading(false);
-    }
-    data(itemId);
-  }, [addr, itemId]);
+    let module = new URL(window.location.href).pathname.split("/");
+    let itemId = module[module.length - 1];
+    const warp = WarpFactory.forMainnet({
+      ...defaultCacheOptions,
+      inMemory: true,
+    });
+
+    (async () => {
+      try {
+        let wallet = await warp.arweave.wallets.generate();
+        let contract = await warp.contract(itemId).connect(wallet);
+        let contractState = await getState(contract);
+        let assetData = await getAssetData(itemId);
+        let profileData = await getProfile(contractState.emergencyHaltWallet);
+        let ownersArray = Object.keys(contractState.balances);
+        let assetStampedCount = await getCount(itemId);
+        let rewards = await getRewards(itemId);
+        setAssetData(assetData);
+        setContractState(contractState);
+        setOwnerData(profileData);
+        setOwnersAddressArray(ownersArray);
+        setAssetStampCount(assetStampedCount);
+        setRewards(rewards);
+
+        console.log("contractState:", contractState);
+        console.log("assetData:", assetData);
+        console.log("profileData:", profileData);
+      } catch (e) {
+        alert(JSON.stringify(e));
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   //   useEffect(() => {
   //     (async () => {
@@ -80,6 +161,7 @@ export default function AssetManagement() {
   //       }
   //     })();
   //   }, [addr]);
+
   // async function getAllOwnersAvatar() {
   //   if (ownersAddressArray.length < 1) {
   //     return;
@@ -190,6 +272,7 @@ export default function AssetManagement() {
 
   return (
     <main>
+      {console.log(assetData, contractState)}
       {isLoading && <Loading />}
       {!isLoading && (
         <section className="hero min-h-screen bg-base-100">
@@ -202,8 +285,8 @@ export default function AssetManagement() {
                       css={{ position: "absolute", zIndex: 1, top: 5 }}
                     ></Card.Header>
                     <Card.Body css={{ p: 0 }}>
-                      {console.log(asset)}
-                      {asset.type === "video" ? (
+                      {console.log(assetData)}
+                      {assetData.type === "video/mp4" ? (
                         <video
                           objectFit="contain"
                           width="100%"
@@ -213,7 +296,7 @@ export default function AssetManagement() {
                         />
                       ) : (
                         <Card.Image
-                          src={`https://arweave.net/${itemId}`}
+                          src={`https://arweave.net/${assetData.videoImage}`}
                           objectFit="contain"
                           width="100%"
                           height="100%"
@@ -237,21 +320,21 @@ export default function AssetManagement() {
                             <Col span={3}>
                               <Link
                                 //to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
-                                to={`/Profile/${contractData.state.emergencyHaltWallet}/${contractData.state.emergencyHaltWallet}`}
+                                to={`/Profile/${contractState.emergencyHaltWallet}/${contractState.emergencyHaltWallet}`}
                               >
                                 <Card.Image
                                   src={`https://arweave.net/${ownerData.profile.avatar}`}
                                   css={{ bg: "black", br: "50%" }}
                                   height={40}
                                   width={40}
-                                  alt={asset.title}
+                                  alt={"asset.title"}
                                 />
                               </Link>
                             </Col>
                             <Col>
                               <Row justify="flex-start" gap={1}>
                                 <Text color="#d1d1d1" size={12}>
-                                  {asset.title}
+                                  {assetData.title}
                                 </Text>
                               </Row>
                             </Col>
@@ -261,7 +344,7 @@ export default function AssetManagement() {
                                 target="_blank"
                                 rel="noreferrer"
                                 className="textNoDec"
-                                href={tweetLink(asset.title, itemId)}
+                                href={tweetLink(assetData.title)}
                                 v="btn btn-outline btn-sm rounded-none font-normal"
                               >
                                 <Button
@@ -291,19 +374,24 @@ export default function AssetManagement() {
                   <h3>Holders:</h3>
                   <Grid xs={12}>
                     <Avatar.Group count={ownersAddressArray.length - 4}>
-                      {ownersAddressArray.slice(0, 4).map((addr, index) => (
-                        <>
-                          <Link to={`/Profile/${addr}/${addr}`} key={index}>
-                            <Avatar
-                              size="lg"
-                              pointer
-                              text={addr}
-                              color="gradient"
-                              stacked
-                            />
-                          </Link>
-                        </>
-                      ))}
+                      {ownersAddressArray
+                        .slice(0, 4)
+                        .map((ownerAddr, index) => (
+                          <>
+                            <Link
+                              to={`/Profile/${ownerAddr}/${ownerAddr}`}
+                              key={index}
+                            >
+                              <Avatar
+                                size="lg"
+                                pointer
+                                text={ownerAddr}
+                                color="gradient"
+                                stacked
+                              />
+                            </Link>
+                          </>
+                        ))}
                     </Avatar.Group>
                   </Grid>
                 </Row>
@@ -311,12 +399,7 @@ export default function AssetManagement() {
                   <h3>Asset Description</h3>
                 </Row>
                 <Row>
-                  <p c>{asset.description}</p>
-                  {/* {asset.topics.length > 0 && (
-                  <p className="mt-4 text-sm">
-                    Topics: {asset.topics.join(", ")}
-                  </p>
-                )} */}
+                  <p c>{assetData.description}</p>
                 </Row>
 
                 <Row justify="center">
@@ -349,65 +432,29 @@ export default function AssetManagement() {
                         <h4>Cost to Upload</h4>
                       </div>
                       <div>
-                        <div>currency</div>
-                        {rewards && (
-                          <div>
-                            <h6>Asset.cost</h6>
-                          </div>
-                        )}
+                        <div>
+                          <p>{contractState.currencyUsed}</p>
+                        </div>
+                        <div>
+                          <p>{contractState.uploadCost.slice(0, 6)}</p>
+                        </div>
                       </div>
                     </div>
                   </Col>
                 </Row>
-
-                <div className="md:w-1/2 px-0 mx-0 grid place-items-center">
-                  {imageMsg !== "" && <p>{imageMsg}</p>}
-                </div>
               </Col>
 
-              <Col className="hero-content w-[350px] md:w-full p-0 m-0 flex-col md:flex-row md:space-x-4">
-                <h1 className="text-3xl">Your Equity</h1>
+              <Col>
+                <h2>Your Equity</h2>
                 <Row>
-                  <Col>
-                    <p>Percentage Owned</p>
-                    <p>{contractData.percent} %</p>
-                    <p>Total owned: {contractData.state.balances[addr]}</p>
-                  </Col>
-                  <Col>
-                    <p>Transfer Ownership %</p>
-                    <input type="Ftext" />
-                    <button>Transfer</button>
-                  </Col>
+                  {addr ? (
+                    <Col>
+                      <p>Percentage Owned</p>
+                      <p>{contractState.balances[addr] / 100} %</p>
+                      <p>Total owned: {contractState.balances[addr]}</p>
+                    </Col>
+                  ) : null}
                 </Row>
-
-                <p>Buy Order</p>
-                <p>Sell Order</p>
-                <div className="w-[325px] md:w-1/2 px-0 mx-0 md:ml-8">
-                  <div className="mb-4 px-0 mx-0 flex items-start justify-between">
-                    <h1 className="text-3xl">Active Orders</h1>
-                    <Row>
-                      <Col>
-                        <p>Sell Orders</p>
-                        <p>"No Current Orders"</p>
-                      </Col>
-                      <Col>
-                        <p>Buy Orders</p>
-                        <button>"No Current Orders"</button>
-                      </Col>
-                    </Row>
-                    <h1 className="text-3xl">Recent Transactions</h1>
-                    <Row>
-                      <Col>
-                        <p>Sell Orders</p>
-                        <p>"No Current Orders"</p>
-                      </Col>
-                      <Col>
-                        <p>Buy Orders</p>
-                        <button>"No Current Orders"</button>
-                      </Col>
-                    </Row>
-                  </div>
-                </div>
               </Col>
             </Row>
           </Grid.Container>

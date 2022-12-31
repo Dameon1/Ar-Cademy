@@ -11,7 +11,7 @@ import {
   Link,
 } from "@nextui-org/react";
 
-import { AvatarS, Bio } from "../../static/styles/Profile";
+import { AvatarS } from "../../static/styles/Profile";
 import MainContext from "../../context";
 
 import { icons } from "../../static";
@@ -87,7 +87,7 @@ function UseAns({ addr, forDashboard }) {
 
             {ansProfile?.currentLabel && <h2>{ansProfile.currentLabel}</h2>}
 
-            <Bio>{ansProfile.bio}</Bio>
+            <p className="pText">{ansProfile.bio}</p>
             <Row wrap="wrap" align="center" justify="space-around">
               {ansProfile?.links?.twitter && (
                 <>
@@ -234,8 +234,7 @@ function UseAns({ addr, forDashboard }) {
             }}
           >
             <div>
-              {` No Account Found `}
-              {` 🙂`}
+              <p className="pText">No Account Found{` 🙂`}</p>
             </div>
             <Spacer y={1} />
             {/* {forDashboard && (

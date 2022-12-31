@@ -30,16 +30,21 @@ export async function deploy(name, description, addr, contentType, data, topics 
     .then(post)
 }
 
-export async function deployBundlr(name, description, addr, contentType, assetId, topics = "",uploadCost, currency) {
-  return Promise.resolve({ name, description, addr, contentType, assetId, topics, uploadCost, currency })
+export async function deployBundlr(title, description, addr, contentType, assetId, topics = "",uploadCost, currency, externalLinks,
+videoImageid) {
+  return Promise.resolve({ title, description, addr, contentType, assetId, topics, uploadCost, currency, externalLinks,
+    videoImageid })
     .then(dispatch)
     .then(post)
 }
 
 async function post(ctx) {
+  console.log("step 10: Creating Warp transaction");
   const tx = await createAndTag(ctx)
+  console.log("step 11: Sign Contract creation of asset");
   await arweave.transactions.sign(tx)
   tx.id = ctx.atomicId
+  console.log("step 12: Post to Warp");
   const result = await fetch(URL, {
     method: 'POST',
     body: JSON.stringify({ contractTx: tx }),
@@ -54,14 +59,15 @@ async function post(ctx) {
 }
 
 async function dispatch(ctx) {
+  console.log("step 6: Create Manifest");
   const tx = await createAndTag(ctx)
-  console.log("1",tx)
+  console.log("step 9: Dispatch Manifest");
   const result = await window.arweaveWallet.dispatch(tx)
-  console.log("result1:", result)
   return { ...ctx, atomicId: result.id }
 }
 
 async function createAndTag(ctx) {
+  console.log("step 7: Manifest creation stage 2");
   const tx = await arweave.createTransaction({
     data: JSON.stringify({
       manifest: "arweave/paths",
@@ -96,18 +102,23 @@ async function createAndTag(ctx) {
     foreignCalls: [],
     settings: [["isTradeable", true]]
   }))
-  tx.addTag('Title', ctx.name)
+  tx.addTag('Title', ctx.title)
   tx.addTag('Description', ctx.description)
   let assetType = ctx.contentType.split('/')[0] || 'image'
   if (assetType === 'application') {
     assetType = ctx.contentType.split('/')[1]
   }
   tx.addTag('Type', assetType)
+  tx.addTag('External-Links', JSON.stringify({
+    links: ctx.externalLinks
+  }) )
+  tx.addTag('Video-Image-Id', ctx.videoImageid)
+
 
   map(trim, split(',', ctx.topics)).forEach(t => {
     tx.addTag('Topic:' + t, t)
   })
-
+  console.log("step 8: Manifest creation complete:", tx);
   return tx
 }
 

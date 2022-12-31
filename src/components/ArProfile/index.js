@@ -73,7 +73,7 @@ function ArProfile(props) {
               }}
               className="button buttonText"
             >
-              Retry
+              <p className="pText">Retry</p>
             </Button>
           </Grid.Container>
           <Spacer y={3} />
@@ -110,7 +110,9 @@ function ArProfile(props) {
                     </AvatarS>
                   )}
                   {profileData.name && <Name>{profileData.name}</Name>}
-                  <Bio>{profileData.bio}</Bio>
+                  
+                    <p className="pText">{profileData.bio}</p>
+                    
                 </Col>
               </Row>
 
@@ -225,8 +227,7 @@ function ArProfile(props) {
                 }}
               >
                 <div>
-                  {` No Account Found `}
-                  {` 🙂`}
+                <p className="pText">No Account Found{` 🙂`}</p>
                 </div>
                 <Spacer y={1} />
                 {props.forDashboard && (

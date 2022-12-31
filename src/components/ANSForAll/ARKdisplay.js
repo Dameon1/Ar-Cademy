@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaTwitter, FaGithub, FaGlobe } from "react-icons/fa";
 import { Button, Spacer, Row, Tooltip, Link } from "@nextui-org/react";
 import { icons } from "../../static";
-import { AvatarS, Bio } from "../../static/styles/Profile";
+import { AvatarS } from "../../static/styles/Profile";
 
 import MainContext from "../../context";
 
@@ -28,7 +28,7 @@ function ARKdisplay(props) {
         </>
       )}
 
-      <Bio>{props.content.ARWEAVE.ANS.bio}</Bio>
+      <p className="pText">{props.content.ARWEAVE.ANS.bio}</p>
       <Row wrap="wrap" align="center" justify="space-around">
         {props.content.ARWEAVE.ANS.links.twitter && (
           <>

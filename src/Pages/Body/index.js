@@ -8,11 +8,12 @@ import Profile from "../Profile";
 import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
 import TestPage from "../TestPage";
+
 import AssetManagement from "../AssetManagement";
 //Components
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import { NextUIProvider } from "@nextui-org/react";
+
 function Body({ syntaxTheme }) {
   let module = new URL(window.location.href).pathname.split("/");
   let string = `/${module[1]}`;
@@ -30,6 +31,7 @@ function Body({ syntaxTheme }) {
           <Route exact path="/Upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
           <Route exact path={"/Testpage"} element={<TestPage />} />
+          
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
           <Route path="*" element={

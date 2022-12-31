@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -39,11 +39,19 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  .wallet, .uploadContainer, .profileBox {
+  .uploadContainer {
+    border: 1px solid ${({ theme }) => theme.text};
+    border-radius: 15px;
+  }
+  .uploadContainer:hover {
+    border: 1px solid ${({ theme }) => theme.userAction};
+  }
+
+  .wallet, .profileBox {
     border: 1px solid ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.bodyBackground};
   }
-  .wallet:hover, .uploadContainer:hover {
+  .wallet:hover, {
     border: 1px solid ${({ theme }) => theme.userAction};
     color: #ffa537;
   }
@@ -56,10 +64,12 @@ const GlobalStyles = createGlobalStyle`
     border: 1px solid ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.bodyBackground};
   }
+ 
 
 
 `;
 
-const transition = "transition: background 0.2s ease-in, color 0.2s ease-in, border-color 0.2s ease-in, opacity 0.2s ease-in;"
+const transition =
+  "transition: background 0.2s ease-in, color 0.2s ease-in, border-color 0.2s ease-in, opacity 0.2s ease-in;";
 
 export { GlobalStyles, transition };

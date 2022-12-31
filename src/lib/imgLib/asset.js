@@ -309,6 +309,15 @@ export async function getAssetData(id) {
         "value",
         find(propEq("name", "Title"), data.transaction.tags)
       ),
+      videoImage: prop(
+        "value",
+        find(propEq("name", "Video-Image-Id"), data.transaction.tags)
+      ),
+      externalLinks: prop(
+        "value",
+        find(propEq("name", "External-Links"), data.transaction.tags)
+      ),
+
       description: prop(
         "value",
         find(propEq("name", "Description"), data.transaction.tags)

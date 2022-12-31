@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./dashboard.css";
 import MainContext from "../../context";
 import Login from "src/components/Login/Login";
-
+import axios from "axios";
 import { ethers } from "ethers";
 import UseAns from "src/components/ANSForAll";
 import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
@@ -30,51 +30,59 @@ import {
 export function Dashboard() {
   const { addr, setUserData, userData } = useContext(MainContext);
 
-  const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (addr === null) return;
     if (userData) {
-      setUserContent(userData);
       setIsLoading(false);
       return;
     }
     setIsLoading(true);
-    if (addr) {
+    if (addr.split(".")[0].length === 43) {
       async function update() {
         //create user
         let user = {};
-
+        try {
+          //fetch ArProfile
+          const account = new Account();
+          user.ArProfile = await account.get(addr);
+          const arArk = await fetch(
+            `https://ark-core.decent.land/v2/profile/arweave/${addr}`
+          );
+          //fetch Ark profile on Arweave
+          const ark = await arArk.json();
+          user.ARK = ark.res;
+  
+          setUserData(user);
+        } catch (e) {
+          console.log(e);
+        } finally {
+          setIsLoading(false);
+        }
         //fetch ArProfile
-        const account = new Account();
-        user.ArProfile = await account.get(addr);
-
-        //fetch Ark profile on Arweave
-        const arArk = await fetch(
-          `https://ark-core.decent.land/v2/profile/arweave/${addr}`
-        );
-        const ark = await arArk.json();
-
-        //fetch Ark profile if no Arweave account
-        if (ark.res === undefined) {
-          if (addr.split(".")[0].length === 42) {
+        }
+      update();
+    }
+    if (addr.split(".")[0].length === 42) {
+      async function update() {
+        if (addr.split(".")[0].length === 42) {
+          let user = {};
+          try {
             let checksumAddress = ethers.utils.getAddress(addr);
             const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
+
             const ethArk = await fetch(ethString);
             const evmArk = await ethArk.json();
-            if (evmArk) {
-              user.ARK = evmArk.res;
-            }
+            user.ARK = evmArk.res;
+            setUserData(user);
+          } catch (e) {
+            console.log(e);
+          } finally {
+            setIsLoading(false);
           }
-        } else {
-          user.ARK = ark.res;
         }
-
-        //fetch ANS Data
-        setUserData(user);
-        setUserContent(user);
-        setIsLoading(false);
       }
       update();
     }
@@ -96,7 +104,8 @@ export function Dashboard() {
       <Spacer y={1} />
       {addr && (
         <Row align="center" justify="center">
-          <Button css={{
+          <Button
+            css={{
               color: "black",
               border: "2px solid #008c9e",
               fontSize: "0.75em",
@@ -127,11 +136,11 @@ export function Dashboard() {
             </Col>
             <Col align="center">
               <h3>ANS Profile:</h3>
-              {addr && userContent?.ARK?.ARWEAVE?.ANS && !isLoading ? (
+              {addr && userData?.ARK?.ARWEAVE?.ANS && !isLoading ? (
                 <>
                   <ARKdisplay
-                    content={userContent.ARK}
-                    evmAddr={userContent.ARK.primary_address}
+                    content={userData.ARK}
+                    evmAddr={userData.ARK.primary_address}
                   />
                 </>
               ) : addr && !isLoading ? (
@@ -153,14 +162,13 @@ export function Dashboard() {
 
       {/*Poaps*/}
       {addr &&
-        userContent.ARK?.EVM[userContent.ARK.primary_address]?.POAPS?.length >
-          0 &&
+        userData?.ARK?.EVM[userData.ARK.primary_address]?.POAPS?.length > 0 &&
         !isLoading && (
           <>
             <h1>Poaps:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.ARK.EVM[userContent.ARK.primary_address].POAPS.map(
+                {userData.ARK.EVM[userData.ARK.primary_address].POAPS.map(
                   (content, i) => {
                     return (
                       <div key={i} className="mediaCards">
@@ -174,12 +182,12 @@ export function Dashboard() {
           </>
         )}
 
-      {addr && userContent?.ARK?.NFTS?.length > 0 && !isLoading && (
+      {addr && userData?.ARK?.NFTS?.length > 0 && !isLoading && (
         <>
           <h1>NEAR NFTS:</h1>
           <div className="contentScrollContainer">
             <div className="hs">
-              {userContent.ARK.NFTS.map((content, i) => {
+              {userData.ARK.NFTS.map((content, i) => {
                 return (
                   <div key={i} className="mediaCards">
                     <NearNFTS content={content} />
@@ -190,12 +198,12 @@ export function Dashboard() {
           </div>
         </>
       )}
-      {addr && userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 && !isLoading && (
+      {addr && userData?.ARK?.ARWEAVE?.STAMPS?.length > 0 && !isLoading && (
         <>
           <h1>Stamped Assets:</h1>
           <div className="contentScrollContainer">
             <div className="hs">
-              {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
+              {userData.ARK.ARWEAVE.STAMPS.map((content, i) => {
                 return (
                   <div key={i} className="mediaCards">
                     <StampedAssets content={content} />
@@ -208,13 +216,13 @@ export function Dashboard() {
       )}
 
       {addr &&
-        userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img?.length > 0 &&
+        userData?.ARK?.ARWEAVE.ANFTS?.permapages_img?.length > 0 &&
         !isLoading && (
           <>
             <h1>Created Atomic Assets:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent?.ARK?.ARWEAVE.ANFTS?.permapages_img.map(
+                {userData?.ARK?.ARWEAVE.ANFTS?.permapages_img.map(
                   (content, i) => {
                     return (
                       <div key={i} className="mediaCards">
@@ -229,13 +237,13 @@ export function Dashboard() {
         )}
 
       {addr &&
-        userContent?.ARK?.ARWEAVE?.ANFTS?.koii?.length > 0 &&
+        userData?.ARK?.ARWEAVE?.ANFTS?.koii?.length > 0 &&
         !isLoading && (
           <>
             <h1>Koii NFTS:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent?.ARK?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
+                {userData?.ARK?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
                       <Koii content={content} />
@@ -247,21 +255,22 @@ export function Dashboard() {
           </>
         )}
       {addr &&
-        userContent?.ARK?.EVM[userContent.ARK.primary_address]?.ERC_NFTS?.length > 0 &&
+        userData?.ARK?.EVM[userData.ARK.primary_address]?.ERC_NFTS?.length >
+          0 &&
         !isLoading && (
           <>
             <h1>Ethereum NFTS:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent?.ARK?.EVM[
-                  userContent.ARK.primary_address
-                ].ERC_NFTS.map((content, i) => {
-                  return (
-                    <div key={i} className="mediaCards">
-                      <EthereumNFTS content={content} />
-                    </div>
-                  );
-                })}
+                {userData?.ARK?.EVM[userData.ARK.primary_address].ERC_NFTS.map(
+                  (content, i) => {
+                    return (
+                      <div key={i} className="mediaCards">
+                        <EthereumNFTS content={content} />
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </div>
           </>

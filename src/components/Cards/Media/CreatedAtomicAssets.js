@@ -59,7 +59,9 @@ export default function CreatedAtomicAssets(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                {userData?.ARK?.ARWEAVE?.IS_VOUCHED && notForDashboard && <Stamp txId={content.stampedAsset} />}
+                  {userData?.ARK?.ARWEAVE?.IS_VOUCHED && notForDashboard && (
+                    <Stamp txId={content.stampedAsset} />
+                  )}
                 </Col>
               </Row>
             </Col>
@@ -71,7 +73,6 @@ export default function CreatedAtomicAssets(props) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {console.log(content)}
                   <Button
                     flat
                     auto

@@ -3,30 +3,14 @@
 import { useContext } from "react";
 import useArConnect from "use-arconnect";
 import { icons } from "../../static";
-import UserProfile from "../UserProfile/UserProfile";
+
 import { AMW } from "../../utils/api";
 import MainContext from "../../context";
-import {
-  Container,
-  Button,
-  Grid,
-  Loading,
-  Text,
-  Spacer,
-  Row,
-  Col,
-} from "@nextui-org/react";
+import { Container, Grid, Loading, Row, Col } from "@nextui-org/react";
 
 function Login({ onClick }: { onClick?: () => void }) {
-  const {
-    isLoading,
-    setIsLoading,
-    theme,
-    addr,
-    walletName,
-    setWalletName,
-    setAddr,
-  } = useContext(MainContext);
+  const { isLoading, setIsLoading, theme, setWalletName, setAddr } =
+    useContext(MainContext);
   const arConnect = useArConnect();
 
   const login = {

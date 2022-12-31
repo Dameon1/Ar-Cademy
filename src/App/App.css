@@ -168,9 +168,6 @@
   letter-spacing: 0.25px;
 }
 
-
-
-
 .card:hover,
 .pageBoxes:hover,
 .moduleContent:hover {
@@ -194,18 +191,6 @@ ul {
   padding: 0;
 }
 
-.uploadContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px;
-  border-radius: 15px;
-  font-size: x-large;
-  flex: 1;
-  margin: 10px;
-}
 
 .hide {
   display: none;

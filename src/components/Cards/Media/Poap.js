@@ -52,11 +52,11 @@ export default function Poap(props) {
         >
           <Row>
             <Col>
-              <Row>
+              <Row justify="center">
                 <Col alignitems="flex-end">
-                  <Text  size={12} css={{color: "#ffa537"}}>
+                  <p className="pText" style={{ color: "#ffa537" }}>
                     {content.event.year}
-                  </Text>
+                  </p>
                 </Col>
               </Row>
             </Col>
