@@ -3,6 +3,7 @@
   "name": "ar-cademy",
   "version": "4.0.02",
   "private": false,
+  "proxy": "http://localhost:3000/Ar-Cademy/dashboard",
   "dependencies": {
     "@bundlr-network/client": "^0.9.11",
     "@emotion/react": "^11.10.4",

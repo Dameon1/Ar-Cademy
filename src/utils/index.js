@@ -90,6 +90,15 @@ export const tagSelectOptions = [
   { value: "investing", label: "Investing" },
   { value: "public-goods", label: "Public Goods" },
   { value: "education", label: "Education" },
+  { value: "learn", label: "Learn" },
+  { value: "deployment", label: "Deployment" },
+  { value: "build", label: "Build" },
+  { value: "storage", label: "Storage" },
+  { value: "apis", label: "API's" },
+  { value: "tokenomics", label: "Tokenomics" },
+  { value: "identity", label: "Identity" },
+  { value: "arfs", label: "ArFS" },
+  { value: "meme", label: "Meme" },
 ];
 
 export const contentTypeSelectOptions = [

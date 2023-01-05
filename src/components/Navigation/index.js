@@ -46,11 +46,11 @@ export default function Navigation() {
           if (userData !== null) {
             let { ANS, ARK, ArProfile } = userData;
             console.log("reloaded with userData", userData)
-            ARK?.ARWEAVE?.ANS?.avatar
-              ? setAvatar(`https://arweave.net/${ARK.ARWEAVE.ANS.avatar}`)
-              : ANS?.avatar
-              ? setAvatar(`https://arweave.net/${ANS.avatar}`)
-              : ArProfile?.profile?.avatar
+            ARK?.ARWEAVE?.ANS?.avatar.length > 0
+              ? setAvatar( `https://arweave.net/${ARK.ARWEAVE.ANS.avatar}`)
+              : ANS?.avatar?.length > 0
+              ? setAvatar( `https://arweave.net/${ANS.avatar}` )
+              : ArProfile?.profile?.avatar?.length > 0 && ArProfile.profile.avatar !== "ar://OrG-ZG2WN3wdcwvpjz1ihPe4MI24QBJUpsJGIdL85wA"
               ? setAvatar(`https://arweave.net/${ArProfile.profile.avatar}`)
               : setAvatar(fallbackImage);
           }

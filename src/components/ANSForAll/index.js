@@ -20,20 +20,28 @@ function UseAns({ addr, forDashboard }) {
   const [ansProfile, setAnsProfile] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState(false);
-  const { theme } = useContext(MainContext);
+  const { theme, userData } = useContext(MainContext);
 
   useEffect(() => {
     (async () => {
       try {
         if (addr.length !== 43) {
+          console.log("bad addr for ans search")
           return;
         }
-
+        console.log("userData", userData)
+        if (forDashboard && userData.ANS.user) {
+          return setAnsProfile(userData.ANS);
+        }
         const res = await fetch(
-          `https://ans-testnet.herokuapp.com/profile/${addr}`
-        );
+          `https://ans-testnet.herokuapp.com/profile/${addr}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "text/plain",
+            },
+          });
         const ans = await res.json();
-
         if (Object.keys(ans).length > 0) {
           setAnsProfile(ans);
         }
@@ -43,7 +51,7 @@ function UseAns({ addr, forDashboard }) {
         setIsLoading(false);
       }
     })();
-  }, [addr]);
+  }, [addr, forDashboard, userData]);
 
   return (
     <div>
@@ -218,7 +226,7 @@ function UseAns({ addr, forDashboard }) {
                 }}
                 className="button buttonText"
               >
-                <p>{ansProfile.currentLabel}.ar.page</p>
+                <p className="pText">{ansProfile.currentLabel}.ar.page</p>
               </Button>
             </a>
           </div>
@@ -237,16 +245,6 @@ function UseAns({ addr, forDashboard }) {
               <p className="pText">No Account Found{` 🙂`}</p>
             </div>
             <Spacer y={1} />
-            {/* {forDashboard && (
-                <Button
-                  auto
-                  // onClick={() => setModalIsOpen(true)}
-                  // iconRight={<FiEdit size={18} />}
-                  className="identity-link buttonText"
-                >
-                  Edit Profile
-                </Button>
-              )} */}
           </div>
         </>
       )}

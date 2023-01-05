@@ -8,7 +8,6 @@ import Profile from "../Profile";
 import Upload from "../Upload";
 import AccountViewer from "../AccountViewer";
 import TestPage from "../TestPage";
-
 import AssetManagement from "../AssetManagement";
 //Components
 import Navigation from "../../components/Navigation";

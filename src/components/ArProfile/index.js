@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
+import MainContext from "../../context";
 import {
   FaTwitter,
   FaInstagram,
@@ -27,26 +28,86 @@ import Account from "arweave-account";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function ArProfile(props) {
+  const { userData } = useContext(MainContext);
   const [profileData, setProfileData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const account = new Account();
-        const user = await account.get(props.addr);
-        if (user) {
-          setProfileData(user.profile);
+    console.log("reloaded")
+    let { addr, forDashboard } = props;
+    // addr.length === 43
+    //   ? (addr = props.addr)
+    //   : addr.length === 42
+    //   ? (addr = userData.ARK.arweave_address)
+    //   : (addr = 0);
+    console.log(addr.length,"reloaded")
+    if (addr.length === 42) {
+      if (userData?.ARK?.arweave_address.length === 43) {
+        async function arProfile() {
+          addr = userData.ARK.arweave_address;
+          const account = new Account();
+          const user = await account.get(addr);
+          console.log(user, "reloaded")
+          if (user) {
+            setProfileData(user.profile);
+          }
+          setIsLoading(false);
         }
-      } catch (e) {
-        setHasFailed(JSON.stringify(e));
-      } finally {
-        setIsLoading(false);
+         arProfile();
+        // addr = userData.ARK.arweave_address;
+        // const account = new Account();
+        // const user = account.get(addr);
+        // console.log(user, "reloaded")
+        // setProfileData(user.profile);
+        // return setIsLoading(false);
       }
-    })();
-  }, [props.addr]);
+      return setIsLoading(false);
+    }
+    // if(addr.length === 42) {
+    //   return
+    // }
+
+    async function arProfile() {
+      const account = new Account();
+      const user = await account.get(addr);
+     
+      if (user) {
+        setProfileData(user.profile);
+      }
+      setIsLoading(false);
+    }
+    if (addr.length === 43) {
+      arProfile();
+    }
+    // const account = new Account();
+    // const user = account.get(addr);
+    // console.log(user)
+    // if (user) {
+    //   setProfileData(user.profile);
+    // }
+    // setIsLoading(false)
+    //  console.log(userData?.ArProfile?.txid === undefined,  userData.ArProfile === undefined , userData?.ARK.arweave_address.length > 0)
+    // if (forDashboard && userData?.ArProfile?.txid === undefined &&  userData.ArProfile === undefined && userData?.ARK.arweave_address.length > 0) {
+    //     console.log("true")
+    //     addr = userData.ARK.arweave_address;
+    //   }
+    // (async () => {
+    //   try {
+    //     const account = new Account();
+    //     const user = await account.get(addr);
+    //     console.log(addr)
+    //     if (user) {
+    //       setProfileData(user.profile);
+    //     }
+    //   } catch (e) {
+    //     setHasFailed(JSON.stringify(e));
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    // })();
+  }, [props, userData]);
 
   return (
     <>
@@ -86,8 +147,12 @@ function ArProfile(props) {
             isOpen={modalIsOpen}
             hasClosed={() => setModalIsOpen(false)}
           />
+         
 
-          {profileData ? (
+          {
+            // Dispaly account details
+          }
+          {profileData?.handleName?.length > 0 ? (
             <>
               <Row align="center">
                 <Col align="center">
@@ -109,10 +174,10 @@ function ArProfile(props) {
                       {props.addr.slice(-3)}
                     </AvatarS>
                   )}
+
                   {profileData.name && <Name>{profileData.name}</Name>}
-                  
-                    <p className="pText">{profileData.bio}</p>
-                    
+
+                  <p className="pText">{profileData.bio}</p>
                 </Col>
               </Row>
 
@@ -132,6 +197,7 @@ function ArProfile(props) {
                     </Link>
                   </Tooltip>
                 )}
+
                 {profileData?.links?.instagram && (
                   <Tooltip content={`${profileData.links.instagram}`}>
                     <Link
@@ -143,6 +209,7 @@ function ArProfile(props) {
                     </Link>
                   </Tooltip>
                 )}
+
                 {profileData?.links?.facebook && (
                   <Tooltip content={`${profileData.links.facebook}`}>
                     <Link
@@ -160,6 +227,7 @@ function ArProfile(props) {
                     </Link>
                   </Tooltip>
                 )}
+
                 {profileData.links.github && (
                   <Tooltip content={`${profileData.links.github}`}>
                     <Link
@@ -176,6 +244,7 @@ function ArProfile(props) {
                     </Link>
                   </Tooltip>
                 )}
+
                 {profileData?.links?.discord && (
                   <Tooltip content={`${profileData.links.github}`}>
                     <Link
@@ -195,6 +264,7 @@ function ArProfile(props) {
                   </Tooltip>
                 )}
               </Row>
+
               <Spacer y={1} />
 
               {props.forDashboard && (
@@ -227,26 +297,31 @@ function ArProfile(props) {
                 }}
               >
                 <div>
-                <p className="pText">No Account Found{` 🙂`}</p>
+                  <p className="pText">No Account Found{` 🙂`}</p>
                 </div>
                 <Spacer y={1} />
                 {props.forDashboard && (
-                  <Button
-                    auto
-                    css={{
-                      color: "black",
-                      border: "2px solid #008c9e",
-                      fontSize: "0.75em",
-                      padding: "0.3em",
-                      backgroundColor: "white",
-                      transition: "all 0.2s ease-in-out",
-                    }}
-                    className="button buttonText"
-                    iconRight={<AiOutlineUpload size={18} />}
-                    onClick={() => setModalIsOpen(true)}
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://arweave.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
                   >
-                    <p className="pText">Create an ArProfile</p>
-                  </Button>
+                    <Button
+                      auto
+                      css={{
+                        color: "black",
+                        border: "2px solid #008c9e",
+                        fontSize: "0.75em",
+                        padding: "0.3em",
+                        backgroundColor: "white",
+                        transition: "all 0.2s ease-in-out",
+                      }}
+                      className="button buttonText"
+                      iconRight={<AiOutlineUpload size={18} />}
+                    >
+                      <p className="pText">Create an ArProfile</p>
+                    </Button>
+                  </a>
                 )}
               </div>
             </>

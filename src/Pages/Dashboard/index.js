@@ -35,11 +35,11 @@ export function Dashboard() {
 
   useEffect(() => {
     if (addr === null) return;
-    if (userData) {
-      setIsLoading(false);
-      return;
-    }
     setIsLoading(true);
+    console.log("userData", userData, userData?.ARK && userData?.ANS);
+    if (userData) {
+      return setIsLoading(false);
+    }
     if (addr.split(".")[0].length === 43) {
       async function update() {
         //create user
@@ -47,44 +47,93 @@ export function Dashboard() {
         try {
           //fetch ArProfile
           const account = new Account();
+          //returns an empty object if no profile is found
           user.ArProfile = await account.get(addr);
-          const arArk = await fetch(
-            `https://ark-core.decent.land/v2/profile/arweave/${addr}`
-          );
+          //fetch Ark profile or ANS profile from Arweave Addr
+          fetch(`https://ark-core.decent.land/v2/profile/arweave/${addr}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "text/plain",
+            },
+          })
+            .then((response) => {
+              if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+              }
+              return response.json();
+            })
+            .then((res) => {
+              if (res.res === undefined) {
+                fetch(`https://ans-testnet.herokuapp.com/profile/${addr}`, {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "text/plain",
+                  },
+                })
+                  .then((response) => {
+                    if (!response.ok) {
+                      const message = `An error has occured: ${response.status}`;
+                      throw new Error(message);
+                    }
+                    return response.json();
+                  })
+                  .then((res) => {
+                    user.ANS = res;
+                    console.log("setting ANS data");
+                    setUserData(user);
+                  });
+
+                //console.log(res)
+                //const ANS = await res.json();
+                // console.log(ANS);
+                // if (Object.keys(ANS).length > 0) {
+                //   user.ANS = ANS;
+                // }
+              } else {
+                user.ARK = res.res;
+                console.log("setting ARK data");
+                setUserData(user);
+              }
+              //setUserData(user);
+            })
+            .catch((error) => {
+              console.log("Looks like there was a problem: \n", error);
+            });
           //fetch Ark profile on Arweave
-          const ark = await arArk.json();
-          user.ARK = ark.res;
-  
-          setUserData(user);
+          //const ark = await arArk.json();
+          console.log("setting user data ");
+          //setUserData(user);
         } catch (e) {
           console.log(e);
-        } finally {
-          setIsLoading(false);
-        }
-        //fetch ArProfile
-        }
-      update();
-    }
-    if (addr.split(".")[0].length === 42) {
-      async function update() {
-        if (addr.split(".")[0].length === 42) {
-          let user = {};
-          try {
-            let checksumAddress = ethers.utils.getAddress(addr);
-            const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
-
-            const ethArk = await fetch(ethString);
-            const evmArk = await ethArk.json();
-            user.ARK = evmArk.res;
-            setUserData(user);
-          } catch (e) {
-            console.log(e);
-          } finally {
-            setIsLoading(false);
-          }
         }
       }
       update();
+    }
+    if (addr.split(".")[0].length === 42) {
+      let user = {};
+      async function searchEVM() {
+        if (addr.split(".")[0].length === 42) {
+          try {
+            let checksumAddress = ethers.utils.getAddress(addr);
+            const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
+            const ethArk = await fetch(ethString, {
+              method: "GET",
+              headers: {
+                "Content-Type": "text/plain",
+              },
+            });
+            const evmArk = await ethArk.json();
+            user.ARK = evmArk.res;
+            console.log("setting EVM data");
+            setUserData(user);
+            setIsLoading(false);
+          } catch (e) {
+            console.log("error", e);
+          }
+        }
+      }
+      searchEVM();
     }
   }, [addr, setUserData, userData]);
 
@@ -136,17 +185,28 @@ export function Dashboard() {
             </Col>
             <Col align="center">
               <h3>ANS Profile:</h3>
-              {addr && userData?.ARK?.ARWEAVE?.ANS && !isLoading ? (
+
+              {/* {addr && userData?.ARK?.ARWEAVE?.ANS && !isLoading && (
                 <>
                   <ARKdisplay
                     content={userData.ARK}
                     evmAddr={userData.ARK.primary_address}
                   />
                 </>
-              ) : addr && !isLoading ? (
+              )}
+
+              {addr && userData?.ANS && !isLoading && (
                 <UseAns addr={addr} forDashboard={true} />
-              ) : (
+              )} */}
+              {addr && isLoading ? (
                 <Loading />
+              ) : addr && userData?.ARK?.EVM && !isLoading ? (
+                <ARKdisplay
+                  content={userData.ARK}
+                  evmAddr={userData.ARK.primary_address}
+                />
+              ) : (
+                <UseAns addr={addr} forDashboard={true} />
               )}
             </Col>
           </Row>

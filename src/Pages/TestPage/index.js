@@ -113,7 +113,7 @@ export default function TestPage() {
     const transferredImages = await excludeTransferred(addr);
     console.log(transferredImages);
     return (
-      Promise.all([imagesByOwner(addr,type), includeTransferred(addr)])
+      Promise.all([imagesByOwner(addr,type,filtertag), includeTransferred(addr)])
         .then((results) => concat(results[0], results[1]))
         .then(reject((a) => transferredImages[a.id] === 100))
         // sort!
@@ -202,9 +202,9 @@ export default function TestPage() {
   //   }
   // }
 
-  async function runFilterQuery(addr,type) {
+  async function runFilterQuery(addr,type,filtertag) {
     if(addr){
-     let newImages = await getImages(addr, type);
+     let newImages = await getImages(addr, type, filtertag);
      console.log(newImages)
      setImages(newImages);
     } 
@@ -214,7 +214,7 @@ export default function TestPage() {
     <>
     <div className="text-container acctViewTextContainer">
         <h2>Search Arweave Related Content</h2>
-        <p>
+        <p className="pText">
           **Sign in to an arweave account to use*.
         </p>
       </div>
@@ -227,7 +227,7 @@ export default function TestPage() {
               padding: "0.3em",
               backgroundColor: "white",
               transition: "all 0.2s ease-in-out",
-            }} className=" buuton buttonText">{type}</Dropdown.Button>
+            }} className=" button buttonText">{type}</Dropdown.Button>
           <Dropdown.Menu onAction={(key) => setType(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {contentTypeSelectOptions.map((v) => {
@@ -248,7 +248,7 @@ export default function TestPage() {
           <Dropdown.Menu onAction={(key) => setLabel(key)}>
             {/* // onAction={(key: anay) => { clean(); setCurrency() }}> */}
             {tagSelectOptions.map((v) => {
-              return <Dropdown.Item key={v.label}>{v.label}</Dropdown.Item>; // proper/title case
+              return <Dropdown.Item key={v.value}>{v.label}</Dropdown.Item>; // proper/title case
             })}
           </Dropdown.Menu>
         </Dropdown>
@@ -260,7 +260,7 @@ export default function TestPage() {
               padding: "0.3em",
               backgroundColor: "white",
               transition: "all 0.2s ease-in-out",
-            }} onPress={async () => runFilterQuery(addr,type)} className=" button buttonText">Search</Button>
+            }} onPress={async () => runFilterQuery(addr,type,label)} className=" button buttonText">Search</Button>
       </div>
       
       {images && (<AtomicImages images={images} />)}

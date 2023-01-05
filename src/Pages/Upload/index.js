@@ -11,6 +11,7 @@ import { WebBundlr } from "@bundlr-network/client";
 import { sleep } from "@bundlr-network/client/build/common/upload";
 import TestModal from "../../components/Modals/TestModal";
 import { WarpFactory } from "warp-contracts";
+import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
 import {
   Container,
   Button,
@@ -28,6 +29,7 @@ import { connect, keyStores, WalletConnection } from "near-api-js";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 
 import {} from "@nextui-org/react";
+import { FaSleigh } from "react-icons/fa";
 
 //import image from "../../favicon.png";
 //import image from "../../winstonMedia.png";
@@ -138,8 +140,18 @@ export default function Upload() {
     setUrls(urls.filter((_, i) => i !== index));
   };
 
+  //returns
   function canDeploy() {
-    return addr.length > 0 && currency.length > 0 && originalImage !== null && originalVideo !== null && title.length > 0 && description.length > 0 && topics && urls.length > 0;  
+    return (
+      addr?.length > 0 &&
+      currency?.length > 0 &&
+      originalImage !== null &&
+      originalVideo !== null &&
+      title?.length > 0 &&
+      description?.length > 0 &&
+      topics &&
+      urls?.length > 0
+    );
   }
 
   function parseInput(input) {
@@ -421,6 +433,8 @@ export default function Upload() {
 
   const uploadFile = async () => {
     console.log("step 1: fund upload");
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
     const price = await bundlrInstance.getPrice(
       originalImage.size + originalVideo.size
     );
@@ -467,6 +481,7 @@ export default function Upload() {
             [addr]: 10000,
           },
           wallets: {},
+          externalLinks: JSON.stringify({ links: urls })
         }),
       },
       { name: "Title", value: title },
@@ -476,9 +491,11 @@ export default function Upload() {
       { name: "Upload-Cost", value: uploadCost },
       {
         name: "External-Links",
-        value: JSON.stringify({ links: externalLinks }),
+        value: JSON.stringify({ links: urls }),
       },
       { name: "Video-Image-Id", value: result.id },
+      { name: "Platform", value: "Arcademy-Test" },
+      { name: "Provenance-Date", value: today.toUTCString() },
     ];
 
     if (imgStream) {
@@ -497,16 +514,38 @@ export default function Upload() {
         ?.uploadData(imgStream, {
           tags: contractTags,
         })
-        .then(async (res) => {
-          console.log("res", res);
-          const warp = WarpFactory.forMainnet();
-          const { contractTxId } = await warp.register(res.data.id, "node2");
-          console.log(`Check the data: https://arweave.net/${contractTxId}`);
-          setLastUploadId(res.data.id);
-          setTimeout(() => {
-            navigate(`/AssetManagement/${res.data.id}`);
-          }, 5000);
-          alert(`https://arweave.net/${res.data.id}`);
+          .then(async (res) => {
+            //remove this when new warp is deployed
+            const result2 = await deployBundlr(
+              title,
+              description,
+              addr,
+              originalVideo.type,
+              res.data.id,
+              topics,
+              uploadCost,
+              currency,
+              urls,
+              result.id,
+            );
+            console.log("Finalized");
+            alert("success");
+            setTimeout(() => {
+              navigate(`/TestAssetManagement/${result2.id}`);
+            }, 2000);
+           
+            alert(`https://arweave.net/${result2.id}`);
+          
+          // THIS CODE IS FOR NEW WARP
+          // console.log("res", res);
+          // const warp = WarpFactory.forMainnet();
+          // const { contractTxId } = await warp.register(res.data.id, "node2");
+          // console.log(`Check the data: https://arweave.net/${contractTxId}`);
+          // setLastUploadId(res.data.id);
+          // setTimeout(() => {
+          //   navigate(`/AssetManagement/${res.data.id}`);
+          // }, 5000);
+          // alert(`https://arweave.net/${res.data.id}`);
         })
         .catch((e) => {
           toast({ status: "error", title: `Failed to upload - ${e}` });
@@ -871,7 +910,7 @@ export default function Upload() {
               <Spacer y={0.5} />
               <Row justify="center" align="center" gap={1}>
                 <Button
-                  disabled={()=>canDeploy()}
+                  disabled={canDeploy() ? false : true}
                   css={{
                     color: "black",
                     border: "2px solid #008c9e",
