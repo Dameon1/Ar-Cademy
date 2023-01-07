@@ -2,17 +2,23 @@ import Sandbox from "../../components/Sandbox";
 import VideoPlayerContainer from "../../components/VideoPlayerContainer";
 import { Videos } from '../../Videos';
 import { useEffect, useState  } from 'react'
+import {
+  Loading,
+} from "@nextui-org/react";
 export default function Playground() {
-  const [videoID, setViedoID] = useState()
-  const [loading, setLoading] = useState(false)
+  const [videoID, setVideoID] = useState()
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
     console.log("Reloaded")
-    if(loading){setLoading(false)}
+    setVideoID(new URL(window.location.href).pathname.split('/').at(-1))
+    if(isLoading){setIsLoading(false)}
     
-  }, [loading])
+  }, [isLoading])
   
   function setState() {
-    setLoading(true)
+    setVideoID(new URL(window.location.href).pathname.split('/').at(-1))
+    setIsLoading(true)
   }
 
   let videoId = new URL(window.location.href).pathname.split('/').at(-1);
@@ -20,12 +26,13 @@ export default function Playground() {
   let links = Videos[videoId].sandboxLinks;
   
   return (
+    isLoading ? ( <Loading /> ) : (
     <section>
       <div className="playground-section">
-        <VideoPlayerContainer videoID={videoId} setState={setState}/>
+        <VideoPlayerContainer videoID={videoID} setState={setState}/>
         <Sandbox title="sandbox" sandboxContent={sandboxSrc} sandboxLinks={links} />
       </div>
     </section>
-  );
-
+  )
+  )
 }

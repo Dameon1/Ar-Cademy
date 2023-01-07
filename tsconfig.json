@@ -11,17 +11,6 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "*",
-        "src/*",
-        "src/setup/*",
-        "src/logic/*",
-        "src/models/*",
-        "config/*"
-      ]
-    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -35,7 +24,7 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve"
   },
   "exclude": [
     "node_modules",

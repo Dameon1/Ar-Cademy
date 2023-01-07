@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
 
-import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
-import UseAns from "src/components/ANSForAll";
+import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
+import UseAns from "../../components/ANSForAll";
 import "./profile.css";
 import { Card } from "../../components/Cards";
-import ArProfile from "src/components/ArProfile";
+import ArProfile from "../../components/ArProfile";
 import { Loading, Container, Row, Col } from "@nextui-org/react";
 import {
   Poap,

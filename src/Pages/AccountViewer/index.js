@@ -2,9 +2,9 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 
 import "./accountViewer.css";
-import UseAns from "src/components/ANSForAll";
+import UseAns from "../../components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
-import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
+import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
 import {
   Grid,
   Loading,
@@ -15,7 +15,7 @@ import {
   Spacer,
   Button,
 } from "@nextui-org/react";
-import ArProfile from "src/components/ArProfile";
+import ArProfile from "../../components/ArProfile";
 import {
   Poap,
   NearNFTS,
@@ -38,21 +38,14 @@ export function AccountViewer() {
         if (addr.length === 0) return;
         let user;
         const arArk = await fetch(
-          `https://ark-core.decent.land/v2/profile/arweave/${addr}`,
-          {
-            method: "GET",
-            mode: "no-cors",
-          }
+          `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();
         if (ark.res === undefined) {
           if (addr.split(".")[0].length === 42) {
             let checksumAddress = ethers.utils.getAddress(addr);
             const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
-            const ethArk = await fetch(ethString, {
-              method: "GET",
-              mode: "no-cors",
-            });
+            const ethArk = await fetch(ethString);
             const evmArk = await ethArk.json();
             user = evmArk.res;
           }
@@ -125,18 +118,14 @@ export function AccountViewer() {
           />
           <Spacer y={1} />
           <Row align="center" justify="center">
-            <Button
-              css={{
-                color: "black",
-                border: "2px solid #008c9e",
-                fontSize: "0.75em",
-                padding: "0.3em",
-                backgroundColor: "white",
-                transition: "all 0.2s ease-in-out",
-              }}
-              className="button buttonText"
-              type="submit"
-            >
+            <Button css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }} className="button buttonText" type="submit">
               search
             </Button>
           </Row>
@@ -207,7 +196,7 @@ export function AccountViewer() {
           </>
         )}
         {console.log("User Content:", userContent)}
-
+        
         {addr && userContent?.NFTS && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>

@@ -10,7 +10,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "../ThemeSwitch";
-import MainContext from "src/context";
+import MainContext from "../../context";
 
 import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";

@@ -1,8 +1,8 @@
 import { Suspense, lazy } from "react";
 import { KoiiCard } from "./KoiiCards";
 import MediaCards from "./MediaCards";
-import { Videos } from "src/Videos";
-import AsyncImageLoader from "src/components/AsyncImageLoader";
+import { Videos } from "../../Videos";
+import AsyncImageLoader from "../../components/AsyncImageLoader";
 import {
   Button,
   Image,

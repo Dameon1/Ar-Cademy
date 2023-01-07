@@ -3,43 +3,30 @@ import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
 import { MediaCards } from "../Cards";
-import {
-  Grid,
-  Row,
-  Text,
-  Col,
-  Loading,
-  Container,
-  Button,
-  Spacer,
-} from "@nextui-org/react";
+import { Row, Col, Spacer } from "@nextui-org/react";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 
 export function VideoPlayerContainer(props) {
-  const [contentObject, setContentObject] = useState(null);
+  const [contentObject, setContentObject] = useState();
   const { videoID, setState } = props;
-  
+
+  let videoObject = Videos[props.videoID];
+  let authorObject = Authors[videoObject.authorID];
+  let authorVideos = authorObject.createdVideosByID
+    .map((x) => Videos[x])
+    .filter((x) => x.uid !== videoID);
+
   useEffect(() => {
-    function getContentInfo() {
-      //let videoId = new URL(window.location.href).pathname.split("/").at(-1);
-      let videoObject = Videos[videoID];
-      let authorObject = Authors[videoObject.authorID];
-      let authorVideos = authorObject.createdVideosByID
-        .map((x) => Videos[x])
-        .filter((x) => x.uid !== videoID);
-      let contentObject = {
-        authorVideos,
-        videoID,
-        videoObject,
-        authorObject,
-        src: videoObject.videoSrc,
-      };
-      return contentObject;
-    }
-    const response = getContentInfo();
-    setContentObject(response);
-  }, [videoID]);
+    let assetDetails = {
+      authorVideos,
+      videoID,
+      videoObject,
+      authorObject,
+      src: videoObject.videoSrc,
+    };
+    setContentObject(assetDetails);
+  }, [props]);
 
   if (contentObject) {
     let cards = contentObject.authorVideos.map((content, index) => {
@@ -53,13 +40,26 @@ export function VideoPlayerContainer(props) {
     return (
       <div className="video-player-container">
         <header className="video-header">
-          <h3 className="video-title">{contentObject.videoObject.videoTitle}</h3>
-          {/* <p className="page-introduction">{contentObject.videoObject.videoTitle}</p> */}
-          
+          <h3 className="video-title">
+            {contentObject.videoObject.videoTitle}
+          </h3>
         </header>
 
-        <VideoPlayer src={contentObject.src} />
-
+        {console.log(videoObject.videoLocation, "contentObject.videoLocation")}
+        {videoObject.videoLocation === "Arweave" ? (
+          <div className="video-player">
+            <video
+              className="react-player"
+              controls={true}
+              width="100%"
+              height="100%"
+            >
+              <source src={videoObject.videoSrc} type="video/mp4" />
+            </video>
+          </div>
+        ) : (
+          <VideoPlayer src={videoObject.videoSrc} />
+        )}
         <footer className="video-footer">
           <p className="pText">{contentObject.videoObject.description}</p>
           <Spacer y={1} />

@@ -57,17 +57,17 @@ export const Authors = {
         username: "@dabit3",
         avatar: "https://edgeandnode.com/images/logo-big.png",
     },
-    '7': {
-        author: 'Arweave',
-        authorLink: "https://twitter.com/onlyarweave",
-        authorWebsite: "https://www.onlyarweave.com/",
-        createdVideosByID: ['7'],
-        createdContentByID: ['ContentID'],
-        uid: 7,
-        addr: 0,
-        username: "@onlyarweave",
-        avatar: "https://pbs.twimg.com/profile_images/1395167901473181706/QGSGttf2_200x200.jpg",
-    },
+    // '7': {
+    //     author: 'Arweave',
+    //     authorLink: "https://twitter.com/onlyarweave",
+    //     authorWebsite: "https://www.onlyarweave.com/",
+    //     createdVideosByID: ['7'],
+    //     createdContentByID: ['ContentID'],
+    //     uid: 7,
+    //     addr: 0,
+    //     username: "@onlyarweave",
+    //     avatar: "https://pbs.twimg.com/profile_images/1395167901473181706/QGSGttf2_200x200.jpg",
+    // },
     '8': {
         author: 'Sam Williams',
         authorLink: "https://twitter.com/samecwilliams",
@@ -113,17 +113,17 @@ export const Authors = {
         username: "@twilson63",
         avatar: "https://pbs.twimg.com/profile_images/1293584015992279040/gc6Cnrn1_200x200.jpg"
     },
-    '12': {
-        author: "Meson",
-        authorLink: "https://twitter.com/NetworkMeson",
-        authorWebsite: "https://meson.network/",
-        createdVideosByID: ["21"],
-        createdContentByID: ["ContentID"],
-        uid: "12",
-        addr: 0,
-        username: "@NetworkMeson",
-        avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_200x200.jpg"
-    },
+    // '12': {
+    //     author: "Meson",
+    //     authorLink: "https://twitter.com/NetworkMeson",
+    //     authorWebsite: "https://meson.network/",
+    //     createdVideosByID: ["21"],
+    //     createdContentByID: ["ContentID"],
+    //     uid: "12",
+    //     addr: 0,
+    //     username: "@NetworkMeson",
+    //     avatar: "https://pbs.twimg.com/profile_images/1478012522871463938/PaF5wVhK_200x200.jpg"
+    // },
     '13': {
         author: "Dmac",
         authorLink: "@DMacOnArweave",

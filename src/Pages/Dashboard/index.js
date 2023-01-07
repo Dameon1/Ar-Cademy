@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import "./dashboard.css";
 import MainContext from "../../context";
-import Login from "src/components/Login/Login";
+import Login from "../../components/Login/Login";
 import axios from "axios";
 import { ethers } from "ethers";
-import UseAns from "src/components/ANSForAll";
-import ARKdisplay from "src/components/ANSForAll/ARKdisplay";
+import UseAns from "../../components/ANSForAll";
+import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
 import {
   Button,
   Loading,
@@ -16,7 +16,7 @@ import {
 } from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import ArProfile from "src/components/ArProfile";
+import ArProfile from "../../components/ArProfile";
 import Account from "arweave-account";
 import {
   Poap,
