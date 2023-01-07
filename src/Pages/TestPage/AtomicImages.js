@@ -1,4 +1,4 @@
-import { Card, Grid, Row, Text, Col, Button } from "@nextui-org/react";
+import { Card, Grid, Row, Text, Col, Button, Spacer } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
 
@@ -14,7 +14,7 @@ export default function AtomicImages(props) {
               <Card>
                 <Card.Body css={{ p: 0 }}>
                   <Card.Image
-                    src={`https://arweave.net/${img.id}`}
+                    src={img.videoImageId !== undefined ? `https://arweave.net/${img.videoImageId}` : image}
                     onError={(e) => {
                       e.target.src = image;
                     }}
@@ -41,16 +41,31 @@ export default function AtomicImages(props) {
                   <Col align="flex-end">
                     <Button flat auto rounded color="secondary" size="xs">
                       <Link
-                        to={`/AssetManagement/${img.id}`}
+                        to={`/AtomicPlayground/${img.id}`}
                         className="textNoDec"
-                      >
-                        <Text
+                      > <p className="pText">Play Video</p>
+                        {/* <Text
                           css={{ color: "inherit" }}
                           size={10}
                           transform="uppercase"
                         >
-                          Get Info
-                        </Text>
+                          
+                        </Text> */}
+                      </Link>
+                    </Button>
+                    <Spacer y={0.25} />
+                    <Button flat auto rounded color="secondary" size="xs">
+                      <Link
+                        to={`/AssetManagement/${img.id}`}
+                        className="textNoDec"
+                      > <p className="pText">Overview</p>
+                        {/* <Text
+                          css={{ color: "inherit" }}
+                          size={10}
+                          transform="uppercase"
+                        >
+                          
+                        </Text> */}
                       </Link>
                     </Button>
                   </Col>

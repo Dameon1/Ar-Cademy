@@ -481,7 +481,7 @@ export default function Upload() {
             [addr]: 10000,
           },
           wallets: {},
-          externalLinks: JSON.stringify({ links: urls })
+          externalLinks: JSON.stringify({ links: urls }),
         }),
       },
       { name: "Title", value: title },
@@ -514,28 +514,28 @@ export default function Upload() {
         ?.uploadData(imgStream, {
           tags: contractTags,
         })
-          .then(async (res) => {
-            //remove this when new warp is deployed
-            const result2 = await deployBundlr(
-              title,
-              description,
-              addr,
-              originalVideo.type,
-              res.data.id,
-              topics,
-              uploadCost,
-              currency,
-              urls,
-              result.id,
-            );
-            console.log("Finalized");
-            alert("success");
-            setTimeout(() => {
-              navigate(`/TestAssetManagement/${result2.id}`);
-            }, 2000);
-           
-            alert(`https://arweave.net/${result2.id}`);
-          
+        .then(async (res) => {
+          //remove this when new warp is deployed
+          const result2 = await deployBundlr(
+            title,
+            description,
+            addr,
+            originalVideo.type,
+            res.data.id,
+            topics,
+            uploadCost,
+            currency,
+            urls,
+            result.id
+          );
+          console.log("Finalized");
+          alert("success");
+          setTimeout(() => {
+            navigate(`/AssetManagement/${result2.id}`);
+          }, 2000);
+
+          alert(`https://arweave.net/${result2.id}`);
+
           // THIS CODE IS FOR NEW WARP
           // console.log("res", res);
           // const warp = WarpFactory.forMainnet();
@@ -860,32 +860,31 @@ export default function Upload() {
                     </Button>
                     <Spacer y={1} />
                   </form>
-                  <ul>
-                    {urls.map((url, index) => (
-                      <li key={index}>
-                        <Row wrap="no-wrap">
-                          <p className="pText">
-                            {url.label}: {url.url}
-                          </p>
-                        </Row>
-                        <Button
-                          css={{
-                            color: "black",
-                            border: "2px solid #008c9e",
-                            fontSize: "0.75em",
-                            padding: "0.3em",
-                            backgroundColor: "white",
-                            transition: "all 0.2s ease-in-out",
-                          }}
-                          className="button buttonText"
-                          type="button"
-                          onClick={() => handleUrlRemove(index)}
-                        >
-                          <p className="pText">Remove</p>
-                        </Button>
-                      </li>
-                    ))}
-                  </ul>
+
+                  {urls.map((url, index) => (
+                    <div key={index}>
+                      <Row wrap="no-wrap" >
+                        <p className="pText">
+                          {url.label}: {url.url}
+                        </p>
+                      </Row>
+                      <Button
+                        css={{
+                          color: "black",
+                          border: "2px solid #008c9e",
+                          fontSize: "0.75em",
+                          padding: "0.3em",
+                          backgroundColor: "white",
+                          transition: "all 0.2s ease-in-out",
+                        }}
+                        className="button buttonText"
+                        type="button"
+                        onClick={() => handleUrlRemove(index)}
+                      >
+                        <p className="pText">Remove</p>
+                      </Button>
+                    </div>
+                  ))}
                 </Col>
                 <Col>
                   <Row justify="center" align="center" gap={1}>

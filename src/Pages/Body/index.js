@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "../Dashboard";
 import LandingPage from "../LandingPage";
 import ModulePage from "../ModulePage";
+import AtomicPlayground from "../AtomicPlayground";
 import Playground from "../Playground";
 import Profile from "../Profile";
 import Upload from "../Upload";
@@ -26,6 +27,7 @@ function Body({ syntaxTheme }) {
           <Route exact path="/Profile/:addr/:id" element={<Profile />} />
           <Route exact path="/Dashboard" element={<Dashboard />} />
           <Route path="Modules/:topic" element={<ModulePage />} />
+          <Route exact path="/AtomicPlayground/:videoId" element={<AtomicPlayground />} />
           <Route exact path="/Playground/:videoIndex" element={<Playground />} />
           <Route exact path="/Upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />

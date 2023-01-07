@@ -69,9 +69,9 @@ query {
   );
 }
 
-export async function assetDetails(asset, addr) {
+export async function assetDetails(asset, addr="") {
   console.log("asset:", asset);
-  console.log("addr:", addr);
+  //console.log("addr:", addr);
   // const state = await fetch('https://cache.permapages.app/' + asset)
   //   .then(res => res.ok ? res.json() : Promise.reject(new Error('could not find asset state!')))
   const state = await warp
@@ -353,12 +353,14 @@ query {
   
   `;
 }
-
+//------------------------------------------------
+//function to return the data from the transaction
 function transformTx(node) {
   return {
     id: node.id,
     title: prop("value", find(propEq("name", "Title"), node.tags)),
     type: prop("value", find(propEq("name", "Type"), node.tags)),
+    videoImageId: prop("value", find(propEq("name", "Video-Image-Id"), node.tags)),
     description: prop("value", find(propEq("name", "Description"), node.tags)),
     owner: node.owner.address,
     timestamp: node?.block?.timestamp || Date.now() / 1000,
