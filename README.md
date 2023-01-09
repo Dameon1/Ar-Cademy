@@ -91,5 +91,8 @@ Thank you.
 - [Decentdotland](https://decent.land/)
 - [BundlrNetwork](https://bundlr.network/)
 - [Redstone](https://redstone.finance/)
+- [ArConnect](https://www.arconnect.io/)
+- [Arweave App](https://arweave.app/)
+- [PermaDao](https://linktr.ee/permadao)
 
 And special shout out to [Nader Dabit](https://github.com/dabit3)
