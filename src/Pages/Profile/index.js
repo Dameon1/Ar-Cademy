@@ -46,12 +46,27 @@ export default function Profile() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(true);
 
+  async function retryFetch(url) {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error(error);
+      return retryFetch(url);
+    }
+  }
+
   useEffect(() => {
     (async () => {
       try {
         if (addr.length === 0) return;
         let user;
-        const arArk = await fetch(
+        const arArk = await retryFetch(
           `https://ark-core.decent.land/v2/profile/arweave/${addr}`
         );
         const ark = await arArk.json();

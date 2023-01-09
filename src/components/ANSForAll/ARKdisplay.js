@@ -10,7 +10,7 @@ function ARKdisplay(props) {
   const { content, evmAddr } = props;
   const { theme } = useContext(MainContext);
   let lensLabel;
-  if (content.EVM[evmAddr]?.LENS_HANDLES[0] !== undefined) {
+  if (content?.EVM[evmAddr]?.LENS_HANDLES[0]?.length > 0) {
     lensLabel = content.EVM[evmAddr]?.LENS_HANDLES[0].replace("@", "");
   }
 
@@ -30,7 +30,7 @@ function ARKdisplay(props) {
 
       <p className="pText">{props.content.ARWEAVE.ANS.bio}</p>
       <Row wrap="wrap" align="center" justify="space-around">
-        {props.content.ARWEAVE.ANS.links.twitter && (
+        {props?.content?.ARWEAVE?.ANS?.links?.twitter && (
           <>
             <Tooltip content={`${props.content.ARWEAVE.ANS.links.twitter}`}>
               <Link
@@ -48,7 +48,7 @@ function ARKdisplay(props) {
           </>
         )}
 
-        {props.content.ARWEAVE.ANS.links.github && (
+        {props?.content?.ARWEAVE?.ANS?.links?.github && (
           <Tooltip content={`${props.content.ARWEAVE.ANS.links.github}`}>
             <Link
               href={`https://github.com/${props.content.ARWEAVE.ANS.links.github}`}
@@ -64,7 +64,7 @@ function ARKdisplay(props) {
             </Link>
           </Tooltip>
         )}
-        {props.content.ARWEAVE.ANS.links.customUrl && (
+        {props?.content?.ARWEAVE?.ANS?.links?.customUrl && (
           <Tooltip content={`${props.content.ARWEAVE.ANS.links.customUrl}`}>
             <Link
               href={`${props.content.ARWEAVE.ANS.links.customUrl}`}
@@ -79,7 +79,7 @@ function ARKdisplay(props) {
       </Row>
       <Spacer y={1} />
       <Row wrap="wrap" align="center" justify="space-around">
-        {content.EVM[evmAddr]?.LENS_HANDLES && (
+        {content?.EVM[evmAddr]?.LENS_HANDLES && (
           <Tooltip content={`${lensLabel}`}>
             <Link
               href={`https://lenster.xyz/u/${lensLabel}`}
@@ -97,7 +97,7 @@ function ARKdisplay(props) {
             </Link>
           </Tooltip>
         )}
-        {content.ARWEAVE.ANS.currentLabel && (
+        {content?.ARWEAVE?.ANS?.currentLabel && (
           <Tooltip content={`${content.ARWEAVE.ANS.currentLabel}`}>
             <Link
               href={`https://v2.viewblock.io/arweave/address/${content.ARWEAVE.ANS.currentLabel}`}
@@ -118,7 +118,7 @@ function ARKdisplay(props) {
             </Link>
           </Tooltip>
         )}
-        {content.EVM[evmAddr].ENS && (
+        {content?.EVM[evmAddr]?.ENS && (
           <Tooltip content={`${content.EVM[evmAddr].ENS}`}>
             <Link
               href={`https://etherscan.io/enslookup-search?search=${content.EVM[evmAddr].ENS}`}

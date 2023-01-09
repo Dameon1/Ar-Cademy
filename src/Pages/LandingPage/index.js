@@ -1,14 +1,26 @@
 import { Modules } from "../../Modules";
 import { Button, Image, Spacer, Row, Col, Container } from "@nextui-org/react";
-
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
-
+import { getRecentUploadData } from "../../Queries/AppQueries";
 export function LandingPage() {
   const navigate = useNavigate();
+  const [recentUploads, setRecentUploads] = useState([]);
   const modules = Object.keys(Modules);
   const bundlrNader =
     "https://arweave.net/Adtwh6Z4k_OWzvnkILpwXqFDM5po0JpgqLW8PsMcZoU";
+
+
+
+  useEffect(() => {
+    async function getRecentUploads() {
+      const recentUploads = await getRecentUploadData();
+      setRecentUploads(recentUploads);
+    }
+    getRecentUploads();
+  }, []);
+  
 
   const moduleCards = modules.map((module, index) => {
     return (

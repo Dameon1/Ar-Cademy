@@ -495,7 +495,6 @@ export default function Upload() {
       },
       { name: "Video-Image-Id", value: result.id },
       { name: "Platform", value: "Arcademy-Test" },
-      { name: "Provenance-Date", value: today.toUTCString() },
     ];
 
     if (imgStream) {
@@ -532,7 +531,7 @@ export default function Upload() {
           alert("success");
           setTimeout(() => {
             navigate(`/AssetManagement/${result2.id}`);
-          }, 2000);
+          }, 1000);
 
           alert(`https://arweave.net/${result2.id}`);
 

@@ -139,14 +139,19 @@ async function createAndTag(ctx) {
   if (assetType === "application") {
     assetType = ctx.contentType.split("/")[1];
   }
+  tx.addTag("Video-Id", ctx.assetId);
   tx.addTag("Type", assetType);
+  tx.addTag("Platform-Uploader", "Arcademy-Test1");
+  tx.addTag("SocialId", "Dameon1");
+  tx.addTag("Video-Image-Id", ctx.videoImageid);
+  tx.addTag("Education", "true");
+  tx.addTag("Blockchain", "true");
   tx.addTag(
     "External-Links",
     JSON.stringify({
       links: ctx.externalLinks,
     })
   );
-  tx.addTag("Video-Image-Id", ctx.videoImageid);
 
   map(trim, split(",", ctx.topics)).forEach((t) => {
     tx.addTag("Topic:" + t, t);

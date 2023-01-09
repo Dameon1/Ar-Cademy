@@ -32,38 +32,60 @@ export function AccountViewer() {
   const [input, setInput] = useState();
   const [isSearching, setIsSearching] = useState(false);
 
+  async function retryFetch(url) {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error(error);
+      return retryFetch(url);
+    }
+  }
+
   useEffect(() => {
-    (async () => {
-      try {
-        if (addr.length === 0) return;
-        let user;
-        const arArk = await fetch(
-          `https://ark-core.decent.land/v2/profile/arweave/${addr}`
-        );
-        const ark = await arArk.json();
-        if (ark.res === undefined) {
-          if (addr.split(".")[0].length === 42) {
-            let checksumAddress = ethers.utils.getAddress(addr);
-            const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
-            const ethArk = await fetch(ethString);
-            const evmArk = await ethArk.json();
-            user = evmArk.res;
-          }
-        } else {
-          user = ark.res;
+    if (addr.split(".")[0].length === 43) {
+      async function getUserData() {
+        try {
+          const arArk = await retryFetch(
+            `https://ark-core.decent.land/v2/profile/arweave/${addr}`
+          );
+          const ark = await arArk.json();
+          setUserContent(ark.res);
+          setIsSearching(false);
+          setIsLoading(false);
+        } catch (e) {
+          console.log(JSON.stringify(e));
         }
-        setUserContent(user);
-        setIsSearching(false);
-      } catch (e) {
-        console.log(JSON.stringify(e));
-      } finally {
-        setIsLoading(false);
       }
-    })();
+      getUserData();    
+    }
+  }, [addr])
+
+  useEffect(() => {
+    if (addr.split(".")[0].length === 42) {
+      async function getUserData() {
+        try {
+          let checksumAddress = ethers.utils.getAddress(addr);
+          const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
+          const ethArk = await retryFetch(ethString);
+          const evmArk = await ethArk.json();
+          setUserContent(evmArk.res);
+          setIsSearching(false);
+          setIsLoading(false);
+        } catch (e) {
+          console.log(JSON.stringify(e));
+        }
+      }
+      getUserData();
+    }
   }, [addr]);
 
-  //let newCache = fetch("https://cache.permapages.app/jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw").then((res) => res.json())
-
+  
   const handleInput = (event) => {
     setInput(event.target.value);
   };
@@ -76,11 +98,6 @@ export function AccountViewer() {
       return ansName;
     }
   }
-
-  // async function getCache(){
-  //   let newCache = await fetch("https://cache.permapages.app/jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw").then((res) => res.json());
-  //   return newCache;
-  // }
 
   function onSubmit(event) {
     event.preventDefault();
@@ -118,14 +135,18 @@ export function AccountViewer() {
           />
           <Spacer y={1} />
           <Row align="center" justify="center">
-            <Button css={{
-              color: "black",
-              border: "2px solid #008c9e",
-              fontSize: "0.75em",
-              padding: "0.3em",
-              backgroundColor: "white",
-              transition: "all 0.2s ease-in-out",
-            }} className="button buttonText" type="submit">
+            <Button
+              css={{
+                color: "black",
+                border: "2px solid #008c9e",
+                fontSize: "0.75em",
+                padding: "0.3em",
+                backgroundColor: "white",
+                transition: "all 0.2s ease-in-out",
+              }}
+              className="button buttonText"
+              type="submit"
+            >
               search
             </Button>
           </Row>
@@ -133,13 +154,7 @@ export function AccountViewer() {
         </form>
       </div>
       <Spacer y={1} />
-      {isLoading && (
-        <Grid.Container gap={1} justify="center">
-          <p className="pText">Searching for content</p>
-          <Loading size="xl" css={{ padding: "$24" }} />
-        </Grid.Container>
-      )}
-      {isSearching && (
+     {isSearching && (
         <>
           <p className="pText">Searching for content</p>
           <Loading />
@@ -196,7 +211,7 @@ export function AccountViewer() {
           </>
         )}
         {console.log("User Content:", userContent)}
-        
+
         {addr && userContent?.NFTS && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
@@ -253,7 +268,7 @@ export function AccountViewer() {
           </>
         )}
 
-        {addr && userContent?.ARWEAVE?.ANFTS?.koii.length > 0 && !isLoading && (
+        {addr && userContent?.ARWEAVE?.ANFTS?.koii?.length > 0 && !isLoading && (
           <>
             <h1>Koii NFTS:</h1>
             <div className="contentScrollContainer">

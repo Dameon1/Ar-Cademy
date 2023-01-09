@@ -86,4 +86,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 Thank you.
-[Arweave](https://www.arweave.org/)
+- [Arweave](https://www.arweave.org/)
+- [Ardrive](https://ardrive.io/)
+- [Decentdotland](https://decent.land/)
+- [BundlrNetwork](https://bundlr.network/)
+- [Redstone](https://redstone.finance/)
+
+And special shout out to [Nader Dabit](https://github.com/dabit3)
