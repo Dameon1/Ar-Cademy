@@ -6,7 +6,7 @@
 
 ## Where to find
   ## Arcademy
-  - [arcademy.arweave.dev] (https://arcademy.arweave.dev/)
+  - [arcademy.arweave.dev](https://arcademy.arweave.dev/)
 
   This version is perma-stored, and you can find V1 [here](https://arweave.net/14uaFhiTDh0gyMS7aL0id8tKCZ93YGiBlLHEvsaaOys) 
 

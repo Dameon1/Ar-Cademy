@@ -243,29 +243,29 @@ export default function AssetManagement() {
                     </p>
                   </Col>
                   <Col>
-                    <h4>Cost in {toProperCase(contractData.state.currencyUsed)}</h4>
+                    <h4>
+                      Cost in {toProperCase(contractData.state.currencyUsed)}
+                    </h4>
                     <p className="pText">
                       {contractData.state.uploadCost.slice(0, 6)}
                     </p>
                   </Col>
                 </Row>
-                {urls && (
-                  <Row align="center" justify="center">
-                   
-                      {urls.links.map((object) => (
-                        <p key={object.label}>
-                          {toProperCase(object.label)}:{"  "}
-                          <a
-                            href={object.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {object.url}
-                          </a>
-                        </p>
-                      ))}
-                  </Row>
-                )}
+                {urls &&
+                  urls.links.map((object, i) => (
+                    <Row align="center" justify="center" key={i}>
+                      <p key={object.label}>
+                        {toProperCase(object.label)}:{"  "}
+                        <a
+                          href={object.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {object.url}
+                        </a>
+                      </p>
+                    </Row>
+                  ))}
               </Col>
             </Row>
           </Grid.Container>

@@ -4,7 +4,7 @@
     return `
     query {
         transactions(first: 5, tags: [
-            { name: "Platform-Uploader", values: "Arcademy-Test1" },
+            { name: "Platform-Uploader", values: "Arcademy-Test3" },
             { name: "Education", values: "true" },
             { name: "Blockchain", values: "true" },
             {name: "Uploader", values: "RedStone"},

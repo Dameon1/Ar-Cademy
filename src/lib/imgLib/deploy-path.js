@@ -141,7 +141,7 @@ async function createAndTag(ctx) {
   }
   tx.addTag("Video-Id", ctx.assetId);
   tx.addTag("Type", assetType);
-  tx.addTag("Platform-Uploader", "Arcademy-Test1");
+  tx.addTag("Platform-Uploader", "Arcademy-Test3");
   tx.addTag("SocialId", "Dameon1");
   tx.addTag("Video-Image-Id", ctx.videoImageid);
   tx.addTag("Education", "true");

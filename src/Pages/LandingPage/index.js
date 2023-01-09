@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { getRecentUploadData } from "../../Queries/AppQueries";
+
 export function LandingPage() {
   const navigate = useNavigate();
   const [recentUploads, setRecentUploads] = useState([]);
@@ -15,8 +16,8 @@ export function LandingPage() {
 
   useEffect(() => {
     async function getRecentUploads() {
-      const recentUploads = await getRecentUploadData();
-      setRecentUploads(recentUploads);
+      const recentUploadData = await getRecentUploadData();
+      setRecentUploads(recentUploadData);
     }
     getRecentUploads();
   }, []);
@@ -112,6 +113,12 @@ export function LandingPage() {
         <h3>Collections:</h3>
         <ul className="moduleCards">{moduleCards}</ul>
       </div>
+      <Spacer y={2} />
+      <div>
+        <h3>Newly Added:</h3>
+        <ul className="moduleCards">{}</ul>
+      </div>
+
     </>
   );
 }

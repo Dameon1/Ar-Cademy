@@ -57,6 +57,7 @@ export default function Profile() {
       return response;
     } catch (error) {
       console.error(error);
+      console.log("retrying fetch")
       return retryFetch(url);
     }
   }
