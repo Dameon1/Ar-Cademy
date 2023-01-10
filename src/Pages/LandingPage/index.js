@@ -57,6 +57,39 @@ export function LandingPage() {
     "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/8aGgG7C_CnyOZQZsCg3lSEt9B-ESmp2puKX_tEulG_8"
   );
 
+  let recentUploadCards = recentUploads.map((upload, index) => {
+    return (
+      <li key={index} className="moduleContent">
+        <h4>{upload.title}</h4>
+        
+        <img
+          src={`https://arweave.net/${upload.videoImageId}`}
+          className="heroImage"
+          alt={`Follow of ${upload.title}`}
+        />
+        <Row justify="center">
+          <Button
+            className="button buttonText"
+            css={{
+              color: "black",
+              border: "2px solid #008c9e",
+              fontSize: "0.75em",
+              padding: "0.3em",
+              backgroundColor: "white",
+              transition: "all 0.2s ease-in-out",
+            }}
+            onClick={() => navigate(`/AtomicPlayground/${upload.id}`)}
+            iconRight={<AiOutlineArrowRight size={18} />}
+          >
+            <p>Goto</p>
+          </Button>
+        </Row>
+      </li>
+    );  
+  
+  
+  });
+
   return (
     <>
       <div className="text-container">
@@ -116,7 +149,7 @@ export function LandingPage() {
       <Spacer y={2} />
       <div>
         <h3>Newly Added:</h3>
-        <ul className="moduleCards">{}</ul>
+        <ul className="moduleCards">{recentUploadCards}</ul>
       </div>
 
     </>

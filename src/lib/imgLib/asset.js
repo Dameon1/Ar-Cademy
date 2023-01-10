@@ -291,7 +291,7 @@ query {
         path(["data", "transactions", "edges"])
       )
     );
-  console.log(images);
+  console.log("images",images);
   return await images;
 }
 

@@ -154,7 +154,7 @@ async function createAndTag(ctx) {
   );
 
   map(trim, split(",", ctx.topics)).forEach((t) => {
-    tx.addTag("Topic:" + t, t);
+    tx.addTag("Topic:", t);
   });
   console.log("step 8: Manifest creation complete:", tx);
   return tx;

@@ -55,6 +55,10 @@ export async function getAssetData(id) {
           "value",
           find(propEq("name", "Title"), data.transaction.tags)
         ),
+        id: prop(
+          "value",
+          find(propEq("name", "Video-Id"), data.transaction.tags)
+        ),
         videoImage: prop(
           "value",
           find(propEq("name", "Video-Image-Id"), data.transaction.tags)
@@ -75,6 +79,7 @@ export async function getAssetData(id) {
         ),
         owner: data.transaction.owner.address,
         timestamp: data.transaction?.block?.timestamp || Date.now() / 1000,
-      }));
+      })
+      );
     //.then(_ => ({ title: 'Test', description: 'Description' }))
   }

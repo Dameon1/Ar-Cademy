@@ -208,7 +208,7 @@ export default function TestPage() {
   async function runFilterQuery(addr, type, filtertag) {
     if (addr) {
       let newImages = await getImages(addr, type, filtertag);
-      console.log("newImage",newImages);
+      console.log(newImages);
       setImages(newImages);
     }
   }

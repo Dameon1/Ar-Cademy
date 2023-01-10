@@ -108,7 +108,20 @@ export default function AtomicVideoPlayerContainer(props) {
               <h3 className="video-title">{asset.title}</h3>
             </header>
             {console.log("asset", asset, itemId)}
-            <VideoPlayer src={`https://arweave.net/${itemId}`} />
+            <div className="video-player">
+            <video
+              className="react-player"
+              controls={true}
+              width="100%"
+              height="100%"
+            >
+              <source src={`https://arweave.net/${asset.id}`} type="video/mp4" />
+            </video>
+          </div>
+            {/* <video controls >
+              <source src={`https://arweave.net/${asset.id}`} type="video/mp4" />
+            </video> */}
+            
 
             <footer className="video-footer">
               <p className="pText">{asset.description}</p>

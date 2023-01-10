@@ -55,23 +55,23 @@ export default function AtomicPlayground() {
   useEffect(() => {
     async function data(id) {
       let assetData = await getAssetData(id);
-      let assetContractData = await assetContractDetails(id);
-      let profileData = await getProfile(assetData.owner);
-      let ownerVideos = await getUserVideos(assetData.owner, "video", "");
-      console.log("userVideos", ownerVideos);
+      //let assetContractData = await assetContractDetails(id);
+      //let profileData = await getProfile(assetData.owner);
+      //let ownerVideos = await getUserVideos(assetData.owner, "video", "");
+      //console.log("userVideos", ownerVideos);
       //let assetStampedCount = await getCount(id);
       //let rewards = await getRewards(id);
       //let ownersArray = Object.keys(assetContractData.state.balances);
       //let ownersAvatars = await getAllOwnersAvatar();
-      console.log("assetData", assetData);
-      console.log("assetContractData", assetContractData);
-      let authorVideos = ownerVideos[0].filter((x) => x.id !== id);
-      console.log("authorVideos", authorVideos);
+      //console.log("assetData", assetData);
+      //console.log("assetContractData", assetContractData);
+      //let authorVideos = ownerVideos[0].filter((x) => x.id !== id);
+      //console.log("authorVideos", authorVideos);
       setUrls(JSON.parse(assetData.externalLinks));
-      setContractData(assetContractData);
-      setAsset(assetData);
-      setOwnerData(profileData);
-      setOwnerVideos(authorVideos);
+      //setContractData(assetContractData);
+      //setAsset(assetData);
+      //setOwnerData(profileData);
+      //setOwnerVideos(authorVideos);
       ///setAssetStampCount(assetStampedCount);
       //setRewards(rewards);
       //setOwnersAddressArray(ownersArray);
