@@ -6,30 +6,13 @@ export const Videos = {
         videoTitle: "Arweave Build",
         videoLocation: "Arweave",
         description: "Sam Williams introduces the Arweave.Build program to get new creators bootstrapped with the tools need to get an idea off the ground.",
-        authorID: "8",
+        authorID: "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw",
         tags: ["Build"],
         sandboxLinks: {
             arWiki:" https://arwiki.wiki/#/en/creating-a-dapp",
             viewblock: "https://viewblock.io/arweave",
             ArCode: "https://arcode.studio/#/",
             graphql: "https://arweave.net/graphql"
-        },
-    },
-    "2": {
-        author: "Koii",
-        uid: "2",
-        repo: "https://github.com/koii-network/koii.X",
-        videoSrc: "https://www.youtube.com/watch?v=PBJDM_ZY2WI",
-        videoImage: "https://img.youtube.com/vi/PBJDM_ZY2WI/1.jpg",
-        videoTitle: "React App with Koii",
-        videoLocation: "Youtube",
-        description: "Koii has prebuilt an Ethereum and Arweave based React app for you to deploy to the permaweb. This is a great way to get started with React and Arweave.",
-        authorID: "2",
-        tags: ["Deployment", "React", "Arweave", "Build"],
-        sandboxLinks: {
-            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/",
-            repo: "https://github.com/koii-network/koii.X",
-            repl: "https://replit.com/@Dameon1/Koii-Funcraiser-repl?lite=true",
         },
     },
     "3": {
@@ -85,7 +68,7 @@ export const Videos = {
         videoTitle: "Full Stack Web3",
         videoLocation: "Arweave",
         description: "In this in depth tutorial you'll learn the tools, protocols, and frameworks for building full stack web3 apps, and most importantly - how to put everything together to lay the groundwork for building out any of your own ideas in the future.",
-        authorID: "6",
+        authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Build", "Deployment", "ArweaveNative"],
         sandboxLinks: {
             home: "https://edgeandnode.com/",
@@ -114,7 +97,7 @@ export const Videos = {
         videoTitle: "Bundlr and Next.js",
         videoLocation: "Youtube",
         description: "By the end of this video you should have a good understanding of how to build full stack applications with Bundlr and Arweave.",
-        authorID: "6",
+        authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Build", "Deployment"],
         sandboxLinks: {
             bundlr: "https://bundlr.network/",
@@ -184,7 +167,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  1",
         videoLocation: "Youtube",
         description:"This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11", 
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI", 
          tags: ["Near", "Arweave", "React", "Build", "Intro",],
          sandboxLinks: {
              repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -198,7 +181,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  2",
         videoLocation: "Youtube",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -211,7 +194,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  3",
         videoLocation: "Youtube",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -224,7 +207,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  4",
         videoLocation: "Youtube",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -237,7 +220,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  5",
         videoLocation: "Youtube",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -250,7 +233,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave  6",
         videoLocation: "Youtube",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -263,7 +246,7 @@ export const Videos = {
         videoTitle: "NEAR + Arweave 7",
         videoLocation: "Youtube",
         description: "This workshop walks you through using NEAR to upload data on Arweave, in this workshop, we will build a public square app using React a NEAR Wallet, the bundler network, and Arweave.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
@@ -303,7 +286,7 @@ export const Videos = {
         videoTitle: "ETHShanghai",
         videoLocation: "Youtube",
         description: "DMac explains how to use Arweave to build a decentralized app with ETHShanghai",
-        authorID: "13", 
+        authorID: "89tR0-C1m3_sCWCoVCChg4gFYKdiH5_ZDyZpdJ2DDRw", 
         tags: ["Transfers", "Arweave", "Intro", "Build"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/nft-uploader?lite=true",
@@ -318,7 +301,7 @@ export const Videos = {
         videoTitle: "Deploying to the Permaweb - with Bundlr",
         videoLocation: "Youtube",
         description: "The permaweb is a cloud platform designed to publish and serve web artifacts from a decentralized permanent storage network. Along with a permanotes side",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Bundlr", "Arkb", "Deno", "Deployment", "Intro"],
         sandboxLinks: {
             notes: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
@@ -345,7 +328,7 @@ export const Videos = {
         videoTitle: "Intro to DataFI Part 1",
         videoLocation: "Youtube",
         description: "DataFi is the concept of combining permanent Data + NFT (Non-Fungible Token) + Permaweb + SmartWeave Contracts + PST (Profit Sharing Token) in ways that provide decentralized finalization features for immutable storage in the Arweave community.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
             demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
@@ -360,7 +343,7 @@ export const Videos = {
         videoTitle: "Intro to DataFI Part 2",
         videoLocation: "Youtube",
         description: "In this workshop, we walk through step by step the Atomic NFT concept from creating a smart contract to minting, to checking owner balance and transferring ownership.",
-        authorID: "11",
+        authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
             notes: "https://permanotes.app/#/notes/KmLNIowE2DhWHnW-YQzWwTO0O1r7PAlFCj29vPq4BQ0",
@@ -375,7 +358,7 @@ export const Videos = {
         videoTitle: "Building Full Stack Permanent Applications with Arweave, Smartweave, and Next.js",
         videoLocation: "Arweave",
         description: "In this video you'll learn how to build full stack dapps on Arweave with Smartweave, Warp, and Next.js.",
-        authorID: "6",
+        authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
             finished: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",

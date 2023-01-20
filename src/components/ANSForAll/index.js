@@ -29,12 +29,12 @@ function UseAns({ addr, forDashboard }) {
           console.log("bad addr for ans search")
           return;
         }
-        console.log("userData", userData)
-        if (forDashboard && userData.ANS.user) {
+        console.log("addr--------", addr)
+        if (forDashboard && userData?.ANS?.user) {
           return setAnsProfile(userData.ANS);
         }
         const res = await fetch(
-          `https://ans-testnet.herokuapp.com/profile/${addr}`,
+          `https://ans-stats.decent.land/profile/${addr}`,
           {
             method: "GET",
             headers: {
@@ -42,14 +42,16 @@ function UseAns({ addr, forDashboard }) {
             },
           });
         const ans = await res.json();
+        console.log("ans", ans)
         if (Object.keys(ans).length > 0) {
           setAnsProfile(ans);
         }
       } catch (e) {
-        setHasFailed(JSON.stringify(e));
-      } finally {
-        setIsLoading(false);
-      }
+        console.log("error", e)
+        //setAnsProfile({});
+        //setHasFailed(JSON.stringify(e));
+      } 
+      setIsLoading(false);
     })();
   }, [addr, forDashboard, userData]);
 

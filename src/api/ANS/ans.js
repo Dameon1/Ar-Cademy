@@ -1,3 +1,6 @@
+
+//This file is used for finding ANS names of the first 500 users plus pwo.ar
+
 export const ans = [
   {
     username: "letey.ar",

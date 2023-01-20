@@ -1,6 +1,5 @@
 import { compose, toLower, join, split, map, trim } from "ramda";
 import Arweave from "arweave";
-import { letterSpacing } from "@mui/system";
 
 const arweave = Arweave.init({
   host: "arweave.net",
@@ -8,35 +7,9 @@ const arweave = Arweave.init({
   protocol: "https",
 });
 
-const BAR = "VFr3Bk-uM-motpNNkkFg4lNW1BMmSfzqsVO551Ho4hA";
-
-/*
- * Need to upload to arweave using post
- * Then create a path manifest to upload to
- * both sequencer and bundlr
- */
+//const BAR = "VFr3Bk-uM-motpNNkkFg4lNW1BMmSfzqsVO551Ho4hA";
 const SRC = "BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q";
 const URL = "https://d1o5nlqr4okus2.cloudfront.net/gateway/contracts/deploy";
-//const slugify = compose(toLower, join('-'), split(' '))
-
-export async function deploy(
-  name,
-  description,
-  addr,
-  contentType,
-  data,
-  topics = ""
-) {
-  return (
-    Promise.resolve({ name, description, addr, contentType, data, topics })
-      // upload to arweave
-      .then(upload)
-      // dispatch to bundlr
-      .then(dispatch)
-      // post to warp
-      .then(post)
-  );
-}
 
 export async function deployBundlr(
   title,
@@ -142,10 +115,12 @@ async function createAndTag(ctx) {
   tx.addTag("Video-Id", ctx.assetId);
   tx.addTag("Type", assetType);
   tx.addTag("Platform-Uploader", "Arcademy-Test3");
-  tx.addTag("SocialId", "Dameon1");
+  tx.addTag("Social-Id", ctx.addr);
   tx.addTag("Video-Image-Id", ctx.videoImageid);
   tx.addTag("Education", "true");
-  tx.addTag("Blockchain", "true");
+  tx.addTag("Month", "January");
+  tx.addTag("Tier", "Free");
+  tx.addTag("Collection", "false");
   tx.addTag(
     "External-Links",
     JSON.stringify({
@@ -160,24 +135,45 @@ async function createAndTag(ctx) {
   return tx;
 }
 
-async function upload(ctx) {
-  const tx = await arweave.createTransaction({ data: ctx.data });
-  tx.addTag("Content-Type", ctx.contentType);
-  // earn bar while you upload
-  tx.addTag("Protocol-Name", "BAR");
-  tx.addTag("Action", "Burn");
-  tx.addTag("App-Name", "SmartWeaveAction");
-  tx.addTag("App-Version", "0.3.0");
-  tx.addTag("Input", JSON.stringify({ function: "mint" }));
-  tx.addTag("Contract", BAR);
+//ARWEAVE NATIVE UPLOAD
 
-  await arweave.transactions.sign(tx);
-  const result = await arweave.transactions.post(tx);
+// export async function deploy(
+//   name,
+//   description,
+//   addr,
+//   contentType,
+//   data,
+//   topics = ""
+// ) {
+//   return (
+//     Promise.resolve({ name, description, addr, contentType, data, topics })
+//       // upload to arweave
+//       .then(upload)
+//       // dispatch to bundlr
+//       .then(dispatch)
+//       // post to warp
+//       .then(post)
+//   );
+// }
 
-  if (result.status === 400) {
-    throw new Error("Not enough $AR in wallet to upload img!");
-  } else if (result.status === 200) {
-    return { ...ctx, assetId: tx.id };
-  }
-  throw new Error(result.message + " while trying to upload!");
-}
+// async function upload(ctx) {
+//   const tx = await arweave.createTransaction({ data: ctx.data });
+//   tx.addTag("Content-Type", ctx.contentType);
+//   // earn bar while you upload
+//   tx.addTag("Protocol-Name", "BAR");
+//   tx.addTag("Action", "Burn");
+//   tx.addTag("App-Name", "SmartWeaveAction");
+//   tx.addTag("App-Version", "0.3.0");
+//   tx.addTag("Input", JSON.stringify({ function: "mint" }));
+//   tx.addTag("Contract", BAR);
+
+//   await arweave.transactions.sign(tx);
+//   const result = await arweave.transactions.post(tx);
+
+//   if (result.status === 400) {
+//     throw new Error("Not enough $AR in wallet to upload img!");
+//   } else if (result.status === 200) {
+//     return { ...ctx, assetId: tx.id };
+//   }
+//   throw new Error(result.message + " while trying to upload!");
+// }

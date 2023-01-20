@@ -2,15 +2,15 @@
 export const Topics = {
     'Learn': {
         topics: ['!Tags'],
-        videosById: ["1", "28", "27", "9", "4", "25", "12", "11", "23", "13", "14", "22",  "2", "3", "6", "10"],
+        videosById: ["1", "28", "27", "9", "4", "25", "12", "11", "23", "13", "14", "22", "3", "6", "10"],
     },
     'Deployment': {
         topics: [],
-        videosById: ["2", "3", "5",],
+        videosById: [ "3", "5"],
     },
     'Build': {
         topics: [],
-        videosById: ["1", "6", "9", "2", "13", "14", "22"],
+        videosById: ["1", "6", "9", "13", "14", "22"],
     },
     'Storage': {
         topics: [],
@@ -18,15 +18,15 @@ export const Topics = {
     },
     "APIs": {
         topics: [],
-        videosById: ["11", "2", "3", "6"],
+        videosById: ["11", "3", "6"],
     },
     'Tokenomics': {
         topics: [],
-        videosById: [ "2", "3", "4"],
+        videosById: [ "3", "4"],
     },
     'Identity': {
         topics: [],
-        videosById: ["3", "2", "3", "4"],
+        videosById: ["3", "4"],
     },
     'ArFS': {
         topics: [],

@@ -15,5 +15,3 @@ root.render(
     </Router>
   </StrictMode>
 );
-
-//const root = createRoot(root);

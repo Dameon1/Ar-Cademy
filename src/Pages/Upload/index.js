@@ -191,7 +191,7 @@ export default function Upload() {
   const connectorMap = {
     MetaMask: async (opts) => {
       if (!window?.ethereum?.isMetaMask) return;
-      await window.ethereum.enable();
+      await window.ethereum.request({ method: "eth_requestAccounts" });
       const provider = await connectWeb3(window.ethereum);
       const chainId = `0x${opts.chainId.toString(16)}`;
       try {
@@ -450,7 +450,12 @@ export default function Upload() {
     const trx = bundlrInstance.createTransaction(file, {
       tags: [{ name: "Content-Type", value: originalImage.type }],
     });
-    await trx.sign();
+    const msgParams = JSON.stringify({
+      message: {
+        content: "test",
+      }
+    });
+    await trx.sign({msgParams});
     const result = await trx.upload();
     console.log("result", result);
     const contractTags = [

@@ -1,10 +1,12 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 
-import "./accountViewer.css";
 import UseAns from "../../components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
+import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
+import ArProfile from "../../components/ArProfile";
+import { Card } from "../../components/Cards";
 import {
   Grid,
   Loading,
@@ -15,15 +17,18 @@ import {
   Spacer,
   Button,
 } from "@nextui-org/react";
-import ArProfile from "../../components/ArProfile";
 import {
   Poap,
   NearNFTS,
-  Koii,
   EthereumNFTS,
   StampedAssets,
   CreatedAtomicAssets,
+  PolygonNFTS,
+  AvalancheNFTS,
+  GenericNFTS,
 } from "../../components/Cards/Media";
+
+import getAllUserContent from "../../lib/getAllUserContent";
 
 export function AccountViewer() {
   const [userContent, setUserContent] = useState({});
@@ -40,32 +45,55 @@ export function AccountViewer() {
           "Content-Type": "text/plain",
         },
       });
-      return response;
+      return response.json();
     } catch (error) {
       console.error(error);
-      console.log("retrying fetch")
+      console.log("retrying fetch");
       return retryFetch(url);
     }
   }
 
   useEffect(() => {
+    let user = {};
     if (addr.split(".")[0].length === 43) {
-      async function getUserData() {
-        try {
-          const arArk = await retryFetch(
-            `https://ark-core.decent.land/v2/profile/arweave/${addr}`
-          );
-          const ark = await arArk.json();
-          setUserContent(ark.res);
-          setIsSearching(false);
-          setIsLoading(false);
-        } catch (e) {
-          console.log(JSON.stringify(e));
-        }
+      async function getContent() {
+        let allContent = await getAllUserContent(addr);
+        return allContent;
       }
-      getUserData();    
+      getContent()
+        .then((res) => {
+          console.log("res", res);
+          user.EVM = res[0];
+          user.POLY = res[1];
+          user.BSC = res[2];
+          user.FTM = res[3];
+          user.AVAX = res[4];
+          user.ARK = res[5].res;
+          user.POAPS = res[6].POAPS;
+          user.ARCADEMY_VIDEOS = res[7];
+          user.UPLOADED_VIDEOS = res[8][0];
+          // console.log("Setting ARCADEMY_VIDEOS", user.ARCADEMY_VIDEOS);
+          // console.log("Setting UPLOADED_VIDEOS", user.UPLOADED_VIDEOS);
+          // console.log("setting EVM data", user.EVM);
+          // console.log("setting POLY data", user.POLY);
+          // console.log("setting BSC data", user.BSC);
+          // console.log("setting FTM data", user.FTM);
+          // console.log("setting AVAX data", user.AVAX);
+          // console.log("setting ARWEAVE data", user.ARK);
+          // console.log("setting POAPS data", user.POAPS);
+          return user;
+        })
+        .then((user) => {
+          console.log("user111111", user);
+          setUserContent(user);
+          setIsLoading(false);
+          setIsSearching(false);
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
     }
-  }, [addr])
+  }, [addr]);
 
   useEffect(() => {
     if (addr.split(".")[0].length === 42) {
@@ -73,11 +101,16 @@ export function AccountViewer() {
         try {
           let checksumAddress = ethers.utils.getAddress(addr);
           const ethString = `https://ark-core.decent.land/v2/profile/evm/${checksumAddress}`;
-          const ethArk = await retryFetch(ethString);
-          const evmArk = await ethArk.json();
-          setUserContent(evmArk.res);
-          setIsSearching(false);
-          setIsLoading(false);
+          await retryFetch(ethString).then((res) => {
+            let user = res.res;
+            user.POAPS = user.EVM[user.primary_address].POAPS;
+            user.ARK = res.res;
+            //user.EVM = res.res.EVM[res.res.primary_address].ERC_NFTS
+            console.log("------", user);
+            setUserContent(user);
+            setIsSearching(false);
+            setIsLoading(false);
+          });
         } catch (e) {
           console.log(JSON.stringify(e));
         }
@@ -86,7 +119,6 @@ export function AccountViewer() {
     }
   }, [addr]);
 
-  
   const handleInput = (event) => {
     setInput(event.target.value);
   };
@@ -155,7 +187,7 @@ export function AccountViewer() {
         </form>
       </div>
       <Spacer y={1} />
-     {isSearching && (
+      {isSearching && (
         <>
           <p className="pText">Searching for content</p>
           <Loading />
@@ -175,10 +207,10 @@ export function AccountViewer() {
                 </Col>
                 <Col align="center">
                   <h3>ANS Profile:</h3>
-                  {addr && userContent?.ARWEAVE && !isLoading ? (
+                  {addr && userContent?.ARK?.ARWEAVE && !isLoading ? (
                     <ARKdisplay
-                      content={userContent}
-                      evmAddr={userContent.primary_address}
+                      content={userContent.ARK}
+                      evmAddr={userContent.ARK.primary_address}
                     />
                   ) : addr && !isLoading ? (
                     <>
@@ -192,33 +224,61 @@ export function AccountViewer() {
             )}
           </Container>
         )}
+        {console.log("User Content:", userContent)}
 
-        {addr && userContent?.primary_address && !isLoading && (
+        {addr && !isSearching && userContent?.ARCADEMY_VIDEOS?.length > 0 && (
+          <div>
+            <h1>Arcademy Videos</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent.ARCADEMY_VIDEOS.map((content, i) => {
+                  return <Card content={content} />;
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {addr && !isSearching && userContent?.UPLOADED_VIDEOS?.length > 0 && !isLoading && (
+          <div>
+            <h1>Owner Videos</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent.UPLOADED_VIDEOS.map((content, i) => {
+                  return (
+                    <div className="videoThumbnails" key={i}>
+                      <AtomicVideoCards video={content} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {addr && userContent?.POAPS?.length > 0 && !isLoading && (
           <>
             <h1>Poaps:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.EVM[userContent.primary_address].POAPS.map(
-                  (content, i) => {
-                    return (
-                      <div key={i} className="mediaCards">
-                        <Poap content={content} />
-                      </div>
-                    );
-                  }
-                )}
+                {userContent.POAPS.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <Poap content={content} />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </>
         )}
-        {console.log("User Content:", userContent)}
 
-        {addr && userContent?.NFTS && !isLoading && (
+        {addr && userContent?.ARK?.NFTS?.length > 0 && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.NFTS.map((content, i) => {
+                {userContent.ARK.NFTS.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
                       <NearNFTS content={content} />
@@ -229,16 +289,16 @@ export function AccountViewer() {
             </div>
           </>
         )}
-
-        {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
+        {addr && userContent?.EVM?.length > 0 && !isLoading && (
           <>
-            <h1>Stamped Assets:</h1>
+            <h1>Ethereum NFTS:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.ARWEAVE.STAMPS.map((content, i) => {
+                {userContent?.EVM?.map((content, i) => {
+                  if (content?.metadata === null) return null;
                   return (
                     <div key={i} className="mediaCards">
-                      <StampedAssets content={content} notForDashboard={true} />
+                      <EthereumNFTS content={content} />
                     </div>
                   );
                 })}
@@ -246,46 +306,6 @@ export function AccountViewer() {
             </div>
           </>
         )}
-
-        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
-          <>
-            <h1>Created Atomic Assets:</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent?.ARWEAVE.ANFTS?.permapages_img.map(
-                  (content, i) => {
-                    return (
-                      <div key={i} className="mediaCards">
-                        <CreatedAtomicAssets
-                          content={content}
-                          notForDashboard={true}
-                        />
-                      </div>
-                    );
-                  }
-                )}
-              </div>
-            </div>
-          </>
-        )}
-
-        {addr && userContent?.ARWEAVE?.ANFTS?.koii?.length > 0 && !isLoading && (
-          <>
-            <h1>Koii NFTS:</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
-                  return (
-                    <div key={i} className="mediaCards">
-                      <Koii content={content} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </>
-        )}
-
         {addr &&
           userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS &&
           !isLoading && (
@@ -307,6 +327,85 @@ export function AccountViewer() {
               </div>
             </>
           )}
+        {addr && userContent?.POLY?.length > 0 && !isLoading && (
+          <>
+            <h1>Polygon NFTS:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.POLY.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <PolygonNFTS content={content} index={i} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
+
+        {addr &&
+          userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 &&
+          !isLoading && (
+            <>
+              <h1>Stamped Assets:</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
+                    return (
+                      <div key={i} className="mediaCards">
+                        <StampedAssets
+                          content={content}
+                          notForDashboard={true}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          )}
+
+        {addr &&
+          userContent?.ARK?.ARWEAVE?.ANFTS?.permapages_img?.length > 0 &&
+          !isLoading && (
+            <>
+              <h1>Created Atomic Assets:</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent?.ARK.ARWEAVE.ANFTS?.permapages_img.map(
+                    (content, i) => {
+                      return (
+                        <div key={i} className="mediaCards">
+                          <CreatedAtomicAssets
+                            content={content}
+                            notForDashboard={true}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
+        {addr && userContent?.AVAX?.length > 0 && !isLoading && (
+          <>
+            <h1>Avalnche NFTS:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.AVAX.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <AvalancheNFTS content={content} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

@@ -4,6 +4,22 @@ import * as nearAPI from "near-api-js";
 export const arweave = Arweave.init({});
 const APP_NAME = "Ar-Cademy";
 
+export async function retryFetch(url) {
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    });
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    console.log("retrying fetch");
+    return retryFetch(url);
+  }
+}
+
 export const createPostInfo = async (node) => {
   console.log(node);
   const ownerAddress = node.owner.address;
@@ -169,55 +185,3 @@ export const currencyMap = {
   //   providers: ["arconnect","arweave.app"],
   // },
 };
-
-
-// export const providerMap = {
-//   "MetaMask": async (c) => {
-//     if (!window?.ethereum?.isMetaMask) return;
-//     await window.ethereum.enable();
-//     const provider = await connectWeb3(window.ethereum);
-//     const chainId = `0x${c.chainId.toString(16)}`
-//     // if (!chainChange) {
-//     //   return provider
-//     // }
-//     try { // additional logic for requesting a chain switch and conditional chain add.
-//       await window.ethereum.request({
-//         method: 'wallet_switchEthereumChain',
-//         params: [{ chainId }],
-//       })
-//     } catch (e) {
-//       if (e.code === 4902) {
-//         await window.ethereum.request({
-//           method: 'wallet_addEthereumChain',
-//           params: [{
-//             chainId, rpcUrls: c.rpcUrls, chainName: c.chainName
-//           }],
-//         });
-//       }
-//     }
-//     return provider;
-//   },
-//   //"WalletConnect": async (c: any) => { return await connectWeb3(await (new WalletConnectProvider(c)).enable()) },
-//   "Phantom": async (c) => {
-//     if (window.solana.isPhantom) {
-//       await window.solana.connect();
-//       const p = new PhantomWalletAdapter()
-//       await p.connect()
-//       return p;
-//     }
-//   },
-//   "wallet.near.org": async (c) => {
-//     const near = await connect(c);
-//     const wallet = new WalletConnection(near, "bundlr");
-//     if (!wallet.isSignedIn()) {
-//       toast({ status: "info", title: "You are being redirected to authorize this application..." })
-//       window.setTimeout(() => { wallet.requestSignIn({ contractId: 'account-with-deploy-contract.near' }) }, 4000)
-//       // wallet.requestSignIn();
-//     }
-//     else if (!await c.keyStore.getKey(wallet._networkId, wallet.getAccountId())) {
-//       toast({ status: "warning", title: "Click 'Connect' to be redirected to authorize access key creation." })
-//     }
-//     return wallet
-//   }
-
-// }

@@ -7,7 +7,10 @@ import CreatedAtomicAssets from "./CreatedAtomicAssets";
 import Koii from "./Koii";
 import EthereumNFTS from "./EthereumNFTS";
 
+import PolygonNFTS from "./PolygonNFTS";
+import AvalancheNFTS from "./AvalancheNFTS";
+import FantomNFTS from "./FantomNFTS";
 
+import GenericNFTS from "./GenericNFTS";
 
-
-export {Poap, NearNFTS, Koii, EthereumNFTS, StampedAssets, CreatedAtomicAssets }
+export {Poap, NearNFTS, Koii, EthereumNFTS, StampedAssets, CreatedAtomicAssets, PolygonNFTS, AvalancheNFTS, FantomNFTS, GenericNFTS }

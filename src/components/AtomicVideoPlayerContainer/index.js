@@ -9,6 +9,9 @@ import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import { getProfile } from "../../lib/imgLib/account.js";
 // import MediaCards  from "../../components/Cards/MediaCards";
 // import MainContext from "../../context";
+import { Authors } from "../../Authors";
+import { Videos } from "../../Videos";
+import { MediaCards } from "../Cards";
 import {
   Grid,
   Row,
@@ -19,15 +22,16 @@ import {
   Button,
   Spacer,
 } from "@nextui-org/react";
-import VideoPlayer from "../../components/VideoPlayer";
 import { Link } from "react-router-dom";
 //import { take, takeLast } from "ramda";
 
 export default function AtomicVideoPlayerContainer(props) {
-  const {setState} = props;
+  const { setState } = props;
   const [asset, setAsset] = useState(null);
   const [ownerVideos, setOwnerVideos] = useState([]);
+  const [arcademyVideos, setArcademyVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [authorObject, setAuthorObject] = useState(null);
   const [contractData, setContractData] = useState();
   const [ownerData, setOwnerData] = useState();
   //const [urls, setUrls] = useState([]);
@@ -47,6 +51,16 @@ export default function AtomicVideoPlayerContainer(props) {
   //     setImages(newImages);
   //   }
   // }
+  function getArcademyVideos(id) {
+    let authorObject = Authors[id];
+    let authorVideos;
+    if (authorObject !== undefined) {
+      authorVideos = authorObject.createdVideosByID
+        .map((x) => Videos[x])
+        .filter((x) => x.uid !== id);
+    }
+    return [authorVideos, authorObject];
+  }
 
   useEffect(() => {
     async function data(id) {
@@ -54,20 +68,23 @@ export default function AtomicVideoPlayerContainer(props) {
       let assetContractData = await assetContractDetails(id);
       let profileData = await getProfile(assetData.owner);
       let ownerVideos = await getUserVideos(assetData.owner, "video", "");
-      console.log("userVideos", ownerVideos);
       //let assetStampedCount = await getCount(id);
       //let rewards = await getRewards(id);
       //let ownersArray = Object.keys(assetContractData.state.balances);
       //let ownersAvatars = await getAllOwnersAvatar();
-      console.log("assetData", assetData);
-      console.log("assetContractData", assetContractData);
-      let authorVideos = ownerVideos[0].filter((x) => x.id !== id);
-      console.log("authorVideos", authorVideos);
+      let filteredOwnerVideos = ownerVideos[0].filter((x) => x.id !== id);
+      let authorVideos = getArcademyVideos(assetData.owner);
       //setUrls(JSON.parse(assetData.externalLinks));
       setContractData(assetContractData);
       setAsset(assetData);
       setOwnerData(profileData);
-      setOwnerVideos(authorVideos);
+      setOwnerVideos(filteredOwnerVideos);
+      if (authorVideos[0] !== undefined) {
+        setArcademyVideos(authorVideos[0]);
+        setAuthorObject(authorVideos[1]);
+      }
+      // setArcademyVideos(authorVideos[0]);
+      // setAuthorObject(authorVideos[1]);
       ///setAssetStampCount(assetStampedCount);
       //setRewards(rewards);
       //setOwnersAddressArray(ownersArray);
@@ -75,16 +92,6 @@ export default function AtomicVideoPlayerContainer(props) {
     }
     data(itemId);
   }, [itemId, isLoading]);
-  // useEffect(() => {
-  //   console.log("Reloaded")
-  //   if(loading){setLoading(false)}
-
-  // }, [loading])
-
-//   function setState() {
-//     setIsLoading(true);
-//   }
-
   let cards = ownerVideos.map((video, index) => {
     return (
       <div className="videoThumbnails" key={index}>
@@ -93,10 +100,14 @@ export default function AtomicVideoPlayerContainer(props) {
     );
   });
 
-  //let videoId = new URL(window.location.href).pathname.split('/').at(-1);
+  let authorCards = arcademyVideos.map((content, index) => {
+    return (
+      <div className="videoThumbnails" key={index}>
+        <MediaCards content={content} setState={setState} />
+      </div>
+    );
+  });
 
-  //let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
-  //let links = Videos[videoId].sandboxLinks;
   return (
     <>
       <div className="video-player-container">
@@ -107,46 +118,52 @@ export default function AtomicVideoPlayerContainer(props) {
             <header className="video-header">
               <h3 className="video-title">{asset.title}</h3>
             </header>
-            {console.log("asset", asset, itemId)}
             <div className="video-player">
-            <video
-              className="react-player"
-              controls={true}
-              width="100%"
-              height="100%"
-            >
-              <source src={`https://arweave.net/${asset.id}`} type="video/mp4" />
-            </video>
-          </div>
+              <video
+                className="react-player"
+                controls={true}
+                width="100%"
+                height="100%"
+              >
+                <source
+                  src={`https://arweave.net/${asset.id}`}
+                  type="video/mp4"
+                />
+              </video>
+            </div>
             {/* <video controls >
               <source src={`https://arweave.net/${asset.id}`} type="video/mp4" />
             </video> */}
-            
 
             <footer className="video-footer">
               <p className="pText">{asset.description}</p>
               <Spacer y={1} />
               <Row justify="center" align="space-evenly">
-                {/* <Col>
-              <a
-                href={`${contentObject.authorObject.authorWebsite}`}
-                className="video-creator-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p className="pText">Website</p>
-              </a>
-            </Col>
-            <Col>
-              <a
-                href={contentObject.authorObject.authorLink}
-                target="_blank"
-                rel="noreferrer"
-                className="video-creator-link"
-              >
-                <p className="pText">{contentObject.authorObject.username}</p>
-              </a>
-            </Col> */}
+                {authorObject?.authorWebsite && (
+                  <Col>
+                    <a
+                      href={`${authorObject.authorWebsite}`}
+                      className="video-creator-link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <p className="pText">Website</p>
+                    </a>
+                  </Col>
+                )}
+                {authorObject?.authorLink && (
+                  <Col>
+                    <a
+                      href={authorObject.authorLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="video-creator-link"
+                    >
+                      <p className="pText">{authorObject.username}</p>
+                    </a>
+                  </Col>
+                )}
+
                 <Col>
                   <Link
                     to={`/profile/${asset.owner}/${asset.owner}`}
@@ -160,7 +177,10 @@ export default function AtomicVideoPlayerContainer(props) {
               <h3>Videos</h3>
               {/* {ownerVideos && <AtomicVideoCards images={ownerVideos} />} */}
               <div className="contentScrollContainer">
-                <div className="hs">{cards}</div>
+                <div className="hs">
+                  {cards}
+                  {authorCards}
+                </div>
               </div>
             </footer>
           </>

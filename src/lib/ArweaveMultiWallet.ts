@@ -1,3 +1,6 @@
+
+//THIS FILE IS THE ENTRY POINT FOR WALLET/IDENTITY MANAGEMENT
+
 import { ArweaveWebWallet } from "arweave-wallet-connector";
 import { providers } from "ethers";
 import { WebBundlr } from "@bundlr-network/client";
@@ -5,12 +8,13 @@ import Arweave from 'arweave';
 
 import { icons } from "../static";
 import { T_addr, T_walletName } from "../utils/types";
+
+
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
   "SIGN_TRANSACTION",
   "DISPATCH"
 ];
-        
 
 const webWallet = new ArweaveWebWallet({
   name: 'Arcademy',
@@ -62,7 +66,8 @@ export default class ArweaveMultiWallet {
       const providerMap = {
         "MetaMask": async (c: any) => {
           if (!(window as any)?.ethereum?.isMetaMask) return;
-          await (window as any).ethereum.enable();
+          // @ts-ignore
+          await window.ethereum.request({ method: "eth_requestAccounts" });
           const provider = await connectWeb3((window as any).ethereum);
           const chainId = `0x${c.chainId.toString(16)}`
           try { // additional logic for requesting a chain switch and conditional chain add.

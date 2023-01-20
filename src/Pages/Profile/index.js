@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
+import { getUserVideos } from "../../Queries/UserQueries";
+import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
 import UseAns from "../../components/ANSForAll";
@@ -12,89 +14,105 @@ import { Loading, Container, Row, Col } from "@nextui-org/react";
 import {
   Poap,
   NearNFTS,
-  Koii,
   EthereumNFTS,
   StampedAssets,
   CreatedAtomicAssets,
+  PolygonNFTS,
+  AvalancheNFTS,
 } from "../../components/Cards/Media";
+
+import getAllUserContent from "../../lib/getAllUserContent";
 
 export default function Profile() {
   let urlArray = new URL(window.location.href).pathname.split("/");
   let profileId = urlArray[urlArray.length - 1];
   let addr = urlArray[urlArray.length - 2];
 
-  //TEMPORARY FIX FOR SAM WILLIAMS
-  if (addr === "vLRHFqCw1uHu75xqB4fCDW-QxpkpJxBtFD9g4QYUbfw") {
-    profileId = 8;
-  }
-
-  let videoIds;
-  if (Authors[profileId] !== undefined) {
-    videoIds = Authors[profileId].createdVideosByID;
-  } else {
-    videoIds = [];
-  }
-
-  let videoObjects;
-  if (videoIds.length > 0) {
-    videoObjects = videoIds.map((id) => Videos[id]);
-  } else {
-    videoObjects = [];
-  }
-
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(true);
 
-  async function retryFetch(url) {
-    try {
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      });
-      return response;
-    } catch (error) {
-      console.error(error);
-      console.log("retrying fetch")
-      return retryFetch(url);
-    }
-  }
-
   useEffect(() => {
-    (async () => {
-      try {
-        if (addr.length === 0) return;
-        let user;
-        const arArk = await retryFetch(
-          `https://ark-core.decent.land/v2/profile/arweave/${addr}`
-        );
-        const ark = await arArk.json();
-
-        user = await ark.res;
-        setUserContent(user);
-        setIsSearching(false);
-        setIsLoading(false);
-      } catch (e) {
-        console.log(JSON.stringify(e));
-      } finally {
-        console.log("finally");
+    let user = {};
+    if (addr.split(".")[0].length === 43) {
+      async function getContent() {
+        let allContent = await getAllUserContent(profileId);
+        return allContent;
       }
-    })();
-  }, [addr, isSearching]);
+      getContent()
+        .then((res) => {
+          user.EVM = res[0];
+          user.POLY = res[1];
+          user.BSC = res[2];
+          user.FTM = res[3];
+          user.AVAX = res[4];
+          user.ARK = res[5].res;
+          user.POAPS = res[6].POAPS;
+          user.ARCADEMY_VIDEOS = res[7];
+          user.UPLOADED_VIDEOS = res[8][0];
+         
+          return user;
+        })
+        .then((user) => {
+          setUserContent(user);
+          setIsLoading(false);
+          setIsSearching(false);
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    }
+  }, [addr]);
 
-  let cards = videoObjects.map((content) => {
-    return (
-      <Link
-        key={content.uid}
-        to={`/playground/${content.uid}`}
-        className="cardLinks"
-      >
-        <Card content={content} />
-      </Link>
-    );
-  });
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       if (addr.length === 0) return;
+  //       console.log(addr, "video", "")
+  //       let ownerVideos = await getUserVideos(addr, "video", "");
+  //       const arArk = await retryFetch(
+  //         `https://ark-core.decent.land/v2/profile/arweave/${addr}`
+  //         );
+  //         Promise.all([ownerVideos, arArk])
+  //         .then((values) => {
+  //           let user;
+  //           console.log("values", values);
+  //           user = values;
+  //           //user.ownerVideos = values[0];
+  //           console.log("user-----------", user);
+  //           setUserContent(user);
+  //           setIsSearching(false);
+  //           setIsLoading(false);
+  //         })
+  //         .catch((e) => {
+  //           console.log(e);
+  //         });
+
+  //       // const ark = await arArk.json();
+  //       // user.ownerVideos = ownerVideos.json();
+  //       // user = await ark.res;
+  //       // setUserContent(user);
+  //       // setIsSearching(false);
+  //       // setIsLoading(false);
+  //     } catch (e) {
+  //       console.log(JSON.stringify(e));
+  //     } finally {
+  //       console.log("finally");
+  //     }
+  //   })();
+  // }, [addr, isSearching]);
+
+  // let cards = videoObjects.map((content) => {
+  //   return (
+  //     <Link
+  //       key={content.uid}
+  //       to={`/playground/${content.uid}`}
+  //       className="cardLinks"
+  //     >
+  //       <Card content={content} />
+  //     </Link>
+  //   );
+  // });
 
   return (
     <>
@@ -120,14 +138,14 @@ export default function Profile() {
                 </Col>
                 <Col align="center">
                   <h3>ANS Profile:</h3>
-                  {addr && userContent?.ARWEAVE && !isLoading ? (
+                  {addr && userContent[1]?.res?.ARWEAVE && !isLoading ? (
                     <ARKdisplay
-                      content={userContent}
-                      evmAddr={userContent.primary_address}
+                      content={userContent[1].res}
+                      evmAddr={userContent[1].res.primary_address}
                     />
                   ) : addr && !isLoading ? (
                     <>
-                      <UseAns addr={addr} />
+                      <UseAns addr={addr} forDashboard={false} />
                     </>
                   ) : (
                     <Loading />
@@ -137,12 +155,13 @@ export default function Profile() {
             )}
           </Container>
         )}
-        {videoObjects?.length > 0 && (
+
+        {addr && !isSearching && userContent?.ARCADEMY_VIDEOS?.length > 0 && (
           <div>
-            <h1>Videos</h1>
+            <h1>Arcademy Videos</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {videoObjects.map((content, i) => {
+                {userContent.ARCADEMY_VIDEOS.map((content, i) => {
                   return <Card content={content} />;
                 })}
               </div>
@@ -150,33 +169,49 @@ export default function Profile() {
           </div>
         )}
 
-        {addr && userContent?.primary_address && !isLoading && (
+        {addr &&
+          !isSearching &&
+          userContent?.UPLOADED_VIDEOS?.length > 0 &&
+          !isLoading && (
+            <div>
+              <h1>Owner Videos</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent.UPLOADED_VIDEOS.map((content, i) => {
+                    return (
+                      <div className="videoThumbnails" key={i}>
+                        <AtomicVideoCards video={content} />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+
+        {addr && userContent?.POAPS?.length > 0 && !isLoading && (
           <>
             <h1>Poaps:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.EVM[userContent.primary_address].POAPS.map(
-                  (content, i) => {
-                    return (
-                      <div key={i} className="mediaCards">
-                        <Poap content={content} />
-                      </div>
-                    );
-                  }
-                )}
-                
+                {userContent.POAPS.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <Poap content={content} />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </>
         )}
-        {console.log("User Content:", userContent)}
 
-        {addr && userContent?.NFTS && !isLoading && (
+        {addr && userContent?.ARK?.NFTS?.length > 0 && !isLoading && (
           <>
             <h1>NEAR NFTS:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.NFTS.map((content, i) => {
+                {userContent.ARK.NFTS.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
                       <NearNFTS content={content} />
@@ -187,52 +222,16 @@ export default function Profile() {
             </div>
           </>
         )}
-        {addr && userContent?.ARWEAVE?.STAMPS && !isLoading && (
+        {addr && userContent?.EVM?.length > 0 && !isLoading && (
           <>
-            <h1>Stamped Assets:</h1>
+            <h1>Ethereum NFTS:</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.ARWEAVE.STAMPS.map((content, i) => {
+                {userContent?.EVM?.map((content, i) => {
+                  if (content?.metadata === null) return null;
                   return (
                     <div key={i} className="mediaCards">
-                      <StampedAssets content={content} notForDashboard={true} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </>
-        )}
-        {addr && userContent?.ARWEAVE?.ANFTS?.permapages_img && !isLoading && (
-          <>
-            <h1>Created Atomic Assets:</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent?.ARWEAVE.ANFTS?.permapages_img.map(
-                  (content, i) => {
-                    return (
-                      <div key={i} className="mediaCards">
-                        <CreatedAtomicAssets
-                          content={content}
-                          notForDashboard={true}
-                        />
-                      </div>
-                    );
-                  }
-                )}
-              </div>
-            </div>
-          </>
-        )}
-        {addr && userContent?.ARWEAVE?.ANFTS?.koii.length > 0 && !isLoading && (
-          <>
-            <h1>Koii NFTS:</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
-                  return (
-                    <div key={i} className="mediaCards">
-                      <Koii content={content} />
+                      <EthereumNFTS content={content} />
                     </div>
                   );
                 })}
@@ -261,6 +260,104 @@ export default function Profile() {
               </div>
             </>
           )}
+        {addr && userContent?.POLY?.length > 0 && !isLoading && (
+          <>
+            <h1>Polygon NFTS:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.POLY.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <PolygonNFTS content={content} index={i} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
+
+        {addr &&
+          userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 &&
+          !isLoading && (
+            <>
+              <h1>Stamped Assets:</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
+                    return (
+                      <div key={i} className="mediaCards">
+                        <StampedAssets
+                          content={content}
+                          notForDashboard={true}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          )}
+
+        {addr &&
+          userContent?.ARK?.ARWEAVE?.ANFTS?.permapages_img?.length > 0 &&
+          !isLoading && (
+            <>
+              <h1>Created Atomic Assets:</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent?.ARK.ARWEAVE.ANFTS?.permapages_img.map(
+                    (content, i) => {
+                      return (
+                        <div key={i} className="mediaCards">
+                          <CreatedAtomicAssets
+                            content={content}
+                            notForDashboard={true}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
+        {/* {addr &&
+          userContent?.ARK?.ARWEAVE?.ANFTS?.koii?.length > 0 &&
+          !isLoading && (
+            <>
+              <h1>Koii NFTS:</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent?.ARK?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
+                    return (
+                      <div key={i} className="mediaCards">
+                        <Koii content={content} />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          )} */}
+
+        {addr && userContent?.AVAX?.length > 0 && !isLoading && (
+          <>
+            <h1>Avalnche NFTS:</h1>
+            <div className="contentScrollContainer">
+              <div className="hs">
+                {userContent?.AVAX.map((content, i) => {
+                  return (
+                    <div key={i} className="mediaCards">
+                      <AvalancheNFTS content={content} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

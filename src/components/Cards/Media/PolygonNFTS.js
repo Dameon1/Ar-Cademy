@@ -1,40 +1,71 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 import fallbackImage from "../../../winstonMedia.png";
+import NFTViewer from "./NFTViewer";
 
-export default function EthereumNFTS(props) {
-  let { content, EthImage, data } = props;
+
+export default function PolygonNFTS(props) {
+  let { content } = props;
   let dataObject;
-  if (content.metadata !== undefined) {
+  let image = fallbackImage;
+  let title= "Non confroming NFT";
+
+
+  if (content.name === null) {
+    title = "Non confroming NFT";
+  }
+  if (content.name=== undefined) {
+    title = "Non confroming NFT";
+  }
+  if (content.metadata === undefined) {
+    title = "Non confroming NFT";
+  }
+  if (content.metadata === null) {
+    title = "Non confroming NFT";
+  }
+
+  if(content.metadata){
     dataObject = JSON.parse(content.metadata);
-  } else {
+  }
+
+  if (content.metadata !== undefined && content.metadata !== null) {
+    dataObject = JSON.parse(content.metadata);
+  }
+  if(dataObject === undefined) {
     dataObject = {
-      name: content.name,
+      name: "non conforming NFT",
       image: fallbackImage,
     }
   }
-  if (dataObject === null) {
-    return null;
+  if (dataObject !== null || dataObject === undefined) {
+    title = dataObject.name;
+    // dataObject = {
+    //   name: title,
+    //   image: fallbackImage,
+    // }
   }
-  let { image } = dataObject;
+  //let { image } = dataObject;
 
-  if (image === undefined) {
+  if (image === undefined || image === null) {
     image =
       fallbackImage
   }
   if(content.image !== undefined && content.image !== null) {
     image = content.image;
   }
-
   image = image.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
   image = image.replace("ipfs://", "https://ipfs.io/ipfs/");
-
-  let title = dataObject.name;
-  if (title === undefined) {
-    title = "non-conforming metadata";
-  }
+  // title = dataObject.name;
+  
+  
   if (title.length > 26) {
     title = title.substring(0, 26) + "...";
   }
+
+
+
+
+ 
+  
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
@@ -52,19 +83,20 @@ export default function EthereumNFTS(props) {
         >
           <Col>
             <Text h3 color="white" css={{ margin: "2px", padding: "0" }}>
-              {title}
+              {content.name}
             </Text>
           </Col>
         </Card.Header>
 
-        <Card.Body css={{ p: 15 }}>
+        <Card.Body css={{ pt: 50 }}>
+          {/* This line is for Presentation */}
+          {/* <NFTViewer content={content} /> */}
           <Card.Image
             src={image}
             alt={content.videoTitle}
             width="100%"
             height="100%"
             onError={(e) => {
-              console.log("error loading image", content);
               e.target.src = fallbackImage;
             }}
           />
@@ -83,16 +115,13 @@ export default function EthereumNFTS(props) {
             <Col>
               <Row>
                 <Col alignitems="flex-end">
-                  {/* <Text color="#d1d1d1" size={12}>
-                    {"content.event.year"}
-                  </Text> */}
                 </Col>
               </Row>
             </Col>
             <Col>
               <Row justify="center">
                 <a
-                  href={`https://opensea.io/assets/ethereum/${content.token_address}/${content.token_id}`}
+                  href={`https://opensea.io/assets/matic/${content.token_address}/${content.token_id}`}
                   className="textNoDec"
                   target="_blank"
                   rel="noreferrer"

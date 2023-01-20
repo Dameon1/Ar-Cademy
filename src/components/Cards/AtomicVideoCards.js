@@ -5,6 +5,7 @@ import image from "../../winstonMedia.png";
 
 export default function AtomicVideoCards(props) {
   const { video, setState } = props;
+  console.log("video", video)
   return (
     <>
       {

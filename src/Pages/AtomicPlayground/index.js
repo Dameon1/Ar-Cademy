@@ -95,12 +95,10 @@ export default function AtomicPlayground() {
   //let links = Videos[videoId].sandboxLinks;
   return (
     <>
-      {isLoading ? (
-        null
-      ) : (
+      {isLoading ? null : (
         <section>
           <div className="playground-section">
-            <AtomicVideoPlayerContainer setState={setState}/>
+            <AtomicVideoPlayerContainer setState={setState} />
             <AtomicSandbox
               title="sandbox"
               sandboxContent={urls.links[0]}

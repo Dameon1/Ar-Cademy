@@ -10,11 +10,12 @@ module.exports = function override(config) {
     "stream": require.resolve("stream-browserify"),
     "assert": require.resolve("assert"),
     "constants": require.resolve("constants-browserify"),
+    "path": require.resolve("path-browserify"),
   })
   config.resolve.fallback = fallback;
   config.plugins = (config.plugins || []).concat([
     new webpack.ProvidePlugin({
-      process: 'process/browser',
+      process: 'process/browser.js',
       Buffer: ['buffer', 'Buffer']
     })
   ])

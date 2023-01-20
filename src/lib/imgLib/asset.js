@@ -69,17 +69,13 @@ query {
   );
 }
 
-export async function assetDetails(asset, addr="") {
+export async function assetDetails(asset, addr = "") {
   console.log("asset:", asset);
-  //console.log("addr:", addr);
-  // const state = await fetch('https://cache.permapages.app/' + asset)
-  //   .then(res => res.ok ? res.json() : Promise.reject(new Error('could not find asset state!')))
   const state = await warp
     .contract(asset)
     .setEvaluationOptions({ internalWrites: true, allowBigInt: true })
     .readState()
     .then(path(["cachedValue", "state"]));
-  //console.log(state)
   try {
     const balances = state.balances;
     const totalBalance = reduce((a, b) => a + b, 0, values(balances));
@@ -158,7 +154,6 @@ export async function transfer({ asset, title, caller, addr, percent }) {
 }
 
 export async function includeTransferred(addr) {
-  // lxZ38bR9ABqIDINHuHlJI7o5aYQeJeSlYOz3UWBoMao
   return fetch("https://arweave.net/graphql", {
     method: "POST",
     headers: {
@@ -291,7 +286,7 @@ query {
         path(["data", "transactions", "edges"])
       )
     );
-  console.log("images",images);
+  console.log("images", images);
   return await images;
 }
 
@@ -330,7 +325,6 @@ export async function getAssetData(id) {
       owner: data.transaction.owner.address,
       timestamp: data.transaction?.block?.timestamp || Date.now() / 1000,
     }));
-  //.then(_ => ({ title: 'Test', description: 'Description' }))
 }
 
 function query(id) {
@@ -350,7 +344,6 @@ query {
     }
   }
 }
-  
   `;
 }
 //------------------------------------------------
@@ -360,7 +353,10 @@ function transformTx(node) {
     id: node.id,
     title: prop("value", find(propEq("name", "Title"), node.tags)),
     type: prop("value", find(propEq("name", "Type"), node.tags)),
-    videoImageId: prop("value", find(propEq("name", "Video-Image-Id"), node.tags)),
+    videoImageId: prop(
+      "value",
+      find(propEq("name", "Video-Image-Id"), node.tags)
+    ),
     description: prop("value", find(propEq("name", "Description"), node.tags)),
     owner: node.owner.address,
     timestamp: node?.block?.timestamp || Date.now() / 1000,

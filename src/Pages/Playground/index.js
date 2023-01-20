@@ -5,6 +5,8 @@ import { useEffect, useState  } from 'react'
 import {
   Loading,
 } from "@nextui-org/react";
+
+
 export default function Playground() {
   const [videoID, setVideoID] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -26,7 +28,7 @@ export default function Playground() {
   let links = Videos[videoId].sandboxLinks;
   
   return (
-    isLoading ? ( <Loading /> ) : (
+    isLoading ? null : (
     <section>
       <div className="playground-section">
         <VideoPlayerContainer videoID={videoID} setState={setState}/>
