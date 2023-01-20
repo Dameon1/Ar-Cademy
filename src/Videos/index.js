@@ -354,7 +354,7 @@ export const Videos = {
     "28": {
         uid: "28",
         videoSrc: "https://cdn.livepeer.com/asset/664ev9jc5iijwhyb/video",
-        videoImage: "https://lens.infura-ipfs.io/ipfs/bafybeier7diojgfigd2ggohrjze4uraezo2famsfuagleki7oylc7awv2a",
+        videoImage: "https://img.lenstube.xyz/tr:n-thumbnail,tr:di-placeholder.webp/https://ipfs.lenstube.xyz/ipfs/bafybeier7diojgfigd2ggohrjze4uraezo2famsfuagleki7oylc7awv2a",
         videoTitle: "Building Full Stack Permanent Applications with Arweave, Smartweave, and Next.js",
         videoLocation: "Arweave",
         description: "In this video you'll learn how to build full stack dapps on Arweave with Smartweave, Warp, and Next.js.",

@@ -453,9 +453,9 @@ export default function Upload() {
     const msgParams = JSON.stringify({
       message: {
         content: "test",
-      }
+      },
     });
-    await trx.sign({msgParams});
+    await trx.sign({ msgParams });
     const result = await trx.upload();
     console.log("result", result);
     const contractTags = [
@@ -818,10 +818,17 @@ export default function Upload() {
               </Row>
               <Spacer y={1} />
               <Row justify="center" align="center" gap={1}>
-                <h3>Add External Link:</h3>
+                <h3>Add External Links:</h3>
               </Row>
               <Row justify="center" align="center" gap={1}>
                 <Col>
+                  <Row justify="center" align="center" gap={1}>
+                    <p className="pText">Add up to 5</p>
+                  </Row>
+                  <Row justify="center" align="center" gap={1}>
+                    <p className="pText">URLs: {urls.length}/5</p>
+                  </Row>
+
                   <form onSubmit={handleUrlSubmit}>
                     <Input
                       type="text"
@@ -867,7 +874,7 @@ export default function Upload() {
 
                   {urls.map((url, index) => (
                     <div key={index}>
-                      <Row wrap="no-wrap" >
+                      <Row wrap="no-wrap">
                         <p className="pText">
                           {url.label}: {url.url}
                         </p>
