@@ -138,6 +138,14 @@ export const currencyMap = {
       rpcUrls: ["https://polygon-rpc.com"],
     },
   },
+  ethereum: {
+    providers: ethProviders,
+    opts: {
+      chainId: 1,
+      chainName: "Ethereum Mainnet",
+      rpcUrls: ["https://1rpc.io/eth"],
+    },
+  },
   arbitrum: {
     providers: ethProviders,
     opts: {
@@ -168,6 +176,22 @@ export const currencyMap = {
       chainName: "BOBA L2",
       chainId: 288,
       rpcUrls: ["https://mainnet.boba.network"],
+    },
+  },
+  optimism: {
+    providers: ethProviders,
+    opts: {
+      chainName: "Optimism",
+      chainId: 10,
+      rpcUrls: ["https://1rpc.io/op"],
+    },
+  },
+  fantom: {
+    providers: ethProviders,
+    opts: {
+      chainName: "Fantom",
+      chainId: 250,
+      rpcUrls: ["https://rpc.fantom.network"],
     },
   },
   near: {
