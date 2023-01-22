@@ -250,11 +250,11 @@ ul {
   margin: 0px 10px;
 }
 
-.identity-link,
+
 .button {
   color: black;
   border: 2px solid #008c9e;
-  font-size: 0.75em;
+  
   padding: 0.3em;
   background-color: white;
   -webkit-box-shadow: 0.5px 1px 8px 1px rgba(0, 0, 0, 0.25);

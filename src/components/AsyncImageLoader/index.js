@@ -1,30 +1,30 @@
 import { useEffect, useState } from 'react';
-const AsyncImageLoader = (props) => {
-  const [loadedSrc, setLoadedSrc] = useState(null);
-  const [alt, setAlt] = useState('');
+
+const AsyncImageLoader = ({ src, alt, ...rest }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [imageAlt, setImageAlt] = useState('');
+
   useEffect(() => {
-    setLoadedSrc(null);
-    if (props.src) {
+    setImageSrc(null);
+    if (src) {
       const handleLoad = () => {
-        setLoadedSrc(props.src);
-        setAlt(props.alt)
+        setImageSrc(src);
+        setImageAlt(alt);
       };
       const image = new Image();
       image.addEventListener('load', handleLoad);
-      image.src = props.src;
-      image.alt = props.alt;
+      image.src = src;
+      image.alt = alt;
       return () => {
         image.removeEventListener('load', handleLoad);
       };
     }
-  }, [props.src, props.alt]);
-  if (loadedSrc === props.src) {
-    return (
-      <img {...props} alt={alt}  />
-    );
+  }, [src, alt]);
+
+  if (imageSrc === src) {
+    return <img src={imageSrc} alt={imageAlt} {...rest} style={{borderRadius: "5px", minWidth:"50px"}}/>;
   }
   return null;
 };
-
 
 export default AsyncImageLoader;

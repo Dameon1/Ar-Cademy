@@ -21,6 +21,7 @@ import {
   Container,
   Button,
   Spacer,
+  Avatar,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 //import { take, takeLast } from "ramda";
@@ -136,7 +137,20 @@ export default function AtomicVideoPlayerContainer(props) {
             </video> */}
 
             <footer className="video-footer">
-              <p className="pText">{asset.description}</p>
+              <Row display="flex" justify="flex-start" align="center">
+                
+                  <Link to={`/profile/${asset.owner}/${asset.owner}`}>
+                    <Avatar
+                      src={"https://arweave.net/" + ownerData.profile.avatar}
+                      size="lg"
+                    />
+                  </Link>
+              
+
+                <Col>
+                  <p className="pText">{asset.description}</p>
+                </Col>
+              </Row>
               <Spacer y={1} />
               <Row justify="center" align="space-evenly">
                 {authorObject?.authorWebsite && (
