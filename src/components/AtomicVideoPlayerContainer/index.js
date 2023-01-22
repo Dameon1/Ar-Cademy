@@ -138,13 +138,13 @@ export default function AtomicVideoPlayerContainer(props) {
 
             <footer className="video-footer">
               <Row display="flex" justify="flex-start" align="center">
-                
                   <Link to={`/profile/${asset.owner}/${asset.owner}`}>
                     <Avatar
                       src={"https://arweave.net/" + ownerData.profile.avatar}
                       size="lg"
                     />
                   </Link>
+                
               
 
                 <Col>

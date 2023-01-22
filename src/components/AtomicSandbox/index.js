@@ -15,11 +15,11 @@ export default function AtomicSandbox(props) {
   }, [sandboxLinks]);
 
   function setFilter(index) {
-    console.log(index, sandboxContent)
+    console.log(index, sandboxContent);
     if (sandboxContent !== sandboxLinks[index]) {
-        console.log(sandboxLinks[index])
-        let newContent = sandboxLinks[index];
-        console.log("setFilter", index, sandboxContent)
+      console.log(sandboxLinks[index]);
+      let newContent = sandboxLinks[index];
+      console.log("setFilter", index, sandboxContent);
       setSandboxContent(newContent.url);
     }
   }
@@ -41,11 +41,7 @@ export default function AtomicSandbox(props) {
   function SandboxButtons(data) {
     return sandboxButtonTitles.map((sandboxType, i) => {
       return (
-        <button
-          key={i}
-          className="sandboxButton"
-          onClick={() => setFilter(i)}
-        >
+        <button key={i} className="sandboxButton" onClick={() => setFilter(i)}>
           {sandboxType}
         </button>
       );
@@ -54,25 +50,21 @@ export default function AtomicSandbox(props) {
 
   return (
     <div className="sandbox">
-      <div className="sandboxHeaderContainer">
-        <p className="sandboxHeader">Filter by IDE</p>
-        <div className="filtersListStyle">
-          <SandboxButtons data={sandboxButtonTitles} onClick={onMyFrameLoad} />
-        </div>
+      <p className="sandboxHeader">Filter Tabs</p>
+      <div className="filtersListStyle">
+        <SandboxButtons data={sandboxButtonTitles} onClick={onMyFrameLoad} />
       </div>
       <>
-        <div className="testing">
-          <div className="sandboxIframe">
-            <iframe
-              className="sandboxIframe"
-              onLoad={onMyFrameLoad}
-              frameBorder="0"
-              width="100%"
-              height="100%"
-              title={props.title}
-              src={sandboxContent}
-            ></iframe>
-          </div>
+        <div className="sandboxIframe">
+          <iframe
+            className="sandboxIframe"
+            onLoad={onMyFrameLoad}
+            frameBorder="0"
+            width="100%"
+            height="100%"
+            title={props.title}
+            src={sandboxContent}
+          ></iframe>
         </div>
       </>
     </div>

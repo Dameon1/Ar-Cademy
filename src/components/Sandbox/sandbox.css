@@ -1,5 +1,6 @@
 .sanboxHeaderContainer {
-  max-height: 75px;
+  max-height: 55px;
+  background-color: green
 }
 
 .filtersContainerStyle {
@@ -45,13 +46,11 @@
   box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.35);
 }
 
-.testing {
-  margin-top:10px;
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-}
+
 
 .sandboxIframe {
+  margin-top:1px;
+  display: flex;
+  flex-flow: column;
   height: 100%;
 }

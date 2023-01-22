@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { getRecentUploadData } from "../../Queries/AppQueries";
-import { Grid, Card, Text, Link } from "@nextui-org/react";
+import { Grid, Card, Text, Link, Tooltip } from "@nextui-org/react";
 
 import AsyncImageLoader from "../../components/AsyncImageLoader";
 
@@ -66,7 +66,7 @@ export function LandingPage() {
     );
   });
   console.log(
-    "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/8aGgG7C_CnyOZQZsCg3lSEt9B-ESmp2puKX_tEulG_8"
+    "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/dHf8bIr9FHoAFuvhbxKiGDaRF5AU_7p9x9W3wFsuMbY"
   );
 
   let recentUploadCards = recentUploads.map((upload, index) => {
@@ -160,7 +160,7 @@ export function LandingPage() {
         <Grid sm={4} justify="center" align="center">
           <Card css={{ mw: "240px" }}>
             <Card.Header css={{ display: "inline-block", padding: "5" }}>
-              <h3 b>Hyper63</h3>
+              <h3 b>Hyper63 - Company</h3>
             </Card.Header>
             <Card.Divider />
             <Card.Body css={{ py: "$10" }}>
@@ -170,6 +170,12 @@ export function LandingPage() {
             </Card.Body>
             <Card.Divider />
             <Card.Footer>
+              <img
+                style={{ width: "50px" }}
+                alt="hyper63Logo"
+                src="https://arweave.net/6ACBEXhB2fn193ILOMm9E5T9qB8cr4q88BH6DdmrvUE"
+              />
+
               <Row justify="flex-end">
                 <Link href="https://hyper63.com/" target="_blank">
                   <Button
@@ -193,7 +199,7 @@ export function LandingPage() {
         <Grid sm={4} justify="center" align="center">
           <Card css={{ mw: "240px" }}>
             <Card.Header css={{ display: "inline-block", padding: "5" }}>
-              <h3 b>Tom Wilson</h3>
+              <h3 b>Tom Wilson - Creator</h3>
             </Card.Header>
             <Card.Divider />
             <Card.Body css={{ py: "$10" }}>
@@ -201,6 +207,11 @@ export function LandingPage() {
             </Card.Body>
             <Card.Divider />
             <Card.Footer>
+              <img
+                style={{ width: "50px" }}
+                alt="hyper63Logo"
+                src="https://arweave.net/pFgnS-OV3a_egOjwio0Tzza3jfYADQLmmtfgbe2JKHc"
+              />
               <Row justify="flex-end">
                 <Button
                   size="sm"
@@ -214,7 +225,7 @@ export function LandingPage() {
                   }}
                   onPress={() =>
                     navigate(
-                      "/Ar-Cademy/profile/vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI/vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI"
+                      "/profile/vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI/vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI"
                     )
                   }
                 >
@@ -248,8 +259,10 @@ export function LandingPage() {
         css={{ minWidth: "200px" }}
       >
         <Grid xs={1}>
-          <Col style={{ borderRadius: "5px", minWidth: "50px" }}>
-            <div>
+          <Col>
+            <Tooltip content="PermaDAO">
+              <Link href="https://twitter.com/perma_dao" target="_blank" rel="noreferrer">
+            <div style={{ width: "50px" }}>
               <AsyncImageLoader
                 src={
                   "https://arweave.net/ywMQ7PhpCU8XFK2urlPV3frzA2B4Wwvb5q1_anxPD7M"
@@ -257,16 +270,26 @@ export function LandingPage() {
                 alt="PermaDAO"
               />
             </div>
+            </Link>
+          </Tooltip>
           </Col>
         </Grid>
         <Spacer x={2} />
         <Grid xs={1}>
-          <AsyncImageLoader
-            src={
-              "https://arweave.net/qOe4PDOcCOGJmEue2HE6qPgFphMu5qO7mwYPKtGBbRA"
-            }
-            alt="DecentLand"
-          />
+          <Tooltip content="DecentLand">
+            <Link
+              href="https://www.decent.land/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AsyncImageLoader
+                src={
+                  "https://arweave.net/qOe4PDOcCOGJmEue2HE6qPgFphMu5qO7mwYPKtGBbRA"
+                }
+                alt="DecentLand"
+              />
+            </Link>
+          </Tooltip>
         </Grid>
       </Grid.Container>
     </>

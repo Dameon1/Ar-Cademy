@@ -46,14 +46,12 @@ export default function Sandbox(props) {
 
   return (
     <div className="sandbox">
-      <div className="sandboxHeaderContainer">
-        <p className="sandboxHeader">Filter by IDE</p>
+      
+        <p className="sandboxHeader">Filter Tabs</p>
         <div className="filtersListStyle">
           <SandboxButtons data={sandboxButtonTypes} onClick={onMyFrameLoad}/>
         </div>
-      </div>
       <>
-        <div className="testing">
           <div className="sandboxIframe">
             <iframe
               className="sandboxIframe"
@@ -65,7 +63,6 @@ export default function Sandbox(props) {
               src={sandboxContent}
             ></iframe>
           </div>
-        </div>
       </>
     </div>
   );
