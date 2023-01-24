@@ -250,48 +250,50 @@ export function LandingPage() {
       </div>
       <Spacer y={2} />
       <Row justify="center" align="center">
-        <h3>Our Partners</h3>
+        <h3>February Sponsors</h3>
       </Row>
-      <Grid.Container
-        gap={2}
-        justify="center"
-        align="center"
-        css={{ minWidth: "200px" }}
-      >
-        <Grid xs={1}>
-          <Col>
+      <Container gap={2} justify="space-between" align="center">
+        <Row justify="center">
+          <Col style={{ width: "75px", height: "75px" }}>
             <Tooltip content="PermaDAO">
-              <Link href="https://twitter.com/perma_dao" target="_blank" rel="noreferrer">
-            <div style={{ width: "50px" }}>
-              <AsyncImageLoader
-                src={
-                  "https://arweave.net/ywMQ7PhpCU8XFK2urlPV3frzA2B4Wwvb5q1_anxPD7M"
-                }
-                alt="PermaDAO"
-              />
-            </div>
-            </Link>
-          </Tooltip>
+              <Link
+                href="https://twitter.com/perma_dao"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div style={{ width: "75px", height: "75px" }}>
+                  <AsyncImageLoader
+                    src={
+                      "https://arweave.net/ywMQ7PhpCU8XFK2urlPV3frzA2B4Wwvb5q1_anxPD7M"
+                    }
+                    alt="PermaDAO"
+                  />
+                </div>
+              </Link>
+            </Tooltip>
           </Col>
-        </Grid>
-        <Spacer x={2} />
-        <Grid xs={1}>
-          <Tooltip content="DecentLand">
-            <Link
-              href="https://www.decent.land/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <AsyncImageLoader
-                src={
-                  "https://arweave.net/qOe4PDOcCOGJmEue2HE6qPgFphMu5qO7mwYPKtGBbRA"
-                }
-                alt="DecentLand"
-              />
-            </Link>
-          </Tooltip>
-        </Grid>
-      </Grid.Container>
+          <Spacer x={2} />
+
+          <Col style={{ width: "75px", height: "75px" }}>
+            <Tooltip content="DecentLand">
+              <Link
+                href="https://www.decent.land/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div style={{ width: "100px", height: "90px" }}>
+                  <AsyncImageLoader
+                    src={
+                      "https://arweave.net/qOe4PDOcCOGJmEue2HE6qPgFphMu5qO7mwYPKtGBbRA"
+                    }
+                    alt="DecentLand"
+                  />
+                </div>
+              </Link>
+            </Tooltip>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

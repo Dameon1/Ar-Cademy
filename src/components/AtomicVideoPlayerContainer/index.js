@@ -142,6 +142,7 @@ export default function AtomicVideoPlayerContainer(props) {
                     <Avatar
                       src={"https://arweave.net/" + ownerData.profile.avatar}
                       size="lg"
+                      pointer="true"
                     />
                   </Link>
                 

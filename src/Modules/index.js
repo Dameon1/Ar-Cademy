@@ -1,34 +1,34 @@
 export const Modules = {
     'Learn': {
         description: 'Collection of intro videos',
-        moduleImage: "https://media-exp1.licdn.com/dms/image/C4D0BAQH-0pICKzYLvg/company-logo_200_200/0/1583424242994?e=2147483647&v=beta&t=726Ls-QhLFlq-yz0KukkUhrZR2TL0771kI_wK1E3bvs",
+        moduleImage: "https://arweave.net/oAKAInjmGfsUZ6abfwkvSLu3GOj2YFZ95iQAg4xUY4g",
     },
     'Deployment': {
         description: 'Learn to Deploy',
-        moduleImage: "https://images-na.ssl-images-amazon.com/images/I/415x3oFUotL.jpg",
+        moduleImage:  "https://arweave.net/84iHPKgHMQ0_QpSCIP6-SbPimTru2C8r7SPrJa3wTDs",
     },
     'Build': {
         description: 'Building on the Blockchain',
-        moduleImage: "https://static.thenounproject.com/png/2085889-200.png",
+        moduleImage:  "https://arweave.net/f8nZVnXREU7USX-sX5SvOxKUGb5NT5RG9VYZs7MuAL0",
     },
     'Storage': {
         description: 'Persistent and Secure',
-        moduleImage: "https://th.bing.com/th/id/OIP.OvfPBlIKG56wcR9nJzJ_lwHaHa?w=220&h=220&c=7&r=0&o=5&dpr=1.38&pid=1.7",
+        moduleImage:  "https://arweave.net/biAz-z2Yn79mKZDVrJXSKdNZHJN-mnZLrB916-38LZE",
     },
     'APIs': {
         description: 'Arweave as global API',
-        moduleImage: "https://th.bing.com/th/id/OIP.k2PHi7_8HMYYhA14eXlrYAAAAA?w=126&h=128&c=7&r=0&o=5&dpr=1.38&pid=1.7",
+        moduleImage:  "https://arweave.net/oUUUv1DEbErr3M05dEbOBOHDRrEnDc54QYG5Dxh434Q",
     },
     'ArFS': {
         description: 'ArDrive Filesystem',
-        moduleImage: "https://avatars.githubusercontent.com/u/69483974?s=200&v=4",
+        moduleImage:  "https://arweave.net/wDI7xjbMbuCKFbig-8homjCfd5wyCR1kaN06cK5cvfM",
     },
     'Tokenomics': {
         description: 'Exploring tokeninazation',
-        moduleImage: "https://pbs.twimg.com/profile_images/1425087873037053958/ZyG44LKg_400x400.jpg",
+        moduleImage:  "https://arweave.net/0XBlRmjLnkrSOYY0WNib0Sd9q8NGsIT22l063ge_Uek",
     },
     'Identity': {
         description: 'Decentralized Identitites',
-        moduleImage: "https://th.bing.com/th/id/OIP.BXgBi4tlu6GtXe6NWTFaDQHaHa?w=167&h=180&c=7&r=0&o=5&dpr=1.38&pid=1.7",
+        moduleImage:  "https://arweave.net/QUAPeHj38XRlGg6Xt0G6CcXXD_1Gj8YbpEmlv3bDxfk",
     },
 }

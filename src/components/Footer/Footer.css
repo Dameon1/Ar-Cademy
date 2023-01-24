@@ -2,7 +2,7 @@
   font-size: 0.875rem;
   background-color: #717C86;
   text-align: center;
-  height: 100px;
+ 
 }
 
 .main-footer p {
@@ -20,7 +20,7 @@
 @media (min-width: 36em) {
   .main-footer {
     font-size: 0.925rem;
-    padding: 1.2em 6%;
+    padding: 0 4%;;
   }
 }
 
@@ -76,9 +76,9 @@
   position: relative;
   left: 0;
   bottom: 0;
-  width: 100px;
+  width: 75px;
   height: 45px;
   display: inline-block;
   vertical-align: middle;
-  margin-bottom: 0.5em;
+  
 }

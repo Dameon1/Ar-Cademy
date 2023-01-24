@@ -12,6 +12,7 @@ import {
   Container,
   Button,
   Spacer,
+  Avatar,
 } from "@nextui-org/react";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
@@ -25,20 +26,19 @@ export function VideoPlayerContainer(props) {
   const [arcademyVideos, setArcademyVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [videoObject, setVideoObject] = useState();
-  
+
   function getArcademyVideos(id) {
     let authorObject = Authors[id];
     let authorVideos;
-    console.log("id", id)
+    console.log("id", id);
     if (authorObject !== undefined) {
       authorVideos = authorObject.createdVideosByID
         .map((x) => Videos[x])
         .filter((x) => x.uid !== videoID);
     }
-    console.log(authorVideos, "authorVideos")
+    console.log(authorVideos, "authorVideos");
     return [authorVideos, authorObject];
   }
- 
 
   useEffect(() => {
     let videoObject = Videos[props.videoID];
@@ -57,39 +57,38 @@ export function VideoPlayerContainer(props) {
       let ownerVideos = await getUserVideos(authorObject.uid, "video", "");
       let authorVideos = getArcademyVideos(authorObject.uid);
       let filteredOwnerVideos = ownerVideos[0].filter((x) => x.id !== videoID);
-      
+
       if (authorVideos[0] !== undefined) {
         setArcademyVideos(authorVideos[0]);
         //setAuthorObject(authorVideos[1]);
       }
       setContentObject(assetDetails);
       setOwnerVideos(filteredOwnerVideos);
-      setIsLoading(false)
+      setIsLoading(false);
     }
     getData();
   }, [props]);
 
-
-    let cards = arcademyVideos.map((content, index) => {
-      //console.log(arcademyVideos, "arcademyVideos")
-      return (
-        <div className="videoThumbnails" key={index}>
-          <MediaCards content={content} setState={setState} />
-        </div>
-      );
-    });
-
-    let atomicCards = ownerVideos.map((video, index) => {
-      console.log(ownerVideos, "ownerVideos");
-      return (
-        <div className="videoThumbnails" key={index}>
-          <AtomicVideoCards video={video} setState={setState} />
-        </div>
-      );
-    });
-
+  let cards = arcademyVideos.map((content, index) => {
+    //console.log(arcademyVideos, "arcademyVideos")
     return (
-      <>
+      <div className="videoThumbnails" key={index}>
+        <MediaCards content={content} setState={setState} />
+      </div>
+    );
+  });
+
+  let atomicCards = ownerVideos.map((video, index) => {
+    console.log(ownerVideos, "ownerVideos");
+    return (
+      <div className="videoThumbnails" key={index}>
+        <AtomicVideoCards video={video} setState={setState} />
+      </div>
+    );
+  });
+
+  return (
+    <>
       <div className="video-player-container">
         {isLoading ? (
           <Loading />
@@ -113,14 +112,34 @@ export function VideoPlayerContainer(props) {
                   width="100%"
                   height="100%"
                 >
-                  <source src={contentObject.videoObject.videoSrc} type="video/mp4" />
+                  <source
+                    src={contentObject.videoObject.videoSrc}
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             ) : (
               <VideoPlayer src={contentObject.videoObject.videoSrc} />
             )}
             <footer className="video-footer">
-              <p className="pText">{contentObject.videoObject.description}</p>
+              <Row display="flex" justify="flex-start" align="center">
+                <Link
+                  to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
+                >
+                  <Avatar
+                    src={ contentObject.authorObject.avatar }
+                    size="lg"
+                    pointer="true"
+                  />
+                </Link>
+
+                <Col>
+                  <p className="pText">
+                    {contentObject.videoObject.description}
+                  </p>
+                </Col>
+              </Row>
+
               <Spacer y={1} />
               <Row justify="center" align="space-evenly">
                 <Col>
@@ -159,16 +178,15 @@ export function VideoPlayerContainer(props) {
               <div className="contentScrollContainer">
                 <div className="hs">
                   {atomicCards}
-                  {cards} 
+                  {cards}
                 </div>
               </div>
             </footer>
           </>
         )}
       </div>
-      </>
-    );
-  
+    </>
+  );
 }
 
 export default VideoPlayerContainer;

@@ -37,8 +37,8 @@ function ModulePage() {
   let topicCards = videoIds.map((videoId, index) => {
     let videoObject = Videos[videoId];
     let videoTitle;
-    if (videoObject.videoTitle.length > 20) {
-      videoTitle = videoObject.videoTitle.slice(0, 20);
+    if (videoObject.videoTitle.length > 15) {
+      videoTitle = videoObject.videoTitle.slice(0, 15) + "...";
     } else {
       videoTitle = videoObject.videoTitle;
     }

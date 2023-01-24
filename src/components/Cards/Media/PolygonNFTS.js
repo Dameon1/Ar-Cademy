@@ -61,12 +61,6 @@ export default function PolygonNFTS(props) {
     title = title.substring(0, 26) + "...";
   }
 
-
-
-
- 
-  
-
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="mediaCards">
       <Card
@@ -89,9 +83,9 @@ export default function PolygonNFTS(props) {
         </Card.Header>
 
         <Card.Body css={{ pt: 50 }}>
-          {/* This line is for Presentation */}
-          {/* <NFTViewer content={content} /> */}
-          <Card.Image
+          {/* NFTViewer is for Presentation */}
+          <NFTViewer content={content} />
+          {/* <Card.Image
             src={image}
             alt={content.videoTitle}
             width="100%"
@@ -99,7 +93,7 @@ export default function PolygonNFTS(props) {
             onError={(e) => {
               e.target.src = fallbackImage;
             }}
-          />
+          /> */}
         </Card.Body>
         <Card.Footer
           isBlurred

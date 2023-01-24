@@ -136,6 +136,17 @@ export const Authors = {
         username: "@xendarboh",
         avatar: "https://pbs.twimg.com/profile_images/3422271797/caf9c1d59faf35ea559117e521a3b131_200x200.png"
     },
+    '15': {
+        author: "Akord",
+        authorLink: "https://twitter.com/AkordTeam",
+        authorWebsite: "https://linktr.ee/akord.com",
+        createdVideosByID: ["29","30","31","32","33","34","35","36","37","38"],
+        createdContentByID: ["ContentID"],
+        uid: "15",
+        addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        username: "@AkordTeam",
+        avatar: "https://arweave.net/k5sxUsgCyOkBRLH9iXSfie3s-VnNaN_4iTDjjA_TA5I"
+    },
 }
 
 // 'id': {
