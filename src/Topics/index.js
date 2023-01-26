@@ -2,11 +2,11 @@
 export const Topics = {
     'Learn': {
         topics: ['!Tags'],
-        videosById: ["1", "28", "27", "9", "4", "25", "12", "11", "23", "13", "14", "22", "3", "6", "10"],
+        videosById: ["1","47", "28", "27", "9", "4", "25", "12", "11", "23", "13", "14", "22", "3", "6", "10"],
     },
     'Deployment': {
         topics: [],
-        videosById: ["29","3"],
+        videosById: ["48","29","3",],
     },
     'Build': {
         topics: [],
@@ -14,7 +14,7 @@ export const Topics = {
     },
     'Storage': {
         topics: [],
-        videosById: ["12", "25", "4", "9", "3", "13"],
+        videosById: ["12", "49", "25", "4", "9", "3", "13"],
     },
     "APIs": {
         topics: [],
@@ -22,7 +22,7 @@ export const Topics = {
     },
     'Tokenomics': {
         topics: [],
-        videosById: [ "39", "40"],
+        videosById: [ "39","50", "40"],
     },
     'Identity': {
         topics: [],

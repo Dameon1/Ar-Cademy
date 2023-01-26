@@ -202,14 +202,28 @@ export const Authors = {
 
   //--DecentdotLand--//
   18: {
-    author: "MetaWeave",
+    author: "DecentdotLand",
     authorLink: "https://twitter.com/MetaweaveTeam",
     authorWebsite: "https://metaweave.arweave.dev/",
     createdVideosByID: [],
     createdContentByID: ["ContentID"],
-    uid: "17",
+    uid: "18",
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    username: "@MetaweaveTeam",
+    username: "@DecentdotLand",
+    avatar: "",
+  },
+
+  //--4everland--//
+  19: {
+    author: "4everland",
+    authorLink: "https://twitter.com/4everland_org",
+    authorWebsite: "https://www.4everland.org/",
+    createdVideosByID: ["47", "48", "49", "50"],
+    createdContentByID: ["ContentID"],
+    uid: "19",
+    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    username: "@4everland_org",
+    avatar: "https://arweave.net/Ea779WkfqaepaYOms6L4wF7tUedXX5FIrd3M3TwtUd8",
   },
 };
 

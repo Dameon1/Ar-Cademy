@@ -17,7 +17,7 @@ export function Footer() {
         </Col>
         <Col css={{ height: "100%", marginTop: "20px" }}>
           <p className="pText">
-           DSM&copy;2023{" "}
+           &copy;2023{" "}
           </p>
         </Col>
         <Col alignItems="center">

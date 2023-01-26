@@ -576,9 +576,9 @@ export const Videos = {
         uid: "42",
         videoSrc: "https://www.youtube.com/watch?v=Jb2PN4ISwuM",
         videoImage: "https://i.ytimg.com/vi/Jb2PN4ISwuM/hqdefault.jpg",
-        videoTitle: "HOW TO: Use the ArDrive CLI (w Cowboy Coder) (Part 1/4)",
+        videoTitle: "HOW TO: Upload a File with ArDrive Mobile",
         videoLocation: "Youtube",
-        description: "Know before you lasso! In our new video tutorial series on the CLI, Cowboy Coder shows us some of the exciting ways you can optimize your ArDrive experience (part 1 of 4!).",  
+        description: "KArDrive Mobile is the easiest way to upload and access your data on the Arweave permaweb, all from the palm of your hand ✋",  
         authorID: "4",
         tags: ["NFT", "Storage", "ArDrive", "CLI"],
         sandboxLinks: {
@@ -652,6 +652,67 @@ export const Videos = {
         },
     },
 
+    //--4everland--//
+    "47": {
+        uid: "47",
+        videoSrc: "https://www.youtube.com/watch?v=tfdEn4KZFoc",
+        videoImage: "https://i.ytimg.com/vi/tfdEn4KZFoc/hqdefault.jpg",
+        videoTitle: "Community Spotlight #2 | Open Web Foundry 7",
+        videoLocation: "Youtube",
+        description: "4everland -  Itroduction starts at 14:30",  
+        authorID: "19",
+        tags: ["Storage", "Gateway", "Cloud", "Intro"],
+        sandboxLinks: {
+            "4everland": "https://www.4everland.org/",
+            Hosting: "https://www.4everland.org/hosting/",
+            Bucket: "https://www.4everland.org/bucket",
+        },
+    },
+    "48": {
+        uid: "48",
+        videoSrc: "https://www.youtube.com/watch?v=8e01XqvucnU",
+        videoImage: "https://i.ytimg.com/vi/8e01XqvucnU/hqdefault.jpg",
+        videoTitle: "Tutorial on How to Use 4EVERLAND Ar Hosting Service!",
+        videoLocation: "Youtube",
+        description: "Following the release of IPFS and IC Hosting, 4EVERLAND has recently released Ar Hosting service. 4EVERLAND Ar Hosting allows users to permanently host their web pages on Arweave.",  
+        authorID: "19",
+        tags: ["Hosting", "Storage", "Gateway", "Cloud", "Intro"],
+        sandboxLinks: {
+            Hosting: "https://www.4everland.org/hosting/",
+            "4everland": "https://www.4everland.org/",
+            Bucket: "https://www.4everland.org/bucket",
+        },
+    },
+    "49": {
+        uid: "49",
+        videoSrc: "https://www.youtube.com/watch?v=NgKseG3EvvA",
+        videoImage: "https://i.ytimg.com/vi/NgKseG3EvvA/hqdefault.jpg",
+        videoTitle: "Welcome to the bucket (Tutorials)",
+        videoLocation: "Youtube",
+        description: "Learn how to use bucket on 4EVERLAND",  
+        authorID: "19",
+        tags: ["Hosting", "Storage", "Gateway", "Cloud"],
+        sandboxLinks: {
+            Bucket: "https://www.4everland.org/bucket",
+            "4everland": "https://www.4everland.org/",
+            Hosting: "https://www.4everland.org/hosting/",
+        },
+    },
+    "50": {
+        uid: "50",
+        videoSrc: "https://www.youtube.com/watch?v=LxLUuYoGQhA",
+        videoImage: "https://i.ytimg.com/vi/LxLUuYoGQhA/hqdefault.jpg",
+        videoTitle: "Multi-chain login and multi-chain payment (covering multi-chain storage demo)",
+        videoLocation: "Youtube",
+        description: "4EVERLAND is a cloud computing platform driven by blockchain technology and designed for Web3. It helps developers build Web3 applications.",  
+        authorID: "19",
+        tags: ["Payment", "Storage", "Gateway", "Cloud"],
+        sandboxLinks: {
+            "4everland": "https://www.4everland.org/",
+            Bucket: "https://www.4everland.org/bucket",
+            Hosting: "https://www.4everland.org/hosting/",
+        },
+    },
 
 }
 
