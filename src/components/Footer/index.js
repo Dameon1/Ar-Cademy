@@ -27,7 +27,7 @@ export function Footer() {
             css={{ height: "100%", marginTop: "20px", paddingRight: "10px" }}
           >
             <Link
-              to={`https://discord.gg/QgRwBCdG3d`}
+              href={`https://discord.gg/QgRwBCdG3d`}
               target="_blank"
               rel="noreferrer"
             >
@@ -41,7 +41,7 @@ export function Footer() {
 <Spacer x={1} />
 
             <Link
-              to={`https://twitter.com/Ar_Cademy`}
+              href={`https://twitter.com/Ar_Cademy`}
               target="_blank"
               rel="noreferrer"
             >

@@ -42,9 +42,9 @@ export const Videos = {
         authorID: "4",
         tags: ["Information"],
         sandboxLinks: {
-            home: "https://ardrive.io/",
-            repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
-            arns: "https://arns.arweave.dev/",
+            Repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
+            Ardrive: "https://ardrive.io/",
+            ArNS: "https://arns.arweave.dev/",
         },
     },
     
@@ -124,13 +124,16 @@ export const Videos = {
         uid: "12",
         videoSrc: "https://www.youtube.com/watch?v=r0p40pcLEE0&t=316s",
         videoImage: "https://i.ytimg.com/vi/r0p40pcLEE0/hqdefault.jpg",
-        videoTitle: "Setting Up KwilDB",
+        videoTitle: "KwilDB Intro: Setting Up Your KwilDB",
         videoLocation: "Youtube",
         description: "Learn how to set up your KwilDB from scratch!",
         authorID: "10",
-        tags: ["Storage", "Intro"],
+        tags: ["Storage", "Intro", "SQL", "DB"],
         sandboxLinks: {
             home: "https://db.kwil.com/",
+            cli: "https://www.npmjs.com/package/kwildb-cli",
+            Kwil: "https://www.kwil.com/",
+            docs: "https://docs.kwil.com/",
             ArCode: "https://arcode.studio/#/",
         },
     },
@@ -138,13 +141,17 @@ export const Videos = {
         uid: "13",
         videoSrc: "https://www.youtube.com/watch?v=R_FaSS51iq8",
         videoImage: "https://i.ytimg.com/vi/r0p40pcLEE0/hqdefault.jpg",
-        videoTitle: "KwilDB Social Graph",
+        videoTitle: "KwilDB Tutorial - How to Build a Web3 Social Grap",
         videoLocation: "Youtube",
         description: "Learn how to use KwilDB to make a simple social graph, which tracks relationships between MetaMask wallets",
         authorID: "10",
-        tags: ["Build", "Storage"],
+        tags: ["Build", "Storage", "Social", "SQL", "DB"],
         sandboxLinks: {
             home: "https://db.kwil.com/",
+            repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
+            cli: "https://www.npmjs.com/package/kwildb-cli",
+            Kwil: "https://www.kwil.com/",
+            docs: "https://docs.kwil.com/",
         },
     },
      "14": {
@@ -262,6 +269,7 @@ export const Videos = {
         authorID: "4", 
         tags: ["ArDrive", "Manifest", "Intro", "Build"],
         sandboxLinks: {
+            repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
             home: "https://ardrive.io/",
             arns: "https://arns.arweave.dev/",
         },
@@ -306,6 +314,9 @@ export const Videos = {
         tags: ["Kwil", "DB", "Setup", "Intro"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
+            cli: "https://www.npmjs.com/package/kwildb-cli",
+            Kwil: "https://www.kwil.com/",
+            docs: "https://docs.kwil.com/",
         },
     },
     "26": {
@@ -509,6 +520,138 @@ export const Videos = {
             Vaults: "https://akord-js-tutorial.akord.com/",
         },
     },
+
+    //--EverVision--//
+    "39": {
+        uid: "39",
+        videoSrc: "https://www.youtube.com/watch?v=d8FJk9NCzTU",
+        videoImage: "https://i.ytimg.com/vi/d8FJk9NCzTU/hqdefault.jpg",
+        videoTitle: "Quick guide on how to use everPay.Io swap",
+        videoLocation: "Youtube",
+        description: "Learn about DEX swap on everPay.Io",
+        authorID: "16",
+        tags: ["NFT", "Ethereum", "Akord", "Solidity"],
+        sandboxLinks: {
+            EverPay: "https://everpay.io/",
+            SDK: "https://docs.everpay.io/en/docs/sdk/everpay-js/intro",
+            EverVision: "https://ever.vision/#/",
+            Permaswap: "https://app.permaswap.network/#/",
+        },
+    },
+    "40": {
+        uid: "40",
+        videoSrc: "https://www.youtube.com/watch?v=gZtMjkVMlKE",
+        videoImage: "https://i.ytimg.com/vi/gZtMjkVMlKE/hqdefault.jpg",
+        videoTitle: "everPay liquidity mining tutorial (everPay x Uniswap)",
+        videoLocation: "Youtube",
+        description: "Tutorial on how to add liquidity, stake, unstake, claim and finally withdraw liquidity.",
+        authorID: "16",
+        tags: ["NFT", "Ethereum", "Akord", "Solidity"],
+        sandboxLinks: {
+            EverPay: "https://everpay.io/",
+            SDK: "https://docs.everpay.io/en/docs/sdk/everpay-js/intro",
+            EverVision: "https://ever.vision/#/",
+            Permaswap: "https://app.permaswap.network/#/",
+        },
+    },
+
+    //--Ardrive--//
+    "41": {
+        uid: "41",
+        videoSrc: "https://www.youtube.com/watch?v=qDFu19_Hd1o",
+        videoImage: "https://i.ytimg.com/vi/qDFu19_Hd1o/hqdefault.jpg",
+        videoTitle: "HOW TO: Use the ArDrive CLI (w Cowboy Coder) (Part 1/4)",
+        videoLocation: "Youtube",
+        description: "Know before you lasso! In our new video tutorial series on the CLI, Cowboy Coder shows us some of the exciting ways you can optimize your ArDrive experience (part 1 of 4!).",  
+        authorID: "4",
+        tags: ["NFT", "Ethereum", "Akord", "Solidity"],
+        sandboxLinks: {
+            Ardrive: "https://ardrive.arweave.dev/",
+            "ar.io": "https://ar.io/",
+            ArNS: "https://ar.io/arns/",
+        },
+    },
+
+    "42": {
+        uid: "42",
+        videoSrc: "https://www.youtube.com/watch?v=Jb2PN4ISwuM",
+        videoImage: "https://i.ytimg.com/vi/Jb2PN4ISwuM/hqdefault.jpg",
+        videoTitle: "HOW TO: Use the ArDrive CLI (w Cowboy Coder) (Part 1/4)",
+        videoLocation: "Youtube",
+        description: "Know before you lasso! In our new video tutorial series on the CLI, Cowboy Coder shows us some of the exciting ways you can optimize your ArDrive experience (part 1 of 4!).",  
+        authorID: "4",
+        tags: ["NFT", "Storage", "ArDrive", "CLI"],
+        sandboxLinks: {
+            Ardrive: "https://ardrive.arweave.dev/",
+            "ar.io": "https://ar.io/",
+            ArNS: "https://ar.io/arns/",
+        },
+    },
+
+    //--Metaweave--//
+    "43": {
+        uid: "43",
+        videoSrc: "https://www.youtube.com/watch?v=pRQkFGoVkyw",
+        videoImage: "https://i.ytimg.com/vi/pRQkFGoVkyw/hqdefault.jpg",
+        videoTitle: "Metaweave - Memes contest 2022",
+        videoLocation: "Youtube",
+        description: "Prepare your funniest Memes … It's here! 😁 📸  We are very excited to launch our Third  contest on Metaweave with 6AR cash prices. 🚀🥳🏆",  
+        authorID: "aIUmY9Iy4qoW3HOikTy6aJww-mM4Y-CUJ7mXoPdzdog",
+        tags: ["Memes", "Contest"],
+        sandboxLinks: {
+            Metaweave: "https://metaweave.arweave.dev/",
+            NPM: "https://www.npmjs.com/package/arweave-account",
+            Twitter: "https://twitter.com/MetaweaveTeam",
+        },
+    },
+    "44": {
+        uid: "44",
+        videoSrc: "https://www.youtube.com/watch?v=XjqZxdqBss8",
+        videoImage: "https://i.ytimg.com/vi/XjqZxdqBss8/hqdefault.jpg",
+        videoTitle: "Metaweave Demo Arweave Demo Day, Lisbon Portugal",
+        videoLocation: "Youtube",
+        description: "Here is a quick demo done by Falco during the Arweave in Lisbon Demo Day.",  
+        authorID: "aIUmY9Iy4qoW3HOikTy6aJww-mM4Y-CUJ7mXoPdzdog",
+        tags: ["Intro", "Identity"],
+        sandboxLinks: {
+            ArProfile: "https://arprofile.org",
+            Readme: "https://arweave.net/6TlBBF2TD63aE-4rdFxMVVngttkpj80kFpbAWKn8-0Q",
+            Metaweave: "https://metaweave.arweave.dev/",
+           
+        },
+    },
+    "45": {
+        uid: "45",
+        videoSrc: "https://www.youtube.com/watch?v=tfdEn4KZFoc",
+        videoImage: "https://i.ytimg.com/vi/tfdEn4KZFoc/hqdefault.jpg",
+        videoTitle: "Community Spotlight #2 | Open Web Foundry 7",
+        videoLocation: "Youtube",
+        description: "Introduction by Metweave team.",  
+        authorID: "aIUmY9Iy4qoW3HOikTy6aJww-mM4Y-CUJ7mXoPdzdog",
+        tags: ["Intro", "Identity"],
+        sandboxLinks: {
+            ArProfile: "https://arprofile.org",
+            Metaweave: "https://metaweave.arweave.dev/",
+            Permatweets: "https://pvcsk5frxfyostm75nhyjneotxwpuldjy5ptdip24ut7w6lfgwha.arweave.net/fUUldLG5cOlNn-tPhLSOnez6LGnHXzGh-uUn-3llNY4/profile/dM8FP30nLUkb2zscLbQlpqiRqa1nzTvTae2CEZKAoqE"
+        },
+    },
+    "46": {
+        uid: "46",
+        videoSrc: "https://www.youtube.com/watch?v=N8piv9SqW24",
+        videoImage: "https://i.ytimg.com/vi/N8piv9SqW24/hqdefault.jpg",
+        videoTitle: "Permatweet from Metaweave.xyz = Be an agent of free speech using Twitter and the Permaweb",
+        videoLocation: "Youtube",
+        description: "Metaweave - the cypherpunk social platform on Arweave just release Permatweet an easy for way everyone to backup tweets in the permaweb.",  
+        authorID: "aIUmY9Iy4qoW3HOikTy6aJww-mM4Y-CUJ7mXoPdzdog",
+        tags: ["Intro", "Identity", "Social"],
+        sandboxLinks: {
+            Permatweets: "https://pvcsk5frxfyostm75nhyjneotxwpuldjy5ptdip24ut7w6lfgwha.arweave.net/fUUldLG5cOlNn-tPhLSOnez6LGnHXzGh-uUn-3llNY4/profile/dM8FP30nLUkb2zscLbQlpqiRqa1nzTvTae2CEZKAoqE",
+            Press: "https://metaweave.com/press.html",
+            ArProfile: "https://arprofile.org",
+            Metaweave: "https://metaweave.arweave.dev/",
+        },
+    },
+
 
 }
 

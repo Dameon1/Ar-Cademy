@@ -38,7 +38,7 @@
   - [https://arweave.net/dHf8bIr9FHoAFuvhbxKiGDaRF5AU_7p9x9W3wFsuMbY](https://arweave.net/dHf8bIr9FHoAFuvhbxKiGDaRF5AU_7p9x9W3wFsuMbY)xKZB4F5ALTj0CHSfztrOsHlygpVaqnhKtbisSS6D0Zg
 
   ## V4.2.2 (Current State)
-  - [https://arweave.net/xKZB4F5ALTj0CHSfztrOsHlygpVaqnhKtbisSS6D0Zg](https://arweave.net/xKZB4F5ALTj0CHSfztrOsHlygpVaqnhKtbisSS6D0Zg)
+  - [https://arweave.net/daB-oX1SnG8gH1Tvx5DtcZ3DAAIWSTsixjDd8Nhl-Yw](https://arweave.net/daB-oX1SnG8gH1Tvx5DtcZ3DAAIWSTsixjDd8Nhl-Yw)
 
 ## Instructions
 

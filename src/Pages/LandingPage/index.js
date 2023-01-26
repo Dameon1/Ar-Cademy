@@ -105,17 +105,19 @@ export function LandingPage() {
       <div className="text-container">
         <h2 className="landingPageHeadline">Welcome to ARcademy</h2>
         <p className="pText">
-          Arcademy is community-driven and developed learning platform, for the
-          Arweave ecosystem. Maintaining a variety of modules, you can learn to
-          code, design, and build with the Arweave blockchain. Create atomic
-          assets and earn $Stampcoin along with stamping other profiles'
-          content.
+          Welcome to Arcademy, the ultimate community-driven learning platform
+          for the Arweave ecosystem! Here, you'll discover a vast array of
+          modules that will teach you everything you need to know about coding,
+          design, and building with the Arweave blockchain. Imagine creating
+          atomic assets, earning $Stampcoin, and even stamping other profiles'
+          content as you master the art of building on this cutting-edge
+          technology. Join us now and be part of the future of blockchain!
         </p>
       </div>
       <Spacer y={2} />
       <Container justify="space-around" align="center">
         <Spacer y={2} />
-        <Row justify="space-between" align="center" wrap="no-wrap">
+        <Row justify="space-around" align="center" wrap="no-wrap">
           <Col>
             <Image
               src={bundlrNader}
@@ -127,8 +129,11 @@ export function LandingPage() {
           <Col width="150px">
             <h3>Learn with Nader</h3>
             <p className="pText">
-              Follow along with Nader as he teaches you how to build your first
-              Smartweave contract with zero transaction fees.
+              Are you ready to take the first step towards building your own
+              Smartweave contract without breaking the bank? Look no further!
+              Join Nader on an exciting journey as he guides you through the
+              process of creating your very own contract, with zero transaction
+              fees!
             </p>
             <Spacer y={1} />
             <Row justify="center">
@@ -173,7 +178,7 @@ export function LandingPage() {
               <img
                 style={{ width: "50px" }}
                 alt="hyper63Logo"
-                src="https://arweave.net/6ACBEXhB2fn193ILOMm9E5T9qB8cr4q88BH6DdmrvUE"
+                src="https://arweave.net/daB-oX1SnG8gH1Tvx5DtcZ3DAAIWSTsixjDd8Nhl-Yw"
               />
 
               <Row justify="flex-end">
