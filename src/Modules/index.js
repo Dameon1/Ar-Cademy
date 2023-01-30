@@ -1,5 +1,5 @@
 export const Modules = {
-    'Learn': {
+    'Intro': {
         description: 'Collection of intro videos',
         moduleImage: "https://arweave.net/oAKAInjmGfsUZ6abfwkvSLu3GOj2YFZ95iQAg4xUY4g",
     },

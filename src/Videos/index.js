@@ -1,3 +1,15 @@
+/* Video Resources
+    graphql: "https://arweave.net/graphql",
+             
+
+
+
+
+
+*/
+
+
+
 export const Videos = {
     "1": {
         uid: "1",
@@ -48,19 +60,22 @@ export const Videos = {
         },
     },
     
+
+    //Broken
     "6": {
         uid: "6",
         videoSrc: "https://us.glassapi.xyz/1647306621.NfBRvNpXJ38Mc_h42c9Zehmc8i34iVWiNu5Vu1_IC0Q.ac925d47-4a07-4c84-859b-9924f84708b9_uploaded_video_1_1_audio.mp4",
         videoImage: "https://arweave.net/gReg_OaW_Egrr7vLnWsSSPNt4dt69LGTfEwXPhYQPt8",
-        videoTitle: "Full Stack Web3",
+        videoTitle: "The Complete Guide to Full Stack Web3 Development",
         videoLocation: "Arweave",
         description: "In this in depth tutorial you'll learn the tools, protocols, and frameworks for building full stack web3 apps, and most importantly - how to put everything together to lay the groundwork for building out any of your own ideas in the future.",
         authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Build", "Deployment", "ArweaveNative"],
         sandboxLinks: {
-            home: "https://edgeandnode.com/",
-            graphql: "https://arweave.net/graphql",
-            ArCode: "https://arcode.studio/#/",
+            Repl: "https://replit.com/@Dameon1/full-stack-web3?lite=true",
+            Dev: "https://dev.to/edge-and-node/the-complete-guide-to-full-stack-web3-development-4g74",
+            Home: "https://edgeandnode.com/",
+            
         },
     },
     // "7": {
@@ -87,15 +102,15 @@ export const Videos = {
         authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Build", "Deployment"],
         sandboxLinks: {
-            bundlr: "https://bundlr.network/",
-            repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true"
+            Repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true",
+            Bundlr: "https://bundlr.network/",
         },
     },
     "10": {
         uid: "10",
         videoSrc: "https://www.youtube.com/watch?v=eZl_Mtyy-MU",
         videoImage: "https://i.ytimg.com/vi/eZl_Mtyy-MU/hqdefault.jpg",
-        videoTitle: "What are ArFS",
+        videoTitle: "What is ArFS",
         videoLocation: "Youtube",
         description: "MC Lars explains how encryption works leveraging the power of Arweave.",
         authorID: "4",
@@ -110,7 +125,7 @@ export const Videos = {
         uid: "11",
         videoSrc: "https://www.youtube.com/watch?v=fNjUV7mHFqw",
         videoImage: "https://i.ytimg.com/vi/fNjUV7mHFqw/hqdefault.jpg",
-        videoTitle: "Smartweave",
+        videoTitle: "Smartweave Contracts",
         videoLoactionvideoLocation: "Youtube",
         description: "Redstone describes how to migrate and use their new SDK for contracts on Arweave.",
         authorID: "9",
@@ -141,17 +156,17 @@ export const Videos = {
         uid: "13",
         videoSrc: "https://www.youtube.com/watch?v=R_FaSS51iq8",
         videoImage: "https://i.ytimg.com/vi/r0p40pcLEE0/hqdefault.jpg",
-        videoTitle: "KwilDB Tutorial - How to Build a Web3 Social Grap",
+        videoTitle: "KwilDB Tutorial - How to Build a Web3 Social Graph",
         videoLocation: "Youtube",
         description: "Learn how to use KwilDB to make a simple social graph, which tracks relationships between MetaMask wallets",
         authorID: "10",
         tags: ["Build", "Storage", "Social", "SQL", "DB"],
         sandboxLinks: {
-            home: "https://db.kwil.com/",
-            repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
-            cli: "https://www.npmjs.com/package/kwildb-cli",
+            Home: "https://db.kwil.com/",
+            Repl: "https://replit.com/@Dameon1/kwildb-cli?lite=true",
+            CLI: "https://www.npmjs.com/package/kwildb-cli",
             Kwil: "https://www.kwil.com/",
-            docs: "https://docs.kwil.com/",
+            Docs: "https://docs.kwil.com/",
         },
     },
      "14": {
@@ -165,7 +180,7 @@ export const Videos = {
          tags: ["Near", "Arweave", "React", "Build", "Intro",],
          sandboxLinks: {
              repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
-            
+             Hyper: "https://hyper63.com/"
          },
     },
     "15": {
@@ -179,6 +194,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Hyper: "https://hyper63.com/",
         },
     },
     "16": {
@@ -192,6 +208,8 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Hyper: "https://hyper63.com/",
+            
         },
     },
     "17": {
@@ -205,6 +223,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Hyper: "https://hyper63.com/",
         },
     },
     "18": {
@@ -218,6 +237,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "React", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Hyper: "https://hyper63.com/",
         },
     },
     "19": {
@@ -231,6 +251,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Hyper: "https://hyper63.com/",
         },
     },
     "20": {
@@ -244,6 +265,7 @@ export const Videos = {
         tags: ["Near", "Arweave", "Build", "Bundlr", "Intro",],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Hyper: "https://hyper63.com/",
         },
     },
     //  "21": {
@@ -284,23 +306,23 @@ export const Videos = {
         authorID: "89tR0-C1m3_sCWCoVCChg4gFYKdiH5_ZDyZpdJ2DDRw", 
         tags: ["Transfers", "Arweave", "Intro", "Build"],
         sandboxLinks: {
-            repl: "https://replit.com/@Dameon1/nft-uploader?lite=true",
-            publicSquare: "https://arweave.net/S3Y9JkOAXRgFexoDvPkdhYfVNBJPb9hCUEkbMOy1MVE/",
-            blog: "https://spooky_blog.arweave.dev/"
+            Repl: "https://replit.com/@Dameon1/nft-uploader?lite=true",
+            PublicSquare: "https://arweave.net/S3Y9JkOAXRgFexoDvPkdhYfVNBJPb9hCUEkbMOy1MVE/",
+            Blog: "https://spooky_blog.arweave.dev/"
         },
     },
     "24": {
         uid: "24",
         videoSrc: "https://www.youtube.com/watch?v=ZduvXKxSgkQ",
-        videoImage: "https://i.ytimg.com/vi//ZduvXKxSgkQ/hqdefault.jpg",
+        videoImage: "https://i.ytimg.com/vi/ZduvXKxSgkQ/hqdefault.jpg",
         videoTitle: "Deploying to the Permaweb - with Bundlr",
         videoLocation: "Youtube",
         description: "The permaweb is a cloud platform designed to publish and serve web artifacts from a decentralized permanent storage network. Along with a permanotes side",
         authorID: "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI",
         tags: ["Bundlr", "Arkb", "Deno", "Deployment", "Intro"],
         sandboxLinks: {
-            notes: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
-            repl: "https://replit.com/@Dameon1/TomWilsonNearExample?lite=true",
+            Notes: "https://permanotes.app/#/notes/Szb6Kw7lJlkuy6dB18e3C6i8sHrJTDjCo7Wgivc_gtI",
+            Repl: "https://replit.com/@Dameon1/deploy-permaweb-demo?lite=true",
         },
     },
     "25": {
@@ -331,6 +353,7 @@ export const Videos = {
         sandboxLinks: {
             demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
             ArCode: "https://arcode.studio/#/",
+            Hyper: "https://hyper63.com/",
            
         },
     },
@@ -346,7 +369,8 @@ export const Videos = {
         sandboxLinks: {
             notes: "https://permanotes.app/#/notes/KmLNIowE2DhWHnW-YQzWwTO0O1r7PAlFCj29vPq4BQ0",
             demo: "https://eamy2ay5kduzc6jgjce6dn6aulxj5bwr4tyvhvblru5ksbdt4y.arweave.net/IBmNAx1Q6ZF5JkiJ4bfAou6ehtHk8VPUK_406qQRz5s/",
-            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/"
+            atomicNFT: "https://atomicnft.com/en/General-definition-of-an-atomic-NFT/",
+            Hyper: "https://hyper63.com/",
         },
     },
     "28": {
@@ -359,10 +383,10 @@ export const Videos = {
         authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
-            finished: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",
-            sonar: "https://sonar.warp.cc/#/app/contracts",
-            home: "https://edgeandnode.com/",
-            warp: "https://warp.cc/",
+            Finished: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",
+            ReadMe: "https://arweave.net/xmAwj2pdWPSZwKv5JeaV23sU6sd6zBt1Cz3qw1GUX84",
+            Warp: "https://warp.cc/",
+            Sonar: "https://sonar.warp.cc/#/app/contracts",
             ArCode: "https://arcode.studio/#/",
         },
     },
@@ -711,6 +735,90 @@ export const Videos = {
             "4everland": "https://www.4everland.org/",
             Bucket: "https://www.4everland.org/bucket",
             Hosting: "https://www.4everland.org/hosting/",
+        },
+    },
+
+    //--Bundlr--//
+    "51": {
+        uid: "51",
+        videoSrc: "https://www.youtube.com/watch?v=Wxfyd0veaEc",
+        videoImage: "https://i.ytimg.com/vi/Wxfyd0veaEc/hqdefault.jpg",
+        videoTitle: "Bundlr SDK For NodeJS",
+        videoLocation: "Youtube",
+        description: "Welcome to the BundlrSDK for Node JS. There are English-language subtitles available, click in the bottom right corner area of the video to turn them on.",
+        authorID: "20",
+        tags: ["Bundle", "Seeding", "Intro"],
+        sandboxLinks: {
+            Repl: "https://replit.com/@Dameon1/bundlr-basics?lite=true#bundlr.basics.js",
+            Readme: "https://arweave.net/jD4PN3HNLfdGaUgKJmezD-ZWnPT0wV5Fnysh7S2I5SU",
+            Bundlr: "https://bundlr.network/",
+            Docs: "https://docs.bundlr.network/"
+           },
+    },
+    "52": {
+        uid: "52",
+        videoSrc: "https://www.youtube.com/watch?v=OSRfgDoVQew",
+        videoImage: "https://i.ytimg.com/vi/OSRfgDoVQew/hqdefault.jpg",
+        videoTitle: "Web3 Wallets - What They Are & How To Install",
+        videoLocation: "Youtube",
+        description: "In a traditional web environment, you go to a website, and you log in using a username and password. And over time, you end creating hundreds or thousands of logins across different sites. ",
+        authorID: "20",
+        tags: ["Bundle", "Seeding", "Intro"],
+        sandboxLinks: {
+            ArIdentity: "https://docs.bundlr.network/tutorials/get-arweave-wallet",
+            Bundlr: "https://bundlr.network/",
+            Readme: "https://arweave.net/jD4PN3HNLfdGaUgKJmezD-ZWnPT0wV5Fnysh7S2I5SU",
+            Docs: "https://docs.bundlr.network/"
+           },
+    },
+    "53": {
+        uid: "53",
+        videoSrc: "https://www.youtube.com/watch?v=JKEivHKDXAo",
+        videoImage: "https://i.ytimg.com/vi/Wxfyd0veaEc/hqdefault.jpg",
+        videoTitle: "Bundlr at 50k TPS & Beyond!",
+        videoLocation: "Youtube",
+        description: "We've been talking about Bundlr's scalability for a while. Now, we want to show you 📺",
+        authorID: "20",
+        tags: ["Bundle", "Seeding", "Intro"],
+        sandboxLinks: {
+            Docs: "https://docs.bundlr.network/",
+            Readme: "https://arweave.net/jD4PN3HNLfdGaUgKJmezD-ZWnPT0wV5Fnysh7S2I5SU",
+            Bundlr: "https://bundlr.network/",
+           },
+    },
+
+    //--Dabit--//
+    "54": {
+        uid: "54",
+        videoSrc: "https://www.youtube.com/watch?v=lXkAx7XqR6A",
+        videoImage: "https://i.ytimg.com/vi/lXkAx7XqR6A/hqdefault.jpg",
+        videoTitle: "Building Permanent, Immutable, and Stateful Serverless Functions with EXM and Arweave",
+        videoLocation: "Youtube",
+        description: "In this video, you'll learn how to build and deploy a CRUD application on EXM using JavaScript.",
+        authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
+        tags: ["EXM", "Serverless"],
+        sandboxLinks: {
+            Tutorial: "https://arweave.net/L3D8Srxy4GCBaTHCDHI1XrduG0aCOAryqP9xYub71AM",
+            Repl: "https://replit.com/@Dameon1/execution-machine?lite=true",
+            EXM: "https://exm.dev/",
+            Molecule: "https://arweave.net/mKTNdOI-REAl-bWqShmdaunDlMMyDvZbiwUgjrkBw2E"
+        },
+    },
+
+    //--Antonio Ufano--//
+    "55": {
+        uid: "55",
+        videoSrc: "https://www.youtube.com/watch?v=5JjwtXtskws",
+        videoImage: "https://i.ytimg.com/vi/5JjwtXtskws/hqdefault.jpg",
+        videoTitle: "How to to build a decentralized music marketplace with Arweave",
+        videoLocation: "Youtube",
+        description: "To showcase how to use Arweave and Bundlr, we’re going to build a decentralized music marketplace app. ",
+        authorID: "21",
+        tags: ["EXM", "Serverless"],
+        sandboxLinks: {
+            Tutorial: "https://chainstack.com/music-marketplace-arweave-bundlr-and-polygon/",
+            Repl: "https://replit.com/@Dameon1/arweave-ds-app?lite=true",
+          
         },
     },
 

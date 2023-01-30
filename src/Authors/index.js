@@ -35,11 +35,12 @@ export const Authors = {
     username: "@saetaeth",
     avatar: "https://edgeandnode.com/images/logo-big.png",
   },
+
   "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM": {
     author: "Edge and Node",
     authorLink: "https://twitter.com/dabit3",
     authorWebsite: "https://edgeandnode.com/",
-    createdVideosByID: ["6", "9", "28"],
+    createdVideosByID: [ "9", "28", "54"],
     createdContentByID: ["ContentID"],
     uid: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
     addr: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
@@ -225,6 +226,32 @@ export const Authors = {
     username: "@4everland_org",
     avatar: "https://arweave.net/Ea779WkfqaepaYOms6L4wF7tUedXX5FIrd3M3TwtUd8",
   },
+
+  //--Bundlr--//
+  20: {
+    author: "Bundlr",
+    authorLink: "https://twitter.com/BundlrNetwork",
+    authorWebsite: "https://bundlr.network/",
+    createdVideosByID: ["51","52","53"],
+    createdContentByID: ["ContentID"],
+    uid: "20",
+    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    username: "@BundlrNetwork",
+    avatar: "https://arweave.net/Vk28LMOLrzMFftQqLAZmIEc-EbzBqYrR2fIR1d1O9tc",
+  },
+
+  //--Antonio Ufano--//
+  21: {
+    author: "Antonio Ufano",
+    authorLink: "https://twitter.com/uF4No",
+    authorWebsite: "https://chainstack.com/",
+    createdVideosByID: ["55"],
+    createdContentByID: ["ContentID"],
+    uid: "21",
+    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    username: "@uF4No",
+    avatar: "https://twitter.com/uF4No/photo",
+  }
 };
 
 // 'id': {

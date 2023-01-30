@@ -48,11 +48,6 @@ export async function getRecentUploadData(id) {
   })
     .then((res) => res.json())
     .then(({ data }) => {
-      console.log("data", data);
-      console.log(
-        "data",
-        data.transactions.edges.map((x) => transformTx(x.node))
-      );
       return data.transactions.edges.map((x) => transformTx(x.node));
     });
 }

@@ -7,7 +7,7 @@ import { FaTwitter, FaGithub, FaDiscord } from "react-icons/fa";
 export function Footer() {
   return (
     <footer className="main-footer">
-      <Row gap={1} justify="flex-start">
+      <Row  justify="flex-start">
         <Col css={{ height: "100%", marginTop: "10px" }}>
           <Row justify="flex-start">
             <div className="permaSeal">
@@ -16,11 +16,12 @@ export function Footer() {
           </Row>
         </Col>
         <Col css={{ height: "100%", marginTop: "20px" }}>
-          <p className="pText">
-           &copy;2023{" "}
-          </p>
+          <Row align="center" justify="center" className="pText">
+
+           &copy;2023
+          </Row>
         </Col>
-        <Col alignItems="center">
+        <Col >
           <Row
             justify="flex-end"
             align="flex-end"

@@ -8,7 +8,7 @@
 }
 
 .pText {
-  text-align: center;
+  text-align: justify;
   letter-spacing: 0.5px;
   font-family: "Work Sans";
   font-size: 16px;
@@ -32,7 +32,7 @@
 }
 
 .moduleContent {
-  max-width: 144px;
+  max-width: 140px;
   margin: 5px;
   border-radius: 9px;
   text-align: center;
@@ -207,18 +207,19 @@ ul {
 }
 
 .site-logo {
-  letter-spacing: 3px;
+  letter-spacing: 2.25px;
   font-family: "Work Sans";
   text-align: center;
   transition: ease 0.2s;
-  display: inline-flex;
 }
 
 .light {
+  font-size:2rem;
   color: #ffa537;
 }
 
 .dark {
+  font-size: 2rem;
   color: #023749;
 }
 

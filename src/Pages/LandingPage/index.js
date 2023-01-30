@@ -115,19 +115,22 @@ export function LandingPage() {
         </p>
       </div>
       <Spacer y={2} />
-      <Container justify="space-around" align="center">
-        <Spacer y={2} />
-        <Row justify="space-around" align="center" wrap="no-wrap">
-          <Col>
-            <Image
-              src={bundlrNader}
-              alt="bundlrNader"
-              css={{ maxWidth: "650px" }}
-            />
+     
+      <Grid.Container
+        gap={0.5}
+        display="flex"
+        align="center"
+        justify="space-around"
+        flex="wrap"
+        xs
+      >
+        <Row justify="space-around" align="center" wrap="wrap">
+          <Col css={{ maxWidth: "480px", minWidth: "280px" }}>
+          <h3>Learn with Nader</h3>
+            <Image src={bundlrNader} alt="bundlrNader" />
           </Col>
-          <Spacer x={2} />
-          <Col width="150px">
-            <h3>Learn with Nader</h3>
+
+          <Col css={{ maxWidth: "320px", minWidth: "280px" }}>
             <p className="pText">
               Are you ready to take the first step towards building your own
               Smartweave contract without breaking the bank? Look no further!
@@ -135,7 +138,7 @@ export function LandingPage() {
               process of creating your very own contract, with zero transaction
               fees!
             </p>
-            <Spacer y={1} />
+            <Spacer y={.5} />
             <Row justify="center">
               <Button
                 css={{
@@ -154,7 +157,7 @@ export function LandingPage() {
             </Row>
           </Col>
         </Row>
-      </Container>
+      </Grid.Container>
       <Spacer y={2} />
 
       <Row justify="center" align="center">
@@ -165,7 +168,7 @@ export function LandingPage() {
         <Grid sm={4} justify="center" align="center">
           <Card css={{ mw: "240px" }}>
             <Card.Header css={{ display: "inline-block", padding: "5" }}>
-              <h3 b>Hyper63 - Company</h3>
+              <h3>Hyper63 - Company</h3>
             </Card.Header>
             <Card.Divider />
             <Card.Body css={{ py: "$10" }}>
@@ -204,7 +207,7 @@ export function LandingPage() {
         <Grid sm={4} justify="center" align="center">
           <Card css={{ mw: "240px" }}>
             <Card.Header css={{ display: "inline-block", padding: "5" }}>
-              <h3 b>Tom Wilson - Creator</h3>
+              <h3>Tom Wilson - Creator</h3>
             </Card.Header>
             <Card.Divider />
             <Card.Body css={{ py: "$10" }}>

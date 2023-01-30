@@ -35,7 +35,6 @@ export default function Navigation() {
   useEffect(() => {
     (async () => {
       try {
-        console.log("Reload Triggered:", addr, userData);
         if (addr === null) {
           setAvatar(fallbackImage);
           setUserBalances(null);
@@ -45,7 +44,6 @@ export default function Navigation() {
 
           if (userData !== null) {
             let { ANS, ARK, ArProfile } = userData;
-            console.log("reloaded with userData", userData)
             ARK?.ARWEAVE?.ANS?.avatar.length > 0
               ? setAvatar( `https://arweave.net/${ARK.ARWEAVE.ANS.avatar}`)
               : ANS?.avatar?.length > 0
@@ -59,11 +57,8 @@ export default function Navigation() {
           user.code = await myCode(addr);
           setUserBalances(user);
         }
-        console.log("loading balances and avatar2", userData);
       } catch (error) {
         console.log(error);
-      } finally {
-        console.log("done");
       }
     })();
   }, [addr, userData]);
@@ -113,7 +108,7 @@ export default function Navigation() {
       >
         <Navbar.Brand
           css={{
-            "@md": {
+            "@sm": {
               w: "100%",
               jc: "space-between",
             },
