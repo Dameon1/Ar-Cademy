@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
 import { getUserVideos } from "../../Queries/UserQueries";
 import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
-
+import { useNavigate } from "react-router-dom";
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
 import UseAns from "../../components/ANSForAll";
 import "./profile.css";
-import { Card } from "../../components/Cards";
+import { MediaCard } from "../../components/Cards";
 import ArProfile from "../../components/ArProfile";
 import { Loading, Container, Row, Col } from "@nextui-org/react";
 import {
@@ -27,7 +27,7 @@ export default function Profile() {
   let urlArray = new URL(window.location.href).pathname.split("/");
   let profileId = urlArray[urlArray.length - 1];
   let addr = urlArray[urlArray.length - 2];
-
+  const navigate = useNavigate();
   const [userContent, setUserContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(true);
@@ -50,7 +50,6 @@ export default function Profile() {
           user.POAPS = res[6].POAPS;
           user.ARCADEMY_VIDEOS = res[7];
           user.UPLOADED_VIDEOS = res[8][0];
-         
           return user;
         })
         .then((user) => {
@@ -64,56 +63,6 @@ export default function Profile() {
     }
   }, [addr]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       if (addr.length === 0) return;
-  //       console.log(addr, "video", "")
-  //       let ownerVideos = await getUserVideos(addr, "video", "");
-  //       const arArk = await retryFetch(
-  //         `https://ark-core.decent.land/v2/profile/arweave/${addr}`
-  //         );
-  //         Promise.all([ownerVideos, arArk])
-  //         .then((values) => {
-  //           let user;
-  //           console.log("values", values);
-  //           user = values;
-  //           //user.ownerVideos = values[0];
-  //           console.log("user-----------", user);
-  //           setUserContent(user);
-  //           setIsSearching(false);
-  //           setIsLoading(false);
-  //         })
-  //         .catch((e) => {
-  //           console.log(e);
-  //         });
-
-  //       // const ark = await arArk.json();
-  //       // user.ownerVideos = ownerVideos.json();
-  //       // user = await ark.res;
-  //       // setUserContent(user);
-  //       // setIsSearching(false);
-  //       // setIsLoading(false);
-  //     } catch (e) {
-  //       console.log(JSON.stringify(e));
-  //     } finally {
-  //       console.log("finally");
-  //     }
-  //   })();
-  // }, [addr, isSearching]);
-
-  // let cards = videoObjects.map((content) => {
-  //   return (
-  //     <Link
-  //       key={content.uid}
-  //       to={`/playground/${content.uid}`}
-  //       className="cardLinks"
-  //     >
-  //       <Card content={content} />
-  //     </Link>
-  //   );
-  // });
-
   return (
     <>
       <h1>Profile</h1>
@@ -121,8 +70,12 @@ export default function Profile() {
       <div className="">
         {isLoading && (
           <>
-            <p className="pText">Searching for content</p>
-            <Loading />
+            <Row justify="center">
+              <p className="pText">Searching for content</p>
+            </Row>
+            <Row justify="center">
+              <Loading />
+            </Row>
           </>
         )}
         {addr && !isLoading && !isSearching && (
@@ -161,8 +114,13 @@ export default function Profile() {
             <h1>Arcademy Videos</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.ARCADEMY_VIDEOS.map((content, i) => {
-                  return <Card content={content} />;
+                {userContent.ARCADEMY_VIDEOS.map((video, i) => {
+                  console.log(video)
+                  return (
+                    <div className="videoThumbnails" key={i} onClick={() => navigate(`/playground/${video.uid}`)}>
+                      <MediaCard video={video} />
+                    </div>
+                  );
                 })}
               </div>
             </div>
@@ -177,10 +135,10 @@ export default function Profile() {
               <h1>Owner Videos</h1>
               <div className="contentScrollContainer">
                 <div className="hs">
-                  {userContent.UPLOADED_VIDEOS.map((content, i) => {
+                  {userContent.UPLOADED_VIDEOS.map((video, i) => {
                     return (
-                      <div className="videoThumbnails" key={i}>
-                        <AtomicVideoCards video={content} />
+                      <div className="videoThumbnails" key={i} onClick={() => navigate(`/AtomicPlayground/${video.id}`)}>
+                        <AtomicVideoCards video={video}  />
                       </div>
                     );
                   })}

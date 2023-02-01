@@ -35,44 +35,35 @@ function ArProfile(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
-    console.log("reloaded")
+    console.log("reloaded");
     let { addr, forDashboard } = props;
     // addr.length === 43
     //   ? (addr = props.addr)
     //   : addr.length === 42
     //   ? (addr = userData.ARK.arweave_address)
     //   : (addr = 0);
-    console.log(addr.length,"reloaded")
+    console.log(addr.length, "reloaded");
     if (addr.length === 42) {
       if (userData?.ARK?.arweave_address.length === 43) {
         async function arProfile() {
           addr = userData.ARK.arweave_address;
           const account = new Account();
           const user = await account.get(addr);
-          console.log(user, "reloaded")
+          console.log(user, "reloaded");
           if (user) {
             setProfileData(user.profile);
           }
           setIsLoading(false);
         }
-         arProfile();
-        // addr = userData.ARK.arweave_address;
-        // const account = new Account();
-        // const user = account.get(addr);
-        // console.log(user, "reloaded")
-        // setProfileData(user.profile);
-        // return setIsLoading(false);
+        arProfile();
       }
       return setIsLoading(false);
     }
-    // if(addr.length === 42) {
-    //   return
-    // }
 
     async function arProfile() {
       const account = new Account();
       const user = await account.get(addr);
-     
+
       if (user) {
         setProfileData(user.profile);
       }
@@ -81,32 +72,6 @@ function ArProfile(props) {
     if (addr.length === 43) {
       arProfile();
     }
-    // const account = new Account();
-    // const user = account.get(addr);
-    // console.log(user)
-    // if (user) {
-    //   setProfileData(user.profile);
-    // }
-    // setIsLoading(false)
-    //  console.log(userData?.ArProfile?.txid === undefined,  userData.ArProfile === undefined , userData?.ARK.arweave_address.length > 0)
-    // if (forDashboard && userData?.ArProfile?.txid === undefined &&  userData.ArProfile === undefined && userData?.ARK.arweave_address.length > 0) {
-    //     console.log("true")
-    //     addr = userData.ARK.arweave_address;
-    //   }
-    // (async () => {
-    //   try {
-    //     const account = new Account();
-    //     const user = await account.get(addr);
-    //     console.log(addr)
-    //     if (user) {
-    //       setProfileData(user.profile);
-    //     }
-    //   } catch (e) {
-    //     setHasFailed(JSON.stringify(e));
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // })();
   }, [props, userData]);
 
   return (
@@ -147,7 +112,6 @@ function ArProfile(props) {
             isOpen={modalIsOpen}
             hasClosed={() => setModalIsOpen(false)}
           />
-         
 
           {
             // Dispaly account details
@@ -176,8 +140,9 @@ function ArProfile(props) {
                   )}
 
                   {profileData.name && <Name>{profileData.name}</Name>}
-
-                  <p className="pText">{profileData.bio}</p>
+                  <Row align="center" justify="center">
+                    <p className="pText">{profileData.bio}</p>
+                  </Row>
                 </Col>
               </Row>
 

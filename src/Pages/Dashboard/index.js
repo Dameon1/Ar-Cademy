@@ -16,7 +16,7 @@ import {
 import { AiOutlineUpload } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import ArProfile from "../../components/ArProfile";
-import { Card } from "../../components/Cards";
+import { MediaCard } from "../../components/Cards";
 import {
   Poap,
   NearNFTS,
@@ -97,11 +97,8 @@ export function Dashboard() {
       <div className="text-container">
         <h2>Identity needs Security</h2>
         <p className="pText">
-          Identity is a topic that Arweave is looking to solve in multiple
-          different ways. As our connection to the world grows, we need to be
-          able to connect with the people and communities that we are connected
-          to, with the Identity that we are comfortable with. Some of these are
-          security risks to personal safety, privacy, and trust.
+        Unlock the power of secure and trusted connections with Arweave's innovative Identity solutions - ANS and ArProfile!
+        As our world becomes more interconnected, it's time to say goodbye to compromising personal safety, privacy, and trust in our connections. 
         </p>
       </div>
       <Spacer y={1} />
@@ -163,8 +160,12 @@ export function Dashboard() {
           <h1>Arcademy Videos</h1>
           <div className="contentScrollContainer">
             <div className="hs">
-              {userData.ARCADEMY_VIDEOS.map((content, i) => {
-                return <Card content={content} />;
+              {userData.ARCADEMY_VIDEOS.map((video, i) => {
+                 return (
+                  <div className="videoThumbnails" key={i} onClick={() => navigate(`/playground/${video.uid}`)}>
+                    <MediaCard video={video} />
+                  </div>
+                );
               })}
             </div>
           </div>
@@ -179,11 +180,11 @@ export function Dashboard() {
             <h1>Owner Videos</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userData.UPLOADED_VIDEOS.map((content, i) => {
+                {userData.UPLOADED_VIDEOS.map((video, i) => {
                   return (
-                    <div className="videoThumbnails" key={i}>
-                      <AtomicVideoCards video={content} />
-                    </div>
+                    <div className="videoThumbnails" key={i} onClick={() => navigate(`/AtomicPlayground/${video.id}`)}>
+                        <AtomicVideoCards video={video} />
+                      </div>
                   );
                 })}
               </div>

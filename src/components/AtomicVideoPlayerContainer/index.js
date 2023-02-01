@@ -9,9 +9,10 @@ import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import { getProfile } from "../../lib/imgLib/account.js";
 // import MediaCards  from "../../components/Cards/MediaCards";
 // import MainContext from "../../context";
+import { useNavigate } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import { MediaCards } from "../Cards";
+import { VideoCard, MediaCard } from "../Cards";
 import {
   Grid,
   Row,
@@ -24,6 +25,7 @@ import {
   Avatar,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+
 //import { take, takeLast } from "ramda";
 
 export default function AtomicVideoPlayerContainer(props) {
@@ -35,6 +37,7 @@ export default function AtomicVideoPlayerContainer(props) {
   const [authorObject, setAuthorObject] = useState(null);
   const [contractData, setContractData] = useState();
   const [ownerData, setOwnerData] = useState();
+  const navigate = useNavigate();
   //const [urls, setUrls] = useState([]);
   //const [videoID, setViedoID] = useState();
   //const [loading, setLoading] = useState(true);
@@ -96,15 +99,29 @@ export default function AtomicVideoPlayerContainer(props) {
   let cards = ownerVideos.map((video, index) => {
     return (
       <div className="videoThumbnails" key={index}>
-        <AtomicVideoCards video={video} setState={setState} />
+        <Link
+          key={video.uid}
+          to={`/AtomicPlayground/${video.id}`}
+          className="textNoDec"
+          onClick={setState}
+        >
+          <AtomicVideoCards video={video} />
+        </Link>
       </div>
     );
   });
 
-  let authorCards = arcademyVideos.map((content, index) => {
+  let authorCards = arcademyVideos.map((video, index) => {
     return (
       <div className="videoThumbnails" key={index}>
-        <MediaCards content={content} setState={setState} />
+        <Link
+          key={video.uid}
+          to={`/playground/${video.uid}`}
+          className="textNoDec"
+          onClick={setState}
+        >
+          <MediaCard video={video} setState={setState} />
+        </Link>
       </div>
     );
   });
@@ -138,15 +155,13 @@ export default function AtomicVideoPlayerContainer(props) {
 
             <footer className="video-footer">
               <Row display="flex" justify="flex-start" align="center">
-                  <Link to={`/profile/${asset.owner}/${asset.owner}`}>
-                    <Avatar
-                      src={"https://arweave.net/" + ownerData.profile.avatar}
-                      size="lg"
-                      pointer="true"
-                    />
-                  </Link>
-                
-              
+                <Link to={`/profile/${asset.owner}/${asset.owner}`}>
+                  <Avatar
+                    src={"https://arweave.net/" + ownerData.profile.avatar}
+                    size="lg"
+                    pointer="true"
+                  />
+                </Link>
 
                 <Col>
                   <p className="pText">{asset.description}</p>

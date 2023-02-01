@@ -27,8 +27,9 @@ function ARKdisplay(props) {
           <h2>{content.EVM[evmAddr].ENS}</h2>
         </>
       )}
-
-      <p className="pText">{props.content.ARWEAVE.ANS.bio}</p>
+      <Row justify="center">
+        <p className="pText">{props.content.ARWEAVE.ANS.bio}</p>
+      </Row>
       <Row wrap="wrap" align="center" justify="space-around">
         {props?.content?.ARWEAVE?.ANS?.links?.twitter && (
           <>

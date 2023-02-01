@@ -37,7 +37,7 @@ export const Authors = {
   },
 
   "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM": {
-    author: "Edge and Node",
+    author: "Nader Dabit",
     authorLink: "https://twitter.com/dabit3",
     authorWebsite: "https://edgeandnode.com/",
     createdVideosByID: [ "9", "28", "54"],
@@ -45,7 +45,7 @@ export const Authors = {
     uid: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
     addr: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
     username: "@dabit3",
-    avatar: "https://edgeandnode.com/images/logo-big.png",
+    avatar: "https://yt3.googleusercontent.com/ytc/AL5GRJXwMTgSuNsEUaIuBgQQzEPNUNUGJ2sETj5jinFDQQ=s176-c-k-c0x00ffffff-no-rj",
   },
   // '7': {
   //     author: 'Arweave',
@@ -185,7 +185,7 @@ export const Authors = {
     uid: "16",
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@everVisionHQ",
-    avatar: "https://arweave.net/k5sxUsgCyOkBRLH9iXSfie3s-VnNaN_4iTDjjA_TA5I",
+    avatar: "https://arweave.net/N-nneqJtdSzZNfQDJP2T9AxL2PeeQbHicbwloZrcS1Y",
   },
 
   //--Metaweave--//
@@ -250,7 +250,7 @@ export const Authors = {
     uid: "21",
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@uF4No",
-    avatar: "https://twitter.com/uF4No/photo",
+    avatar: "https://pbs.twimg.com/profile_images/1518581798648926211/nS-MMpiX_400x400.jpg",
   }
 };
 

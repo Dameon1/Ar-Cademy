@@ -40,15 +40,17 @@
   ## V4.2.2 
   - [https://arweave.net/daB-oX1SnG8gH1Tvx5DtcZ3DAAIWSTsixjDd8Nhl-Yw](https://arweave.net/daB-oX1SnG8gH1Tvx5DtcZ3DAAIWSTsixjDd8Nhl-Yw)
 
-  ## V4.3.0 (Current State)
+  ## V4.3.0 
   - [https://arweave.net/DpykzpM6_lvO4W0D1JFPco6h_pXHh5E4RP7G6PhonQo](https://arweave.net/DpykzpM6_lvO4W0D1JFPco6h_pXHh5E4RP7G6PhonQo)
+
+   ## V4.3.1 (Current State)
+  - [https://arweave.net/wI5X7fF9tXKCUPP_Kyamq0h0pXrFZSCdziAlJ9WdNf8](https://arweave.net/wI5X7fF9tXKCUPP_Kyamq0h0pXrFZSCdziAlJ9WdNf8)
 
 ## Instructions
 
   - In the playground, you have a video and a playground of tabs to further explain.
 
-  - The video will not automatically start. Once started, it will retain your place in the video if you happen to
-    leave and come back.
+  - The video will not automatically start. Once started, it will retain your place in the video if you happen to leave and come back.
 
   - The structure of the editor has 3 parts.
 

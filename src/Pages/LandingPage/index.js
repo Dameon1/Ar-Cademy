@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { getRecentUploadData } from "../../Queries/AppQueries";
 import { Grid, Card, Text, Link, Tooltip } from "@nextui-org/react";
-
+import { CreatorContentCard } from "../../components/Cards";
 import AsyncImageLoader from "../../components/AsyncImageLoader";
+import { AtomicMediaCard, MediaCard } from "../../components/Cards";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -23,17 +24,13 @@ export function LandingPage() {
     getRecentUploads();
   }, []);
 
-  // const MockItem = ({ text }) => {
-  //   return (
-  //     <Card css={{ h: "$24", $$cardColor: "$colors$primary" }}>
-  //       <Card.Body>
-  //         <Text h6 size={15} color="white" css={{ mt: 0 }}>
-  //           {text}
-  //         </Text>
-  //       </Card.Body>
-  //     </Card>
-  //   );
-  // };
+  const AtomicMediaCards = recentUploads.map((video, index) => {
+    return (
+      <Grid xs={6} sm={3} md={2} key={index}>
+        <AtomicMediaCard video={video} onClick={() => navigate(`/AtomicPlayground/${video.id}`)} />
+      </Grid>
+    );
+  });
 
   const moduleCards = modules.map((module, index) => {
     return (
@@ -66,39 +63,8 @@ export function LandingPage() {
     );
   });
   console.log(
-    "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/dHf8bIr9FHoAFuvhbxKiGDaRF5AU_7p9x9W3wFsuMbY"
+    "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/wI5X7fF9tXKCUPP_Kyamq0h0pXrFZSCdziAlJ9WdNf8"
   );
-
-  let recentUploadCards = recentUploads.map((upload, index) => {
-    return (
-      <li key={index} className="moduleContent">
-        <h4>{upload.title}</h4>
-
-        <img
-          src={`https://arweave.net/${upload.videoImageId}`}
-          className="heroImage"
-          alt={`Follow of ${upload.title}`}
-        />
-        <Row justify="center">
-          <Button
-            className="button buttonText"
-            css={{
-              color: "black",
-              border: "2px solid #008c9e",
-              fontSize: "0.75em",
-              padding: "0.3em",
-              backgroundColor: "white",
-              transition: "all 0.2s ease-in-out",
-            }}
-            onClick={() => navigate(`/AtomicPlayground/${upload.id}`)}
-            iconRight={<AiOutlineArrowRight size={18} />}
-          >
-            <p>Goto</p>
-          </Button>
-        </Row>
-      </li>
-    );
-  });
 
   return (
     <>
@@ -115,7 +81,7 @@ export function LandingPage() {
         </p>
       </div>
       <Spacer y={2} />
-     
+
       <Grid.Container
         gap={0.5}
         display="flex"
@@ -126,7 +92,7 @@ export function LandingPage() {
       >
         <Row justify="space-around" align="center" wrap="wrap">
           <Col css={{ maxWidth: "480px", minWidth: "280px" }}>
-          <h3>Learn with Nader</h3>
+            <h3>Learn with Nader</h3>
             <Image src={bundlrNader} alt="bundlrNader" />
           </Col>
 
@@ -138,7 +104,7 @@ export function LandingPage() {
               process of creating your very own contract, with zero transaction
               fees!
             </p>
-            <Spacer y={.5} />
+            <Spacer y={0.5} />
             <Row justify="center">
               <Button
                 css={{
@@ -252,10 +218,31 @@ export function LandingPage() {
         <ul className="moduleCards">{moduleCards}</ul>
       </div>
       <Spacer y={2} />
+      {/* <div>
+        <h3>Newly Added:</h3>
+        <ul className="moduleCards">
+          {recentUploads.map((content, index) => {
+            return <CreatorContentCard content={content} onClick={() => navigate(`/AtomicPlayground/${content.id}`)}/>;
+          })}
+        </ul>
+      </div> */}
+
+
+
+
+      <Spacer y={2} />
       <div>
         <h3>Newly Added:</h3>
-        <ul className="moduleCards">{recentUploadCards}</ul>
+      <Grid.Container gap={2} justify="flex-start">
+          {AtomicMediaCards}
+        </Grid.Container>
+        {/* <ul className="moduleCards">
+          {recentUploads.map((content, index) => {
+            return <CreatorContentCard content={content} onClick={() => navigate(`/AtomicPlayground/${content.id}`)}/>;
+          })}
+        </ul> */}
       </div>
+
       <Spacer y={2} />
       <Row justify="center" align="center">
         <h3>February Sponsors</h3>

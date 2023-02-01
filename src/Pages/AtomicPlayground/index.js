@@ -12,7 +12,7 @@ import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import { atomicToStamp } from "../../lib/imgLib/utils.js";
 import { getCount, getRewards } from "../../lib/imgLib/stamp.js";
 import { getProfile } from "../../lib/imgLib/account.js";
-import MediaCards from "../../components/Cards/MediaCards";
+import VideoCard from "../../components/Cards/VideoCard";
 import MainContext from "../../context";
 import {
   Grid,

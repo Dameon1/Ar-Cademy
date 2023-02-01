@@ -2,22 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import { MediaCards } from "../Cards";
-import {
-  Grid,
-  Row,
-  Text,
-  Col,
-  Loading,
-  Container,
-  Button,
-  Spacer,
-  Avatar,
-} from "@nextui-org/react";
+import { Row, Col, Loading, Spacer, Avatar, Grid } from "@nextui-org/react";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 import { getUserVideos } from "../../Queries/UserQueries";
-import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
+import { AtomicVideoCards, MediaCard } from "../Cards";
 
 export function VideoPlayerContainer(props) {
   const { videoID, setState } = props;
@@ -25,7 +14,6 @@ export function VideoPlayerContainer(props) {
   const [ownerVideos, setOwnerVideos] = useState([]);
   const [arcademyVideos, setArcademyVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [videoObject, setVideoObject] = useState();
 
   function getArcademyVideos(id) {
     let authorObject = Authors[id];
@@ -69,11 +57,18 @@ export function VideoPlayerContainer(props) {
     getData();
   }, [props]);
 
-  let cards = arcademyVideos.map((content, index) => {
-    //console.log(arcademyVideos, "arcademyVideos")
+  let cards = arcademyVideos.map((video, index) => {
+    console.log(video, "arcademyVideos");
     return (
       <div className="videoThumbnails" key={index}>
-        <MediaCards content={content} setState={setState} />
+        <Link
+          key={video.uid}
+          to={`/playground/${video.uid}`}
+          className="textNoDec"
+          onClick={setState}
+        >
+          <MediaCard video={video} setState={setState} />
+        </Link>
       </div>
     );
   });
@@ -82,7 +77,14 @@ export function VideoPlayerContainer(props) {
     console.log(ownerVideos, "ownerVideos");
     return (
       <div className="videoThumbnails" key={index}>
-        <AtomicVideoCards video={video} setState={setState} />
+        <Link
+          key={video.uid}
+          to={`/AtomicPlayground/${video.id}`}
+          className="textNoDec"
+          onClick={setState}
+        >
+          <AtomicVideoCards video={video} />
+        </Link>
       </div>
     );
   });
@@ -127,7 +129,7 @@ export function VideoPlayerContainer(props) {
                   to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                 >
                   <Avatar
-                    src={ contentObject.authorObject.avatar }
+                    src={contentObject.authorObject.avatar}
                     size="lg"
                     pointer="true"
                   />
@@ -175,6 +177,13 @@ export function VideoPlayerContainer(props) {
               </Row>
               <Spacer y={1} />
               <h3>Videos</h3>
+              {/* <div className="contentScrollContainer">
+                <div className="hs">
+                  {atomicCards}
+                  {cards}
+                </div>
+              </div> */}
+
               <div className="contentScrollContainer">
                 <div className="hs">
                   {atomicCards}

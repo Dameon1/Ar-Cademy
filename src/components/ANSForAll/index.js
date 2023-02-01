@@ -26,10 +26,10 @@ function UseAns({ addr, forDashboard }) {
     (async () => {
       try {
         if (addr.length !== 43) {
-          console.log("bad addr for ans search")
+          console.log("bad addr for ans search");
           return;
         }
-        console.log("addr--------", addr)
+        console.log("addr--------", addr);
         if (forDashboard && userData?.ANS?.user) {
           return setAnsProfile(userData.ANS);
         }
@@ -40,17 +40,18 @@ function UseAns({ addr, forDashboard }) {
             headers: {
               "Content-Type": "text/plain",
             },
-          });
+          }
+        );
         const ans = await res.json();
-        console.log("ans", ans)
+        console.log("ans", ans);
         if (Object.keys(ans).length > 0) {
           setAnsProfile(ans);
         }
       } catch (e) {
-        console.log("error", e)
+        console.log("error", e);
         //setAnsProfile({});
         //setHasFailed(JSON.stringify(e));
-      } 
+      }
       setIsLoading(false);
     })();
   }, [addr, forDashboard, userData]);
@@ -96,8 +97,9 @@ function UseAns({ addr, forDashboard }) {
             />
 
             {ansProfile?.currentLabel && <h2>{ansProfile.currentLabel}</h2>}
-
-            <p className="pText">{ansProfile.bio}</p>
+            <Row justify="center">
+              <p className="pText">{ansProfile.bio}</p>
+            </Row>
             <Row wrap="wrap" align="center" justify="space-around">
               {ansProfile?.links?.twitter && (
                 <>

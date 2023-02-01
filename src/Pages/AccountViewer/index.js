@@ -1,12 +1,12 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import UseAns from "../../components/ANSForAll";
 import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
 import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import ArProfile from "../../components/ArProfile";
-import { Card } from "../../components/Cards";
+import { MediaCard, } from "../../components/Cards";
 import {
   Grid,
   Loading,
@@ -36,6 +36,7 @@ export function AccountViewer() {
   const [addr, setAddr] = useState("");
   const [input, setInput] = useState();
   const [isSearching, setIsSearching] = useState(false);
+  const navigate = useNavigate();
 
   async function retryFetch(url) {
     try {
@@ -231,23 +232,14 @@ export function AccountViewer() {
             <h1>Arcademy Videos</h1>
             <div className="contentScrollContainer">
               <div className="hs">
-                {userContent.ARCADEMY_VIDEOS.map((content, i) => {
-                  return <Card content={content} />;
-                })}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {addr && !isSearching && userContent?.UPLOADED_VIDEOS?.length > 0 && !isLoading && (
-          <div>
-            <h1>Owner Videos</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent.UPLOADED_VIDEOS.map((content, i) => {
+                {userContent.ARCADEMY_VIDEOS.map((video, i) => {
                   return (
-                    <div className="videoThumbnails" key={i}>
-                      <AtomicVideoCards video={content} />
+                    <div
+                      className="videoThumbnails"
+                      key={i}
+                      onClick={() => navigate(`/playground/${video.uid}`)}
+                    >
+                      <MediaCard video={video} />
                     </div>
                   );
                 })}
@@ -255,6 +247,32 @@ export function AccountViewer() {
             </div>
           </div>
         )}
+
+        {addr &&
+          !isSearching &&
+          userContent?.UPLOADED_VIDEOS?.length > 0 &&
+          !isLoading && (
+            <div>
+              <h1>Owner Videos</h1>
+              <div className="contentScrollContainer">
+                <div className="hs">
+                  {userContent.UPLOADED_VIDEOS.map((video, i) => {
+                    return (
+                      <div
+                        className="videoThumbnails"
+                        key={i}
+                        onClick={() =>
+                          navigate(`/AtomicPlayground/${video.id}`)
+                        }
+                      >
+                        <AtomicVideoCards video={video} />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
 
         {addr && userContent?.POAPS?.length > 0 && !isLoading && (
           <>

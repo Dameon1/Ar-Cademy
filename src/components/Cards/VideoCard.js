@@ -3,7 +3,8 @@ import { Card, Row, Text, Col, Tooltip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import fallbackImage from "../../winstonMedia.png";
-export default function MediaCards(props) {
+
+export default function VideoCard(props) {
   const { content, setState } = props;
   let { videoTitle } = content;
   if (videoTitle.length > 20) {
@@ -51,47 +52,6 @@ export default function MediaCards(props) {
                 <AiOutlinePlayCircle size={30} />
               </Link>
 
-              {/* <Button flat auto rounded color="secondary" size="xs">
-                <Link
-                  key={content.uid}
-                  to={`/playground/${content.uid}`}
-                  className="textNoDec"
-                  onClick={setState}
-                >
-                  <Text
-                    css={{ color: "inherit" }}
-                    size={10}
-                    transform="uppercase"
-                  >
-                    PLAY
-                  </Text>
-                </Link>
-              </Button> */}
-              {/* <AiOutlinePlayCircle></AiOutlinePlayCircle> */}
-              {/* <Button
-                flat
-                auto
-                rounded
-                className="mediaButton"
-                bordered
-                css={{ color: "#94f9f0", bg: "#94f9f026", m: 0 }}
-              >
-                <Link
-                  key={content.uid}
-                  to={`/playground/${content.uid}`}
-                  className="textNoDec"
-                  onClick={setState}
-                >
-                  
-                  <Text
-                    css={{ color: "inherit" }}
-                    size={10}
-                    transform="uppercase"
-                  >
-                    PLAY
-                  </Text>
-                </Link>
-              </Button> */}
             </Row>
           </Col>
         </Card.Footer>

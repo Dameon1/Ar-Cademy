@@ -1,43 +1,37 @@
 import { useEffect, useState } from "react";
-import {
-  Card,
-  Row,
-  Text,
-  Avatar,
-  Spacer,
-  Col,
-  Tooltip,
-} from "@nextui-org/react";
+import { Card, Row, Text, Avatar, Spacer, Col, Tooltip } from "@nextui-org/react";
 import { isVouched } from "../../lib/imgLib/stamp";
 import { MdVerified } from "react-icons/md";
 import { getProfile } from "../../lib/imgLib/account";
 import image from "../../winston.png";
+import { Authors } from "../../Authors";
 
-export default function AtomicMediaCard(props) {
+export default function MediaCard(props) {
   const { video, onClick } = props;
   const [creator, setCreator] = useState("");
   const [vouched, setVouched] = useState(false);
+  const [authorObject, setAuthorObject] = useState(null);
+  let author = Authors[video.authorID];
 
   useEffect(() => {
-    
+    console.log(video, "video");
+    let author = Authors[video.authorID];
     async function getCreator() {
       //Which Avatar for creators ?
-      let creator = await getProfile(video.owner);
-      let getVouched = await isVouched(video.owner);
+      let getVouched = await isVouched(author.addr);
       setVouched(getVouched);
-      setCreator(creator.profile);
+      setAuthorObject(author)
     }
     getCreator();
   }, []);
 
   return (
-    <Card isPressable onClick={onClick} css={{height:"175px", border:".5px solid white"}}>
-      <Card.Body css={{ p: 0, height:"105px" }}>
+    <Card isPressable onClick={onClick} css={{border:".5px solid white"}}>
+      <Card.Body css={{ p: 0 }}>
         <Card.Image
-          src={`https://arweave.net/${video.videoImageId}`}
-          height="105px"
+          src={video.videoImage}
           objectFit= "contain"
-          
+          width="100%"
           alt={video.title}
         />
       </Card.Body>
@@ -52,12 +46,12 @@ export default function AtomicMediaCard(props) {
       >
         <Tooltip
           placement="rightStart"
-          css={{ maxWidth:"200px"}}
+          css={{ width:"255px"}}
           offset={0}
           hideArrow
           content={
             <>
-              <h3 style={{}}>{video.title}</h3>
+              <h3 style={{}}>{video.videoTitle}</h3>
               <Row>
                 <Text
                   css={{
@@ -66,7 +60,7 @@ export default function AtomicMediaCard(props) {
                     fontSize: "$3xl",
                   }}
                 >
-                  {creator.name}
+                  {author.author}
                 </Text>
 
                 {vouched && (
@@ -81,19 +75,19 @@ export default function AtomicMediaCard(props) {
             </>
           }
         >
-          <Avatar
-            size="md"
-            src={creator ? creator.avatarURL : image}
-            alt="image"
-            pointer="true"
-          />
+        <Avatar
+          size="md"
+          src={author.avatar}
+          alt="image"
+          pointer="true"
+        />
         </Tooltip>
         <Col css={{ padding: "0px 10px" }}>
-          <Row wrap="wrap">
-            <Text css={{ fontSize: "$md" }}>
-              {video.title.length > 47
-                ? video.title.slice(0, 47) + +"..."
-                : video.title}{" "}
+          <Row >
+            <Text css={{ fontSize: "$sm", textAlign:"left" }}>
+              {video.videoTitle.length > 30
+                ? video.videoTitle.slice(0, 30) + "..."
+                : video.videoTitle}{" "}
             </Text>
           </Row>
           <Row>
@@ -104,7 +98,7 @@ export default function AtomicMediaCard(props) {
                 fontSize: "$sm",
               }}
             >
-              {creator.name}
+              {author.author}
             </Text>
             <Spacer x={0.25} />
             {vouched && (

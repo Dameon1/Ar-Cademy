@@ -31,13 +31,13 @@ export default function AtomicMediaCard(props) {
   }, []);
 
   return (
-    <Card isPressable onClick={onClick} css={{height:"175px", border:".5px solid white"}}>
-      <Card.Body css={{ p: 0, height:"105px" }}>
+    <Card isPressable onClick={onClick} css={{border:".5px solid white"}}>
+      <Card.Body css={{ p: 0}}>
         <Card.Image
           src={`https://arweave.net/${video.videoImageId}`}
-          height="105px"
+          width="100%"
           objectFit= "contain"
-          
+          height={140}
           alt={video.title}
         />
       </Card.Body>
@@ -117,6 +117,18 @@ export default function AtomicMediaCard(props) {
             )}
           </Row>
         </Col>
+        {/* <Row wrap="wrap" justify="space-between" align="center">
+          <Text b>{video.title}</Text>
+          <Text
+            css={{
+              color: "$accents7",
+              fontWeight: "$semibold",
+              fontSize: "$sm",
+            }}
+          >
+            {"item.price"}
+          </Text>
+        </Row> */}
       </Card.Footer>
     </Card>
   );
