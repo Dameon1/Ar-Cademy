@@ -21,11 +21,11 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 
-import { AvatarS, Bio, Name } from "../../static/styles/Profile";
-
+import { AvatarS, Name } from "../../static/styles/Profile";
 import Account from "arweave-account";
-
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { isVouched } from "../../lib/imgLib/stamp";
+import { MdVerified } from "react-icons/md";
 
 function ArProfile(props) {
   const { userData } = useContext(MainContext);
@@ -33,23 +33,23 @@ function ArProfile(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [vouched, setVouched] = useState(false);
 
   useEffect(() => {
-    console.log("reloaded");
     let { addr, forDashboard } = props;
+    let getVouched = isVouched(addr);
+    setVouched(getVouched);
     // addr.length === 43
     //   ? (addr = props.addr)
     //   : addr.length === 42
     //   ? (addr = userData.ARK.arweave_address)
     //   : (addr = 0);
-    console.log(addr.length, "reloaded");
     if (addr.length === 42) {
       if (userData?.ARK?.arweave_address.length === 43) {
         async function arProfile() {
           addr = userData.ARK.arweave_address;
           const account = new Account();
           const user = await account.get(addr);
-          console.log(user, "reloaded");
           if (user) {
             setProfileData(user.profile);
           }
@@ -105,48 +105,56 @@ function ArProfile(props) {
           <Spacer y={3} />
         </>
       ) : (
-        <>
+        <Col align="center">
           <EditProfileModal
             addr={props.addr}
             profile={profileData}
             isOpen={modalIsOpen}
             hasClosed={() => setModalIsOpen(false)}
           />
-
-          {
-            // Dispaly account details
-          }
-          {profileData?.handleName?.length > 0 ? (
+          {profileData?.handleName?.length > 0 && (
             <>
-              <Row align="center">
-                <Col align="center">
-                  {profileData.avatar ? (
-                    <AvatarS
-                      src={`https://arweave.net/${profileData.avatar}`}
-                      sx={{ width: 100, height: 100 }}
+              <Row align="center" justify="center">
+                {profileData.name && <h3>{profileData.name}</h3>}
+                <Col css={{width:"20px"}}>
+                  {vouched && (
+                    <MdVerified
+                      className="socialImageLinks"
+                      size={15}
+                      aria-hidden="true"
+                      color="blue"
                     />
-                  ) : (
-                    <AvatarS
-                      sx={{
-                        width: 100,
-                        height: 100,
-                        fontSize: "large",
-                        fontFamily: "monospace",
-                      }}
-                    >
-                      #{props.addr.slice(0, 3)}
-                      {props.addr.slice(-3)}
-                    </AvatarS>
                   )}
-
-                  {profileData.name && <Name>{profileData.name}</Name>}
-                  <Row align="center" justify="center">
-                    <p className="pText">{profileData.bio}</p>
-                  </Row>
                 </Col>
               </Row>
+              <Row align="center" justify="center">
+                {profileData.avatar ? (
+                  <AvatarS
+                    src={`https://arweave.net/${profileData.avatar}`}
+                    sx={{ width: 90, height: 90 }}
+                  />
+                ) : (
+                  <AvatarS
+                    sx={{
+                      width: 90,
+                      height: 90,
+                      fontSize: "large",
+                      fontFamily: "monospace",
+                    }}
+                  >
+                    #{props.addr.slice(0, 3)}
+                    {props.addr.slice(-3)}
+                  </AvatarS>
+                )}
+              </Row>
+              <Spacer y={0.5} />
 
-              <Row wrap="wrap" align="center" justify="space-around">
+              <Row
+                wrap="wrap"
+                align="center"
+                justify="space-around"
+                css={{ maxWidth: "200px" }}
+              >
                 {profileData.links.twitter && (
                   <Tooltip content={`${profileData.links.twitter}`}>
                     <Link
@@ -156,7 +164,7 @@ function ArProfile(props) {
                     >
                       <FaTwitter
                         className="socialImageLinks"
-                        size={25}
+                        size={20}
                         aria-hidden="true"
                       />
                     </Link>
@@ -187,7 +195,7 @@ function ArProfile(props) {
                         target="_blank"
                         rel="noreferrer"
                         className="socialImageLinks"
-                        size={25}
+                        size={20}
                       />
                     </Link>
                   </Tooltip>
@@ -203,7 +211,7 @@ function ArProfile(props) {
                     >
                       <FaGithub
                         href={`https://github.com/${profileData.links.github}`}
-                        size={25}
+                        size={20}
                         className="socialImageLinks"
                       />
                     </Link>
@@ -219,7 +227,7 @@ function ArProfile(props) {
                       aria-hidden="true"
                     >
                       <FaDiscord
-                        size={25}
+                        size={20}
                         className="socialImageLinks"
                         href={`https://facebook.com/${profileData.links.discord}`}
                         target="_blank"
@@ -229,69 +237,97 @@ function ArProfile(props) {
                   </Tooltip>
                 )}
               </Row>
+              <Spacer y={0.5} />
 
-              <Spacer y={1} />
-
-              {props.forDashboard && (
-                <Button
-                  auto
-                  css={{
-                    color: "black",
-                    border: "2px solid #008c9e",
-                    fontSize: "0.75em",
-                    padding: "0.3em",
-                    backgroundColor: "white",
-                    transition: "all 0.2s ease-in-out",
+              <Row align="center" justify="center">
+                <p
+                  style={{
+                    letterSpacing: "0.5px",
+                    fontFamily: "Work Sans",
+                    fontSize: "16px",
                   }}
-                  onClick={() => setModalIsOpen(true)}
-                  iconRight={<FiEdit size={18} />}
-                  className="button buttonText"
                 >
-                  <p className="pText">Edit Profile</p>
-                </Button>
-              )}
-            </>
-          ) : (
-            <>
-              <div
-                style={{
-                  textAlign: "center",
-                  alignItems: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div>
-                  <p className="pText">No Account Found{` 🙂`}</p>
-                </div>
-                <Spacer y={1} />
+                  {profileData.bio}
+                </p>
+              </Row>
+              <Spacer y={0.5} />
+
+              <Row align="center" justify="center">
                 {props.forDashboard && (
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://arweave.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
+                  <Button
+                    auto
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                    onClick={() => setModalIsOpen(true)}
+                    iconRight={<FiEdit size={18} />}
+                    className="button buttonText"
                   >
-                    <Button
-                      auto
-                      css={{
-                        color: "black",
-                        border: "2px solid #008c9e",
-                        fontSize: "0.75em",
-                        padding: "0.3em",
-                        backgroundColor: "white",
-                        transition: "all 0.2s ease-in-out",
-                      }}
-                      className="button buttonText"
-                      iconRight={<AiOutlineUpload size={18} />}
-                    >
-                      <p className="pText">Create an ArProfile</p>
-                    </Button>
-                  </a>
+                    <p className="pText">Edit Profile</p>
+                  </Button>
                 )}
-              </div>
+              </Row>
             </>
           )}
-        </>
+          {profileData?.handleName?.length > 0 ? (
+            <Col align="center">
+              <Spacer y={0.5} />
+            </Col>
+          ) : (
+            <Col
+              css={{
+                textAlign: "center",
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div>
+                <Row align="center" justify="center">
+                  <p
+                    style={{
+                      letterSpacing: "0.5px",
+                      fontFamily: "Work Sans",
+                      fontSize: "16px",
+                    }}
+                  >
+                    No Account Found
+                  </p>
+                </Row>
+                <Row align="center" justify="center">{` 🙂`}</Row>
+              </div>
+              
+              {props.forDashboard && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://arweave.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
+                >
+                  <Button
+                    auto
+                    css={{
+                      color: "black",
+                      border: "2px solid #008c9e",
+                      fontSize: "0.75em",
+                      padding: "0.3em",
+                      backgroundColor: "white",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                    className="button buttonText"
+                    iconRight={<AiOutlineUpload size={18} />}
+                  >
+                    <p className="pText">Create an ArProfile</p>
+                  </Button>
+                </a>
+              )}
+            </Col>
+          )}
+        </Col>
       )}
     </>
   );

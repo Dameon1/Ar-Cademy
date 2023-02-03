@@ -13,25 +13,28 @@ export default function Playground() {
 
   useEffect(() => {
     console.log("Reloaded")
-    setVideoID(new URL(window.location.href).pathname.split('/').at(-1))
+    setVideoID(window.location.hash.split('/').at(-1))
     if(isLoading){setIsLoading(false)}
     
   }, [isLoading])
   
   function setState() {
-    setVideoID(new URL(window.location.href).pathname.split('/').at(-1))
+    setVideoID(window.location.hash.split('/').at(-1))
     setIsLoading(true)
   }
 
-  let videoId = new URL(window.location.href).pathname.split('/').at(-1);
-  let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
-  let links = Videos[videoId].sandboxLinks;
-  
+  let videoId = window.location.hash.split('/').at(-1);
+  //.pathname.split('/').at(-1);
+  console.log(videoId, "videoId")
+   let sandboxSrc = Videos[videoId].sandboxLinks[Videos[videoId].sandboxLinks.preferred];
+   let links = Videos[videoId].sandboxLinks;
+  console.log(links, "links")
+
   return (
     isLoading ? null : (
     <section>
       <div className="playground-section">
-        <VideoPlayerContainer videoID={videoID} setState={setState}/>
+        <VideoPlayerContainer videoID={videoId} setState={setState}/>
         <Sandbox title="sandbox" sandboxContent={sandboxSrc} sandboxLinks={links} />
       </div>
     </section>

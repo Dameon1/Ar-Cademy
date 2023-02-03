@@ -26,7 +26,6 @@ import {
 } from "ramda";
 
 export async function videosByOwner(addr, type) {
-  console.log("addr: ", addr, type);
   let images = await fetch("https://arweave.net/graphql", {
     method: "POST",
     headers: {
@@ -70,7 +69,6 @@ export async function videosByOwner(addr, type) {
         : Promise.reject(new Error("ERROR: STATUS " + res.status))
     )
     .then((res) => {
-      console.log("res", res);
       return res;
     })
     .then(
@@ -80,7 +78,6 @@ export async function videosByOwner(addr, type) {
         path(["data", "transactions", "edges"])
       )
     );
-  console.log("images", images);
   return await images;
 }
 

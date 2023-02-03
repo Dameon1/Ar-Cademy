@@ -26,7 +26,7 @@ export default function MediaCard(props) {
   }, []);
 
   return (
-    <Card isPressable onClick={onClick} css={{border:".5px solid white"}}>
+    <Card isPressable onClick={onClick} css={{border:".5px solid white", minHeight:"180px"}}>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
           src={video.videoImage}
@@ -85,8 +85,8 @@ export default function MediaCard(props) {
         <Col css={{ padding: "0px 10px" }}>
           <Row >
             <Text css={{ fontSize: "$sm", textAlign:"left" }}>
-              {video.videoTitle.length > 30
-                ? video.videoTitle.slice(0, 30) + "..."
+              {video.videoTitle.length > 27
+                ? video.videoTitle.slice(0, 27) + "..."
                 : video.videoTitle}{" "}
             </Text>
           </Row>

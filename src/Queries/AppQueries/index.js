@@ -59,7 +59,7 @@ export function query() {
         transactions(first: 25, tags: [
             { name: "Platform-Uploader", values: "Arcademy-Test3" },
             { name: "Education", values: "true" },
-            { name: "Blockchain", values: "true" },
+            { name: "Month", values: "February" },
             { name: "Uploader", values: "RedStone"},
             { name: "App-Name", values: "SmartWeaveContract" },
             { name: "Content-Type", values: "application/x.arweave-manifest+json" }

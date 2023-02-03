@@ -9,11 +9,13 @@ import {
   Row,
   Tooltip,
   Link,
+  Col,
 } from "@nextui-org/react";
 
 import { AvatarS } from "../../static/styles/Profile";
 import MainContext from "../../context";
-
+import { isVouched } from "../../lib/imgLib/stamp";
+import { MdVerified } from "react-icons/md";
 import { icons } from "../../static";
 
 function UseAns({ addr, forDashboard }) {
@@ -21,15 +23,17 @@ function UseAns({ addr, forDashboard }) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasFailed, setHasFailed] = useState(false);
   const { theme, userData } = useContext(MainContext);
+  const [vouched, setVouched] = useState(false);
 
   useEffect(() => {
+    let getVouched = isVouched(addr);
+    setVouched(getVouched);
     (async () => {
       try {
         if (addr.length !== 43) {
           console.log("bad addr for ans search");
           return;
         }
-        console.log("addr--------", addr);
         if (forDashboard && userData?.ANS?.user) {
           return setAnsProfile(userData.ANS);
         }
@@ -43,7 +47,6 @@ function UseAns({ addr, forDashboard }) {
           }
         );
         const ans = await res.json();
-        console.log("ans", ans);
         if (Object.keys(ans).length > 0) {
           setAnsProfile(ans);
         }
@@ -60,7 +63,7 @@ function UseAns({ addr, forDashboard }) {
     <div>
       {isLoading ? (
         <Grid.Container gap={1} justify="center">
-          <Loading size="xl" />
+          <Loading />
         </Grid.Container>
       ) : hasFailed ? (
         <>
@@ -90,129 +93,160 @@ function UseAns({ addr, forDashboard }) {
         </>
       ) : ansProfile ? (
         <>
-          <div style={{ padding: "5px" }}>
+          <Row align="center" justify="center">
+            {ansProfile?.currentLabel && <h3>{ansProfile.currentLabel}</h3>}
+            <Col css={{ width: "20px" }}>
+              {vouched && (
+                <MdVerified
+                  className="socialImageLinks"
+                  size={15}
+                  aria-hidden="true"
+                  color="blue"
+                />
+              )}
+            </Col>
+          </Row>
+          <Row align="center" justify="center">
             <AvatarS
               src={`https://arweave.net/${ansProfile.avatar}`}
-              sx={{ width: 100, height: 100 }}
+              sx={{ width: 90, height: 90 }}
             />
-
-            {ansProfile?.currentLabel && <h2>{ansProfile.currentLabel}</h2>}
-            <Row justify="center">
-              <p className="pText">{ansProfile.bio}</p>
-            </Row>
-            <Row wrap="wrap" align="center" justify="space-around">
-              {ansProfile?.links?.twitter && (
-                <>
-                  <Tooltip content={`${ansProfile.links.twitter}`}>
-                    <Link
-                      href={`https://twitter.com/${ansProfile.links.twitter}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <FaTwitter
-                        className="socialImageLinks"
-                        size={25}
-                        aria-hidden="true"
-                      />
-                    </Link>
-                  </Tooltip>
-                </>
-              )}
-
-              {ansProfile?.links?.github && (
-                <Tooltip content={`${ansProfile.links.github}`}>
+          </Row>
+          <Spacer y={0.5} />
+          <Row
+            wrap="wrap"
+            align="center"
+            justify="space-around"
+            css={{ maxWidth: "200px" }}
+          >
+            {ansProfile?.links?.twitter && (
+              <>
+                <Tooltip content={`${ansProfile.links.twitter}`}>
                   <Link
-                    href={`https://github.com/${ansProfile.links.github}`}
+                    href={`https://twitter.com/${ansProfile.links.twitter}`}
                     target="_blank"
                     rel="noreferrer"
-                    aria-hidden="true"
                   >
-                    <FaGithub
-                      href={`https://github.com/${ansProfile.links.github}`}
-                      size={25}
+                    <FaTwitter
                       className="socialImageLinks"
+                      size={20}
+                      aria-hidden="true"
                     />
                   </Link>
                 </Tooltip>
-              )}
-              {ansProfile?.links?.customUrl && (
-                <Tooltip content={`${ansProfile.links.customUrl}`}>
-                  <Link
-                    href={`${ansProfile.links.customUrl}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-hidden="true"
-                  >
-                    <FaGlobe className="socialImageLinks" size={25} />
-                  </Link>
-                </Tooltip>
-              )}
-            </Row>
-            <Spacer y={1} />
-            <Row wrap="wrap" align="center" justify="space-around">
-              {ansProfile?.LENS_HANDLES && (
-                <Tooltip
-                  content={`${ansProfile.LENS_HANDLES[0]?.replace("@", "")}`}
+              </>
+            )}
+            {ansProfile?.links?.github && (
+              <Tooltip content={`${ansProfile.links.github}`}>
+                <Link
+                  href={`https://github.com/${ansProfile.links.github}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-hidden="true"
                 >
-                  <Link
-                    href={`https://lenster.xyz/u/${ansProfile.LENS_HANDLES[0]?.replace(
-                      "@",
-                      ""
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-hidden="true"
-                  >
-                    <img
-                      height={30}
-                      width={30}
-                      className="socialImageLinks"
-                      src="https://raw.githubusercontent.com/lens-protocol/brand-kit/main/Logo/SVG/LENS%20LOGO_%20copy_Icon%20Only.svg"
-                      alt="Lens logo"
-                    />
-                  </Link>
-                </Tooltip>
-              )}
-              {ansProfile?.currentLabel && (
-                <Tooltip content={`${ansProfile.currentLabel}`}>
-                  <Link
-                    href={`https://${ansProfile.currentLabel}.ar.page`}
-                    target="_blank"
-                  >
-                    <img
-                      width={30}
-                      height={30}
-                      className="socialImageLinks"
-                      src={
-                        !theme
-                          ? icons.arweaveWebWallet.light
-                          : icons.arweaveWebWallet.dark
-                      }
-                      alt="Arweave logo"
-                      quality={50}
-                    />
-                  </Link>
-                </Tooltip>
-              )}
-              {ansProfile?.ENS && (
-                <Tooltip content={`${ansProfile.ENS}`}>
-                  <Link
-                    href={`https://etherscan.io/enslookup-search?search=${ansProfile.ENS}`}
-                    target="_blank"
-                  >
-                    <img
-                      height={30}
-                      width={30}
-                      src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=002"
-                      alt="Eth logo"
-                      quality={50}
-                    />
-                  </Link>
-                </Tooltip>
-              )}
-            </Row>
-
-            <Spacer y={1} />
+                  <FaGithub
+                    href={`https://github.com/${ansProfile.links.github}`}
+                    size={20}
+                    className="socialImageLinks"
+                  />
+                </Link>
+              </Tooltip>
+            )}
+            {ansProfile?.links?.customUrl && (
+              <Tooltip content={`${ansProfile.links.customUrl}`}>
+                <Link
+                  href={`${ansProfile.links.customUrl}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-hidden="true"
+                >
+                  <FaGlobe className="socialImageLinks" size={20} />
+                </Link>
+              </Tooltip>
+            )}
+          </Row>
+          <Spacer y={0.5} />
+          <Row
+            wrap="wrap"
+            align="center"
+            justify="space-around"
+            css={{ maxWidth: "200px" }}
+          >
+            {ansProfile?.LENS_HANDLES && (
+              <Tooltip
+                content={`${ansProfile.LENS_HANDLES[0]?.replace("@", "")}`}
+              >
+                <Link
+                  href={`https://lenster.xyz/u/${ansProfile.LENS_HANDLES[0]?.replace(
+                    "@",
+                    ""
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-hidden="true"
+                >
+                  <img
+                    height={20}
+                    width={20}
+                    className="socialImageLinks"
+                    src="https://raw.githubusercontent.com/lens-protocol/brand-kit/main/Logo/SVG/LENS%20LOGO_%20copy_Icon%20Only.svg"
+                    alt="Lens logo"
+                  />
+                </Link>
+              </Tooltip>
+            )}
+            {ansProfile?.currentLabel && (
+              <Tooltip content={`${ansProfile.currentLabel}`}>
+                <Link
+                  href={`https://${ansProfile.currentLabel}.ar.page`}
+                  target="_blank"
+                >
+                  <img
+                    width={20}
+                    height={20}
+                    className="socialImageLinks"
+                    src={
+                      !theme
+                        ? icons.arweaveWebWallet.light
+                        : icons.arweaveWebWallet.dark
+                    }
+                    alt="Arweave logo"
+                    quality={50}
+                  />
+                </Link>
+              </Tooltip>
+            )}
+            {ansProfile?.ENS && (
+              <Tooltip content={`${ansProfile.ENS}`}>
+                <Link
+                  href={`https://etherscan.io/enslookup-search?search=${ansProfile.ENS}`}
+                  target="_blank"
+                >
+                  <img
+                    height={20}
+                    width={20}
+                    src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=002"
+                    alt="Eth logo"
+                    quality={50}
+                  />
+                </Link>
+              </Tooltip>
+            )}
+          </Row>
+          <Spacer y={0.5} />
+          <Row justify="center">
+            <p
+              style={{
+                letterSpacing: "0.5px",
+                fontFamily: "Work Sans",
+                fontSize: "16px",
+              }}
+            >
+              {ansProfile.bio}
+            </p>
+          </Row>
+          <Spacer y={0.25} />
+          <Row justify="center" align="center">
             <a
               href={`https://${ansProfile.currentLabel}.ar.page`}
               target="_blank"
@@ -230,27 +264,66 @@ function UseAns({ addr, forDashboard }) {
                 }}
                 className="button buttonText"
               >
-                <p className="pText">{ansProfile.currentLabel}.ar.page</p>
+                <p
+                  style={{
+                    letterSpacing: "0.5px",
+                    fontFamily: "Work Sans",
+                    fontSize: "16px",
+                  }}
+                >
+                  {ansProfile.currentLabel}.ar.page
+                </p>
               </Button>
             </a>
-          </div>
+          </Row>
         </>
       ) : (
-        <>
-          <div
-            style={{
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <div>
-              <p className="pText">No Account Found{` 🙂`}</p>
-            </div>
-            <Spacer y={1} />
-          </div>
-        </>
+        <Col
+          css={{
+            textAlign: "center",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Row justify="center">
+            <p
+              style={{
+                letterSpacing: "0.5px",
+                fontFamily: "Work Sans",
+                fontSize: "16px",
+              }}
+            >
+              No Account Found
+            </p>
+          </Row>
+          <Row justify="center" align="center">{` 🙂`}</Row>
+
+          <Spacer y={1} />
+          {/* {props.forDashboard && (
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://arweave.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
+                  >
+                    <Button
+                      auto
+                      css={{
+                        color: "black",
+                        border: "2px solid #008c9e",
+                        fontSize: "0.75em",
+                        padding: "0.3em",
+                        backgroundColor: "white",
+                        transition: "all 0.2s ease-in-out",
+                      }}
+                      className="button buttonText"
+                      iconRight={<AiOutlineUpload size={18} />}
+                    >
+                      <p className="pText">Create an ArProfile</p>
+                    </Button>
+                  </a>
+                )} */}
+        </Col>
       )}
     </div>
   );

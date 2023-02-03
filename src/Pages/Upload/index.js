@@ -378,11 +378,11 @@ export default function Upload() {
 
   const handleFileClick = (type) => {
     console.log("type", type);
-    var fileInputEl = document.createElement("input");
+    let fileInputEl = document.createElement("input");
     fileInputEl.type = "file";
     let currentType = {
       image:
-        "image/* image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml",
+        "image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml",
       video: "video/*",
     };
     fileInputEl.accept = currentType[type];
@@ -450,12 +450,8 @@ export default function Upload() {
     const trx = bundlrInstance.createTransaction(file, {
       tags: [{ name: "Content-Type", value: originalImage.type }],
     });
-    const msgParams = JSON.stringify({
-      message: {
-        content: "test",
-      },
-    });
-    await trx.sign({ msgParams });
+    
+    await trx.sign();
     const result = await trx.upload();
     console.log("result", result);
     const contractTags = [

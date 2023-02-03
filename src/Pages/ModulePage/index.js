@@ -10,7 +10,7 @@ import { getDataByTopic } from "../../Queries/AppQueries";
 
 function ModulePage() {
   const navigate = useNavigate();
-  const module = new URL(window.location.href).pathname.split("/").at(-1);
+  const module = window.location.hash.split("/").at(-1);
   const videoIds = Topics[module].videosById;
   const [uploadedVideoContent, setUploadedVideoContent] = useState([]);
 

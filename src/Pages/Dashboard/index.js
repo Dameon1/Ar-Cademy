@@ -97,8 +97,10 @@ export function Dashboard() {
       <div className="text-container">
         <h2>Identity needs Security</h2>
         <p className="pText">
-        Unlock the power of secure and trusted connections with Arweave's innovative Identity solutions - ANS and ArProfile!
-        As our world becomes more interconnected, it's time to say goodbye to compromising personal safety, privacy, and trust in our connections. 
+          Unlock the power of secure and trusted connections with Arweave's
+          innovative Identity solutions - ANS and ArProfile! As our world
+          becomes more interconnected, it's time to say goodbye to compromising
+          personal safety, privacy, and trust in our connections.
         </p>
       </div>
       <Spacer y={1} />
@@ -125,8 +127,14 @@ export function Dashboard() {
       {!addr && <Login />}
       {addr && (
         <Container
-          className="gradient-border"
-          style={{ padding: "5px", maxWidth: "640px" }}
+          css={{
+            maxWidth: "680px",
+            border: "3px solid transparent",
+            padding: "10px",
+            borderImageSource:
+              "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",
+            borderImageSlice: "30",
+          }}
         >
           <Row>
             <Col align="center">
@@ -150,8 +158,12 @@ export function Dashboard() {
       )}
       {addr && isLoading && (
         <>
-          <p className="pText">Searching for content</p>
-          <Loading />
+          <Row>
+            <p className="pText">Searching for content</p>
+          </Row>
+          <Row>
+            <Loading />
+          </Row>
         </>
       )}
 
@@ -161,8 +173,12 @@ export function Dashboard() {
           <div className="contentScrollContainer">
             <div className="hs">
               {userData.ARCADEMY_VIDEOS.map((video, i) => {
-                 return (
-                  <div className="videoThumbnails" key={i} onClick={() => navigate(`/playground/${video.uid}`)}>
+                return (
+                  <div
+                    className="videoThumbnails"
+                    key={i}
+                    onClick={() => navigate(`/playground/${video.uid}`)}
+                  >
                     <MediaCard video={video} />
                   </div>
                 );
@@ -182,9 +198,13 @@ export function Dashboard() {
               <div className="hs">
                 {userData.UPLOADED_VIDEOS.map((video, i) => {
                   return (
-                    <div className="videoThumbnails" key={i} onClick={() => navigate(`/AtomicPlayground/${video.id}`)}>
-                        <AtomicVideoCards video={video} />
-                      </div>
+                    <div
+                      className="videoThumbnails"
+                      key={i}
+                      onClick={() => navigate(`/AtomicPlayground/${video.id}`)}
+                    >
+                      <AtomicVideoCards video={video} />
+                    </div>
                   );
                 })}
               </div>
@@ -308,9 +328,6 @@ export function Dashboard() {
   );
 }
 export default Dashboard;
-
-
-
 
 //  OLD CODE FOR REFERENCE
 
@@ -552,8 +569,6 @@ export default Dashboard;
 //             </div>
 //           </div>
 //         )}
-
-
 
 //       {/*Poaps*/}
 //       {addr &&

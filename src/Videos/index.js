@@ -51,7 +51,7 @@ export const Videos = {
         videoLocation: "Youtube",
         authorWebsite: "https://ardrive.io/",
         description: "ArDrive offers never-ending storage of your most valuable files.",
-        authorID: "4",
+        authorID: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
         tags: ["Information"],
         sandboxLinks: {
             Repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
@@ -102,6 +102,7 @@ export const Videos = {
         authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Build", "Deployment"],
         sandboxLinks: {
+            Permapage: "https://nader.arweave.dev/",
             Repl: "https://replit.com/@Dameon1/bundlr-arweave-example?lite=true",
             Bundlr: "https://bundlr.network/",
         },
@@ -113,7 +114,7 @@ export const Videos = {
         videoTitle: "What is ArFS",
         videoLocation: "Youtube",
         description: "MC Lars explains how encryption works leveraging the power of Arweave.",
-        authorID: "4",
+        authorID: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
         tags: ["ArFS"],
         sandboxLinks: {
             home: "https://ardrive.io/",
@@ -288,7 +289,7 @@ export const Videos = {
         videoTitle: "Ardrive Manifests",
         videoLocation: "Youtube",
         description: "How to use manifests with: (1) ArDrive web (2) the CLI (3) and ArDrive core",
-        authorID: "4", 
+        authorID: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g", 
         tags: ["ArDrive", "Manifest", "Intro", "Build"],
         sandboxLinks: {
             repl: "https://replit.com/@Dameon1/Ardrive-ArFS?lite=true",
@@ -376,18 +377,18 @@ export const Videos = {
     "28": {
         uid: "28",
         videoSrc: "https://cdn.livepeer.com/asset/664ev9jc5iijwhyb/video",
-        videoImage: "https://img.lenstube.xyz/tr:n-thumbnail,tr:di-placeholder.webp/https://ipfs.lenstube.xyz/ipfs/bafybeier7diojgfigd2ggohrjze4uraezo2famsfuagleki7oylc7awv2a",
+        videoImage: "https://i.ytimg.com/vi/cGLMN5A2C4E/hqdefault.jpg",
         videoTitle: "Building Full Stack Permanent Applications with Arweave, Smartweave, and Next.js",
         videoLocation: "Arweave",
         description: "In this video you'll learn how to build full stack dapps on Arweave with Smartweave, Warp, and Next.js.",
         authorID: "LtILfPM8agd7RU6AaQmwh0SFEvxPu-tb06E_iHksvUM",
         tags: ["Atomic", "Token", "Smartweave", "Intro"],
         sandboxLinks: {
+            Permapage: "https://nader.arweave.dev/",
             Finished: "https://replit.com/@Dameon1/full-stack-warp-arweave?lite=true",
             ReadMe: "https://arweave.net/xmAwj2pdWPSZwKv5JeaV23sU6sd6zBt1Cz3qw1GUX84",
             Warp: "https://warp.cc/",
             Sonar: "https://sonar.warp.cc/#/app/contracts",
-            ArCode: "https://arcode.studio/#/",
         },
     },
 
@@ -587,8 +588,8 @@ export const Videos = {
         videoTitle: "HOW TO: Use the ArDrive CLI (w Cowboy Coder) (Part 1/4)",
         videoLocation: "Youtube",
         description: "Know before you lasso! In our new video tutorial series on the CLI, Cowboy Coder shows us some of the exciting ways you can optimize your ArDrive experience (part 1 of 4!).",  
-        authorID: "4",
-        tags: ["NFT", "Ethereum", "Akord", "Solidity"],
+        authorID: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
+        tags: ["Storage", "ArDrive", "CLI"],
         sandboxLinks: {
             Ardrive: "https://ardrive.arweave.dev/",
             "ar.io": "https://ar.io/",
@@ -603,7 +604,7 @@ export const Videos = {
         videoTitle: "HOW TO: Upload a File with ArDrive Mobile",
         videoLocation: "Youtube",
         description: "KArDrive Mobile is the easiest way to upload and access your data on the Arweave permaweb, all from the palm of your hand ✋",  
-        authorID: "4",
+        authorID: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
         tags: ["NFT", "Storage", "ArDrive", "CLI"],
         sandboxLinks: {
             Ardrive: "https://ardrive.arweave.dev/",
@@ -675,6 +676,8 @@ export const Videos = {
             Metaweave: "https://metaweave.arweave.dev/",
         },
     },
+    
+
 
     //--4everland--//
     "47": {
@@ -684,7 +687,7 @@ export const Videos = {
         videoTitle: "Community Spotlight #2 | Open Web Foundry 7",
         videoLocation: "Youtube",
         description: "4everland -  Itroduction starts at 14:30",  
-        authorID: "19",
+        authorID: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
         tags: ["Storage", "Gateway", "Cloud", "Intro"],
         sandboxLinks: {
             "4everland": "https://www.4everland.org/",
@@ -699,7 +702,7 @@ export const Videos = {
         videoTitle: "Tutorial on How to Use 4EVERLAND Ar Hosting Service!",
         videoLocation: "Youtube",
         description: "Following the release of IPFS and IC Hosting, 4EVERLAND has recently released Ar Hosting service. 4EVERLAND Ar Hosting allows users to permanently host their web pages on Arweave.",  
-        authorID: "19",
+        authorID: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
         tags: ["Hosting", "Storage", "Gateway", "Cloud", "Intro"],
         sandboxLinks: {
             Hosting: "https://www.4everland.org/hosting/",
@@ -714,7 +717,7 @@ export const Videos = {
         videoTitle: "Welcome to the bucket (Tutorials)",
         videoLocation: "Youtube",
         description: "Learn how to use bucket on 4EVERLAND",  
-        authorID: "19",
+        authorID: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
         tags: ["Hosting", "Storage", "Gateway", "Cloud"],
         sandboxLinks: {
             Bucket: "https://www.4everland.org/bucket",
@@ -729,7 +732,7 @@ export const Videos = {
         videoTitle: "Multi-chain login and multi-chain payment (covering multi-chain storage demo)",
         videoLocation: "Youtube",
         description: "4EVERLAND is a cloud computing platform driven by blockchain technology and designed for Web3. It helps developers build Web3 applications.",  
-        authorID: "19",
+        authorID: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
         tags: ["Payment", "Storage", "Gateway", "Cloud"],
         sandboxLinks: {
             "4everland": "https://www.4everland.org/",
@@ -799,6 +802,7 @@ export const Videos = {
         tags: ["EXM", "Serverless"],
         sandboxLinks: {
             Tutorial: "https://arweave.net/L3D8Srxy4GCBaTHCDHI1XrduG0aCOAryqP9xYub71AM",
+            Permapage: "https://nader.arweave.dev/",
             Repl: "https://replit.com/@Dameon1/execution-machine?lite=true",
             EXM: "https://exm.dev/",
             Molecule: "https://arweave.net/mKTNdOI-REAl-bWqShmdaunDlMMyDvZbiwUgjrkBw2E"
@@ -819,6 +823,36 @@ export const Videos = {
             Tutorial: "https://chainstack.com/music-marketplace-arweave-bundlr-and-polygon/",
             Repl: "https://replit.com/@Dameon1/arweave-ds-app?lite=true",
           
+        },
+    },
+
+    //--1w3io--//
+    "56": {
+        uid: "56",
+        videoSrc: "https://www.youtube.com/watch?v=lCmzO_jxaEg",
+        videoImage: "https://i.ytimg.com/vi/lCmzO_jxaEg/hqdefault.jpg",
+        videoTitle: "How to make a website for ENS .eth domain | 1w3.io",
+        videoLocation: "Youtube",
+        description: "How to make a website for ENS .eth domain. https://1w3.io is a No-Code Web3 Site builder a one-stop solution to design, build and publish a website on decentralized storage like #IPFS #ArWeave for ENS and other web3 Domains.",
+        authorID: "22",
+        tags: ["Deploy", "ENS", "No-Code"],
+        sandboxLinks: {
+            Blog: "https://1w3.io/what-is-ens-ethereum-name-service/",
+            Homepage: "https://1w3.io/",
+        },
+    },
+    "57": {
+        uid: "57",
+        videoSrc: "https://www.youtube.com/watch?v=K2LFN-lQRX8",
+        videoImage: "https://i.ytimg.com/vi/K2LFN-lQRX8/hqdefault.jpg",
+        videoTitle: "Web3site builder by 1w3.io. How to build a website for eth ENS domains",
+        videoLocation: "Youtube",
+        description: "How to build a website for web3 domains like .eth, .sol,.nft and others?1w3.io will provide a simple tool that will enable you to build a website for web3 domains.",
+        authorID: "22",
+        tags: ["Deploy", "ENS", "No-Code"],
+        sandboxLinks: {
+            Homepage: "https://1w3.io/",
+            Blog: "https://1w3.io/what-is-ens-ethereum-name-service/",
         },
     },
 

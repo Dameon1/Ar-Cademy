@@ -15,7 +15,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 
 function Body({ syntaxTheme }) {
-  let module = new URL(window.location.href).pathname.split("/");
+  let module = window.location.hash.split("/");
   let string = `/${module[1]}`;
   return (
       
@@ -37,6 +37,7 @@ function Body({ syntaxTheme }) {
           
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
+          <Route exact path={"/Ar-Cademy"} element={<LandingPage />} />
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>          
               <p>There's nothing to see here!</p>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { Authors } from "../../Authors";
-import { Videos } from "../../Videos";
-import { getUserVideos } from "../../Queries/UserQueries";
+// import { Link, Navigate } from "react-router-dom";
+// import { Authors } from "../../Authors";
+// import { Videos } from "../../Videos";
+// import { getUserVideos } from "../../Queries/UserQueries";
 import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import { useNavigate } from "react-router-dom";
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
@@ -24,7 +24,7 @@ import {
 import getAllUserContent from "../../lib/getAllUserContent";
 
 export default function Profile() {
-  let urlArray = new URL(window.location.href).pathname.split("/");
+  let urlArray = window.location.hash.split("/");
   let profileId = urlArray[urlArray.length - 1];
   let addr = urlArray[urlArray.length - 2];
   const navigate = useNavigate();
@@ -65,9 +65,10 @@ export default function Profile() {
 
   return (
     <>
-      <h1>Profile</h1>
-
-      <div className="">
+      <Row justify="center" align="center">
+        <h2>Profile</h2>
+      </Row>
+      <div>
         {isLoading && (
           <>
             <Row justify="center">
@@ -78,12 +79,18 @@ export default function Profile() {
             </Row>
           </>
         )}
+     
         {addr && !isLoading && !isSearching && (
           <Container
-            className="gradient-border"
-            style={{ padding: "5px", maxWidth: "680px" }}
+            css={{
+              maxWidth: "680px",
+              border: "3px solid transparent",
+              padding: "10px",
+              borderImageSource: "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",  
+              borderImageSlice: "30",
+            }}
           >
-            {addr && (
+            {addr && !isLoading && !isSearching && (
               <Row>
                 <Col align="center">
                   <h3>ArProfile:</h3>
@@ -91,14 +98,15 @@ export default function Profile() {
                 </Col>
                 <Col align="center">
                   <h3>ANS Profile:</h3>
-                  {addr && userContent[1]?.res?.ARWEAVE && !isLoading ? (
+                  {console.log(userContent)}
+                  {addr && userContent?.ARK?.ARWEAVE && !isLoading ? (
                     <ARKdisplay
-                      content={userContent[1].res}
-                      evmAddr={userContent[1].res.primary_address}
+                      content={userContent.ARK}
+                      evmAddr={userContent.ARK.primary_address}
                     />
                   ) : addr && !isLoading ? (
                     <>
-                      <UseAns addr={addr} forDashboard={false} />
+                      <UseAns addr={addr} />
                     </>
                   ) : (
                     <Loading />
@@ -111,13 +119,17 @@ export default function Profile() {
 
         {addr && !isSearching && userContent?.ARCADEMY_VIDEOS?.length > 0 && (
           <div>
-            <h1>Arcademy Videos</h1>
+            <h3>Arcademy Videos</h3>
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent.ARCADEMY_VIDEOS.map((video, i) => {
-                  console.log(video)
+                  console.log(video);
                   return (
-                    <div className="videoThumbnails" key={i} onClick={() => navigate(`/playground/${video.uid}`)}>
+                    <div
+                      className="videoThumbnails"
+                      key={i}
+                      onClick={() => navigate(`/playground/${video.uid}`)}
+                    >
                       <MediaCard video={video} />
                     </div>
                   );
@@ -132,13 +144,19 @@ export default function Profile() {
           userContent?.UPLOADED_VIDEOS?.length > 0 &&
           !isLoading && (
             <div>
-              <h1>Owner Videos</h1>
+              <h3>Owner Videos</h3>
               <div className="contentScrollContainer">
                 <div className="hs">
                   {userContent.UPLOADED_VIDEOS.map((video, i) => {
                     return (
-                      <div className="videoThumbnails" key={i} onClick={() => navigate(`/AtomicPlayground/${video.id}`)}>
-                        <AtomicVideoCards video={video}  />
+                      <div
+                        className="videoThumbnails"
+                        key={i}
+                        onClick={() =>
+                          navigate(`/AtomicPlayground/${video.id}`)
+                        }
+                      >
+                        <AtomicVideoCards video={video} />
                       </div>
                     );
                   })}
@@ -149,7 +167,7 @@ export default function Profile() {
 
         {addr && userContent?.POAPS?.length > 0 && !isLoading && (
           <>
-            <h1>Poaps:</h1>
+            <h3>Poaps:</h3>
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent.POAPS.map((content, i) => {
@@ -166,7 +184,7 @@ export default function Profile() {
 
         {addr && userContent?.ARK?.NFTS?.length > 0 && !isLoading && (
           <>
-            <h1>NEAR NFTS:</h1>
+            <h3>NEAR NFTS:</h3>
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent.ARK.NFTS.map((content, i) => {
@@ -182,7 +200,7 @@ export default function Profile() {
         )}
         {addr && userContent?.EVM?.length > 0 && !isLoading && (
           <>
-            <h1>Ethereum NFTS:</h1>
+            <h3>Ethereum NFTS:</h3>
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent?.EVM?.map((content, i) => {
@@ -201,7 +219,7 @@ export default function Profile() {
           userContent?.EVM?.[userContent.primary_address]?.ERC_NFTS &&
           !isLoading && (
             <>
-              <h1>Ethereum NFTS:</h1>
+              <h3>Ethereum NFTS:</h3>
               <div className="contentScrollContainer">
                 <div className="hs">
                   {userContent?.EVM[userContent.primary_address].ERC_NFTS.map(
@@ -220,7 +238,7 @@ export default function Profile() {
           )}
         {addr && userContent?.POLY?.length > 0 && !isLoading && (
           <>
-            <h1>Polygon NFTS:</h1>
+            <h3>Polygon NFTS:</h3>
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent?.POLY.map((content, i) => {
@@ -239,7 +257,7 @@ export default function Profile() {
           userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 &&
           !isLoading && (
             <>
-              <h1>Stamped Assets:</h1>
+              <h3>Stamped Assets:</h3>
               <div className="contentScrollContainer">
                 <div className="hs">
                   {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
@@ -261,7 +279,7 @@ export default function Profile() {
           userContent?.ARK?.ARWEAVE?.ANFTS?.permapages_img?.length > 0 &&
           !isLoading && (
             <>
-              <h1>Created Atomic Assets:</h1>
+              <h3>Created Atomic Assets:</h3>
               <div className="contentScrollContainer">
                 <div className="hs">
                   {userContent?.ARK.ARWEAVE.ANFTS?.permapages_img.map(
@@ -281,28 +299,9 @@ export default function Profile() {
             </>
           )}
 
-        {/* {addr &&
-          userContent?.ARK?.ARWEAVE?.ANFTS?.koii?.length > 0 &&
-          !isLoading && (
-            <>
-              <h1>Koii NFTS:</h1>
-              <div className="contentScrollContainer">
-                <div className="hs">
-                  {userContent?.ARK?.ARWEAVE?.ANFTS?.koii.map((content, i) => {
-                    return (
-                      <div key={i} className="mediaCards">
-                        <Koii content={content} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </>
-          )} */}
-
-        {addr && userContent?.AVAX?.length > 0 && !isLoading && (
+        {addr && userContent?.AVAX?.length > 0 && userContent?.AVAX[0] !== false &&!isLoading && (
           <>
-            <h1>Avalnche NFTS:</h1>
+            <h3>Avalnche NFTS:</h3>
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent?.AVAX.map((content, i) => {

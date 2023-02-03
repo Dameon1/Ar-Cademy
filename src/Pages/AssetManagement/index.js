@@ -17,6 +17,7 @@ import { getProfile } from "../../lib/imgLib/account.js";
 //import { take, takeLast } from "ramda";
 import MainContext from "../../context";
 import { Link } from "react-router-dom";
+import AtomicVideoPlayerContainer from "../../components/AtomicVideoPlayerContainer";
 //import { imgCache, profile } from "../store.js";
 
 export default function AssetManagement() {
@@ -30,7 +31,7 @@ export default function AssetManagement() {
   const [ownersAddressArray, setOwnersAddressArray] = useState([]);
   const [assetStampCount, setAssetStampCount] = useState();
   const [urls, setUrls] = useState([]);
-  let module = new URL(window.location.href).pathname.split("/");
+  let module = window.location.hash.split("/");
   let itemId = module[module.length - 1];
   //const account = new Account();
 
@@ -69,8 +70,8 @@ export default function AssetManagement() {
 
   function tweetLink(title, id) {
     return `https://twitter.com/intent/tweet?text=${encodeURI(
-      "🪧 STAMP\n\n" + title.replace("#", "no ") + "\n\n🐘"
-    )}&url=https://img.arweave.dev/%23/show/${id}`;
+      "🚨🚨 NEW CONTENT 🚨🚨\n\n" + title.replace("#", "no ") + "\n🐘🐘🐘🐘🐘🐘🐘🐘🐘\n"
+    )}&url=https://arcademy.arweave.dev/%23/AtomicPlayground/${itemId}`;
   }
   const toProperCase = (string) => {
     return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
@@ -269,6 +270,9 @@ export default function AssetManagement() {
               </Col>
             </Row>
           </Grid.Container>
+          {/* <Row>
+          <AtomicVideoPlayerContainer />
+          </Row> */}
         </section>
       )}
     </main>

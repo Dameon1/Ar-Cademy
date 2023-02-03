@@ -34,7 +34,7 @@ export function LandingPage() {
 
   const moduleCards = modules.map((module, index) => {
     return (
-      <li key={module} className="moduleContent">
+      <li key={module} className="moduleContent" onClick={()=> navigate(`/modules/${module}`) }>
         <h4>{modules[index]}</h4>
         <p>{Modules[module].description}</p>
         <img
@@ -42,7 +42,7 @@ export function LandingPage() {
           className="heroImage"
           alt={`${Modules[module].title}`}
         />
-        <Row justify="center">
+        {/* <Row justify="center">
           <Button
             className="button buttonText"
             css={{
@@ -57,8 +57,8 @@ export function LandingPage() {
             iconRight={<AiOutlineArrowRight size={18} />}
           >
             <p>Explore</p>
-          </Button>
-        </Row>
+          </Button> 
+        </Row>*/}
       </li>
     );
   });
@@ -236,11 +236,6 @@ export function LandingPage() {
       <Grid.Container gap={2} justify="flex-start">
           {AtomicMediaCards}
         </Grid.Container>
-        {/* <ul className="moduleCards">
-          {recentUploads.map((content, index) => {
-            return <CreatorContentCard content={content} onClick={() => navigate(`/AtomicPlayground/${content.id}`)}/>;
-          })}
-        </ul> */}
       </div>
 
       <Spacer y={2} />

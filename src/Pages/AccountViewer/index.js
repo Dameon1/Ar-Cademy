@@ -6,16 +6,16 @@ import { ans as ansAPI } from "../../api/ANS/ans.js";
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
 import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import ArProfile from "../../components/ArProfile";
-import { MediaCard, } from "../../components/Cards";
+import { MediaCard } from "../../components/Cards";
 import {
-  Grid,
+
   Loading,
   Container,
   Row,
   Col,
   Input,
   Spacer,
-  Button,
+  
 } from "@nextui-org/react";
 import {
   Poap,
@@ -73,15 +73,6 @@ export function AccountViewer() {
           user.POAPS = res[6].POAPS;
           user.ARCADEMY_VIDEOS = res[7];
           user.UPLOADED_VIDEOS = res[8][0];
-          // console.log("Setting ARCADEMY_VIDEOS", user.ARCADEMY_VIDEOS);
-          // console.log("Setting UPLOADED_VIDEOS", user.UPLOADED_VIDEOS);
-          // console.log("setting EVM data", user.EVM);
-          // console.log("setting POLY data", user.POLY);
-          // console.log("setting BSC data", user.BSC);
-          // console.log("setting FTM data", user.FTM);
-          // console.log("setting AVAX data", user.AVAX);
-          // console.log("setting ARWEAVE data", user.ARK);
-          // console.log("setting POAPS data", user.POAPS);
           return user;
         })
         .then((user) => {
@@ -106,7 +97,6 @@ export function AccountViewer() {
             let user = res.res;
             user.POAPS = user.EVM[user.primary_address].POAPS;
             user.ARK = res.res;
-            //user.EVM = res.res.EVM[res.res.primary_address].ERC_NFTS
             console.log("------", user);
             setUserContent(user);
             setIsSearching(false);
@@ -152,9 +142,14 @@ export function AccountViewer() {
           Enter an address by ANS, Arweave, or Eth address to find the Arweave
           related content.
         </p>
-        <p className="pText">
-          Test Addr: zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE
-        </p>
+        <Row justify="center" align="center">
+          <p className="pText">Test Addr:</p>
+        </Row>
+        <Row justify="center" align="center">
+          <p className="pText" style={{ fontSize: "12px" }}>
+            zpqhX9CmXzqTlDaG8cY3qLyGdFGpAqZp8sSrjV9OWkE
+          </p>
+        </Row>
         <form onSubmit={onSubmit}>
           <label aria-labelledby="input"></label>
           <Spacer y={1} />
@@ -168,37 +163,38 @@ export function AccountViewer() {
             required
           />
           <Spacer y={1} />
-          <Row align="center" justify="center">
-            <Button
-              css={{
-                color: "black",
-                border: "2px solid #008c9e",
-                fontSize: "0.75em",
-                padding: "0.3em",
-                backgroundColor: "white",
-                transition: "all 0.2s ease-in-out",
-              }}
-              className="button buttonText"
-              type="submit"
-            >
-              search
-            </Button>
+          <Row justify="center" align="center">
+            <p className="pText">Current Addr: </p>
           </Row>
-          <p className="pText">Current Addr: {addr}</p>
+          <Row justify="center" align="center">
+            <p className="pText" style={{ fontSize: "12px" }}>
+              {addr}
+            </p>
+          </Row>
         </form>
       </div>
       <Spacer y={1} />
       {isSearching && (
         <>
-          <p className="pText">Searching for content</p>
-          <Loading />
+          <Row justify="center">
+            <p className="pText">Searching for content</p>
+          </Row>
+          <Row justify="center">
+            <Loading />
+          </Row>
         </>
       )}
       <div>
         {addr && !isLoading && !isSearching && (
           <Container
-            className="gradient-border"
-            style={{ padding: "5px", maxWidth: "680px" }}
+            css={{
+              maxWidth: "680px",
+              border: "3px solid transparent",
+              padding: "10px",
+              borderImageSource:
+                "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",
+              borderImageSlice: "30",
+            }}
           >
             {addr && (
               <Row>

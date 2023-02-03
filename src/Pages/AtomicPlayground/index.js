@@ -41,7 +41,7 @@ export default function AtomicPlayground() {
   const [ownersAddressArray, setOwnersAddressArray] = useState([]);
   const [assetStampCount, setAssetStampCount] = useState();
   const [urls, setUrls] = useState([]);
-  let module = new URL(window.location.href).pathname.split("/");
+  let module = window.location.hash.split("/");
   let itemId = module[module.length - 1];
 
   // async function runFilterQuery(addr, type, filtertag) {

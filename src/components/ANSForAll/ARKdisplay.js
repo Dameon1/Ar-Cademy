@@ -1,9 +1,20 @@
 import { useContext } from "react";
 import { FaTwitter, FaGithub, FaGlobe } from "react-icons/fa";
-import { Button, Spacer, Row, Tooltip, Link } from "@nextui-org/react";
+import {
+  Button,
+  Grid,
+  Loading,
+  Text,
+  Spacer,
+  Row,
+  Col,
+  Link,
+  Tooltip,
+} from "@nextui-org/react";
 import { icons } from "../../static";
 import { AvatarS } from "../../static/styles/Profile";
-
+import { isVouched } from "../../lib/imgLib/stamp";
+import { MdVerified } from "react-icons/md";
 import MainContext from "../../context";
 
 function ARKdisplay(props) {
@@ -15,22 +26,35 @@ function ARKdisplay(props) {
   }
 
   return (
-    <div style={{ padding: "5px" }}>
-      <AvatarS
-        src={`https://arweave.net/${content.ARWEAVE.ANS.avatar}`}
-        sx={{ width: 100, height: 100 }}
-      />
-
-      {props.content.ARWEAVE.ANS.currentLabel && (
-        <>
-          <h2>{props.content.ARWEAVE.ANS.currentLabel}</h2>
-          <h2>{content.EVM[evmAddr].ENS}</h2>
-        </>
-      )}
-      <Row justify="center">
-        <p className="pText">{props.content.ARWEAVE.ANS.bio}</p>
+    <Col align="center">
+      <Row align="center" justify="center">
+        {props.content.ARWEAVE.ANS.currentLabel && (
+          <h3>{props.content.ARWEAVE.ANS.currentLabel}</h3>
+        )}
+        <Col css={{ width: "20px" }}>
+          {content.is_verified && (
+            <MdVerified
+              className="socialImageLinks"
+              size={15}
+              aria-hidden="true"
+              color="blue"
+            />
+          )}
+        </Col>
       </Row>
-      <Row wrap="wrap" align="center" justify="space-around">
+      <Row align="center" justify="center">
+        <AvatarS
+          src={`https://arweave.net/${content.ARWEAVE.ANS.avatar}`}
+          sx={{ width: 90, height: 90 }}
+        />
+      </Row>
+      <Spacer y={0.5} />
+      <Row
+        wrap="wrap"
+        align="center"
+        justify="space-around"
+        css={{ maxWidth: "200px" }}
+      >
         {props?.content?.ARWEAVE?.ANS?.links?.twitter && (
           <>
             <Tooltip content={`${props.content.ARWEAVE.ANS.links.twitter}`}>
@@ -41,7 +65,7 @@ function ARKdisplay(props) {
               >
                 <FaTwitter
                   className="socialImageLinks"
-                  size={25}
+                  size={20}
                   aria-hidden="true"
                 />
               </Link>
@@ -59,7 +83,7 @@ function ARKdisplay(props) {
             >
               <FaGithub
                 href={`https://github.com/${props.content.ARWEAVE.ANS.links.github}`}
-                size={25}
+                size={20}
                 className="socialImageLinks"
               />
             </Link>
@@ -73,13 +97,18 @@ function ARKdisplay(props) {
               rel="noreferrer"
               aria-hidden="true"
             >
-              <FaGlobe className="socialImageLinks" size={25} />
+              <FaGlobe className="socialImageLinks" size={20} />
             </Link>
           </Tooltip>
         )}
       </Row>
-      <Spacer y={1} />
-      <Row wrap="wrap" align="center" justify="space-around">
+      <Spacer y={0.5} />
+      <Row
+        wrap="wrap"
+        align="center"
+        justify="space-around"
+        css={{ maxWidth: "200px" }}
+      >
         {content?.EVM[evmAddr]?.LENS_HANDLES && (
           <Tooltip content={`${lensLabel}`}>
             <Link
@@ -89,8 +118,8 @@ function ARKdisplay(props) {
               aria-hidden="true"
             >
               <img
-                height={30}
-                width={30}
+                height={20}
+                width={20}
                 className="socialImageLinks"
                 src="https://raw.githubusercontent.com/lens-protocol/brand-kit/main/Logo/SVG/LENS%20LOGO_%20copy_Icon%20Only.svg"
                 alt="Lens logo"
@@ -105,8 +134,8 @@ function ARKdisplay(props) {
               target="_blank"
             >
               <img
-                width={30}
-                height={30}
+                width={20}
+                height={20}
                 className="socialImageLinks"
                 src={
                   !theme
@@ -126,8 +155,8 @@ function ARKdisplay(props) {
               target="_blank"
             >
               <img
-                height={30}
-                width={30}
+                height={20}
+                width={20}
                 src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=002"
                 alt="Eth logo"
                 quality={50}
@@ -136,8 +165,31 @@ function ARKdisplay(props) {
           </Tooltip>
         )}
       </Row>
+      <Spacer y={0.5} />
+      <Row justify="center">
+        <p
+          style={{
+            letterSpacing: "0.5px",
+            fontFamily: "Work Sans",
+            fontSize: "16px",
+          }}
+        >
+          {props.content.ARWEAVE.ANS.bio}
+        </p>
+      </Row>
+      <Row justify="center">
+        <p
+          style={{
+            letterSpacing: "0.5px",
+            fontFamily: "Work Sans",
+            fontSize: "16px",
+          }}
+        >
+          {content.EVM[evmAddr].ENS}
+        </p>
+      </Row>
 
-      <Spacer y={1} />
+      <Spacer y={.25} />
       <a
         href={`https://${content.ARWEAVE.ANS.currentLabel}.ar.page`}
         target="_blank"
@@ -158,7 +210,7 @@ function ARKdisplay(props) {
           <p className="pText">{content.ARWEAVE.ANS.currentLabel}.ar.page</p>
         </Button>
       </a>
-    </div>
+    </Col>
   );
 }
 

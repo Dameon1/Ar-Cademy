@@ -1,4 +1,4 @@
-import { compose, toLower, join, split, map, trim } from "ramda";
+import {  split, map, trim } from "ramda";
 import Arweave from "arweave";
 
 const arweave = Arweave.init({
@@ -118,7 +118,7 @@ async function createAndTag(ctx) {
   tx.addTag("Social-Id", ctx.addr);
   tx.addTag("Video-Image-Id", ctx.videoImageid);
   tx.addTag("Education", "true");
-  tx.addTag("Month", "January");
+  tx.addTag("Month", "February");
   tx.addTag("Tier", "Free");
   tx.addTag("Collection", "false");
   tx.addTag(

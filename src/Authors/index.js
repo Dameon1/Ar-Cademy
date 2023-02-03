@@ -12,14 +12,14 @@ export const Authors = {
       "https://pbs.twimg.com/profile_images/1476901301950693383/YvJ0POFI_200x200.jpg",
   },
   //--Ar.IO--//
-  4: {
+  "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g": {
     author: "Ardrive",
     authorLink: "https://twitter.com/ardriveapp",
     authorWebsite: "https://ardrive.io/",
     createdVideosByID: ["4", "10", "22", "41", "42"],
     createdContentByID: ["ContentID"],
-    uid: 4,
-    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    uid: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
+    addr: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
     username: "@ardriveapp",
     avatar: "https://arweave.net/wDI7xjbMbuCKFbig-8homjCfd5wyCR1kaN06cK5cvfM",
     arns: "arns.arweave.dev",
@@ -215,14 +215,14 @@ export const Authors = {
   },
 
   //--4everland--//
-  19: {
+  "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI": {
     author: "4everland",
     authorLink: "https://twitter.com/4everland_org",
     authorWebsite: "https://www.4everland.org/",
     createdVideosByID: ["47", "48", "49", "50"],
     createdContentByID: ["ContentID"],
-    uid: "19",
-    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    uid: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
+    addr: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
     username: "@4everland_org",
     avatar: "https://arweave.net/Ea779WkfqaepaYOms6L4wF7tUedXX5FIrd3M3TwtUd8",
   },
@@ -251,8 +251,20 @@ export const Authors = {
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@uF4No",
     avatar: "https://pbs.twimg.com/profile_images/1518581798648926211/nS-MMpiX_400x400.jpg",
-  }
-};
+  },
+
+  22: {
+    author: "@1W3io",
+    authorLink: "https://twitter.com/1W3io",
+    authorWebsite: "https://onew3.eth.limo/",
+    createdVideosByID: ["56", "57"],
+    createdContentByID: ["ContentID"],
+    uid: "22",
+    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    username: "@1W3io",
+    avatar: "https://pbs.twimg.com/profile_images/1597840395450208256/Q48p_xDd_400x400.jpg",
+  },
+  };
 
 // 'id': {
 //      author:

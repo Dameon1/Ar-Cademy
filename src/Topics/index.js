@@ -6,7 +6,7 @@ export const Topics = {
     },
     'Deployment': {
         topics: [],
-        videosById: ["48","29","3","11",],
+        videosById: ["48","29","3","11", "57"],
     },
     'Build': {
         topics: [],

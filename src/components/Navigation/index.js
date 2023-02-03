@@ -26,10 +26,10 @@ export default function Navigation() {
   const [avatar, setAvatar] = useState(fallbackImage);
   const navigate = useNavigate();
   const collapseItems = [
-    { value: "Home", page: "." },
+    { value: "Home", page: "" },
     { value: "Dashboard", page: "Dashboard" },
     { value: "Search", page: "AccountViewer" },
-    { value: "Testpage", page: "Testpage" },
+   
   ];
 
   useEffect(() => {

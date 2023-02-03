@@ -19,7 +19,6 @@ export default function AtomicMediaCard(props) {
   const [vouched, setVouched] = useState(false);
 
   useEffect(() => {
-    
     async function getCreator() {
       //Which Avatar for creators ?
       let creator = await getProfile(video.owner);
@@ -31,12 +30,12 @@ export default function AtomicMediaCard(props) {
   }, []);
 
   return (
-    <Card isPressable onClick={onClick} css={{border:".5px solid white"}}>
-      <Card.Body css={{ p: 0}}>
+    <Card isPressable onClick={onClick} css={{ border: ".5px solid white" }}>
+      <Card.Body css={{ p: 0 }}>
         <Card.Image
           src={`https://arweave.net/${video.videoImageId}`}
           width="100%"
-          objectFit= "contain"
+          objectFit="contain"
           height={140}
           alt={video.title}
         />
@@ -52,7 +51,7 @@ export default function AtomicMediaCard(props) {
       >
         <Tooltip
           placement="rightStart"
-          css={{ maxWidth:"200px"}}
+          css={{ maxWidth: "200px" }}
           offset={0}
           hideArrow
           content={
@@ -100,6 +99,7 @@ export default function AtomicMediaCard(props) {
             <Text
               css={{
                 color: "$accents7",
+                textAlign: "left",
                 fontWeight: "$semibold",
                 fontSize: "$sm",
               }}
@@ -117,18 +117,6 @@ export default function AtomicMediaCard(props) {
             )}
           </Row>
         </Col>
-        {/* <Row wrap="wrap" justify="space-between" align="center">
-          <Text b>{video.title}</Text>
-          <Text
-            css={{
-              color: "$accents7",
-              fontWeight: "$semibold",
-              fontSize: "$sm",
-            }}
-          >
-            {"item.price"}
-          </Text>
-        </Row> */}
       </Card.Footer>
     </Card>
   );
