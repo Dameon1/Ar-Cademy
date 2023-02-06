@@ -2,11 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import { Row, Col, Loading, Spacer, Avatar, Grid } from "@nextui-org/react";
+import {
+  Row,
+  Col,
+  Loading,
+  Spacer,
+  Avatar,
+  Grid,
+  Text,
+  Tooltip,
+  Button,
+} from "@nextui-org/react";
 import VideoPlayer from "../VideoPlayer";
 import "./videoPlayerContainer.css";
 import { getUserVideos } from "../../Queries/UserQueries";
 import { AtomicVideoCards, MediaCard } from "../Cards";
+import { FcShare } from "react-icons/fc";
+import { isVouched } from "../../lib/imgLib/stamp";
+import { MdVerified } from "react-icons/md";
+import { FaTwitter } from "react-icons/fa";
 
 export function VideoPlayerContainer(props) {
   const { videoID, setState } = props;
@@ -14,6 +28,7 @@ export function VideoPlayerContainer(props) {
   const [ownerVideos, setOwnerVideos] = useState([]);
   const [arcademyVideos, setArcademyVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [vouched, setVouched] = useState(false);
 
   function getArcademyVideos(id) {
     let authorObject = Authors[id];
@@ -31,6 +46,7 @@ export function VideoPlayerContainer(props) {
   useEffect(() => {
     let videoObject = Videos[props.videoID];
     let authorObject = Authors[videoObject.authorID];
+
     // let authorVideos = authorObject.createdVideosByID
     //   .map((x) => Videos[x])
     //   .filter((x) => x.uid !== videoID);
@@ -45,7 +61,8 @@ export function VideoPlayerContainer(props) {
       let ownerVideos = await getUserVideos(authorObject.uid, "video", "");
       let authorVideos = getArcademyVideos(authorObject.uid);
       let filteredOwnerVideos = ownerVideos[0].filter((x) => x.id !== videoID);
-
+      let getVouched = await isVouched(authorObject.addr);
+      setVouched(getVouched);
       if (authorVideos[0] !== undefined) {
         setArcademyVideos(authorVideos[0]);
         //setAuthorObject(authorVideos[1]);
@@ -56,6 +73,14 @@ export function VideoPlayerContainer(props) {
     }
     getData();
   }, [props]);
+
+  function tweetLink(title, id) {
+    return `https://twitter.com/intent/tweet?text=${encodeURI(
+      `🚨 New Content by ${contentObject.authorObject.username}🚨\n\n` +
+        title.replace("#", "no ") +
+        "\n🐘🐘🐘🐘🐘🐘🐘🐘🐘 @Ar_Cademy\n"
+    )}&url=https://arcademy.arweave.dev/%23/Playground/${videoID}`;
+  }
 
   let cards = arcademyVideos.map((video, index) => {
     console.log(video, "arcademyVideos");
@@ -97,9 +122,9 @@ export function VideoPlayerContainer(props) {
         ) : (
           <>
             <header className="video-header">
-              <h3 className="video-title">
+              <h4 className="video-title">
                 {contentObject.videoObject.videoTitle}
-              </h3>
+              </h4>
             </header>
 
             {console.log(
@@ -124,7 +149,7 @@ export function VideoPlayerContainer(props) {
               <VideoPlayer src={contentObject.videoObject.videoSrc} />
             )}
             <footer className="video-footer">
-              <Row display="flex" justify="flex-start" align="center">
+              <Row display="flex" justify="flex-start" align="flex-end">
                 <Link
                   to={`/profile/${contentObject.authorObject.addr}/${contentObject.authorObject.uid}`}
                 >
@@ -134,15 +159,88 @@ export function VideoPlayerContainer(props) {
                     pointer="true"
                   />
                 </Link>
+                <Spacer x={0.5} />
+                <Row align="flex-end">
+                  <Text
+                    css={{
+                      color: "white",
+                      fontWeight: "$semibold",
+                      fontSize: "$xl",
+                    }}
+                  >
+                    {contentObject.authorObject.author}
+                  </Text>
+                  <Spacer x={0.25} />
+                  {vouched && (
+                    <div style={{ marginBottom: "5px" }}>
+                      <MdVerified
+                        className="socialImageLinks"
+                        size={15}
+                        aria-hidden="true"
+                        color="#1d9bf0"
+                      />
+                    </div>
+                  )}
+                </Row>
 
-                <Col>
-                  <p className="pText">
-                    {contentObject.videoObject.description}
-                  </p>
-                </Col>
+                <Row justify="flex-end">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    className="textNoDec"
+                    href={tweetLink(
+                      contentObject.videoObject.videoTitle,
+                      videoID
+                    )}
+                    v="btn btn-outline btn-sm rounded-none font-normal"
+                  >
+                    <Tooltip
+                      content={
+                        <FaTwitter
+                          color="#1d9bf0"
+                          placement="bottom"
+                          size={18}
+                        />
+                      }
+                      css={{ bg: "white", p: 10, fontSize: 18 }}
+                      hideArrow
+                      placement="bottom"
+                      offset={2}
+                    >
+                      <Button
+                        flat
+                        auto
+                        rounded
+                        css={{
+                          color: "white",
+                          bg: "white",
+                          m: 6,
+                          p: 6,
+                          fontSize: 20,
+                          zIndex: 1,
+                        }}
+                      >
+                        <FcShare />
+                      </Button>
+                    </Tooltip>
+                  </a>
+                </Row>
               </Row>
-
-              <Spacer y={1} />
+              <Spacer y={0.5} />
+              <Row css={{ borderRadius: "5px", backgroundColor: "#717c86" }}>
+                <p
+                  style={{
+                    letterSpacing: "0.5px",
+                    fontFamily: "Work Sans",
+                    fontSize: "12px",
+                    textAlign: "left",
+                    padding: "5px",
+                  }}
+                >
+                  {contentObject.videoObject.description}
+                </p>
+              </Row>
+              <Spacer y={.5} />
               <Row justify="center" align="space-evenly">
                 <Col>
                   <a

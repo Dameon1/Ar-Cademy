@@ -34,7 +34,7 @@
   ## V4.2.0 
   - [https://arweave.net/f_IPUQSftnC9R1LEgfqTXS8jJqNYKbIo98XIrEQNrnc](https://arweave.net/f_IPUQSftnC9R1LEgfqTXS8jJqNYKbIo98XIrEQNrnc)
 
-  ## V4.2.1 (Current State)
+  ## V4.2.1 
   - [https://arweave.net/dHf8bIr9FHoAFuvhbxKiGDaRF5AU_7p9x9W3wFsuMbY](https://arweave.net/dHf8bIr9FHoAFuvhbxKiGDaRF5AU_7p9x9W3wFsuMbY)xKZB4F5ALTj0CHSfztrOsHlygpVaqnhKtbisSS6D0Zg
 
   ## V4.2.2 

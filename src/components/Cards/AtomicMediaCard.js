@@ -73,7 +73,7 @@ export default function AtomicMediaCard(props) {
                     className="socialImageLinks"
                     size={15}
                     aria-hidden="true"
-                    color="blue"
+                    color="#1d9bf0"
                   />
                 )}
               </Row>
@@ -89,9 +89,9 @@ export default function AtomicMediaCard(props) {
         </Tooltip>
         <Col css={{ padding: "0px 10px" }}>
           <Row wrap="wrap">
-            <Text css={{ fontSize: "$md" }}>
+            <Text css={{ fontSize: "$md", textAlign:"left" }}>
               {video.title.length > 47
-                ? video.title.slice(0, 47) + +"..."
+                ? video.title.slice(0, 47) + "..."
                 : video.title}{" "}
             </Text>
           </Row>
@@ -112,7 +112,7 @@ export default function AtomicMediaCard(props) {
                 className="socialImageLinks"
                 size={15}
                 aria-hidden="true"
-                color="blue"
+                color="#1d9bf0"
               />
             )}
           </Row>

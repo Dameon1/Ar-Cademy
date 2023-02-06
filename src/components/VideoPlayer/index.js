@@ -8,7 +8,7 @@ export const VideoPlayer = (props) => {
   return (
     <div className="video-player">
       <ReactPlayer
-        //preload="metadata"
+        preload="metadata"
         className='react-player'
         controls={true}
         width='100%'

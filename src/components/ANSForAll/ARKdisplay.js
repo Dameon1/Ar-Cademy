@@ -37,7 +37,7 @@ function ARKdisplay(props) {
               className="socialImageLinks"
               size={15}
               aria-hidden="true"
-              color="blue"
+              color="#1d9bf0"
             />
           )}
         </Col>

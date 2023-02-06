@@ -9,7 +9,7 @@ export const Authors = {
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@SpheronHQ",
     avatar:
-      "https://pbs.twimg.com/profile_images/1476901301950693383/YvJ0POFI_200x200.jpg",
+      "https://arweave.net/39xBteSdpIw78_dUKsqxE1PMVzMC_tqXGw4x9TTivws",
   },
   //--Ar.IO--//
   "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g": {

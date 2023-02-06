@@ -13,6 +13,11 @@ import { useNavigate } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
 import { VideoCard, MediaCard } from "../Cards";
+import Stamp from "../Stamp";
+import { isVouched } from "../../lib/imgLib/stamp";
+import { MdVerified } from "react-icons/md";
+import { FcShare } from "react-icons/fc";
+import { FaTwitter } from "react-icons/fa";
 import {
   Grid,
   Row,
@@ -23,6 +28,7 @@ import {
   Button,
   Spacer,
   Avatar,
+  Tooltip,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
@@ -37,6 +43,7 @@ export default function AtomicVideoPlayerContainer(props) {
   const [authorObject, setAuthorObject] = useState(null);
   const [contractData, setContractData] = useState();
   const [ownerData, setOwnerData] = useState();
+  const [vouched, setVouched] = useState(false);
   const navigate = useNavigate();
   //const [urls, setUrls] = useState([]);
   //const [videoID, setViedoID] = useState();
@@ -55,6 +62,15 @@ export default function AtomicVideoPlayerContainer(props) {
   //     setImages(newImages);
   //   }
   // }
+
+  function tweetLink(title, id) {
+    return `https://twitter.com/intent/tweet?text=${encodeURI(
+      `🚨 New Content by ${ownerData.profile.name}🚨\n\n` +
+        title.replace("#", "no ") +
+        "\n🐘🐘🐘🐘🐘🐘🐘🐘🐘 @Ar_Cademy\n"
+    )}&url=https://arcademy.arweave.dev/%23/AtomicPlayground/${itemId}`;
+  }
+
   function getArcademyVideos(id) {
     let authorObject = Authors[id];
     let authorVideos;
@@ -78,6 +94,8 @@ export default function AtomicVideoPlayerContainer(props) {
       //let ownersAvatars = await getAllOwnersAvatar();
       let filteredOwnerVideos = ownerVideos[0].filter((x) => x.id !== id);
       let authorVideos = getArcademyVideos(assetData.owner);
+      let getVouched = await isVouched(assetData.owner);
+      setVouched(getVouched);
       //setUrls(JSON.parse(assetData.externalLinks));
       setContractData(assetContractData);
       setAsset(assetData);
@@ -134,7 +152,7 @@ export default function AtomicVideoPlayerContainer(props) {
         ) : (
           <>
             <header className="video-header">
-              <h3 className="video-title">{asset.title}</h3>
+              <h4 className="video-title">{asset.title}</h4>
             </header>
             <div className="video-player">
               <video
@@ -144,7 +162,7 @@ export default function AtomicVideoPlayerContainer(props) {
                 height="100%"
               >
                 <source
-                  src={`https://arweave.net/${asset.id}`}
+                  src={`https://arweave.net/${asset.id}/data`}
                   type="video/mp4"
                 />
               </video>
@@ -154,7 +172,7 @@ export default function AtomicVideoPlayerContainer(props) {
             </video> */}
 
             <footer className="video-footer">
-              <Row display="flex" justify="flex-start" align="center">
+              <Row display="flex" justify="flex-start" align="flex-end">
                 <Link to={`/profile/${asset.owner}/${asset.owner}`}>
                   <Avatar
                     src={"https://arweave.net/" + ownerData.profile.avatar}
@@ -162,12 +180,88 @@ export default function AtomicVideoPlayerContainer(props) {
                     pointer="true"
                   />
                 </Link>
+                <Spacer x={0.5} />
+                <Row align="flex-end">
+                  <Text
+                    css={{
+                      color: "white",
+                      fontWeight: "$semibold",
+                      fontSize: "$xl",
+                    }}
+                  >
+                    {ownerData.profile.name}
+                  </Text>
+                  <Spacer x={0.25} />
+                  {vouched && (
+                    <div style={{ marginBottom: "5px" }}>
+                      <MdVerified
+                        className="socialImageLinks"
+                        size={15}
+                        aria-hidden="true"
+                        color="#1d9bf0"
+                      />
+                    </div>
+                  )}
+                </Row>
 
-                <Col>
-                  <p className="pText">{asset.description}</p>
-                </Col>
+                <Row justify="flex-end">
+                  <Stamp txId={itemId} />
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    className="textNoDec"
+                    href={tweetLink(asset.title, itemId)}
+                    v="btn btn-outline btn-sm rounded-none font-normal"
+                  >
+                    <Tooltip
+                      content={
+                        <FaTwitter
+                          color="#1d9bf0"
+                          placement="bottom"
+                          size={18}
+                          
+                        />
+                      }
+                      css={{ bg: "white", p: 10, fontSize: 18 }}
+                      hideArrow
+                      placement="bottom"
+                      offset={2}
+                    >
+                      <Button
+                        flat
+                        auto
+                        rounded
+                        css={{
+                          color: "white",
+                          bg: "white",
+                          m: 6,
+                          p: 6,
+                          fontSize: 20,
+                          zIndex: 1,
+                        }}
+                      >
+                        <FcShare />
+                      </Button>
+                    </Tooltip>
+                  </a>
+                </Row>
               </Row>
-              <Spacer y={1} />
+              <Spacer y={0.5} />
+              <Row css={{ borderRadius: "5px", backgroundColor: "#717c86" }}>
+                <p
+                  style={{
+                    letterSpacing: "0.5px",
+                    fontFamily: "Work Sans",
+                    fontSize: "12px",
+                    textAlign: "left",
+                    padding: "5px",
+                  }}
+                >
+                  {asset.description}
+                </p>
+              </Row>
+
+              {/* <Spacer y={1} />
               <Row justify="center" align="space-evenly">
                 {authorObject?.authorWebsite && (
                   <Col>
@@ -202,9 +296,9 @@ export default function AtomicVideoPlayerContainer(props) {
                     <p className="pText">Profile</p>
                   </Link>
                 </Col>
-              </Row>
+              </Row> */}
               <Spacer y={1} />
-              <h3>Videos</h3>
+
               {/* {ownerVideos && <AtomicVideoCards images={ownerVideos} />} */}
               <div className="contentScrollContainer">
                 <div className="hs">

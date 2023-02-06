@@ -50,7 +50,7 @@ export default function AtomicSandbox(props) {
 
   return (
     <div className="sandbox">
-      <p className="sandboxHeader">Filter Tabs</p>
+      
       <div className="filtersListStyle">
         <SandboxButtons data={sandboxButtonTitles} onClick={onMyFrameLoad} />
       </div>
@@ -59,7 +59,6 @@ export default function AtomicSandbox(props) {
           <iframe
             className="sandboxIframe"
             onLoad={onMyFrameLoad}
-            frameBorder="0"
             width="100%"
             height="100%"
             title={props.title}

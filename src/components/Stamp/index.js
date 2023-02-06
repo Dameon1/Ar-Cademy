@@ -1,22 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Tooltip } from "@nextui-org/react";
+import { WarpFactory } from "warp-contracts";
 import StampButton from "../StampButton";
+import { BsHeart, BsHeartHalf, BsHeartFill } from "react-icons/bs";
+
+import { getAssetData } from "../../lib/imgLib/asset";
+import { isVouched } from "../../lib/imgLib/stamp";
+import MainContext from "../../context";
 
 //Stamp returns count and a button to stamp
 export default function Stamp(props) {
-  const [stampCount, setStampCount] = useState();
+  const { txId } = props;
+  const { addr } = useContext(MainContext);
+  const [vouched, setVouched] = useState(false);
+  const [isStamped, setIsStamped] = useState(false);
+  const [stampCount, setStampCount] = useState(0);
+
+  const warp = WarpFactory.forMainnet();
+  const STAMPCOIN = "FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA";
 
   useEffect(() => {
-    getStampCount(props.txId);
-  });
+    async function getData() {
+      const userVouched = await isVouched(addr);
+      setVouched(userVouched);
+      await getStampCount(txId);
+    }
+    getData();
+  }, [addr, stampCount, txId]);
 
   const CACHE =
     "https://cache.permapages.app/FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA";
 
+  const handleStamp = async (txId) => {
+   await warp.contract(STAMPCOIN).connect("use_wallet").writeInteraction({
+     function: "stamp",
+     transactionId: txId,
+     timestamp: Date.now(),
+   });
+   await getStampCount(txId);
+ };
+
   const getStampCount = async (txId) => {
     const state = await getState();
     let stamps = Object.values(state.stamps).filter((s) => s.asset === txId);
+    let stampers = stamps.map((asset) => {
+      return Object.values(asset)[2];
+    });
+    setIsStamped(stampers.filter((stamper) => stamper === addr)[0] === addr);
     setStampCount(stamps.length);
-    return stamps.length;
   };
 
   async function getState() {
@@ -25,8 +56,37 @@ export default function Stamp(props) {
 
   return (
     <div>
-      {/* <p className="cardTitle">Stamps Collected {stampCount}</p> */}
-      <StampButton txId={props.txId} />
+      <Tooltip
+        content={
+          isStamped
+            ? null
+            : vouched
+            ? "Stamp 💓"
+            : addr
+            ? "Get vouched to 💓"
+            : "Sign in to stamp"
+        }
+        hideArrow
+        placement="bottom"
+        offset={2}
+      >
+        <StampButton
+          txId={props.txId}
+          icon={
+            isStamped ? (
+              <BsHeartFill  />
+            ) : vouched ? (
+              <BsHeartHalf />
+            ) : (
+              <BsHeart />
+            )
+          }
+          getStampCount={getStampCount}
+          handleStamp={handleStamp}
+          count={stampCount}
+          disabled={isStamped || !vouched ? true : false}
+        />
+      </Tooltip>
     </div>
   );
 }

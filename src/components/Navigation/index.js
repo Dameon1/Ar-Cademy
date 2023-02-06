@@ -65,7 +65,7 @@ export default function Navigation() {
 
   return (
     <Navbar
-      containerCss={{ backgroundColor: "#717C86" }}
+      containerCss={{ backgroundColor: "#717C86", zIndex:1000, }}
       variant="sticky"
       maxWidth={"fluid"}
       disableBlur="true"
@@ -74,11 +74,12 @@ export default function Navigation() {
         "@xsMax": {
           w: "100%",
           jc: "space-between",
+          
         },
       }}
     >
       <Navbar.Toggle showIn="sm" />
-      <Navbar.Collapse showIn="lg">
+      <Navbar.Collapse showIn="lg" css={{zIndex:1000,}}>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={index}>
             <Link to={`/${item.page}`} className="navigationCollapseLinks">

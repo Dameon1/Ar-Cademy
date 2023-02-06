@@ -31,7 +31,7 @@ export default function AtomicMediaCard(props) {
   }, []);
 
   return (
-    <Card isPressable onClick={onClick} css={{height:"175px", border:".5px solid white"}}>
+    <Card isPressable onClick={onClick} css={{height:"175px", border:".5px solid white", minHeight:"180px"}}>
       <Card.Body css={{ p: 0, height:"105px" }}>
         <Card.Image
           src={`https://arweave.net/${video.videoImageId}`}
@@ -74,7 +74,7 @@ export default function AtomicMediaCard(props) {
                     className="socialImageLinks"
                     size={15}
                     aria-hidden="true"
-                    color="blue"
+                    color="#1d9bf0"
                   />
                 )}
               </Row>
@@ -90,9 +90,9 @@ export default function AtomicMediaCard(props) {
         </Tooltip>
         <Col css={{ padding: "0px 10px" }}>
           <Row wrap="wrap">
-            <Text css={{ fontSize: "$md" }}>
-              {video.title.length > 47
-                ? video.title.slice(0, 47) + +"..."
+            <Text css={{ fontSize: "$md", textAlign:"left" }}>
+              {video.title.length > 27
+                ? video.title.slice(0, 27) + "..."
                 : video.title}{" "}
             </Text>
           </Row>
@@ -112,7 +112,7 @@ export default function AtomicMediaCard(props) {
                 className="socialImageLinks"
                 size={15}
                 aria-hidden="true"
-                color="blue"
+                color="#1d9bf0"
               />
             )}
           </Row>

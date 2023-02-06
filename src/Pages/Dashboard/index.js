@@ -12,8 +12,10 @@ import {
   Row,
   Col,
   Container,
+  Tooltip
 } from "@nextui-org/react";
 import { AiOutlineUpload } from "react-icons/ai";
+import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import ArProfile from "../../components/ArProfile";
 import { MediaCard } from "../../components/Cards";
@@ -106,6 +108,7 @@ export function Dashboard() {
       <Spacer y={1} />
       {addr && (
         <Row align="center" justify="center">
+          <Tooltip content="create" placement="bottom" hideArrow>
           <Button
             css={{
               color: "black",
@@ -117,10 +120,10 @@ export function Dashboard() {
             }}
             className="button buttonText"
             onClick={() => navigate("/upload")}
-            iconRight={<AiOutlineUpload size={18} />}
-          >
-            <p className="pText">Create</p>
-          </Button>
+            iconRight={<AiOutlineVideoCameraAdd size={18} />}
+          />
+            
+        </Tooltip>
         </Row>
       )}
       <Spacer y={1} />
@@ -158,10 +161,10 @@ export function Dashboard() {
       )}
       {addr && isLoading && (
         <>
-          <Row>
+          <Row align="center" justify="center">
             <p className="pText">Searching for content</p>
           </Row>
-          <Row>
+          <Row align="center" justify="center">
             <Loading />
           </Row>
         </>
@@ -280,7 +283,7 @@ export function Dashboard() {
               {userData?.POLY.map((content, i) => {
                 return (
                   <div key={i} className="mediaCards">
-                    <PolygonNFTS content={content} index={i} />
+                    {/* <PolygonNFTS content={content} index={i} /> */}
                   </div>
                 );
               })}

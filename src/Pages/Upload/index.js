@@ -450,7 +450,7 @@ export default function Upload() {
     const trx = bundlrInstance.createTransaction(file, {
       tags: [{ name: "Content-Type", value: originalImage.type }],
     });
-    
+
     await trx.sign();
     const result = await trx.upload();
     console.log("result", result);
@@ -556,26 +556,15 @@ export default function Upload() {
   return (
     <main>
       <div>
-        <Container>
           <Row align="center">
             <div className="text-container">
-              <h2>Ar-Cademy Uploads</h2>
-              <p className="pText">
-                This is a work in progress. Experimenting with the spectrum of
-                uploads on Arweave. These range from simple string metadata
-                stored directly on Arweave completely, to a range of NFT
-                capabilities that store on Ardrive, can be managed on Darkblock
-                or Koii Network, that includes serving the content through the
-                Meson Networks CDN Polygon contract and uses the new WARP
-                contracts from Redstone.
-              </p>
+              <h2>Ar-Cademy Studio</h2>
             </div>
           </Row>
-        </Container>
-        <Spacer y={1} />
-        <Row align="center" justify="center">
+        <Spacer y={.25} />
+        {/* <Row align="center" justify="center">
           <TestModal />
-        </Row>
+        </Row> */}
         <Spacer y={1} />
         <Container
           justify="center"
@@ -643,11 +632,13 @@ export default function Upload() {
           </Row>
           <Row align="center">
             <Col>
-              <p className="pText">
-                {currency !== defaultCurrency
-                  ? `${toProperCase(currency)} Account:${address.slice(0, 4)}`
-                  : null}
-              </p>
+              <Row align="center" justify="center">
+                <p className="pText">
+                  {currency !== defaultCurrency
+                    ? `${toProperCase(currency)} Account:${address.slice(0, 4)}`
+                    : null}
+                </p>
+              </Row>
             </Col>
           </Row>
         </Container>
@@ -683,14 +674,14 @@ export default function Upload() {
               >
                 <p className="pText">Image</p>
               </Button>
-              <p className="pText">Preview</p>
+              <Row align="center" justify="center">
+                <p className="pText">Preview</p>
+              </Row>
               <Col>
                 <Image
                   src={localImage ? localImage : image}
                   alt="your upload here"
                   objectFit="contain"
-                  width={160}
-                  height={160}
                 />
                 <Spacer y={0.5} />
                 <h4>Cost: {Math.round(imageCost * 100000) / 100000}</h4>
@@ -715,10 +706,19 @@ export default function Upload() {
               >
                 <p className="pText">Video</p>
               </Button>
-              <p className="pText">Preview</p>
-              <video key={localVideo} width={160} height={160} controls>
-                <source src={localVideo} />
-              </video>
+              <Row align="center" justify="center">
+                <p className="pText">Preview</p>
+              </Row>
+              <Row>
+                <video
+                  key={localVideo}
+                  width="100%"
+                  controls
+                >
+                  <source src={localVideo} />
+                </video>
+              </Row>
+
               <h4>Cost: {Math.round(videoCost * 100000) / 100000}</h4>
             </Col>
           </Row>
@@ -741,14 +741,14 @@ export default function Upload() {
           <Spacer y={0.25} />
           <Row justify="center" align="center">
             <Col>
-              <h3>Step 3: Add Extras</h3>
+              <h3>Step 3: Details</h3>
             </Col>
           </Row>
           <div>
             <div>
               <Row
                 className="form-control"
-                justify="center"
+                justify="space-between"
                 align="center"
                 gap={1}
               >
@@ -756,7 +756,7 @@ export default function Upload() {
                   <Input
                     id="title"
                     className="input input-bordered"
-                    labelPlaceholder="Make a Title"
+                    labelPlaceholder="Title"
                     status="secondary"
                     aria-label="Title"
                     onChange={(e) => setTitle(e.target.value)}
@@ -778,7 +778,7 @@ export default function Upload() {
                       className="button buttonText"
                     >
                       <p className="pText">
-                        {topics ? toProperCase(topics) : "Add a Tag"}
+                        {topics ? toProperCase(topics) : "Category"}
                       </p>
                     </Dropdown.Button>
                     <Dropdown.Menu onAction={(key) => setTopics(key)}>
@@ -792,8 +792,11 @@ export default function Upload() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </Col>
+                
+                
+              </Row>
                 <Spacer x={0.5} />
-                <Col
+                <Row
                   className="form-control"
                   justify="center"
                   align="center"
@@ -801,26 +804,23 @@ export default function Upload() {
                 >
                   <Textarea
                     id="Description"
+                    width="80%"
                     aria-label="description"
                     className="textarea textarea-bordered"
-                    labelPlaceholder="Give a description"
+                    labelPlaceholder="Description"
                     status="secondary"
                     onChange={(e) => setDescription(e.target.value)}
                     required
                     clearable
                   />
-                </Col>
-                <Spacer x={0.5} />
-              </Row>
+                </Row>
               <Spacer y={1} />
               <Row justify="center" align="center" gap={1}>
-                <h3>Add External Links:</h3>
+                <h3>Add up to 5 External Links:</h3>
               </Row>
               <Row justify="center" align="center" gap={1}>
                 <Col>
-                  <Row justify="center" align="center" gap={1}>
-                    <p className="pText">Add up to 5</p>
-                  </Row>
+                  
                   <Row justify="center" align="center" gap={1}>
                     <p className="pText">URLs: {urls.length}/5</p>
                   </Row>
@@ -908,8 +908,7 @@ export default function Upload() {
                         ? "Placeholder Preview"
                         : urls[urls.length - 1].label
                     }
-                    height="250"
-                    width="350"
+                    width="100%"
                   />
                 </Col>
               </Row>

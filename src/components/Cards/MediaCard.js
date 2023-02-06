@@ -68,7 +68,7 @@ export default function MediaCard(props) {
                     className="socialImageLinks"
                     size={15}
                     aria-hidden="true"
-                    color="blue"
+                    color="#1d9bf0"
                   />
                 )}
               </Row>
@@ -106,7 +106,7 @@ export default function MediaCard(props) {
                 className="socialImageLinks"
                 size={15}
                 aria-hidden="true"
-                color="blue"
+                color="#1d9bf0"
               />
             )}
           </Row>

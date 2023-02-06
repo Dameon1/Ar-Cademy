@@ -244,7 +244,7 @@ export default function Profile() {
                 {userContent?.POLY.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
-                      <PolygonNFTS content={content} index={i} />
+                      {/* <PolygonNFTS content={content} index={i} /> */}
                     </div>
                   );
                 })}

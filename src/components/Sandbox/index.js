@@ -47,7 +47,7 @@ export default function Sandbox(props) {
   return (
     <div className="sandbox">
       
-        <p className="sandboxHeader">Filter Tabs</p>
+        
         <div className="filtersListStyle">
           <SandboxButtons data={sandboxButtonTypes} onClick={onMyFrameLoad}/>
         </div>
