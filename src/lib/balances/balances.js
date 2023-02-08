@@ -6,7 +6,7 @@ LoggerFactory.INST.logLevel("error");
 
 const CACHE = 'https://cache.permapages.app'
 const BAR = "VFr3Bk-uM-motpNNkkFg4lNW1BMmSfzqsVO551Ho4hA";
-const STAMPCOIN = "FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA";
+const STAMPCOIN = "61vg8n54MGSC9ZHfSVAtQp4WjNb20TaThu6bkQ86pPI";
 const $CODE = "XFZxNNpgb043Doa7-4sra5dnbBB5RkOHRyQJ_YOzLAg"
 const warp = WarpFactory.forMainnet();
 

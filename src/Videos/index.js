@@ -400,7 +400,7 @@ export const Videos = {
         videoTitle: "Akord NFT Deployment",
         videoLocation: "Youtube",
         description: "Join Austin Griffith for a workshop on Scaffold-eth and Akord NFTs. Tutorial starts at 30:30",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Scaffold: "https://arweave.net/by3cmPHGl-NMwn_tlitV3qEVyci5Mgf12pBgKyJOQ9E",
@@ -416,7 +416,7 @@ export const Videos = {
         videoTitle: "Akord 101: Messaging",
         videoLocation: "Youtube",
         description: "Learn about how send messages on Akord – true user-owned storage built on Arweave.",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -431,7 +431,7 @@ export const Videos = {
         videoTitle: "Akord 101: Managing files",
         videoLocation: "Youtube",
         description: "Akord 101: Managing files",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -446,7 +446,7 @@ export const Videos = {
         videoTitle: "Akord 101: Media viewer",
         videoLocation: "Youtube",
         description: "Learn about how view your media on Akord – true user-owned storage built on Arweave.",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -461,7 +461,7 @@ export const Videos = {
         videoTitle: "Akord 101: Making notes",
         videoLocation: "Youtube",
         description: "Learn about how to create notes on Akord – true user-owned storage built on Arweave.",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -476,7 +476,7 @@ export const Videos = {
         videoTitle: "Akord 101: Invites and permissions",
         videoLocation: "Youtube",
         description: "Learn about how to invite others and set permissions on Akord – true user-owned storage built on Arweave. ",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -492,7 +492,7 @@ export const Videos = {
         videoTitle: "Akord 101: Signing up",
         videoLocation: "Youtube",
         description: "Learn about the signing up process for Akord – you don't need a third party crypto wallet or tokens to get started. You get 500 MB free with Akord, so your first uploads to Arweave are on us.",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -507,7 +507,7 @@ export const Videos = {
         videoTitle: "Akord 101: Uploading files",
         videoLocation: "Youtube",
         description: "Learn how to upload files to Arweave with Akord - you get 500 MB free so your first uploads are on us.",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -522,7 +522,7 @@ export const Videos = {
         videoTitle: "Akord 101: Creating a vault",
         videoLocation: "Youtube",
         description: "Learn about how to create your first vault on Akord – true user-owned storage built on Arweave. ",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",
@@ -537,7 +537,7 @@ export const Videos = {
         videoTitle: "Akord 101: File versioning",
         videoLocation: "Youtube",
         description: "Learn about file versioning on Akord – true user-owned storage built on Arweave.",
-        authorID: "15",
+        authorID: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
         tags: ["NFT", "Ethereum", "Akord", "Solidity"],
         sandboxLinks: {
             Akord: "https://v2.akord.com/",

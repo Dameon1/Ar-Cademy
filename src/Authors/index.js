@@ -153,7 +153,7 @@ export const Authors = {
       "https://pbs.twimg.com/profile_images/3422271797/caf9c1d59faf35ea559117e521a3b131_200x200.png",
   },
   //--Akord--//
-  15: {
+  "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw": {
     author: "Akord",
     authorLink: "https://twitter.com/AkordTeam",
     authorWebsite: "https://linktr.ee/akord.com",
@@ -170,8 +170,8 @@ export const Authors = {
       "38",
     ],
     createdContentByID: ["ContentID"],
-    uid: "15",
-    addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    uid: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
+    addr: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
     username: "@AkordTeam",
     avatar: "https://arweave.net/k5sxUsgCyOkBRLH9iXSfie3s-VnNaN_4iTDjjA_TA5I",
   },

@@ -17,7 +17,7 @@ export default function Stamp(props) {
   const [stampCount, setStampCount] = useState(0);
 
   const warp = WarpFactory.forMainnet();
-  const STAMPCOIN = "FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA";
+  const STAMPCOIN = "61vg8n54MGSC9ZHfSVAtQp4WjNb20TaThu6bkQ86pPI";
 
   useEffect(() => {
     async function getData() {
