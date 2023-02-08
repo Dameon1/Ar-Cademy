@@ -11,6 +11,7 @@
     "@ethersproject/providers": "^5.5.3",
     "@mui/material": "^5.11.4",
     "@nextui-org/react": "^1.0.0-beta.9",
+    "@permaweb/stampjs": "https://js_stamps.g8way.io",
     "@solana/wallet-adapter-phantom": "^0.9.16",
     "@types/node": "^16.11.25",
     "arweave": "^1.12.2",

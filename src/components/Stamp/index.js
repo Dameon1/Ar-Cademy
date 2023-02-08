@@ -5,22 +5,34 @@ import StampButton from "../StampButton";
 import { BsHeart, BsHeartHalf, BsHeartFill } from "react-icons/bs";
 import { isVouched } from "../../lib/imgLib/stamp";
 import MainContext from "../../context";
+import Stamps from "@permaweb/stampjs";
 
 //Stamp returns count and a button to stamp
 export default function Stamp(props) {
   const { txId } = props;
+  const stamps = Stamps.init({ warp: WarpFactory.forMainnet() });
+
   const { addr } = useContext(MainContext);
   const [vouched, setVouched] = useState(false);
   const [isStamped, setIsStamped] = useState(false);
   const [stampCount, setStampCount] = useState(0);
 
-  const warp = WarpFactory.forMainnet();
-  const STAMPCOIN = "61vg8n54MGSC9ZHfSVAtQp4WjNb20TaThu6bkQ86pPI";
+  //const warp = WarpFactory.forMainnet();
+  //const STAMPCOIN = "61vg8n54MGSC9ZHfSVAtQp4WjNb20TaThu6bkQ86pPI";
 
   useEffect(() => {
     async function getData() {
       const userVouched = await isVouched(addr);
       setVouched(userVouched);
+
+      //New Total
+      const { total } = await stamps.count(txId);
+      console.log("total", total);
+
+      //New hasStamped
+      const hasStamped = await stamps.hasStamped(txId, addr);
+      console.log("hasStamped", hasStamped);
+
       await getStampCount(txId);
     }
     getData();
@@ -30,16 +42,15 @@ export default function Stamp(props) {
     "https://cache.permapages.app/61vg8n54MGSC9ZHfSVAtQp4WjNb20TaThu6bkQ86pPI";
 
   const handleStamp = async (txId) => {
-   await warp.contract(STAMPCOIN).connect("use_wallet").writeInteraction({
-     function: "stamp",
-     transactionId: txId,
-     timestamp: Date.now(),
-   });
-   await getStampCount(txId);
- };
+    console.log(txId)
+    await stamps.stamp("VFyBdRflZeaplTMef6pJ6n-jzU7JzjNUdEvDtPZXfl8", 1);
+    const { total } = await stamps.count(txId);
+    console.log("total-2", total);
+  };
 
   const getStampCount = async (txId) => {
     const state = await getState();
+    console.log("state", state);
     let stamps = Object.values(state.stamps).filter((s) => s.asset === txId);
     let stampers = stamps.map((asset) => {
       return Object.values(asset)[2];
@@ -72,7 +83,7 @@ export default function Stamp(props) {
           txId={props.txId}
           icon={
             isStamped ? (
-              <BsHeartFill  />
+              <BsHeartFill />
             ) : vouched ? (
               <BsHeartHalf />
             ) : (
