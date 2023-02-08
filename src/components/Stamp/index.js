@@ -27,7 +27,7 @@ export default function Stamp(props) {
   }, [addr, stampCount, txId]);
 
   const CACHE =
-    "https://cache.permapages.app/FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA";
+    "https://cache.permapages.app/61vg8n54MGSC9ZHfSVAtQp4WjNb20TaThu6bkQ86pPI";
 
   const handleStamp = async (txId) => {
    await warp.contract(STAMPCOIN).connect("use_wallet").writeInteraction({

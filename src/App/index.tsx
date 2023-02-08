@@ -6,10 +6,7 @@ import { MainContext } from "../context";
 import { ThemeProvider } from "styled-components";
 import { light, dark } from "../utils/colors";
 import { GlobalStyles } from "../static/styles/global";
-import {
-  a11yDark,
-  duotoneLight,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+
 import { T_walletName } from "../utils/types";
 import { AMW } from "../utils/api";
 import { NextUIProvider } from "@nextui-org/react";
