@@ -4,7 +4,6 @@ import { CenterProvider, Asset } from '@center-inc/react';
 //function called nftviewer to return the nft image
 export default function NFTViewer(props) {
   let { content } = props;
-  console.log("content", content)
   let network = content.ark_network;
   let tokenAddress = content.token_address;
   let tokenId = content.token_id;

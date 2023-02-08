@@ -63,7 +63,6 @@ export function AccountViewer() {
       }
       getContent()
         .then((res) => {
-          console.log("res", res);
           user.EVM = res[0];
           user.POLY = res[1];
           user.BSC = res[2];
@@ -76,7 +75,6 @@ export function AccountViewer() {
           return user;
         })
         .then((user) => {
-          console.log("user111111", user);
           setUserContent(user);
           setIsLoading(false);
           setIsSearching(false);
@@ -97,7 +95,6 @@ export function AccountViewer() {
             let user = res.res;
             user.POAPS = user.EVM[user.primary_address].POAPS;
             user.ARK = res.res;
-            console.log("------", user);
             setUserContent(user);
             setIsSearching(false);
             setIsLoading(false);
@@ -221,7 +218,6 @@ export function AccountViewer() {
             )}
           </Container>
         )}
-        {console.log("User Content:", userContent)}
 
         {addr && !isSearching && userContent?.ARCADEMY_VIDEOS?.length > 0 && (
           <div>
@@ -341,7 +337,8 @@ export function AccountViewer() {
               </div>
             </>
           )}
-        {addr && userContent?.POLY?.length > 0 && !isLoading && (
+
+        {/* {addr && userContent?.POLY?.length > 0 && !isLoading && (
           <>
             <h1>Polygon NFTS:</h1>
             <div className="contentScrollContainer">
@@ -356,9 +353,9 @@ export function AccountViewer() {
               </div>
             </div>
           </>
-        )}
+        )} */}
 
-        {addr &&
+        {/* {addr &&
           userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 &&
           !isLoading && (
             <>
@@ -378,9 +375,9 @@ export function AccountViewer() {
                 </div>
               </div>
             </>
-          )}
+          )} */}
 
-        {addr &&
+        {/* {addr &&
           userContent?.ARK?.ARWEAVE?.ANFTS?.permapages_img?.length > 0 &&
           !isLoading && (
             <>
@@ -402,9 +399,9 @@ export function AccountViewer() {
                 </div>
               </div>
             </>
-          )}
+          )} */}
 
-        {addr && userContent?.AVAX?.length > 0 && !isLoading && (
+        {/* {addr && userContent?.AVAX?.length > 0 && !isLoading && (
           <>
             <h1>Avalnche NFTS:</h1>
             <div className="contentScrollContainer">
@@ -419,7 +416,8 @@ export function AccountViewer() {
               </div>
             </div>
           </>
-        )}
+        )} */}
+
       </div>
     </>
   );

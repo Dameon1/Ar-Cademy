@@ -111,7 +111,6 @@ export default function TestPage() {
 
   async function getImages(addr, type, filtertag) {
     const transferredImages = await excludeTransferred(addr);
-    console.log(transferredImages);
     return (
       Promise.all([
         imagesByOwner(addr, type, filtertag),
@@ -208,7 +207,6 @@ export default function TestPage() {
   async function runFilterQuery(addr, type, filtertag) {
     if (addr) {
       let newImages = await getImages(addr, type, filtertag);
-      console.log(newImages);
       setImages(newImages);
     }
   }

@@ -36,7 +36,6 @@ async function getArcademyVideos(addr) {
 }
 
 export default async function getAllUserContent(addr) {
-  let user = {};
   let ARCADEMY_VIDEOS = await getArcademyVideos(addr);
   let UPLOADED_VIDEOS = await getUserVideos(addr, "video", "");
   let EVM = retryFetch(
@@ -69,33 +68,4 @@ export default async function getAllUserContent(addr) {
     ARCADEMY_VIDEOS,
     UPLOADED_VIDEOS,
   ]);
-  // .then((res) => {
-  //   console.log("res", res);
-  //   user.EVM = res[0];
-  //   user.POLY = res[1];
-  //   user.BSC = res[2];
-  //   user.FTM = res[3];
-  //   user.AVAX = res[4];
-  //   user.ARK = res[5].res;
-  //   user.POAPS = res[6].POAPS;
-  //   user.ARCADEMY_VIDEOS = res[7];
-  //   user.UPLOADED_VIDEOS = UPLOADED_VIDEOS;
-  //   console.log("Setting ARCADEMY_VIDEOS", user.ARCADEMY_VIDEOS);
-  //   console.log("Setting UPLOADED_VIDEOS", user.UPLOADED_VIDEOS);
-  //   console.log("setting EVM data", user.EVM);
-  //   console.log("setting POLY data", user.POLY);
-  //   console.log("setting BSC data", user.BSC);
-  //   console.log("setting FTM data", user.FTM);
-  //   console.log("setting AVAX data", user.AVAX);
-  //   console.log("setting ARWEAVE data", user.ARK);
-  //   console.log("setting POAPS data", user.POAPS);
-  //   return user;
-  // })
-  // .then((user) => {
-  //   console.log("user111111", user);
-  //   return user;
-  // })
-  // .catch((err) => {
-  //   console.log("error", err);
-  // });
 }

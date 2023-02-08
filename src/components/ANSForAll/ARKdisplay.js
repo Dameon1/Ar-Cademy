@@ -44,7 +44,7 @@ function ARKdisplay(props) {
       </Row>
       <Row align="center" justify="center">
         <AvatarS
-          src={`https://arweave.net/${content.ARWEAVE.ANS.avatar}`}
+          src={`https://ar-io.net/${content.ARWEAVE.ANS.avatar}`}
           sx={{ width: 90, height: 90 }}
         />
       </Row>

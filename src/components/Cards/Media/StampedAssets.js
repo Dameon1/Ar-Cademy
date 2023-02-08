@@ -48,7 +48,7 @@ export default function StampedAssets(props) {
 
           <Card.Body css={{ p: 20 }}>
             <Card.Image
-              src={`https://arweave.net/${content.stampedAsset}`}
+              src={`https://ar-io.net/${content.stampedAsset}`}
               alt={title}
               width="100%"
               height="100%"

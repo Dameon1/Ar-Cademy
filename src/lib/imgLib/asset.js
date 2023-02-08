@@ -23,7 +23,7 @@ const warp = WarpFactory.forMainnet();
 
 export async function listAssets(count) {
   return (
-    fetch("https://arweave.net/graphql", {
+    fetch("https://aarweave.net/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -70,7 +70,6 @@ query {
 }
 
 export async function assetDetails(asset, addr = "") {
-  console.log("asset:", asset);
   const state = await warp
     .contract(asset)
     .setEvaluationOptions({ internalWrites: true, allowBigInt: true })
@@ -82,7 +81,6 @@ export async function assetDetails(asset, addr = "") {
     const addrBalance = balances[addr];
     const percentOwned = Math.floor((addrBalance / totalBalance) * 100);
     const a = await account.get(state.emergencyHaltWallet);
-    console.log("a: ", a);
     return {
       state,
       percent: percentOwned,
@@ -244,7 +242,6 @@ query {
 }
 
 export async function imagesByOwner(addr, type) {
-  console.log("addr: ", addr, type);
   let images = await fetch("https://arweave.net/graphql", {
     method: "POST",
     headers: {
@@ -286,7 +283,6 @@ query {
         path(["data", "transactions", "edges"])
       )
     );
-  console.log("images", images);
   return await images;
 }
 

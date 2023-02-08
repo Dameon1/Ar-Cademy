@@ -20,7 +20,7 @@ import image from "../../winston.png";
 //import babyImage2 from "../../winstonBaby2.png";
 
 export default function Navigation() {
-  const fallbackImage = "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
+  const fallbackImage = "https://ar-io.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
   const { addr, disconnectWallet, userData } = useContext(MainContext);
   const [userBalances, setUserBalances] = useState();
   const [avatar, setAvatar] = useState(fallbackImage);
@@ -45,11 +45,11 @@ export default function Navigation() {
           if (userData !== null) {
             let { ANS, ARK, ArProfile } = userData;
             ARK?.ARWEAVE?.ANS?.avatar.length > 0
-              ? setAvatar( `https://arweave.net/${ARK.ARWEAVE.ANS.avatar}`)
+              ? setAvatar( `https://ar-io.net/${ARK.ARWEAVE.ANS.avatar}`)
               : ANS?.avatar?.length > 0
-              ? setAvatar( `https://arweave.net/${ANS.avatar}` )
+              ? setAvatar( `https://ar-io.net/${ANS.avatar}` )
               : ArProfile?.profile?.avatar?.length > 0 && ArProfile.profile.avatar !== "ar://OrG-ZG2WN3wdcwvpjz1ihPe4MI24QBJUpsJGIdL85wA"
-              ? setAvatar(`https://arweave.net/${ArProfile.profile.avatar}`)
+              ? setAvatar(`https://ar-io.net/${ArProfile.profile.avatar}`)
               : setAvatar(fallbackImage);
           }
           user.bar = await myBar(addr);

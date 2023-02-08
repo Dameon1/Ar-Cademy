@@ -108,7 +108,7 @@ function UseAns({ addr, forDashboard }) {
           </Row>
           <Row align="center" justify="center">
             <AvatarS
-              src={`https://arweave.net/${ansProfile.avatar}`}
+              src={`https://ar-io.net/${ansProfile.avatar}`}
               sx={{ width: 90, height: 90 }}
             />
           </Row>

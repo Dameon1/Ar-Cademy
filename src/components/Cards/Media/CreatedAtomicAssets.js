@@ -36,7 +36,7 @@ export default function CreatedAtomicAssets(props) {
 
         <Card.Body css={{ p: 20 }}>
           <Card.Image
-            src={`https://arweave.net/${content.id}`}
+            src={`https://ar-io.net/${content.id}`}
             alt={title}
             width="100%"
             height="100%"

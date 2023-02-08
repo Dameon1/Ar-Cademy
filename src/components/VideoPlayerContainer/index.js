@@ -33,13 +33,11 @@ export function VideoPlayerContainer(props) {
   function getArcademyVideos(id) {
     let authorObject = Authors[id];
     let authorVideos;
-    console.log("id", id);
     if (authorObject !== undefined) {
       authorVideos = authorObject.createdVideosByID
         .map((x) => Videos[x])
         .filter((x) => x.uid !== videoID);
     }
-    console.log(authorVideos, "authorVideos");
     return [authorVideos, authorObject];
   }
 
@@ -83,7 +81,6 @@ export function VideoPlayerContainer(props) {
   }
 
   let cards = arcademyVideos.map((video, index) => {
-    console.log(video, "arcademyVideos");
     return (
       <div className="videoThumbnails" key={index}>
         <Link
@@ -99,7 +96,6 @@ export function VideoPlayerContainer(props) {
   });
 
   let atomicCards = ownerVideos.map((video, index) => {
-    console.log(ownerVideos, "ownerVideos");
     return (
       <div className="videoThumbnails" key={index}>
         <Link
@@ -127,10 +123,7 @@ export function VideoPlayerContainer(props) {
               </h4>
             </header>
 
-            {console.log(
-              contentObject.videoObject.videoLocation,
-              "contentObject.videoLocation"
-            )}
+            
             {contentObject.videoObject?.videoLocation === "Arweave" ? (
               <div className="video-player">
                 <video

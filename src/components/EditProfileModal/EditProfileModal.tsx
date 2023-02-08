@@ -113,7 +113,7 @@ function EditProfileModale({ addr, profile, isOpen, hasClosed }: { addr: T_addr,
                 </Button>
               </>
                 : profileData.avatar
-                  ? <AvatarS src={`https://arweave.net/${profileData.avatar}`} sx={{ width: 200, height: 200 }} />
+                  ? <AvatarS src={`https://ar-io.net/${profileData.avatar}`} sx={{ width: 200, height: 200 }} />
                   : <AvatarS sx={{ width: 200, height: 200, fontSize: 'xx-large', fontFamily: 'monospace' }}>#{addr.slice(0, 3)}{addr.slice(-3)}</AvatarS>
             }
           </label>

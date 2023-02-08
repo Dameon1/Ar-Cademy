@@ -9,7 +9,7 @@ export const Authors = {
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@SpheronHQ",
     avatar:
-      "https://arweave.net/39xBteSdpIw78_dUKsqxE1PMVzMC_tqXGw4x9TTivws",
+      "https://ar-io.net/39xBteSdpIw78_dUKsqxE1PMVzMC_tqXGw4x9TTivws",
   },
   //--Ar.IO--//
   "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g": {
@@ -21,7 +21,7 @@ export const Authors = {
     uid: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
     addr: "qBRa782iJ4Nry0apjK0svfIJK-X_7mppep7bnDOH6_g",
     username: "@ardriveapp",
-    avatar: "https://arweave.net/wDI7xjbMbuCKFbig-8homjCfd5wyCR1kaN06cK5cvfM",
+    avatar: "https://ar-io.net/wDI7xjbMbuCKFbig-8homjCfd5wyCR1kaN06cK5cvfM",
     arns: "arns.arweave.dev",
   },
   5: {
@@ -91,7 +91,7 @@ export const Authors = {
     uid: 10,
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@KwilTeam",
-    avatar: "https://arweave.net/4i31JvmbGPK4_v_I03OzFYPOOvONIeVPNvLWbzdBLG8",
+    avatar: "https://ar-io.net/4i31JvmbGPK4_v_I03OzFYPOOvONIeVPNvLWbzdBLG8",
   },
   "vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI": {
     author: "Tom Wilson",
@@ -173,7 +173,7 @@ export const Authors = {
     uid: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
     addr: "uMKq42ty13fgoFkaHlgsJNiibyy9foq5isAN_EMbpNw",
     username: "@AkordTeam",
-    avatar: "https://arweave.net/k5sxUsgCyOkBRLH9iXSfie3s-VnNaN_4iTDjjA_TA5I",
+    avatar: "https://ar-io.net/k5sxUsgCyOkBRLH9iXSfie3s-VnNaN_4iTDjjA_TA5I",
   },
   //--EverVision--//
   16: {
@@ -185,7 +185,7 @@ export const Authors = {
     uid: "16",
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@everVisionHQ",
-    avatar: "https://arweave.net/N-nneqJtdSzZNfQDJP2T9AxL2PeeQbHicbwloZrcS1Y",
+    avatar: "https://ar-io.net/N-nneqJtdSzZNfQDJP2T9AxL2PeeQbHicbwloZrcS1Y",
   },
 
   //--Metaweave--//
@@ -198,7 +198,7 @@ export const Authors = {
     uid: "aIUmY9Iy4qoW3HOikTy6aJww-mM4Y-CUJ7mXoPdzdog",
     addr: "aIUmY9Iy4qoW3HOikTy6aJww-mM4Y-CUJ7mXoPdzdog",
     username: "@MetaweaveTeam",
-    avatar: "https://arweave.net/J7CuERuTD2p_rrGSj9PB8TY43nGPQJVxEJIM4HX_qZ8",
+    avatar: "https://ar-io.net/J7CuERuTD2p_rrGSj9PB8TY43nGPQJVxEJIM4HX_qZ8",
   },
 
   //--DecentdotLand--//
@@ -224,7 +224,7 @@ export const Authors = {
     uid: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
     addr: "96nQROiF0ahfpMzTtyfpRNa_gu7s7OUWPUhsHSsz5aI",
     username: "@4everland_org",
-    avatar: "https://arweave.net/Ea779WkfqaepaYOms6L4wF7tUedXX5FIrd3M3TwtUd8",
+    avatar: "https://ar-io.net/Ea779WkfqaepaYOms6L4wF7tUedXX5FIrd3M3TwtUd8",
   },
 
   //--Bundlr--//
@@ -237,7 +237,7 @@ export const Authors = {
     uid: "20",
     addr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     username: "@BundlrNetwork",
-    avatar: "https://arweave.net/Vk28LMOLrzMFftQqLAZmIEc-EbzBqYrR2fIR1d1O9tc",
+    avatar: "https://ar-io.net/Vk28LMOLrzMFftQqLAZmIEc-EbzBqYrR2fIR1d1O9tc",
   },
 
   //--Antonio Ufano--//

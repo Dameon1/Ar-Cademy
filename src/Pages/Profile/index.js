@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-// import { Link, Navigate } from "react-router-dom";
-// import { Authors } from "../../Authors";
-// import { Videos } from "../../Videos";
-// import { getUserVideos } from "../../Queries/UserQueries";
+
 import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
 import { useNavigate } from "react-router-dom";
 import ARKdisplay from "../../components/ANSForAll/ARKdisplay";
@@ -15,10 +12,6 @@ import {
   Poap,
   NearNFTS,
   EthereumNFTS,
-  StampedAssets,
-  CreatedAtomicAssets,
-  PolygonNFTS,
-  AvalancheNFTS,
 } from "../../components/Cards/Media";
 
 import getAllUserContent from "../../lib/getAllUserContent";
@@ -98,7 +91,6 @@ export default function Profile() {
                 </Col>
                 <Col align="center">
                   <h3>ANS Profile:</h3>
-                  {console.log(userContent)}
                   {addr && userContent?.ARK?.ARWEAVE && !isLoading ? (
                     <ARKdisplay
                       content={userContent.ARK}
@@ -123,7 +115,6 @@ export default function Profile() {
             <div className="contentScrollContainer">
               <div className="hs">
                 {userContent.ARCADEMY_VIDEOS.map((video, i) => {
-                  console.log(video);
                   return (
                     <div
                       className="videoThumbnails"
@@ -236,7 +227,8 @@ export default function Profile() {
               </div>
             </>
           )}
-        {addr && userContent?.POLY?.length > 0 && !isLoading && (
+          
+        {/* {addr && userContent?.POLY?.length > 0 && !isLoading && (
           <>
             <h3>Polygon NFTS:</h3>
             <div className="contentScrollContainer">
@@ -244,16 +236,16 @@ export default function Profile() {
                 {userContent?.POLY.map((content, i) => {
                   return (
                     <div key={i} className="mediaCards">
-                      {/* <PolygonNFTS content={content} index={i} /> */}
+                      <PolygonNFTS content={content} index={i} />
                     </div>
                   );
                 })}
               </div>
             </div>
           </>
-        )}
+        )} */}
 
-        {addr &&
+        {/* {addr &&
           userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 &&
           !isLoading && (
             <>
@@ -273,9 +265,9 @@ export default function Profile() {
                 </div>
               </div>
             </>
-          )}
+          )} */}
 
-        {addr &&
+        {/* {addr &&
           userContent?.ARK?.ARWEAVE?.ANFTS?.permapages_img?.length > 0 &&
           !isLoading && (
             <>
@@ -297,9 +289,9 @@ export default function Profile() {
                 </div>
               </div>
             </>
-          )}
+          )} */}
 
-        {addr && userContent?.AVAX?.length > 0 && userContent?.AVAX[0] !== false &&!isLoading && (
+        {/* {addr && userContent?.AVAX?.length > 0 && userContent?.AVAX[0] !== false &&!isLoading && (
           <>
             <h3>Avalnche NFTS:</h3>
             <div className="contentScrollContainer">
@@ -314,7 +306,8 @@ export default function Profile() {
               </div>
             </div>
           </>
-        )}
+        )} */}
+
       </div>
     </>
   );

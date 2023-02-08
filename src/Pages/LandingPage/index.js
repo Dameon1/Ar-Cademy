@@ -14,7 +14,7 @@ export function LandingPage() {
   const [recentUploads, setRecentUploads] = useState([]);
   const modules = Object.keys(Modules);
   const bundlrNader =
-    "https://arweave.net/Adtwh6Z4k_OWzvnkILpwXqFDM5po0JpgqLW8PsMcZoU";
+    "https://ar-io.net/Adtwh6Z4k_OWzvnkILpwXqFDM5po0JpgqLW8PsMcZoU";
 
   useEffect(() => {
     async function getRecentUploads() {
@@ -63,7 +63,7 @@ export function LandingPage() {
     );
   });
   console.log(
-    "Welcome to the Permaweb, This site is perma-stored on Arweave https://arweave.net/wI5X7fF9tXKCUPP_Kyamq0h0pXrFZSCdziAlJ9WdNf8"
+    "Welcome to the Permaweb, This site is perma-stored on Arweave https://ar-io.net/wI5X7fF9tXKCUPP_Kyamq0h0pXrFZSCdziAlJ9WdNf8"
   );
 
   return (
@@ -147,7 +147,7 @@ export function LandingPage() {
               <img
                 style={{ width: "50px" }}
                 alt="hyper63Logo"
-                src="https://arweave.net/6ACBEXhB2fn193ILOMm9E5T9qB8cr4q88BH6DdmrvUE"
+                src="https://ar-io.net/6ACBEXhB2fn193ILOMm9E5T9qB8cr4q88BH6DdmrvUE"
               />
 
               <Row justify="flex-end">
@@ -184,7 +184,7 @@ export function LandingPage() {
               <img
                 style={{ width: "50px" }}
                 alt="hyper63Logo"
-                src="https://arweave.net/pFgnS-OV3a_egOjwio0Tzza3jfYADQLmmtfgbe2JKHc"
+                src="https://ar-io.net/pFgnS-OV3a_egOjwio0Tzza3jfYADQLmmtfgbe2JKHc"
               />
               <Row justify="flex-end">
                 <Button
@@ -254,7 +254,7 @@ export function LandingPage() {
                 <div style={{ width: "75px", height: "75px" }}>
                   <AsyncImageLoader
                     src={
-                      "https://arweave.net/ywMQ7PhpCU8XFK2urlPV3frzA2B4Wwvb5q1_anxPD7M"
+                      "https://ar-io.net/ywMQ7PhpCU8XFK2urlPV3frzA2B4Wwvb5q1_anxPD7M"
                     }
                     alt="PermaDAO"
                   />
@@ -274,7 +274,7 @@ export function LandingPage() {
                 <div style={{ width: "100px", height: "90px" }}>
                   <AsyncImageLoader
                     src={
-                      "https://arweave.net/qOe4PDOcCOGJmEue2HE6qPgFphMu5qO7mwYPKtGBbRA"
+                      "https://ar-io.net/qOe4PDOcCOGJmEue2HE6qPgFphMu5qO7mwYPKtGBbRA"
                     }
                     alt="DecentLand"
                   />

@@ -39,7 +39,7 @@ import {
     }
   }
     
-    `;
+    `; 
   }
 export async function getAssetData(id) {
     return fetch(`https://arweave.net/graphql`, {

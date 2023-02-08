@@ -21,7 +21,6 @@ export async function retryFetch(url) {
 }
 
 export const createPostInfo = async (node) => {
-  console.log(node);
   const ownerAddress = node.owner.address;
   const height = node.block ? node.block.height : -1;
   const timestamp = node.block ? parseInt(node.block.timestamp, 10) * 1000 : -1;
@@ -32,10 +31,9 @@ export const createPostInfo = async (node) => {
     length: node.data.size,
     timestamp: timestamp,
   };
-  postInfo.request = await arweave.api.get(`https://arweave.net/${node.id}`, {
+  postInfo.request = await arweave.api.get(`https://ar-io.net/${node.id}`, {
     timeout: 20000,
   });
-  console.log("postInfo: ", postInfo);
   return postInfo;
 };
 const { keyStores, connect } = nearAPI;

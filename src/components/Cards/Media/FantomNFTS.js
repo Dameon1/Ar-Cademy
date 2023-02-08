@@ -7,7 +7,6 @@ export default function FantomNFTS(props) {
   let image;
   let dataObject;
   if (content.metadata === null || content.metadata === undefined || content.metadata === false) {
-    console.log("content.metadata---------", content);
     image = fallbackImage;
     dataObject = content
   } else {
@@ -17,7 +16,6 @@ export default function FantomNFTS(props) {
   if (image === undefined) {
     image = fallbackImage;
   }
-  console.log(typeof image)
   image = image.replace("ipfs://ipfs", "https://ipfs.io/ipfs/");
   image = image.replace("ipfs://", "https://ipfs.io/ipfs/");
 

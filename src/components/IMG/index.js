@@ -204,7 +204,7 @@ export default function IMG() {
           ...imgCache,
           { id: result2.id, src: URL.createObjectURL(files[0]) },
         ]);
-        console.log(`https://arweave.net/${result.data.id}`);
+        console.log(`https://ar-io.net/${result.data.id}`);
         console.log("Completed Upload, redirecting ...");
 
         setTimeout(() => {

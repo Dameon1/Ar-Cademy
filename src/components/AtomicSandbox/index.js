@@ -2,24 +2,17 @@ import { useState, useEffect } from "react";
 //import "./sandbox.css";
 
 export default function AtomicSandbox(props) {
-  console.log(props);
   let { sandboxLinks } = props;
   let sandboxButtonTitles = props.sandboxLinks.map((x) => x.label);
-  console.log(sandboxButtonTitles);
   const [sandboxContent, setSandboxContent] = useState();
-  // sandboxButtonTitles = Object.keys(sandboxButtonTypes);
-  //let initialProp = sandboxButtonTypes[0];
 
   useEffect(() => {
     setSandboxContent(sandboxLinks[0].url);
   }, [sandboxLinks]);
 
   function setFilter(index) {
-    console.log(index, sandboxContent);
     if (sandboxContent !== sandboxLinks[index]) {
-      console.log(sandboxLinks[index]);
       let newContent = sandboxLinks[index];
-      console.log("setFilter", index, sandboxContent);
       setSandboxContent(newContent.url);
     }
   }

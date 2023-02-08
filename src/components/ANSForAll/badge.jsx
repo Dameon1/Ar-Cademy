@@ -33,7 +33,7 @@ export const Default_Badge = () => {
                         {(ansData?.avatar === "") ?
                             <div className="mx-auto rounded-full h-6 w-6 ml-2 btn-secondary border-[1px]" style={{ backgroundColor: ansData?.address_color }}></div> :
                             <div className="mx-auto rounded-full h-6 w-6 overflow-hidden ml-2 btn-secondary border-[1px]" style={{ backgroundColor: ansData?.address_color }}>
-                                <img src={`https://arweave.net/${ansData?.avatar}`} alt="Profile" width="100%" height="100%" />
+                                <img src={`https://ar-io.net/${ansData?.avatar}`} alt="Profile" width="100%" height="100%" />
                             </div>}
 
                     </div>

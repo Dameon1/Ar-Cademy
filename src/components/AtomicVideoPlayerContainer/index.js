@@ -12,27 +12,22 @@ import { getProfile } from "../../lib/imgLib/account.js";
 import { useNavigate } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
-import { VideoCard, MediaCard } from "../Cards";
+import { MediaCard } from "../Cards";
 import Stamp from "../Stamp";
 import { isVouched } from "../../lib/imgLib/stamp";
 import { MdVerified } from "react-icons/md";
 import { FcShare } from "react-icons/fc";
 import { FaTwitter } from "react-icons/fa";
 import {
-  Grid,
   Row,
   Text,
-  Col,
   Loading,
-  Container,
   Button,
   Spacer,
   Avatar,
   Tooltip,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
-
-//import { take, takeLast } from "ramda";
 
 export default function AtomicVideoPlayerContainer(props) {
   const { setState } = props;
@@ -45,23 +40,9 @@ export default function AtomicVideoPlayerContainer(props) {
   const [ownerData, setOwnerData] = useState();
   const [vouched, setVouched] = useState(false);
   const navigate = useNavigate();
-  //const [urls, setUrls] = useState([]);
-  //const [videoID, setViedoID] = useState();
-  //const [loading, setLoading] = useState(true);
-  //const [count, setCount] = useState();
-  //const [rewards, setRewards] = useState();
-  //const [ownersAddressArray, setOwnersAddressArray] = useState([]);
-  //const [assetStampCount, setAssetStampCount] = useState();
+  
   let module = window.location.hash.split("/");
   let itemId = module[module.length - 1];
-
-  // async function runFilterQuery(addr, type, filtertag) {
-  //   if (addr) {
-  //     let newImages = await getImages(addr, type, filtertag);
-  //     console.log(newImages);
-  //     setImages(newImages);
-  //   }
-  // }
 
   function tweetLink(title, id) {
     return `https://twitter.com/intent/tweet?text=${encodeURI(
@@ -96,7 +77,6 @@ export default function AtomicVideoPlayerContainer(props) {
       let authorVideos = getArcademyVideos(assetData.owner);
       let getVouched = await isVouched(assetData.owner);
       setVouched(getVouched);
-      //setUrls(JSON.parse(assetData.externalLinks));
       setContractData(assetContractData);
       setAsset(assetData);
       setOwnerData(profileData);
@@ -162,20 +142,17 @@ export default function AtomicVideoPlayerContainer(props) {
                 height="100%"
               >
                 <source
-                  src={`https://arweave.net/${asset.id}/data`}
+                  src={`https://ar-io.net/${asset.id}`}
                   type="video/mp4"
-                />
+                /> 
               </video>
             </div>
-            {/* <video controls >
-              <source src={`https://arweave.net/${asset.id}`} type="video/mp4" />
-            </video> */}
 
             <footer className="video-footer">
               <Row display="flex" justify="flex-start" align="flex-end">
                 <Link to={`/profile/${asset.owner}/${asset.owner}`}>
                   <Avatar
-                    src={"https://arweave.net/" + ownerData.profile.avatar}
+                    src={"https://ar-io.net/" + ownerData.profile.avatar}
                     size="lg"
                     pointer="true"
                   />

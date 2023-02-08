@@ -34,7 +34,6 @@ function Card(props) {
     videoTitle = videoObject.videoTitle;
   }
 
-  console.log(videoObject);
   return (
     <div key={videoObject.uid} className="moduleContent">
       <img

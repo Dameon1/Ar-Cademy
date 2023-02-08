@@ -33,7 +33,7 @@ export default function AtomicMediaCard(props) {
     <Card isPressable onClick={onClick} css={{ border: ".5px solid white" }}>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
-          src={`https://arweave.net/${video.videoImageId}`}
+          src={`https://ar-io.net/${video.videoImageId}`}
           width="100%"
           objectFit="contain"
           height={140}

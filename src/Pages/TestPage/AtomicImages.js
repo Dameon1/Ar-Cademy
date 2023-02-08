@@ -14,7 +14,7 @@ export default function AtomicImages(props) {
               <Card>
                 <Card.Body css={{ p: 0 }}>
                   <Card.Image
-                    src={img.videoImageId !== undefined ? `https://arweave.net/${img.videoImageId}` : image}
+                    src={img.videoImageId !== undefined ? `https://ar-io.net/${img.videoImageId}` : image}
                     onError={(e) => {
                       e.target.src = image;
                     }}

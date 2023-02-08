@@ -25,7 +25,7 @@ export const getBalance = (contract, addr) => ask(({ warp, wallet }) =>
       Async.Resolved
     )
     .map(pathOr(0, ['balances', addr]))
-    .map(x => (console.log(x), x))
+    .map(x => x)
 
 ).chain(lift)
 
@@ -78,7 +78,6 @@ export const whatsHot = (contract, days = 1) => ask(({ warp, wallet, arweave }) 
           const getType = id => compose(prop('type'), find(propEq('id', id)))(nodes)
           return map(a => ({ ...a, title: getTitle(a.asset), description: getDescription(a.asset), type: getType(a.asset) }), assets)
         })
-      //.map(x => (console.log(x), x))
     })
     // stampers name and avatar with one gql call?
     .chain(assets => {

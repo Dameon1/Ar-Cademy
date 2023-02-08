@@ -18,7 +18,7 @@ const arConnectPermissions = [
 
 const webWallet = new ArweaveWebWallet({
   name: 'Arcademy',
-  logo: "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M"
+  logo: "https://ar-io.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M"
 });
 webWallet.setUrl('arweave.app');
 

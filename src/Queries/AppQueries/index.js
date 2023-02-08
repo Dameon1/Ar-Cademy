@@ -94,18 +94,12 @@ export async function getDataByTopic(topic) {
   })
     .then((res) => res.json())
     .then(({ data }) => {
-      console.log("Topic-----------------------------", data);
-      console.log(
-        "Transformed Topic-----------------------------",
-        data.transactions.edges.map((x) => transformTx(x.node))
-      );
       return data.transactions.edges.map((x) => transformTx(x.node));
     });
 }
 
 //basic query to get topic videos by sequencer upload
 export function topicQuery(topic) {
-  console.log(topic, typeof topic)
   return `
     query {
         transactions(first: 25, tags: [

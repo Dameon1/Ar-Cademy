@@ -34,7 +34,7 @@ export default function CreatorContentCard(props) {
           }}
         >
           <Card.Image
-            src={`https://arweave.net/${content.videoImageId}`}
+            src={`https://ar-io.net/${content.videoImageId}`}
             alt={`Follow of ${content.title}`}
             objectFit="cover"
           />

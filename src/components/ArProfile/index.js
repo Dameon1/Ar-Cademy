@@ -130,7 +130,7 @@ function ArProfile(props) {
               <Row align="center" justify="center">
                 {profileData.avatar ? (
                   <AvatarS
-                    src={`https://arweave.net/${profileData.avatar}`}
+                    src={`https://ar-io.net/${profileData.avatar}`}
                     sx={{ width: 90, height: 90 }}
                   />
                 ) : (
@@ -306,7 +306,7 @@ function ArProfile(props) {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://arweave.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
+                  href="https://ar-io.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
                 >
                   <Button
                     auto

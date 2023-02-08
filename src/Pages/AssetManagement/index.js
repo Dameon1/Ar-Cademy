@@ -54,9 +54,6 @@ export default function AssetManagement() {
       let assetStampedCount = await getCount(id);
       let rewards = await getRewards(id);
       let ownersArray = Object.keys(assetContractData.state.balances);
-      //let ownersAvatars = await getAllOwnersAvatar();
-      console.log("assetData", assetData);
-      console.log("assetContractData", assetContractData);
       setUrls(JSON.parse(assetData.externalLinks));
       setContractData(assetContractData);
       setAsset(assetData);
@@ -148,7 +145,6 @@ export default function AssetManagement() {
                       <Avatar.Group textColor="white" count={ownersAddressArray.length} css={{color:"green"}}>
                         {ownersAddressArray.map((address, index) => (
                           <>
-                            {console.log(address)}
                             <Link
                               key={index}
                               to={`/Profile/${address}/${address}`}

@@ -48,7 +48,7 @@ export const tagSelectOptions = [
 
 export default function Upload() {
   const image =
-    "https://arweave.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
+    "https://ar-io.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
   const video =
     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
   const { addr } = useContext(MainContext);
@@ -167,7 +167,6 @@ export default function Upload() {
   async function checkUploadCost(bytes, type) {
     if (bytes) {
       const cost = await bundlrInstance.getPrice(bytes);
-      console.log("currentCost", cost);
       if (type === "image")
         setImageCost(bundlrInstance.utils.unitConverter(cost).toString());
       if (type === "video")
@@ -377,7 +376,6 @@ export default function Upload() {
   }
 
   const handleFileClick = (type) => {
-    console.log("type", type);
     let fileInputEl = document.createElement("input");
     fileInputEl.type = "file";
     let currentType = {
@@ -399,7 +397,6 @@ export default function Upload() {
     let eventFile = evt.target.files[0];
     if (!eventFile) return;
     const uploadCost = await checkUploadCost(eventFile.size, type);
-    console.log("uploadCost", uploadCost);
 
     if (type === "image") {
       let reader = new FileReader();
@@ -453,7 +450,6 @@ export default function Upload() {
 
     await trx.sign();
     const result = await trx.upload();
-    console.log("result", result);
     const contractTags = [
       { name: "Content-Type", value: originalVideo.type },
       { name: "App-Name", value: "SmartWeaveContract" },
@@ -534,7 +530,7 @@ export default function Upload() {
             navigate(`/AssetManagement/${result2.id}`);
           }, 1000);
 
-          alert(`https://arweave.net/${result2.id}`);
+          alert(`https://ar-io.net/${result2.id}`);
 
           // THIS CODE IS FOR NEW WARP
           // console.log("res", res);
@@ -930,7 +926,6 @@ export default function Upload() {
                   <p className="pText">DEPLOY ATOMIC ASSET</p>
                 </Button>
               </Row>
-              {console.log(canDeploy())}
               <Spacer y={0.5} />
             </div>
           </div>

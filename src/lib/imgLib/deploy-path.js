@@ -55,7 +55,6 @@ async function post(ctx) {
       Accept: "application/json",
     },
   });
-  console.log(result);
   return { id: ctx.atomicId };
 }
 

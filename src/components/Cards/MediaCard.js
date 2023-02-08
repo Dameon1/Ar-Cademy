@@ -14,7 +14,6 @@ export default function MediaCard(props) {
   let author = Authors[video.authorID];
 
   useEffect(() => {
-    console.log(video, "video");
     let author = Authors[video.authorID];
     async function getCreator() {
       //Which Avatar for creators ?
