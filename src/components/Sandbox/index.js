@@ -46,8 +46,6 @@ export default function Sandbox(props) {
 
   return (
     <div className="sandbox">
-      
-        
         <div className="filtersListStyle">
           <SandboxButtons data={sandboxButtonTypes} onClick={onMyFrameLoad}/>
         </div>
@@ -56,7 +54,6 @@ export default function Sandbox(props) {
             <iframe
               className="sandboxIframe"
               onLoad={onMyFrameLoad}
-              frameBorder="0"
               width="100%"
               height="100%"
               title={props.title}

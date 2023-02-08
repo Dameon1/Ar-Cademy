@@ -48,7 +48,6 @@ query {
     })
       .then((res) => res.json())
       .then(path(["data", "transactions", "edges"]))
-      //.then(x => (console.log(x), x))
       .then(
         compose(
           take(count),

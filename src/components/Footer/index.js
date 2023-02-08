@@ -1,13 +1,13 @@
 import React from "react";
 import "./Footer.css";
 import permaSeal from "../../light.png";
-import { Container, Row, Col, Link, Spacer } from "@nextui-org/react";
-import { FaTwitter, FaGithub, FaDiscord } from "react-icons/fa";
+import { Row, Col, Link, Spacer } from "@nextui-org/react";
+import { FaTwitter, FaDiscord } from "react-icons/fa";
 
 export function Footer() {
   return (
     <footer className="main-footer">
-      <Row  justify="flex-start">
+      <Row justify="flex-start">
         <Col css={{ height: "100%", marginTop: "10px" }}>
           <Row justify="flex-start">
             <div className="permaSeal">
@@ -17,11 +17,10 @@ export function Footer() {
         </Col>
         <Col css={{ height: "100%", marginTop: "20px" }}>
           <Row align="center" justify="center" className="pText">
-
-           &copy;2023
+            &copy;2023
           </Row>
         </Col>
-        <Col >
+        <Col>
           <Row
             justify="flex-end"
             align="flex-end"
@@ -39,7 +38,7 @@ export function Footer() {
               />
             </Link>
 
-<Spacer x={1} />
+            <Spacer x={1} />
 
             <Link
               href={`https://twitter.com/Ar_Cademy`}
@@ -55,57 +54,6 @@ export function Footer() {
           </Row>
         </Col>
       </Row>
-      <Row>
-        {/* <Col>
-            <p className="pText">
-              &copy;2023{" "}
-              <a
-                href="https://arweave.news/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="textNoDec "
-              >
-                @Arweave News
-              </a>
-            </p>
-          </Col>
-          <Col>
-            <Link
-              href={`https://twitter.com/Ar_Cademy`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaTwitter
-                className="socialImageLinks"
-                size={25}
-                aria-hidden="true"
-              />
-            </Link>
-            <Link>
-              <FaDiscord
-                className="socialImageLinks"
-                size={25}
-                aria-hidden="true"
-              />
-            </Link>
-          </Col> */}
-      </Row>
-
-      {/* <div className="permaSeal">
-        <img src={permaSeal} alt="Arcademy Perma Seal" />
-      </div>
-
-      <p className="pText">
-        &copy;2023{" "}
-        <a
-          href="https://arweave.news/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="textNoDec "
-        >
-          @Arweave News
-        </a>
-      </p> */}
     </footer>
   );
 }

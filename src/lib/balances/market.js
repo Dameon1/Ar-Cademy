@@ -1,7 +1,7 @@
 import crocks from 'crocks'
 import * as R from 'ramda'
 
-const { take, propOr, pathOr, sortWith, ascend, descend, __, filter, gt, compose, groupBy, reduce, values, keys, reverse, prop, identity, pluck, path, map, find, propEq, uniq, concat } = R
+const { take, propOr, pathOr, sortWith,  descend, __, filter, gt, compose, groupBy, reduce, values, keys, reverse, prop, identity, pluck, path, map, find, propEq, uniq, concat } = R
 
 const { Async, ReaderT } = crocks
 const { of, ask, lift } = ReaderT(Async)

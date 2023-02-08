@@ -1,4 +1,4 @@
-import { Card, Grid, Row, Text, Col, Button, Spacer } from "@nextui-org/react";
+import { Card, Grid, Text, Col, Button, Spacer } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
 import image from "../../winstonMedia.png";
@@ -50,13 +50,6 @@ export default function AtomicImages(props) {
                         >
                           {" "}
                           <p className="pText">Play Video</p>
-                          {/* <Text
-                          css={{ color: "inherit" }}
-                          size={10}
-                          transform="uppercase"
-                        >
-                          
-                        </Text> */}
                         </Link>
                       </Button>
                       <Spacer y={0.25} />
@@ -67,13 +60,6 @@ export default function AtomicImages(props) {
                         >
                           {" "}
                           <p className="pText">Overview</p>
-                          {/* <Text
-                          css={{ color: "inherit" }}
-                          size={10}
-                          transform="uppercase"
-                        >
-                          
-                        </Text> */}
                         </Link>
                       </Button>
                     </Col>

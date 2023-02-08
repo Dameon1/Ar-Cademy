@@ -30,7 +30,6 @@ import { retryFetch } from "../../utils";
 export function Dashboard() {
   const { addr, setUserData, userData } = useContext(MainContext);
   const [isSearching, setIsSearching] = useState(true);
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -141,7 +140,7 @@ export function Dashboard() {
             </Col>
             <Col align="center">
               <h3>ANS Profile:</h3>
-              {error?.message ? <p>{error.message}</p> : null}
+              
               {addr && userData?.ARK?.EVM && !isLoading ? (
                 <ARKdisplay
                   content={userData.ARK}

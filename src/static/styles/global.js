@@ -5,8 +5,6 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.bodyBackground};
     color: ${({ theme }) => theme.text};
   }
-
- 
   
   @keyframes animatedgradient {
     0% {

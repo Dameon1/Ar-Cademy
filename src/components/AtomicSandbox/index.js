@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-//import "./sandbox.css";
 
 export default function AtomicSandbox(props) {
   let { sandboxLinks } = props;
@@ -43,7 +42,6 @@ export default function AtomicSandbox(props) {
 
   return (
     <div className="sandbox">
-      
       <div className="filtersListStyle">
         <SandboxButtons data={sandboxButtonTitles} onClick={onMyFrameLoad} />
       </div>

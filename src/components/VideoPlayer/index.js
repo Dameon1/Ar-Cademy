@@ -3,8 +3,6 @@ import ReactPlayer from 'react-player'
 
 
 export const VideoPlayer = (props) => {
-  const { src } = props;
-
   return (
     <div className="video-player">
       <ReactPlayer

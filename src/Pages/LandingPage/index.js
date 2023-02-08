@@ -2,12 +2,10 @@ import { Modules } from "../../Modules";
 import { Button, Image, Spacer, Row, Col, Container } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { getRecentUploadData } from "../../Queries/AppQueries";
 import { Grid, Card, Text, Link, Tooltip } from "@nextui-org/react";
-import { CreatorContentCard } from "../../components/Cards";
 import AsyncImageLoader from "../../components/AsyncImageLoader";
-import { AtomicMediaCard, MediaCard } from "../../components/Cards";
+import { AtomicMediaCard } from "../../components/Cards";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -27,14 +25,21 @@ export function LandingPage() {
   const AtomicMediaCards = recentUploads.map((video, index) => {
     return (
       <Grid xs={6} sm={3} md={2} key={index}>
-        <AtomicMediaCard video={video} onClick={() => navigate(`/AtomicPlayground/${video.id}`)} />
+        <AtomicMediaCard
+          video={video}
+          onClick={() => navigate(`/AtomicPlayground/${video.id}`)}
+        />
       </Grid>
     );
   });
 
   const moduleCards = modules.map((module, index) => {
     return (
-      <li key={module} className="moduleContent" onClick={()=> navigate(`/modules/${module}`) }>
+      <li
+        key={module}
+        className="moduleContent"
+        onClick={() => navigate(`/modules/${module}`)}
+      >
         <h4>{modules[index]}</h4>
         <p>{Modules[module].description}</p>
         <img
@@ -42,23 +47,6 @@ export function LandingPage() {
           className="heroImage"
           alt={`${Modules[module].title}`}
         />
-        {/* <Row justify="center">
-          <Button
-            className="button buttonText"
-            css={{
-              color: "black",
-              border: "2px solid #008c9e",
-              fontSize: "0.75em",
-              padding: "0.3em",
-              backgroundColor: "white",
-              transition: "all 0.2s ease-in-out",
-            }}
-            onClick={() => navigate(`/modules/${module}`)}
-            iconRight={<AiOutlineArrowRight size={18} />}
-          >
-            <p>Explore</p>
-          </Button> 
-        </Row>*/}
       </li>
     );
   });
@@ -218,22 +206,10 @@ export function LandingPage() {
         <ul className="moduleCards">{moduleCards}</ul>
       </div>
       <Spacer y={2} />
-      {/* <div>
-        <h3>Newly Added:</h3>
-        <ul className="moduleCards">
-          {recentUploads.map((content, index) => {
-            return <CreatorContentCard content={content} onClick={() => navigate(`/AtomicPlayground/${content.id}`)}/>;
-          })}
-        </ul>
-      </div> */}
-
-
-
-
       <Spacer y={2} />
       <div>
         <h3>Newly Added:</h3>
-      <Grid.Container gap={2} justify="flex-start">
+        <Grid.Container gap={2} justify="flex-start">
           {AtomicMediaCards}
         </Grid.Container>
       </div>

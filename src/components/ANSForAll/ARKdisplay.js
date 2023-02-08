@@ -2,9 +2,6 @@ import { useContext } from "react";
 import { FaTwitter, FaGithub, FaGlobe } from "react-icons/fa";
 import {
   Button,
-  Grid,
-  Loading,
-  Text,
   Spacer,
   Row,
   Col,
@@ -13,7 +10,6 @@ import {
 } from "@nextui-org/react";
 import { icons } from "../../static";
 import { AvatarS } from "../../static/styles/Profile";
-import { isVouched } from "../../lib/imgLib/stamp";
 import { MdVerified } from "react-icons/md";
 import MainContext from "../../context";
 

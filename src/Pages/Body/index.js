@@ -14,7 +14,7 @@ import AssetManagement from "../AssetManagement";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 
-function Body({ syntaxTheme }) {
+function Body() {
   let module = window.location.hash.split("/");
   let string = `/${module[1]}`;
   return (
@@ -31,10 +31,7 @@ function Body({ syntaxTheme }) {
           <Route exact path="/Playground/:videoIndex" element={<Playground />} />
           <Route exact path="/Upload" element={<Upload />} />
           <Route path="/" element={<LandingPage />} />
-
-          
           <Route exact path={"/Testpage"} element={<TestPage />} />
-          
           <Route exact path={string} element={<LandingPage />} />
           <Route exact path={"/AssetManagement/:assetId"} element={<AssetManagement/>} />
           <Route exact path={"/Ar-Cademy"} element={<LandingPage />} />

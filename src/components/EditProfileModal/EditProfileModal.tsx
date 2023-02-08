@@ -219,17 +219,6 @@ function EditProfileModale({ addr, profile, isOpen, hasClosed }: { addr: T_addr,
           value={profileData.links.facebook ? profileData.links.facebook : ''}
           onChange={(e) => setProfileData({ ...profileData, links: { ...profileData.links, facebook: e.currentTarget.value } })}
         />
-        {/* <Row justify="space-between">
-          <Checkbox>
-            <Text size={14}>
-              I agree to the <a
-                style={{textDecoration: 'underline'}}
-                href="https://www.websitepolicies.com/blog/i-agree-terms-and-conditions"
-                target="_blank"
-                rel="noreferrer">Terms and Conditions ↗️</a>
-            </Text>
-          </Checkbox>
-        </Row> */}
       </Modal.Body>
       <Modal.Footer>
         <Button auto flat color="error" onClick={hasClosed}>

@@ -15,51 +15,23 @@ import {
 import { useNavigate } from "react-router-dom";
 
 //import { deploy, deployBundlr } from "../../lib/stampLib/deploy-path.js";
-import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
+import { deployBundlr } from "../../lib/imgLib/deploy-path.js";
 
 import image from "../../assets/favicon.ico";
 
-//   import DeployDialog from "../dialogs/deploy.svelte";
-//   import ErrorDialog from "../dialogs/error.svelte";
-//   import ConfirmDialog from "../dialogs/confirm.svelte";
-//import { imgCache } from "../store.js";
-
 import { WebBundlr } from "@bundlr-network/client";
 //const WebBundlr = Bundlr.default;
-import { AMW } from "../../utils/api";
 
 export default function IMG() {
-  const { connect, keyStores, WalletConnection } = nearAPI;
+  const { keyStores } = nearAPI;
   const [imgCache, setImgCache] = useState([]);
   const [files, setFiles] = useState([]);
-  const [profile, setProfile] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [topics, setTopics] = useState("");
   const [currency, setCurrency] = useState("");
-  const [tx, setTx] = useState("");
-  const NEAR_OPTS = {
-    networkId: "mainnet",
-    keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-    nodeUrl: "https://rpc.mainnet.near.org",
-    walletUrl: "https://wallet.mainnet.near.org",
-    helperUrl: "https://helper.mainnet.near.org",
-  };
+
   const navigate = useNavigate();
-
-  //let files = [];
-  //   let title = "";
-  //   let description = "";
-  //   let topics = "";
-  //   let deployDlg = false;
-  //   let errorMessage = "";
-  //   let errorDlg = false;
-  //   let confirmDlg = false;
-
-  // const c = (event) => {
-  //   console.log(event.target.value);
-  //   setFiles(event.target.value);
-  // };
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
@@ -72,28 +44,6 @@ export default function IMG() {
   const changeTopics = (event) => {
     setTopics(event.target.value);
   };
-
-  // const changeTx = (event) => {
-  //   setTx(event.target.value);
-  // };
-
-  // const changeCurrency = (event) => {
-  //   setCurrency(event.target.value);
-  // };
-
-  // const changeFile = () => {
-  //   var fileInputEl = document.createElement("input");
-  //   fileInputEl.type = "file";
-  //   fileInputEl.accept =
-  //     "image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml";
-  //   fileInputEl.style.display = "none";
-  //   document.body.appendChild(fileInputEl);
-  //   fileInputEl.addEventListener("input", function (e) {
-  //     changeFile(e);
-  //     document.body.removeChild(fileInputEl);
-  //   });
-  //   fileInputEl.click();
-  // };
 
   const handleFileClick = () => {
     var fileInputEl = document.createElement("input");
@@ -197,7 +147,7 @@ export default function IMG() {
         document.forms[0].reset();
         console.log("Completed Upload, redirecting 2...");
 
-        setTx(result2.id);
+        //setTx(result2.id);
         console.log("Completed Upload, redirecting 1...");
 
         setImgCache([
@@ -213,194 +163,13 @@ export default function IMG() {
       } catch (e) {
         console.log(e);
       }
-      // } else if (currency === "near") {
-      //   /** wip
-      //    * need to handle redirect for success and failure
-      //    * the connect process leaves the app, so upon redirect
-      //    * we need to reconnect to arweave wallet and ingest the
-      //    * redirect information. Then restore the upload info for
-      //    * the img form.
-      //    */
-      //   deployDlg = true;
-      //   const near = await connect(NEAR_OPTS);
-      //   const provider = new WalletConnection(near, "bundlr");
-      //   await provider.requestSignIn("img", "img.arweave.dev");
-
-      //   const bundlr = new WebBundlr(
-      //     "https://node2.bundlr.network",
-      //     "near",
-      //     provider
-      //   );
-      //   await bundlr.ready();
-
-      //   // fund account
-      //   const price = await bundlr.getPrice(files[0].size);
-      //   const balance = await bundlr.getLoadedBalance();
-
-      //   if (balance.isLessThan(price)) {
-      //     await bundlr.fund(price.minus(balance).multipliedBy(1.1).toFixed(0));
-      //   }
-
-      //   const trx = await bundlr.createTransaction(
-      //     await toArrayBuffer(files[0]),
-      //     {
-      //       tags: [{ name: "Content-Type", value: files[0].type }],
-      //     }
-      //   );
-
-      //   await trx.sign();
-
-      //   const result = await trx.upload();
-
-      //   const addr = await AMW.getActiveAddress();
-
-      //   const result2 = await deployBundlr(
-      //     title,
-      //     description,
-      //     addr,
-      //     files[0].type,
-      //     result.data.id,
-      //     topics
-      //   );
-
-      //   deployDlg = false;
-
-      //   // reset form
-      //   document.forms[0].reset();
-
-      //   setTx(result2.id);
-
-      //   setImgCache([
-      //     ...imgCache,
-      //     { id: result2.id, src: URL.createObjectURL(files[0]) },
-      //   ]);
-
-      //   confirmDlg = true;
-      // } else if (currency === "sol") {
-      //   if (!window.solana) {
-      //     showError("Phantom Wallet is required!");
-      //     return;
-      //   }
-      //   try {
-      //     deployDlg = true;
-      //     await window.solana.connect();
-      //     const provider = new PhantomWalletAdapter();
-      //     await provider.connect();
-
-      //     const bundlr = new WebBundlr(
-      //       "https://node2.bundlr.network",
-      //       "solana",
-      //       provider
-      //     );
-      //     await bundlr.ready();
-      //     // fund account
-      //     const price = await bundlr.getPrice(files[0].size);
-      //     const balance = await bundlr.getLoadedBalance();
-
-      //     if (balance.isLessThan(price)) {
-      //       await bundlr.fund(price.minus(balance).multipliedBy(1.1).toFixed(0));
-      //     }
-
-      //     const trx = await bundlr.createTransaction(
-      //       await toArrayBuffer(files[0]),
-      //       {
-      //         tags: [{ name: "Content-Type", value: files[0].type }],
-      //       }
-      //     );
-
-      //     await trx.sign();
-
-      //     const result = await trx.upload();
-
-      //     const addr = await AMW.getActiveAddress();
-
-      //     const result2 = await deployBundlr(
-      //       title,
-      //       description,
-      //       addr,
-      //       files[0].type,
-      //       result.data.id,
-      //       topics
-      //     );
-
-      //     deployDlg = false;
-
-      //     // reset form
-      //     document.forms[0].reset();
-
-      //     setTx(result2.id);
-
-      //     setImgCache([
-      //       ...imgCache,
-      //       { id: result2.id, src: URL.createObjectURL(files[0]) },
-      //     ]);
-
-      //     confirmDlg = true;
-      //   } catch (e) {
-      //     //console.log(e);
-      //     deployDlg = false;
-      //     showError("Could not upload using SOL, check your SOL balance.");
-      //   }
-      // } else {
-      //   if (!window.arweaveWallet) {
-      //     errorMessage = "Arweave Wallet not found!";
-      //     errorDlg = true;
-      //     return;
-      //   }
-      //   // connnect
-      //   await AMW.connect([
-      //     "ACCESS_ADDRESS",
-      //     "SIGN_TRANSACTION",
-      //     "DISPATCH",
-      //   ]);
-      //   const addr = await AMW.getActiveAddress();
-
-      //   try {
-      //     deployDlg = true;
-      //     const data = await toArrayBuffer(files[0]);
-      //     const result = await deploy(
-      //       title,
-      //       description,
-      //       addr,
-      //       files[0].type,
-      //       data,
-      //       topics
-      //     );
-
-      //     deployDlg = false;
-
-      //     // reset form
-      //     e.target.reset();
-      //     // files = [];
-      //     // title = "";
-      //     // description = "";
-
-      //     setTx(result.id);
-      //     setImgCache([
-      //       ...imgCache,
-      //       { id: tx, src: URL.createObjectURL(files[0]) },
-      //     ]);
-
-      //     confirmDlg = true;
-      //   } catch (e) {
-      //     deployDlg = false;
-      //     errorMessage = e.message;
-      //     errorDlg = true;
-      //   }
-      // }
     }
   }
-  //   $: notValid = !(
-  //     files.length > 0 &&
-  //     ["matic", "sol", "ar", "near"].includes(currency) &&
-  //     title !== ""
-  //   );
 
   const previewImage = (e) => {
     const preview = document.getElementById("preview");
     preview.src = URL.createObjectURL(e.target.files[0]);
     preview.onload = () => URL.revokeObjectURL(preview.src);
-    //handleFileClick(e);
   };
 
   const ethProviders = ["MetaMask", "WalletConnect"];
@@ -544,14 +313,6 @@ export default function IMG() {
           </Col>
         </Container>
       </main>
-
-      {/* <DeployDialog open={deployDlg} />
-      <ErrorDialog
-          open={errorDlg}
-         msg={errorMessage}
-         on:cancel={() => (errorDlg = false)}
-        />
-      <ConfirmDialog {tx} open={confirmDlg} on:cancel={() => (confirmDlg = false)} /> */}
     </>
   );
 }

@@ -24,22 +24,4 @@ export async function accountByANS(name) {
 export async function getProfilePicture(id) {
   const res = await account.get(id);
   return res.profile.avatar
-    // .then((res) =>
-    //   res.ok ? res : Promise.reject("CONTRACT NOT FOUND!")
-    // );
-    // return res
-  // if (res.ok) {
-  //   if (res.profile.avatar !== undefined) {
-  //     console.log(res);
-  //     return res.profile.avatar;
-  //   } else {
-  //     return "1";
-  //   }
-  // } else {
-  //   return "2";
-  // }
-  //console.log(newArray)
-  //return newArray;
-
-  //console.log(res)
 }

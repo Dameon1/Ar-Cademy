@@ -33,7 +33,6 @@ function App() {
   };
 
   return (
-    
       <MainContext.Provider
         value={{
           isLoading,
@@ -54,7 +53,7 @@ function App() {
         <ThemeProvider theme={theme ? dark : light}>
           <NextUIProvider>
           <GlobalStyles />
-          <Body syntaxTheme={theme ? a11yDark : duotoneLight} />
+          <Body />
           </NextUIProvider>
         </ThemeProvider>
       </MainContext.Provider>

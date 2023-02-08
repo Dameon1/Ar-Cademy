@@ -1,15 +1,8 @@
-import { useState, useEffect, useContext } from "react";
-//import { assetDetails } from "../../lib/imgLib/asset.js";
+import { useState, useEffect } from "react";
 import { getAssetData } from "../../Queries/AssetQueries/assetData";
-import { assetContractDetails } from "../../Queries/AssetQueries/assetContract";
 import { getUserVideos } from "../../Queries/UserQueries";
 import AtomicVideoCards from "../../components/Cards/AtomicVideoCards";
-// import { atomicToStamp } from "../../lib/imgLib/utils.js";
-// import { getCount, getRewards } from "../../lib/imgLib/stamp.js";
 import { getProfile } from "../../lib/imgLib/account.js";
-// import MediaCards  from "../../components/Cards/MediaCards";
-// import MainContext from "../../context";
-import { useNavigate } from "react-router-dom";
 import { Authors } from "../../Authors";
 import { Videos } from "../../Videos";
 import { MediaCard } from "../Cards";
@@ -35,12 +28,9 @@ export default function AtomicVideoPlayerContainer(props) {
   const [ownerVideos, setOwnerVideos] = useState([]);
   const [arcademyVideos, setArcademyVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [authorObject, setAuthorObject] = useState(null);
-  const [contractData, setContractData] = useState();
   const [ownerData, setOwnerData] = useState();
   const [vouched, setVouched] = useState(false);
-  const navigate = useNavigate();
-  
+
   let module = window.location.hash.split("/");
   let itemId = module[module.length - 1];
 
@@ -66,30 +56,18 @@ export default function AtomicVideoPlayerContainer(props) {
   useEffect(() => {
     async function data(id) {
       let assetData = await getAssetData(id);
-      let assetContractData = await assetContractDetails(id);
       let profileData = await getProfile(assetData.owner);
       let ownerVideos = await getUserVideos(assetData.owner, "video", "");
-      //let assetStampedCount = await getCount(id);
-      //let rewards = await getRewards(id);
-      //let ownersArray = Object.keys(assetContractData.state.balances);
-      //let ownersAvatars = await getAllOwnersAvatar();
       let filteredOwnerVideos = ownerVideos[0].filter((x) => x.id !== id);
       let authorVideos = getArcademyVideos(assetData.owner);
       let getVouched = await isVouched(assetData.owner);
       setVouched(getVouched);
-      setContractData(assetContractData);
       setAsset(assetData);
       setOwnerData(profileData);
       setOwnerVideos(filteredOwnerVideos);
       if (authorVideos[0] !== undefined) {
         setArcademyVideos(authorVideos[0]);
-        setAuthorObject(authorVideos[1]);
       }
-      // setArcademyVideos(authorVideos[0]);
-      // setAuthorObject(authorVideos[1]);
-      ///setAssetStampCount(assetStampedCount);
-      //setRewards(rewards);
-      //setOwnersAddressArray(ownersArray);
       setIsLoading(false);
     }
     data(itemId);
@@ -144,7 +122,7 @@ export default function AtomicVideoPlayerContainer(props) {
                 <source
                   src={`https://ar-io.net/${asset.id}`}
                   type="video/mp4"
-                /> 
+                />
               </video>
             </div>
 
@@ -196,7 +174,6 @@ export default function AtomicVideoPlayerContainer(props) {
                           color="#1d9bf0"
                           placement="bottom"
                           size={18}
-                          
                         />
                       }
                       css={{ bg: "white", p: 10, fontSize: 18 }}
@@ -237,46 +214,8 @@ export default function AtomicVideoPlayerContainer(props) {
                   {asset.description}
                 </p>
               </Row>
-
-              {/* <Spacer y={1} />
-              <Row justify="center" align="space-evenly">
-                {authorObject?.authorWebsite && (
-                  <Col>
-                    <a
-                      href={`${authorObject.authorWebsite}`}
-                      className="video-creator-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <p className="pText">Website</p>
-                    </a>
-                  </Col>
-                )}
-                {authorObject?.authorLink && (
-                  <Col>
-                    <a
-                      href={authorObject.authorLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="video-creator-link"
-                    >
-                      <p className="pText">{authorObject.username}</p>
-                    </a>
-                  </Col>
-                )}
-
-                <Col>
-                  <Link
-                    to={`/profile/${asset.owner}/${asset.owner}`}
-                    className="video-creator-link"
-                  >
-                    <p className="pText">Profile</p>
-                  </Link>
-                </Col>
-              </Row> */}
               <Spacer y={1} />
 
-              {/* {ownerVideos && <AtomicVideoCards images={ownerVideos} />} */}
               <div className="contentScrollContainer">
                 <div className="hs">
                   {cards}

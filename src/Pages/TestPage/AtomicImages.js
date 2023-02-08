@@ -1,6 +1,5 @@
-import { Card, Grid, Row, Text, Col, Button, Spacer } from "@nextui-org/react";
+import { Card, Grid, Text, Col, Button, Spacer } from "@nextui-org/react";
 import { Link } from "react-router-dom";
-
 
 import image from "../../winstonMedia.png";
 
@@ -14,7 +13,11 @@ export default function AtomicImages(props) {
               <Card>
                 <Card.Body css={{ p: 0 }}>
                   <Card.Image
-                    src={img.videoImageId !== undefined ? `https://ar-io.net/${img.videoImageId}` : image}
+                    src={
+                      img.videoImageId !== undefined
+                        ? `https://ar-io.net/${img.videoImageId}`
+                        : image
+                    }
                     onError={(e) => {
                       e.target.src = image;
                     }}
@@ -43,7 +46,9 @@ export default function AtomicImages(props) {
                       <Link
                         to={`/AtomicPlayground/${img.id}`}
                         className="textNoDec"
-                      > <p className="pText">Play Video</p>
+                      >
+                        {" "}
+                        <p className="pText">Play Video</p>
                         {/* <Text
                           css={{ color: "inherit" }}
                           size={10}
@@ -58,14 +63,9 @@ export default function AtomicImages(props) {
                       <Link
                         to={`/AssetManagement/${img.id}`}
                         className="textNoDec"
-                      > <p className="pText">Overview</p>
-                        {/* <Text
-                          css={{ color: "inherit" }}
-                          size={10}
-                          transform="uppercase"
-                        >
-                          
-                        </Text> */}
+                      >
+                        {" "}
+                        <p className="pText">Overview</p>
                       </Link>
                     </Button>
                   </Col>

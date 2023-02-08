@@ -21,11 +21,6 @@ import {
   Poap,
   NearNFTS,
   EthereumNFTS,
-  StampedAssets,
-  CreatedAtomicAssets,
-  PolygonNFTS,
-  AvalancheNFTS,
-  GenericNFTS,
 } from "../../components/Cards/Media";
 
 import getAllUserContent from "../../lib/getAllUserContent";
@@ -129,7 +124,6 @@ export function AccountViewer() {
     setIsSearching(true);
   }
 
-  //const isEmpty = (input) => Object.keys(input).length === 0;
 
   return (
     <>
@@ -337,86 +331,6 @@ export function AccountViewer() {
               </div>
             </>
           )}
-
-        {/* {addr && userContent?.POLY?.length > 0 && !isLoading && (
-          <>
-            <h1>Polygon NFTS:</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent?.POLY.map((content, i) => {
-                  return (
-                    <div key={i} className="mediaCards">
-                      <PolygonNFTS content={content} index={i} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </>
-        )} */}
-
-        {/* {addr &&
-          userContent?.ARK?.ARWEAVE?.STAMPS?.length > 0 &&
-          !isLoading && (
-            <>
-              <h1>Stamped Assets:</h1>
-              <div className="contentScrollContainer">
-                <div className="hs">
-                  {userContent.ARK.ARWEAVE.STAMPS.map((content, i) => {
-                    return (
-                      <div key={i} className="mediaCards">
-                        <StampedAssets
-                          content={content}
-                          notForDashboard={true}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </>
-          )} */}
-
-        {/* {addr &&
-          userContent?.ARK?.ARWEAVE?.ANFTS?.permapages_img?.length > 0 &&
-          !isLoading && (
-            <>
-              <h1>Created Atomic Assets:</h1>
-              <div className="contentScrollContainer">
-                <div className="hs">
-                  {userContent?.ARK.ARWEAVE.ANFTS?.permapages_img.map(
-                    (content, i) => {
-                      return (
-                        <div key={i} className="mediaCards">
-                          <CreatedAtomicAssets
-                            content={content}
-                            notForDashboard={true}
-                          />
-                        </div>
-                      );
-                    }
-                  )}
-                </div>
-              </div>
-            </>
-          )} */}
-
-        {/* {addr && userContent?.AVAX?.length > 0 && !isLoading && (
-          <>
-            <h1>Avalnche NFTS:</h1>
-            <div className="contentScrollContainer">
-              <div className="hs">
-                {userContent?.AVAX.map((content, i) => {
-                  return (
-                    <div key={i} className="mediaCards">
-                      <AvalancheNFTS content={content} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </>
-        )} */}
 
       </div>
     </>

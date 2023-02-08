@@ -3,8 +3,6 @@ import { Tooltip } from "@nextui-org/react";
 import { WarpFactory } from "warp-contracts";
 import StampButton from "../StampButton";
 import { BsHeart, BsHeartHalf, BsHeartFill } from "react-icons/bs";
-
-import { getAssetData } from "../../lib/imgLib/asset";
 import { isVouched } from "../../lib/imgLib/stamp";
 import MainContext from "../../context";
 

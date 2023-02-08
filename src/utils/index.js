@@ -36,7 +36,7 @@ export const createPostInfo = async (node) => {
   });
   return postInfo;
 };
-const { keyStores, connect } = nearAPI;
+const { keyStores } = nearAPI;
 let tags = [
   {
     name: "App-Name",

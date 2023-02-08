@@ -8,7 +8,6 @@ import {
   Loading,
   Spacer,
   Avatar,
-  Grid,
   Text,
   Tooltip,
   Button,
@@ -44,12 +43,7 @@ export function VideoPlayerContainer(props) {
   useEffect(() => {
     let videoObject = Videos[props.videoID];
     let authorObject = Authors[videoObject.authorID];
-
-    // let authorVideos = authorObject.createdVideosByID
-    //   .map((x) => Videos[x])
-    //   .filter((x) => x.uid !== videoID);
     let assetDetails = {
-      //authorVideos,
       videoID,
       videoObject,
       authorObject,
@@ -63,7 +57,6 @@ export function VideoPlayerContainer(props) {
       setVouched(getVouched);
       if (authorVideos[0] !== undefined) {
         setArcademyVideos(authorVideos[0]);
-        //setAuthorObject(authorVideos[1]);
       }
       setContentObject(assetDetails);
       setOwnerVideos(filteredOwnerVideos);
@@ -122,7 +115,6 @@ export function VideoPlayerContainer(props) {
                 {contentObject.videoObject.videoTitle}
               </h4>
             </header>
-
             
             {contentObject.videoObject?.videoLocation === "Arweave" ? (
               <div className="video-player">

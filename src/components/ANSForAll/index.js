@@ -4,7 +4,6 @@ import {
   Button,
   Grid,
   Loading,
-  Text,
   Spacer,
   Row,
   Tooltip,
@@ -21,7 +20,6 @@ import { icons } from "../../static";
 function UseAns({ addr, forDashboard }) {
   const [ansProfile, setAnsProfile] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [hasFailed, setHasFailed] = useState(false);
   const { theme, userData } = useContext(MainContext);
   const [vouched, setVouched] = useState(false);
 
@@ -52,8 +50,6 @@ function UseAns({ addr, forDashboard }) {
         }
       } catch (e) {
         console.log("error", e);
-        //setAnsProfile({});
-        //setHasFailed(JSON.stringify(e));
       }
       setIsLoading(false);
     })();
@@ -65,32 +61,6 @@ function UseAns({ addr, forDashboard }) {
         <Grid.Container gap={1} justify="center">
           <Loading />
         </Grid.Container>
-      ) : hasFailed ? (
-        <>
-          <Spacer y={3} />
-          <Grid.Container gap={1} justify="center">
-            <Text color="error">Something wrong happened :(</Text>
-          </Grid.Container>
-          <Spacer y={2} />
-          <Grid.Container gap={1} justify="center">
-            <Button
-              css={{
-                color: "black",
-                border: "2px solid #008c9e",
-                fontSize: "0.75em",
-                padding: "0.3em",
-                backgroundColor: "white",
-                transition: "all 0.2s ease-in-out",
-              }}
-              color="secondary"
-              onPress={() => setIsLoading(true)}
-              className="button buttonText"
-            >
-              Retry
-            </Button>
-          </Grid.Container>
-          <Spacer y={3} />
-        </>
       ) : ansProfile ? (
         <>
           <Row align="center" justify="center">
@@ -298,31 +268,7 @@ function UseAns({ addr, forDashboard }) {
             </p>
           </Row>
           <Row justify="center" align="center">{` 🙂`}</Row>
-
           <Spacer y={1} />
-          {/* {props.forDashboard && (
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://arweave.net/Zxz_DkB7ZVbHAWRJsy4_6o6q6Bu2DZGuOf9DphguWvQ?nocache=1672780622672"
-                  >
-                    <Button
-                      auto
-                      css={{
-                        color: "black",
-                        border: "2px solid #008c9e",
-                        fontSize: "0.75em",
-                        padding: "0.3em",
-                        backgroundColor: "white",
-                        transition: "all 0.2s ease-in-out",
-                      }}
-                      className="button buttonText"
-                      iconRight={<AiOutlineUpload size={18} />}
-                    >
-                      <p className="pText">Create an ArProfile</p>
-                    </Button>
-                  </a>
-                )} */}
         </Col>
       )}
     </div>

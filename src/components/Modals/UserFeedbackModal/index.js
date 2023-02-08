@@ -1,30 +1,13 @@
 import { useEffect, useState } from "react";
-import {
-  Modal,
-  Text,
-  Input,
-  /*Row, Checkbox,*/ Button,
-  Textarea,
-  Loading,
-  Grid,
-  Spacer,
-} from "@nextui-org/react";
+import { Modal, Text, Button, Loading, Grid, Spacer } from "@nextui-org/react";
 
-export function UserFeedbackModal( isOpen, hasClosed) {
-  const [profileData, setProfileData] = useState({
-    addr: "",
-    links: {},
-  });
-  const [handleError, setHandleError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
+export function UserFeedbackModal(isOpen, hasClosed) {
   useEffect(() => {
     console.log("UserFeedbackModal useEffect");
   }, []);
 
   return (
     <>
-    {console.log("UserFeedbackModal render", isOpen)}
       <Modal
         preventClose
         closeButton
@@ -48,9 +31,7 @@ export function UserFeedbackModal( isOpen, hasClosed) {
           <Button auto flat color="error" onPress={hasClosed}>
             Cancel
           </Button>
-          <Button css={{ px: "$13" }}>
-            {isLoading ? <Loading color="white" size="sm" /> : "Save"}
-          </Button>
+          <Button css={{ px: "$13" }}>"Save"</Button>
         </Modal.Footer>
       </Modal>
     </>

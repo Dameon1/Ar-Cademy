@@ -21,7 +21,7 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 
-import { AvatarS, Name } from "../../static/styles/Profile";
+import { AvatarS } from "../../static/styles/Profile";
 import Account from "arweave-account";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { isVouched } from "../../lib/imgLib/stamp";
@@ -36,7 +36,7 @@ function ArProfile(props) {
   const [vouched, setVouched] = useState(false);
 
   useEffect(() => {
-    let { addr, forDashboard } = props;
+    let { addr } = props;
     let getVouched = isVouched(addr);
     setVouched(getVouched);
     // addr.length === 43
@@ -80,31 +80,7 @@ function ArProfile(props) {
         <Grid.Container gap={1} justify="center">
           <Loading />
         </Grid.Container>
-      ) : hasFailed ? (
-        <>
-          <Spacer y={3} />
-          <Grid.Container gap={1} justify="center">
-            <Text color="error">Something wrong happened :(</Text>
-          </Grid.Container>
-          <Spacer y={2} />
-          <Grid.Container gap={1} justify="center">
-            <Button
-              css={{
-                color: "black",
-                border: "2px solid #008c9e",
-                fontSize: "0.75em",
-                padding: "0.3em",
-                backgroundColor: "white",
-                transition: "all 0.2s ease-in-out",
-              }}
-              className="button buttonText"
-            >
-              <p className="pText">Retry</p>
-            </Button>
-          </Grid.Container>
-          <Spacer y={3} />
-        </>
-      ) : (
+      ) :  (
         <Col align="center">
           <EditProfileModal
             addr={props.addr}

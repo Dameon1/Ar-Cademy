@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-responsive-modal";
 import "./instructionModal.css";
 
-export function InstructionModal(props) {
+export function InstructionModal() {
 
   const [open, setOpen] = React.useState(false);
   const onOpenModal = () => setOpen(true);
@@ -43,6 +43,3 @@ export function InstructionModal(props) {
     </div>
   );
 }
-
-
-

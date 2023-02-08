@@ -1,7 +1,6 @@
 import {
   Navbar,
   Text,
-  Avatar,
   Dropdown,
   Image,
   Loading,
@@ -16,8 +15,6 @@ import { myBar, myRewards, myCode } from "../../lib/balances/balances";
 import { atomicToStamp, atomicToBar } from "../../lib/balances/utils.js";
 
 import image from "../../winston.png";
-//import babyImage from "../../winstonBaby.png";
-//import babyImage2 from "../../winstonBaby2.png";
 
 export default function Navigation() {
   const fallbackImage = "https://ar-io.net/LQ070fmMUlAD1zBxqh3UmGF5WHMAiq-JKDjPVcl8W0M";
@@ -29,7 +26,6 @@ export default function Navigation() {
     { value: "Home", page: "" },
     { value: "Dashboard", page: "Dashboard" },
     { value: "Search", page: "AccountViewer" },
-   
   ];
 
   useEffect(() => {
@@ -205,12 +201,6 @@ export default function Navigation() {
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Item>
-        {/* {addr ?
-          <Button auto onClick={disconnectWallet} className="identity-link signOutLink" icon={<AiOutlinePoweroff size={18} />} color="">Logout</Button>
-          : <Link to="/identity" className="identity-link">
-            {"Identity"}
-          </Link>
-          } */}
       </Navbar.Content>
     </Navbar>
   );

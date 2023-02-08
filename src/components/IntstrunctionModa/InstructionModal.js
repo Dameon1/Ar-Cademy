@@ -5,7 +5,6 @@ import "./instructionModal.css";
 export function InstructionModal(props) {
 
   const [open, setOpen] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(true);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
    
@@ -44,6 +43,3 @@ export function InstructionModal(props) {
       </div>
     );
   }
-
-
-

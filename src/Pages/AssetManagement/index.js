@@ -1,10 +1,7 @@
 import {
-  Card,
   Grid,
   Row,
-  Text,
   Col,
-  Button,
   Container,
   Avatar,
   Loading,
@@ -15,17 +12,12 @@ import { getAssetData, assetDetails } from "../../lib/imgLib/asset.js";
 import { atomicToStamp } from "../../lib/imgLib/utils.js";
 import { getCount, getRewards } from "../../lib/imgLib/stamp.js";
 import { getProfile } from "../../lib/imgLib/account.js";
-//import { take, takeLast } from "ramda";
 import MainContext from "../../context";
 import { Link } from "react-router-dom";
 import AtomicVideoPlayerContainer from "../../components/AtomicVideoPlayerContainer";
-//import { imgCache, profile } from "../store.js";
 
 export default function AssetManagement() {
   const { addr } = useContext(MainContext);
-  const [asset, setAsset] = useState();
-  const [ownerData, setOwnerData] = useState();
-  //const [count, setCount] = useState();
   const [rewards, setRewards] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [contractData, setContractData] = useState();
@@ -34,30 +26,16 @@ export default function AssetManagement() {
   const [urls, setUrls] = useState([]);
   let module = window.location.hash.split("/");
   let itemId = module[module.length - 1];
-  //const account = new Account();
-
-  // id;
-  // let imageMsg = "";
-  // let src = "https://placehold.co/400";
-  // let stampDlg = false;
-  // let errorDlg = false;
-  // let errorMsg = "";
-  // let showConnect = false;
-  // let showHelp = false;
-  // let tryingToStamp = false;
 
   useEffect(() => {
     async function data(id) {
       let assetData = await getAssetData(itemId);
       let assetContractData = await assetDetails(itemId, addr);
-      let profileData = await getProfile(assetData.owner);
       let assetStampedCount = await getCount(id);
       let rewards = await getRewards(id);
       let ownersArray = Object.keys(assetContractData.state.balances);
       setUrls(JSON.parse(assetData.externalLinks));
       setContractData(assetContractData);
-      setAsset(assetData);
-      setOwnerData(profileData);
       setAssetStampCount(assetStampedCount);
       setRewards(rewards);
       setOwnersAddressArray(ownersArray);
@@ -76,12 +54,6 @@ export default function AssetManagement() {
   const toProperCase = (string) => {
     return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
   };
-
-  // function connected() {
-  //   if (tryingToStamp) {
-  //     handleStamp();
-  //   }
-  // }
 
   return (
     <main>
@@ -167,10 +139,6 @@ export default function AssetManagement() {
               
             </Container>
           </div>
-
-          {/* <Row>
-          <AtomicVideoPlayerContainer />
-          </Row> */}
         </section>
       )}
     </main>

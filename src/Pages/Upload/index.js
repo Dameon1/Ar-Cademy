@@ -9,9 +9,7 @@ import { AMW } from "../../utils/api";
 import { currencyMap } from "../../utils/index";
 import { WebBundlr } from "@bundlr-network/client";
 import { sleep } from "@bundlr-network/client/build/common/upload";
-import TestModal from "../../components/Modals/TestModal";
-import { WarpFactory } from "warp-contracts";
-import { deploy, deployBundlr } from "../../lib/imgLib/deploy-path.js";
+import {  deployBundlr } from "../../lib/imgLib/deploy-path.js";
 import {
   Container,
   Button,
@@ -29,10 +27,6 @@ import { connect, keyStores, WalletConnection } from "near-api-js";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 
 import {} from "@nextui-org/react";
-import { FaSleigh } from "react-icons/fa";
-
-//import image from "../../favicon.png";
-//import image from "../../winstonMedia.png";
 
 export const tagSelectOptions = [
   { value: "learn", label: "Learn" },
@@ -61,7 +55,6 @@ export default function Upload() {
 
   //file vairables
   const [file, setFile] = useState();
-  const [size, setSize] = useState();
 
   //original file variables
   const [originalImage, setOriginalImage] = useState();
@@ -161,19 +154,6 @@ export default function Upload() {
       return;
     } else {
       return conv;
-    }
-  }
-
-  async function checkUploadCost(bytes, type) {
-    if (bytes) {
-      const cost = await bundlrInstance.getPrice(bytes);
-      if (type === "image")
-        setImageCost(bundlrInstance.utils.unitConverter(cost).toString());
-      if (type === "video")
-        setVideoCost(bundlrInstance.utils.unitConverter(cost).toString());
-
-      setFileCost(bundlrInstance.utils.unitConverter(cost).toString());
-      return cost;
     }
   }
 
@@ -318,62 +298,62 @@ export default function Upload() {
     }
   }
 
-  async function doDeploy(e) {
-    try {
-      console.log("step 1: fund upload");
-      const price = await bundlrInstance.getPrice(originalFile.size);
-      const balance = await bundlrInstance.getLoadedBalance();
-      const uploadCost = utils.formatEther(
-        price.minus(balance).multipliedBy(1.1).toFixed(0)
-      );
-      if (balance.isLessThan(price)) {
-        await bundlrInstance.fund(
-          price.minus(balance).multipliedBy(1.1).toFixed(0)
-        );
-      }
+  // async function doDeploy(e) {
+  //   try {
+  //     console.log("step 1: fund upload");
+  //     const price = await bundlrInstance.getPrice(originalFile.size);
+  //     const balance = await bundlrInstance.getLoadedBalance();
+  //     const uploadCost = utils.formatEther(
+  //       price.minus(balance).multipliedBy(1.1).toFixed(0)
+  //     );
+  //     if (balance.isLessThan(price)) {
+  //       await bundlrInstance.fund(
+  //         price.minus(balance).multipliedBy(1.1).toFixed(0)
+  //       );
+  //     }
 
-      console.log("step 2: Create transaction");
+  //     console.log("step 2: Create transaction");
 
-      console.log("step 3: Sign Transaction");
-      const trx = bundlrInstance.createTransaction(file, {
-        tags: [{ name: "Content-Type", value: originalFile.type }],
-      });
-      await trx.sign();
-      const result = await trx.upload();
+  //     console.log("step 3: Sign Transaction");
+  //     const trx = bundlrInstance.createTransaction(file, {
+  //       tags: [{ name: "Content-Type", value: originalFile.type }],
+  //     });
+  //     await trx.sign();
+  //     const result = await trx.upload();
 
-      console.log("step 4: Upload Transaction");
-      uploadFile();
-      //   console.log("Uploaded");
-      console.log(
-        "DEPLOY BUNDLR PROPS",
-        title,
-        description,
-        addr,
-        originalFile.type,
-        lastUploadId,
-        topics,
-        uploadCost
-      );
+  //     console.log("step 4: Upload Transaction");
+  //     uploadFile();
+  //     //   console.log("Uploaded");
+  //     console.log(
+  //       "DEPLOY BUNDLR PROPS",
+  //       title,
+  //       description,
+  //       addr,
+  //       originalFile.type,
+  //       lastUploadId,
+  //       topics,
+  //       uploadCost
+  //     );
 
-      console.log("step 5: Deploy Bundlr");
-      //   const result2 = await deployBundlr(
-      //     title,
-      //     description,
-      //     addr,
-      //     originalFile.type,
-      //     result.data.id,
-      //     topics,
-      //     uploadCost
-      //   );
-      //   console.log("Finalized");
-      //   alert("success");
-      //   setTimeout(() => {
-      //     navigate(`/AssetManagement/${result2.id}`);
-      //   }, 2000);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  //     console.log("step 5: Deploy Bundlr");
+  //       const result2 = await deployBundlr(
+  //         title,
+  //         description,
+  //         addr,
+  //         originalFile.type,
+  //         result.data.id,
+  //         topics,
+  //         uploadCost
+  //       );
+  //       console.log("Finalized");
+  //       alert("success");
+  //       setTimeout(() => {
+  //         navigate(`/AssetManagement/${result2.id}`);
+  //       }, 2000);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 
   const handleFileClick = (type) => {
     let fileInputEl = document.createElement("input");
@@ -396,7 +376,6 @@ export default function Upload() {
   const handleUpload = async (evt, type) => {
     let eventFile = evt.target.files[0];
     if (!eventFile) return;
-    const uploadCost = await checkUploadCost(eventFile.size, type);
 
     if (type === "image") {
       let reader = new FileReader();
@@ -414,24 +393,12 @@ export default function Upload() {
       setLocalVideo(URL.createObjectURL(eventFile));
       setOriginalVideo(eventFile);
       setMimeType(eventFile?.type ?? "application/octet-stream");
-      setSize(eventFile?.size ?? 0);
       setImgStream(fileReaderStream(eventFile));
     }
-    // setOriginalFile(eventFile);
-    // let reader = new FileReader();
-    // //const fileUrl = URL.createObjectURL(eventFile);
-    // reader.onload = function () {
-    //   if (reader.result) {
-    //     setFile(Buffer.from(reader.result));
-    //   }
-    // };
-    // reader.readAsArrayBuffer(eventFile);
   };
 
   const uploadFile = async () => {
     console.log("step 1: fund upload");
-    const timeElapsed = Date.now();
-    const today = new Date(timeElapsed);
     const price = await bundlrInstance.getPrice(
       originalImage.size + originalVideo.size
     );
@@ -557,11 +524,7 @@ export default function Upload() {
               <h2>Ar-Cademy Studio</h2>
             </div>
           </Row>
-        <Spacer y={.25} />
-        {/* <Row align="center" justify="center">
-          <TestModal />
-        </Row> */}
-        <Spacer y={1} />
+        <Spacer y={.5} />
         <Container
           justify="center"
           align="center"
